@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Extending doit &mdash; doit - automation tool</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.24',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favico.ico"/>
+    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="next" title="standalone script" href="standalone.html" />
+    <link rel="prev" title="Tools" href="tools.html" />
+<style>
+  div.topic {
+    padding: 2px;
+    background-color: #F8F4A6;
+    border: none;
+  }
+
+  p.topic-title {
+    display: run-in;
+    margin-right: 15px;
+  }
+</style>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29887834-3']);
+  _gaq.push(['_setDomainName', 'pydoit.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
+<img src="_static/doit.png" alt="doit logo" />
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="standalone.html" title="standalone script"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="tools.html" title="Tools"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+        <li><a href="contents.html">Documentation</a>&raquo;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Extending <cite>doit</cite></a><ul>
+<li><a class="reference internal" href="#task-loader-customization">task loader customization</a><ul>
+<li><a class="reference internal" href="#example-pre-defined-task">Example: pre-defined task</a></li>
+<li><a class="reference internal" href="#example-load-tasks-from-a-module">Example: load tasks from a module</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sub-command-customization">sub-command customization</a><ul>
+<li><a class="reference internal" href="#example-scaffolding">Example: scaffolding</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<h3>Project Links</h3>
+<ul>
+  <li><a href="http://pypi.python.org/pypi/doit">download (PyPi)</a></li>
+  <li><a href="https://bitbucket.org/schettino72/doit">code &amp; bugs (bitbucket)</a></li>
+  <li><a href="https://groups.google.com/forum/#!forum/python-doit">discussion (google)</a></li>
+  <li><a href="http://blog.schettino72.net/categories/doit.html">blog</a></li>
+  <li><a href="https://bitbucket.org/schettino72/doit-recipes/wiki/Home">doit-recipes</a></li>
+</ul>
+
+
+<h3>Sponsors</h3>
+<em>Your logo here</em>
+
+<h3>Sponsor/Donate to <em>doit</em></h3>
+
+
+<script data-gittip-username="schettino72"
+        data-gittip-widget="button"
+        src="//gttp.co/v1.js"></script>
+
+
+<div style="margin-left:2em;">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="BFF4G58USYPBA">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+<br/>
+
+<div style="font-size:75%">
+Why Donate? Donations will be used to sponsor futher development of the project.<br/>
+<br/>
+For coorporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+</div>
+
+
+
+
+<h3></h3>
+<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" /></a><br/><br/>
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="extending-doit">
+<h1>Extending <cite>doit</cite><a class="headerlink" href="#extending-doit" title="Permalink to this headline">¶</a></h1>
+<p id="extending"><cite>doit</cite> is built to be extended and this can be done in several levels.
+So far we have seen:</p>
+<ol class="arabic simple">
+<li>User&#8217;s can create new ways to define when a task is up-to-date using
+the <cite>uptodate</cite> task parameter (<a class="reference internal" href="uptodate.html#uptodate-api"><em>more</em></a>)</li>
+<li>Tasks can be created in different styles by creating a custom
+task creators (<a class="reference internal" href="tasks.html#create-doit-tasks"><em>more</em></a>)</li>
+<li>The output can be configured by creating custom
+reports (<a class="reference internal" href="cmd_run.html#reporter"><em>more</em></a>)</li>
+<li>You can customize how tasks are executed by creating new Action types
+(<a class="reference internal" href="tasks.html#custom-actions"><em>more</em></a>)</li>
+</ol>
+<p>Apart from those <cite>doit</cite> also expose it&#8217;s internal API so you can create
+new applications on top of <cite>doit</cite>.</p>
+<div class="section" id="task-loader-customization">
+<h2>task loader customization<a class="headerlink" href="#task-loader-customization" title="Permalink to this headline">¶</a></h2>
+<p>The task loader controls the source/creation of tasks.
+Normally <cite>doit</cite> tasks are defined in a <cite>dodo.py</cite> file.
+This file is loaded, and the list of tasks is created from
+the dict containing task meta-data from the <em>task-creator</em> functions.</p>
+<p>Subclass TaskLoader to create a custom loader:</p>
+<dl class="class">
+<dt id="doit.cmd_base.TaskLoader">
+<em class="property">class </em><tt class="descclassname">doit.cmd_base.</tt><tt class="descname">TaskLoader</tt><a class="headerlink" href="#doit.cmd_base.TaskLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>task-loader interface responsible of creating Task objects</p>
+<p>Subclasses must implement the method <cite>load_tasks</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><strong>cmd_options</strong> &#8211; (list of dict) see cmdparse.CmdOption for dict format</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="doit.cmd_base.TaskLoader.load_tasks">
+<tt class="descname">load_tasks</tt><big>(</big><em>cmd</em>, <em>opt_values</em>, <em>pos_args</em><big>)</big><a class="headerlink" href="#doit.cmd_base.TaskLoader.load_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>load tasks and DOIT_CONFIG</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(tuple) list of Task, dict with DOIT_CONFIG options</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cmd</strong> &#8211; (doit.cmd_base.Command) current command being executed</li>
+<li><strong>opt_values</strong> &#8211; (dict) with values for cmd_options</li>
+<li><strong>pos_args</strong> &#8211; (list str) positional arguments from command line</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<p>The main program is implemented in the <cite>DoitMain</cite>. It&#8217;s constructor
+takes an instance of the task loader to be used.</p>
+<div class="section" id="example-pre-defined-task">
+<h3>Example: pre-defined task<a class="headerlink" href="#example-pre-defined-task" title="Permalink to this headline">¶</a></h3>
+<p>In the full example below a application is created where the only
+task available is defined using a dict (so no <cite>dodo.py</cite> will be used).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">doit.task</span> <span class="kn">import</span> <span class="n">dict_to_task</span>
+<span class="kn">from</span> <span class="nn">doit.cmd_base</span> <span class="kn">import</span> <span class="n">TaskLoader</span>
+<span class="kn">from</span> <span class="nn">doit.doit_cmd</span> <span class="kn">import</span> <span class="n">DoitMain</span>
+
+<span class="n">my_builtin_task</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;sample_task&#39;</span><span class="p">,</span>
+    <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hello from built in&#39;</span><span class="p">],</span>
+    <span class="s">&#39;doc&#39;</span><span class="p">:</span> <span class="s">&#39;sample doc&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">MyLoader</span><span class="p">(</span><span class="n">TaskLoader</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">opt_values</span><span class="p">,</span> <span class="n">pos_args</span><span class="p">):</span>
+        <span class="n">task_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">dict_to_task</span><span class="p">(</span><span class="n">my_builtin_task</span><span class="p">)]</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">task_list</span><span class="p">,</span> <span class="n">config</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">DoitMain</span><span class="p">(</span><span class="n">MyLoader</span><span class="p">())</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-load-tasks-from-a-module">
+<h3>Example: load tasks from a module<a class="headerlink" href="#example-load-tasks-from-a-module" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>ModuleTaskLoader</cite> can be used to load tasks from a specified module,
+where this module specifies tasks in the same way as in <cite>dodo.py</cite>.
+<cite>ModuleTaskLoader</cite> is included in <cite>doit</cite> source.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">doit.cmd_base</span> <span class="kn">import</span> <span class="n">ModuleTaskLoader</span>
+<span class="kn">from</span> <span class="nn">doit.doit_cmd</span> <span class="kn">import</span> <span class="n">DoitMain</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">my_module_with_tasks</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">DoitMain</span><span class="p">(</span><span class="n">ModuleTaskLoader</span><span class="p">(</span><span class="n">my_module_with_tasks</span><span class="p">))</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sub-command-customization">
+<h2>sub-command customization<a class="headerlink" href="#sub-command-customization" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>doit</cite> command line has several sub-commands: <cite>run</cite>, <cite>help</cite>, <cite>list</cite>, <cite>clean</cite>...
+By sub-classing <cite>DoitMain.get_commands</cite> it is possible to add/remove commands.</p>
+<p>To create a new sub-cmd, subclass <cite>doit.cmd_base.Command</cite>
+set some class variables and implement the <cite>execute</cite> method.</p>
+<dl class="class">
+<dt id="doit.cmd_base.Command">
+<em class="property">class </em><tt class="descclassname">doit.cmd_base.</tt><tt class="descname">Command</tt><a class="headerlink" href="#doit.cmd_base.Command" title="Permalink to this definition">¶</a></dt>
+<dd><p>third-party should subclass this for commands that do no use tasks</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; (str) name of sub-cmd to be use from cmdline</li>
+<li><strong>doc_purpose</strong> &#8211; (str) single line cmd description</li>
+<li><strong>doc_usage</strong> &#8211; (str) describe accepted parameters</li>
+<li><strong>doc_description</strong> &#8211; (str) long description/help for cmd</li>
+<li><strong>cmd_options</strong> &#8211; (list of dict) see cmdparse.CmdOption for dict format</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="doit.cmd_base.Command.execute">
+<tt class="descname">execute</tt><big>(</big><em>opt_values</em>, <em>pos_args</em><big>)</big><a class="headerlink" href="#doit.cmd_base.Command.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>execute command
+:param opt_values: (dict) with cmd_options values
+:param pos_args: (list) of cmd-line positinal arguments</p>
+</dd></dl>
+
+</dd></dl>
+
+<p><tt class="docutils literal"><span class="pre">cmd_options</span></tt> uses the same format as
+<a class="reference internal" href="cmd_run.html#parameters-attributes"><em>task parameters</em></a>.</p>
+<div class="section" id="example-scaffolding">
+<h3>Example: scaffolding<a class="headerlink" href="#example-scaffolding" title="Permalink to this headline">¶</a></h3>
+<p>A common example is applications that provide some kind of scaffolding when
+creating new projects.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">doit.cmd_base</span> <span class="kn">import</span> <span class="n">Command</span>
+<span class="kn">from</span> <span class="nn">doit.doit_cmd</span> <span class="kn">import</span> <span class="n">DoitMain</span>
+
+
+<span class="k">class</span> <span class="nc">MyCmd</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">doc_purpose</span> <span class="o">=</span> <span class="s">&#39;test extending doit commands&#39;</span>
+    <span class="n">doc_usage</span> <span class="o">=</span> <span class="s">&#39;[XXX]&#39;</span>
+    <span class="n">doc_description</span> <span class="o">=</span> <span class="s">&#39;my command description&#39;</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt_values</span><span class="p">,</span> <span class="n">pos_args</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;this command does nothing!&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">MyTool</span><span class="p">(</span><span class="n">DoitMain</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cmds</span> <span class="o">=</span> <span class="n">DoitMain</span><span class="o">.</span><span class="n">get_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">my_cmd</span> <span class="o">=</span> <span class="n">MyCmd</span><span class="p">()</span>
+        <span class="n">cmds</span><span class="p">[</span><span class="n">my_cmd</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_cmd</span>
+        <span class="k">return</span> <span class="n">cmds</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">MyTool</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="standalone.html" title="standalone script"
+             >next</a></li>
+        <li class="right" >
+          <a href="tools.html" title="Tools"
+             >previous</a> |</li>
+        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+        <li><a href="contents.html">Documentation</a>&raquo;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, mininiss.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>

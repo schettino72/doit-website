@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>doit documentation &mdash; doit - automation tool</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.24',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favico.ico"/>
+    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="next" title="Installing" href="install.html" />
+<style>
+  div.topic {
+    padding: 2px;
+    background-color: #F8F4A6;
+    border: none;
+  }
+
+  p.topic-title {
+    display: run-in;
+    margin-right: 15px;
+  }
+</style>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29887834-3']);
+  _gaq.push(['_setDomainName', 'pydoit.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
+<img src="_static/doit.png" alt="doit logo" />
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="install.html" title="Installing"
+             accesskey="N">next</a></li>
+        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+        <li><a href="#">Documentation</a>&raquo;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<h3>Project Links</h3>
+<ul>
+  <li><a href="http://pypi.python.org/pypi/doit">download (PyPi)</a></li>
+  <li><a href="https://bitbucket.org/schettino72/doit">code &amp; bugs (bitbucket)</a></li>
+  <li><a href="https://groups.google.com/forum/#!forum/python-doit">discussion (google)</a></li>
+  <li><a href="http://blog.schettino72.net/categories/doit.html">blog</a></li>
+  <li><a href="https://bitbucket.org/schettino72/doit-recipes/wiki/Home">doit-recipes</a></li>
+</ul>
+
+
+<h3>Sponsors</h3>
+<em>Your logo here</em>
+
+<h3>Sponsor/Donate to <em>doit</em></h3>
+
+
+<script data-gittip-username="schettino72"
+        data-gittip-widget="button"
+        src="//gttp.co/v1.js"></script>
+
+
+<div style="margin-left:2em;">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="BFF4G58USYPBA">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+<br/>
+
+<div style="font-size:75%">
+Why Donate? Donations will be used to sponsor futher development of the project.<br/>
+<br/>
+For coorporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+</div>
+
+
+
+
+<h3></h3>
+<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" /></a><br/><br/>
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="doit-documentation">
+<h1><cite>doit</cite> documentation<a class="headerlink" href="#doit-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#intro">Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#actions">Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#task-name">task name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#sub-tasks">sub-tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#dependencies-targets">Dependencies &amp; Targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#file-dep-file-dependency">file_dep (file dependency)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#targets">targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#execution-order">execution order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#task-selection">Task selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#parameters">parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#command-line-variables-doit-get-var">command line variables (<em>doit.get_var</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#private-hidden-tasks">private/hidden tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#title">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#verbosity">verbosity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#custom-task-definition">custom task definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#importing-tasks">importing tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">More on dependencies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#uptodate">uptodate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#doit-up-to-date-definition">doit up-to-date definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#task-dependency">task-dependency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#calculated-dependencies">calculated-dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#setup-task">setup-task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#saving-computed-values">saving computed values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#getargs">getargs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#keywords-on-actions">keywords on actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="uptodate.html">custom uptodate</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uptodate.html#result-dependency">result-dependency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uptodate.html#run-once">run-once</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uptodate.html#timeout">timeout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uptodate.html#config-changed">config_changed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uptodate.html#check-timestamp-unchanged">check_timestamp_unchanged</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uptodate.html#uptodate-api">uptodate API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_run.html">Command line interface - run</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#python-m-doit"><cite>python -m doit</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#dodo-file">dodo file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#as-an-executable-file">as an executable file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#returned-value">returned value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#config">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#verbosity">verbosity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#dir-cwd">dir (cwd)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#continue">continue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#single-task-execution">single task execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#parallel-execution">parallel execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#reporter">reporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#custom-reporter">custom reporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#output-file">output-file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#pdb">pdb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#get-initial-workdir">get_initial_workdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#minversion">minversion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_other.html">Other Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cmd_other.html#help">help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_other.html#list">list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_other.html#forget">forget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_other.html#clean">clean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_other.html#ignore">ignore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_other.html#auto-watch">auto (watch)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_other.html#tabcompletion">tabcompletion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_other.html#dumpdb">dumpdb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_other.html#strace">strace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#create-folder-action">create_folder (action)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#title-with-actions-title">title_with_actions (title)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#longrunning-action">LongRunning (action)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#interactive-action">Interactive (action)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#pythoninteractiveaction-action">PythonInteractiveAction (action)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#set-trace">set_trace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending <cite>doit</cite></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extending.html#task-loader-customization">task loader customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extending.html#sub-command-customization">sub-command customization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standalone.html">standalone script</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standalone.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standalone.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#doit-is-too-verbose-why-don-t-you-use-decorators"><em>doit</em> is too verbose, why don&#8217;t you use decorators?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#dodo-py-file-itself-should-be-a-file-dep-for-all-tasks"><cite>dodo.py</cite> file itself should be a <cite>file_dep</cite> for all tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id1">0.25.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id2">0.24.0 (<em>2013-11-24</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id3">0.23.0 (<em>2013-09-20</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id4">0.22.1 (<em>2013-08-04</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id5">0.22.0 (<em>2013-07-05</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id6">0.21.1 (<em>2013-05-21</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id7">0.21.0 (<em>2013-04-29</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id8">0.20.0 (<em>2013-01-09</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id9">0.19.0 (<em>2012-12-18</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id10">0.18.1 (<em>2012-12-03</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id11">0.18.0 (<em>2012-11-27</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id12">0.17.0 (<em>2012-09-20</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id13">0.16.1 (<em>2012-05-13</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id14">0.16.0 (<em>2012-04-23</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id15">0.15.0 (<em>2012-01-10</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id16">0.14.0 (<em>2011-11-05</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id17">0.13.0 (<em>2011-07-18</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id18">0.12.0 (<em>2011-05-29</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id19">0.11.0 (<em>2011-04-20</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id20">0.10.0 (<em>2011-01-24</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id21">0.9.0 (<em>2010-06-08</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id22">0.8.0 (<em>2010-05-16</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id23">0.7.0 (<em>2010-04-08</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id24">0.6.0 (<em>2010-01-25</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id25">0.5.1 (<em>2009-12-03</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id26">0.5.0 (<em>2009-11-30</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id27">0.4.0 (<em>2009-10-05</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id28">0.3.0 (<em>2009-08-30</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id29">0.2.0 (<em>2009-04-16</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id30">0.1.0 (<em>2008-04-14</em>)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="install.html" title="Installing"
+             >next</a></li>
+        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+        <li><a href="#">Documentation</a>&raquo;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, mininiss.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>More on dependencies &mdash; doit - automation tool</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.24',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favico.ico"/>
+    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="next" title="custom uptodate" href="uptodate.html" />
+    <link rel="prev" title="Tasks" href="tasks.html" />
+<style>
+  div.topic {
+    padding: 2px;
+    background-color: #F8F4A6;
+    border: none;
+  }
+
+  p.topic-title {
+    display: run-in;
+    margin-right: 15px;
+  }
+</style>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29887834-3']);
+  _gaq.push(['_setDomainName', 'pydoit.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
+<img src="_static/doit.png" alt="doit logo" />
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="uptodate.html" title="custom uptodate"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="tasks.html" title="Tasks"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+        <li><a href="contents.html">Documentation</a>&raquo;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">More on dependencies</a><ul>
+<li><a class="reference internal" href="#uptodate">uptodate</a></li>
+<li><a class="reference internal" href="#doit-up-to-date-definition">doit up-to-date definition</a></li>
+<li><a class="reference internal" href="#task-dependency">task-dependency</a><ul>
+<li><a class="reference internal" href="#groups">groups</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#calculated-dependencies">calculated-dependencies</a></li>
+<li><a class="reference internal" href="#setup-task">setup-task</a><ul>
+<li><a class="reference internal" href="#teardown">teardown</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#saving-computed-values">saving computed values</a></li>
+<li><a class="reference internal" href="#getargs">getargs</a></li>
+<li><a class="reference internal" href="#keywords-on-actions">keywords on actions</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<h3>Project Links</h3>
+<ul>
+  <li><a href="http://pypi.python.org/pypi/doit">download (PyPi)</a></li>
+  <li><a href="https://bitbucket.org/schettino72/doit">code &amp; bugs (bitbucket)</a></li>
+  <li><a href="https://groups.google.com/forum/#!forum/python-doit">discussion (google)</a></li>
+  <li><a href="http://blog.schettino72.net/categories/doit.html">blog</a></li>
+  <li><a href="https://bitbucket.org/schettino72/doit-recipes/wiki/Home">doit-recipes</a></li>
+</ul>
+
+
+<h3>Sponsors</h3>
+<em>Your logo here</em>
+
+<h3>Sponsor/Donate to <em>doit</em></h3>
+
+
+<script data-gittip-username="schettino72"
+        data-gittip-widget="button"
+        src="//gttp.co/v1.js"></script>
+
+
+<div style="margin-left:2em;">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="BFF4G58USYPBA">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+<br/>
+
+<div style="font-size:75%">
+Why Donate? Donations will be used to sponsor futher development of the project.<br/>
+<br/>
+For coorporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+</div>
+
+
+
+
+<h3></h3>
+<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" /></a><br/><br/>
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="more-on-dependencies">
+<h1>More on dependencies<a class="headerlink" href="#more-on-dependencies" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="uptodate">
+<span id="attr-uptodate"></span><h2>uptodate<a class="headerlink" href="#uptodate" title="Permalink to this headline">¶</a></h2>
+<p>Apart from file dependencies you can extend <cite>doit</cite> to support other ways
+to determine if a task is up-to-date through the attribute <tt class="docutils literal"><span class="pre">uptodate</span></tt>.</p>
+<p>This can be used in cases where you need to some kind of calculation to
+determine if the task is up-to-date or not.</p>
+<p><tt class="docutils literal"><span class="pre">uptodate</span></tt> is a list where each element can be True, False, None, a callable
+or a command(string).</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">False</span></tt> indicates that the task is NOT up-to-date</li>
+<li><tt class="docutils literal"><span class="pre">True</span></tt> indicates that the task is up-to-date</li>
+<li><tt class="docutils literal"><span class="pre">None</span></tt> values will just be ignored. This is used when the value is dynamically calculated</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>An <tt class="docutils literal"><span class="pre">uptodate</span></tt> value equal to <tt class="docutils literal"><span class="pre">True</span></tt> does not override others
+up-to-date checks. It is one more way to check if task is <strong>not</strong> up-to-date.</p>
+<p class="last">i.e. if uptodate==True but a file_dep changes the task is still
+considered <strong>not</strong> up-to-date.</p>
+</div>
+<p>If an <tt class="docutils literal"><span class="pre">uptodate</span></tt> item is a string it will be executed on the shell.
+If the process exits with the code <tt class="docutils literal"><span class="pre">0</span></tt>, it is considered as up-to-date.
+All other values would be considered as not up-to-date.</p>
+<p><tt class="docutils literal"><span class="pre">uptodate</span></tt> elements can also be a callable that will be executed on runtime
+(not when the task is being created).
+The section <tt class="docutils literal"><span class="pre">custom-uptodate</span></tt> will explain in details how to extend <cite>doit</cite>
+writing your own callables for <tt class="docutils literal"><span class="pre">uptodate</span></tt>. This callables will typically
+compare a value on the present time with a value calculated on the last
+successful execution.</p>
+<p><cite>doit</cite> includes several implementations to be used as <tt class="docutils literal"><span class="pre">uptodate</span></tt>.
+They are all included in module <cite>doit.tools</cite> and will be discussed in detail
+later:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">result_dep</span></tt>: check if the result of another task has changed</li>
+<li><tt class="docutils literal"><span class="pre">run_once</span></tt>: execute a task only once (used for tasks without dependencies)</li>
+<li><tt class="docutils literal"><span class="pre">timeout</span></tt>: indicate that a task should &#8220;expire&#8221; after a certain time interval</li>
+<li><tt class="docutils literal"><span class="pre">config_changed</span></tt>: check for changes in a &#8220;configuration&#8221; string or dictionary</li>
+<li><tt class="docutils literal"><span class="pre">check_timestamp_unchanged</span></tt>: check access, status change/create or modify timestamp of a given file/directory</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="doit-up-to-date-definition">
+<span id="up-to-date-def"></span><h2>doit up-to-date definition<a class="headerlink" href="#doit-up-to-date-definition" title="Permalink to this headline">¶</a></h2>
+<p>A task is <strong>not</strong> up-to-date if any of <cite>file_dep</cite> or <cite>uptodate</cite> is not up-to-date
+or there is a missing <cite>target</cite>.
+If a task does not define any of these dependencies it will always be executed.</p>
+<p>Apart from these dependencies used to determine if a task is up-to-date or not.
+<tt class="docutils literal"><span class="pre">doit</span></tt> also includes other kind of dependencies to help you combine tasks
+so they are executed in appropriate order.</p>
+</div>
+<div class="section" id="task-dependency">
+<h2>task-dependency<a class="headerlink" href="#task-dependency" title="Permalink to this headline">¶</a></h2>
+<p>It is used to enforce tasks are executed on the desired order.
+By default tasks are executed on the same order as they were defined in
+the <cite>dodo</cite> file. To define a dependency on another task use the
+task name (whatever comes after <tt class="docutils literal"><span class="pre">task_</span></tt> on the function name) in the
+&#8220;task_dep&#8221; attribute.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A <em>task-dependency</em> <strong>only</strong> indicates that another task should be &#8220;executed&#8221;
+before itself. The task-dependency might not really be executed if it
+is <em>up-to-date</em>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><em>task-dependencies</em> are <strong>not</strong> used to determine if a task is up-to-date or
+not. If a task defines only <em>task-dependency</em> it will always be executed.</p>
+</div>
+<p>This example we make sure we include a file with the latest revision number of
+the mercurial repository on the tar file.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_tar</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;tar -cf foo.tar *&quot;</span><span class="p">],</span>
+            <span class="s">&#39;task_dep&#39;</span><span class="p">:[</span><span class="s">&#39;version&#39;</span><span class="p">],</span>
+            <span class="s">&#39;targets&#39;</span><span class="p">:[</span><span class="s">&#39;foo.tar&#39;</span><span class="p">]}</span>
+
+<span class="k">def</span> <span class="nf">task_version</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hg tip --template &#39;{rev}&#39; &gt; revision.txt&quot;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<span class="go">.  version</span>
+<span class="go">.  tar</span>
+</pre></div>
+</div>
+<div class="section" id="groups">
+<h3>groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h3>
+<p>You can define a group of tasks by adding tasks as dependencies and setting
+its <cite>actions</cite> to <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_foo</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;echo foo&quot;</span><span class="p">]}</span>
+
+<span class="k">def</span> <span class="nf">task_bar</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;echo bar&quot;</span><span class="p">]}</span>
+
+<span class="k">def</span> <span class="nf">task_mygroup</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+            <span class="s">&#39;task_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>Note that tasks are never executed twice in the same &#8220;run&#8221;.</p>
+</div>
+</div>
+<div class="section" id="calculated-dependencies">
+<span id="attr-calc-dep"></span><h2>calculated-dependencies<a class="headerlink" href="#calculated-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Calculation of dependencies might be an expensive operation, so not suitable
+to be done on load time by task-creators.
+For this situation it is better to delegate
+the calculation of dependencies to another task.
+The task calculating dependencies must have a python-action returning a
+dictionary with <cite>file_dep</cite>, <cite>task_dep</cite>, <cite>uptodate</cite> or another <cite>calc_dep</cite>.</p>
+<p>On the example below <tt class="docutils literal"><span class="pre">mod_deps</span></tt> prints on the screen all direct dependencies
+from a module. The dependencies itself are calculated on task <tt class="docutils literal"><span class="pre">get_dep</span></tt>
+(note: get_dep has a fake implementation where the results are taken from a dict).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+
+<span class="n">MOD_IMPORTS</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">],</span>
+               <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;f&#39;</span><span class="p">,</span><span class="s">&#39;g&#39;</span><span class="p">],</span>
+               <span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="p">[],</span>
+               <span class="s">&#39;f&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">],</span>
+               <span class="s">&#39;g&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+
+
+<span class="k">def</span> <span class="nf">print_deps</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s"> -&gt; </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">task_mod_deps</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;task that depends on all direct imports&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">MOD_IMPORTS</span><span class="o">.</span><span class="n">iterkeys</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">mod</span><span class="p">,</span>
+               <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">print_deps</span><span class="p">,(</span><span class="n">mod</span><span class="p">,))],</span>
+               <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mod</span><span class="p">],</span>
+               <span class="s">&#39;calc_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;get_dep:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">mod</span><span class="p">],</span>
+               <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">get_dep</span><span class="p">(</span><span class="n">mod</span><span class="p">):</span>
+    <span class="c"># fake implementation</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="n">MOD_IMPORTS</span><span class="p">[</span><span class="n">mod</span><span class="p">]}</span>
+<span class="k">def</span> <span class="nf">task_get_dep</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;get direct dependencies for each module&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">MOD_IMPORTS</span><span class="o">.</span><span class="n">iterkeys</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">mod</span><span class="p">,</span>
+               <span class="s">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">get_dep</span><span class="p">,[</span><span class="n">mod</span><span class="p">])],</span>
+               <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mod</span><span class="p">],</span>
+               <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-task">
+<h2>setup-task<a class="headerlink" href="#setup-task" title="Permalink to this headline">¶</a></h2>
+<p>Some tasks may require some kind of environment setup.
+In this case they can define a list of &#8220;setup&#8221; tasks.</p>
+<ul class="simple">
+<li>the setup-task will be executed only if the task is to be executed (not up-to-date)</li>
+<li>setup-tasks are just normal tasks that follow all other task behavior</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A <em>task-dependency</em> is executed before checking if the task is up-to-date.
+A <em>setup-task</em> is executed after the checking if the task is up-to-date and
+it is executed only if the task is not up-to-date and will be executed.</p>
+</div>
+<div class="section" id="teardown">
+<h3>teardown<a class="headerlink" href="#teardown" title="Permalink to this headline">¶</a></h3>
+<p>Task may also define &#8216;teardown&#8217; actions.
+These actions are executed after all tasks have finished their execution.
+They are executed in reverse order their tasks were executed.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">### task setup env. good for functional tests!</span>
+<span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+               <span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;withenvX&#39;</span><span class="p">,</span> <span class="s">&#39;withenvY&#39;</span><span class="p">]}</span>
+
+<span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;start </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">name</span>
+<span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;stop </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">name</span>
+
+<span class="k">def</span> <span class="nf">task_setup_sample</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;setupX&#39;</span><span class="p">,</span> <span class="s">&#39;setupY&#39;</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+               <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">start</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,))],</span>
+               <span class="s">&#39;teardown&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">stop</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,))],</span>
+               <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">task_withenvX</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">fin</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">fin</span><span class="p">,</span>
+               <span class="s">&#39;actions&#39;</span><span class="p">:[</span><span class="s">&#39;echo x </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">fin</span><span class="p">],</span>
+               <span class="s">&#39;setup&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;setup_sample:setupX&#39;</span><span class="p">],</span>
+               <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">task_withenvY</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[</span><span class="s">&#39;echo y&#39;</span><span class="p">],</span>
+            <span class="s">&#39;setup&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;setup_sample:setupY&#39;</span><span class="p">],</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit withenvX
+<span class="go">.  setup_sample:setupX</span>
+<span class="go">start setupX</span>
+<span class="go">.  withenvX:c</span>
+<span class="go">x c</span>
+<span class="go">.  withenvX:b</span>
+<span class="go">x b</span>
+<span class="go">.  withenvX:a</span>
+<span class="go">x a</span>
+<span class="go">stop setupX</span>
+<span class="gp">$</span> doit withenvY
+<span class="go">.  setup_sample:setupY</span>
+<span class="go">start setupY</span>
+<span class="go">.  withenvY</span>
+<span class="go">y</span>
+<span class="go">stop setupY</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="saving-computed-values">
+<h2>saving computed values<a class="headerlink" href="#saving-computed-values" title="Permalink to this headline">¶</a></h2>
+<p>Tasks can save computed values by returning a dictionary on it&#8217;s python-actions.
+The values must be JSON encodable.</p>
+<p>A cmd-action can also save it&#8217;s output.
+But for this you will need to explicitly import <cite>CmdAction</cite> and set its <cite>save_out</cite>
+parameter with the <em>name</em> used to save the output in <em>values</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.action</span> <span class="kn">import</span> <span class="n">CmdAction</span>
+
+<span class="k">def</span> <span class="nf">task_save_output</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">CmdAction</span><span class="p">(</span><span class="s">&quot;echo x1&quot;</span><span class="p">,</span> <span class="n">save_out</span><span class="o">=</span><span class="s">&#39;out&#39;</span><span class="p">)],</span>
+        <span class="p">}</span>
+<span class="c"># The task values will contain: {&#39;out&#39;: u&#39;x1&#39;}</span>
+</pre></div>
+</div>
+<p>These values can be used on <a class="reference internal" href="#uptodate">uptodate</a> and <a class="reference internal" href="#getargs">getargs</a>.
+Check those sections for examples.</p>
+</div>
+<div class="section" id="getargs">
+<h2>getargs<a class="headerlink" href="#getargs" title="Permalink to this headline">¶</a></h2>
+<p><cite>getargs</cite> provides a way to use values computed from one task in another task.
+The values are taken from &#8220;saved computed values&#8221;
+(returned dict from a python-action).</p>
+<p>For <em>cmd-action</em> use dictionary-based string formatting.</p>
+<p>For <em>python-action</em> the action callable parameter names must match with keys
+from <cite>getargs</cite>.</p>
+<p><cite>getargs</cite> is a dictionary where the key is the argument name used on actions,
+and the value is a tuple with 2 strings: task name, &#8220;value name&#8221;.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;use_cmd&#39;</span><span class="p">,</span> <span class="s">&#39;use_python&#39;</span><span class="p">]}</span>
+
+<span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
+   <span class="k">def</span> <span class="nf">comp</span><span class="p">():</span>
+       <span class="k">return</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+   <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">comp</span><span class="p">,)]}</span>
+
+
+<span class="k">def</span> <span class="nf">task_use_cmd</span><span class="p">():</span>
+   <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo x=</span><span class="si">%(x)s</span><span class="s">, z=</span><span class="si">%(z)s</span><span class="s">&#39;</span><span class="p">],</span>
+           <span class="s">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;compute&#39;</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">),</span>
+                       <span class="s">&#39;z&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;compute&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">)},</span>
+           <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+           <span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">task_use_python</span><span class="p">():</span>
+  <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">show_getargs</span><span class="p">],</span>
+          <span class="s">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;compute&#39;</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">),</span>
+                      <span class="s">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;compute&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">)},</span>
+          <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="p">}</span>
+<span class="k">def</span> <span class="nf">show_getargs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+   <span class="k">print</span> <span class="s">&quot;this is x:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">x</span>
+   <span class="k">print</span> <span class="s">&quot;this is y:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>The values are being passed on to a python-action you can pass the whole dict
+by specifying the value name as <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
+   <span class="k">def</span> <span class="nf">comp</span><span class="p">():</span>
+       <span class="k">return</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+   <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">comp</span><span class="p">,)]}</span>
+
+
+<span class="k">def</span> <span class="nf">show_getargs</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+   <span class="k">print</span> <span class="n">values</span>
+
+<span class="k">def</span> <span class="nf">task_args_dict</span><span class="p">():</span>
+  <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">show_getargs</span><span class="p">],</span>
+          <span class="s">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;values&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;compute&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)},</span>
+          <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="p">}</span>
+</pre></div>
+</div>
+<p>If a group-task is used, the values from all its sub-tasks are passed as a dict.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
+   <span class="k">def</span> <span class="nf">comp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+       <span class="k">return</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">}</span>
+   <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;5&#39;</span><span class="p">,</span>
+          <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="p">]</span>
+          <span class="p">}</span>
+   <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;7&#39;</span><span class="p">,</span>
+          <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="p">[</span><span class="mi">7</span><span class="p">])</span> <span class="p">]</span>
+          <span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">show_getargs</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">values</span>
+    <span class="k">assert</span> <span class="nb">sum</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">itervalues</span><span class="p">())</span> <span class="o">==</span> <span class="mi">12</span>
+
+<span class="k">def</span> <span class="nf">task_args_dict</span><span class="p">():</span>
+  <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">show_getargs</span><span class="p">],</span>
+          <span class="s">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;values&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;compute&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)},</span>
+          <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><tt class="docutils literal"><span class="pre">getargs</span></tt> creates an implicit setup-task.</p>
+</div>
+</div>
+<div class="section" id="keywords-on-actions">
+<h2>keywords on actions<a class="headerlink" href="#keywords-on-actions" title="Permalink to this headline">¶</a></h2>
+<p>It is common situation to use task information such as <em>targets</em>,
+<em>dependencies</em>, or <em>changed</em> in its own actions.
+Note: Dependencies here refers only to <em>file-dependencies</em>.</p>
+<p>For <em>cmd-action</em> you can use the python notation for keyword substitution
+on strings. The string will contain all values separated by a space (&#8221; &#8221;).</p>
+<p>For <em>python-action</em> create a parameter in the function, <cite>doit</cite> will take care
+of passing the value when the function is called.
+The values are passed as list of strings.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;hello&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">python_hello</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Python says Hello World!!!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">python_hello</span><span class="p">],</span>
+        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello.txt&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also pass the keyword <em>task</em> to have a reference to all task
+metadata.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;my name is&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span>
+    <span class="k">print</span> <span class="n">task</span><span class="o">.</span><span class="n">targets</span>
+
+<span class="k">def</span> <span class="nf">task_x</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">who</span><span class="p">],</span>
+        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;asdf&#39;</span><span class="p">],</span>
+        <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="uptodate.html" title="custom uptodate"
+             >next</a></li>
+        <li class="right" >
+          <a href="tasks.html" title="Tasks"
+             >previous</a> |</li>
+        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+        <li><a href="contents.html">Documentation</a>&raquo;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, mininiss.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>

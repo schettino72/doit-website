@@ -1,0 +1,451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Other Commands &mdash; doit - automation tool</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.24',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favico.ico"/>
+    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="next" title="Tools" href="tools.html" />
+    <link rel="prev" title="Command line interface - run" href="cmd_run.html" />
+<style>
+  div.topic {
+    padding: 2px;
+    background-color: #F8F4A6;
+    border: none;
+  }
+
+  p.topic-title {
+    display: run-in;
+    margin-right: 15px;
+  }
+</style>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29887834-3']);
+  _gaq.push(['_setDomainName', 'pydoit.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
+<img src="_static/doit.png" alt="doit logo" />
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="tools.html" title="Tools"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="cmd_run.html" title="Command line interface - run"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+        <li><a href="contents.html">Documentation</a>&raquo;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Other Commands</a><ul>
+<li><a class="reference internal" href="#help">help</a></li>
+<li><a class="reference internal" href="#list">list</a></li>
+<li><a class="reference internal" href="#forget">forget</a></li>
+<li><a class="reference internal" href="#clean">clean</a></li>
+<li><a class="reference internal" href="#ignore">ignore</a></li>
+<li><a class="reference internal" href="#auto-watch">auto (watch)</a><ul>
+<li><a class="reference internal" href="#watch-parameter"><tt class="docutils literal"><span class="pre">watch</span></tt> parameter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tabcompletion">tabcompletion</a><ul>
+<li><a class="reference internal" href="#bash">bash</a></li>
+<li><a class="reference internal" href="#zsh">zsh</a></li>
+<li><a class="reference internal" href="#hard-coding-tasks">hard-coding tasks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dumpdb">dumpdb</a></li>
+<li><a class="reference internal" href="#strace">strace</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<h3>Project Links</h3>
+<ul>
+  <li><a href="http://pypi.python.org/pypi/doit">download (PyPi)</a></li>
+  <li><a href="https://bitbucket.org/schettino72/doit">code &amp; bugs (bitbucket)</a></li>
+  <li><a href="https://groups.google.com/forum/#!forum/python-doit">discussion (google)</a></li>
+  <li><a href="http://blog.schettino72.net/categories/doit.html">blog</a></li>
+  <li><a href="https://bitbucket.org/schettino72/doit-recipes/wiki/Home">doit-recipes</a></li>
+</ul>
+
+
+<h3>Sponsors</h3>
+<em>Your logo here</em>
+
+<h3>Sponsor/Donate to <em>doit</em></h3>
+
+
+<script data-gittip-username="schettino72"
+        data-gittip-widget="button"
+        src="//gttp.co/v1.js"></script>
+
+
+<div style="margin-left:2em;">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="BFF4G58USYPBA">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+<br/>
+
+<div style="font-size:75%">
+Why Donate? Donations will be used to sponsor futher development of the project.<br/>
+<br/>
+For coorporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+</div>
+
+
+
+
+<h3></h3>
+<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" /></a><br/><br/>
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="other-commands">
+<h1>Other Commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a></h1>
+<p>Let&#8217;s use a more complex example to demonstrate the command line features.
+The example below is used to manage a very simple C project.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;link&#39;</span><span class="p">]}</span>
+
+<span class="c"># map source file to dependencies</span>
+<span class="n">SOURCE</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;main&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;defs.h&quot;</span><span class="p">],</span>
+    <span class="s">&#39;kbd&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;defs.h&quot;</span><span class="p">,</span> <span class="s">&quot;command.h&quot;</span><span class="p">],</span>
+    <span class="s">&#39;command&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;defs.h&quot;</span><span class="p">,</span> <span class="s">&quot;command.h&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">task_link</span><span class="p">():</span>
+    <span class="s">&quot;create binary program&quot;</span>
+    <span class="n">OBJECTS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">.o&quot;</span> <span class="o">%</span> <span class="n">module</span> <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">SOURCE</span><span class="o">.</span><span class="n">iterkeys</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;cc -o </span><span class="si">%(targets)s</span><span class="s"> </span><span class="si">%(dependencies)s</span><span class="s">&#39;</span><span class="p">],</span>
+            <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="n">OBJECTS</span><span class="p">,</span>
+            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;edit&#39;</span><span class="p">],</span>
+            <span class="s">&#39;clean&#39;</span><span class="p">:</span> <span class="bp">True</span>
+            <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
+    <span class="s">&quot;compile C files&quot;</span>
+    <span class="k">for</span> <span class="n">module</span><span class="p">,</span> <span class="n">dep</span> <span class="ow">in</span> <span class="n">SOURCE</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">dependencies</span> <span class="o">=</span> <span class="n">dep</span> <span class="o">+</span> <span class="p">[</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">.c&#39;</span> <span class="o">%</span> <span class="n">module</span><span class="p">]</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">module</span><span class="p">,</span>
+               <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;cc -c </span><span class="si">%s</span><span class="s">.c&quot;</span> <span class="o">%</span> <span class="n">module</span><span class="p">],</span>
+               <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">.o&quot;</span> <span class="o">%</span> <span class="n">module</span><span class="p">],</span>
+               <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="n">dependencies</span><span class="p">,</span>
+               <span class="s">&#39;clean&#39;</span><span class="p">:</span> <span class="bp">True</span>
+               <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">task_install</span><span class="p">():</span>
+    <span class="s">&quot;install&quot;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo install comes here...&#39;</span><span class="p">],</span>
+            <span class="s">&#39;task_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;link&#39;</span><span class="p">],</span>
+            <span class="s">&#39;doc&#39;</span><span class="p">:</span> <span class="s">&#39;install executable (TODO)&#39;</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="help">
+<span id="cmd-help"></span><h2>help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
+<p><cite>doit</cite> comes with several commands. <cite>doit help</cite> will list all available commands.</p>
+<p>You can also get help from each available command. e.g. <cite>doit help run</cite>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Not all options/parameters are documented below.
+Always check <cite>doit help &lt;cmd&gt;</cite> to see a complete list of options.</p>
+</div>
+<p><cite>doit help task</cite> will display information on all fields/attributes a task dictionary from a <cite>dodo</cite> file accepts.</p>
+</div>
+<div class="section" id="list">
+<span id="cmd-list"></span><h2>list<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h2>
+<p><em>list</em> is used to show all tasks available in a <em>dodo</em> file.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit list
+<span class="go">link : create binary program</span>
+<span class="go">compile : compile C files</span>
+<span class="go">install : install executable (TODO)</span>
+</pre></div>
+</div>
+<p>By default task name and description are listed. The task description is taken from the first line of task function doc-string. You can also set it using the <em>doc</em> attribute on the task dictionary. It is possible to omit the description using the option <em>-q</em>/<em>&#8211;quiet</em>.</p>
+<p>By default sub-tasks are not listed. It can list sub-tasks using the option <em>&#8211;all</em>.</p>
+<p>By default task names that start with an underscore(<em>_</em>) are not listed. They are listed if the option <em>-p</em>/<em>&#8211;private</em> is used.</p>
+<p>Task status can be printed using the option <em>-s</em>/<em>&#8211;status</em>.</p>
+<p>Task&#8217;s file-dependencies can be printed using the option <em>&#8211;deps</em>.</p>
+</div>
+<div class="section" id="forget">
+<h2>forget<a class="headerlink" href="#forget" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you change the compilation parameters in the compile action. Or you changed the code from a python-action. <em>doit</em> will think your task is up-to-date based on  the dependencies but actually it is not! In this case you can use the <em>forget</em> command to make sure the given task will be executed again even with no changes in the dependencies.</p>
+<p>If you do not specify any task, the default tasks are &#8220;<em>forget</em>&#8221;.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit forget
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><em>doit</em> keeps track of which tasks are successful in the file <tt class="docutils literal"><span class="pre">.doit.db</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="clean">
+<h2>clean<a class="headerlink" href="#clean" title="Permalink to this headline">¶</a></h2>
+<p>A common scenario is a task that needs to &#8220;revert&#8221; its actions. A task may include a <em>clean</em> attribute. This attribute can be <tt class="docutils literal"><span class="pre">True</span></tt> to remove all of its target files. If there is a folder as a target it will be removed if the folder is empty, otherwise it will display a warning message.</p>
+<p>The <em>clean</em> attribute can be a list of actions, again, an action could be a string with a shell command or a tuple with a python callable.</p>
+<p>If you want to clean the targets and add some custom clean actions,
+you can include the <cite>doit.task.clean_targets</cite> instead of passing <cite>True</cite>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.task</span> <span class="kn">import</span> <span class="n">clean_targets</span>
+
+<span class="k">def</span> <span class="nf">simple</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s">&quot;ok&quot;</span>
+
+<span class="k">def</span> <span class="nf">task_poo</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;touch poo&#39;</span><span class="p">],</span>
+        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;poo&#39;</span><span class="p">],</span>
+        <span class="s">&#39;clean&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">clean_targets</span><span class="p">,</span> <span class="n">simple</span><span class="p">],</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>You can specify which task to <em>clean</em>. If no task is specified the clean operation of default tasks are executed.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit clean
+</pre></div>
+</div>
+<p>By default if a task contains task-dependencies those are not automatically
+cleaned too. You can enable this using the option <em>-c</em>/<em>&#8211;clean-dep</em>.
+If you are executing the default tasks this flag is automatically set.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">By default only the default tasks&#8217; clean are executed, not from all tasks.
+You can clean all tasks using the <em>-a</em>/<em>&#8211;all</em> argument.</p>
+</div>
+<p>If you want check which tasks the clean operation would affect you can use the option <em>-n</em>/<em>&#8211;dry-run</em>.</p>
+</div>
+<div class="section" id="ignore">
+<h2>ignore<a class="headerlink" href="#ignore" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to set a task to be ignored/skipped (that is not executed). This is useful for example when you are performing checks in several files and you want to skip the check in some of them temporarily.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;file</span><span class="si">%d</span><span class="s">.txt&quot;</span> <span class="o">%</span> <span class="n">i</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
+               <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;touch </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<span class="go">.  create_file:file0.txt</span>
+<span class="go">.  create_file:file1.txt</span>
+<span class="go">.  create_file:file2.txt</span>
+<span class="gp">$</span> doit ignore create_file:file1.txt
+<span class="go">ignoring create_file:file1.txt</span>
+<span class="gp">$</span> doit
+<span class="go">.  create_file:file0.txt</span>
+<span class="go">!! create_file:file1.txt</span>
+<span class="go">.  create_file:file2.txt</span>
+</pre></div>
+</div>
+<p>Note the <tt class="docutils literal"><span class="pre">!!</span></tt>, it means that task was ignored. To reverse the <cite>ignore</cite> use <cite>forget</cite> sub-command.</p>
+</div>
+<div class="section" id="auto-watch">
+<span id="cmd-auto"></span><h2>auto (watch)<a class="headerlink" href="#auto-watch" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Supported on Linux and Mac only.</p>
+</div>
+<p><cite>auto</cite> sub-command is an alternative way of executing your tasks.
+It is a long running process that only terminates when it is interrupted (Ctrl-C).
+When started it will execute the given tasks. After that it will watch the
+file system for modifications in the file-dependencies.
+When a file is modified the tasks are re-executed.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit auto
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <cite>dodo</cite> file is actually re-loaded/executed in a separate process
+every time tasks need to be re-executed.</p>
+</div>
+<div class="section" id="watch-parameter">
+<h3><tt class="docutils literal"><span class="pre">watch</span></tt> parameter<a class="headerlink" href="#watch-parameter" title="Permalink to this headline">¶</a></h3>
+<p>Apart from <tt class="docutils literal"><span class="pre">file_dep</span></tt> you can use the parameter <tt class="docutils literal"><span class="pre">watch</span></tt> to pass extra
+paths to be watched for (including folders). The <tt class="docutils literal"><span class="pre">watch</span></tt> parameter can also
+be specified for a group of &#8220;sub-tasks&#8221;.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="k">def</span> <span class="nf">task_xxx</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;my doc&quot;&quot;&quot;</span>
+    <span class="n">LIST</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.xyz&#39;</span><span class="p">)</span> <span class="c"># might be empty</span>
+    <span class="k">yield</span> <span class="p">{</span>
+        <span class="s">&#39;basename&#39;</span><span class="p">:</span> <span class="s">&#39;do_x&#39;</span><span class="p">,</span>
+        <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+        <span class="s">&#39;doc&#39;</span><span class="p">:</span> <span class="s">&#39;docs for X&#39;</span><span class="p">,</span>
+        <span class="s">&#39;watch&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;.&#39;</span><span class="p">],</span>
+        <span class="p">}</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">LIST</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="p">{</span>
+            <span class="s">&#39;basename&#39;</span><span class="p">:</span> <span class="s">&#39;do_x&#39;</span><span class="p">,</span>
+            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">,</span>
+            <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">item</span><span class="p">]</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tabcompletion">
+<span id="id1"></span><h2>tabcompletion<a class="headerlink" href="#tabcompletion" title="Permalink to this headline">¶</a></h2>
+<p>This command creates a completion for bash or zsh.
+The generated script is written on stdout.</p>
+<div class="section" id="bash">
+<h3>bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h3>
+<p>To use a completion script you need to <cite>source</cite> it first.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit tabcompletion &gt; bash_completion_doit
+<span class="gp">$</span> <span class="nb">source </span>bash_completion_doit
+</pre></div>
+</div>
+</div>
+<div class="section" id="zsh">
+<h3>zsh<a class="headerlink" href="#zsh" title="Permalink to this headline">¶</a></h3>
+<p>zsh completion scripts should be placed in a folder in the &#8220;autoload&#8221; path.</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="c"># add folder with completion scripts</span>
+<span class="nv">fpath</span><span class="o">=(</span>~/.zsh/completion <span class="nv">$fpath</span><span class="o">)</span>
+
+<span class="c"># Use modern completion system</span>
+autoload -Uz compinit
+compinit
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit tabcompletion --shell zsh &gt; _doit
+<span class="gp">$</span> cp _doit ~/.zsh/tabcompletion/_doit
+</pre></div>
+</div>
+</div>
+<div class="section" id="hard-coding-tasks">
+<h3>hard-coding tasks<a class="headerlink" href="#hard-coding-tasks" title="Permalink to this headline">¶</a></h3>
+<p>If you are creating an application based on <cite>doit</cite>
+or if you tasks take a long time to load you may create
+a completion script that includes the list of tasks
+from your dodo.py.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> my_app tabcompletion --hardcode-tasks &gt; _my_app
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dumpdb">
+<h2>dumpdb<a class="headerlink" href="#dumpdb" title="Permalink to this headline">¶</a></h2>
+<p><cite>doit</cite> saves internal data in a file (<cite>.doit.db</cite> be default).
+It uses a binary format (whatever python&#8217;s dbm is using in your system).
+This command will simply dump its content in readable text format in the output.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit dumpdb
+</pre></div>
+</div>
+</div>
+<div class="section" id="strace">
+<h2>strace<a class="headerlink" href="#strace" title="Permalink to this headline">¶</a></h2>
+<p>This command uses <a class="reference external" href="https://en.wikipedia.org/wiki/Strace">strace</a>
+utility to help you verify which files are being used by a given task.</p>
+<p>The output is a list of files prefixed with <cite>R</cite> for open in read mode
+or <cite>W</cite> for open in write mode.
+The files are listed in chronological order.</p>
+<dl class="docutils">
+<dt>This is a debugging feature with many limitations.</dt>
+<dd><ul class="first last simple">
+<li>can strace only one task at a time</li>
+<li>can only strace CmdAction</li>
+<li>the process being traced itself might have some kind of cache,
+that means it might not write a target file if it exist</li>
+<li>does not handle chdir</li>
+</ul>
+</dd>
+</dl>
+<p>So this is NOT 100% reliable, use with care!</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit strace &lt;task-name&gt;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="tools.html" title="Tools"
+             >next</a></li>
+        <li class="right" >
+          <a href="cmd_run.html" title="Command line interface - run"
+             >previous</a> |</li>
+        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+        <li><a href="contents.html">Documentation</a>&raquo;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, mininiss.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>

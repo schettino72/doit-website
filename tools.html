@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tools &mdash; doit - automation tool</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.24',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favico.ico"/>
+    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="next" title="Extending doit" href="extending.html" />
+    <link rel="prev" title="Other Commands" href="cmd_other.html" />
+<style>
+  div.topic {
+    padding: 2px;
+    background-color: #F8F4A6;
+    border: none;
+  }
+
+  p.topic-title {
+    display: run-in;
+    margin-right: 15px;
+  }
+</style>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29887834-3']);
+  _gaq.push(['_setDomainName', 'pydoit.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
+<img src="_static/doit.png" alt="doit logo" />
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="extending.html" title="Extending doit"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="cmd_other.html" title="Other Commands"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+        <li><a href="contents.html">Documentation</a>&raquo;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tools</a><ul>
+<li><a class="reference internal" href="#create-folder-action">create_folder (action)</a></li>
+<li><a class="reference internal" href="#title-with-actions-title">title_with_actions (title)</a></li>
+<li><a class="reference internal" href="#longrunning-action">LongRunning (action)</a></li>
+<li><a class="reference internal" href="#interactive-action">Interactive (action)</a></li>
+<li><a class="reference internal" href="#pythoninteractiveaction-action">PythonInteractiveAction (action)</a></li>
+<li><a class="reference internal" href="#set-trace">set_trace</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<h3>Project Links</h3>
+<ul>
+  <li><a href="http://pypi.python.org/pypi/doit">download (PyPi)</a></li>
+  <li><a href="https://bitbucket.org/schettino72/doit">code &amp; bugs (bitbucket)</a></li>
+  <li><a href="https://groups.google.com/forum/#!forum/python-doit">discussion (google)</a></li>
+  <li><a href="http://blog.schettino72.net/categories/doit.html">blog</a></li>
+  <li><a href="https://bitbucket.org/schettino72/doit-recipes/wiki/Home">doit-recipes</a></li>
+</ul>
+
+
+<h3>Sponsors</h3>
+<em>Your logo here</em>
+
+<h3>Sponsor/Donate to <em>doit</em></h3>
+
+
+<script data-gittip-username="schettino72"
+        data-gittip-widget="button"
+        src="//gttp.co/v1.js"></script>
+
+
+<div style="margin-left:2em;">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="BFF4G58USYPBA">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+<br/>
+
+<div style="font-size:75%">
+Why Donate? Donations will be used to sponsor futher development of the project.<br/>
+<br/>
+For coorporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+</div>
+
+
+
+
+<h3></h3>
+<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" /></a><br/><br/>
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tools">
+<h1>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h1>
+<p><cite>doit.tools</cite> includes some commonly used code. These are not used by the <cite>doit</cite>
+core, you can see it as a &#8220;standard library&#8221;.
+The functions/class used with <cite>uptodate</cite> were already introduced in the previous
+section.</p>
+<div class="section" id="create-folder-action">
+<h2>create_folder (action)<a class="headerlink" href="#create-folder-action" title="Permalink to this headline">¶</a></h2>
+<p>Creates a folder if it does not exist yet. Uses <cite>os.makedirs() &lt;http://docs.python.org/2/library/os#os.makedirs&gt;_</cite>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">create_folder</span>
+
+<span class="n">BUILD_PATH</span> <span class="o">=</span> <span class="s">&quot;_build&quot;</span>
+
+<span class="k">def</span> <span class="nf">task_build</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">create_folder</span><span class="p">,</span> <span class="p">[</span><span class="n">BUILD_PATH</span><span class="p">]),</span>
+                        <span class="s">&#39;touch </span><span class="si">%(targets)s</span><span class="s">&#39;</span><span class="p">],</span>
+            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">/file.o&quot;</span> <span class="o">%</span> <span class="n">BUILD_PATH</span><span class="p">]</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="title-with-actions-title">
+<h2>title_with_actions (title)<a class="headerlink" href="#title-with-actions-title" title="Permalink to this headline">¶</a></h2>
+<p>Return task name task actions from a task. This function can be used as &#8216;title&#8217; attribute of a task dictionary to provide more detailed information of the action being executed.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">title_with_actions</span>
+
+<span class="k">def</span> <span class="nf">task_with_details</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo abc 123&#39;</span><span class="p">],</span>
+            <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="n">title_with_actions</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="longrunning-action">
+<span id="tools-longrunning"></span><h2>LongRunning (action)<a class="headerlink" href="#longrunning-action" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="doit.tools.LongRunning">
+<em class="property">class </em><tt class="descclassname">doit.tools.</tt><tt class="descname">LongRunning</tt><big>(</big><em>action</em>, <em>task=None</em>, <em>save_out=None</em>, <em>shell=True</em>, <em>**pkwargs</em><big>)</big><a class="headerlink" href="#doit.tools.LongRunning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to handle a Long running shell process,
+usually a server or service.
+Properties:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the output is never captured</li>
+<li>it is always successful (return code is not used)</li>
+<li>&#8220;swallow&#8221; KeyboardInterrupt</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<p>This is useful for executing long running process like a web-server.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">LongRunning</span>
+
+<span class="k">def</span> <span class="nf">task_top</span><span class="p">():</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="s">&quot;top&quot;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">LongRunning</span><span class="p">(</span><span class="n">cmd</span><span class="p">)],}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="interactive-action">
+<h2>Interactive (action)<a class="headerlink" href="#interactive-action" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="doit.tools.Interactive">
+<em class="property">class </em><tt class="descclassname">doit.tools.</tt><tt class="descname">Interactive</tt><big>(</big><em>action</em>, <em>task=None</em>, <em>save_out=None</em>, <em>shell=True</em>, <em>**pkwargs</em><big>)</big><a class="headerlink" href="#doit.tools.Interactive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to handle Interactive shell process:</p>
+<ul class="simple">
+<li>the output is never captured</li>
+</ul>
+</dd></dl>
+
+</div>
+<div class="section" id="pythoninteractiveaction-action">
+<h2>PythonInteractiveAction (action)<a class="headerlink" href="#pythoninteractiveaction-action" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="doit.tools.PythonInteractiveAction">
+<em class="property">class </em><tt class="descclassname">doit.tools.</tt><tt class="descname">PythonInteractiveAction</tt><big>(</big><em>py_callable</em>, <em>args=None</em>, <em>kwargs=None</em>, <em>task=None</em><big>)</big><a class="headerlink" href="#doit.tools.PythonInteractiveAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to handle Interactive python:</p>
+<ul class="simple">
+<li>the output is never captured</li>
+<li>it is successful unless a exeception is raised</li>
+</ul>
+</dd></dl>
+
+</div>
+<div class="section" id="set-trace">
+<h2>set_trace<a class="headerlink" href="#set-trace" title="Permalink to this headline">¶</a></h2>
+<p><cite>doit</cite> by default redirects stdout and stderr. Because of this when you try to
+use the python debugger with <tt class="docutils literal"><span class="pre">pdb.set_trace</span></tt>, it does not work properly.
+To make sure you get a proper PDB shell you should use doit.tools.set_trace
+instead of <tt class="docutils literal"><span class="pre">pdb.set_trace</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">need_to_debug</span><span class="p">():</span>
+    <span class="c"># some code here</span>
+    <span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">tools</span>
+    <span class="n">tools</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+    <span class="c"># more code</span>
+
+<span class="k">def</span> <span class="nf">task_X</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">need_to_debug</span><span class="p">,)]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="extending.html" title="Extending doit"
+             >next</a></li>
+        <li class="right" >
+          <a href="cmd_other.html" title="Other Commands"
+             >previous</a> |</li>
+        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+        <li><a href="contents.html">Documentation</a>&raquo;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, mininiss.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Changes &mdash; doit - automation tool</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.24',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favico.ico"/>
+    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="next" title="Related Projects" href="related.html" />
+    <link rel="prev" title="FAQ" href="faq.html" />
+<style>
+  div.topic {
+    padding: 2px;
+    background-color: #F8F4A6;
+    border: none;
+  }
+
+  p.topic-title {
+    display: run-in;
+    margin-right: 15px;
+  }
+</style>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29887834-3']);
+  _gaq.push(['_setDomainName', 'pydoit.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
+<img src="_static/doit.png" alt="doit logo" />
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="related.html" title="Related Projects"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="faq.html" title="FAQ"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+        <li><a href="contents.html">Documentation</a>&raquo;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Changes</a><ul>
+<li><a class="reference internal" href="#id1">0.25.0</a></li>
+<li><a class="reference internal" href="#id2">0.24.0 (<em>2013-11-24</em>)</a></li>
+<li><a class="reference internal" href="#id3">0.23.0 (<em>2013-09-20</em>)</a></li>
+<li><a class="reference internal" href="#id4">0.22.1 (<em>2013-08-04</em>)</a></li>
+<li><a class="reference internal" href="#id5">0.22.0 (<em>2013-07-05</em>)</a></li>
+<li><a class="reference internal" href="#id6">0.21.1 (<em>2013-05-21</em>)</a></li>
+<li><a class="reference internal" href="#id7">0.21.0 (<em>2013-04-29</em>)</a></li>
+<li><a class="reference internal" href="#id8">0.20.0 (<em>2013-01-09</em>)</a></li>
+<li><a class="reference internal" href="#id9">0.19.0 (<em>2012-12-18</em>)</a></li>
+<li><a class="reference internal" href="#id10">0.18.1 (<em>2012-12-03</em>)</a></li>
+<li><a class="reference internal" href="#id11">0.18.0 (<em>2012-11-27</em>)</a></li>
+<li><a class="reference internal" href="#id12">0.17.0 (<em>2012-09-20</em>)</a></li>
+<li><a class="reference internal" href="#id13">0.16.1 (<em>2012-05-13</em>)</a></li>
+<li><a class="reference internal" href="#id14">0.16.0 (<em>2012-04-23</em>)</a></li>
+<li><a class="reference internal" href="#id15">0.15.0 (<em>2012-01-10</em>)</a></li>
+<li><a class="reference internal" href="#id16">0.14.0 (<em>2011-11-05</em>)</a></li>
+<li><a class="reference internal" href="#id17">0.13.0 (<em>2011-07-18</em>)</a></li>
+<li><a class="reference internal" href="#id18">0.12.0 (<em>2011-05-29</em>)</a></li>
+<li><a class="reference internal" href="#id19">0.11.0 (<em>2011-04-20</em>)</a></li>
+<li><a class="reference internal" href="#id20">0.10.0 (<em>2011-01-24</em>)</a></li>
+<li><a class="reference internal" href="#id21">0.9.0 (<em>2010-06-08</em>)</a></li>
+<li><a class="reference internal" href="#id22">0.8.0 (<em>2010-05-16</em>)</a></li>
+<li><a class="reference internal" href="#id23">0.7.0 (<em>2010-04-08</em>)</a></li>
+<li><a class="reference internal" href="#id24">0.6.0 (<em>2010-01-25</em>)</a></li>
+<li><a class="reference internal" href="#id25">0.5.1 (<em>2009-12-03</em>)</a></li>
+<li><a class="reference internal" href="#id26">0.5.0 (<em>2009-11-30</em>)</a></li>
+<li><a class="reference internal" href="#id27">0.4.0 (<em>2009-10-05</em>)</a></li>
+<li><a class="reference internal" href="#id28">0.3.0 (<em>2009-08-30</em>)</a></li>
+<li><a class="reference internal" href="#id29">0.2.0 (<em>2009-04-16</em>)</a></li>
+<li><a class="reference internal" href="#id30">0.1.0 (<em>2008-04-14</em>)</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<h3>Project Links</h3>
+<ul>
+  <li><a href="http://pypi.python.org/pypi/doit">download (PyPi)</a></li>
+  <li><a href="https://bitbucket.org/schettino72/doit">code &amp; bugs (bitbucket)</a></li>
+  <li><a href="https://groups.google.com/forum/#!forum/python-doit">discussion (google)</a></li>
+  <li><a href="http://blog.schettino72.net/categories/doit.html">blog</a></li>
+  <li><a href="https://bitbucket.org/schettino72/doit-recipes/wiki/Home">doit-recipes</a></li>
+</ul>
+
+
+<h3>Sponsors</h3>
+<em>Your logo here</em>
+
+<h3>Sponsor/Donate to <em>doit</em></h3>
+
+
+<script data-gittip-username="schettino72"
+        data-gittip-widget="button"
+        src="//gttp.co/v1.js"></script>
+
+
+<div style="margin-left:2em;">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="BFF4G58USYPBA">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+<br/>
+
+<div style="font-size:75%">
+Why Donate? Donations will be used to sponsor futher development of the project.<br/>
+<br/>
+For coorporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+</div>
+
+
+
+
+<h3></h3>
+<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" /></a><br/><br/>
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="changes">
+<h1>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>0.25.0<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>BACKWARD INCOMPATIBLE: use function <cite>doit.get_initial_workdir()</cite>
+instead of variable <cite>doit.initial_workdir</cite></li>
+<li>DEPRECATED <cite>tools.InteractiveAction</cite> renamed to <cite>tools.LongRunning</cite></li>
+<li>fix: <cite>strace</cite> raises <cite>InvalidCommand</cite> instead of using <cite>assert</cite></li>
+<li>#28: task <cite>uptodate</cite> support string to be executed as shell command</li>
+<li>added <cite>tools.Interactive</cite> for use with interactive commands</li>
+<li>#69: added doit.run() to make it easier to turn a dodo file into executable</li>
+<li>#70: added option &#8220;&#8211;pdb&#8221; to command <cite>run</cite></li>
+<li>added option &#8220;&#8211;single&#8221; to command <cite>run</cite></li>
+<li>include list of file_dep as an implicit dependency</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>0.24.0 (<em>2013-11-24</em>)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>reporter added <cite>initialize()</cite></li>
+<li>cmd <cite>list</cite>: added option <cite>&#8211;template</cite></li>
+<li>dodo.py can specify minimum required doit version with DOIT_CONFIG[&#8216;minversion&#8217;]</li>
+<li>#62: added the absolute path from which doit is invoked <cite>doit.initial_workdir</cite></li>
+<li>fix #36: added method <cite>isatty()</cite> to <cite>action.Writer</cite></li>
+<li>added command <cite>tabcompletion</cite> for bash and zsh</li>
+<li>fix #56: allow python actions to have default values for task parameters</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>0.23.0 (<em>2013-09-20</em>)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>support definition of group tasks using basename without any task</li>
+<li>added task property <cite>watch</cite> to specific extra files/folders in auto command</li>
+<li>CmdAction support for all arguments of subprocess.Popen, but stdout and stderr</li>
+<li>added command option <cite>-k</cite> as short for <cite>&#8211;seek-file</cite></li>
+<li>task action can be specified as a list of strings (executed using subprocess.Popen shell=False)</li>
+<li>fix #60: result of calc_dep only considered if not run yet</li>
+<li>fix #61: test failures involving DBM</li>
+<li>fix: do not allow duplicate task names</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h2>0.22.1 (<em>2013-08-04</em>)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>fix reporter output in py3 was being displayed as bytes instead of string</li>
+<li>fix pr#12 read file in chunks when calculating MD5</li>
+<li>fix #54 - remove distribute bootstrapping during installation</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h2>0.22.0 (<em>2013-07-05</em>)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fix #49: skip unicode tests on systems with non utf8 locale</li>
+<li>fix #51: bash completion does not mess up with global COMP_WORDBREAKS</li>
+<li>fix docs spelling and added task to check spelling</li>
+<li>fix #47: Task.options can always be accessed from <cite>uptodate</cite> code</li>
+<li>fix #45: cmd forget, added option -s/&#8211;follow-sub to forget task_dep too</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>0.21.1 (<em>2013-05-21</em>)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fix tests on python3.3.1</li>
+<li>fix race condition on CmdAction (affected only python&gt;=3.3.1)</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>0.21.0 (<em>2013-04-29</em>)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fix #38: <cite>doit.tools.create_folder()</cite> raise error if file exists in path</li>
+<li><cite>create_doit_tasks</cite> not called for unbound methods</li>
+<li>support execution using &#8220;python -m doit&#8221;</li>
+<li>fix #33: Failing to clean a group of task(s) with sub-tasks</li>
+<li>python-actions can take a magic &#8220;task&#8221; parameter as reference to task</li>
+<li>expose task.clean_targets</li>
+<li>tools.PythonInteractiveAction saves &#8220;result&#8221; and &#8220;values&#8221;</li>
+<li>fix #40. added option to use threads for parallel running of tasks</li>
+<li>same code base for python 2 &amp; 3 (no need to use tool <cite>2to3</cite>)</li>
+<li>add sqlite3 DB backend</li>
+<li>added option to select backend</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h2>0.20.0 (<em>2013-01-09</em>)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>added command <cite>dumpdb</cite></li>
+<li>added <cite>CmdAction.save_out</cite> param</li>
+<li><cite>CmdAction</cite> support for callable that returns a command string</li>
+<li>BACKWARD INCOMPATIBLE <cite>getargs</cite> for a group task gets a dict where
+each key is the name of subtasks (previously it was a list)</li>
+<li>added command <cite>strace</cite></li>
+<li>cmd <cite>auto</cite> run tasks on separate process</li>
+<li>support unicode for task name</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h2>0.19.0 (<em>2012-12-18</em>)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>support for <cite>doit help &lt;task-name&gt;</cite></li>
+<li>added support to load tasks using <cite>create_doit_tasks</cite></li>
+<li>dropped python 2.5 support</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h2>0.18.1 (<em>2012-12-03</em>)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fix bug cmd option &#8211;continue not being recognized</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>0.18.0 (<em>2012-11-27</em>)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>remove DEPRECATED <cite>Task.insert_action</cite>, <cite>result_dep</cite> and <cite>getargs</cite> using strings</li>
+<li>fix #10 &#8211;continue does not execute tasks that have failed dependencies</li>
+<li>fix &#8211;always-execute does not execute &#8220;ignored&#8221; tasks</li>
+<li>fix #29 python3 cmd-actions issue</li>
+<li>fix #30 tests pass on all dbm backends</li>
+<li>API to add new sub-commands to doit</li>
+<li>API to modify task loader</li>
+<li>API to make dodo.py executable</li>
+<li>added ZeroReporter</li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h2>0.17.0 (<em>2012-09-20</em>)<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fix #12 Action.out and Action.err not set when using multiprocessing</li>
+<li>fix #16 fix <cite>forget</cite> command on gdbm backend</li>
+<li>fix #14 improve parallel execution (better process utilization)</li>
+<li>fix #9 calc_dep create implicit task_dep if a file_dep returned is a also a target</li>
+<li>added tools.result_dep</li>
+<li>fix #15 tools.result_dep supports group-tasks</li>
+<li>DEPRECATE task attribute <cite>result_dep</cite> (use tools.result_dep)</li>
+<li>DEPRECATE <cite>getargs</cite> specification using strings (must use 2-element tuple)</li>
+<li>several changes on <cite>uptodate</cite></li>
+<li>DEPRECATE <cite>Task.insert_action</cite> (replaced by <cite>Task.value_savers</cite>)</li>
+<li>fix #8 <cite>clean</cite> cleans all subtasks from a group-task</li>
+<li>fix #8 <cite>clean</cite> added flag <cite>&#8211;all</cite> to clean all tasks</li>
+<li>fix #8 <cite>clean</cite> when no task is specified set &#8211;clean-dep and clean default tasks</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h2>0.16.1 (<em>2012-05-13</em>)<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fix multiprocessing/parallel bug</li>
+<li>fix unicode bug on tools.config_changed</li>
+<li>convert tools uptodate stuff to a class, so it can be used with multi-processing</li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h2>0.16.0 (<em>2012-04-23</em>)<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>added task parameter <tt class="docutils literal"><span class="pre">basename</span></tt></li>
+<li>added support for task generators yield nested python generators</li>
+<li><tt class="docutils literal"><span class="pre">doit</span></tt> process return value <tt class="docutils literal"><span class="pre">3</span></tt> in case tasks do start executing (reporter is not used)</li>
+<li>task parameter <tt class="docutils literal"><span class="pre">getargs</span></tt> take a tuple with 2 values (task_id, key_name)</li>
+<li>DEPRECATE <tt class="docutils literal"><span class="pre">getargs</span></tt> being specified as &lt;task_id&gt;.&lt;key_name&gt;</li>
+<li><tt class="docutils literal"><span class="pre">getargs</span></tt> can take all values from task if specified as (task_id, None)</li>
+<li><tt class="docutils literal"><span class="pre">getargs</span></tt> will pass values from all sub-tasks if specified task is a group task</li>
+<li>result_dep on PythonAction support checking for dict values</li>
+<li>added <tt class="docutils literal"><span class="pre">doit.tools.PythonInteractiveAction</span></tt></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h2>0.15.0 (<em>2012-01-10</em>)<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>added option &#8211;db-file (#909520)</li>
+<li>added option &#8211;no-continue (#586651)</li>
+<li>added genstandalone.py to create a standalone <tt class="docutils literal"><span class="pre">doit</span></tt> script (#891935)</li>
+<li>fix doit.tools.set_trace to not modify sys.stdout</li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h2>0.14.0 (<em>2011-11-05</em>)<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>added tools.InteractiveAction (#865290)</li>
+<li>bash completion script</li>
+<li>sub-command list: tasks on alphabetical order, better formatting (#872829)</li>
+<li>fix <tt class="docutils literal"><span class="pre">uptodate</span></tt> to accept instance methods callables (#871967)</li>
+<li>added command line option <tt class="docutils literal"><span class="pre">--seek-file</span></tt></li>
+<li>added <tt class="docutils literal"><span class="pre">tools.check_unchanged_timestamp</span></tt> (#862606)</li>
+<li>fix bug subclasses of BaseAction should get a task reference</li>
+</ul>
+</div>
+<div class="section" id="id17">
+<h2>0.13.0 (<em>2011-07-18</em>)<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>performance speed improvements</li>
+<li>fix bug on unicode output when task fails</li>
+<li>ConsoleReporter does not output task&#8217;s title for successful tasks that start with an <tt class="docutils literal"><span class="pre">_</span></tt></li>
+<li>added <tt class="docutils literal"><span class="pre">tools.config_changed</span></tt> (to be used with <tt class="docutils literal"><span class="pre">uptodate</span></tt>)</li>
+<li><tt class="docutils literal"><span class="pre">teardown</span></tt> actions are executed in reverse order they were registered</li>
+<li>added <tt class="docutils literal"><span class="pre">doit.get_var</span></tt> to get variables passed from command line</li>
+<li>getargs creates implicit &#8220;setup&#8221; task not a &#8220;task_dep&#8221;</li>
+</ul>
+</div>
+<div class="section" id="id18">
+<h2>0.12.0 (<em>2011-05-29</em>)<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fix bug #770150 - error on task dependency from target</li>
+<li>fix bug #773579 - unicode output problems</li>
+<li>task parameter <tt class="docutils literal"><span class="pre">uptodate</span></tt> accepts callables</li>
+<li>deprecate task attribute run_once. use tools.run_once on uptodate instead</li>
+<li>added doit.tools.timeout</li>
+</ul>
+</div>
+<div class="section" id="id19">
+<h2>0.11.0 (<em>2011-04-20</em>)<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>no more support for python2.4</li>
+<li>support for python 3.2</li>
+<li>fix bug on unicode filenames &amp; unicode output (#737904)</li>
+<li>fix bug when using getargs together with multiprocess (#742953)</li>
+<li>fix for dumbdbm backend</li>
+<li>fix task execution order when using &#8220;auto&#8221; command</li>
+<li>fix getargs when used with sub-tasks</li>
+<li>fix calc_dep when used with &#8220;auto&#8221; command</li>
+<li>&#8220;auto&#8221; command now support verbosity control option</li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h2>0.10.0 (<em>2011-01-24</em>)<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>add task parameter &#8220;uptodate&#8221;</li>
+<li>add task parameter &#8220;run_once&#8221;</li>
+<li>deprecate file_dep bool values and None</li>
+<li>fix issues with error reporting for JSON Reporter</li>
+<li>&#8220;Reporter&#8221; API changes</li>
+<li>&#8221;.doit.db&#8221; now uses a DBM file format by default (speed optimization)</li>
+</ul>
+</div>
+<div class="section" id="id21">
+<h2>0.9.0 (<em>2010-06-08</em>)<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>support for dynamic calculated dependencies &#8220;calc_dep&#8221;</li>
+<li>support for user defined reporters</li>
+<li>support &#8220;auto&#8221; command on mac</li>
+<li>fix installer on mac. installer aware of different python versions</li>
+<li>deprecate &#8216;dependencies&#8217;. use file_dep, task_dep, result_dep.</li>
+</ul>
+</div>
+<div class="section" id="id22">
+<h2>0.8.0 (<em>2010-05-16</em>)<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>parallel execution of tasks (multi-process support)</li>
+<li>sub-command &#8220;list&#8221; option &#8220;&#8211;deps&#8221;, show list of file dependencies</li>
+<li>select task by wildcard (fnmatch) i.e. test:folderXXX/*</li>
+<li>task-setup can be another task</li>
+<li>task property &#8220;teardown&#8221; substitute of setup-objects cleanup</li>
+<li>deprecate setup-objects</li>
+</ul>
+</div>
+<div class="section" id="id23">
+<h2>0.7.0 (<em>2010-04-08</em>)<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>configure options on dodo file (deprecate DEFAULT_TASKS)(#524387)</li>
+<li>clean and forget act only on default tasks (not all tasks) (#444243)</li>
+<li>sub-command &#8220;clean&#8221; option &#8220;clean-dep&#8221; to follow dependencies (#444247)</li>
+<li>task dependency &#8220;False&#8221; means never up-to-date, &#8220;None&#8221; ignored</li>
+<li>sub-command &#8220;list&#8221; by default do not show tasks starting with an underscore, added option (-p/&#8211;private)</li>
+<li>new sub-command &#8220;auto&#8221;</li>
+</ul>
+</div>
+<div class="section" id="id24">
+<h2>0.6.0 (<em>2010-01-25</em>)<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>improve (speed optimization) of check if file modified (#370920)</li>
+<li>sub-command &#8220;clean&#8221; dry-run option (-n/&#8211;dry-run) (#444246)</li>
+<li>sub-command &#8220;clean&#8221; has a more verbose output (#444245)</li>
+<li>sub-command &#8220;list&#8221; option to show task status (-s/&#8211;status) (#497661)</li>
+<li>sub-command &#8220;list&#8221; filter tasks passed as positional parameters</li>
+<li>tools.set_trace, PDB with stdout redirection (#494903)</li>
+<li>accept command line optional parameters passed before sub-command (#494901)</li>
+<li>give a clear error message if .doit.db file is corrupted (#500269)</li>
+<li>added task option &#8220;getargs&#8221;. actions can use computed values from other tasks (#486569)</li>
+<li>python-action might return a dictionary on success</li>
+</ul>
+</div>
+<div class="section" id="id25">
+<h2>0.5.1 (<em>2009-12-03</em>)<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fix. task-result-dependencies should be also added as task-dependency to force its execution.</li>
+</ul>
+</div>
+<div class="section" id="id26">
+<h2>0.5.0 (<em>2009-11-30</em>)<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>task parameter &#8216;clean&#8217; == True, cleans empty folders, and display warning for non-empty folders</li>
+<li>added command line option &#8211;continue. Execute all tasks even if tasks fails</li>
+<li>added command line option &#8211;reporter to select result output reporter</li>
+<li>added executed-only reporter</li>
+<li>added json reporter</li>
+<li>support for task-result dependency #438174</li>
+<li>added sub-command ignore task</li>
+<li>added command line option &#8211;outfile. write output to specified file path</li>
+<li>added support for passing arguments to tasks on cmd line</li>
+<li>added command line option &#8211;dir (-d) to set current working directory</li>
+<li>removed dodo-sample sub-command</li>
+<li>added task field &#8216;verbosity&#8217;</li>
+<li>added task field &#8216;title&#8217;</li>
+<li>modified default way a task is printed on console (just show &#8221;.  name&#8221;), old way added to doit.tools.task_title_with_actions</li>
+</ul>
+</div>
+<div class="section" id="id27">
+<h2>0.4.0 (<em>2009-10-05</em>)<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>deprecate anything other than a boolean values as return of python actions</li>
+<li>sub-cmd clean (#421450)</li>
+<li>remove support for task generators returning action (not documented behavior)</li>
+<li>setup parameter for a task should be a list - single value deprecated (#437225)</li>
+<li>PythonAction support &#8216;dependencies&#8217;, &#8216;targets&#8217;, &#8216;changed&#8217; parameters</li>
+<li>added tools.create_folder (#421453)</li>
+<li>deprecate folder-dependency</li>
+<li>CmdActions reference to dependencies, targets and changed dependencies (#434327)</li>
+<li>print task description when printing through doit list (#425811)</li>
+<li>action as list of commands/python (#421445)</li>
+<li>deprecate &#8220;action&#8221; use &#8220;actions&#8221;</li>
+</ul>
+</div>
+<div class="section" id="id28">
+<h2>0.3.0 (<em>2009-08-30</em>)<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>added subcommand &#8220;forget&#8221; to clear successful runs status (#370911)</li>
+<li>save run results in text file using JSON. (removed dbm)</li>
+<li>added support for DEFAULT_TASKS in dodo file</li>
+<li>targets md5 is not checked anymore. if target exist, task is up-to-date. it also supports folders</li>
+<li>cmd line sub-commands (#370909)</li>
+<li>remove hashlib dependency on python 2.4</li>
+<li>sub-cmd to create dodo template</li>
+<li>cmd-task supports a list of shell commands</li>
+<li>setup/cleanup for task (#370905)</li>
+</ul>
+</div>
+<div class="section" id="id29">
+<h2>0.2.0 (<em>2009-04-16</em>)<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>docs generated using sphinx</li>
+<li>execute once (dependency = True)</li>
+<li>group task</li>
+<li>support python 2.4 and 2.6</li>
+<li>folder dependency</li>
+</ul>
+</div>
+<div class="section" id="id30">
+<h2>0.1.0 (<em>2008-04-14</em>)<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>initial release</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="related.html" title="Related Projects"
+             >next</a></li>
+        <li class="right" >
+          <a href="faq.html" title="FAQ"
+             >previous</a> |</li>
+        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+        <li><a href="contents.html">Documentation</a>&raquo;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, mininiss.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>
