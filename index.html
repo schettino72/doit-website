@@ -36,6 +36,16 @@
     display: run-in;
     margin-right: 15px;
   }
+
+  a.external-link {
+    background: url(_static/external.png) center right no-repeat;
+    padding-right: 13px;
+  }
+
+  div.related ul li a.external-link {
+    padding-right: 13px;
+  }
+
 </style>
 
 
@@ -63,8 +73,13 @@
     <div class="related">
       <h3>Navigation</h3>
       <ul>
-        <li><a href="#">Home</a>&nbsp;|&nbsp;</li>
-        <li><a href="contents.html">Documentation</a>&raquo;</li>
+  <li><a href="#">Home</a>&nbsp;|&nbsp;</li>
+  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
+  <!-- TODO news -->
+  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/src">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/issues?status=new&status=open">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
  
       </ul>
     </div>
@@ -93,16 +108,6 @@
     </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-
-<h3>Project Links</h3>
-<ul>
-  <li><a href="http://pypi.python.org/pypi/doit">download (PyPi)</a></li>
-  <li><a href="https://bitbucket.org/schettino72/doit">code &amp; bugs (bitbucket)</a></li>
-  <li><a href="https://groups.google.com/forum/#!forum/python-doit">discussion (google)</a></li>
-  <li><a href="http://blog.schettino72.net/categories/doit.html">blog</a></li>
-  <li><a href="https://bitbucket.org/schettino72/doit-recipes/wiki/Home">doit-recipes</a></li>
-</ul>
-
 
 <h3>Sponsors</h3>
 <em>Your logo here</em>
@@ -254,6 +259,7 @@ so you can create new applications/tools using <cite>doit</cite> functionality
 <p>I needed a sort of &#8216;make&#8217; tool to glue things together and after trying out all kinds, doit ... has actually turned out to be beautiful. Its easy to add and manage tasks, even complex ones&#8211; gluing things together with decorators and &#8216;library&#8217; functions I&#8217;ve written to do certain similar things. - <a class="reference external" href="https://groups.google.com/d/msg/python-doit/eKI0uu02ZeY/cBU0RRsO0_cJ">Matthew</a></p>
 <p>Some time ago, I grew frustrated with Make and Ant and started porting my build files to every build tool I found (SCons, Waf, etc.). Each time, as soon as I stepped out of already available rules, I ran into some difficult to overcome stumbling blocks. Then I discovered this little gem of simplicity: doit. It&#8217;s Python-based. It doesn&#8217;t try to be smart, it does not try to be cool, it just works. If you are looking for a flexible little build tool for different languages and tasks, give it a chance. (...) - <a class="reference external" href="http://www.hnsearch.com/search#request/all&amp;q=python-doit.sourceforge.net&amp;start=0">lelele</a></p>
 </div></blockquote>
+<p><a class="reference external" href="stories.html">Success Stories...</a></p>
 </div>
 <div class="section" id="project-details">
 <h1>Project Details<a class="headerlink" href="#project-details" title="Permalink to this headline">¶</a></h1>
@@ -263,7 +269,7 @@ so you can create new applications/tools using <cite>doit</cite> functionality
 <li>Project management (bug tracker, feature requests and source code ) on <a class="reference external" href="https://bitbucket.org/schettino72/doit">bitbucket</a>.</li>
 <li>Questions and feedback on <a class="reference external" href="http://groups.google.co.in/group/python-doit">google group</a>.</li>
 <li>This web site is hosted on <a class="reference external" href="http://pages.github.com">http://pages.github.com</a></li>
-<li><a class="reference external" href="https://bitbucket.org/schettino72/doit-recipes/wiki/Home">doit-recipes</a> contains a collection of non-trivial examples and a list of projects using <cite>doit</cite>.</li>
+<li><a class="reference external" href="https://github.com/pydoit">doit projects</a> contains a collection of non-trivial examples and re-usable task generators for <cite>doit</cite>.</li>
 <li>Professional support and consulting services available from <cite>doit</cite>
 creator &amp; maintainer (<em>schettino72</em> at gmail.com).</li>
 </ul>
@@ -293,13 +299,18 @@ so adding new features isn&#8217;t hard.</p>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
-        <li><a href="#">Home</a>&nbsp;|&nbsp;</li>
-        <li><a href="contents.html">Documentation</a>&raquo;</li>
+  <li><a href="#">Home</a>&nbsp;|&nbsp;</li>
+  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
+  <!-- TODO news -->
+  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/src">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/issues?status=new&status=open">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
  
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2014, mininiss.
+        &copy; Copyright 2014, Eduardo Schettino.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
     </div>
   </body>

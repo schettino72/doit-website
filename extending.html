@@ -38,6 +38,16 @@
     display: run-in;
     margin-right: 15px;
   }
+
+  a.external-link {
+    background: url(_static/external.png) center right no-repeat;
+    padding-right: 13px;
+  }
+
+  div.related ul li a.external-link {
+    padding-right: 13px;
+  }
+
 </style>
 
 
@@ -71,8 +81,13 @@
         <li class="right" >
           <a href="tools.html" title="Tools"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
-        <li><a href="contents.html">Documentation</a>&raquo;</li>
+  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
+  <!-- TODO news -->
+  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/src">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/issues?status=new&status=open">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
  
       </ul>
     </div>
@@ -109,16 +124,6 @@
     </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-
-<h3>Project Links</h3>
-<ul>
-  <li><a href="http://pypi.python.org/pypi/doit">download (PyPi)</a></li>
-  <li><a href="https://bitbucket.org/schettino72/doit">code &amp; bugs (bitbucket)</a></li>
-  <li><a href="https://groups.google.com/forum/#!forum/python-doit">discussion (google)</a></li>
-  <li><a href="http://blog.schettino72.net/categories/doit.html">blog</a></li>
-  <li><a href="https://bitbucket.org/schettino72/doit-recipes/wiki/Home">doit-recipes</a></li>
-</ul>
-
 
 <h3>Sponsors</h3>
 <em>Your logo here</em>
@@ -186,7 +191,7 @@ the dict containing task meta-data from the <em>task-creator</em> functions.</p>
 <p>Subclass TaskLoader to create a custom loader:</p>
 <dl class="class">
 <dt id="doit.cmd_base.TaskLoader">
-<em class="property">class </em><tt class="descclassname">doit.cmd_base.</tt><tt class="descname">TaskLoader</tt><a class="headerlink" href="#doit.cmd_base.TaskLoader" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">doit.cmd_base.</tt><tt class="descname">TaskLoader</tt><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>task-loader interface responsible of creating Task objects</p>
 <p>Subclasses must implement the method <cite>load_tasks</cite></p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -199,7 +204,7 @@ the dict containing task meta-data from the <em>task-creator</em> functions.</p>
 </table>
 <dl class="method">
 <dt id="doit.cmd_base.TaskLoader.load_tasks">
-<tt class="descname">load_tasks</tt><big>(</big><em>cmd</em>, <em>opt_values</em>, <em>pos_args</em><big>)</big><a class="headerlink" href="#doit.cmd_base.TaskLoader.load_tasks" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">load_tasks</tt><big>(</big><em>cmd</em>, <em>opt_values</em>, <em>pos_args</em><big>)</big><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader.load_tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader.load_tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>load tasks and DOIT_CONFIG</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -281,7 +286,7 @@ By sub-classing <cite>DoitMain.get_commands</cite> it is possible to add/remove 
 set some class variables and implement the <cite>execute</cite> method.</p>
 <dl class="class">
 <dt id="doit.cmd_base.Command">
-<em class="property">class </em><tt class="descclassname">doit.cmd_base.</tt><tt class="descname">Command</tt><a class="headerlink" href="#doit.cmd_base.Command" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">doit.cmd_base.</tt><tt class="descname">Command</tt><a class="reference internal" href="_modules/doit/cmd_base.html#Command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.Command" title="Permalink to this definition">¶</a></dt>
 <dd><p>third-party should subclass this for commands that do no use tasks</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -300,7 +305,7 @@ set some class variables and implement the <cite>execute</cite> method.</p>
 </table>
 <dl class="method">
 <dt id="doit.cmd_base.Command.execute">
-<tt class="descname">execute</tt><big>(</big><em>opt_values</em>, <em>pos_args</em><big>)</big><a class="headerlink" href="#doit.cmd_base.Command.execute" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">execute</tt><big>(</big><em>opt_values</em>, <em>pos_args</em><big>)</big><a class="reference internal" href="_modules/doit/cmd_base.html#Command.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.Command.execute" title="Permalink to this definition">¶</a></dt>
 <dd><p>execute command
 :param opt_values: (dict) with cmd_options values
 :param pos_args: (list) of cmd-line positinal arguments</p>
@@ -362,13 +367,18 @@ creating new projects.</p>
         <li class="right" >
           <a href="tools.html" title="Tools"
              >previous</a> |</li>
-        <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
-        <li><a href="contents.html">Documentation</a>&raquo;</li>
+  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
+  <!-- TODO news -->
+  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/src">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/issues?status=new&status=open">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
  
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2014, mininiss.
+        &copy; Copyright 2014, Eduardo Schettino.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
     </div>
   </body>
