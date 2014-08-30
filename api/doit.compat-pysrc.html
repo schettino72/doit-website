@@ -74,16 +74,22 @@
 <a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">json</tt> </tt>
 <a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-name">json</tt> <tt class="py-comment"># pyflakes</tt> </tt>
 <a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
-<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
-<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-comment"># compat for inspect.ismethod</tt> </tt>
-<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt id="link-1" class="py-name"><a title="doit.compat.PY3" class="py-name" href="#" onclick="return doclink('link-1', 'PY3', 'link-0');">PY3</a></tt><tt class="py-op">:</tt> <tt class="py-comment"># pragma: no cover</tt> </tt>
-<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">    <tt id="link-2" class="py-name" targets="Function doit.compat.is_bound_method()=doit.compat-module.html#is_bound_method"><a title="doit.compat.is_bound_method" class="py-name" href="#" onclick="return doclink('link-2', 'is_bound_method', 'link-2');">is_bound_method</a></tt> <tt class="py-op">=</tt> <tt class="py-name">inspect</tt><tt class="py-op">.</tt><tt class="py-name">ismethod</tt> </tt>
-<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
-<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-comment"># In Python 2, ismethod() returns True for both bound &amp; unbound methods.</tt> </tt>
-<a name="is_bound_method"></a><div id="is_bound_method-def"><a name="L24"></a><tt class="py-lineno">24</tt> <a class="py-toggle" href="#" id="is_bound_method-toggle" onclick="return toggle('is_bound_method');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="doit.compat-module.html#is_bound_method">is_bound_method</a><tt class="py-op">(</tt><tt class="py-param">obj</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="is_bound_method-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="is_bound_method-expanded"><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">inspect</tt><tt class="py-op">.</tt><tt class="py-name">ismethod</tt><tt class="py-op">(</tt><tt class="py-name">obj</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> </tt>
-<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">                <tt class="py-op">(</tt><tt class="py-name">getattr</tt><tt class="py-op">(</tt><tt class="py-name">obj</tt><tt class="py-op">,</tt> <tt class="py-string">'__self__'</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-comment"># OrderedDict was added to stdlib on py27</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">collections</tt> <tt class="py-keyword">import</tt> <tt class="py-name">OrderedDict</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> <tt class="py-comment"># pragma: no cover</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">ordereddict</tt> <tt class="py-keyword">import</tt> <tt class="py-name">OrderedDict</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-name">OrderedDict</tt> <tt class="py-comment"># pyflakes</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-comment"># compat for inspect.ismethod</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt id="link-1" class="py-name"><a title="doit.compat.PY3" class="py-name" href="#" onclick="return doclink('link-1', 'PY3', 'link-0');">PY3</a></tt><tt class="py-op">:</tt> <tt class="py-comment"># pragma: no cover</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">    <tt id="link-2" class="py-name" targets="Function doit.compat.is_bound_method()=doit.compat-module.html#is_bound_method"><a title="doit.compat.is_bound_method" class="py-name" href="#" onclick="return doclink('link-2', 'is_bound_method', 'link-2');">is_bound_method</a></tt> <tt class="py-op">=</tt> <tt class="py-name">inspect</tt><tt class="py-op">.</tt><tt class="py-name">ismethod</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">    <tt class="py-comment"># In Python 2, ismethod() returns True for both bound &amp; unbound methods.</tt> </tt>
+<a name="is_bound_method"></a><div id="is_bound_method-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="is_bound_method-toggle" onclick="return toggle('is_bound_method');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="doit.compat-module.html#is_bound_method">is_bound_method</a><tt class="py-op">(</tt><tt class="py-param">obj</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="is_bound_method-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="is_bound_method-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">inspect</tt><tt class="py-op">.</tt><tt class="py-name">ismethod</tt><tt class="py-op">(</tt><tt class="py-name">obj</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">                <tt class="py-op">(</tt><tt class="py-name">getattr</tt><tt class="py-op">(</tt><tt class="py-name">obj</tt><tt class="py-op">,</tt> <tt class="py-string">'__self__'</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -121,7 +127,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Thu Apr  3 09:35:09 2014
+    Generated by Epydoc 3.0.1 on Sat Aug 30 12:49:26 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

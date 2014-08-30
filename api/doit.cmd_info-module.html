@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>doit.reporter</title>
+  <title>doit.cmd_info</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -43,7 +43,7 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="doit-module.html">Package&nbsp;doit</a> ::
-        Module&nbsp;reporter
+        Module&nbsp;cmd_info
       </span>
     </td>
     <td>
@@ -56,9 +56,7 @@
   </tr>
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
-<h1 class="epydoc">Module reporter</h1><p class="nomargin-top"><span class="codelink"><a href="doit.reporter-pysrc.html">source&nbsp;code</a></span></p>
-<p>Reports doit execution status/results</p>
-
+<h1 class="epydoc">Module cmd_info</h1><p class="nomargin-top"><span class="codelink"><a href="doit.cmd_info-pysrc.html">source&nbsp;code</a></span></p>
 <!-- ==================== CLASSES ==================== -->
 <a name="section-Classes"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -80,40 +78,45 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="doit.reporter.ConsoleReporter-class.html" class="summary-name">ConsoleReporter</a><br />
-      Default reporter.
+        <a href="doit.cmd_info.Info-class.html" class="summary-name">Info</a>
     </td>
   </tr>
+</table>
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="doit.reporter.ExecutedOnlyReporter-class.html" class="summary-name">ExecutedOnlyReporter</a><br />
-      No output for skipped (up-to-date) and group tasks
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="doit.reporter.ZeroReporter-class.html" class="summary-name">ZeroReporter</a><br />
-      Report only internal errors from doit
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="doit.reporter.TaskResult-class.html" class="summary-name">TaskResult</a><br />
-      result object used by JsonReporter
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="doit.reporter.JsonReporter-class.html" class="summary-name">JsonReporter</a><br />
-      output results in JSON format
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doit.cmd_info-module.html#my_safe_repr" class="summary-sig-name">my_safe_repr</a>(<span class="summary-sig-arg">obj</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">maxlevels</span>,
+        <span class="summary-sig-arg">level</span>)</span><br />
+      pretty print supressing unicode prefix</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.cmd_info-pysrc.html#my_safe_repr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
     </td>
   </tr>
 </table>
@@ -138,39 +141,27 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="doit.reporter-module.html#REPORTERS" class="summary-name">REPORTERS</a> = <code title="{'default': &lt;class 'doit.reporter.ConsoleReporter'&gt;,
- 'executed-only': &lt;class 'doit.reporter.ExecutedOnlyReporter'&gt;,
- 'json': &lt;class 'doit.reporter.JsonReporter'&gt;,
- 'zero': &lt;class 'doit.reporter.ZeroReporter'&gt;}"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;class 'doit.reporter.ConsoleReporter'<code class="variable-ellipsis">...</code></code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
         <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'doit'"><code class="variable-quote">'</code><code class="variable-string">doit</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 </table>
 <p class="indent-wrapped-lines"><b>Imports:</b>
-  <span title="sys">sys</span>,
-  <span title="time">time</span>,
-  <span title="datetime">datetime</span>,
+  <span title="pprint">pprint</span>,
   <span title="six">six</span>,
-  <span title="six.StringIO">StringIO</span>,
-  <span title="doit.compat.json">json</span>
+  <a href="doit.cmd_base.DoitCmdBase-class.html" title="doit.cmd_base.DoitCmdBase">DoitCmdBase</a>,
+  <a href="doit.exceptions.InvalidCommand-class.html" title="doit.exceptions.InvalidCommand">InvalidCommand</a>
 </p><br />
-<!-- ==================== VARIABLES DETAILS ==================== -->
-<a name="section-VariablesDetails"></a>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="left"><span class="table-header">Function Details</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-VariablesDetails"
+         ><span class="options">[<a href="#section-FunctionDetails"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
@@ -178,24 +169,31 @@
   </td>
 </tr>
 </table>
-<a name="REPORTERS"></a>
+<a name="my_safe_repr"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">REPORTERS</h3>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">my_safe_repr</span>(<span class="sig-arg">obj</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">maxlevels</span>,
+        <span class="sig-arg">level</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doit.cmd_info-pysrc.html#my_safe_repr">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
   
+  <pre class="literalblock">
+pretty print supressing unicode prefix
+
+http://stackoverflow.com/questions/16888409/
+       suppress-unicode-prefix-on-strings-when-using-pprint
+
+</pre>
   <dl class="fields">
-  </dl>
-  <dl class="fields">
-    <dt>Value:</dt>
-      <dd><table><tr><td><pre class="variable">
-<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;class 'doit.reporter.ConsoleReporter'&gt;<code class="variable-op">,</code>
- <code class="variable-quote">'</code><code class="variable-string">executed-only</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;class 'doit.reporter.ExecutedOnlyReporter'&gt;<code class="variable-op">,</code>
- <code class="variable-quote">'</code><code class="variable-string">json</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;class 'doit.reporter.JsonReporter'&gt;<code class="variable-op">,</code>
- <code class="variable-quote">'</code><code class="variable-string">zero</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;class 'doit.reporter.ZeroReporter'&gt;<code class="variable-group">}</code>
-</pre></td></tr></table>
-</dd>
   </dl>
 </td></tr></table>
 </div>

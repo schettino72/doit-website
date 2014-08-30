@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.25',
+        VERSION:     '0.26',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -93,8 +93,8 @@
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
   <!-- TODO news -->
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/src">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/issues?status=new&status=open">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
  
@@ -189,7 +189,8 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
             
   <div class="section" id="custom-uptodate">
 <h1>custom uptodate<a class="headerlink" href="#custom-uptodate" title="Permalink to this headline">¶</a></h1>
-<p>The basics of <cite>uptodate</cite> was already introduced. Here we look in more
+<p>The basics of <cite>uptodate</cite> was already <a class="reference internal" href="dependencies.html#attr-uptodate"><em>introduced</em></a>.
+Here we look in more
 detail into some implementations shipped with <cite>doit</cite>. And the API used by those.</p>
 <div class="section" id="result-dependency">
 <h2>result-dependency<a class="headerlink" href="#result-dependency" title="Permalink to this headline">¶</a></h2>
@@ -329,26 +330,12 @@ If a file is a target of another task you should probably add
 <p>This section will explain how to extend <tt class="docutils literal"><span class="pre">doit</span></tt> writing an <tt class="docutils literal"><span class="pre">uptodate</span></tt>
 implementation. So unless you need to write an <tt class="docutils literal"><span class="pre">uptodate</span></tt> implementation
 you can skip this.</p>
-<p>The callable must take at least two positional parameters <tt class="docutils literal"><span class="pre">task</span></tt> and <tt class="docutils literal"><span class="pre">values</span></tt>.
-The callable can also be represented by a tuple (callable, args, kwargs).</p>
-<blockquote>
-<div><ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">task</span></tt> parameter will give you access to task object. So you have access
-to its metadata and opportunity to modify the task itself!</p>
-</li>
-<li><dl class="first docutils">
-<dt><tt class="docutils literal"><span class="pre">values</span></tt> is a dictionary with the computed values saved in the last</dt>
-<dd><p class="first last">successful execution of the task.</p>
-</dd>
-</dl>
-</li>
-</ul>
-</div></blockquote>
-<p>Let&#8217;s start with trivial example.</p>
+<p>Let&#8217;s start with trivial example. <cite>uptodate</cite> is a function that returns
+a boolean value.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fake_get_value_from_db</span><span class="p">():</span>
     <span class="k">return</span> <span class="mi">5</span>
 
-<span class="k">def</span> <span class="nf">check_outdated</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">check_outdated</span><span class="p">():</span>
     <span class="n">total</span> <span class="o">=</span> <span class="n">fake_get_value_from_db</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="mi">10</span>
 
@@ -360,7 +347,8 @@ to its metadata and opportunity to modify the task itself!</p>
             <span class="p">}</span>
 </pre></div>
 </div>
-<p>Note that <cite>check_outdated</cite> function is not actually using the parameters.
+<p>Note that <cite>check_outdated</cite> function is not actually using the arguments
+<cite>task</cite> and <cite>values</cite>.
 You could also execute this function in the task-creator and pass the value
 to to <cite>uptodate</cite>. The advantage of just passing the callable is that this
 check will not be executed at all if the task was not selected to be executed.</p>
@@ -377,6 +365,20 @@ for dependency checking.</p>
 callables. These callables should return a dict that will be saved together
 with other task values. The <tt class="docutils literal"><span class="pre">value_savers</span></tt> will be executed after all actions.</p>
 <p>The second step is to actually compare the saved value with its &#8220;current&#8221; value.</p>
+<p>The <cite>uptodate</cite> callable can take two positional parameters <tt class="docutils literal"><span class="pre">task</span></tt> and <tt class="docutils literal"><span class="pre">values</span></tt>. The callable can also be represented by a tuple (callable, args, kwargs).</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">task</span></tt> parameter will give you access to task object. So you have access
+to its metadata and opportunity to modify the task itself!</p>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">values</span></tt> is a dictionary with the computed values saved in the last</dt>
+<dd><p class="first last">successful execution of the task.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
 <p>Let&#8217;s take a look in the <tt class="docutils literal"><span class="pre">run_once</span></tt> implementation.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">run_once</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">save_executed</span><span class="p">():</span>
@@ -426,7 +428,7 @@ with the time that was saved on last successful execution.</p>
 <div class="section" id="example-result-dep-implementation">
 <h3>Example: result_dep implementation<a class="headerlink" href="#example-result-dep-implementation" title="Permalink to this headline">¶</a></h3>
 <p>The <tt class="docutils literal"><span class="pre">result_dep</span></tt> is more complicated due to two factors. It needs to modify
-the task&#8217;s <tt class="docutils literal"><span class="pre">task_dep</span></tt>. It needs to check the task&#8217;s saved values and metadata
+the task&#8217;s <tt class="docutils literal"><span class="pre">task_dep</span></tt>. And it needs to check the task&#8217;s saved values and metadata
 from a task different from where it is being applied.</p>
 <p>A <tt class="docutils literal"><span class="pre">result_dep</span></tt> implies that its dependency is also a <tt class="docutils literal"><span class="pre">task_dep</span></tt>.
 We have seen that the callable takes a <cite>task</cite> parameter that we used
@@ -504,8 +506,8 @@ the saved values and results from any task.</p>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
   <!-- TODO news -->
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/src">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/issues?status=new&status=open">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
  

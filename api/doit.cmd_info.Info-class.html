@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>doit.dependency.JsonDB</title>
+  <title>doit.cmd_info.Info</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -43,8 +43,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="doit-module.html">Package&nbsp;doit</a> ::
-        <a href="doit.dependency-module.html" onclick="show_private();">Module&nbsp;dependency</a> ::
-        Class&nbsp;JsonDB
+        <a href="doit.cmd_info-module.html" onclick="show_private();">Module&nbsp;cmd_info</a> ::
+        Class&nbsp;Info
       </span>
     </td>
     <td>
@@ -57,16 +57,18 @@
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class JsonDB</h1><p class="nomargin-top"><span class="codelink"><a href="doit.dependency-pysrc.html#JsonDB">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class Info</h1><p class="nomargin-top"><span class="codelink"><a href="doit.cmd_info-pysrc.html#Info">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-object --+
-         |
-        <strong class="uidshort">JsonDB</strong>
+      object --+        
+               |        
+<a href="doit.cmd_base.Command-class.html">cmd_base.Command</a> --+    
+                   |    
+<a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a> --+
+                       |
+                      <strong class="uidshort">Info</strong>
 </pre>
 
 <hr />
-<p>Backend using a single text file with JSON content</p>
-
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -84,143 +86,17 @@ object --+
     </table>
   </td>
 </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="doit.dependency.JsonDB-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">name</span>)</span><br />
-      Open/create a DB file</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#JsonDB.__init__">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
 <tr class="private">
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="_load"></a><span class="summary-sig-name">_load</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      load db content from file</td>
+          <td><span class="summary-sig"><a href="doit.cmd_info.Info-class.html#_execute" class="summary-sig-name" onclick="show_private();">_execute</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">pos_args</span>)</span><br />
+      to be subclassed - actual command implementation</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#JsonDB._load">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="dump"></a><span class="summary-sig-name">dump</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      save DB content in file</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#JsonDB.dump">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="set"></a><span class="summary-sig-name">set</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">task_id</span>,
-        <span class="summary-sig-arg">dependency</span>,
-        <span class="summary-sig-arg">value</span>)</span><br />
-      Store value in the DB.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#JsonDB.set">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="doit.dependency.JsonDB-class.html#get" class="summary-sig-name">get</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">task_id</span>,
-        <span class="summary-sig-arg">dependency</span>)</span><br />
-      Get value stored in the DB.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#JsonDB.get">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="in_"></a><span class="summary-sig-name">in_</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">task_id</span>)</span><br />
-      @return bool if task_id is in DB</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#JsonDB.in_">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="remove"></a><span class="summary-sig-name">remove</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">task_id</span>)</span><br />
-      remove saved dependecies from DB for taskId</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#JsonDB.remove">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="remove_all"></a><span class="summary-sig-name">remove_all</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      remove saved dependecies from DB for all tasks</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#JsonDB.remove_all">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.cmd_info-pysrc.html#Info._execute">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -230,6 +106,15 @@ object --+
   </tr>
   <tr>
     <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b>:
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#__init__">__init__</a></code>,
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#execute">execute</a></code>,
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#set_options">set_options</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
+      <code><a href="doit.cmd_base.Command-class.html#help">help</a></code>,
+      <code><a href="doit.cmd_base.Command-class.html#parse_execute">parse_execute</a></code>
+      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
       <code>__format__</code>,
@@ -243,6 +128,58 @@ object --+
       <code>__sizeof__</code>,
       <code>__str__</code>,
       <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="doc_purpose"></a><span class="summary-name">doc_purpose</span> = <code title="'show info about a task'"><code class="variable-quote">'</code><code class="variable-string">show info about a task</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="doc_usage"></a><span class="summary-name">doc_usage</span> = <code title="'TASK'"><code class="variable-quote">'</code><code class="variable-string">TASK</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="doc_description"></a><span class="summary-name">doc_description</span> = <code title="None">None</code><br />
+      hash(x)
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b>:
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#base_options">base_options</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
+      <code><a href="doit.cmd_base.Command-class.html#CMD_LIST">CMD_LIST</a></code>,
+      <code><a href="doit.cmd_base.Command-class.html#cmd_options">cmd_options</a></code>,
+      <code><a href="doit.cmd_base.Command-class.html#name">name</a></code>
       </p>
     </td>
   </tr>
@@ -290,50 +227,27 @@ object --+
   </td>
 </tr>
 </table>
-<a name="__init__"></a>
-<div>
+<a name="_execute"></a>
+<div class="private">
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">name</span>)</span>
-    <br /><em class="fname">(Constructor)</em>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_execute</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">pos_args</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="doit.dependency-pysrc.html#JsonDB.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="doit.cmd_info-pysrc.html#Info._execute">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Open/create a DB file</p>
+  <p>to be subclassed - actual command implementation</p>
   <dl class="fields">
     <dt>Overrides:
-        object.__init__
+        <a href="doit.cmd_base.DoitCmdBase-class.html#_execute" onclick="show_private();">cmd_base.DoitCmdBase._execute</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
-  </dl>
-</td></tr></table>
-</div>
-<a name="get"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">get</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">task_id</span>,
-        <span class="sig-arg">dependency</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="doit.dependency-pysrc.html#JsonDB.get">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Get value stored in the DB.</p>
-  <dl class="fields">
-    <dt>Returns:</dt>
-        <dd>(string) or (None) if entry not found</dd>
   </dl>
 </td></tr></table>
 </div>

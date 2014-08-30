@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.25',
+        VERSION:     '0.26',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -93,8 +93,8 @@
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
   <!-- TODO news -->
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/src">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/issues?status=new&status=open">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
  
@@ -128,10 +128,11 @@
 <li><a class="reference internal" href="#wildcard-selection">wildcard selection</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#parameters">parameters</a><ul>
+<li><a class="reference internal" href="#arguments">arguments</a><ul>
 <li><a class="reference internal" href="#all-parameters-attributes">All parameters attributes</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#positional-arguments">positional arguments</a></li>
 <li><a class="reference internal" href="#command-line-variables-doit-get-var">command line variables (<em>doit.get_var</em>)</a></li>
 <li><a class="reference internal" href="#private-hidden-tasks">private/hidden tasks</a></li>
 <li><a class="reference internal" href="#title">title</a></li>
@@ -647,8 +648,8 @@ So that task was automatically executed also.</p>
 </div>
 </div>
 </div>
-<div class="section" id="parameters">
-<span id="id3"></span><h2>parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arguments">
+<span id="parameters"></span><h2>arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to pass option parameters to the task through the command line.</p>
 <p>Just add a <tt class="docutils literal"><span class="pre">params</span></tt> field to the task dictionary. <tt class="docutils literal"><span class="pre">params</span></tt> must be a list of
 dictionaries where every entry is an option parameter. Each parameter must
@@ -834,6 +835,44 @@ Set inverse flag long parameter name, value will be set to <tt class="docutils l
 </dl>
 </div>
 </div>
+<div class="section" id="positional-arguments">
+<h2>positional arguments<a class="headerlink" href="#positional-arguments" title="Permalink to this headline">¶</a></h2>
+<p>Tasks might also get positional arguments from the command line
+as standard unix commands do,
+with positional arguments <em>after</em> optional arguments.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_pos_args</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">show_params</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;param1 is: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param1</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">pos_arg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;positional-{0}: {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">pos_arg</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">show_params</span><span class="p">,)],</span>
+            <span class="s">&#39;params&#39;</span><span class="p">:[{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;param1&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;p&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;default&#39;</span><span class="p">:</span><span class="s">&#39;default value&#39;</span><span class="p">},</span>
+                      <span class="p">],</span>
+            <span class="s">&#39;pos_arg&#39;</span><span class="p">:</span> <span class="s">&#39;pos&#39;</span><span class="p">,</span>
+            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit pos_args -p 4 foo bar
+<span class="go">.  pos_args</span>
+<span class="go">param1 is: 4</span>
+<span class="go">positional-0: foo</span>
+<span class="go">positional-1: bar</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>If a task accepts positional arguments, it is not allowed to pass
+other tasks after it in the command line. For example if <cite>task1</cite>
+takes positional arguments you can not call:</p>
+<div class="highlight-python"><pre>$ doit task1 pos1 task2</pre>
+</div>
+<p class="last">As the string <cite>task2</cite> would be interpreted as positional argument from
+<cite>task1</cite> not as another task name.</p>
+</div>
+</div>
 <div class="section" id="command-line-variables-doit-get-var">
 <span id="command-line-variables"></span><h2>command line variables (<em>doit.get_var</em>)<a class="headerlink" href="#command-line-variables-doit-get-var" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to pass variable values to be used in dodo.py from the command line.</p>
@@ -878,7 +917,7 @@ You can customize the output passing a &#8220;title&#8221; function to the task:
 </div>
 </div>
 <div class="section" id="verbosity">
-<span id="id4"></span><h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
 <p>By default the stdout from a task is captured and its stderr is sent to the
 console. If the task fails or there is an error the stdout and a traceback
 (if any) is displayed.</p>
@@ -988,8 +1027,8 @@ for more examples.</p>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
   <!-- TODO news -->
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/src">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/issues?status=new&status=open">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
  

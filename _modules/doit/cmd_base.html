@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.25',
+        VERSION:     '0.26',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -86,8 +86,8 @@
   <li><a href="../../index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="../../contents.html">Documentation</a>&nbsp;|&nbsp;</li>
   <!-- TODO news -->
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/src">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/issues?status=new&status=open">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
 
@@ -166,6 +166,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
   <h1>Source code for doit.cmd_base</h1><div class="highlight"><pre>
 <span class="kn">import</span> <span class="nn">inspect</span>
 <span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">version</span>
 <span class="kn">from</span> <span class="nn">.cmdparse</span> <span class="kn">import</span> <span class="n">CmdOption</span><span class="p">,</span> <span class="n">CmdParse</span>
@@ -454,16 +455,16 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 <span class="sd">    @param sel_tasks(list - str)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">processed</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c"># str - task name</span>
-    <span class="n">to_process</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">sel_tasks</span><span class="p">)</span> <span class="c"># str - task name</span>
+    <span class="n">to_process</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">sel_tasks</span><span class="p">)</span> <span class="c"># str - task name</span>
     <span class="c"># get initial task</span>
     <span class="k">while</span> <span class="n">to_process</span><span class="p">:</span>
-        <span class="n">task</span> <span class="o">=</span> <span class="n">tasks</span><span class="p">[</span><span class="n">to_process</span><span class="o">.</span><span class="n">pop</span><span class="p">()]</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">tasks</span><span class="p">[</span><span class="n">to_process</span><span class="o">.</span><span class="n">popleft</span><span class="p">()]</span>
         <span class="n">processed</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="k">yield</span> <span class="n">task</span>
         <span class="c"># FIXME this does not take calc_dep into account</span>
         <span class="k">for</span> <span class="n">task_dep</span> <span class="ow">in</span> <span class="n">task</span><span class="o">.</span><span class="n">task_dep</span> <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="n">setup_tasks</span><span class="p">:</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">task_dep</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">processed</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">task_dep</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">to_process</span><span class="p">):</span>
-                <span class="n">to_process</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task_dep</span><span class="p">)</span>
+                <span class="n">to_process</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_dep</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">yield_duplicates</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="n">tasks</span><span class="p">[</span><span class="n">task_dep</span><span class="p">]</span>
 
@@ -490,8 +491,8 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
   <li><a href="../../index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="../../contents.html">Documentation</a>&nbsp;|&nbsp;</li>
   <!-- TODO news -->
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/src">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/issues?status=new&status=open">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
 

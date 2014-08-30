@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.25',
+        VERSION:     '0.26',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -93,8 +93,8 @@
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
   <!-- TODO news -->
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/src">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/issues?status=new&status=open">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
  
@@ -107,6 +107,7 @@
 <li><a class="reference internal" href="#">Other Commands</a><ul>
 <li><a class="reference internal" href="#help">help</a></li>
 <li><a class="reference internal" href="#list">list</a></li>
+<li><a class="reference internal" href="#info">info</a></li>
 <li><a class="reference internal" href="#forget">forget</a></li>
 <li><a class="reference internal" href="#clean">clean</a></li>
 <li><a class="reference internal" href="#ignore">ignore</a></li>
@@ -195,6 +196,11 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
             
   <div class="section" id="other-commands">
 <h1>Other Commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Not all options/arguments are documented below.
+Always check <cite>doit help &lt;cmd&gt;</cite> to see a complete list of options.</p>
+</div>
 <p>Let&#8217;s use a more complex example to demonstrate the command line features.
 The example below is used to manage a very simple C project.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;link&#39;</span><span class="p">]}</span>
@@ -238,11 +244,6 @@ The example below is used to manage a very simple C project.</p>
 <span id="cmd-help"></span><h2>help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> comes with several commands. <cite>doit help</cite> will list all available commands.</p>
 <p>You can also get help from each available command. e.g. <cite>doit help run</cite>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Not all options/parameters are documented below.
-Always check <cite>doit help &lt;cmd&gt;</cite> to see a complete list of options.</p>
-</div>
 <p><cite>doit help task</cite> will display information on all fields/attributes a task dictionary from a <cite>dodo</cite> file accepts.</p>
 </div>
 <div class="section" id="list">
@@ -254,15 +255,38 @@ Always check <cite>doit help &lt;cmd&gt;</cite> to see a complete list of option
 <span class="go">install : install executable (TODO)</span>
 </pre></div>
 </div>
-<p>By default task name and description are listed. The task description is taken from the first line of task function doc-string. You can also set it using the <em>doc</em> attribute on the task dictionary. It is possible to omit the description using the option <em>-q</em>/<em>&#8211;quiet</em>.</p>
-<p>By default sub-tasks are not listed. It can list sub-tasks using the option <em>&#8211;all</em>.</p>
-<p>By default task names that start with an underscore(<em>_</em>) are not listed. They are listed if the option <em>-p</em>/<em>&#8211;private</em> is used.</p>
+<p>By default task name and description are listed. The task description is taken
+from the first line of task function doc-string. You can also set it using the
+<em>doc</em> attribute on the task dictionary. It is possible to omit the description
+using the option <em>-q</em>/<em>&#8211;quiet</em>.</p>
+<p>By default sub-tasks are not listed. It can list sub-tasks using the option
+<em>&#8211;all</em>.</p>
+<p>By default task names that start with an underscore(<em>_</em>) are not listed. They
+are listed if the option <em>-p</em>/<em>&#8211;private</em> is used.</p>
 <p>Task status can be printed using the option <em>-s</em>/<em>&#8211;status</em>.</p>
 <p>Task&#8217;s file-dependencies can be printed using the option <em>&#8211;deps</em>.</p>
 </div>
+<div class="section" id="info">
+<h2>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h2>
+<p>You can check a task meta-data using the <em>info</em> command.
+This might be useful when have some complex code generating
+the task meta-data.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit info link
+<span class="go">name:&#39;link&#39;</span>
+
+<span class="go">file_dep:set([&#39;command.o&#39;, &#39;kbd.o&#39;, &#39;main.o&#39;])</span>
+
+<span class="go">targets:[&#39;edit&#39;]</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="forget">
 <h2>forget<a class="headerlink" href="#forget" title="Permalink to this headline">¶</a></h2>
-<p>Suppose you change the compilation parameters in the compile action. Or you changed the code from a python-action. <em>doit</em> will think your task is up-to-date based on  the dependencies but actually it is not! In this case you can use the <em>forget</em> command to make sure the given task will be executed again even with no changes in the dependencies.</p>
+<p>Suppose you change the compilation parameters in the compile action. Or you
+changed the code from a python-action. <em>doit</em> will think your task is up-to-date
+based on the dependencies but actually it is not! In this case you can use the
+<em>forget</em> command to make sure the given task will be executed again even with no
+changes in the dependencies.</p>
 <p>If you do not specify any task, the default tasks are &#8220;<em>forget</em>&#8221;.</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit forget
 </pre></div>
@@ -274,8 +298,12 @@ Always check <cite>doit help &lt;cmd&gt;</cite> to see a complete list of option
 </div>
 <div class="section" id="clean">
 <h2>clean<a class="headerlink" href="#clean" title="Permalink to this headline">¶</a></h2>
-<p>A common scenario is a task that needs to &#8220;revert&#8221; its actions. A task may include a <em>clean</em> attribute. This attribute can be <tt class="docutils literal"><span class="pre">True</span></tt> to remove all of its target files. If there is a folder as a target it will be removed if the folder is empty, otherwise it will display a warning message.</p>
-<p>The <em>clean</em> attribute can be a list of actions, again, an action could be a string with a shell command or a tuple with a python callable.</p>
+<p>A common scenario is a task that needs to &#8220;revert&#8221; its actions. A task may
+include a <em>clean</em> attribute. This attribute can be <tt class="docutils literal"><span class="pre">True</span></tt> to remove all of its
+target files. If there is a folder as a target it will be removed if the folder
+is empty, otherwise it will display a warning message.</p>
+<p>The <em>clean</em> attribute can be a list of actions, again, an action could be a
+string with a shell command or a tuple with a python callable.</p>
 <p>If you want to clean the targets and add some custom clean actions,
 you can include the <cite>doit.task.clean_targets</cite> instead of passing <cite>True</cite>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.task</span> <span class="kn">import</span> <span class="n">clean_targets</span>
@@ -307,7 +335,9 @@ You can clean all tasks using the <em>-a</em>/<em>&#8211;all</em> argument.</p>
 </div>
 <div class="section" id="ignore">
 <h2>ignore<a class="headerlink" href="#ignore" title="Permalink to this headline">¶</a></h2>
-<p>It is possible to set a task to be ignored/skipped (that is not executed). This is useful for example when you are performing checks in several files and you want to skip the check in some of them temporarily.</p>
+<p>It is possible to set a task to be ignored/skipped (that is, not executed). This
+is useful, for example, when you are performing checks in several files and you
+want to skip the check in some of them temporarily.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
         <span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;file</span><span class="si">%d</span><span class="s">.txt&quot;</span> <span class="o">%</span> <span class="n">i</span>
@@ -327,7 +357,8 @@ You can clean all tasks using the <em>-a</em>/<em>&#8211;all</em> argument.</p>
 <span class="go">.  create_file:file2.txt</span>
 </pre></div>
 </div>
-<p>Note the <tt class="docutils literal"><span class="pre">!!</span></tt>, it means that task was ignored. To reverse the <cite>ignore</cite> use <cite>forget</cite> sub-command.</p>
+<p>Note the <tt class="docutils literal"><span class="pre">!!</span></tt>, it means that task was ignored. To reverse the <cite>ignore</cite> use
+<cite>forget</cite> sub-command.</p>
 </div>
 <div class="section" id="auto-watch">
 <span id="cmd-auto"></span><h2>auto (watch)<a class="headerlink" href="#auto-watch" title="Permalink to this headline">¶</a></h2>
@@ -335,8 +366,8 @@ You can clean all tasks using the <em>-a</em>/<em>&#8211;all</em> argument.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">Supported on Linux and Mac only.</p>
 </div>
-<p><cite>auto</cite> sub-command is an alternative way of executing your tasks.
-It is a long running process that only terminates when it is interrupted (Ctrl-C).
+<p><cite>auto</cite> sub-command is an alternative way of executing your tasks.  It is a long
+running process that only terminates when it is interrupted (Ctrl-C).
 When started it will execute the given tasks. After that it will watch the
 file system for modifications in the file-dependencies.
 When a file is modified the tasks are re-executed.</p>
@@ -465,8 +496,8 @@ that means it might not write a target file if it exist</li>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
   <!-- TODO news -->
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/src">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://bitbucket.org/schettino72/doit/issues?status=new&status=open">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
  
