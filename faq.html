@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.26',
+        VERSION:     '0.27',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -107,6 +107,7 @@
 <li><a class="reference internal" href="#">FAQ</a><ul>
 <li><a class="reference internal" href="#doit-is-too-verbose-why-don-t-you-use-decorators"><em>doit</em> is too verbose, why don&#8217;t you use decorators?</a></li>
 <li><a class="reference internal" href="#dodo-py-file-itself-should-be-a-file-dep-for-all-tasks"><cite>dodo.py</cite> file itself should be a <cite>file_dep</cite> for all tasks</a></li>
+<li><a class="reference internal" href="#how-to-make-a-dependency-on-all-files-in-a-folder">How to make a dependency on all files in a folder?</a></li>
 </ul>
 </li>
 </ul>
@@ -205,6 +206,13 @@ add the <cite>dodo.py</cite> in <cite>file_dep</cite> of your tasks manually.</p
 <li>should imported files from your <cite>dodo.py</cite> also be a <cite>file_dep</cite>?</li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="how-to-make-a-dependency-on-all-files-in-a-folder">
+<h2>How to make a dependency on all files in a folder?<a class="headerlink" href="#how-to-make-a-dependency-on-all-files-in-a-folder" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">file_dep</span></tt> does NOT support folders.
+If you want to specify all files from a folder you can use a third
+party library like <a class="reference external" href="https://pypi.python.org/pypi/pathlib">pathlib</a> (
+<cite>pathlib</cite> was add on python&#8217;s 3.4 stdlib).</p>
 </div>
 </div>
 

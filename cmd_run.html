@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.26',
+        VERSION:     '0.27',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -107,9 +107,15 @@
 <li><a class="reference internal" href="#">Command line interface - run</a><ul>
 <li><a class="reference internal" href="#python-m-doit"><cite>python -m doit</cite></a></li>
 <li><a class="reference internal" href="#dodo-file">dodo file</a></li>
-<li><a class="reference internal" href="#as-an-executable-file">as an executable file</a></li>
+<li><a class="reference internal" href="#as-an-executable-file">as an executable file</a><ul>
+<li><a class="reference internal" href="#using-a-hashbang">using a hashbang</a></li>
+<li><a class="reference internal" href="#using-the-api">using the API</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#returned-value">returned value</a></li>
 <li><a class="reference internal" href="#config">config</a></li>
+<li><a class="reference internal" href="#db-backend">DB backend</a></li>
+<li><a class="reference internal" href="#db-file">DB-file</a></li>
 <li><a class="reference internal" href="#verbosity">verbosity</a></li>
 <li><a class="reference internal" href="#dir-cwd">dir (cwd)</a></li>
 <li><a class="reference internal" href="#continue">continue</a></li>
@@ -224,6 +230,15 @@ This flag is valid for all sub-commands.</p>
 </div>
 <div class="section" id="as-an-executable-file">
 <h2>as an executable file<a class="headerlink" href="#as-an-executable-file" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-a-hashbang">
+<h3>using a hashbang<a class="headerlink" href="#using-a-hashbang" title="Permalink to this headline">¶</a></h3>
+<p>If you have <cite>doit</cite> installed on <tt class="docutils literal"><span class="pre">/usr/bin</span></tt> use the following hashbang:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#! /usr/bin/doit -f</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-api">
+<h3>using the API<a class="headerlink" href="#using-the-api" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to make a <tt class="docutils literal"><span class="pre">dodo</span></tt> file become an executable on its own
 by calling the <tt class="docutils literal"><span class="pre">doit.run()</span></tt>, you need to pass the <tt class="docutils literal"><span class="pre">globals</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
@@ -243,6 +258,7 @@ by calling the <tt class="docutils literal"><span class="pre">doit.run()</span><
 <p class="first admonition-title">Note</p>
 <p class="last">The <tt class="docutils literal"><span class="pre">doit.run()</span></tt> method will call <tt class="docutils literal"><span class="pre">sys.exit()</span></tt> so any code after it
 will not be executed.</p>
+</div>
 </div>
 </div>
 <div class="section" id="returned-value">
@@ -267,7 +283,7 @@ will not be executed.</p>
 </div>
 <div class="section" id="config">
 <h2>config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
-<p>Command line parameters can be set straight on a <cite>dodo</cite> file. This example below sets the default tasks to be run, the <cite>continue</cite> option, and a different reporter.</p>
+<p>Command line parameters can be set straight on a <cite>dodo</cite> file. This example below sets the default tasks to be run, the <tt class="docutils literal"><span class="pre">continue</span></tt> option, and a different reporter.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;my_task_1&#39;</span><span class="p">,</span> <span class="s">&#39;my_task_2&#39;</span><span class="p">],</span>
                <span class="s">&#39;continue&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
                <span class="s">&#39;reporter&#39;</span><span class="p">:</span> <span class="s">&#39;json&#39;</span><span class="p">}</span>
@@ -285,8 +301,36 @@ will not be executed.</p>
 parameter maps to config names.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The parameters <cite>&#8211;file</cite> and <cite>&#8211;dir</cite> can not be used on config because
+<p class="last">The parameters <tt class="docutils literal"><span class="pre">--file</span></tt> and <tt class="docutils literal"><span class="pre">--dir</span></tt> can not be used on config because
 they control how the dodo file itself is loaded.</p>
+</div>
+</div>
+<div class="section" id="db-backend">
+<h2>DB backend<a class="headerlink" href="#db-backend" title="Permalink to this headline">¶</a></h2>
+<p><cite>doit</cite> saves the results of your tasks runs in a &#8220;DB-file&#8221;, it supports
+different backends:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>dbm</cite>: (default) It uses <a class="reference external" href="https://docs.python.org/3/library/dbm.html">python dbm module</a>. The actual DBM used depends on what is available on your machine/platform.</li>
+<li><cite>json</cite>: Plain text using a json structure, it is slow but good for debugging.</li>
+<li><cite>sqlite3</cite>: (experimental) very slow implementation, support concurrent access.</li>
+</ul>
+</div></blockquote>
+<p>From the command line you can select the backend using the <tt class="docutils literal"><span class="pre">--backend</span></tt> option.</p>
+<p>It is quite easy to add a new backend for any key-value store.</p>
+</div>
+<div class="section" id="db-file">
+<h2>DB-file<a class="headerlink" href="#db-file" title="Permalink to this headline">¶</a></h2>
+<p>Option <tt class="docutils literal"><span class="pre">--db-file</span></tt> sets the name of the file to save the &#8220;DB&#8221;,
+default is <tt class="docutils literal"><span class="pre">.doit.db</span></tt>.
+Note that DBM backends might save more than one file, in this case
+the specified name is used as a base name.</p>
+<p>To configure in a <cite>dodo</cite> file the field name is <tt class="docutils literal"><span class="pre">dep_file</span></tt></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;backend&#39;</span><span class="p">:</span> <span class="s">&#39;json&#39;</span><span class="p">,</span>
+    <span class="s">&#39;dep_file&#39;</span><span class="p">:</span> <span class="s">&#39;doit-db.json&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="verbosity">
