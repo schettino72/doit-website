@@ -118,23 +118,23 @@
 <h3>Sponsor/Donate</h3>
 
 
-<script data-gittip-username="schettino72"
-        data-gittip-widget="button"
-        src="//gttp.co/v1.js"></script>
-
-
-<div style="margin-left:2em;">
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="BFF4G58USYPBA">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-</form>
+<div data-gratipay-username="schettino72" data-gratipay-widget="custom">
+  <div><a class="gratipay-profile-link">Gratipay</a> weekly funding goal is <span class="gratipay-goal">$?.??</span> USD.
+  </div>
+  <div style="position:relative;background-color:#2F2D2D;color:#DDDDDD;border-radius:5px;margin:3px 5px;padding:3px 0;">
+    <div class="gratipay-goal-progress-bar" style="position:absolute;top:3px;background-color:#008000;height:24px;border-radius:2px;"></div>
+    <span class="gratipay-receiving" style="position:relative;padding-left:6px;">$?.??</span>
+  </div>
 </div>
+<script src="//grtp.co/v1.js"></script>
+
 <br/>
 
 <div class="sidebartext">
-Why Donate? Donations will be used to sponsor further development of the project.<br/>
+Why Donate? Help keep the project alive! Donations will be used for project maintanance tasks (bug fixes, merge patches, reply users).<br/>
+  <script data-gratipay-username="schettino72"
+        data-gratipay-widget="button"
+        src="//gttp.co/v1.js"></script>
 <br/>
 For corporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
 </div>
@@ -338,12 +338,12 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 </div>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_load_from_module</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">cmd_list</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_load_from</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">cmd_list</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;load task from a module or dict with module members&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismodule</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
-            <span class="n">members</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">module</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismodule</span><span class="p">(</span><span class="n">namespace</span><span class="p">):</span>
+            <span class="n">members</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">namespace</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">members</span> <span class="o">=</span> <span class="n">module</span>
+            <span class="n">members</span> <span class="o">=</span> <span class="n">namespace</span>
         <span class="n">task_list</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span><span class="n">members</span><span class="p">,</span> <span class="n">cmd_list</span><span class="p">)</span>
         <span class="n">doit_config</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_doit_config</span><span class="p">(</span><span class="n">members</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">task_list</span><span class="p">,</span> <span class="n">doit_config</span>
@@ -359,7 +359,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mod_dict</span> <span class="o">=</span> <span class="n">mod_dict</span>
 
     <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mod_dict</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">CMD_LIST</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mod_dict</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">CMD_LIST</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">DodoTaskLoader</span><span class="p">(</span><span class="n">TaskLoader</span><span class="p">):</span>
@@ -369,7 +369,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="n">dodo_module</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s">&#39;dodoFile&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s">&#39;cwdPath&#39;</span><span class="p">],</span>
                                         <span class="n">params</span><span class="p">[</span><span class="s">&#39;seek_file&#39;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from_module</span><span class="p">(</span><span class="n">dodo_module</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">CMD_LIST</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="n">dodo_module</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">CMD_LIST</span><span class="p">)</span>
 
 
 

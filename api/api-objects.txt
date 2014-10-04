@@ -161,6 +161,8 @@ doit.version.__package__	doit.version-module.html#__package__
 doit.action.BaseAction	doit.action.BaseAction-class.html
 doit.action.BaseAction._prepare_kwargs	doit.action.BaseAction-class.html#_prepare_kwargs
 doit.action.CmdAction	doit.action.CmdAction-class.html
+doit.action.CmdAction.decode_error	doit.action.CmdAction-class.html#decode_error
+doit.action.CmdAction.encoding	doit.action.CmdAction-class.html#encoding
 doit.action.CmdAction.action(str	doit.action.CmdAction-class.html#action%28str
 doit.action.CmdAction.__str__	doit.action.CmdAction-class.html#__str__
 doit.action.CmdAction._print_process_output	doit.action.CmdAction-class.html#_print_process_output
@@ -170,6 +172,7 @@ doit.action.BaseAction._prepare_kwargs	doit.action.BaseAction-class.html#_prepar
 doit.action.CmdAction.task(Task)	doit.action.CmdAction-class.html#task%28Task%29
 doit.action.CmdAction.shell	doit.action.CmdAction-class.html#shell
 doit.action.CmdAction.pkwargs	doit.action.CmdAction-class.html#pkwargs
+doit.action.CmdAction.(str)	doit.action.CmdAction-class.html#%28str%29
 doit.action.CmdAction.action	doit.action.CmdAction-class.html#action
 doit.action.CmdAction.execute	doit.action.CmdAction-class.html#execute
 doit.action.CmdAction.list	doit.action.CmdAction-class.html#list
@@ -222,8 +225,8 @@ doit.cmd_base.Command.set_options	doit.cmd_base.Command-class.html#set_options
 doit.cmd_base.Command.name	doit.cmd_base.Command-class.html#name
 doit.cmd_base.Command.doc_usage	doit.cmd_base.Command-class.html#doc_usage
 doit.cmd_base.DodoTaskLoader	doit.cmd_base.DodoTaskLoader-class.html
+doit.cmd_base.TaskLoader._load_from	doit.cmd_base.TaskLoader-class.html#_load_from
 doit.cmd_base.DodoTaskLoader.load_tasks	doit.cmd_base.DodoTaskLoader-class.html#load_tasks
-doit.cmd_base.TaskLoader._load_from_module	doit.cmd_base.TaskLoader-class.html#_load_from_module
 doit.cmd_base.DodoTaskLoader.cmd_options	doit.cmd_base.DodoTaskLoader-class.html#cmd_options
 doit.cmd_base.DoitCmdBase	doit.cmd_base.DoitCmdBase-class.html
 doit.cmd_base.Command.help	doit.cmd_base.Command-class.html#help
@@ -240,13 +243,13 @@ doit.cmd_base.DoitCmdBase.set_options	doit.cmd_base.DoitCmdBase-class.html#set_o
 doit.cmd_base.Command.name	doit.cmd_base.Command-class.html#name
 doit.cmd_base.Command.doc_usage	doit.cmd_base.Command-class.html#doc_usage
 doit.cmd_base.ModuleTaskLoader	doit.cmd_base.ModuleTaskLoader-class.html
+doit.cmd_base.TaskLoader._load_from	doit.cmd_base.TaskLoader-class.html#_load_from
 doit.cmd_base.ModuleTaskLoader.load_tasks	doit.cmd_base.ModuleTaskLoader-class.html#load_tasks
-doit.cmd_base.TaskLoader._load_from_module	doit.cmd_base.TaskLoader-class.html#_load_from_module
 doit.cmd_base.ModuleTaskLoader.cmd_options	doit.cmd_base.ModuleTaskLoader-class.html#cmd_options
 doit.cmd_base.ModuleTaskLoader.__init__	doit.cmd_base.ModuleTaskLoader-class.html#__init__
 doit.cmd_base.TaskLoader	doit.cmd_base.TaskLoader-class.html
+doit.cmd_base.TaskLoader._load_from	doit.cmd_base.TaskLoader-class.html#_load_from
 doit.cmd_base.TaskLoader.load_tasks	doit.cmd_base.TaskLoader-class.html#load_tasks
-doit.cmd_base.TaskLoader._load_from_module	doit.cmd_base.TaskLoader-class.html#_load_from_module
 doit.cmd_base.TaskLoader.cmd_options	doit.cmd_base.TaskLoader-class.html#cmd_options
 doit.cmd_clean.Clean	doit.cmd_clean.Clean-class.html
 doit.cmd_base.Command.help	doit.cmd_base.Command-class.html#help
@@ -742,6 +745,8 @@ doit.task.Task.clean	doit.task.Task-class.html#clean
 doit.task.Task._init_options	doit.task.Task-class.html#_init_options
 doit.task.Task._expand_map	doit.task.Task-class.html#_expand_map
 doit.tools.Interactive	doit.tools.Interactive-class.html
+doit.action.CmdAction.decode_error	doit.action.CmdAction-class.html#decode_error
+doit.action.CmdAction.encoding	doit.action.CmdAction-class.html#encoding
 doit.action.CmdAction.action(str	doit.action.CmdAction-class.html#action%28str
 doit.action.CmdAction.__str__	doit.action.CmdAction-class.html#__str__
 doit.action.CmdAction._print_process_output	doit.action.CmdAction-class.html#_print_process_output
@@ -751,6 +756,7 @@ doit.action.BaseAction._prepare_kwargs	doit.action.BaseAction-class.html#_prepar
 doit.action.CmdAction.task(Task)	doit.action.CmdAction-class.html#task%28Task%29
 doit.action.CmdAction.shell	doit.action.CmdAction-class.html#shell
 doit.action.CmdAction.pkwargs	doit.action.CmdAction-class.html#pkwargs
+doit.action.CmdAction.(str)	doit.action.CmdAction-class.html#%28str%29
 doit.action.CmdAction.action	doit.action.CmdAction-class.html#action
 doit.tools.Interactive.execute	doit.tools.Interactive-class.html#execute
 doit.action.CmdAction.list	doit.action.CmdAction-class.html#list
@@ -758,6 +764,8 @@ doit.action.CmdAction.__repr__	doit.action.CmdAction-class.html#__repr__
 doit.action.CmdAction.save_out	doit.action.CmdAction-class.html#save_out
 doit.action.CmdAction.expand_action	doit.action.CmdAction-class.html#expand_action
 doit.tools.LongRunning	doit.tools.LongRunning-class.html
+doit.action.CmdAction.decode_error	doit.action.CmdAction-class.html#decode_error
+doit.action.CmdAction.encoding	doit.action.CmdAction-class.html#encoding
 doit.action.CmdAction.action(str	doit.action.CmdAction-class.html#action%28str
 doit.action.CmdAction.__str__	doit.action.CmdAction-class.html#__str__
 doit.action.CmdAction._print_process_output	doit.action.CmdAction-class.html#_print_process_output
@@ -767,6 +775,7 @@ doit.action.BaseAction._prepare_kwargs	doit.action.BaseAction-class.html#_prepar
 doit.action.CmdAction.task(Task)	doit.action.CmdAction-class.html#task%28Task%29
 doit.action.CmdAction.shell	doit.action.CmdAction-class.html#shell
 doit.action.CmdAction.pkwargs	doit.action.CmdAction-class.html#pkwargs
+doit.action.CmdAction.(str)	doit.action.CmdAction-class.html#%28str%29
 doit.action.CmdAction.action	doit.action.CmdAction-class.html#action
 doit.tools.LongRunning.execute	doit.tools.LongRunning-class.html#execute
 doit.action.CmdAction.list	doit.action.CmdAction-class.html#list

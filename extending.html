@@ -140,23 +140,23 @@
 <h3>Sponsor/Donate</h3>
 
 
-<script data-gittip-username="schettino72"
-        data-gittip-widget="button"
-        src="//gttp.co/v1.js"></script>
-
-
-<div style="margin-left:2em;">
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="BFF4G58USYPBA">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-</form>
+<div data-gratipay-username="schettino72" data-gratipay-widget="custom">
+  <div><a class="gratipay-profile-link">Gratipay</a> weekly funding goal is <span class="gratipay-goal">$?.??</span> USD.
+  </div>
+  <div style="position:relative;background-color:#2F2D2D;color:#DDDDDD;border-radius:5px;margin:3px 5px;padding:3px 0;">
+    <div class="gratipay-goal-progress-bar" style="position:absolute;top:3px;background-color:#008000;height:24px;border-radius:2px;"></div>
+    <span class="gratipay-receiving" style="position:relative;padding-left:6px;">$?.??</span>
+  </div>
 </div>
+<script src="//grtp.co/v1.js"></script>
+
 <br/>
 
 <div class="sidebartext">
-Why Donate? Donations will be used to sponsor further development of the project.<br/>
+Why Donate? Help keep the project alive! Donations will be used for project maintanance tasks (bug fixes, merge patches, reply users).<br/>
+  <script data-gratipay-username="schettino72"
+        data-gratipay-widget="button"
+        src="//gttp.co/v1.js"></script>
 <br/>
 For corporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
 </div>
@@ -279,7 +279,7 @@ task available is defined using a dict (so no <cite>dodo.py</cite> will be used)
 </div>
 </div>
 <div class="section" id="example-load-tasks-from-a-module">
-<h3>Example: load tasks from a module<a class="headerlink" href="#example-load-tasks-from-a-module" title="Permalink to this headline">¶</a></h3>
+<span id="moduletaskloader"></span><h3>Example: load tasks from a module<a class="headerlink" href="#example-load-tasks-from-a-module" title="Permalink to this headline">¶</a></h3>
 <p>The <cite>ModuleTaskLoader</cite> can be used to load tasks from a specified module,
 where this module specifies tasks in the same way as in <cite>dodo.py</cite>.
 <cite>ModuleTaskLoader</cite> is included in <cite>doit</cite> source.</p>
@@ -295,6 +295,8 @@ where this module specifies tasks in the same way as in <cite>dodo.py</cite>.
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">DoitMain</span><span class="p">(</span><span class="n">ModuleTaskLoader</span><span class="p">(</span><span class="n">my_module_with_tasks</span><span class="p">))</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
 </pre></div>
 </div>
+<p><cite>ModuleTaskLoader</cite> can take also take a <cite>dict</cite> where its items are functions
+or methods of an object.</p>
 </div>
 </div>
 <div class="section" id="sub-command-customization">
