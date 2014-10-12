@@ -106,10 +106,10 @@
   <ul>
 <li><a class="reference internal" href="#">custom uptodate</a><ul>
 <li><a class="reference internal" href="#result-dependency">result-dependency</a></li>
-<li><a class="reference internal" href="#run-once">run-once</a></li>
-<li><a class="reference internal" href="#timeout">timeout</a></li>
-<li><a class="reference internal" href="#config-changed">config_changed</a></li>
-<li><a class="reference internal" href="#check-timestamp-unchanged">check_timestamp_unchanged</a></li>
+<li><a class="reference internal" href="#run-once">run_once()</a></li>
+<li><a class="reference internal" href="#timeout">timeout()</a></li>
+<li><a class="reference internal" href="#config-changed">config_changed()</a></li>
+<li><a class="reference internal" href="#check-timestamp-unchanged">check_timestamp_unchanged()</a></li>
 <li><a class="reference internal" href="#uptodate-api">uptodate API</a><ul>
 <li><a class="reference internal" href="#example-run-once-implementation">Example: run-once implementation</a></li>
 <li><a class="reference internal" href="#example-timeout-implementation">Example: timeout implementation</a></li>
@@ -193,7 +193,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 Here we look in more
 detail into some implementations shipped with <cite>doit</cite>. And the API used by those.</p>
 <div class="section" id="result-dependency">
-<h2>result-dependency<a class="headerlink" href="#result-dependency" title="Permalink to this headline">¶</a></h2>
+<span id="result-dep"></span><h2>result-dependency<a class="headerlink" href="#result-dependency" title="Permalink to this headline">¶</a></h2>
 <p>In some cases you can not determine if a task is &#8220;up-to-date&#8221; only based on
 input files, the input could come from a database or an external process.
 <em>doit</em> defines a &#8220;result-dependency&#8221; to deal with these cases without need to
@@ -223,7 +223,7 @@ result of all subtasks did not change. And also the existing sub-tasks are
 the same.</p>
 </div>
 <div class="section" id="run-once">
-<h2>run-once<a class="headerlink" href="#run-once" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>run_once()<a class="headerlink" href="#run-once" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes there is no dependency for a task but you do not want to execute it
 all the time. With &#8220;run_once&#8221; the task will not be executed again after the first
 successful run. This is mostly used together with targets.</p>
@@ -251,7 +251,7 @@ There is no dependency, but you do not want to download it many times.</p>
 </div>
 </div>
 <div class="section" id="timeout">
-<h2>timeout<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>timeout()<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">timeout</span></tt> is used to expire a task after a certain time interval.</p>
 <p>i.e. You want to re-execute a task only if the time elapsed since the last
 time it was executed is bigger than 5 minutes.</p>
@@ -270,7 +270,7 @@ time it was executed is bigger than 5 minutes.</p>
 parameter. It returns a callable suitable to be used as an <tt class="docutils literal"><span class="pre">uptodate</span></tt> callable.</p>
 </div>
 <div class="section" id="config-changed">
-<h2>config_changed<a class="headerlink" href="#config-changed" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>config_changed()<a class="headerlink" href="#config-changed" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">config_changed</span></tt> is used to check if any &#8220;configuration&#8221; value for the task has
 changed. Config values can be a string or dict.</p>
 <p>For dict&#8217;s the values are converted to string (actually it uses python&#8217;s <cite>repr()</cite>)
@@ -287,7 +287,7 @@ and only a digest/checksum of the dictionaries keys and values are saved.</p>
 </div>
 </div>
 <div class="section" id="check-timestamp-unchanged">
-<h2>check_timestamp_unchanged<a class="headerlink" href="#check-timestamp-unchanged" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>check_timestamp_unchanged()<a class="headerlink" href="#check-timestamp-unchanged" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">check_timestamp_unchanged</span></tt> is used to check if specified timestamp of a given
 file/dir is unchanged since last run.</p>
 <p>The timestamp field to check defaults to <tt class="docutils literal"><span class="pre">mtime</span></tt>, but can be selected by
@@ -326,7 +326,7 @@ If a file is a target of another task you should probably add
 </div>
 </div>
 <div class="section" id="uptodate-api">
-<span id="id2"></span><h2>uptodate API<a class="headerlink" href="#uptodate-api" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>uptodate API<a class="headerlink" href="#uptodate-api" title="Permalink to this headline">¶</a></h2>
 <p>This section will explain how to extend <tt class="docutils literal"><span class="pre">doit</span></tt> writing an <tt class="docutils literal"><span class="pre">uptodate</span></tt>
 implementation. So unless you need to write an <tt class="docutils literal"><span class="pre">uptodate</span></tt> implementation
 you can skip this.</p>
@@ -515,7 +515,7 @@ the saved values and results from any task.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

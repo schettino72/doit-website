@@ -340,33 +340,33 @@ set some class variables and implement the <cite>execute</cite> method.</p>
 <h3>Example: scaffolding<a class="headerlink" href="#example-scaffolding" title="Permalink to this headline">¶</a></h3>
 <p>A common example is applications that provide some kind of scaffolding when
 creating new projects.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
+<div class="highlight-python"><div class="highlight"><pre>#! /usr/bin/env python
 
-<span class="kn">import</span> <span class="nn">sys</span>
+import sys
 
-<span class="kn">from</span> <span class="nn">doit.cmd_base</span> <span class="kn">import</span> <span class="n">Command</span>
-<span class="kn">from</span> <span class="nn">doit.doit_cmd</span> <span class="kn">import</span> <span class="n">DoitMain</span>
-
-
-<span class="k">class</span> <span class="nc">MyCmd</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
-    <span class="n">doc_purpose</span> <span class="o">=</span> <span class="s">&#39;test extending doit commands&#39;</span>
-    <span class="n">doc_usage</span> <span class="o">=</span> <span class="s">&#39;[XXX]&#39;</span>
-    <span class="n">doc_description</span> <span class="o">=</span> <span class="s">&#39;my command description&#39;</span>
-
-    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt_values</span><span class="p">,</span> <span class="n">pos_args</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&quot;this command does nothing!&quot;</span>
+from doit.cmd_base import Command
+from doit.doit_cmd import DoitMain
 
 
-<span class="k">class</span> <span class="nc">MyTool</span><span class="p">(</span><span class="n">DoitMain</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">get_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">cmds</span> <span class="o">=</span> <span class="n">DoitMain</span><span class="o">.</span><span class="n">get_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">my_cmd</span> <span class="o">=</span> <span class="n">MyCmd</span><span class="p">()</span>
-        <span class="n">cmds</span><span class="p">[</span><span class="n">my_cmd</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_cmd</span>
-        <span class="k">return</span> <span class="n">cmds</span>
+class MyCmd(Command):
+    doc_purpose = &#39;test extending doit commands&#39;
+    doc_usage = &#39;[XXX]&#39;
+    doc_description = &#39;my command description&#39;
+
+    def execute(self, opt_values, pos_args):
+        print &quot;this command does nothing!&quot;
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">MyTool</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+class MyTool(DoitMain):
+    def get_commands(self):
+        cmds = DoitMain.get_commands(self)
+        my_cmd = MyCmd()
+        cmds[my_cmd.name] = my_cmd
+        return cmds
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(MyTool().run(sys.argv[1:]))
 </pre></div>
 </div>
 </div>
@@ -400,7 +400,7 @@ creating new projects.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

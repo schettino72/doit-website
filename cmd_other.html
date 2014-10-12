@@ -306,17 +306,17 @@ is empty, otherwise it will display a warning message.</p>
 string with a shell command or a tuple with a python callable.</p>
 <p>If you want to clean the targets and add some custom clean actions,
 you can include the <cite>doit.task.clean_targets</cite> instead of passing <cite>True</cite>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.task</span> <span class="kn">import</span> <span class="n">clean_targets</span>
+<div class="highlight-python"><div class="highlight"><pre>from doit.task import clean_targets
 
-<span class="k">def</span> <span class="nf">simple</span><span class="p">():</span>
-    <span class="k">print</span> <span class="s">&quot;ok&quot;</span>
+def simple():
+    print &quot;ok&quot;
 
-<span class="k">def</span> <span class="nf">task_poo</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;touch poo&#39;</span><span class="p">],</span>
-        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;poo&#39;</span><span class="p">],</span>
-        <span class="s">&#39;clean&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">clean_targets</span><span class="p">,</span> <span class="n">simple</span><span class="p">],</span>
-        <span class="p">}</span>
+def task_poo():
+    return {
+        &#39;actions&#39;: [&#39;touch poo&#39;],
+        &#39;targets&#39;: [&#39;poo&#39;],
+        &#39;clean&#39;: [clean_targets, simple],
+        }
 </pre></div>
 </div>
 <p>You can specify which task to <em>clean</em>. If no task is specified the clean operation of default tasks are executed.</p>
@@ -505,7 +505,7 @@ that means it might not write a target file if it exist</li>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>
