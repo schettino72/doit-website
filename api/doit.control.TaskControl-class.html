@@ -142,23 +142,6 @@ execution. And parse task cmd line options.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="_init_implicit_deps"></a><span class="summary-sig-name">_init_implicit_deps</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      get task_dep based on file_dep on a target from another task</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.control-pysrc.html#TaskControl._init_implicit_deps">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr class="private">
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
           <td><span class="summary-sig"><a name="_get_wild_tasks"></a><span class="summary-sig-name">_get_wild_tasks</span>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">pattern</span>)</span><br />
       get list of tasks that match pattern</td>
@@ -284,10 +267,28 @@ execution. And parse task cmd line options.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="add_implicit_task_dep"></a><span class="summary-sig-name">add_implicit_task_dep</span>(<span class="summary-sig-arg">targets</span>,
+          <td><span class="summary-sig"><a href="doit.control.TaskControl-class.html#set_implicit_deps" class="summary-sig-name">set_implicit_deps</a>(<span class="summary-sig-arg">targets</span>,
+        <span class="summary-sig-arg">task_list</span>)</span><br />
+      set/add task_dep based on file_dep on a target from another task</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.control-pysrc.html#TaskControl.set_implicit_deps">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doit.control.TaskControl-class.html#add_implicit_task_dep" class="summary-sig-name">add_implicit_task_dep</a>(<span class="summary-sig-arg">targets</span>,
         <span class="summary-sig-arg">task</span>,
         <span class="summary-sig-arg">deps_list</span>)</span><br />
-      add tasks which created targets are file_dep for this task</td>
+      add implicit task_dep for `task` for newly added `file_dep`</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="doit.control-pysrc.html#TaskControl.add_implicit_task_dep">source&nbsp;code</a></span>
             
@@ -363,6 +364,60 @@ execution. And parse task cmd line options.
         object.__init__
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_implicit_deps"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_implicit_deps</span>(<span class="sig-arg">targets</span>,
+        <span class="sig-arg">task_list</span>)</span>
+    <br /><em class="fname">Static Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doit.control-pysrc.html#TaskControl.set_implicit_deps">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>set/add task_dep based on file_dep on a target from another task</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>targets</code></strong> - (dict) fileName -&gt; task_name</li>
+        <li><strong class="pname"><code>task_list</code></strong> - (list - Task) task with newly added file_dep</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="add_implicit_task_dep"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_implicit_task_dep</span>(<span class="sig-arg">targets</span>,
+        <span class="sig-arg">task</span>,
+        <span class="sig-arg">deps_list</span>)</span>
+    <br /><em class="fname">Static Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doit.control-pysrc.html#TaskControl.add_implicit_task_dep">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>add implicit task_dep for `task` for newly added `file_dep`</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>targets</code></strong> - (dict) fileName -&gt; task_name</li>
+        <li><strong class="pname"><code>task</code></strong> - (Task) task with newly added file_dep</li>
+        <li><strong class="pname"><code>dep_list</code></strong> - (list - str): list of file_dep for task</li>
+    </ul></dd>
   </dl>
 </td></tr></table>
 </div>
@@ -474,7 +529,7 @@ execution. And parse task cmd line options.
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Oct  5 03:28:21 2014
+    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

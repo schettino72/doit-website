@@ -122,11 +122,11 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="doit.runner.MRunner-class.html#get_next_task" class="summary-sig-name">get_next_task</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="doit.runner.MRunner-class.html#get_next_job" class="summary-sig-name">get_next_job</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">completed</span>)</span><br />
       get next task to be dispatched to sub-process</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.runner-pysrc.html#MRunner.get_next_task">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.runner-pysrc.html#MRunner.get_next_job">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -159,11 +159,31 @@ object --+
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="doit.runner.MRunner-class.html#_run_start_processes" class="summary-sig-name" onclick="show_private();">_run_start_processes</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">task_q</span>,
+        <span class="summary-sig-arg">job_q</span>,
         <span class="summary-sig-arg">result_q</span>)</span><br />
       create and start sub-processes</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="doit.runner-pysrc.html#MRunner._run_start_processes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_process_result"></a><span class="summary-sig-name">_process_result</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">node</span>,
+        <span class="summary-sig-arg">task</span>,
+        <span class="summary-sig-arg">result</span>)</span><br />
+      process result received from sub-process</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.runner-pysrc.html#MRunner._process_result">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -196,9 +216,9 @@ object --+
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="doit.runner.MRunner-class.html#execute_task_subprocess" class="summary-sig-name">execute_task_subprocess</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">task_q</span>,
+        <span class="summary-sig-arg">job_q</span>,
         <span class="summary-sig-arg">result_q</span>)</span><br />
-      executed on child processes...</td>
+      executed on child processes</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="doit.runner-pysrc.html#MRunner.execute_task_subprocess">source&nbsp;code</a></span>
             
@@ -412,34 +432,30 @@ object --+
   </dl>
 </td></tr></table>
 </div>
-<a name="get_next_task"></a>
+<a name="get_next_job"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_next_task</span>(<span class="sig-arg">self</span>,
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_next_job</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">completed</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="doit.runner-pysrc.html#MRunner.get_next_task">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="doit.runner-pysrc.html#MRunner.get_next_job">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
   <p>get next task to be dispatched to sub-process</p>
-  <p>On MP needs to check if the dependencies finished its execution</p>
+  <p>On MP needs to check if the dependencies finished its execution 
+  @returns : - None -&gt; no more tasks to be executed</p>
+  <ul>
+    <li>
+      JobXXX
+    </li>
+  </ul>
   <dl class="fields">
-    <dt>Returns:</dt>
-        <dd>- a ExecNode
-          <ul>
-            <li>
-              None -&gt; no more tasks to be executed
-            </li>
-            <li>
-              Hold object, all tasks are waiting for dependencies
-            </li>
-          </ul></dd>
   </dl>
 </td></tr></table>
 </div>
@@ -451,7 +467,7 @@ object --+
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">_run_start_processes</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">task_q</span>,
+        <span class="sig-arg">job_q</span>,
         <span class="sig-arg">result_q</span>)</span>
   </h3>
   </td><td align="right" valign="top"
@@ -463,7 +479,7 @@ object --+
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>task_q</code></strong> - (multiprocessing.Queue) tasks to be executed</li>
+        <li><strong class="pname"><code>job_q</code></strong> - (multiprocessing.Queue) tasks to be executed</li>
         <li><strong class="pname"><code>result_q</code></strong> - (multiprocessing.Queue) collect task results @return list of 
           Process</li>
     </ul></dd>
@@ -505,7 +521,7 @@ object --+
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">execute_task_subprocess</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">task_q</span>,
+        <span class="sig-arg">job_q</span>,
         <span class="sig-arg">result_q</span>)</span>
   </h3>
   </td><td align="right" valign="top"
@@ -513,17 +529,14 @@ object --+
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-executed on child processes
-@param task_q: task queue,
-    TODO: improve this creating an common interface for stuff
-          that can be put in this queue
-    * None elements indicate process can terminate
-    * Hold indicate process should wait for next task
-    * Task task to be executed
-
-</pre>
+  <p>executed on child processes</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>job_q</code></strong> - task queue, * None elements indicate process can terminate * 
+          JobHold indicate process should wait for next task * JobTask / 
+          JobTaskPickle task to be executed</li>
+    </ul></dd>
   </dl>
 </td></tr></table>
 </div>
@@ -559,7 +572,7 @@ executed on child processes
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Oct  5 03:28:21 2014
+    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -105,7 +105,7 @@
   <h3><a href="contents.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Changes</a><ul>
-<li><a class="reference internal" href="#id1">0.27.0</a></li>
+<li><a class="reference internal" href="#id1">0.27.0 (<em>2015-01-30</em>)</a></li>
 <li><a class="reference internal" href="#id2">0.26.0 (<em>2014-08-30</em>)</a></li>
 <li><a class="reference internal" href="#id3">0.25.0 (<em>2014-03-26</em>)</a></li>
 <li><a class="reference internal" href="#id4">0.24.0 (<em>2013-11-24</em>)</a></li>
@@ -211,10 +211,26 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
   <div class="section" id="changes">
 <h1>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>0.27.0<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>0.27.0 (<em>2015-01-30</em>)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul>
-<li><p class="first"><cite>CmdAction</cite> added parameters <cite>encoding</cite> and <cite>decode_error</cite></p>
+<li><p class="first">BACKWARD INCOMPATIBLE: drop python 2.6 support</p>
+</li>
+<li><p class="first">BACKWARD INCOMPATIBLE: removed unmaintained genstandalone script</p>
+</li>
+<li><dl class="first docutils">
+<dt>BACKWARD INCOMPATIBLE: removed runtests.py script and support to run</dt>
+<dd><p class="first last">tests through setup.py</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>BACKWARD INCOMPATIBLE: <cite>result_dep</cite> creates an implicit <cite>setup</cite></dt>
+<dd><p class="first last">(was <cite>task_dep</cite>)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">BACKWARD INCOMPATIBLE: GH-#9 <cite>getargs</cite> creates an implicit <cite>result_dep</cite></p>
 </li>
 <li><dl class="first docutils">
 <dt>BACKWARD INCOMPATIBLE: <cite>CmdAction</cite> would always decode process output</dt>
@@ -222,7 +238,15 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 </dd>
 </dl>
 </li>
-<li><p class="first">fix GH-#6: <cite>loader.task_loader()</cite> accepts methods as <em>task creators</em></p>
+<li><p class="first">allow task-creators to return/yield Task instances</p>
+</li>
+<li><p class="first">fix GH-#14: add support for delayed task creation</p>
+</li>
+<li><p class="first">fix GH-#15: <cite>auto</cite> (linux) inotify also listen for <cite>MOVE_TO</cite> events</p>
+</li>
+<li><p class="first">GH-#4 <cite>CmdAction</cite> added parameters <cite>encoding</cite> and <cite>decode_error</cite></p>
+</li>
+<li><p class="first">GH-#6: <cite>loader.task_loader()</cite> accepts methods as <em>task creators</em></p>
 </li>
 </ul>
 </div></blockquote>
@@ -628,8 +652,8 @@ each key is the name of subtasks (previously it was a list)</li>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2014, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+        &copy; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
     </div>
   </body>
 </html>

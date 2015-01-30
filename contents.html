@@ -98,6 +98,17 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><cite>doit</cite> documentation</a><ul>
+<li><a class="reference internal" href="#articles-tutorials">articles &amp; tutorials</a></li>
+<li><a class="reference internal" href="#documentation">documentation</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
 
 
 <div id="searchbox" style="display: none">
@@ -167,7 +178,25 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
             
   <div class="section" id="doit-documentation">
 <h1><cite>doit</cite> documentation<a class="headerlink" href="#doit-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
+<p><cite>doit</cite> <a class="reference internal" href="#main-doc-toc"><em>documentation</em></a> introduces the concepts of <em>every</em>
+feature one by one with examples. It is the preferred way to learn <cite>doit</cite> and it
+also serves as a complete reference. You may skip parts of advanced task
+configuration used on non trivial work-flows on a first read, but make sure you
+reach the docs describing the command line...</p>
+<p>The total reading time for the whole documentation is about one hour.</p>
+<div class="section" id="articles-tutorials">
+<h2>articles &amp; tutorials<a class="headerlink" href="#articles-tutorials" title="Permalink to this headline">¶</a></h2>
+<p>For a short introduction check the articles below:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Software Carpentry: <a class="reference external" href="http://www.software-carpentry.org/v5/intermediate/doit/">Automating an analysis pipeline using doit</a>.</li>
+<li>Create a command line program using <cite>doit</cite> as a lib:
+<a class="reference external" href="http://blog.schettino72.net/posts/power-up-your-tools.html">Power up your tools</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="documentation">
+<span id="main-doc-toc"></span><h2>documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
@@ -202,6 +231,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html#keywords-on-actions">keywords on actions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="delayed.html">delayed task creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uptodate.html">custom uptodate</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="uptodate.html#result-dependency">result-dependency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uptodate.html#run-once">run_once()</a></li>
@@ -259,11 +289,6 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 <li class="toctree-l2"><a class="reference internal" href="extending.html#sub-command-customization">sub-command customization</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="standalone.html">standalone script</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="standalone.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="standalone.html#usage">Usage</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="faq.html#doit-is-too-verbose-why-don-t-you-use-decorators"><em>doit</em> is too verbose, why don&#8217;t you use decorators?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html#dodo-py-file-itself-should-be-a-file-dep-for-all-tasks"><cite>dodo.py</cite> file itself should be a <cite>file_dep</cite> for all tasks</a></li>
@@ -273,10 +298,11 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stories.html">Success Stories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="stories.html#scientific">Scientific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stories.html#content-generation">Content Generation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id1">0.27.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id1">0.27.0 (<em>2015-01-30</em>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changes.html#id2">0.26.0 (<em>2014-08-30</em>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changes.html#id3">0.25.0 (<em>2014-03-26</em>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changes.html#id4">0.24.0 (<em>2013-11-24</em>)</a></li>
@@ -314,6 +340,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 </ul>
 </div>
 </div>
+</div>
 
 
           </div>
@@ -338,8 +365,8 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2014, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+        &copy; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
     </div>
   </body>
 </html>

@@ -658,31 +658,31 @@ define a name, and a default value. It can optionally define a &#8220;short&#822
 conventions). It may also specify additional attributes, such as
 <cite>type</cite> and <cite>help</cite> (see <a class="reference internal" href="#parameters-attributes"><em>below</em></a>).</p>
 <p>See the example:</p>
-<div class="highlight-python"><div class="highlight"><pre>def task_py_params():
-    def show_params(param1, param2):
-        print param1
-        print 5 + param2
-    return {&#39;actions&#39;:[(show_params,)],
-            &#39;params&#39;:[{&#39;name&#39;:&#39;param1&#39;,
-                       &#39;short&#39;:&#39;p&#39;,
-                       &#39;default&#39;:&#39;default value&#39;},
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_py_params</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">show_params</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
+        <span class="k">print</span> <span class="n">param1</span>
+        <span class="k">print</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">param2</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">show_params</span><span class="p">,)],</span>
+            <span class="s">&#39;params&#39;</span><span class="p">:[{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;param1&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;p&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;default&#39;</span><span class="p">:</span><span class="s">&#39;default value&#39;</span><span class="p">},</span>
 
-                      {&#39;name&#39;:&#39;param2&#39;,
-                       &#39;long&#39;:&#39;param2&#39;,
-                       &#39;type&#39;: int,
-                       &#39;default&#39;:0}],
-            &#39;verbosity&#39;:2,
-            }
+                      <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;param2&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;long&#39;</span><span class="p">:</span><span class="s">&#39;param2&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                       <span class="s">&#39;default&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}],</span>
+            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+            <span class="p">}</span>
 
-def task_cmd_params():
-    return {&#39;actions&#39;:[&quot;echo mycmd %(flag)s xxx&quot;],
-            &#39;params&#39;:[{&#39;name&#39;:&#39;flag&#39;,
-                       &#39;short&#39;:&#39;f&#39;,
-                       &#39;long&#39;: &#39;flag&#39;,
-                       &#39;default&#39;: &#39;&#39;,
-                       &#39;help&#39;: &#39;helpful message about this flag&#39;}],
-            &#39;verbosity&#39;: 2
-            }
+<span class="k">def</span> <span class="nf">task_cmd_params</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[</span><span class="s">&quot;echo mycmd </span><span class="si">%(flag)s</span><span class="s"> xxx&quot;</span><span class="p">],</span>
+            <span class="s">&#39;params&#39;</span><span class="p">:[{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;flag&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;f&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;flag&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="s">&#39;helpful message about this flag&#39;</span><span class="p">}],</span>
+            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span>
+            <span class="p">}</span>
 </pre></div>
 </div>
 <p>For python-actions the python function must define arguments with the same name as a task parameter.</p>
@@ -805,21 +805,21 @@ Set inverse flag long parameter name, value will be set to <tt class="docutils l
 </tbody>
 </table>
 <p>Example, given following code:</p>
-<div class="highlight-python"><div class="highlight"><pre>def task_with_flag():
-    def _task(flag):
-        print &quot;Flag {0}&quot;.format(&quot;On&quot; if flag else &quot;Off&quot;)
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_with_flag</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">_task</span><span class="p">(</span><span class="n">flag</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Flag {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;On&quot;</span> <span class="k">if</span> <span class="n">flag</span> <span class="k">else</span> <span class="s">&quot;Off&quot;</span><span class="p">)</span>
 
-    return {
-        &#39;params&#39;: [{
-            &#39;name&#39;: &#39;flag&#39;,
-            &#39;long&#39;: &#39;flagon&#39;,
-            &#39;short&#39;: &#39;f&#39;,
-            &#39;type&#39;: bool,
-            &#39;default&#39;: True,
-            &#39;inverse&#39;: &#39;flagoff&#39;}],
-        &#39;actions&#39;: [(_task, )],
-        &#39;verbosity&#39;: 2
-        }
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&#39;params&#39;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;flag&#39;</span><span class="p">,</span>
+            <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;flagon&#39;</span><span class="p">,</span>
+            <span class="s">&#39;short&#39;</span><span class="p">:</span> <span class="s">&#39;f&#39;</span><span class="p">,</span>
+            <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+            <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+            <span class="s">&#39;inverse&#39;</span><span class="p">:</span> <span class="s">&#39;flagoff&#39;</span><span class="p">}],</span>
+        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">_task</span><span class="p">,</span> <span class="p">)],</span>
+        <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="p">}</span>
 </pre></div>
 </div>
 <p>calls to task <cite>with_flag</cite> show flag on or off:</p>
@@ -867,8 +867,7 @@ with positional arguments <em>after</em> optional arguments.</p>
 <p>If a task accepts positional arguments, it is not allowed to pass
 other tasks after it in the command line. For example if <cite>task1</cite>
 takes positional arguments you can not call:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ doit task1 pos1 task2
-</pre></div>
+<div class="highlight-python"><pre>$ doit task1 pos1 task2</pre>
 </div>
 <p class="last">As the string <cite>task2</cite> would be interpreted as positional argument from
 <cite>task1</cite> not as another task name.</p>
@@ -1036,8 +1035,8 @@ for more examples.</p>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2014, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+        &copy; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
     </div>
   </body>
 </html>

@@ -26,7 +26,7 @@
     <link rel="shortcut icon" href="_static/favico.ico"/>
     <link rel="top" title="doit - automation tool" href="index.html" />
     <link rel="next" title="Command line interface - run" href="cmd_run.html" />
-    <link rel="prev" title="More on dependencies" href="dependencies.html" />
+    <link rel="prev" title="delayed task creation" href="delayed.html" />
 <style>
   body {
     font-size: 16px;
@@ -88,7 +88,7 @@
           <a href="cmd_run.html" title="Command line interface - run"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="dependencies.html" title="More on dependencies"
+          <a href="delayed.html" title="delayed task creation"
              accesskey="P">previous</a> |</li>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
@@ -347,9 +347,7 @@ a boolean value.</p>
             <span class="p">}</span>
 </pre></div>
 </div>
-<p>Note that <cite>check_outdated</cite> function is not actually using the arguments
-<cite>task</cite> and <cite>values</cite>.
-You could also execute this function in the task-creator and pass the value
+<p>You could also execute this function in the task-creator and pass the value
 to to <cite>uptodate</cite>. The advantage of just passing the callable is that this
 check will not be executed at all if the task was not selected to be executed.</p>
 <div class="section" id="example-run-once-implementation">
@@ -428,11 +426,12 @@ with the time that was saved on last successful execution.</p>
 <div class="section" id="example-result-dep-implementation">
 <h3>Example: result_dep implementation<a class="headerlink" href="#example-result-dep-implementation" title="Permalink to this headline">¶</a></h3>
 <p>The <tt class="docutils literal"><span class="pre">result_dep</span></tt> is more complicated due to two factors. It needs to modify
-the task&#8217;s <tt class="docutils literal"><span class="pre">task_dep</span></tt>. And it needs to check the task&#8217;s saved values and metadata
+the task&#8217;s <tt class="docutils literal"><span class="pre">setup_tasks</span></tt>.
+And it needs to check the task&#8217;s saved values and metadata
 from a task different from where it is being applied.</p>
-<p>A <tt class="docutils literal"><span class="pre">result_dep</span></tt> implies that its dependency is also a <tt class="docutils literal"><span class="pre">task_dep</span></tt>.
+<p>A <tt class="docutils literal"><span class="pre">result_dep</span></tt> implies that its dependency is also a <tt class="docutils literal"><span class="pre">setup</span></tt>.
 We have seen that the callable takes a <cite>task</cite> parameter that we used
-to modify the task object. The problem is that modifying <tt class="docutils literal"><span class="pre">task_dep</span></tt>
+to modify the task object. The problem is that modifying <tt class="docutils literal"><span class="pre">setup_tasks</span></tt>
 when the callable gets called would be &#8220;too late&#8221; according to the
 way <cite>doit</cite> works. When an object is passed <tt class="docutils literal"><span class="pre">uptodate</span></tt> and this
 object&#8217;s class has a method named <tt class="docutils literal"><span class="pre">configure_task</span></tt> it will be called
@@ -442,48 +441,7 @@ an attribute named <tt class="docutils literal"><span class="pre">tasks_dict</sp
 all task objects where the <tt class="docutils literal"><span class="pre">key</span></tt> is the task name (this is used to get all
 sub-tasks from a task-group). And also a method called <tt class="docutils literal"><span class="pre">get_val</span></tt> to access
 the saved values and results from any task.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">result_dep</span><span class="p">(</span><span class="n">UptodateCalculator</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;check if result of the given task was modified</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dep_task_name</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dep_name</span> <span class="o">=</span> <span class="n">dep_task_name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">result_name</span> <span class="o">=</span> <span class="s">&#39;_result:</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">dep_name</span>
-
-    <span class="k">def</span> <span class="nf">configure_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;to be called by doit when create the task&quot;&quot;&quot;</span>
-        <span class="c"># result_dep creates an implicit task_dep</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">task_dep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dep_name</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_result_single</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;get result from a single task&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_val</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dep_name</span><span class="p">,</span> <span class="s">&#39;result:&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_result_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dep_task</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;get result from a group task</span>
-<span class="sd">        the result is the combination of results of all sub-tasks</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">prefix</span> <span class="o">=</span> <span class="n">dep_task</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot;:&quot;</span>
-        <span class="n">sub_tasks</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">dep_task</span><span class="o">.</span><span class="n">task_dep</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">sub</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
-                <span class="n">sub_tasks</span><span class="p">[</span><span class="n">sub</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_val</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="s">&#39;result:&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">sub_tasks</span>
-
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;return True if result is the same as last run&quot;&quot;&quot;</span>
-        <span class="n">dep_task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks_dict</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dep_name</span><span class="p">]</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">dep_task</span><span class="o">.</span><span class="n">has_subtask</span><span class="p">:</span>
-            <span class="n">dep_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result_single</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">dep_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result_group</span><span class="p">(</span><span class="n">dep_task</span><span class="p">)</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">value_savers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">:</span> <span class="n">dep_result</span><span class="p">})</span>
-
-        <span class="n">last_success</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">last_success</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">False</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">last_success</span> <span class="o">==</span> <span class="n">dep_result</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>See the <cite>result_dep</cite> <a class="reference external" href="https://github.com/pydoit/doit/blob/master/doit/task.py#L485">source</a>.</p>
 </div>
 </div>
 </div>
@@ -501,7 +459,7 @@ the saved values and results from any task.</p>
           <a href="cmd_run.html" title="Command line interface - run"
              >next</a></li>
         <li class="right" >
-          <a href="dependencies.html" title="More on dependencies"
+          <a href="delayed.html" title="delayed task creation"
              >previous</a> |</li>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
@@ -514,8 +472,8 @@ the saved values and results from any task.</p>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2014, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+        &copy; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
     </div>
   </body>
 </html>

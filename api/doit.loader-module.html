@@ -104,7 +104,8 @@
           <td><span class="summary-sig"><a href="doit.loader-module.html#get_module" class="summary-sig-name">get_module</a>(<span class="summary-sig-arg">dodo_file</span>,
         <span class="summary-sig-arg">cwd</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">seek_parent</span>=<span class="summary-sig-default">False</span>)</span><br />
-      The python file defining tasks is called &quot;dodo&quot; file.</td>
+      Find python module defining tasks, it is called &quot;dodo&quot; 
+      file.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="doit.loader-pysrc.html#get_module">source&nbsp;code</a></span>
             
@@ -120,11 +121,47 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="doit.loader-module.html#load_tasks" class="summary-sig-name">load_tasks</a>(<span class="summary-sig-arg">task_creators</span>,
-        <span class="summary-sig-arg">command_names</span>=<span class="summary-sig-default"><code class="variable-group">(</code><code class="variable-group">)</code></span>)</span><br />
-      Get task generators and generate tasks</td>
+          <td><span class="summary-sig"><a name="create_after"></a><span class="summary-sig-name">create_after</span>(<span class="summary-sig-arg">executed</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Annotate a task-creator function with delayed loader info</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.loader-pysrc.html#create_after">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doit.loader-module.html#load_tasks" class="summary-sig-name">load_tasks</a>(<span class="summary-sig-arg">namespace</span>,
+        <span class="summary-sig-arg">command_names</span>=<span class="summary-sig-default"><code class="variable-group">(</code><code class="variable-group">)</code></span>,
+        <span class="summary-sig-arg">allow_delayed</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Find task-creators and create tasks</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="doit.loader-pysrc.html#load_tasks">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doit.loader-module.html#_get_task_creators" class="summary-sig-name" onclick="show_private();">_get_task_creators</a>(<span class="summary-sig-arg">namespace</span>,
+        <span class="summary-sig-arg">command_names</span>)</span><br />
+      get functions defined in the `namespace` and select the task-creators</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.loader-pysrc.html#_get_task_creators">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -253,11 +290,12 @@
   <span title="sys">sys</span>,
   <span title="inspect">inspect</span>,
   <span title="six">six</span>,
-  <span title="doit.compat.OrderedDict">OrderedDict</span>,
+  <span title="collections.OrderedDict">OrderedDict</span>,
   <a href="doit.compat-module.html#is_bound_method" title="doit.compat.is_bound_method">is_bound_method</a>,
   <a href="doit.exceptions.InvalidTask-class.html" title="doit.exceptions.InvalidTask">InvalidTask</a>,
   <a href="doit.exceptions.InvalidCommand-class.html" title="doit.exceptions.InvalidCommand">InvalidCommand</a>,
   <a href="doit.exceptions.InvalidDodoFile-class.html" title="doit.exceptions.InvalidDodoFile">InvalidDodoFile</a>,
+  <a href="doit.task.DelayedLoader-class.html" title="doit.task.DelayedLoader">DelayedLoader</a>,
   <a href="doit.task.Task-class.html" title="doit.task.Task">Task</a>,
   <a href="doit.task-module.html#dict_to_task" title="doit.task.dict_to_task">dict_to_task</a>
 </p><br />
@@ -295,7 +333,8 @@
     </td>
   </tr></table>
   
-  <p>The python file defining tasks is called &quot;dodo&quot; file.</p>
+  <p>Find python module defining tasks, it is called &quot;dodo&quot; 
+  file.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -314,22 +353,60 @@
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">load_tasks</span>(<span class="sig-arg">task_creators</span>,
-        <span class="sig-arg">command_names</span>=<span class="sig-default"><code class="variable-group">(</code><code class="variable-group">)</code></span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">load_tasks</span>(<span class="sig-arg">namespace</span>,
+        <span class="sig-arg">command_names</span>=<span class="sig-default"><code class="variable-group">(</code><code class="variable-group">)</code></span>,
+        <span class="sig-arg">allow_delayed</span>=<span class="sig-default">False</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="doit.loader-pysrc.html#load_tasks">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Get task generators and generate tasks</p>
+  <p>Find task-creators and create tasks</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>task_creators</code></strong> - (dict) containing the task creators, it might contain other stuff</li>
-        <li><strong class="pname"><code>command_names</code></strong> - (list - str) blacklist for task names @return task_list (list) of
-          Tasks in the order they were defined on the file</li>
+        <li><strong class="pname"><code>namespace</code></strong> - (dict) containing the task creators, it might contain other stuff</li>
+        <li><strong class="pname"><code>command_names</code></strong> - (list - str) blacklist for task names</li>
+        <li><strong class="pname"><code>load_all</code></strong> - (bool) if True ignore doit_crate_after['executed']
+          <p>`load_all == False` is used by the runner to delay the 
+          creation of tasks until a dependent task is executed. This is 
+          only used by the `run` command, other commands should always load
+          all tasks since it wont execute any task.</p>
+          <p>@return task_list (list) of Tasks in the order they were 
+          defined on the file</p></li>
     </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_get_task_creators"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_get_task_creators</span>(<span class="sig-arg">namespace</span>,
+        <span class="sig-arg">command_names</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doit.loader-pysrc.html#_get_task_creators">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>get functions defined in the `namespace` and select the 
+  task-creators</p>
+  <p>A task-creator is a function that:</p>
+  <ul>
+    <li>
+      name starts with the string TASK_STRING
+    </li>
+    <li>
+      has the attribute `create_doit_tasks`
+    </li>
+  </ul>
+  <p>@return (list - func) task-creators</p>
+  <dl class="fields">
   </dl>
 </td></tr></table>
 </div>
@@ -385,7 +462,7 @@
         <li><strong class="pname"><code>gen_doc</code></strong> - (string/None) docstring from the task generator function</li>
     </ul></dd>
     <dt>Returns:</dt>
-        <dd>(tuple) task, list of subtasks</dd>
+        <dd>(list - Task)</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -421,7 +498,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Oct  5 03:28:21 2014
+    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

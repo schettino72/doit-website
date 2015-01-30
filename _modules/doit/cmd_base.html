@@ -213,6 +213,11 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <span class="c"># sequence of dicts</span>
     <span class="n">cmd_options</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">()</span>
 
+    <span class="c"># `execute_tasks` indicates wheather this command execute task&#39;s actions.</span>
+    <span class="c"># This is used by the loader to indicate when delayed task creation</span>
+    <span class="c"># should be used.</span>
+    <span class="n">execute_tasks</span> <span class="o">=</span> <span class="bp">False</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="n">Command</span><span class="o">.</span><span class="n">CMD_LIST</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
@@ -266,13 +271,14 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 <span class="c">######################################################################</span>
 
 <span class="c"># choose internal dependency file.</span></div>
-<span class="n">opt_depfile</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;dep_file&#39;</span><span class="p">,</span>
-               <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;&#39;</span><span class="p">,</span>
-               <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;db-file&#39;</span><span class="p">,</span>
-               <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-               <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&quot;.doit.db&quot;</span><span class="p">,</span>
-               <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="s">&quot;file used to save successful runs&quot;</span>
-               <span class="p">}</span>
+<span class="n">opt_depfile</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;dep_file&#39;</span><span class="p">,</span>
+    <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;db-file&#39;</span><span class="p">,</span>
+    <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&quot;.doit.db&quot;</span><span class="p">,</span>
+    <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="s">&quot;file used to save successful runs&quot;</span>
+<span class="p">}</span>
 
 <span class="c"># dependency file DB backend</span>
 <span class="n">opt_backend</span> <span class="o">=</span> <span class="p">{</span>
@@ -281,40 +287,43 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;backend&#39;</span><span class="p">,</span>
     <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&quot;dbm&quot;</span><span class="p">,</span>
-    <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&quot;Select dependency file backend.&quot;</span> <span class="o">+</span>
+    <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&quot;Select dependency file backend. &quot;</span> <span class="o">+</span>
              <span class="s">&quot;Available options dbm, json, sqlite3. [default: </span><span class="si">%(default)s</span><span class="s">]&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 
 
 <span class="c">#### options related to dodo.py</span>
 <span class="c"># select dodo file containing tasks</span>
-<span class="n">opt_dodo</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;dodoFile&#39;</span><span class="p">,</span>
-            <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;f&#39;</span><span class="p">,</span>
-            <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;file&#39;</span><span class="p">,</span>
-            <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-            <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&#39;dodo.py&#39;</span><span class="p">,</span>
-            <span class="s">&#39;help&#39;</span><span class="p">:</span><span class="s">&quot;load task from dodo FILE [default: </span><span class="si">%(default)s</span><span class="s">]&quot;</span>
-            <span class="p">}</span>
+<span class="n">opt_dodo</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;dodoFile&#39;</span><span class="p">,</span>
+    <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;f&#39;</span><span class="p">,</span>
+    <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;file&#39;</span><span class="p">,</span>
+    <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&#39;dodo.py&#39;</span><span class="p">,</span>
+    <span class="s">&#39;help&#39;</span><span class="p">:</span><span class="s">&quot;load task from dodo FILE [default: </span><span class="si">%(default)s</span><span class="s">]&quot;</span>
+<span class="p">}</span>
 
 <span class="c"># cwd</span>
-<span class="n">opt_cwd</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;cwdPath&#39;</span><span class="p">,</span>
-           <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;d&#39;</span><span class="p">,</span>
-           <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;dir&#39;</span><span class="p">,</span>
-           <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-           <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-           <span class="s">&#39;help&#39;</span><span class="p">:(</span><span class="s">&quot;set path to be used as cwd directory (file paths on &quot;</span> <span class="o">+</span>
-                   <span class="s">&quot;dodo file are relative to dodo.py location.&quot;</span><span class="p">)</span>
-           <span class="p">}</span>
+<span class="n">opt_cwd</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;cwdPath&#39;</span><span class="p">,</span>
+    <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;d&#39;</span><span class="p">,</span>
+    <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;dir&#39;</span><span class="p">,</span>
+    <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">&#39;help&#39;</span><span class="p">:(</span><span class="s">&quot;set path to be used as cwd directory (file paths on &quot;</span> <span class="o">+</span>
+            <span class="s">&quot;dodo file are relative to dodo.py location).&quot;</span><span class="p">)</span>
+<span class="p">}</span>
 
 <span class="c"># seek dodo file on parent folders</span>
-<span class="n">opt_seek_file</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;seek_file&#39;</span><span class="p">,</span>
-                 <span class="s">&#39;short&#39;</span><span class="p">:</span> <span class="s">&#39;k&#39;</span><span class="p">,</span>
-                 <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;seek-file&#39;</span><span class="p">,</span>
-                 <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
-                 <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-                 <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&quot;seek dodo file on parent folders &quot;</span> <span class="o">+</span>
-                          <span class="s">&quot;[default: </span><span class="si">%(default)s</span><span class="s">]&quot;</span><span class="p">)</span>
-                 <span class="p">}</span>
+<span class="n">opt_seek_file</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;seek_file&#39;</span><span class="p">,</span>
+    <span class="s">&#39;short&#39;</span><span class="p">:</span> <span class="s">&#39;k&#39;</span><span class="p">,</span>
+    <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;seek-file&#39;</span><span class="p">,</span>
+    <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&quot;seek dodo file on parent folders &quot;</span> <span class="o">+</span>
+             <span class="s">&quot;[default: </span><span class="si">%(default)s</span><span class="s">]&quot;</span><span class="p">)</span>
+<span class="p">}</span>
 
 
 <div class="viewcode-block" id="TaskLoader"><a class="viewcode-back" href="../../extending.html#doit.cmd_base.TaskLoader">[docs]</a><span class="k">class</span> <span class="nc">TaskLoader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -338,13 +347,13 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 </div>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_load_from</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">cmd_list</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_load_from</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">cmd_list</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;load task from a module or dict with module members&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismodule</span><span class="p">(</span><span class="n">namespace</span><span class="p">):</span>
             <span class="n">members</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">namespace</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">members</span> <span class="o">=</span> <span class="n">namespace</span>
-        <span class="n">task_list</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span><span class="n">members</span><span class="p">,</span> <span class="n">cmd_list</span><span class="p">)</span>
+        <span class="n">task_list</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span><span class="n">members</span><span class="p">,</span> <span class="n">cmd_list</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">execute_tasks</span><span class="p">)</span>
         <span class="n">doit_config</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_doit_config</span><span class="p">(</span><span class="n">members</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">task_list</span><span class="p">,</span> <span class="n">doit_config</span>
 
@@ -359,7 +368,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mod_dict</span> <span class="o">=</span> <span class="n">mod_dict</span>
 
     <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mod_dict</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">CMD_LIST</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mod_dict</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">CMD_LIST</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">DodoTaskLoader</span><span class="p">(</span><span class="n">TaskLoader</span><span class="p">):</span>
@@ -369,7 +378,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="n">dodo_module</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s">&#39;dodoFile&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s">&#39;cwdPath&#39;</span><span class="p">],</span>
                                         <span class="n">params</span><span class="p">[</span><span class="s">&#39;seek_file&#39;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="n">dodo_module</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">CMD_LIST</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">dodo_module</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">CMD_LIST</span><span class="p">)</span>
 
 
 
@@ -431,7 +440,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 
         <span class="c"># magic - create dict based on signature of _execute method</span>
         <span class="n">args_name</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getargspec</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">exec_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">args_name</span> <span class="k">if</span> <span class="n">n</span><span class="o">!=</span><span class="s">&#39;self&#39;</span><span class="p">)</span>
+        <span class="n">exec_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">args_name</span> <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="s">&#39;self&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">(</span><span class="o">**</span><span class="n">exec_params</span><span class="p">)</span>
 
 
@@ -500,8 +509,8 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2014, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+        &copy; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
     </div>
   </body>
 </html>

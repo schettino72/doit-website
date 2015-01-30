@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>delayed task creation &mdash; doit - automation tool</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.27',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favico.ico"/>
+    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="next" title="custom uptodate" href="uptodate.html" />
+    <link rel="prev" title="More on dependencies" href="dependencies.html" />
+<style>
+  body {
+    font-size: 16px;
+  }
+
+  div.topic {
+    padding: 2px;
+    background-color: #F8F4A6;
+    border: none;
+  }
+
+  p.topic-title {
+    display: run-in;
+    margin-right: 15px;
+  }
+
+  a.external-link {
+    background: url(_static/external.png) center right no-repeat;
+    padding-right: 13px;
+  }
+
+  div.related ul li a.external-link {
+    padding-right: 13px;
+  }
+
+  .sidebartext {
+    font-size: 75%;
+    line-height: 130%;
+  }
+
+</style>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29887834-3']);
+  _gaq.push(['_setDomainName', 'pydoit.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
+<img src="_static/doit.png" alt="doit logo" />
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="uptodate.html" title="custom uptodate"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="dependencies.html" title="More on dependencies"
+             accesskey="P">previous</a> |</li>
+  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
+  <!-- TODO news -->
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<h3>Sponsors</h3>
+<em>Your logo here</em>
+
+<h3>Sponsor/Donate</h3>
+
+
+<div data-gratipay-username="schettino72" data-gratipay-widget="custom">
+  <div><a class="gratipay-profile-link">Gratipay</a> weekly funding goal is <span class="gratipay-goal">$?.??</span> USD.
+  </div>
+  <div style="position:relative;background-color:#2F2D2D;color:#DDDDDD;border-radius:5px;margin:3px 5px;padding:3px 0;">
+    <div class="gratipay-goal-progress-bar" style="position:absolute;top:3px;background-color:#008000;height:24px;border-radius:2px;"></div>
+    <span class="gratipay-receiving" style="position:relative;padding-left:6px;">$?.??</span>
+  </div>
+</div>
+<script src="//grtp.co/v1.js"></script>
+
+<br/>
+
+<div class="sidebartext">
+Why Donate? Help keep the project alive! Donations will be used for project maintanance tasks (bug fixes, merge patches, reply users).<br/>
+  <script data-gratipay-username="schettino72"
+        data-gratipay-widget="button"
+        src="//gttp.co/v1.js"></script>
+<br/>
+For corporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+</div>
+
+<h3>Hire me</h3>
+<div class="sidebartext">
+Looking for a python developer with a proven record of designing and developing
+robust and well tested applications?
+The creator and maintainer of <em>doit</em> is available for hire.
+Full-time, part-time or one-off job.
+<br/>
+Contact: <em>schettino72</em>&#64<span>gmail.com</span>
+</div>
+
+
+
+
+<h3></h3>
+<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" /></a><br/><br/>
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="delayed-task-creation">
+<h1>delayed task creation<a class="headerlink" href="#delayed-task-creation" title="Permalink to this headline">¶</a></h1>
+<p><cite>doit</cite> execution model is divided in two phases:</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>task-loading</em> : search for task-creator functions (that starts with string <cite>task_</cite>) and create task metadata</li>
+<li><em>task-execution</em> : check which tasks are out-of-date and execute them</li>
+</ul>
+</div></blockquote>
+<p>Normally <em>task-loading</em> is completed before the <em>task-execution</em> starts.
+<cite>doit</cite> allows some task metadata to be modified during <em>task-execution</em> with
+<cite>calc_deps</cite> and on <cite>uptodate</cite>, but those are restricted to modifying
+already created tasks...</p>
+<p>Sometimes it is not possible to know all tasks that should be created before
+some tasks are executed. For these cases <cite>doit</cite> supports
+<em>delayed task creation</em>, that means <em>task-execution</em> starts before
+<em>task-loading</em> is completed.</p>
+<p>When <em>task-creator</em> function is decorated with <cite>doit.create_after</cite>,
+its evaluation to create the tasks will be delayed to happen after the
+execution of the specified task in the <cite>executed</cite> param.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">create_after</span>
+
+
+<span class="nd">@create_after</span><span class="p">(</span><span class="n">executed</span><span class="o">=</span><span class="s">&#39;early&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">task_build</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">inf</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.in&#39;</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="p">{</span>
+            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">inf</span><span class="p">,</span>
+            <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;cp </span><span class="si">%(dependencies)s</span><span class="s"> </span><span class="si">%(targets)s</span><span class="s">&#39;</span><span class="p">],</span>
+            <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">inf</span><span class="p">],</span>
+            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">inf</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39;.out&#39;</span><span class="p">],</span>
+            <span class="s">&#39;clean&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">task_early</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;a task that create some files...&quot;&quot;&quot;</span>
+    <span class="n">inter_files</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;a.in&#39;</span><span class="p">,</span> <span class="s">&#39;b.in&#39;</span><span class="p">,</span> <span class="s">&#39;c.in&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;touch </span><span class="si">%(targets)s</span><span class="s">&#39;</span><span class="p">],</span>
+        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="n">inter_files</span><span class="p">,</span>
+        <span class="s">&#39;clean&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>There is a limitation in the use of the delayed task creation with
+multiprocessing. Multiprocessing relies on a task being pickled and
+sent to sub-process, so your task can not contain closures because
+closures are not picklable. See <a class="reference external" href="https://docs.python.org/3/library/pickle.html#pickle-picklable">What can be pickled</a></p>
+<p class="last"><cite>doit</cite> manages to avoid this limitation for tasks that are created before
+the <em>task-execution</em> begins but for delayed tasks it is not possible.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="uptodate.html" title="custom uptodate"
+             >next</a></li>
+        <li class="right" >
+          <a href="dependencies.html" title="More on dependencies"
+             >previous</a> |</li>
+  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
+  <!-- TODO news -->
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>
