@@ -3,6 +3,32 @@
 Changes
 =======
 
+0.28.0 (*2015-04-22*)
+=====================
+
+ - BACKWARD INCOMPATIBLE: signature for custom DB backend changed
+ - BACKWARD INCOMPATIBLE: `DoitMain` API change
+ - BACKWARD INCOMPATIBLE: `Command` API change
+ - BACKWARD INCOMPATIBLE: `default` reporter renamed to `console`
+ - GH-#25: Add a `reset-dep` command to recompute dependencies state
+ - GH-#22: Allow to customize how file_dep are checked
+ - GH-#31: Add IPython `%doit` magic-function loading tasks from its global
+   namespace
+ - read configuration options from INI files
+ - GH-#32 plugin system
+ - plugin support: COMMAND - add new commands
+ - plugin support: LOADER - add custom task loaders
+ - plugin support: REPORTER - add custom reporter for `run` command
+ - plugin support: BACKEND - add custom DB persistence backend
+ - GH-#36 PythonAction recognizes returned TaskError or TaskFailed
+ - GH-#37 CmdParse support for arguments of type list
+ - GH-#47 CmdParse support for choices
+ - fix issue when using unicode strings to specify `minversion` on python 2
+ - fix GH-#27 auto command in conjunction with task arguments
+ - fix GH-#44 Fix the list -s command when result_dep is used
+ - fix GH-#45 make sure all `uptodate` checks are executed (no short-circuit)
+
+
 0.27.0 (*2015-01-30*)
 ======================
 

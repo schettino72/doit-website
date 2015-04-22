@@ -92,6 +92,41 @@
     </table>
   </td>
 </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doit.cmd_run.Run-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      configure command</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.cmd_run-pysrc.html#Run.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doit.cmd_run.Run-class.html#get_reporters" class="summary-sig-name">get_reporters</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      return dict of all available reporters</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.cmd_run-pysrc.html#Run.get_reporters">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
 <tr class="private">
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
@@ -103,7 +138,7 @@
         <span class="summary-sig-arg">verbosity</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">always</span>=<span class="summary-sig-default">False</span>,
         <span class="summary-sig-arg">continue_</span>=<span class="summary-sig-default">False</span>,
-        <span class="summary-sig-arg">reporter</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">reporter</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">console</code><code class="variable-quote">'</code></span>,
         <span class="summary-sig-arg">num_process</span>=<span class="summary-sig-default">0</span>,
         <span class="summary-sig-arg">par_type</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">process</code><code class="variable-quote">'</code></span>,
         <span class="summary-sig-arg">single</span>=<span class="summary-sig-default">False</span>)</span><br />
@@ -121,10 +156,13 @@
   <tr>
     <td colspan="2" class="summary">
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b>:
-      <code><a href="doit.cmd_base.DoitCmdBase-class.html#__init__">__init__</a></code>,
       <code><a href="doit.cmd_base.DoitCmdBase-class.html#execute">execute</a></code>,
-      <code><a href="doit.cmd_base.DoitCmdBase-class.html#set_options">set_options</a></code>
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#get_backends">get_backends</a></code>,
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#get_options">get_options</a></code>
       </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b> (private):
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#_get_loader" onclick="show_private();">_get_loader</a></code>
+      </p></div>
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
       <code><a href="doit.cmd_base.Command-class.html#help">help</a></code>,
       <code><a href="doit.cmd_base.Command-class.html#parse_execute">parse_execute</a></code>
@@ -142,6 +180,57 @@
       <code>__sizeof__</code>,
       <code>__str__</code>,
       <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS METHODS ==================== -->
+<a name="section-ClassMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
+      <code><a href="doit.cmd_base.Command-class.html#get_name">get_name</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== STATIC METHODS ==================== -->
+<a name="section-StaticMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Static Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-StaticMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b>:
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#check_minversion">check_minversion</a></code>,
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#get_checker_cls">get_checker_cls</a></code>
       </p>
     </td>
   </tr>
@@ -213,7 +302,6 @@
       <code><a href="doit.cmd_base.DoitCmdBase-class.html#base_options">base_options</a></code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
-      <code><a href="doit.cmd_base.Command-class.html#CMD_LIST">CMD_LIST</a></code>,
       <code><a href="doit.cmd_base.Command-class.html#name">name</a></code>
       </p>
     </td>
@@ -238,6 +326,9 @@
 </tr>
   <tr>
     <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
+      <code><a href="doit.cmd_base.Command-class.html#cmdparser">cmdparser</a></code>
+      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__class__</code>
       </p>
@@ -262,6 +353,60 @@
   </td>
 </tr>
 </table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doit.cmd_run-pysrc.html#Run.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+configure command
+
+:param config: dict
+
+Set extra configuration values, this vals can come from:
+ * directly passed when using the API - through DoitMain.run()
+ * from an INI configuration file
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_reporters"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_reporters</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doit.cmd_run-pysrc.html#Run.get_reporters">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>return dict of all available reporters</p>
+  <p>Also set CmdOption choices.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
 <a name="_execute"></a>
 <div class="private">
 <table class="details" border="1" cellpadding="3"
@@ -274,7 +419,7 @@
         <span class="sig-arg">verbosity</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">always</span>=<span class="sig-default">False</span>,
         <span class="sig-arg">continue_</span>=<span class="sig-default">False</span>,
-        <span class="sig-arg">reporter</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">reporter</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">console</code><code class="variable-quote">'</code></span>,
         <span class="sig-arg">num_process</span>=<span class="sig-default">0</span>,
         <span class="sig-arg">par_type</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">process</code><code class="variable-quote">'</code></span>,
         <span class="sig-arg">single</span>=<span class="sig-default">False</span>)</span>
@@ -377,7 +522,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

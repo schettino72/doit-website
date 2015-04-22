@@ -44,7 +44,8 @@ This flag is valid for all sub-commands.
     $ doit -f release.py
 
 
-*doit* can seek for the ``dodo.py`` file on parent folders if the the option ``--seek-file`` is specified.
+*doit* can seek for the ``dodo.py`` file on parent folders if the option
+``--seek-file`` is specified.
 
 
 as an executable file
@@ -79,6 +80,12 @@ by calling the ``doit.run()``, you need to pass the ``globals``:
 ``doit.run()`` parameter will be passed to a :ref:`ModuleTaskLoader <ModuleTaskLoader>` to find your tasks.
 
 
+from IPython
+------------------
+
+You can install and use the `%doit` magic function to load tasks defined
+directly in IPython's global namespace (:ref:`more <tools.IPython>`).
+
 
 returned value
 ------------------
@@ -90,36 +97,6 @@ returned value
  * 2 => error executing task
  * 3 => error before task execution starts
         (in this case the reporter is not used)
-
-
-
-config
---------
-
-Command line parameters can be set straight on a `dodo` file. This example below sets the default tasks to be run, the ``continue`` option, and a different reporter.
-
-.. literalinclude:: tutorial/doit_config.py
-
-So if you just execute
-
-.. code-block:: console
-
-   $ doit
-
-it will have the same effect as executing
-
-.. code-block:: console
-
-   $ doit --continue --reporter json my_task_1 my_task_2
-
-You need to check `doit_cmd.py
-<https://github.com/pydoit/doit/blob/master/doit/doit_cmd.py>`_ to find out how
-parameter maps to config names.
-
-.. note::
-
-  The parameters ``--file`` and ``--dir`` can not be used on config because
-  they control how the dodo file itself is loaded.
 
 
 DB backend
@@ -253,6 +230,7 @@ Apart from the default it also includes:
 
     $ doit --reporter json
 
+.. _custom_reporter:
 
 custom reporter
 -----------------
@@ -261,15 +239,65 @@ It is possible to define your own custom reporter. Check the code on
 `doit/reporter.py
 <https://github.com/pydoit/doit/blob/master/doit/reporter.py>`_ ... It is easy
 to get started by sub-classing the default reporter as shown below. The custom
-reporter must be configured using DOIT_CONFIG dict.
+reporter can be enabled directly on DOIT_CONFIG dict.
 
 .. literalinclude:: tutorial/custom_reporter.py
 
+It is also possible distribute/use a custom reporter
+as a :ref:`plugin <plugin_reporter>`.
 
 Note that the ``reporter`` have no control over the *real time* output
 from a task while it is being executed,
 this is controlled by the ``verbosity`` param.
 
+
+check_file_uptodate
+-------------------
+
+`doit` provides different options to check if dependency files are up to date
+(see :ref:`file-dep`).  Use the option ``--check_file_uptodate`` to choose:
+
+ * `md5`: use the md5sum.
+ * `timestamp`: use the timestamp.
+
+.. note::
+
+   The `timestamp` checker considers a file is not up-to-date if there is
+   **any** change in the the modified time (`mtime`), it does not matter if
+   the new time is in the future or past of the original timestamp.
+
+
+You can set this option from command line, but you probably want to set it for
+all commands using `DOIT_CONFIG`.
+
+.. code-block:: console
+
+    DOIT_CONFIG = {'check_file_uptodate': 'timestamp'}
+
+
+
+
+custom check_file_uptodate
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is possible to define your own custom up to date checker. Check the code on
+`doit/dependency.py
+<https://github.com/pydoit/doit/blob/master/doit/dependency.py>`_ ...
+Sub-class ``FileChangedChecker`` and define the 2 required methods as shown
+below. The custom checker must be configured using DOIT_CONFIG dict.
+
+.. code-block:: python
+
+    from doit.dependency import FileChangedChecker
+
+    class MyChecker(FileChangedChecker):
+        """With this checker, files are always out of date."""
+        def check_modified(self, file_path, file_stat, state):
+            return True
+        def get_state(self, dep, current_state):
+            pass
+
+    DOIT_CONFIG = {'check_file_uptodate': MyChecker}
 
 
 output-file
@@ -312,6 +340,10 @@ that can be used with a `dodo.py` file.
 For example if your `dodo.py` makes use of a feature added at `doit X`
 and distribute it. If another user who tries this `dodo.py` with a version
 older that `X`, doit will display an error warning the user to update `doit`.
+
+`minversion` can be specified as a string or a 3-element tuple with integer
+values. If specified as a string any part that is not a number i.e.(dev0, a2,
+b4) will be converted to -1.
 
 .. code-block:: console
 

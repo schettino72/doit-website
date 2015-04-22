@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>doit.plugin</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="doit-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >doit</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="doit-module.html">Package&nbsp;doit</a> ::
+        Module&nbsp;plugin
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="doit.plugin-module.html" onclick="show_private();">Module doit.plugin</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">importlib</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="PluginEntry"></a><div id="PluginEntry-def"><a name="L3"></a><tt class="py-lineno"> 3</tt> <a class="py-toggle" href="#" id="PluginEntry-toggle" onclick="return toggle('PluginEntry');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="doit.plugin.PluginEntry-class.html">PluginEntry</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PluginEntry-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="PluginEntry-expanded"><a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line">    <tt class="py-docstring">"""A Plugin entry point</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">    The entry-point is not loaded/imported on creation.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">    Use the method `get()` to import the module and get the attribute.</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"> </tt>
+<a name="PluginEntry.Sentinel"></a><div id="PluginEntry.Sentinel-def"><a name="L10"></a><tt class="py-lineno">10</tt> <a class="py-toggle" href="#" id="PluginEntry.Sentinel-toggle" onclick="return toggle('PluginEntry.Sentinel');">-</a><tt class="py-line">    <tt class="py-keyword">class</tt> <a class="py-def-name" href="doit.plugin.PluginEntry.Sentinel-class.html">Sentinel</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PluginEntry.Sentinel-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PluginEntry.Sentinel-expanded"><a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">    <tt class="py-comment"># indicate the entry-point object is not loaded yet</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt id="link-0" class="py-name" targets="Variable doit.plugin.PluginEntry.NOT_LOADED=doit.plugin.PluginEntry-class.html#NOT_LOADED"><a title="doit.plugin.PluginEntry.NOT_LOADED" class="py-name" href="#" onclick="return doclink('link-0', 'NOT_LOADED', 'link-0');">NOT_LOADED</a></tt> <tt class="py-op">=</tt> <tt id="link-1" class="py-name" targets="Class doit.plugin.PluginEntry.Sentinel=doit.plugin.PluginEntry.Sentinel-class.html"><a title="doit.plugin.PluginEntry.Sentinel" class="py-name" href="#" onclick="return doclink('link-1', 'Sentinel', 'link-1');">Sentinel</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="PluginEntry.__init__"></a><div id="PluginEntry.__init__-def"><a name="L16"></a><tt class="py-lineno">16</tt> <a class="py-toggle" href="#" id="PluginEntry.__init__-toggle" onclick="return toggle('PluginEntry.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="doit.plugin.PluginEntry-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">category</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">location</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PluginEntry.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PluginEntry.__init__-expanded"><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-docstring">        :param category str: plugin category name</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-docstring">        :param name str: plugin name (as used by doit)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">        :param location str: python object location as &lt;module&gt;:&lt;attr&gt;</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">obj</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name"><a title="doit.plugin.PluginEntry.NOT_LOADED" class="py-name" href="#" onclick="return doclink('link-2', 'NOT_LOADED', 'link-0');">NOT_LOADED</a></tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">category</tt> <tt class="py-op">=</tt> <tt class="py-name">category</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Variable doit.cmd_base.Command.name=doit.cmd_base.Command-class.html#name,Variable doit.cmd_resetdep.ResetDep.name=doit.cmd_resetdep.ResetDep-class.html#name,Variable doit.runner.JobTaskPickle.name=doit.runner.JobTaskPickle-class.html#name"><a title="doit.cmd_base.Command.name
+doit.cmd_resetdep.ResetDep.name
+doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-3', 'name', 'link-3');">name</a></tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name"><a title="doit.cmd_base.Command.name
+doit.cmd_resetdep.ResetDep.name
+doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-4', 'name', 'link-3');">name</a></tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">location</tt> <tt class="py-op">=</tt> <tt class="py-name">location</tt> </tt>
+</div><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
+<a name="PluginEntry.__repr__"></a><div id="PluginEntry.__repr__-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="PluginEntry.__repr__-toggle" onclick="return toggle('PluginEntry.__repr__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="doit.plugin.PluginEntry-class.html#__repr__">__repr__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PluginEntry.__repr__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PluginEntry.__repr__-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">"PluginEntry('{}', '{}', '{}')"</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">category</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="doit.cmd_base.Command.name
+doit.cmd_resetdep.ResetDep.name
+doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-5', 'name', 'link-3');">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">location</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt>
+<a name="PluginEntry.get"></a><div id="PluginEntry.get-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="PluginEntry.get-toggle" onclick="return toggle('PluginEntry.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="doit.plugin.PluginEntry-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PluginEntry.get-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PluginEntry.get-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-docstring">"""return obj, get from cache or load"""</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">obj</tt> <tt class="py-keyword">is</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="doit.plugin.PluginEntry.NOT_LOADED" class="py-name" href="#" onclick="return doclink('link-6', 'NOT_LOADED', 'link-0');">NOT_LOADED</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">obj</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method doit.plugin.PluginEntry.load()=doit.plugin.PluginEntry-class.html#load"><a title="doit.plugin.PluginEntry.load" class="py-name" href="#" onclick="return doclink('link-7', 'load', 'link-7');">load</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">obj</tt> </tt>
+</div><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"> </tt>
+<a name="PluginEntry.load"></a><div id="PluginEntry.load-def"><a name="L37"></a><tt class="py-lineno">37</tt> <a class="py-toggle" href="#" id="PluginEntry.load-toggle" onclick="return toggle('PluginEntry.load');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="doit.plugin.PluginEntry-class.html#load">load</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PluginEntry.load-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PluginEntry.load-expanded"><a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-docstring">"""load/import reference to obj from named module/obj"""</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-name">module_name</tt><tt class="py-op">,</tt> <tt class="py-name">obj_name</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">location</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">':'</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">            <tt class="py-name">module</tt> <tt class="py-op">=</tt> <tt class="py-name">importlib</tt><tt class="py-op">.</tt><tt class="py-name">import_module</tt><tt class="py-op">(</tt><tt class="py-name">module_name</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt><tt class="py-string">'Plugin {} module `{}` not found.'</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">category</tt><tt class="py-op">,</tt> <tt class="py-name">module_name</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">            <tt class="py-name">obj</tt> <tt class="py-op">=</tt> <tt class="py-name">getattr</tt><tt class="py-op">(</tt><tt class="py-name">module</tt><tt class="py-op">,</tt> <tt class="py-name">obj_name</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">:</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt><tt class="py-string">'Plugin {}:{} module `{}` has no {}.'</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">category</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="doit.cmd_base.Command.name
+doit.cmd_resetdep.ResetDep.name
+doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-8', 'name', 'link-3');">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">module_name</tt><tt class="py-op">,</tt> <tt class="py-name">obj_name</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">obj</tt> </tt>
+</div></div><a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"> </tt>
+<a name="PluginDict"></a><div id="PluginDict-def"><a name="L53"></a><tt class="py-lineno">53</tt> <a class="py-toggle" href="#" id="PluginDict-toggle" onclick="return toggle('PluginDict');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="doit.plugin.PluginDict-class.html">PluginDict</a><tt class="py-op">(</tt><tt class="py-base-class">dict</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PluginDict-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="PluginDict-expanded"><a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">    <tt class="py-docstring">"""A dict where item values *might* be a PluginEntry"""</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"> </tt>
+<a name="PluginDict.add_plugins"></a><div id="PluginDict.add_plugins-def"><a name="L56"></a><tt class="py-lineno">56</tt> <a class="py-toggle" href="#" id="PluginDict.add_plugins-toggle" onclick="return toggle('PluginDict.add_plugins');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="doit.plugin.PluginDict-class.html#add_plugins">add_plugins</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">cfg_parser</tt><tt class="py-op">,</tt> <tt class="py-param">section</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PluginDict.add_plugins-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PluginDict.add_plugins-expanded"><a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">        <tt class="py-docstring">"""read all items from a ConfigParser section containing plugins"""</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">        <tt class="py-comment"># plugins from INI file</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">section</tt> <tt class="py-keyword">in</tt> <tt class="py-name">cfg_parser</tt><tt class="py-op">:</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt id="link-9" class="py-name"><a title="doit.cmd_base.Command.name
+doit.cmd_resetdep.ResetDep.name
+doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-9', 'name', 'link-3');">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">location</tt> <tt class="py-keyword">in</tt> <tt class="py-name">cfg_parser</tt><tt class="py-op">[</tt><tt class="py-name">section</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">[</tt><tt id="link-10" class="py-name"><a title="doit.cmd_base.Command.name
+doit.cmd_resetdep.ResetDep.name
+doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-10', 'name', 'link-3');">name</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name" targets="Class doit.plugin.PluginEntry=doit.plugin.PluginEntry-class.html"><a title="doit.plugin.PluginEntry" class="py-name" href="#" onclick="return doclink('link-11', 'PluginEntry', 'link-11');">PluginEntry</a></tt><tt class="py-op">(</tt><tt class="py-name">section</tt><tt class="py-op">,</tt> <tt id="link-12" class="py-name"><a title="doit.cmd_base.Command.name
+doit.cmd_resetdep.ResetDep.name
+doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-12', 'name', 'link-3');">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">location</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-comment"># plugins from pkg_resources</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">            <tt class="py-keyword">import</tt> <tt class="py-name">pkg_resources</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">            <tt class="py-name">group</tt> <tt class="py-op">=</tt> <tt class="py-string">"doit.{}"</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">section</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">point</tt> <tt class="py-keyword">in</tt> <tt class="py-name">pkg_resources</tt><tt class="py-op">.</tt><tt class="py-name">iter_entry_points</tt><tt class="py-op">(</tt><tt class="py-name">group</tt><tt class="py-op">=</tt><tt class="py-name">group</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">                <tt id="link-13" class="py-name"><a title="doit.cmd_base.Command.name
+doit.cmd_resetdep.ResetDep.name
+doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-13', 'name', 'link-3');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-name">point</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="doit.cmd_base.Command.name
+doit.cmd_resetdep.ResetDep.name
+doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-14', 'name', 'link-3');">name</a></tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">                <tt class="py-name">location</tt> <tt class="py-op">=</tt> <tt class="py-string">"{}:{}"</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">point</tt><tt class="py-op">.</tt><tt class="py-name">module_name</tt><tt class="py-op">,</tt> <tt class="py-name">point</tt><tt class="py-op">.</tt><tt class="py-name">attrs</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">[</tt><tt id="link-15" class="py-name"><a title="doit.cmd_base.Command.name
+doit.cmd_resetdep.ResetDep.name
+doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-15', 'name', 'link-3');">name</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-16" class="py-name"><a title="doit.plugin.PluginEntry" class="py-name" href="#" onclick="return doclink('link-16', 'PluginEntry', 'link-11');">PluginEntry</a></tt><tt class="py-op">(</tt><tt class="py-name">section</tt><tt class="py-op">,</tt> <tt id="link-17" class="py-name"><a title="doit.cmd_base.Command.name
+doit.cmd_resetdep.ResetDep.name
+doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-17', 'name', 'link-3');">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">location</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> <tt class="py-comment"># pragma: no cover</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">            <tt class="py-keyword">pass</tt>  <tt class="py-comment"># ignore, if setuptools is not installed</tt> </tt>
+</div><a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line"> </tt>
+<a name="PluginDict.get_plugin"></a><div id="PluginDict.get_plugin-def"><a name="L75"></a><tt class="py-lineno">75</tt> <a class="py-toggle" href="#" id="PluginDict.get_plugin-toggle" onclick="return toggle('PluginDict.get_plugin');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="doit.plugin.PluginDict-class.html#get_plugin">get_plugin</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">key</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PluginDict.get_plugin-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PluginDict.get_plugin-expanded"><a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">        <tt class="py-docstring">"""load and return a single plugin"""</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">        <tt class="py-name">val</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">val</tt><tt class="py-op">,</tt> <tt id="link-18" class="py-name"><a title="doit.plugin.PluginEntry" class="py-name" href="#" onclick="return doclink('link-18', 'PluginEntry', 'link-11');">PluginEntry</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line">            <tt class="py-name">val</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="doit.cmd_base.Command.name
+doit.cmd_resetdep.ResetDep.name
+doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-19', 'name', 'link-3');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-name">key</tt> <tt class="py-comment"># overwrite obj name attribute</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">val</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method doit.dependency.DbmDB.get()=doit.dependency.DbmDB-class.html#get,Method doit.dependency.JsonDB.get()=doit.dependency.JsonDB-class.html#get,Method doit.dependency.SqliteDB.get()=doit.dependency.SqliteDB-class.html#get,Method doit.plugin.PluginEntry.get()=doit.plugin.PluginEntry-class.html#get"><a title="doit.dependency.DbmDB.get
+doit.dependency.JsonDB.get
+doit.dependency.SqliteDB.get
+doit.plugin.PluginEntry.get" class="py-name" href="#" onclick="return doclink('link-20', 'get', 'link-20');">get</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">val</tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line"> </tt>
+<a name="PluginDict.to_dict"></a><div id="PluginDict.to_dict-def"><a name="L84"></a><tt class="py-lineno">84</tt> <a class="py-toggle" href="#" id="PluginDict.to_dict-toggle" onclick="return toggle('PluginDict.to_dict');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="doit.plugin.PluginDict-class.html#to_dict">to_dict</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PluginDict.to_dict-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="PluginDict.to_dict-expanded"><a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line">        <tt class="py-docstring">"""return a standard dict with all plugins loaded"""</tt> </tt>
+<a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">{</tt><tt class="py-name">k</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Method doit.plugin.PluginDict.get_plugin()=doit.plugin.PluginDict-class.html#get_plugin"><a title="doit.plugin.PluginDict.get_plugin" class="py-name" href="#" onclick="return doclink('link-21', 'get_plugin', 'link-21');">get_plugin</a></tt><tt class="py-op">(</tt><tt class="py-name">k</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">k</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">}</tt> </tt>
+</div></div><a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="doit-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >doit</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:46 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

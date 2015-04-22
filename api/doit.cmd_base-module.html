@@ -234,7 +234,7 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="doit.cmd_base-module.html#opt_depfile" class="summary-name">opt_depfile</a> = <code title="{'default': '.doit.db',
- 'help': 'file used to save successful runs',
+ 'help': 'file used to save successful runs [default: %(default)s]',
  'long': 'db-file',
  'name': 'dep_file',
  'short': '',
@@ -246,12 +246,26 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="doit.cmd_base-module.html#opt_backend" class="summary-name">opt_backend</a> = <code title="{'default': 'dbm',
- 'help': 'Select dependency file backend. Available options dbm, json,\
- sqlite3. [default: %(default)s]',
+ 'help': 'Select dependency file backend. [default: %(default)s]',
  'long': 'backend',
  'name': 'backend',
  'short': '',
  'type': &lt;type 'str'&gt;}"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">dbm</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Select dependency fi</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doit.cmd_base-module.html#opt_check_file_uptodate" class="summary-name">opt_check_file_uptodate</a> = <code title="{'default': 'md5',
+ 'help': '''Choose how to check if files have been modified.
+Available options [default: %(default)s]:
+  \'md5\': use the md5sum
+  \'timestamp\': use the timestamp
+''',
+ 'long': 'check_file_uptodate',
+ 'name': 'check_file_uptodate',
+..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">md5</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Choose h</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
@@ -303,12 +317,18 @@ e are relative to dodo.py location).',
   <span title="inspect">inspect</span>,
   <span title="sys">sys</span>,
   <span title="collections.deque">deque</span>,
+  <span title="six">six</span>,
   <a href="doit.version-module.html" title="doit.version">version</a>,
   <a href="doit.cmdparse.CmdOption-class.html" title="doit.cmdparse.CmdOption">CmdOption</a>,
   <a href="doit.cmdparse.CmdParse-class.html" title="doit.cmdparse.CmdParse">CmdParse</a>,
   <a href="doit.exceptions.InvalidCommand-class.html" title="doit.exceptions.InvalidCommand">InvalidCommand</a>,
   <a href="doit.exceptions.InvalidDodoFile-class.html" title="doit.exceptions.InvalidDodoFile">InvalidDodoFile</a>,
-  <span title="doit.dependency.backend_map">backend_map</span>,
+  <span title="doit.dependency.CHECKERS">CHECKERS</span>,
+  <a href="doit.dependency.DbmDB-class.html" title="doit.dependency.DbmDB">DbmDB</a>,
+  <a href="doit.dependency.JsonDB-class.html" title="doit.dependency.JsonDB">JsonDB</a>,
+  <a href="doit.dependency.SqliteDB-class.html" title="doit.dependency.SqliteDB">SqliteDB</a>,
+  <a href="doit.dependency.Dependency-class.html" title="doit.dependency.Dependency">Dependency</a>,
+  <a href="doit.plugin.PluginDict-class.html" title="doit.plugin.PluginDict">PluginDict</a>,
   <a href="doit.loader-module.html" title="doit.loader">loader</a>
 </p><br />
 <!-- ==================== VARIABLES DETAILS ==================== -->
@@ -342,7 +362,7 @@ e are relative to dodo.py location).',
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
 <code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">.doit.db</code><code class="variable-quote">'</code><code class="variable-op">,</code>
- <code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">file used to save successful runs</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">file used to save successful runs [default: %(default)s]</code><code class="variable-quote">'</code><code class="variable-op">,</code>
  <code class="variable-quote">'</code><code class="variable-string">long</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">db-file</code><code class="variable-quote">'</code><code class="variable-op">,</code>
  <code class="variable-quote">'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">dep_file</code><code class="variable-quote">'</code><code class="variable-op">,</code>
  <code class="variable-quote">'</code><code class="variable-string">short</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-op">,</code>
@@ -365,12 +385,37 @@ e are relative to dodo.py location).',
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
 <code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">dbm</code><code class="variable-quote">'</code><code class="variable-op">,</code>
- <code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Select dependency file backend. Available options dbm, json,</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-<code class="variable-string"> sqlite3. [default: %(default)s]</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Select dependency file backend. [default: %(default)s]</code><code class="variable-quote">'</code><code class="variable-op">,</code>
  <code class="variable-quote">'</code><code class="variable-string">long</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">backend</code><code class="variable-quote">'</code><code class="variable-op">,</code>
  <code class="variable-quote">'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">backend</code><code class="variable-quote">'</code><code class="variable-op">,</code>
  <code class="variable-quote">'</code><code class="variable-string">short</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-op">,</code>
  <code class="variable-quote">'</code><code class="variable-string">type</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;type 'str'&gt;<code class="variable-group">}</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="opt_check_file_uptodate"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">opt_check_file_uptodate</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">md5</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'''</code><code class="variable-string">Choose how to check if files have been modified.</code>
+<code class="variable-string">Available options [default: %(default)s]:</code>
+<code class="variable-string">  \'md5\': use the md5sum</code>
+<code class="variable-string">  \'timestamp\': use the timestamp</code>
+<code class="variable-string"></code><code class="variable-quote">'''</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">long</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">check_file_uptodate</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">check_file_uptodate</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -478,7 +523,7 @@ e are relative to dodo.py location).',
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

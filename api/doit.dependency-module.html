@@ -88,6 +88,14 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
+        <a href="doit.dependency.DependencyException-class.html" class="summary-name">DependencyException</a><br />
+      Exception class for whatever backend exception
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a href="doit.dependency.JsonDB-class.html" class="summary-name">JsonDB</a><br />
       Backend using a single text file with JSON content
     </td>
@@ -112,32 +120,32 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="doit.dependency.DependencyBase-class.html" class="summary-name">DependencyBase</a><br />
-      Manage tasks dependencies (abstract class)
+        <a href="doit.dependency.FileChangedChecker-class.html" class="summary-name">FileChangedChecker</a><br />
+      Base checker for dependencies, must be inherited.
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="doit.dependency.JsonDependency-class.html" class="summary-name">JsonDependency</a><br />
-      Task dependency manager with JSON backend
+        <a href="doit.dependency.MD5Checker-class.html" class="summary-name">MD5Checker</a><br />
+      MD5 checker, uses the md5sum.
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="doit.dependency.DbmDependency-class.html" class="summary-name">DbmDependency</a><br />
-      Task dependency manager with DBM backend
+        <a href="doit.dependency.TimestampChecker-class.html" class="summary-name">TimestampChecker</a><br />
+      Checker that use only the timestamp.
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="doit.dependency.SqliteDependency-class.html" class="summary-name">SqliteDependency</a><br />
-      Task dependency manager with sqlite backend
+        <a href="doit.dependency.Dependency-class.html" class="summary-name">Dependency</a><br />
+      Manage tasks dependencies
     </td>
   </tr>
 <tr>
@@ -146,14 +154,6 @@
     </td><td class="summary">
         <a href="doit.dependency.UptodateCalculator-class.html" class="summary-name">UptodateCalculator</a><br />
       Base class for 'uptodate' that need access to all tasks
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="doit.dependency.DbmDependency-class.html" class="summary-name">Dependency</a><br />
-      Task dependency manager with DBM backend
     </td>
   </tr>
 </table>
@@ -214,26 +214,6 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="doit.dependency-module.html#check_modified" class="summary-sig-name">check_modified</a>(<span class="summary-sig-arg">file_path</span>,
-        <span class="summary-sig-arg">file_stat</span>,
-        <span class="summary-sig-arg">state</span>)</span><br />
-      check if file in file_path is modified from previous 
-      &quot;state&quot;</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#check_modified">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
           <td><span class="summary-sig"><a name="encode_task_id"></a><span class="summary-sig-name">encode_task_id</span>(<span class="summary-sig-arg">func</span>)</span><br />
       in python 2 dbm module does not automatically convert unicode to 
       bytes</td>
@@ -268,16 +248,8 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="USE_FILE_TIMESTAMP"></a><span class="summary-name">USE_FILE_TIMESTAMP</span> = <code title="True">True</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="doit.dependency-module.html#backend_map" class="summary-name">backend_map</a> = <code title="{'dbm': &lt;class 'doit.dependency.DbmDependency'&gt;,
- 'json': &lt;class 'doit.dependency.JsonDependency'&gt;,
- 'sqlite3': &lt;class 'doit.dependency.SqliteDependency'&gt;}"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">dbm</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;class 'doit.dependency.DbmDependency'&gt;<code class="variable-op">,</code><code class="variable-ellipsis">...</code></code>
+        <a href="doit.dependency-module.html#CHECKERS" class="summary-name">CHECKERS</a> = <code title="{'md5': &lt;class 'doit.dependency.MD5Checker'&gt;,
+ 'timestamp': &lt;class 'doit.dependency.TimestampChecker'&gt;}"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">md5</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;class 'doit.dependency.MD5Checker'&gt;<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">time</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
@@ -342,34 +314,6 @@
   </dl>
 </td></tr></table>
 </div>
-<a name="check_modified"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">check_modified</span>(<span class="sig-arg">file_path</span>,
-        <span class="sig-arg">file_stat</span>,
-        <span class="sig-arg">state</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="doit.dependency-pysrc.html#check_modified">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>check if file in file_path is modified from previous 
-  &quot;state&quot;</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>file_path</code></strong>, <strong class="pname"><code>(string)</code></strong> - file path</li>
-        <li><strong class="pname"><code>file_stat</code></strong> - the value returned from os.stat(file_path) @param state (tuple), 
-          timestamp, size, md5</li>
-    </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
 <br />
 <!-- ==================== VARIABLES DETAILS ==================== -->
 <a name="section-VariablesDetails"></a>
@@ -389,21 +333,20 @@
   </td>
 </tr>
 </table>
-<a name="backend_map"></a>
+<a name="CHECKERS"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">backend_map</h3>
+  <h3 class="epydoc">CHECKERS</h3>
   
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">dbm</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;class 'doit.dependency.DbmDependency'&gt;<code class="variable-op">,</code>
- <code class="variable-quote">'</code><code class="variable-string">json</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;class 'doit.dependency.JsonDependency'&gt;<code class="variable-op">,</code>
- <code class="variable-quote">'</code><code class="variable-string">sqlite3</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;class 'doit.dependency.SqliteDependency'&gt;<code class="variable-group">}</code>
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">md5</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;class 'doit.dependency.MD5Checker'&gt;<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">timestamp</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;class 'doit.dependency.TimestampChecker'&gt;<code class="variable-group">}</code>
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -441,7 +384,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

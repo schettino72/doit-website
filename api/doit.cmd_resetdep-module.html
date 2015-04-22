@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>doit.runner.Hold</title>
+  <title>doit.cmd_resetdep</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -43,8 +43,7 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="doit-module.html">Package&nbsp;doit</a> ::
-        <a href="doit.runner-module.html" onclick="show_private();">Module&nbsp;runner</a> ::
-        Class&nbsp;Hold
+        Module&nbsp;cmd_resetdep
       </span>
     </td>
     <td>
@@ -56,79 +55,64 @@
     </td>
   </tr>
 </table>
-<!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class Hold</h1><p class="nomargin-top"><span class="codelink"><a href="doit.runner-pysrc.html#Hold">source&nbsp;code</a></span></p>
-<pre class="base-tree">
-object --+
-         |
-        <strong class="uidshort">Hold</strong>
-</pre>
-
-<hr />
-<p>Sentinel class: No task ready to be executed</p>
-
-<!-- ==================== INSTANCE METHODS ==================== -->
-<a name="section-InstanceMethods"></a>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module cmd_resetdep</h1><p class="nomargin-top"><span class="codelink"><a href="doit.cmd_resetdep-pysrc.html">source&nbsp;code</a></span></p>
+<!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="left"><span class="table-header">Classes</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-InstanceMethods"
+         ><span class="options">[<a href="#section-Classes"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
     </table>
   </td>
 </tr>
-  <tr>
-    <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
-      <code>__delattr__</code>,
-      <code>__format__</code>,
-      <code>__getattribute__</code>,
-      <code>__hash__</code>,
-      <code>__init__</code>,
-      <code>__new__</code>,
-      <code>__reduce__</code>,
-      <code>__reduce_ex__</code>,
-      <code>__repr__</code>,
-      <code>__setattr__</code>,
-      <code>__sizeof__</code>,
-      <code>__str__</code>,
-      <code>__subclasshook__</code>
-      </p>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doit.cmd_resetdep.ResetDep-class.html" class="summary-name">ResetDep</a>
     </td>
   </tr>
 </table>
-<!-- ==================== PROPERTIES ==================== -->
-<a name="section-Properties"></a>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="left"><span class="table-header">Variables</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-Properties"
+         ><span class="options">[<a href="#section-Variables"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
     </table>
   </td>
 </tr>
-  <tr>
-    <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
-      <code>__class__</code>
-      </p>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'doit'"><code class="variable-quote">'</code><code class="variable-string">doit</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 </table>
+<p class="indent-wrapped-lines"><b>Imports:</b>
+  <a href="doit.cmd_base.DoitCmdBase-class.html" title="doit.cmd_base.DoitCmdBase">DoitCmdBase</a>,
+  <a href="doit.cmd_base-module.html#check_tasks_exist" title="doit.cmd_base.check_tasks_exist">check_tasks_exist</a>,
+  <a href="doit.cmd_base-module.html#subtasks_iter" title="doit.cmd_base.subtasks_iter">subtasks_iter</a>,
+  <a href="doit.dependency.DependencyException-class.html" title="doit.dependency.DependencyException">DependencyException</a>
+</p><br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
@@ -160,7 +144,7 @@ object --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Oct  5 03:28:21 2014
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

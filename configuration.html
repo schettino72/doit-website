@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuration &mdash; doit - automation tool</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.28',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favico.ico"/>
+    <link rel="top" title="doit - automation tool" href="contents.html" />
+    <link rel="next" title="Passing Task Arguments from the command line" href="task_args.html" />
+    <link rel="prev" title="Other Commands" href="cmd_other.html" />
+<style>
+  body {
+    font-size: 16px;
+  }
+
+  div.topic {
+    padding: 0;
+    background-color: #F8F4A6;
+    border: 1px solid #D8D486;
+  }
+
+  div.topic p.first {
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    background-color: #E8E496;
+    border-bottom: 1px solid #C8C476;
+  }
+
+  div.topic p {
+    margin: 0.5em 1em 0.5em 1em;
+  }
+
+  p.topic-title {
+    display: run-in;
+    margin-right: 15px;
+  }
+
+  a.external-link {
+    background: url(_static/external.png) center right no-repeat;
+    padding-right: 13px;
+  }
+
+  div.related ul li a.external-link {
+    padding-right: 13px;
+  }
+
+  .sidebartext {
+    font-size: 75%;
+    line-height: 130%;
+  }
+
+</style>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29887834-3']);
+  _gaq.push(['_setDomainName', 'pydoit.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
+<img src="_static/doit.png" alt="doit logo" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="task_args.html" title="Passing Task Arguments from the command line"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="cmd_other.html" title="Other Commands"
+             accesskey="P">previous</a> |</li>
+  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
+  <!-- TODO news -->
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuration</a><ul>
+<li><a class="reference internal" href="#doit-cfg">doit.cfg</a><ul>
+<li><a class="reference internal" href="#global-section">GLOBAL section</a></li>
+<li><a class="reference internal" href="#commands-section">commands section</a></li>
+<li><a class="reference internal" href="#plugins-sections">plugins sections</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration-at-dodo-py">configuration at <em>dodo.py</em></a></li>
+</ul>
+</li>
+</ul>
+
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<h3>Sponsors</h3>
+<em>Your logo here</em>
+
+<h3>Sponsor/Donate</h3>
+
+
+<div data-gratipay-username="schettino72" data-gratipay-widget="custom">
+  <div><a class="gratipay-profile-link">Gratipay</a> weekly funding goal is <span class="gratipay-goal">$?.??</span> USD.
+  </div>
+  <div style="position:relative;background-color:#2F2D2D;color:#DDDDDD;border-radius:5px;margin:3px 5px;padding:3px 0;">
+    <div class="gratipay-goal-progress-bar" style="position:absolute;top:3px;background-color:#008000;height:24px;border-radius:2px;"></div>
+    <span class="gratipay-receiving" style="position:relative;padding-left:6px;">$?.??</span>
+  </div>
+</div>
+<script src="//grtp.co/v1.js"></script>
+
+<br/>
+
+<div class="sidebartext">
+If you use <em>doit</em> and think it is a useful project. Please consider to make a donation to support the developer/maintainer with maintanance tasks (bug fixes, merge patches, reply users) and further development.<br/>
+  <script data-gratipay-username="schettino72"
+        data-gratipay-widget="button"
+        src="//gttp.co/v1.js"></script>
+<br/>
+If you use it at work, ask your company to sponsor the project. The logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+</div>
+
+<h3>Hire me</h3>
+<div class="sidebartext">
+Looking for a python developer with a proven record of designing and developing
+robust and well tested applications?
+The creator and maintainer of <em>doit</em> is available for hire.
+Full-time, part-time or one-off job.
+<br/>
+Contact: <em>schettino72</em>&#64<span>gmail.com</span>
+</div>
+
+
+
+
+<h3></h3>
+<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" /></a><br/><br/>
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="doit-cfg">
+<h2>doit.cfg<a class="headerlink" href="#doit-cfg" title="Permalink to this headline">¶</a></h2>
+<p><cite>doit</cite> uses an INI style configuration file
+(see <a class="reference external" href="https://docs.python.org/3/library/configparser.html">configparser</a>).
+Note: key/value entries can be separated only by the equal sign <cite>=</cite>.</p>
+<p>If a file name <cite>doit.cfg</cite> is present in the current working directory,
+it is processed. It supports 3 kind of sections:</p>
+<ul class="simple">
+<li>a <cite>GLOBAL</cite> section</li>
+<li>a section for each command</li>
+<li>a section for each plugin category</li>
+</ul>
+<div class="section" id="global-section">
+<h3>GLOBAL section<a class="headerlink" href="#global-section" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>GLOBAL</cite> section may contain command line options that will
+be used (if applicable) by any commands.</p>
+<p>Example setting the DB backend type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">GLOBAL</span><span class="p">]</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">json</span>
+</pre></div>
+</div>
+<p>All commands that has a <cite>backend</cite> option (<em>run</em>, <em>clean</em>, <em>forget</em>, etc),
+will use this option without the need this option in the command line.</p>
+</div>
+<div class="section" id="commands-section">
+<h3>commands section<a class="headerlink" href="#commands-section" title="Permalink to this headline">¶</a></h3>
+<p>To configure options for a specific command, use a section with
+the command name:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="nb">list</span><span class="p">]</span>
+<span class="n">status</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">subtasks</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The key name is the internal option name, it might not be the same as
+the string using in the command line. i.e. <cite>subtasks</cite> above refers to
+<cite>&#8211;all</cite>.</p>
+</div>
+</div>
+<div class="section" id="plugins-sections">
+<h3>plugins sections<a class="headerlink" href="#plugins-sections" title="Permalink to this headline">¶</a></h3>
+<p>Check the <a class="reference internal" href="extending.html#plugins"><span>plugins</span></a> section for an introduction
+on available plugin categories.</p>
+</div>
+</div>
+<div class="section" id="configuration-at-dodo-py">
+<h2>configuration at <em>dodo.py</em><a class="headerlink" href="#configuration-at-dodo-py" title="Permalink to this headline">¶</a></h2>
+<p>As a convenience you can also set <cite>GLOBAL</cite> options directly into a <cite>dodo.py</cite>.
+Just put the option in the <cite>DOIT_CONFIG</cite> dict.
+This example below sets the default tasks to be run, the <code class="docutils literal"><span class="pre">continue</span></code> option,
+and a different reporter.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;my_task_1&#39;</span><span class="p">,</span> <span class="s">&#39;my_task_2&#39;</span><span class="p">],</span>
+               <span class="s">&#39;continue&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+               <span class="s">&#39;reporter&#39;</span><span class="p">:</span> <span class="s">&#39;json&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>So if you just execute</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+</pre></div>
+</div>
+<p>it will have the same effect as executing</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit --continue --reporter json my_task_1 my_task_2
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Not all options can be set on <cite>dodo.py</cite> file.
+The parameters <code class="docutils literal"><span class="pre">--file</span></code> and <code class="docutils literal"><span class="pre">--dir</span></code> can not be used on config because
+they control how the <em>dodo</em> file itself is loaded.</p>
+<p class="last">Also if the command does not read the <cite>dodo.py</cite> file it obviously will
+not be used.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="task_args.html" title="Passing Task Arguments from the command line"
+             >next</a></li>
+        <li class="right" >
+          <a href="cmd_other.html" title="Other Commands"
+             >previous</a> |</li>
+  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
+  <!-- TODO news -->
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

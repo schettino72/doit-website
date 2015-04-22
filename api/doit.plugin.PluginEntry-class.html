@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>doit.dependency.DbmDependency</title>
+  <title>doit.plugin.PluginEntry</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -43,8 +43,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="doit-module.html">Package&nbsp;doit</a> ::
-        <a href="doit.dependency-module.html" onclick="show_private();">Module&nbsp;dependency</a> ::
-        Class&nbsp;DbmDependency
+        <a href="doit.plugin-module.html" onclick="show_private();">Module&nbsp;plugin</a> ::
+        Class&nbsp;PluginEntry
       </span>
     </td>
     <td>
@@ -57,18 +57,43 @@
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class DbmDependency</h1><p class="nomargin-top"><span class="codelink"><a href="doit.dependency-pysrc.html#DbmDependency">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class PluginEntry</h1><p class="nomargin-top"><span class="codelink"><a href="doit.plugin-pysrc.html#PluginEntry">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-    object --+    
-             |    
-<a href="doit.dependency.DependencyBase-class.html">DependencyBase</a> --+
-                 |
-                <strong class="uidshort">DbmDependency</strong>
+object --+
+         |
+        <strong class="uidshort">PluginEntry</strong>
 </pre>
 
 <hr />
-<p>Task dependency manager with DBM backend</p>
+<p>A Plugin entry point</p>
+  <p>The entry-point is not loaded/imported on creation. Use the method 
+  `get()` to import the module and get the attribute.</p>
 
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doit.plugin.PluginEntry.Sentinel-class.html" class="summary-name">Sentinel</a>
+    </td>
+  </tr>
+</table>
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -92,11 +117,66 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="doit.dependency.DbmDependency-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">name</span>)</span><br />
-      x.__init__(...) initializes x; see help(type(x)) for signature</td>
+          <td><span class="summary-sig"><a href="doit.plugin.PluginEntry-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">category</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">location</span>)</span><br />
+      :param category str: plugin category name :param name str: plugin 
+      name (as used by doit) :param location str: python object location as
+      &lt;module&gt;:&lt;attr&gt;</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#DbmDependency.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.plugin-pysrc.html#PluginEntry.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doit.plugin.PluginEntry-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      repr(x)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.plugin-pysrc.html#PluginEntry.__repr__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get"></a><span class="summary-sig-name">get</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      return obj, get from cache or load</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.plugin-pysrc.html#PluginEntry.get">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="load"></a><span class="summary-sig-name">load</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      load/import reference to obj from named module/obj</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.plugin-pysrc.html#PluginEntry.load">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -106,16 +186,6 @@
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.dependency.DependencyBase-class.html">DependencyBase</a></code></b>:
-      <code><a href="doit.dependency.DependencyBase-class.html#close">close</a></code>,
-      <code><a href="doit.dependency.DependencyBase-class.html#get_status">get_status</a></code>,
-      <code><a href="doit.dependency.DependencyBase-class.html#get_value">get_value</a></code>,
-      <code><a href="doit.dependency.DependencyBase-class.html#get_values">get_values</a></code>,
-      <code><a href="doit.dependency.DependencyBase-class.html#ignore">ignore</a></code>,
-      <code><a href="doit.dependency.DependencyBase-class.html#remove_success">remove_success</a></code>,
-      <code><a href="doit.dependency.DependencyBase-class.html#save_success">save_success</a></code>,
-      <code><a href="doit.dependency.DependencyBase-class.html#status_is_ignore">status_is_ignore</a></code>
-      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
       <code>__format__</code>,
@@ -124,12 +194,36 @@
       <code>__new__</code>,
       <code>__reduce__</code>,
       <code>__reduce_ex__</code>,
-      <code>__repr__</code>,
       <code>__setattr__</code>,
       <code>__sizeof__</code>,
       <code>__str__</code>,
       <code>__subclasshook__</code>
       </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="NOT_LOADED"></a><span class="summary-name">NOT_LOADED</span> = <code title="Sentinel()">Sentinel()</code>
     </td>
   </tr>
 </table>
@@ -184,18 +278,45 @@
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">name</span>)</span>
+        <span class="sig-arg">category</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">location</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="doit.dependency-pysrc.html#DbmDependency.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="doit.plugin-pysrc.html#PluginEntry.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+  <p>:param category str: plugin category name :param name str: plugin name
+  (as used by doit) :param location str: python object location as 
+  &lt;module&gt;:&lt;attr&gt;</p>
   <dl class="fields">
     <dt>Overrides:
         object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__repr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doit.plugin-pysrc.html#PluginEntry.__repr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>repr(x)</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__repr__
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
   </dl>
@@ -233,7 +354,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

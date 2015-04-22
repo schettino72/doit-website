@@ -99,6 +99,25 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a href="doit.cmd_completion.TabCompletion-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cmds</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      configure command</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.cmd_completion-pysrc.html#TabCompletion.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="doit.cmd_completion.TabCompletion-class.html#execute" class="summary-sig-name">execute</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">opt_values</span>,
         <span class="summary-sig-arg">pos_args</span>)</span><br />
@@ -151,11 +170,12 @@
   <tr>
     <td colspan="2" class="summary">
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b>:
-      <code><a href="doit.cmd_base.DoitCmdBase-class.html#__init__">__init__</a></code>,
-      <code><a href="doit.cmd_base.DoitCmdBase-class.html#set_options">set_options</a></code>
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#get_backends">get_backends</a></code>,
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#get_options">get_options</a></code>
       </p>
     <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b> (private):
-      <code><a href="doit.cmd_base.DoitCmdBase-class.html#_execute" onclick="show_private();">_execute</a></code>
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#_execute" onclick="show_private();">_execute</a></code>,
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#_get_loader" onclick="show_private();">_get_loader</a></code>
       </p></div>
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
       <code><a href="doit.cmd_base.Command-class.html#help">help</a></code>,
@@ -250,6 +270,13 @@
       
     </td>
   </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
+      <code><a href="doit.cmd_base.Command-class.html#get_name">get_name</a></code>
+      </p>
+    </td>
+  </tr>
 </table>
 <!-- ==================== STATIC METHODS ==================== -->
 <a name="section-StaticMethods"></a>
@@ -283,6 +310,14 @@
         </tr>
       </table>
       
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b>:
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#check_minversion">check_minversion</a></code>,
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#get_checker_cls">get_checker_cls</a></code>
+      </p>
     </td>
   </tr>
 </table>
@@ -329,15 +364,15 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="doit.cmd_completion.TabCompletion-class.html#cmd_options" class="summary-name">cmd_options</a> = <code title="({'default': 'bash',
-  'help': 'Completion code for SHELL. default: &quot;bash&quot;. options: [bash,\
- zsh]',
+        <a href="doit.cmd_completion.TabCompletion-class.html#cmd_options" class="summary-name">cmd_options</a> = <code title="({'choices': (('bash', ''), ('zsh', '')),
+  'default': 'bash',
+  'help': 'Completion code for SHELL. [default: %(default)s]',
   'long': 'shell',
   'name': 'shell',
   'short': 's',
   'type': &lt;type 'str'&gt;},
  {'default': False, 'help': 'Hardcode tasks from current task list.', \
-..."><code class="variable-group">(</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">bash</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Completion code fo</code><code class="variable-ellipsis">...</code></code>
+..."><code class="variable-group">(</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">choices</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">(</code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">bash</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">, </code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">zsh</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-group">)</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">defau</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
   <tr>
@@ -346,7 +381,6 @@
       <code><a href="doit.cmd_base.DoitCmdBase-class.html#base_options">base_options</a></code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
-      <code><a href="doit.cmd_base.Command-class.html#CMD_LIST">CMD_LIST</a></code>,
       <code><a href="doit.cmd_base.Command-class.html#execute_tasks">execute_tasks</a></code>,
       <code><a href="doit.cmd_base.Command-class.html#name">name</a></code>
       </p>
@@ -372,6 +406,9 @@
 </tr>
   <tr>
     <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
+      <code><a href="doit.cmd_base.Command-class.html#cmdparser">cmdparser</a></code>
+      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__class__</code>
       </p>
@@ -396,6 +433,41 @@
   </td>
 </tr>
 </table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cmds</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doit.cmd_completion-pysrc.html#TabCompletion.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+configure command
+
+:param config: dict
+
+Set extra configuration values, this vals can come from:
+ * directly passed when using the API - through DoitMain.run()
+ * from an INI configuration file
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
 <a name="execute"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -413,6 +485,8 @@
   </tr></table>
   
   <p>load dodo.py, set attributes and call self._execute</p>
+  <p>:param params: instance of cmdparse.DefaultUpdate :param args: list of
+  string arguments (containing task names)</p>
   <dl class="fields">
     <dt>Overrides:
         <a href="doit.cmd_base.Command-class.html#execute">cmd_base.Command.execute</a>
@@ -452,9 +526,9 @@
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-<code class="variable-group">(</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">bash</code><code class="variable-quote">'</code><code class="variable-op">,</code>
-  <code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Completion code for SHELL. default: &quot;bash&quot;. options: [bash,</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-<code class="variable-string"> zsh]</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-group">(</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">choices</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">(</code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">bash</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">, </code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">zsh</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-group">)</code><code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">bash</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Completion code for SHELL. [default: %(default)s]</code><code class="variable-quote">'</code><code class="variable-op">,</code>
   <code class="variable-quote">'</code><code class="variable-string">long</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">shell</code><code class="variable-quote">'</code><code class="variable-op">,</code>
   <code class="variable-quote">'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">shell</code><code class="variable-quote">'</code><code class="variable-op">,</code>
   <code class="variable-quote">'</code><code class="variable-string">short</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">s</code><code class="variable-quote">'</code><code class="variable-op">,</code>
@@ -498,7 +572,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

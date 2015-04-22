@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Passing Task Arguments from the command line &mdash; doit - automation tool</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.28',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favico.ico"/>
+    <link rel="top" title="doit - automation tool" href="contents.html" />
+    <link rel="next" title="More on Task creation" href="task_creation.html" />
+    <link rel="prev" title="Configuration" href="configuration.html" />
+<style>
+  body {
+    font-size: 16px;
+  }
+
+  div.topic {
+    padding: 0;
+    background-color: #F8F4A6;
+    border: 1px solid #D8D486;
+  }
+
+  div.topic p.first {
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    background-color: #E8E496;
+    border-bottom: 1px solid #C8C476;
+  }
+
+  div.topic p {
+    margin: 0.5em 1em 0.5em 1em;
+  }
+
+  p.topic-title {
+    display: run-in;
+    margin-right: 15px;
+  }
+
+  a.external-link {
+    background: url(_static/external.png) center right no-repeat;
+    padding-right: 13px;
+  }
+
+  div.related ul li a.external-link {
+    padding-right: 13px;
+  }
+
+  .sidebartext {
+    font-size: 75%;
+    line-height: 130%;
+  }
+
+</style>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29887834-3']);
+  _gaq.push(['_setDomainName', 'pydoit.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
+<img src="_static/doit.png" alt="doit logo" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="task_creation.html" title="More on Task creation"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuration"
+             accesskey="P">previous</a> |</li>
+  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
+  <!-- TODO news -->
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Passing Task Arguments from the command line</a><ul>
+<li><a class="reference internal" href="#arguments">arguments</a><ul>
+<li><a class="reference internal" href="#all-parameters-attributes">All parameters attributes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#positional-arguments">positional arguments</a></li>
+<li><a class="reference internal" href="#command-line-variables-doit-get-var">command line variables (<em>doit.get_var</em>)</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<h3>Sponsors</h3>
+<em>Your logo here</em>
+
+<h3>Sponsor/Donate</h3>
+
+
+<div data-gratipay-username="schettino72" data-gratipay-widget="custom">
+  <div><a class="gratipay-profile-link">Gratipay</a> weekly funding goal is <span class="gratipay-goal">$?.??</span> USD.
+  </div>
+  <div style="position:relative;background-color:#2F2D2D;color:#DDDDDD;border-radius:5px;margin:3px 5px;padding:3px 0;">
+    <div class="gratipay-goal-progress-bar" style="position:absolute;top:3px;background-color:#008000;height:24px;border-radius:2px;"></div>
+    <span class="gratipay-receiving" style="position:relative;padding-left:6px;">$?.??</span>
+  </div>
+</div>
+<script src="//grtp.co/v1.js"></script>
+
+<br/>
+
+<div class="sidebartext">
+If you use <em>doit</em> and think it is a useful project. Please consider to make a donation to support the developer/maintainer with maintanance tasks (bug fixes, merge patches, reply users) and further development.<br/>
+  <script data-gratipay-username="schettino72"
+        data-gratipay-widget="button"
+        src="//gttp.co/v1.js"></script>
+<br/>
+If you use it at work, ask your company to sponsor the project. The logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+</div>
+
+<h3>Hire me</h3>
+<div class="sidebartext">
+Looking for a python developer with a proven record of designing and developing
+robust and well tested applications?
+The creator and maintainer of <em>doit</em> is available for hire.
+Full-time, part-time or one-off job.
+<br/>
+Contact: <em>schettino72</em>&#64<span>gmail.com</span>
+</div>
+
+
+
+
+<h3></h3>
+<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" /></a><br/><br/>
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="passing-task-arguments-from-the-command-line">
+<h1>Passing Task Arguments from the command line<a class="headerlink" href="#passing-task-arguments-from-the-command-line" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="arguments">
+<span id="parameters"></span><h2>arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to pass option parameters to the task through the command line.</p>
+<p>Just add a <code class="docutils literal"><span class="pre">params</span></code> field to the task dictionary. <code class="docutils literal"><span class="pre">params</span></code> must be a list of
+dictionaries where every entry is an option parameter. Each parameter must
+define a name, and a default value. It can optionally define a &#8220;short&#8221; and
+&#8220;long&#8221; names to be used from the command line (it follows unix command line
+conventions). It may also specify additional attributes, such as
+<cite>type</cite> and <cite>help</cite> (see <a class="reference internal" href="#parameters-attributes"><span>below</span></a>).</p>
+<p>See the example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="k">def</span> <span class="nf">task_py_params</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">show_params</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">param1</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="n">param2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">show_params</span><span class="p">,)],</span>
+            <span class="s">&#39;params&#39;</span><span class="p">:[{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;param1&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;p&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;default&#39;</span><span class="p">:</span><span class="s">&#39;default value&#39;</span><span class="p">},</span>
+
+                      <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;param2&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;long&#39;</span><span class="p">:</span><span class="s">&#39;param2&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                       <span class="s">&#39;default&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}],</span>
+            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+            <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">task_py_params_list</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">print_a_list</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">print_a_list</span><span class="p">,)],</span>
+            <span class="s">&#39;params&#39;</span><span class="p">:[{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;list&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;l&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;list&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+                       <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">[],</span>
+                       <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="s">&#39;Collect a list with multiple -l flags&#39;</span><span class="p">}],</span>
+            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+            <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">task_py_params_choice</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">print_choice</span><span class="p">(</span><span class="n">choice</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">choice</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">print_choice</span><span class="p">,)],</span>
+            <span class="s">&#39;params&#39;</span><span class="p">:[{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;choice&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;c&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;choice&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                       <span class="s">&#39;choices&#39;</span><span class="p">:</span> <span class="p">((</span><span class="s">&#39;this&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;that&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)),</span>
+                       <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&#39;this&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="s">&#39;Choose between this and that&#39;</span><span class="p">}],</span>
+            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,}</span>
+
+<span class="k">def</span> <span class="nf">task_cmd_params</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[</span><span class="s">&quot;echo mycmd </span><span class="si">%(flag)s</span><span class="s"> xxx&quot;</span><span class="p">],</span>
+            <span class="s">&#39;params&#39;</span><span class="p">:[{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;flag&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;f&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;flag&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="s">&#39;helpful message about this flag&#39;</span><span class="p">}],</span>
+            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+<p>For python-actions the python function must define arguments with the same name as a task parameter.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit py_params -p abc --param2 4
+<span class="go">.  py_params</span>
+<span class="go">abc</span>
+<span class="go">9</span>
+</pre></div>
+</div>
+<p>Need a list in your python function? Specify an option with <code class="docutils literal"><span class="pre">type</span></code>
+set to <code class="docutils literal"><span class="pre">list</span></code>.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit py_params_list -l milk -l eggs -l bread
+<span class="go">.  py_params_list</span>
+<span class="go">milk</span>
+<span class="go">eggs</span>
+<span class="go">bread</span>
+</pre></div>
+</div>
+<p>Choices can be set by specifying an option with <code class="docutils literal"><span class="pre">choices</span></code> set to a
+sequence of a 2-element tuple.
+The first element is the choice value.
+The second element is the choice description,
+if not required, use an empty string.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit py_params_choice -c that
+<span class="go">.  py_params_choice</span>
+<span class="go">that</span>
+</pre></div>
+</div>
+<p>Invalid choices are detected and passed back to the user.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit py_params_choice -c notavalidchoice
+<span class="go">ERROR: Error parsing parameter &#39;choice&#39;. Provided &#39;notavalidchoice&#39; but available choices are: &#39;this&#39;, &#39;that&#39;.</span>
+</pre></div>
+</div>
+<p>For cmd-actions use python string substitution notation:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit cmd_params -f <span class="s2">&quot;-c --other value&quot;</span>
+<span class="go">.  cmd_params</span>
+<span class="go">mycmd -c --other value xxx</span>
+</pre></div>
+</div>
+<div class="section" id="all-parameters-attributes">
+<span id="parameters-attributes"></span><h3>All parameters attributes<a class="headerlink" href="#all-parameters-attributes" title="Permalink to this headline">¶</a></h3>
+<p>Here is the list of all attributes <code class="docutils literal"><span class="pre">param</span></code> accepts:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">name</span></code></dt>
+<dd><p class="first">Name of the parameter, identifier used as name of the the parameter
+on python code.
+It should be unique among others.</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">True</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type:</th><td class="field-body"><cite>str</cite></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="docutils literal"><span class="pre">default</span></code></dt>
+<dd><p class="first">Default value used when it is set through command-line.</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">True</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="docutils literal"><span class="pre">short</span></code></dt>
+<dd><p class="first">Short parameter form, used for e.g. <code class="docutils literal"><span class="pre">-p</span> <span class="pre">value</span></code>.</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">optional</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type:</th><td class="field-body"><cite>str</cite></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="docutils literal"><span class="pre">long</span></code></dt>
+<dd><p class="first">Long parameter form, used for e.g. <code class="docutils literal"><span class="pre">--parameter</span> <span class="pre">value</span></code>
+when it differs from its <cite>name</cite>.</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">optional</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type:</th><td class="field-body"><cite>str</cite></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="docutils literal"><span class="pre">type</span></code></dt>
+<dd><p class="first">Actually it can be any python callable.
+It coverts the string value received from command line to whatever
+value to be used on python code.</p>
+<p>If the <code class="docutils literal"><span class="pre">type</span></code> is <code class="docutils literal"><span class="pre">bool</span></code> the parameter is treated as an <em>option flag</em>
+where no value should be specified, value is set to <code class="docutils literal"><span class="pre">True</span></code>.
+Example: <code class="docutils literal"><span class="pre">doit</span> <span class="pre">mytask</span> <span class="pre">--flag</span></code>.</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">optional</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type:</th><td class="field-body"><cite>callable</cite> (e.g. a <cite>function</cite>)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">default:</th><td class="field-body"><cite>str</cite></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="docutils literal"><span class="pre">choices</span></code></dt>
+<dd><p class="first">List of accepted value choices for option.
+First tuple element is the value name,
+second tuple element is a help description for value.</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">optional</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type:</th><td class="field-body">list of 2-tuple strings</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="docutils literal"><span class="pre">help</span></code></dt>
+<dd><p class="first">Help message associated to this parameter, shown when
+<a class="reference internal" href="cmd_other.html#cmd-help"><span>help</span></a> is called for this task,
+e.g. <code class="docutils literal"><span class="pre">doit</span> <span class="pre">help</span> <span class="pre">mytask</span></code>.</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">optional</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type:</th><td class="field-body"><cite>str</cite></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="docutils literal"><span class="pre">inverse</span></code></dt>
+<dd><p class="first">[only for <cite>bool</cite> parameter]
+Set inverse flag long parameter name, value will be set to <code class="docutils literal"><span class="pre">False</span></code>
+(see example below).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">optional</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type:</th><td class="field-body"><cite>str</cite></td>
+</tr>
+</tbody>
+</table>
+<p>Example, given following code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="k">def</span> <span class="nf">task_with_flag</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">_task</span><span class="p">(</span><span class="n">flag</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Flag {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;On&quot;</span> <span class="k">if</span> <span class="n">flag</span> <span class="k">else</span> <span class="s">&quot;Off&quot;</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&#39;params&#39;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;flag&#39;</span><span class="p">,</span>
+            <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;flagon&#39;</span><span class="p">,</span>
+            <span class="s">&#39;short&#39;</span><span class="p">:</span> <span class="s">&#39;f&#39;</span><span class="p">,</span>
+            <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+            <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+            <span class="s">&#39;inverse&#39;</span><span class="p">:</span> <span class="s">&#39;flagoff&#39;</span><span class="p">}],</span>
+        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">_task</span><span class="p">,</span> <span class="p">)],</span>
+        <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>calls to task <cite>with_flag</cite> show flag on or off:</p>
+<div class="last highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit with_flag
+<span class="go">.  with_flag</span>
+<span class="go">Flag On</span>
+<span class="gp">$</span> doit with_flag --flagoff
+<span class="go">.  with_flag</span>
+<span class="go">Flag Off</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="positional-arguments">
+<h2>positional arguments<a class="headerlink" href="#positional-arguments" title="Permalink to this headline">¶</a></h2>
+<p>Tasks might also get positional arguments from the command line
+as standard unix commands do,
+with positional arguments <em>after</em> optional arguments.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="k">def</span> <span class="nf">task_pos_args</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">show_params</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;param1 is: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param1</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">pos_arg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;positional-{0}: {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">pos_arg</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">show_params</span><span class="p">,)],</span>
+            <span class="s">&#39;params&#39;</span><span class="p">:[{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;param1&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;p&#39;</span><span class="p">,</span>
+                       <span class="s">&#39;default&#39;</span><span class="p">:</span><span class="s">&#39;default value&#39;</span><span class="p">},</span>
+                      <span class="p">],</span>
+            <span class="s">&#39;pos_arg&#39;</span><span class="p">:</span> <span class="s">&#39;pos&#39;</span><span class="p">,</span>
+            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit pos_args -p <span class="m">4</span> foo bar
+<span class="go">.  pos_args</span>
+<span class="go">param1 is: 4</span>
+<span class="go">positional-0: foo</span>
+<span class="go">positional-1: bar</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>If a task accepts positional arguments, it is not allowed to pass
+other tasks after it in the command line. For example if <cite>task1</cite>
+takes positional arguments you can not call:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ doit task1 pos1 task2
+</pre></div>
+</div>
+<p class="last">As the string <cite>task2</cite> would be interpreted as positional argument from
+<cite>task1</cite> not as another task name.</p>
+</div>
+</div>
+<div class="section" id="command-line-variables-doit-get-var">
+<span id="command-line-variables"></span><h2>command line variables (<em>doit.get_var</em>)<a class="headerlink" href="#command-line-variables-doit-get-var" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to pass variable values to be used in dodo.py from the command line.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">get_var</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;abc&quot;</span><span class="p">:</span> <span class="n">get_var</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">,</span> <span class="s">&#39;NO&#39;</span><span class="p">)}</span>
+
+<span class="k">def</span> <span class="nf">task_echo</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hi </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">config</span><span class="p">],</span>
+            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<span class="go">.  echo</span>
+<span class="go">hi {abc: NO}</span>
+<span class="gp">$</span> doit <span class="nv">abc</span><span class="o">=</span>xyz <span class="nv">x</span><span class="o">=</span>3
+<span class="go">.  echo</span>
+<span class="go">hi {abc: xyz}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="task_creation.html" title="More on Task creation"
+             >next</a></li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuration"
+             >previous</a> |</li>
+  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
+  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
+  <!-- TODO news -->
+  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

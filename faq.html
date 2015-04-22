@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.27',
+        VERSION:     '0.28',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="top" title="doit - automation tool" href="contents.html" />
     <link rel="next" title="Success Stories" href="stories.html" />
     <link rel="prev" title="Extending doit" href="extending.html" />
 <style>
@@ -33,9 +33,20 @@
   }
 
   div.topic {
-    padding: 2px;
+    padding: 0;
     background-color: #F8F4A6;
-    border: none;
+    border: 1px solid #D8D486;
+  }
+
+  div.topic p.first {
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    background-color: #E8E496;
+    border-bottom: 1px solid #C8C476;
+  }
+
+  div.topic p {
+    margin: 0.5em 1em 0.5em 1em;
   }
 
   p.topic-title {
@@ -76,12 +87,12 @@
 
 
   </head>
-  <body>
+  <body role="document">
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
 
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -96,15 +107,17 @@
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="contents.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">FAQ</a><ul>
+<li><a class="reference internal" href="#why-is-doit-written-in-all-lowercase-instead-of-camelcase">Why is <cite>doit</cite> written in all lowercase instead of CamelCase?</a></li>
 <li><a class="reference internal" href="#doit-is-too-verbose-why-don-t-you-use-decorators"><em>doit</em> is too verbose, why don&#8217;t you use decorators?</a></li>
 <li><a class="reference internal" href="#dodo-py-file-itself-should-be-a-file-dep-for-all-tasks"><cite>dodo.py</cite> file itself should be a <cite>file_dep</cite> for all tasks</a></li>
 <li><a class="reference internal" href="#why-file-dep-can-not-depend-on-a-directory-folder">Why <cite>file_dep</cite> can not depend on a directory/folder?</a></li>
@@ -115,7 +128,7 @@
 
 
 
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -148,12 +161,12 @@
 <br/>
 
 <div class="sidebartext">
-Why Donate? Help keep the project alive! Donations will be used for project maintanance tasks (bug fixes, merge patches, reply users).<br/>
+If you use <em>doit</em> and think it is a useful project. Please consider to make a donation to support the developer/maintainer with maintanance tasks (bug fixes, merge patches, reply users) and further development.<br/>
   <script data-gratipay-username="schettino72"
         data-gratipay-widget="button"
         src="//gttp.co/v1.js"></script>
 <br/>
-For corporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+If you use it at work, ask your company to sponsor the project. The logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
 </div>
 
 <h3>Hire me</h3>
@@ -178,10 +191,16 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="faq">
 <h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="why-is-doit-written-in-all-lowercase-instead-of-camelcase">
+<h2>Why is <cite>doit</cite> written in all lowercase instead of CamelCase?<a class="headerlink" href="#why-is-doit-written-in-all-lowercase-instead-of-camelcase" title="Permalink to this headline">¶</a></h2>
+<p>At first it would be written in CamelCase <cite>DoIt</cite> but depending on the font
+some people would read it as <a class="reference external" href="http://en.wiktionary.org/wiki/dolt#Noun">dolt</a>
+with an <cite>L</cite> instead of <cite>I</cite>. So I just set it as lowercase to avoid confusion.</p>
+</div>
 <div class="section" id="doit-is-too-verbose-why-don-t-you-use-decorators">
 <h2><em>doit</em> is too verbose, why don&#8217;t you use decorators?<a class="headerlink" href="#doit-is-too-verbose-why-don-t-you-use-decorators" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> is designed to be extensible.
@@ -196,8 +215,8 @@ for some examples.</p>
 <div>If I edit my <cite>dodo.py</cite> file and re-run <em>doit</em>,
 and my tasks are otherwise up-to-date, the modified tasks are not re-run.</div></blockquote>
 <p>While developing your tasks it is recommended
-to use <tt class="docutils literal"><span class="pre">doit</span> <span class="pre">forget</span></tt> after you change your tasks
-or use <tt class="docutils literal"><span class="pre">doit</span> <span class="pre">--always-run</span></tt>.</p>
+to use <code class="docutils literal"><span class="pre">doit</span> <span class="pre">forget</span></code> after you change your tasks
+or use <code class="docutils literal"><span class="pre">doit</span> <span class="pre">--always-run</span></code>.</p>
 <p>In case you really want, you will need to explicitly
 add the <cite>dodo.py</cite> in <cite>file_dep</cite> of your tasks manually.</p>
 <p>If <cite>dodo.py</cite> was an implicit <cite>file_dep</cite>:</p>
@@ -216,12 +235,12 @@ Some people expect it to be a change in any of its containing files
 (for this case see question below).
 Others expect it to be whether the folder exist or not,
 or if a new file was added or removed from the folder (for these
-cases you should implement a custom <tt class="docutils literal"><span class="pre">uptodate</span></tt>
-(<a class="reference internal" href="uptodate.html#uptodate-api"><em>check the API</em></a>).</p>
+cases you should implement a custom <code class="docutils literal"><span class="pre">uptodate</span></code>
+(<a class="reference internal" href="uptodate.html#uptodate-api"><span>check the API</span></a>).</p>
 </div>
 <div class="section" id="how-to-make-a-dependency-on-all-files-in-a-folder">
 <h2>How to make a dependency on all files in a folder?<a class="headerlink" href="#how-to-make-a-dependency-on-all-files-in-a-folder" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">file_dep</span></tt> does NOT support folders.
+<p><code class="docutils literal"><span class="pre">file_dep</span></code> does NOT support folders.
 If you want to specify all files from a folder you can use a third
 party library like <a class="reference external" href="https://pypi.python.org/pypi/pathlib">pathlib</a> (
 <cite>pathlib</cite> was add on python&#8217;s 3.4 stdlib).</p>
@@ -234,7 +253,7 @@ party library like <a class="reference external" href="https://pypi.python.org/p
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -249,13 +268,14 @@ party library like <a class="reference external" href="https://pypi.python.org/p
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

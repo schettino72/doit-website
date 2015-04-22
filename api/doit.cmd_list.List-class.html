@@ -96,7 +96,8 @@
         <span class="summary-sig-arg">template</span>,
         <span class="summary-sig-arg">task</span>,
         <span class="summary-sig-arg">status</span>,
-        <span class="summary-sig-arg">list_deps</span>)</span><br />
+        <span class="summary-sig-arg">list_deps</span>,
+        <span class="summary-sig-arg">tasks</span>)</span><br />
       print a single task</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="doit.cmd_list-pysrc.html#List._print_task">source&nbsp;code</a></span>
@@ -154,8 +155,12 @@
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b>:
       <code><a href="doit.cmd_base.DoitCmdBase-class.html#__init__">__init__</a></code>,
       <code><a href="doit.cmd_base.DoitCmdBase-class.html#execute">execute</a></code>,
-      <code><a href="doit.cmd_base.DoitCmdBase-class.html#set_options">set_options</a></code>
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#get_backends">get_backends</a></code>,
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#get_options">get_options</a></code>
       </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b> (private):
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#_get_loader" onclick="show_private();">_get_loader</a></code>
+      </p></div>
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
       <code><a href="doit.cmd_base.Command-class.html#help">help</a></code>,
       <code><a href="doit.cmd_base.Command-class.html#parse_execute">parse_execute</a></code>
@@ -173,6 +178,31 @@
       <code>__sizeof__</code>,
       <code>__str__</code>,
       <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS METHODS ==================== -->
+<a name="section-ClassMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
+      <code><a href="doit.cmd_base.Command-class.html#get_name">get_name</a></code>
       </p>
     </td>
   </tr>
@@ -211,6 +241,14 @@
         </tr>
       </table>
       
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b>:
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#check_minversion">check_minversion</a></code>,
+      <code><a href="doit.cmd_base.DoitCmdBase-class.html#get_checker_cls">get_checker_cls</a></code>
+      </p>
     </td>
   </tr>
 </table>
@@ -281,7 +319,6 @@
       <code><a href="doit.cmd_base.DoitCmdBase-class.html#base_options">base_options</a></code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
-      <code><a href="doit.cmd_base.Command-class.html#CMD_LIST">CMD_LIST</a></code>,
       <code><a href="doit.cmd_base.Command-class.html#execute_tasks">execute_tasks</a></code>,
       <code><a href="doit.cmd_base.Command-class.html#name">name</a></code>
       </p>
@@ -305,16 +342,11 @@
     </table>
   </td>
 </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="doit.cmd_list.List-class.html#dep_manager" class="summary-name">dep_manager</a><br />
-      manager with access to task status (run, up-to-date...)
-    </td>
-  </tr>
   <tr>
     <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
+      <code><a href="doit.cmd_base.Command-class.html#cmdparser">cmdparser</a></code>
+      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__class__</code>
       </p>
@@ -414,40 +446,6 @@
 </td></tr></table>
 </div>
 <br />
-<!-- ==================== PROPERTY DETAILS ==================== -->
-<a name="section-PropertyDetails"></a>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Property Details</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-PropertyDetails"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-</table>
-<a name="dep_manager"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">dep_manager</h3>
-  <p>manager with access to task status (run, up-to-date...)</p>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><span class="summary-sig"><i>unreachable</i>.dep_manager(<span class="summary-sig-arg">self</span>)</span>
-        - manager with access to task status (run, up-to-date...)
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
@@ -479,7 +477,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

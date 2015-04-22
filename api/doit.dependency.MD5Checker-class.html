@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>doit.tools.result_dep</title>
+  <title>doit.dependency.MD5Checker</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -43,8 +43,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="doit-module.html">Package&nbsp;doit</a> ::
-        <a href="doit.tools-module.html">Module&nbsp;tools</a> ::
-        Class&nbsp;result_dep
+        <a href="doit.dependency-module.html" onclick="show_private();">Module&nbsp;dependency</a> ::
+        Class&nbsp;MD5Checker
       </span>
     </td>
     <td>
@@ -57,17 +57,22 @@
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class result_dep</h1><p class="nomargin-top"><span class="codelink"><a href="doit.tools-pysrc.html#result_dep">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class MD5Checker</h1><p class="nomargin-top"><span class="codelink"><a href="doit.dependency-pysrc.html#MD5Checker">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-                   object --+    
-                            |    
-<a href="doit.dependency.UptodateCalculator-class.html">dependency.UptodateCalculator</a> --+
-                                |
-                               <strong class="uidshort">result_dep</strong>
+        object --+    
+                 |    
+<a href="doit.dependency.FileChangedChecker-class.html">FileChangedChecker</a> --+
+                     |
+                    <strong class="uidshort">MD5Checker</strong>
 </pre>
 
 <hr />
-<p>check if result of the given task was modified</p>
+<p>MD5 checker, uses the md5sum.</p>
+  <p>This is the default checker used by doit.</p>
+  <p>As an optimization the check uses (timestamp, file-size, md5). If the 
+  timestamp is the same it considers that the file has the same content. If
+  file size is different its content certainly is modified. Finally the md5
+  is used for a different timestamp with the same size.</p>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -92,11 +97,14 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="doit.tools.result_dep-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">dep_task_name</span>)</span><br />
-      x.__init__(...) initializes x; see help(type(x)) for signature</td>
+          <td><span class="summary-sig"><a href="doit.dependency.MD5Checker-class.html#check_modified" class="summary-sig-name">check_modified</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">file_path</span>,
+        <span class="summary-sig-arg">file_stat</span>,
+        <span class="summary-sig-arg">state</span>)</span><br />
+      Check if file in file_path is modified from previous 
+      &quot;state&quot;.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.tools-pysrc.html#result_dep.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#MD5Checker.check_modified">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -110,66 +118,12 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="configure_task"></a><span class="summary-sig-name">configure_task</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">task</span>)</span><br />
-      to be called by doit when create the task</td>
+          <td><span class="summary-sig"><a href="doit.dependency.MD5Checker-class.html#get_state" class="summary-sig-name">get_state</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dep</span>,
+        <span class="summary-sig-arg">current_state</span>)</span><br />
+      Compute the state of a task after it has been successfuly executed.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.tools-pysrc.html#result_dep.configure_task">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr class="private">
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="_result_single"></a><span class="summary-sig-name">_result_single</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      get result from a single task</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.tools-pysrc.html#result_dep._result_single">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr class="private">
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="_result_group"></a><span class="summary-sig-name">_result_group</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">dep_task</span>)</span><br />
-      get result from a group task the result is the combination of results
-      of all sub-tasks</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.tools-pysrc.html#result_dep._result_group">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="__call__"></a><span class="summary-sig-name">__call__</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">task</span>,
-        <span class="summary-sig-arg">values</span>)</span><br />
-      return True if result is the same as last run</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.tools-pysrc.html#result_dep.__call__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#MD5Checker.get_state">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -179,14 +133,12 @@
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.dependency.UptodateCalculator-class.html">dependency.UptodateCalculator</a></code></b>:
-      <code><a href="doit.dependency.UptodateCalculator-class.html#setup">setup</a></code>
-      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
       <code>__format__</code>,
       <code>__getattribute__</code>,
       <code>__hash__</code>,
+      <code>__init__</code>,
       <code>__new__</code>,
       <code>__reduce__</code>,
       <code>__reduce_ex__</code>,
@@ -242,26 +194,69 @@
   </td>
 </tr>
 </table>
-<a name="__init__"></a>
+<a name="check_modified"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">dep_task_name</span>)</span>
-    <br /><em class="fname">(Constructor)</em>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">check_modified</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">file_path</span>,
+        <span class="sig-arg">file_stat</span>,
+        <span class="sig-arg">state</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="doit.tools-pysrc.html#result_dep.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="doit.dependency-pysrc.html#MD5Checker.check_modified">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+  <p>Check if file in file_path is modified from previous 
+  &quot;state&quot;.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>file_path</code></strong>, <strong class="pname"><code>(string)</code></strong> - file path</li>
+        <li><strong class="pname"><code>file_stat</code></strong> - result of os.stat() of file_path</li>
+        <li><strong class="pname"><code>state</code></strong> - state that was previously saved with ``get_state()``</li>
+    </ul></dd>
     <dt>Overrides:
-        object.__init__
+        <a href="doit.dependency.FileChangedChecker-class.html#check_modified">FileChangedChecker.check_modified</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_state"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_state</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">dep</span>,
+        <span class="sig-arg">current_state</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doit.dependency-pysrc.html#MD5Checker.get_state">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Compute the state of a task after it has been successfuly 
+  executed.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>dep</code></strong>, <strong class="pname"><code>(str)</code></strong> - path of the dependency file.</li>
+        <li><strong class="pname"><code>current_state</code></strong>, <strong class="pname"><code>(tuple)</code></strong> - the current state, saved from a previous execution of the task 
+          (None if the task was never run).</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the new state. Return None if the state is unchanged.
+          <p>The parameter `current_state` is passed to allow speed 
+          optimization, see MD5Checker.get_state().</p></dd>
+    <dt>Overrides:
+        <a href="doit.dependency.FileChangedChecker-class.html#get_state">FileChangedChecker.get_state</a>
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
   </dl>
@@ -299,7 +294,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Oct  5 03:28:21 2014
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>doit.dependency.DependencyBase</title>
+  <title>doit.dependency.Dependency</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -44,7 +44,7 @@
       <span class="breadcrumbs">
         <a href="doit-module.html">Package&nbsp;doit</a> ::
         <a href="doit.dependency-module.html" onclick="show_private();">Module&nbsp;dependency</a> ::
-        Class&nbsp;DependencyBase
+        Class&nbsp;Dependency
       </span>
     </td>
     <td>
@@ -57,22 +57,16 @@
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class DependencyBase</h1><p class="nomargin-top"><span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class Dependency</h1><p class="nomargin-top"><span class="codelink"><a href="doit.dependency-pysrc.html#Dependency">source&nbsp;code</a></span></p>
 <pre class="base-tree">
 object --+
          |
-        <strong class="uidshort">DependencyBase</strong>
+        <strong class="uidshort">Dependency</strong>
 </pre>
-
-<dl><dt>Known Subclasses:</dt>
-<dd>
-      <ul class="subclass-list">
-<li><a href="doit.dependency.DbmDependency-class.html">DbmDependency</a></li><li>, <a href="doit.dependency.JsonDependency-class.html">JsonDependency</a></li><li>, <a href="doit.dependency.SqliteDependency-class.html">SqliteDependency</a></li>  </ul>
-</dd></dl>
 
 <hr />
 <pre class="literalblock">
-Manage tasks dependencies (abstract class)
+Manage tasks dependencies
 
 Each dependency is saved in &quot;db&quot;. the &quot;db&quot; can have json or dbm
 format where there is a dictionary for every task. each task has a
@@ -110,11 +104,13 @@ Apart from dependencies other values are also saved on the task dictionary
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="doit.dependency.DependencyBase-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">backend</span>)</span><br />
+          <td><span class="summary-sig"><a href="doit.dependency.Dependency-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">db_class</span>,
+        <span class="summary-sig-arg">backend_name</span>,
+        <span class="summary-sig-arg">checker_cls</span>=<span class="summary-sig-default">&lt;class 'doit.dependency.MD5Checker'&gt;</span>)</span><br />
       x.__init__(...) initializes x; see help(type(x)) for signature</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -131,7 +127,7 @@ Apart from dependencies other values are also saved on the task dictionary
           <td><span class="summary-sig"><a name="close"></a><span class="summary-sig-name">close</span>(<span class="summary-sig-arg">self</span>)</span><br />
       Write DB in file</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase.close">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.close">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -145,11 +141,12 @@ Apart from dependencies other values are also saved on the task dictionary
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="save_success"></a><span class="summary-sig-name">save_success</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">task</span>)</span><br />
+          <td><span class="summary-sig"><a href="doit.dependency.Dependency-class.html#save_success" class="summary-sig-name">save_success</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">task</span>,
+        <span class="summary-sig-arg">result_hash</span>=<span class="summary-sig-default">None</span>)</span><br />
       save info after a task is successfuly executed</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase.save_success">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.save_success">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -167,7 +164,7 @@ Apart from dependencies other values are also saved on the task dictionary
         <span class="summary-sig-arg">task_name</span>)</span><br />
       get all saved values from a task @return dict</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase.get_values">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.get_values">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -181,12 +178,30 @@ Apart from dependencies other values are also saved on the task dictionary
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="doit.dependency.DependencyBase-class.html#get_value" class="summary-sig-name">get_value</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="doit.dependency.Dependency-class.html#get_value" class="summary-sig-name">get_value</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">task_id</span>,
         <span class="summary-sig-arg">key_name</span>)</span><br />
       get saved value from task @param task_id (str)</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase.get_value">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.get_value">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_result"></a><span class="summary-sig-name">get_result</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">task_name</span>)</span><br />
+      get the result saved from a task @return dict or md5sum</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.get_result">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -204,7 +219,7 @@ Apart from dependencies other values are also saved on the task dictionary
         <span class="summary-sig-arg">task</span>)</span><br />
       remove saved info from task</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase.remove_success">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.remove_success">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -222,7 +237,7 @@ Apart from dependencies other values are also saved on the task dictionary
         <span class="summary-sig-arg">task</span>)</span><br />
       mark task to be ignored</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase.ignore">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.ignore">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -240,7 +255,7 @@ Apart from dependencies other values are also saved on the task dictionary
         <span class="summary-sig-arg">task</span>)</span><br />
       check if task is marked to be ignored</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase.status_is_ignore">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.status_is_ignore">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -254,12 +269,12 @@ Apart from dependencies other values are also saved on the task dictionary
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="doit.dependency.DependencyBase-class.html#get_status" class="summary-sig-name">get_status</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="doit.dependency.Dependency-class.html#get_status" class="summary-sig-name">get_status</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">task</span>,
         <span class="summary-sig-arg">tasks_dict</span>)</span><br />
       Check if task is up to date.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase.get_status">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.get_status">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -337,11 +352,13 @@ Apart from dependencies other values are also saved on the task dictionary
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">backend</span>)</span>
+        <span class="sig-arg">db_class</span>,
+        <span class="sig-arg">backend_name</span>,
+        <span class="sig-arg">checker_cls</span>=<span class="sig-default">&lt;class 'doit.dependency.MD5Checker'&gt;</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -351,6 +368,28 @@ Apart from dependencies other values are also saved on the task dictionary
         object.__init__
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="save_success"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">save_success</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">task</span>,
+        <span class="sig-arg">result_hash</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.save_success">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>save info after a task is successfuly executed</p>
+  <p>:param result_hash: (str) explicitly set result_hash</p>
+  <dl class="fields">
   </dl>
 </td></tr></table>
 </div>
@@ -366,7 +405,7 @@ Apart from dependencies other values are also saved on the task dictionary
         <span class="sig-arg">key_name</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase.get_value">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.get_value">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -391,11 +430,13 @@ Apart from dependencies other values are also saved on the task dictionary
         <span class="sig-arg">tasks_dict</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="doit.dependency-pysrc.html#DependencyBase.get_status">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="doit.dependency-pysrc.html#Dependency.get_status">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
   <p>Check if task is up to date. set task.dep_changed</p>
+  <p>If the checker class changed since the previous run, the task is 
+  deleted, to be sure that its state is not re-used.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -443,7 +484,7 @@ Apart from dependencies other values are also saved on the task dictionary
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

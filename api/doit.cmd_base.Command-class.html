@@ -106,8 +106,10 @@ third-party should subclass this for commands that do no use tasks
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="doit.cmd_base.Command-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      x.__init__(...) initializes x; see help(type(x)) for signature</td>
+          <td><span class="summary-sig"><a href="doit.cmd_base.Command-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">config</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      configure command</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="doit.cmd_base-pysrc.html#Command.__init__">source&nbsp;code</a></span>
             
@@ -123,10 +125,10 @@ third-party should subclass this for commands that do no use tasks
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="set_options"></a><span class="summary-sig-name">set_options</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a name="get_options"></a><span class="summary-sig-name">get_options</span>(<span class="summary-sig-arg">self</span>)</span><br />
       @reutrn list of CmdOption</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.cmd_base-pysrc.html#Command.set_options">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.cmd_base-pysrc.html#Command.get_options">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -208,6 +210,41 @@ third-party should subclass this for commands that do no use tasks
     </td>
   </tr>
 </table>
+<!-- ==================== CLASS METHODS ==================== -->
+<a name="section-ClassMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_name"></a><span class="summary-sig-name">get_name</span>(<span class="summary-sig-arg">cls</span>)</span><br />
+      get command name as used from command line</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.cmd_base-pysrc.html#Command.get_name">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
 <!-- ==================== CLASS VARIABLES ==================== -->
 <a name="section-ClassVariables"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -225,13 +262,6 @@ third-party should subclass this for commands that do no use tasks
     </table>
   </td>
 </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="CMD_LIST"></a><span class="summary-name">CMD_LIST</span> = <code title="[]"><code class="variable-group">[</code><code class="variable-group">]</code></code>
-    </td>
-  </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
@@ -294,6 +324,14 @@ third-party should subclass this for commands that do no use tasks
     </table>
   </td>
 </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doit.cmd_base.Command-class.html#cmdparser" class="summary-name">cmdparser</a><br />
+      get CmdParser instance for this command
+    </td>
+  </tr>
   <tr>
     <td colspan="2" class="summary">
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
@@ -327,7 +365,9 @@ third-party should subclass this for commands that do no use tasks
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">config</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -335,11 +375,19 @@ third-party should subclass this for commands that do no use tasks
     </td>
   </tr></table>
   
-  <p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+  <pre class="literalblock">
+configure command
+
+:param config: dict
+
+Set extra configuration values, this vals can come from:
+ * directly passed when using the API - through DoitMain.run()
+ * from an INI configuration file
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         object.__init__
-        <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
   </dl>
 </td></tr></table>
@@ -363,6 +411,40 @@ third-party should subclass this for commands that do no use tasks
   <dl class="fields">
     <dt>Returns:</dt>
         <dd>result of self.execute</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="cmdparser"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">cmdparser</h3>
+  <p>get CmdParser instance for this command</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.cmdparser(<span class="summary-sig-arg">self</span>)</span>
+        - get CmdParser instance for this command
+    </dd>
   </dl>
 </td></tr></table>
 </div>
@@ -398,7 +480,7 @@ third-party should subclass this for commands that do no use tasks
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

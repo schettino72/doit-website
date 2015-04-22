@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.27',
+        VERSION:     '0.28',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,18 +24,29 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="top" title="doit - automation tool" href="contents.html" />
     <link rel="next" title="Extending doit" href="extending.html" />
-    <link rel="prev" title="Other Commands" href="cmd_other.html" />
+    <link rel="prev" title="custom uptodate" href="uptodate.html" />
 <style>
   body {
     font-size: 16px;
   }
 
   div.topic {
-    padding: 2px;
+    padding: 0;
     background-color: #F8F4A6;
-    border: none;
+    border: 1px solid #D8D486;
+  }
+
+  div.topic p.first {
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    background-color: #E8E496;
+    border-bottom: 1px solid #C8C476;
+  }
+
+  div.topic p {
+    margin: 0.5em 1em 0.5em 1em;
   }
 
   p.topic-title {
@@ -76,19 +87,19 @@
 
 
   </head>
-  <body>
+  <body role="document">
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
 
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="extending.html" title="Extending doit"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="cmd_other.html" title="Other Commands"
+          <a href="uptodate.html" title="custom uptodate"
              accesskey="P">previous</a> |</li>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
@@ -96,11 +107,12 @@
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="contents.html">Table Of Contents</a></h3>
   <ul>
@@ -111,13 +123,14 @@
 <li><a class="reference internal" href="#interactive-action">Interactive (action)</a></li>
 <li><a class="reference internal" href="#pythoninteractiveaction-action">PythonInteractiveAction (action)</a></li>
 <li><a class="reference internal" href="#set-trace">set_trace</a></li>
+<li><a class="reference internal" href="#ipython-integration">IPython integration</a></li>
 </ul>
 </li>
 </ul>
 
 
 
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -150,12 +163,12 @@
 <br/>
 
 <div class="sidebartext">
-Why Donate? Help keep the project alive! Donations will be used for project maintanance tasks (bug fixes, merge patches, reply users).<br/>
+If you use <em>doit</em> and think it is a useful project. Please consider to make a donation to support the developer/maintainer with maintanance tasks (bug fixes, merge patches, reply users) and further development.<br/>
   <script data-gratipay-username="schettino72"
         data-gratipay-widget="button"
         src="//gttp.co/v1.js"></script>
 <br/>
-For corporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+If you use it at work, ask your company to sponsor the project. The logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
 </div>
 
 <h3>Hire me</h3>
@@ -180,7 +193,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="tools">
 <h1>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h1>
@@ -218,7 +231,7 @@ section.</p>
 <span id="tools-longrunning"></span><h2>LongRunning (action)<a class="headerlink" href="#longrunning-action" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="doit.tools.LongRunning">
-<em class="property">class </em><tt class="descclassname">doit.tools.</tt><tt class="descname">LongRunning</tt><big>(</big><em>action</em>, <em>task=None</em>, <em>save_out=None</em>, <em>shell=True</em>, <em>encoding='utf-8'</em>, <em>decode_error='replace'</em>, <em>**pkwargs</em><big>)</big><a class="reference internal" href="_modules/doit/tools.html#LongRunning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.LongRunning" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">doit.tools.</code><code class="descname">LongRunning</code><span class="sig-paren">(</span><em>action</em>, <em>task=None</em>, <em>save_out=None</em>, <em>shell=True</em>, <em>encoding='utf-8'</em>, <em>decode_error='replace'</em>, <em>**pkwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#LongRunning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.LongRunning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to handle a Long running shell process,
 usually a server or service.
 Properties:</p>
@@ -244,7 +257,7 @@ Properties:</p>
 <h2>Interactive (action)<a class="headerlink" href="#interactive-action" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="doit.tools.Interactive">
-<em class="property">class </em><tt class="descclassname">doit.tools.</tt><tt class="descname">Interactive</tt><big>(</big><em>action</em>, <em>task=None</em>, <em>save_out=None</em>, <em>shell=True</em>, <em>encoding='utf-8'</em>, <em>decode_error='replace'</em>, <em>**pkwargs</em><big>)</big><a class="reference internal" href="_modules/doit/tools.html#Interactive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.Interactive" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">doit.tools.</code><code class="descname">Interactive</code><span class="sig-paren">(</span><em>action</em>, <em>task=None</em>, <em>save_out=None</em>, <em>shell=True</em>, <em>encoding='utf-8'</em>, <em>decode_error='replace'</em>, <em>**pkwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#Interactive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.Interactive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to handle Interactive shell process:</p>
 <ul class="simple">
 <li>the output is never captured</li>
@@ -256,7 +269,7 @@ Properties:</p>
 <h2>PythonInteractiveAction (action)<a class="headerlink" href="#pythoninteractiveaction-action" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="doit.tools.PythonInteractiveAction">
-<em class="property">class </em><tt class="descclassname">doit.tools.</tt><tt class="descname">PythonInteractiveAction</tt><big>(</big><em>py_callable</em>, <em>args=None</em>, <em>kwargs=None</em>, <em>task=None</em><big>)</big><a class="reference internal" href="_modules/doit/tools.html#PythonInteractiveAction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.PythonInteractiveAction" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">doit.tools.</code><code class="descname">PythonInteractiveAction</code><span class="sig-paren">(</span><em>py_callable</em>, <em>args=None</em>, <em>kwargs=None</em>, <em>task=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#PythonInteractiveAction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.PythonInteractiveAction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to handle Interactive python:</p>
 <ul class="simple">
 <li>the output is never captured</li>
@@ -268,9 +281,9 @@ Properties:</p>
 <div class="section" id="set-trace">
 <h2>set_trace<a class="headerlink" href="#set-trace" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> by default redirects stdout and stderr. Because of this when you try to
-use the python debugger with <tt class="docutils literal"><span class="pre">pdb.set_trace</span></tt>, it does not work properly.
+use the python debugger with <code class="docutils literal"><span class="pre">pdb.set_trace</span></code>, it does not work properly.
 To make sure you get a proper PDB shell you should use doit.tools.set_trace
-instead of <tt class="docutils literal"><span class="pre">pdb.set_trace</span></tt>.</p>
+instead of <code class="docutils literal"><span class="pre">pdb.set_trace</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">need_to_debug</span><span class="p">():</span>
     <span class="c"># some code here</span>
     <span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">tools</span>
@@ -282,6 +295,47 @@ instead of <tt class="docutils literal"><span class="pre">pdb.set_trace</span></
 </pre></div>
 </div>
 </div>
+<div class="section" id="ipython-integration">
+<span id="tools-ipython"></span><h2>IPython integration<a class="headerlink" href="#ipython-integration" title="Permalink to this headline">¶</a></h2>
+<p>A handy possibility for interactive experimentation is to define tasks from
+within <em>ipython</em> sessions and use the <code class="docutils literal"><span class="pre">%doit</span></code> <a class="reference external" href="http://ipython.org/ipython-doc/dev/interactive/tutorial.html#magic-functions">magic function</a>
+to discover and execute them.</p>
+<p>First you need to register the new magic function into ipython shell.</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">register_doit_as_IPython_magic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">register_doit_as_IPython_magic</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>To permanently add this magic-function to your IPython include it on your
+<a class="reference external" href="http://ipython.org/ipython-doc/3/config/intro.html?highlight=profile#profiles">profile</a>,
+create a new script inside your startup-profile
+(i.e. <code class="file docutils literal"><span class="pre">~/.ipython/profile_default/startup/doit_magic.ipy</span></code>)
+with the following content:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">register_doit_as_IPython_magic</span>
+<span class="n">register_doit_as_IPython_magic</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Then you can define your <cite>task_creator</cite> functions and invoke them with <cite>%doit</cite>
+magic-function, instead of invoking the cmd-line script with a <code class="file docutils literal"><span class="pre">dodo.py</span></code>
+file.</p>
+<p>Examples:</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">doit</span> <span class="o">--</span><span class="n">help</span>          <span class="c">## Show help for options and arguments.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">task_foo</span><span class="p">():</span>
+<span class="go">        return {&#39;actions&#39;: [&quot;echo hi IPython&quot;],</span>
+<span class="go">                &#39;verbosity&#39;: 2}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">doit</span> <span class="nb">list</span>            <span class="c">## List any tasks discovered.</span>
+<span class="go">foo</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">doit</span>                 <span class="c">## Run any tasks.</span>
+<span class="go">.  foo</span>
+<span class="go">hi IPython</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -290,14 +344,14 @@ instead of <tt class="docutils literal"><span class="pre">pdb.set_trace</span></
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="extending.html" title="Extending doit"
              >next</a></li>
         <li class="right" >
-          <a href="cmd_other.html" title="Other Commands"
+          <a href="uptodate.html" title="custom uptodate"
              >previous</a> |</li>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
@@ -305,13 +359,14 @@ instead of <tt class="docutils literal"><span class="pre">pdb.set_trace</span></
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

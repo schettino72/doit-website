@@ -110,9 +110,9 @@
     <td colspan="2" class="summary">
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
       <code><a href="doit.cmd_base.Command-class.html#__init__">__init__</a></code>,
+      <code><a href="doit.cmd_base.Command-class.html#get_options">get_options</a></code>,
       <code><a href="doit.cmd_base.Command-class.html#help">help</a></code>,
-      <code><a href="doit.cmd_base.Command-class.html#parse_execute">parse_execute</a></code>,
-      <code><a href="doit.cmd_base.Command-class.html#set_options">set_options</a></code>
+      <code><a href="doit.cmd_base.Command-class.html#parse_execute">parse_execute</a></code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
@@ -127,6 +127,31 @@
       <code>__sizeof__</code>,
       <code>__str__</code>,
       <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS METHODS ==================== -->
+<a name="section-ClassMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
+      <code><a href="doit.cmd_base.Command-class.html#get_name">get_name</a></code>
       </p>
     </td>
   </tr>
@@ -175,7 +200,7 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="doit.cmd_dumpdb.DumpDB-class.html#cmd_options" class="summary-name">cmd_options</a> = <code title="({'default': '.doit.db',
-  'help': 'file used to save successful runs',
+  'help': 'file used to save successful runs [default: %(default)s]',
   'long': 'db-file',
   'name': 'dep_file',
   'short': '',
@@ -185,7 +210,6 @@
   <tr>
     <td colspan="2" class="summary">
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
-      <code><a href="doit.cmd_base.Command-class.html#CMD_LIST">CMD_LIST</a></code>,
       <code><a href="doit.cmd_base.Command-class.html#execute_tasks">execute_tasks</a></code>,
       <code><a href="doit.cmd_base.Command-class.html#name">name</a></code>
       </p>
@@ -211,6 +235,9 @@
 </tr>
   <tr>
     <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
+      <code><a href="doit.cmd_base.Command-class.html#cmdparser">cmdparser</a></code>
+      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__class__</code>
       </p>
@@ -293,7 +320,7 @@
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
 <code class="variable-group">(</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">.doit.db</code><code class="variable-quote">'</code><code class="variable-op">,</code>
-  <code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">file used to save successful runs</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">file used to save successful runs [default: %(default)s]</code><code class="variable-quote">'</code><code class="variable-op">,</code>
   <code class="variable-quote">'</code><code class="variable-string">long</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">db-file</code><code class="variable-quote">'</code><code class="variable-op">,</code>
   <code class="variable-quote">'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">dep_file</code><code class="variable-quote">'</code><code class="variable-op">,</code>
   <code class="variable-quote">'</code><code class="variable-string">short</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-op">,</code>
@@ -335,7 +362,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

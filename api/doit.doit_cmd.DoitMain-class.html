@@ -65,32 +65,6 @@ object --+
 </pre>
 
 <hr />
-<!-- ==================== NESTED CLASSES ==================== -->
-<a name="section-NestedClasses"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Nested Classes</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-NestedClasses"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="doit.cmd_base.DodoTaskLoader-class.html" class="summary-name">TASK_LOADER</a><br />
-      default task-loader create tasks from a dodo.py file
-    </td>
-  </tr>
-</table>
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -115,7 +89,9 @@ object --+
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="doit.doit_cmd.DoitMain-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">task_loader</span>=<span class="summary-sig-default">None</span>)</span><br />
+        <span class="summary-sig-arg">task_loader</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">config_filenames</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">doit.cfg</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">extra_config</span>=<span class="summary-sig-default">None</span>)</span><br />
       x.__init__(...) initializes x; see help(type(x)) for signature</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="doit.doit_cmd-pysrc.html#DoitMain.__init__">source&nbsp;code</a></span>
@@ -132,10 +108,10 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_commands"></a><span class="summary-sig-name">get_commands</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      get all sub-commands</td>
+          <td><span class="summary-sig"><a name="get_cmds"></a><span class="summary-sig-name">get_cmds</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      get all sub-commands :return dict: name - Command class</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.doit_cmd-pysrc.html#DoitMain.get_commands">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.doit_cmd-pysrc.html#DoitMain.get_cmds">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -155,6 +131,23 @@ object --+
       list of args without processed variables</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="doit.doit_cmd-pysrc.html#DoitMain.process_args">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_commands"></a><span class="summary-sig-name">get_commands</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Notice for application subclassing DoitMain with old API</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.doit_cmd-pysrc.html#DoitMain.get_commands">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -216,6 +209,23 @@ object --+
     </table>
   </td>
 </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="doit.doit_cmd.DoitMain-class.html#load_config_ini" class="summary-sig-name">load_config_ini</a>(<span class="summary-sig-arg">filenames</span>)</span><br />
+      read config from INI files</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.doit_cmd-pysrc.html#DoitMain.load_config_ini">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
@@ -318,7 +328,9 @@ object --+
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">task_loader</span>=<span class="sig-default">None</span>)</span>
+        <span class="sig-arg">task_loader</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">config_filenames</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">doit.cfg</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">extra_config</span>=<span class="sig-default">None</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -332,6 +344,32 @@ object --+
         object.__init__
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="load_config_ini"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">load_config_ini</span>(<span class="sig-arg">filenames</span>)</span>
+    <br /><em class="fname">Static Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="doit.doit_cmd-pysrc.html#DoitMain.load_config_ini">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+read config from INI files
+
+:param files: str or list of str.
+              Like ConfigParser.read() param filenames
+
+</pre>
+  <dl class="fields">
   </dl>
 </td></tr></table>
 </div>
@@ -352,6 +390,10 @@ object --+
   
   <pre class="literalblock">
 entry point for all commands
+
+:param cmd_args: list of string arguments from command line
+:param extra_config: dict of extra argument values (by argument name)
+       This is parameter is only used by explicit API call.
 
 return codes:
   0: tasks executed successfully
@@ -444,7 +486,7 @@ return codes:
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

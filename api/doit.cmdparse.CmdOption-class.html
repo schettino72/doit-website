@@ -78,6 +78,8 @@ a command line option
 - long (string): argument long name
 - inverse (string): argument long name to be the inverse of the default
                     value (only used by boolean options)
+- choices(list - 2-tuple str): sequence of 2-tuple of choice name,
+                               choice description.
 - help (string): option description
 
 </pre>
@@ -140,11 +142,100 @@ a command line option
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a name="set_default"></a><span class="summary-sig-name">set_default</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">val</span>)</span><br />
+      set default value, value is already the expected type</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.cmdparse-pysrc.html#CmdOption.set_default">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="validate_choice"></a><span class="summary-sig-name">validate_choice</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">given_value</span>)</span><br />
+      raise error is value is not a valid choice</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.cmdparse-pysrc.html#CmdOption.validate_choice">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="str2boolean"></a><span class="summary-sig-name">str2boolean</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">str_val</span>)</span><br />
+      convert string to boolean</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.cmdparse-pysrc.html#CmdOption.str2boolean">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="str2type"></a><span class="summary-sig-name">str2type</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">str_val</span>)</span><br />
+      convert string value to option type value</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.cmdparse-pysrc.html#CmdOption.str2type">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a name="help_param"></a><span class="summary-sig-name">help_param</span>(<span class="summary-sig-arg">self</span>)</span><br />
       return string of option's short and long name i.e.:   -f ARG, 
       --file=ARG</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="doit.cmdparse-pysrc.html#CmdOption.help_param">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="help_choices"></a><span class="summary-sig-name">help_choices</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      return string with help for option choices</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.cmdparse-pysrc.html#CmdOption.help_choices">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -220,6 +311,38 @@ a command line option
         </tr>
       </table>
       
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doit.cmdparse.CmdOption-class.html#_boolean_states" class="summary-name" onclick="show_private();">_boolean_states</a> = <code title="{'0': False,
+ '1': True,
+ 'false': False,
+ 'no': False,
+ 'off': False,
+ 'on': True,
+ 'true': True,
+ 'yes': True}"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">0</code><code class="variable-quote">'</code><code class="variable-op">: </code>False<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">1</code><code class="variable-quote">'</code><code class="variable-op">: </code>True<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">false</code><code class="variable-quote">'</code><code class="variable-op">: </code>False<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">no</code><code class="variable-quote">'</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 </table>
@@ -316,6 +439,50 @@ a command line option
 </td></tr></table>
 </div>
 <br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="_boolean_states"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">_boolean_states</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">0</code><code class="variable-quote">'</code><code class="variable-op">: </code>False<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">1</code><code class="variable-quote">'</code><code class="variable-op">: </code>True<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">false</code><code class="variable-quote">'</code><code class="variable-op">: </code>False<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">no</code><code class="variable-quote">'</code><code class="variable-op">: </code>False<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">off</code><code class="variable-quote">'</code><code class="variable-op">: </code>False<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">on</code><code class="variable-quote">'</code><code class="variable-op">: </code>True<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">true</code><code class="variable-quote">'</code><code class="variable-op">: </code>True<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">yes</code><code class="variable-quote">'</code><code class="variable-op">: </code>True<code class="variable-group">}</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
@@ -347,7 +514,7 @@ a command line option
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

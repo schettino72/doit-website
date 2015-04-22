@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>delayed task creation &mdash; doit - automation tool</title>
+    <title>More on Task creation &mdash; doit - automation tool</title>
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.27',
+        VERSION:     '0.28',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,18 +24,29 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="top" title="doit - automation tool" href="contents.html" />
     <link rel="next" title="custom uptodate" href="uptodate.html" />
-    <link rel="prev" title="More on dependencies" href="dependencies.html" />
+    <link rel="prev" title="Passing Task Arguments from the command line" href="task_args.html" />
 <style>
   body {
     font-size: 16px;
   }
 
   div.topic {
-    padding: 2px;
+    padding: 0;
     background-color: #F8F4A6;
-    border: none;
+    border: 1px solid #D8D486;
+  }
+
+  div.topic p.first {
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    background-color: #E8E496;
+    border-bottom: 1px solid #C8C476;
+  }
+
+  div.topic p {
+    margin: 0.5em 1em 0.5em 1em;
   }
 
   p.topic-title {
@@ -76,19 +87,19 @@
 
 
   </head>
-  <body>
+  <body role="document">
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
 
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="uptodate.html" title="custom uptodate"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="dependencies.html" title="More on dependencies"
+          <a href="task_args.html" title="Passing Task Arguments from the command line"
              accesskey="P">previous</a> |</li>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
@@ -96,15 +107,26 @@
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">More on Task creation</a><ul>
+<li><a class="reference internal" href="#importing-tasks">importing tasks</a></li>
+<li><a class="reference internal" href="#delayed-task-creation">delayed task creation</a></li>
+<li><a class="reference internal" href="#custom-task-definition">custom task definition</a></li>
+</ul>
+</li>
+</ul>
 
 
-<div id="searchbox" style="display: none">
+
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -137,12 +159,12 @@
 <br/>
 
 <div class="sidebartext">
-Why Donate? Help keep the project alive! Donations will be used for project maintanance tasks (bug fixes, merge patches, reply users).<br/>
+If you use <em>doit</em> and think it is a useful project. Please consider to make a donation to support the developer/maintainer with maintanance tasks (bug fixes, merge patches, reply users) and further development.<br/>
   <script data-gratipay-username="schettino72"
         data-gratipay-widget="button"
         src="//gttp.co/v1.js"></script>
 <br/>
-For corporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+If you use it at work, ask your company to sponsor the project. The logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
 </div>
 
 <h3>Hire me</h3>
@@ -167,10 +189,48 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
-  <div class="section" id="delayed-task-creation">
-<h1>delayed task creation<a class="headerlink" href="#delayed-task-creation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="more-on-task-creation">
+<h1>More on Task creation<a class="headerlink" href="#more-on-task-creation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="importing-tasks">
+<h2>importing tasks<a class="headerlink" href="#importing-tasks" title="Permalink to this headline">¶</a></h2>
+<p>The <em>doit</em> loader will look at <strong>all</strong> objects in the namespace of the <em>dodo</em>.
+It will look for functions staring with <code class="docutils literal"><span class="pre">task_</span></code> and objects with
+<code class="docutils literal"><span class="pre">create_doit_tasks</span></code>.
+So it is also possible to load task definitions from other
+modules just by importing them into your <em>dodo</em> file.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># import task_ functions</span>
+<span class="kn">from</span> <span class="nn">get_var</span> <span class="kn">import</span> <span class="n">task_echo</span>
+
+<span class="c"># import tasks with create_doit_tasks callable</span>
+<span class="kn">from</span> <span class="nn">custom_task_def</span> <span class="kn">import</span> <span class="n">sample</span>
+
+
+<span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hello&#39;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit list
+<span class="go">echo</span>
+<span class="go">hello</span>
+<span class="go">sample</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Importing tasks from different modules is useful if you want to split
+your task definitions in different modules.</p>
+<p class="last">The best way to create re-usable tasks that can be used in several projects
+is to call functions that return task dict&#8217;s.
+For example take a look at a reusable <em>pyflakes</em>
+<a class="reference external" href="https://github.com/pydoit/doit-py/blob/master/doitpy/pyflakes.py">task generator</a>.
+Check the project <a class="reference external" href="https://github.com/pydoit/doit-py">doit-py</a>
+for more examples.</p>
+</div>
+</div>
+<div class="section" id="delayed-task-creation">
+<h2>delayed task creation<a class="headerlink" href="#delayed-task-creation" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> execution model is divided in two phases:</p>
 <blockquote>
 <div><ul class="simple">
@@ -215,6 +275,14 @@ execution of the specified task in the <cite>executed</cite> param.</p>
     <span class="p">}</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since the metadata of a delayed task is only created on demand,
+it is currently not possible to set a <cite>basename</cite> for delayed tasks.
+That is because <em>doit</em> needs to know which task-creator function should be
+executed in order to create the requested task. See this
+<a class="reference external" href="https://github.com/pydoit/doit/issues/30">issue</a> for a proposed solution.</p>
+</div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>There is a limitation in the use of the delayed task creation with
@@ -225,6 +293,30 @@ closures are not picklable. See <a class="reference external" href="https://docs
 the <em>task-execution</em> begins but for delayed tasks it is not possible.</p>
 </div>
 </div>
+<div class="section" id="custom-task-definition">
+<span id="create-doit-tasks"></span><h2>custom task definition<a class="headerlink" href="#custom-task-definition" title="Permalink to this headline">¶</a></h2>
+<p>Apart from collect functions that start with the name <cite>task_</cite>.
+The <em>doit</em> loader will also execute the <code class="docutils literal"><span class="pre">create_doit_tasks</span></code>
+callable from any object that contains this attribute.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">make_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;make decorated function a task-creator&quot;&quot;&quot;</span>
+    <span class="n">func</span><span class="o">.</span><span class="n">create_doit_tasks</span> <span class="o">=</span> <span class="n">func</span>
+    <span class="k">return</span> <span class="n">func</span>
+
+<span class="nd">@make_task</span>
+<span class="k">def</span> <span class="nf">sample</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hi&#39;</span><span class="p">],</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="https://bitbucket.org/takluyver/letsdoit">project letsdoit</a>
+has some real-world implementations.</p>
+<p>For simple examples to help you create your own check this
+<a class="reference external" href="http://blog.schettino72.net/posts/doit-task-creation.html">blog post</a>.</p>
+</div>
+</div>
 
 
           </div>
@@ -232,14 +324,14 @@ the <em>task-execution</em> begins but for delayed tasks it is not possible.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="uptodate.html" title="custom uptodate"
              >next</a></li>
         <li class="right" >
-          <a href="dependencies.html" title="More on dependencies"
+          <a href="task_args.html" title="Passing Task Arguments from the command line"
              >previous</a> |</li>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
@@ -247,13 +339,14 @@ the <em>task-execution</em> begins but for delayed tasks it is not possible.</p>
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

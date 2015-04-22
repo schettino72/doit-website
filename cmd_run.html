@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.27',
+        VERSION:     '0.28',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,18 +24,29 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="top" title="doit - automation tool" href="contents.html" />
     <link rel="next" title="Other Commands" href="cmd_other.html" />
-    <link rel="prev" title="custom uptodate" href="uptodate.html" />
+    <link rel="prev" title="More on dependencies" href="dependencies.html" />
 <style>
   body {
     font-size: 16px;
   }
 
   div.topic {
-    padding: 2px;
+    padding: 0;
     background-color: #F8F4A6;
-    border: none;
+    border: 1px solid #D8D486;
+  }
+
+  div.topic p.first {
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    background-color: #E8E496;
+    border-bottom: 1px solid #C8C476;
+  }
+
+  div.topic p {
+    margin: 0.5em 1em 0.5em 1em;
   }
 
   p.topic-title {
@@ -76,19 +87,19 @@
 
 
   </head>
-  <body>
+  <body role="document">
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
 
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="cmd_other.html" title="Other Commands"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="uptodate.html" title="custom uptodate"
+          <a href="dependencies.html" title="More on dependencies"
              accesskey="P">previous</a> |</li>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
@@ -96,11 +107,12 @@
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="contents.html">Table Of Contents</a></h3>
   <ul>
@@ -112,8 +124,8 @@
 <li><a class="reference internal" href="#using-the-api">using the API</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#from-ipython">from IPython</a></li>
 <li><a class="reference internal" href="#returned-value">returned value</a></li>
-<li><a class="reference internal" href="#config">config</a></li>
 <li><a class="reference internal" href="#db-backend">DB backend</a></li>
 <li><a class="reference internal" href="#db-file">DB-file</a></li>
 <li><a class="reference internal" href="#verbosity">verbosity</a></li>
@@ -123,6 +135,10 @@
 <li><a class="reference internal" href="#parallel-execution">parallel execution</a></li>
 <li><a class="reference internal" href="#reporter">reporter</a></li>
 <li><a class="reference internal" href="#custom-reporter">custom reporter</a></li>
+<li><a class="reference internal" href="#check-file-uptodate">check_file_uptodate</a><ul>
+<li><a class="reference internal" href="#custom-check-file-uptodate">custom check_file_uptodate</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#output-file">output-file</a></li>
 <li><a class="reference internal" href="#pdb">pdb</a></li>
 <li><a class="reference internal" href="#get-initial-workdir">get_initial_workdir</a></li>
@@ -133,7 +149,7 @@
 
 
 
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -166,12 +182,12 @@
 <br/>
 
 <div class="sidebartext">
-Why Donate? Help keep the project alive! Donations will be used for project maintanance tasks (bug fixes, merge patches, reply users).<br/>
+If you use <em>doit</em> and think it is a useful project. Please consider to make a donation to support the developer/maintainer with maintanance tasks (bug fixes, merge patches, reply users) and further development.<br/>
   <script data-gratipay-username="schettino72"
         data-gratipay-widget="button"
         src="//gttp.co/v1.js"></script>
 <br/>
-For corporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+If you use it at work, ask your company to sponsor the project. The logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
 </div>
 
 <h3>Hire me</h3>
@@ -196,20 +212,20 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="command-line-interface-run">
 <h1>Command line interface - run<a class="headerlink" href="#command-line-interface-run" title="Permalink to this headline">¶</a></h1>
 <p>A general <cite>doit</cite> command goes like this:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit <span class="o">[</span>run<span class="o">]</span> <span class="o">[</span>&lt;options&gt;<span class="o">]</span> <span class="o">[</span>&lt;task|target&gt; &lt;task_options&gt;<span class="o">]</span>* <span class="o">[</span>&lt;variables&gt;<span class="o">]</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit <span class="o">[</span>run<span class="o">]</span> <span class="o">[</span>&lt;options&gt;<span class="o">]</span> <span class="o">[</span>&lt;task<span class="p">|</span>target&gt; &lt;task_options&gt;<span class="o">]</span>* <span class="o">[</span>&lt;variables&gt;<span class="o">]</span>
 </pre></div>
 </div>
 <p>The <cite>doit</cite> command line contains several sub-commands. Most of the time you just
 want to execute your tasks, that&#8217;s what <em>run</em> does. Since it is by far the most
 common operation it is also the default, so if you don&#8217;t specify any sub-command
-to <em>doit</em> it will execute <em>run</em>. So <tt class="docutils literal"><span class="pre">$</span> <span class="pre">doit</span></tt> and <tt class="docutils literal"><span class="pre">$</span> <span class="pre">doit</span> <span class="pre">run</span></tt> do the same
+to <em>doit</em> it will execute <em>run</em>. So <code class="docutils literal"><span class="pre">$</span> <span class="pre">doit</span></code> and <code class="docutils literal"><span class="pre">$</span> <span class="pre">doit</span> <span class="pre">run</span></code> do the same
 thing.</p>
-<p>The basics of task selection were introduced in <a class="reference internal" href="tasks.html#task-selection"><em>Task Selection</em></a>.</p>
+<p>The basics of task selection were introduced in <a class="reference internal" href="tasks.html#task-selection"><span>Task Selection</span></a>.</p>
 <div class="section" id="python-m-doit">
 <h2><cite>python -m doit</cite><a class="headerlink" href="#python-m-doit" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> can also be executed without using the <cite>doit</cite> script.</p>
@@ -220,27 +236,28 @@ thing.</p>
 </div>
 <div class="section" id="dodo-file">
 <h2>dodo file<a class="headerlink" href="#dodo-file" title="Permalink to this headline">¶</a></h2>
-<p>By default all commands are relative to <tt class="docutils literal"><span class="pre">dodo.py</span></tt> in the current folder.
-You can specify a different <em>dodo</em> file containing task with the flag <tt class="docutils literal"><span class="pre">-f</span></tt>.
+<p>By default all commands are relative to <code class="docutils literal"><span class="pre">dodo.py</span></code> in the current folder.
+You can specify a different <em>dodo</em> file containing task with the flag <code class="docutils literal"><span class="pre">-f</span></code>.
 This flag is valid for all sub-commands.</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit -f release.py
 </pre></div>
 </div>
-<p><em>doit</em> can seek for the <tt class="docutils literal"><span class="pre">dodo.py</span></tt> file on parent folders if the the option <tt class="docutils literal"><span class="pre">--seek-file</span></tt> is specified.</p>
+<p><em>doit</em> can seek for the <code class="docutils literal"><span class="pre">dodo.py</span></code> file on parent folders if the option
+<code class="docutils literal"><span class="pre">--seek-file</span></code> is specified.</p>
 </div>
 <div class="section" id="as-an-executable-file">
 <h2>as an executable file<a class="headerlink" href="#as-an-executable-file" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="using-a-hashbang">
 <h3>using a hashbang<a class="headerlink" href="#using-a-hashbang" title="Permalink to this headline">¶</a></h3>
-<p>If you have <cite>doit</cite> installed on <tt class="docutils literal"><span class="pre">/usr/bin</span></tt> use the following hashbang:</p>
+<p>If you have <cite>doit</cite> installed on <code class="docutils literal"><span class="pre">/usr/bin</span></code> use the following hashbang:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="c">#! /usr/bin/doit -f</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="using-the-api">
 <h3>using the API<a class="headerlink" href="#using-the-api" title="Permalink to this headline">¶</a></h3>
-<p>It is possible to make a <tt class="docutils literal"><span class="pre">dodo</span></tt> file become an executable on its own
-by calling the <tt class="docutils literal"><span class="pre">doit.run()</span></tt>, you need to pass the <tt class="docutils literal"><span class="pre">globals</span></tt>:</p>
+<p>It is possible to make a <code class="docutils literal"><span class="pre">dodo</span></code> file become an executable on its own
+by calling the <code class="docutils literal"><span class="pre">doit.run()</span></code>, you need to pass the <code class="docutils literal"><span class="pre">globals</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
 
 <span class="k">def</span> <span class="nf">task_echo</span><span class="p">():</span>
@@ -256,15 +273,20 @@ by calling the <tt class="docutils literal"><span class="pre">doit.run()</span><
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <tt class="docutils literal"><span class="pre">doit.run()</span></tt> method will call <tt class="docutils literal"><span class="pre">sys.exit()</span></tt> so any code after it
+<p class="last">The <code class="docutils literal"><span class="pre">doit.run()</span></code> method will call <code class="docutils literal"><span class="pre">sys.exit()</span></code> so any code after it
 will not be executed.</p>
 </div>
-<p><tt class="docutils literal"><span class="pre">doit.run()</span></tt> parameter will be passed to a <a class="reference internal" href="extending.html#moduletaskloader"><em>ModuleTaskLoader</em></a> to find your tasks.</p>
+<p><code class="docutils literal"><span class="pre">doit.run()</span></code> parameter will be passed to a <a class="reference internal" href="extending.html#moduletaskloader"><span>ModuleTaskLoader</span></a> to find your tasks.</p>
 </div>
+</div>
+<div class="section" id="from-ipython">
+<h2>from IPython<a class="headerlink" href="#from-ipython" title="Permalink to this headline">¶</a></h2>
+<p>You can install and use the <cite>%doit</cite> magic function to load tasks defined
+directly in IPython&#8217;s global namespace (<a class="reference internal" href="tools.html#tools-ipython"><span>more</span></a>).</p>
 </div>
 <div class="section" id="returned-value">
 <h2>returned value<a class="headerlink" href="#returned-value" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">doit</span></tt> process returns:</p>
+<p><code class="docutils literal"><span class="pre">doit</span></code> process returns:</p>
 <blockquote>
 <div><ul>
 <li><p class="first">0 =&gt; all tasks executed successfully</p>
@@ -282,30 +304,6 @@ will not be executed.</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="config">
-<h2>config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
-<p>Command line parameters can be set straight on a <cite>dodo</cite> file. This example below sets the default tasks to be run, the <tt class="docutils literal"><span class="pre">continue</span></tt> option, and a different reporter.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;my_task_1&#39;</span><span class="p">,</span> <span class="s">&#39;my_task_2&#39;</span><span class="p">],</span>
-               <span class="s">&#39;continue&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-               <span class="s">&#39;reporter&#39;</span><span class="p">:</span> <span class="s">&#39;json&#39;</span><span class="p">}</span>
-</pre></div>
-</div>
-<p>So if you just execute</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
-</pre></div>
-</div>
-<p>it will have the same effect as executing</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit --continue --reporter json my_task_1 my_task_2
-</pre></div>
-</div>
-<p>You need to check <a class="reference external" href="https://github.com/pydoit/doit/blob/master/doit/doit_cmd.py">doit_cmd.py</a> to find out how
-parameter maps to config names.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The parameters <tt class="docutils literal"><span class="pre">--file</span></tt> and <tt class="docutils literal"><span class="pre">--dir</span></tt> can not be used on config because
-they control how the dodo file itself is loaded.</p>
-</div>
-</div>
 <div class="section" id="db-backend">
 <h2>DB backend<a class="headerlink" href="#db-backend" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> saves the results of your tasks runs in a &#8220;DB-file&#8221;, it supports
@@ -317,16 +315,16 @@ different backends:</p>
 <li><cite>sqlite3</cite>: (experimental) very slow implementation, support concurrent access.</li>
 </ul>
 </div></blockquote>
-<p>From the command line you can select the backend using the <tt class="docutils literal"><span class="pre">--backend</span></tt> option.</p>
+<p>From the command line you can select the backend using the <code class="docutils literal"><span class="pre">--backend</span></code> option.</p>
 <p>It is quite easy to add a new backend for any key-value store.</p>
 </div>
 <div class="section" id="db-file">
 <h2>DB-file<a class="headerlink" href="#db-file" title="Permalink to this headline">¶</a></h2>
-<p>Option <tt class="docutils literal"><span class="pre">--db-file</span></tt> sets the name of the file to save the &#8220;DB&#8221;,
-default is <tt class="docutils literal"><span class="pre">.doit.db</span></tt>.
+<p>Option <code class="docutils literal"><span class="pre">--db-file</span></code> sets the name of the file to save the &#8220;DB&#8221;,
+default is <code class="docutils literal"><span class="pre">.doit.db</span></code>.
 Note that DBM backends might save more than one file, in this case
 the specified name is used as a base name.</p>
-<p>To configure in a <cite>dodo</cite> file the field name is <tt class="docutils literal"><span class="pre">dep_file</span></tt></p>
+<p>To configure in a <cite>dodo</cite> file the field name is <code class="docutils literal"><span class="pre">dep_file</span></code></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">&#39;backend&#39;</span><span class="p">:</span> <span class="s">&#39;json&#39;</span><span class="p">,</span>
     <span class="s">&#39;dep_file&#39;</span><span class="p">:</span> <span class="s">&#39;doit-db.json&#39;</span><span class="p">,</span>
@@ -336,7 +334,7 @@ the specified name is used as a base name.</p>
 </div>
 <div class="section" id="verbosity">
 <span id="verbosity-option"></span><h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
-<p>Option to change the default global task <a class="reference internal" href="tasks.html#verbosity"><em>verbosity</em></a> value.</p>
+<p>Option to change the default global task <a class="reference internal" href="tasks.html#verbosity"><span>verbosity</span></a> value.</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit --verbosity 2
 </pre></div>
 </div>
@@ -359,7 +357,7 @@ You can specify a different <em>cwd</em> with the <em>-d</em>/<em>&#8211;dir</em
 </div>
 <div class="section" id="single-task-execution">
 <h2>single task execution<a class="headerlink" href="#single-task-execution" title="Permalink to this headline">¶</a></h2>
-<p>The option <tt class="docutils literal"><span class="pre">-s/--single</span></tt> can be used to execute a task without executing
+<p>The option <code class="docutils literal"><span class="pre">-s/--single</span></code> can be used to execute a task without executing
 its task dependencies.</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit -s do_something
 </pre></div>
@@ -377,7 +375,7 @@ So the same restrictions also apply to the use of multiprocessing in <cite>doit<
 </div>
 <p>You can also execute in parallel using threads by specifying the option
 <cite>&#8211;parallel-type/-P</cite>.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit -n 3 -P thread
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit -n <span class="m">3</span> -P thread
 </pre></div>
 </div>
 <div class="admonition note">
@@ -406,11 +404,11 @@ the output generated by the tasks execution.</li>
 </div>
 </div>
 <div class="section" id="custom-reporter">
-<h2>custom reporter<a class="headerlink" href="#custom-reporter" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>custom reporter<a class="headerlink" href="#custom-reporter" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to define your own custom reporter. Check the code on
 <a class="reference external" href="https://github.com/pydoit/doit/blob/master/doit/reporter.py">doit/reporter.py</a> ... It is easy
 to get started by sub-classing the default reporter as shown below. The custom
-reporter must be configured using DOIT_CONFIG dict.</p>
+reporter can be enabled directly on DOIT_CONFIG dict.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.reporter</span> <span class="kn">import</span> <span class="n">ConsoleReporter</span>
 
 <span class="k">class</span> <span class="nc">MyReporter</span><span class="p">(</span><span class="n">ConsoleReporter</span><span class="p">):</span>
@@ -426,9 +424,52 @@ reporter must be configured using DOIT_CONFIG dict.</p>
                <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo out </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">]}</span>
 </pre></div>
 </div>
-<p>Note that the <tt class="docutils literal"><span class="pre">reporter</span></tt> have no control over the <em>real time</em> output
+<p>It is also possible distribute/use a custom reporter
+as a <a class="reference internal" href="extending.html#plugin-reporter"><span>plugin</span></a>.</p>
+<p>Note that the <code class="docutils literal"><span class="pre">reporter</span></code> have no control over the <em>real time</em> output
 from a task while it is being executed,
-this is controlled by the <tt class="docutils literal"><span class="pre">verbosity</span></tt> param.</p>
+this is controlled by the <code class="docutils literal"><span class="pre">verbosity</span></code> param.</p>
+</div>
+<div class="section" id="check-file-uptodate">
+<h2>check_file_uptodate<a class="headerlink" href="#check-file-uptodate" title="Permalink to this headline">¶</a></h2>
+<p><cite>doit</cite> provides different options to check if dependency files are up to date
+(see <a class="reference internal" href="tasks.html#file-dep"><span>file_dep (file dependency)</span></a>).  Use the option <code class="docutils literal"><span class="pre">--check_file_uptodate</span></code> to choose:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>md5</cite>: use the md5sum.</li>
+<li><cite>timestamp</cite>: use the timestamp.</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <cite>timestamp</cite> checker considers a file is not up-to-date if there is
+<strong>any</strong> change in the the modified time (<cite>mtime</cite>), it does not matter if
+the new time is in the future or past of the original timestamp.</p>
+</div>
+<p>You can set this option from command line, but you probably want to set it for
+all commands using <cite>DOIT_CONFIG</cite>.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">DOIT_CONFIG = {&#39;check_file_uptodate&#39;: &#39;timestamp&#39;}</span>
+</pre></div>
+</div>
+<div class="section" id="custom-check-file-uptodate">
+<h3>custom check_file_uptodate<a class="headerlink" href="#custom-check-file-uptodate" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to define your own custom up to date checker. Check the code on
+<a class="reference external" href="https://github.com/pydoit/doit/blob/master/doit/dependency.py">doit/dependency.py</a> ...
+Sub-class <code class="docutils literal"><span class="pre">FileChangedChecker</span></code> and define the 2 required methods as shown
+below. The custom checker must be configured using DOIT_CONFIG dict.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.dependency</span> <span class="kn">import</span> <span class="n">FileChangedChecker</span>
+
+<span class="k">class</span> <span class="nc">MyChecker</span><span class="p">(</span><span class="n">FileChangedChecker</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;With this checker, files are always out of date.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">check_modified</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">file_stat</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dep</span><span class="p">,</span> <span class="n">current_state</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;check_file_uptodate&#39;</span><span class="p">:</span> <span class="n">MyChecker</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="output-file">
 <h2>output-file<a class="headerlink" href="#output-file" title="Permalink to this headline">¶</a></h2>
@@ -439,7 +480,7 @@ this is controlled by the <tt class="docutils literal"><span class="pre">verbosi
 </div>
 <div class="section" id="pdb">
 <h2>pdb<a class="headerlink" href="#pdb" title="Permalink to this headline">¶</a></h2>
-<p>If the option <tt class="docutils literal"><span class="pre">--pdb</span></tt> is used, a post-mortem debugger will be launched in case
+<p>If the option <code class="docutils literal"><span class="pre">--pdb</span></code> is used, a post-mortem debugger will be launched in case
 of a unhandled exception while loading tasks.</p>
 </div>
 <div class="section" id="get-initial-workdir">
@@ -487,6 +528,9 @@ that can be used with a <cite>dodo.py</cite> file.</p>
 <p>For example if your <cite>dodo.py</cite> makes use of a feature added at <cite>doit X</cite>
 and distribute it. If another user who tries this <cite>dodo.py</cite> with a version
 older that <cite>X</cite>, doit will display an error warning the user to update <cite>doit</cite>.</p>
+<p><cite>minversion</cite> can be specified as a string or a 3-element tuple with integer
+values. If specified as a string any part that is not a number i.e.(dev0, a2,
+b4) will be converted to -1.</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">DOIT_CONFIG = {</span>
 <span class="go">    &#39;minversion&#39;: &#39;0.24.0&#39;,</span>
 <span class="go">}</span>
@@ -506,14 +550,14 @@ Older Versions will not check or display error messages.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="cmd_other.html" title="Other Commands"
              >next</a></li>
         <li class="right" >
-          <a href="uptodate.html" title="custom uptodate"
+          <a href="dependencies.html" title="More on dependencies"
              >previous</a> |</li>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
@@ -521,13 +565,14 @@ Older Versions will not check or display error messages.</p>
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

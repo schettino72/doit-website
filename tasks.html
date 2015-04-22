@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.27',
+        VERSION:     '0.28',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="top" title="doit - automation tool" href="contents.html" />
     <link rel="next" title="More on dependencies" href="dependencies.html" />
     <link rel="prev" title="Installing" href="install.html" />
 <style>
@@ -33,9 +33,20 @@
   }
 
   div.topic {
-    padding: 2px;
+    padding: 0;
     background-color: #F8F4A6;
-    border: none;
+    border: 1px solid #D8D486;
+  }
+
+  div.topic p.first {
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    background-color: #E8E496;
+    border-bottom: 1px solid #C8C476;
+  }
+
+  div.topic p {
+    margin: 0.5em 1em 0.5em 1em;
   }
 
   p.topic-title {
@@ -76,12 +87,12 @@
 
 
   </head>
-  <body>
+  <body role="document">
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
 
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -96,11 +107,12 @@
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="contents.html">Table Of Contents</a></h3>
   <ul>
@@ -112,6 +124,7 @@
 <li><a class="reference internal" href="#custom-actions">custom actions</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#keywords-on-actions">keywords on actions</a></li>
 <li><a class="reference internal" href="#task-name">task name</a></li>
 <li><a class="reference internal" href="#sub-tasks">sub-tasks</a><ul>
 <li><a class="reference internal" href="#avoiding-empty-sub-tasks">avoiding empty sub-tasks</a></li>
@@ -128,24 +141,16 @@
 <li><a class="reference internal" href="#wildcard-selection">wildcard selection</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#arguments">arguments</a><ul>
-<li><a class="reference internal" href="#all-parameters-attributes">All parameters attributes</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#positional-arguments">positional arguments</a></li>
-<li><a class="reference internal" href="#command-line-variables-doit-get-var">command line variables (<em>doit.get_var</em>)</a></li>
 <li><a class="reference internal" href="#private-hidden-tasks">private/hidden tasks</a></li>
 <li><a class="reference internal" href="#title">title</a></li>
 <li><a class="reference internal" href="#verbosity">verbosity</a></li>
-<li><a class="reference internal" href="#custom-task-definition">custom task definition</a></li>
-<li><a class="reference internal" href="#importing-tasks">importing tasks</a></li>
 </ul>
 </li>
 </ul>
 
 
 
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -178,12 +183,12 @@
 <br/>
 
 <div class="sidebartext">
-Why Donate? Help keep the project alive! Donations will be used for project maintanance tasks (bug fixes, merge patches, reply users).<br/>
+If you use <em>doit</em> and think it is a useful project. Please consider to make a donation to support the developer/maintainer with maintanance tasks (bug fixes, merge patches, reply users) and further development.<br/>
   <script data-gratipay-username="schettino72"
         data-gratipay-widget="button"
         src="//gttp.co/v1.js"></script>
 <br/>
-For corporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+If you use it at work, ask your company to sponsor the project. The logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
 </div>
 
 <h3>Hire me</h3>
@@ -208,7 +213,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="tasks">
 <h1>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h1>
@@ -261,7 +266,7 @@ It can optionally define other attributes like <cite>targets</cite>, <cite>file_
 <p>Actions define what the task actually does.
 <em>Actions</em> is always a list that can have any number of elements.
 The actions of a task are always run sequentially.
-There 2 basic kinds of <cite>actions</cite>: <em>cmd-action</em> and <em>python-action</em>.
+There are 2 basic kinds of <cite>actions</cite>: <em>cmd-action</em> and <em>python-action</em>.
 The action &#8220;result&#8221; is used to determine if task execution was successful or not.</p>
 <div class="section" id="python-action">
 <h3>python-action<a class="headerlink" href="#python-action" title="Permalink to this headline">¶</a></h3>
@@ -269,16 +274,28 @@ The action &#8220;result&#8221; is used to determine if task execution was succe
 - only <cite>callable</cite> is required.
 The callable must be a function, method or callable object.
 Classes and built-in functions are not allowed.
-<tt class="docutils literal"><span class="pre">args</span></tt> is a sequence and <tt class="docutils literal"><span class="pre">kwargs</span></tt> is a dictionary that will be used
+<code class="docutils literal"><span class="pre">args</span></code> is a sequence and <code class="docutils literal"><span class="pre">kwargs</span></code> is a dictionary that will be used
 as positional and keywords arguments for the callable.
 see <a class="reference external" href="http://docs.python.org/tutorial/controlflow.html#keyword-arguments">Keyword Arguments</a>.</p>
-<p>The result of the task is given by the returned value of the <tt class="docutils literal"><span class="pre">action</span></tt> function.
-So it must return a <em>boolean</em> value <cite>True</cite>, <cite>None</cite>,
-a dictionary or a string to indicate successful completion of the task.
-Use <cite>False</cite> to indicate task failed.
-If it raises an exception, it will be considered an error.
-If it returns any other type it will also be considered an error
-but this behavior might change in future versions.</p>
+<p>The result of the task is given by the returned value of the
+<code class="docutils literal"><span class="pre">action</span></code> function.</p>
+<p>For <strong>successful</strong> completion it must return one of:</p>
+<ul class="simple">
+<li><cite>True</cite></li>
+<li><cite>None</cite></li>
+<li>a dictionary</li>
+<li>a string</li>
+</ul>
+<p>For <strong>unsuccessful</strong> completion it must return one of:</p>
+<ul class="simple">
+<li><cite>False</cite> indicates the task generally failed</li>
+<li>if it raises any exception, it will be considered an error</li>
+<li>it can also explicitly return an instance of <code class="xref py py-class docutils literal"><span class="pre">TaskFailed</span></code>
+or <code class="xref py py-class docutils literal"><span class="pre">TaskError</span></code></li>
+</ul>
+<p>If the action returns a type other than the types already discussed, the action
+will be considered a failure, although this behavior might change in future
+versions.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello py &quot;&quot;&quot;</span>
 
@@ -294,9 +311,9 @@ but this behavior might change in future versions.</p>
 <p>The function <cite>task_hello</cite> is a <em>task-creator</em>, not the task itself.
 The body of the task-creator function is always executed when the dodo
 file is loaded.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The body of task-creators are executed even if the task is not going
+<div class="topic">
+<p class="topic-title first">task-creators vs actions</p>
+<p>The body of task-creators are executed even if the task is not going
 to be executed.
 The body of task-creators should be used to create task metadata only,
 not execute tasks!
@@ -351,10 +368,10 @@ the command string. In this case you must explicit import CmdAction.</p>
         <span class="p">}</span>
 </pre></div>
 </div>
-<p>You might also explicitly import <tt class="docutils literal"><span class="pre">CmdAction</span></tt> in case you want to pass extra
-parameters to <tt class="docutils literal"><span class="pre">Popen</span></tt> like <tt class="docutils literal"><span class="pre">cwd</span></tt>.
-All keyword parameter from <tt class="docutils literal"><span class="pre">Popen</span></tt> can be used on <tt class="docutils literal"><span class="pre">CmdAction</span></tt> (except
-<tt class="docutils literal"><span class="pre">stdout</span></tt> and <tt class="docutils literal"><span class="pre">stderr</span></tt>).</p>
+<p>You might also explicitly import <code class="docutils literal"><span class="pre">CmdAction</span></code> in case you want to pass extra
+parameters to <code class="docutils literal"><span class="pre">Popen</span></code> like <code class="docutils literal"><span class="pre">cwd</span></code>.
+All keyword parameter from <code class="docutils literal"><span class="pre">Popen</span></code> can be used on <code class="docutils literal"><span class="pre">CmdAction</span></code> (except
+<code class="docutils literal"><span class="pre">stdout</span></code> and <code class="docutils literal"><span class="pre">stderr</span></code>).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Different from <cite>subprocess.Popen</cite>, <cite>CmdAction</cite> <cite>shell</cite> argument defaults to
@@ -368,15 +385,61 @@ Any other value means the task failed.</p>
 <div class="section" id="custom-actions">
 <span id="id1"></span><h3>custom actions<a class="headerlink" href="#custom-actions" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to create other type of actions,
-check <a class="reference internal" href="tools.html#tools-longrunning"><em>tools.LongRunning</em></a> as an example.</p>
+check <a class="reference internal" href="tools.html#tools-longrunning"><span>tools.LongRunning</span></a> as an example.</p>
+</div>
+</div>
+<div class="section" id="keywords-on-actions">
+<h2>keywords on actions<a class="headerlink" href="#keywords-on-actions" title="Permalink to this headline">¶</a></h2>
+<p>It is common situation to use task information such as <em>targets</em>,
+<em>dependencies</em>, or <em>changed</em> in its own actions.
+Note: Dependencies here refers only to <em>file-dependencies</em>.</p>
+<p>For <em>cmd-action</em> you can use the python notation for keyword substitution
+on strings. The string will contain all values separated by a space (&#8221; &#8221;).</p>
+<p>For <em>python-action</em> create a parameter in the function, <cite>doit</cite> will take care
+of passing the value when the function is called.
+The values are passed as list of strings.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;hello&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">python_hello</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Python says Hello World!!!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">python_hello</span><span class="p">],</span>
+        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello.txt&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also pass the keyword <em>task</em> to have a reference to all task
+metadata.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;my name is&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">task_x</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">who</span><span class="p">],</span>
+        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;asdf&#39;</span><span class="p">],</span>
+        <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Note that the <em>task</em> argument is a <cite>Task</cite> object instance, not
+the metadata <em>dict</em>.</p>
+<p class="last">It is possible not only to retrieve task&#8217;s attributes but also to modify
+them while the action is running!</p>
 </div>
 </div>
 <div class="section" id="task-name">
 <h2>task name<a class="headerlink" href="#task-name" title="Permalink to this headline">¶</a></h2>
 <p>By default a task name is taken from the name of the python function
 that generates the task.
-For example a <cite>def task_hello</cite> would create a task named <tt class="docutils literal"><span class="pre">hello</span></tt>.</p>
-<p>It is possible to explicitly set a task name with the parameter <tt class="docutils literal"><span class="pre">basename</span></tt>.</p>
+For example a <cite>def task_hello</cite> would create a task named <code class="docutils literal"><span class="pre">hello</span></code>.</p>
+<p>It is possible to explicitly set a task name with the parameter <code class="docutils literal"><span class="pre">basename</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hello&#39;</span><span class="p">]</span>
@@ -394,10 +457,10 @@ For example a <cite>def task_hello</cite> would create a task named <tt class="d
 <span class="go">.  hello2</span>
 </pre></div>
 </div>
-<p>When explicit using <tt class="docutils literal"><span class="pre">basename</span></tt> the task-creator is not limited
+<p>When explicit using <code class="docutils literal"><span class="pre">basename</span></code> the task-creator is not limited
 to create only one task.
-Using <tt class="docutils literal"><span class="pre">yield</span></tt> it can generate several tasks at once.
-It is also possible to <tt class="docutils literal"><span class="pre">yield</span></tt> a generator that generate tasks.
+Using <code class="docutils literal"><span class="pre">yield</span></code> it can generate several tasks at once.
+It is also possible to <code class="docutils literal"><span class="pre">yield</span></code> a generator that generate tasks.
 This is useful to write some generic/reusable task-creators.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">gen_many_tasks</span><span class="p">():</span>
     <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;basename&#39;</span><span class="p">:</span> <span class="s">&#39;t1&#39;</span><span class="p">,</span>
@@ -421,7 +484,7 @@ This is useful to write some generic/reusable task-creators.</p>
 in different contexts.</p>
 <p>The task function can return a python-generator that yields dictionaries.
 Since each sub-task must be uniquely identified it requires an
-additional field <tt class="docutils literal"><span class="pre">name</span></tt>.</p>
+additional field <code class="docutils literal"><span class="pre">name</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
         <span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;file</span><span class="si">%d</span><span class="s">.txt&quot;</span> <span class="o">%</span> <span class="n">i</span>
@@ -437,10 +500,10 @@ additional field <tt class="docutils literal"><span class="pre">name</span></tt>
 </div>
 <div class="section" id="avoiding-empty-sub-tasks">
 <h3>avoiding empty sub-tasks<a class="headerlink" href="#avoiding-empty-sub-tasks" title="Permalink to this headline">¶</a></h3>
-<p>If you are not sure sub-tasks will be created for a given <tt class="docutils literal"><span class="pre">basename</span></tt>
+<p>If you are not sure sub-tasks will be created for a given <code class="docutils literal"><span class="pre">basename</span></code>
 but you want to make sure that a task exist,
-you can yield a sub-task with <tt class="docutils literal"><span class="pre">name</span></tt> equal to <tt class="docutils literal"><span class="pre">None</span></tt>.
-This can also used to set the task <tt class="docutils literal"><span class="pre">doc</span></tt> and <tt class="docutils literal"><span class="pre">watch</span></tt> attribute.</p>
+you can yield a sub-task with <code class="docutils literal"><span class="pre">name</span></code> equal to <code class="docutils literal"><span class="pre">None</span></code>.
+This can also used to set the task <code class="docutils literal"><span class="pre">doc</span></code> and <code class="docutils literal"><span class="pre">watch</span></code> attribute.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">glob</span>
 
 <span class="k">def</span> <span class="nf">task_xxx</span><span class="p">():</span>
@@ -498,11 +561,11 @@ The execution of the task&#8217;s actions is skipped.</p>
 <span class="go">-- compile</span>
 </pre></div>
 </div>
-<p>Note the <tt class="docutils literal"><span class="pre">--</span></tt> (2 dashes, one space) on the command output on the second
+<p>Note the <code class="docutils literal"><span class="pre">--</span></code> (2 dashes, one space) on the command output on the second
 time it is executed. It means, this task was up-to-date and not executed.</p>
 </div>
 <div class="section" id="file-dep-file-dependency">
-<h2>file_dep (file dependency)<a class="headerlink" href="#file-dep-file-dependency" title="Permalink to this headline">¶</a></h2>
+<span id="file-dep"></span><h2>file_dep (file dependency)<a class="headerlink" href="#file-dep-file-dependency" title="Permalink to this headline">¶</a></h2>
 <p>Different from most build-tools dependencies are on tasks, not on targets.
 So <cite>doit</cite> can take advantage of the &#8220;execute only if not up-to-date&#8221; feature
 even for tasks that don&#8217;t define targets.</p>
@@ -521,7 +584,7 @@ source code files. You can define the source code as a dependency to the task.</
 <span class="go">-- checker</span>
 </pre></div>
 </div>
-<p>Note the <tt class="docutils literal"><span class="pre">--</span></tt> again to indicate the execution was skipped.</p>
+<p>Note the <code class="docutils literal"><span class="pre">--</span></code> again to indicate the execution was skipped.</p>
 <p>Traditional build-tools can only handle files as &#8220;dependencies&#8221;.
 <cite>doit</cite> has several ways to check for dependencies, those will be introduced later.</p>
 </div>
@@ -599,7 +662,7 @@ executed in the correct order.</p>
 </div>
 <div class="section" id="doit-config-default-tasks">
 <h3>DOIT_CONFIG -&gt; default_tasks<a class="headerlink" href="#doit-config-default-tasks" title="Permalink to this headline">¶</a></h3>
-<p><em>dodo</em> file defines a dictionary <tt class="docutils literal"><span class="pre">DOIT_CONFIG</span></tt> with <tt class="docutils literal"><span class="pre">default_tasks</span></tt>, a list of strings where each element is a task name.</p>
+<p><em>dodo</em> file defines a dictionary <code class="docutils literal"><span class="pre">DOIT_CONFIG</span></code> with <code class="docutils literal"><span class="pre">default_tasks</span></code>, a list of strings where each element is a task name.</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
 <span class="go">.  t1</span>
 <span class="go">.  t3</span>
@@ -639,260 +702,13 @@ So that task was automatically executed also.</p>
 </div>
 <div class="section" id="wildcard-selection">
 <h3>wildcard selection<a class="headerlink" href="#wildcard-selection" title="Permalink to this headline">¶</a></h3>
-<p>You can also select tasks to be executed using a <a class="reference external" href="http://docs.python.org/library/glob.html">glob</a> like syntax (it must contains a <tt class="docutils literal"><span class="pre">*</span></tt>).</p>
+<p>You can also select tasks to be executed using a <a class="reference external" href="http://docs.python.org/library/glob.html">glob</a> like syntax (it must contains a <code class="docutils literal"><span class="pre">*</span></code>).</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit create_file:file*
 <span class="go">.  create_file:file1.txt</span>
 <span class="go">.  create_file:file2.txt</span>
 <span class="go">.  create_file:file3.txt</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="arguments">
-<span id="parameters"></span><h2>arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
-<p>It is possible to pass option parameters to the task through the command line.</p>
-<p>Just add a <tt class="docutils literal"><span class="pre">params</span></tt> field to the task dictionary. <tt class="docutils literal"><span class="pre">params</span></tt> must be a list of
-dictionaries where every entry is an option parameter. Each parameter must
-define a name, and a default value. It can optionally define a &#8220;short&#8221; and
-&#8220;long&#8221; names to be used from the command line (it follows unix command line
-conventions). It may also specify additional attributes, such as
-<cite>type</cite> and <cite>help</cite> (see <a class="reference internal" href="#parameters-attributes"><em>below</em></a>).</p>
-<p>See the example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_py_params</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">show_params</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
-        <span class="k">print</span> <span class="n">param1</span>
-        <span class="k">print</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">param2</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">show_params</span><span class="p">,)],</span>
-            <span class="s">&#39;params&#39;</span><span class="p">:[{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;param1&#39;</span><span class="p">,</span>
-                       <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;p&#39;</span><span class="p">,</span>
-                       <span class="s">&#39;default&#39;</span><span class="p">:</span><span class="s">&#39;default value&#39;</span><span class="p">},</span>
-
-                      <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;param2&#39;</span><span class="p">,</span>
-                       <span class="s">&#39;long&#39;</span><span class="p">:</span><span class="s">&#39;param2&#39;</span><span class="p">,</span>
-                       <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-                       <span class="s">&#39;default&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}],</span>
-            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
-            <span class="p">}</span>
-
-<span class="k">def</span> <span class="nf">task_cmd_params</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[</span><span class="s">&quot;echo mycmd </span><span class="si">%(flag)s</span><span class="s"> xxx&quot;</span><span class="p">],</span>
-            <span class="s">&#39;params&#39;</span><span class="p">:[{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;flag&#39;</span><span class="p">,</span>
-                       <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;f&#39;</span><span class="p">,</span>
-                       <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;flag&#39;</span><span class="p">,</span>
-                       <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-                       <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="s">&#39;helpful message about this flag&#39;</span><span class="p">}],</span>
-            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span>
-            <span class="p">}</span>
-</pre></div>
-</div>
-<p>For python-actions the python function must define arguments with the same name as a task parameter.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit py_params -p abc --param2 4
-<span class="go">.  py_params</span>
-<span class="go">abc</span>
-<span class="go">9</span>
-</pre></div>
-</div>
-<p>For cmd-actions use python string substitution notation:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit cmd_params -f <span class="s2">&quot;-c --other value&quot;</span>
-<span class="go">.  cmd_params</span>
-<span class="go">mycmd -c --other value xxx</span>
-</pre></div>
-</div>
-<div class="section" id="all-parameters-attributes">
-<span id="parameters-attributes"></span><h3>All parameters attributes<a class="headerlink" href="#all-parameters-attributes" title="Permalink to this headline">¶</a></h3>
-<p>Here is the list of all attributes <tt class="docutils literal"><span class="pre">param</span></tt> accepts:</p>
-<dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">name</span></tt></dt>
-<dd><p class="first">Name of the parameter, identifier used as name of the the parameter
-on python code.
-It should be unique among others.</p>
-<table class="last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">True</td>
-</tr>
-<tr class="field-even field"><th class="field-name">type:</th><td class="field-body"><cite>str</cite></td>
-</tr>
-</tbody>
-</table>
-</dd>
-<dt><tt class="docutils literal"><span class="pre">default</span></tt></dt>
-<dd><p class="first">Default value used when it is set through command-line.</p>
-<table class="last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">True</td>
-</tr>
-</tbody>
-</table>
-</dd>
-<dt><tt class="docutils literal"><span class="pre">short</span></tt></dt>
-<dd><p class="first">Short parameter form, used for e.g. <tt class="docutils literal"><span class="pre">-p</span> <span class="pre">value</span></tt>.</p>
-<table class="last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">optional</td>
-</tr>
-<tr class="field-even field"><th class="field-name">type:</th><td class="field-body"><cite>str</cite></td>
-</tr>
-</tbody>
-</table>
-</dd>
-<dt><tt class="docutils literal"><span class="pre">long</span></tt></dt>
-<dd><p class="first">Long parameter form, used for e.g. <tt class="docutils literal"><span class="pre">--parameter</span> <span class="pre">value</span></tt>
-when it differs from its <cite>name</cite>.</p>
-<table class="last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">optional</td>
-</tr>
-<tr class="field-even field"><th class="field-name">type:</th><td class="field-body"><cite>str</cite></td>
-</tr>
-</tbody>
-</table>
-</dd>
-<dt><tt class="docutils literal"><span class="pre">type</span></tt></dt>
-<dd><p class="first">Actually it can be any python callable.
-It coverts the string value received from command line to whatever
-value to be used on python code.</p>
-<p>If the <tt class="docutils literal"><span class="pre">type</span></tt> is <tt class="docutils literal"><span class="pre">bool</span></tt> the parameter is treated as an <em>option flag</em>
-where no value should be specified, value is set to <tt class="docutils literal"><span class="pre">True</span></tt>.
-Example: <tt class="docutils literal"><span class="pre">doit</span> <span class="pre">mytask</span> <span class="pre">--flag</span></tt>.</p>
-<table class="last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">optional</td>
-</tr>
-<tr class="field-even field"><th class="field-name">type:</th><td class="field-body"><cite>callable</cite> (e.g. a <cite>function</cite>)</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">default:</th><td class="field-body"><cite>str</cite></td>
-</tr>
-</tbody>
-</table>
-</dd>
-<dt><tt class="docutils literal"><span class="pre">help</span></tt></dt>
-<dd><p class="first">Help message associated to this parameter, shown when
-<a class="reference internal" href="cmd_other.html#cmd-help"><em>help</em></a> is called for this task,
-e.g. <tt class="docutils literal"><span class="pre">doit</span> <span class="pre">help</span> <span class="pre">mytask</span></tt>.</p>
-<table class="last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">optional</td>
-</tr>
-<tr class="field-even field"><th class="field-name">type:</th><td class="field-body"><cite>str</cite></td>
-</tr>
-</tbody>
-</table>
-</dd>
-<dt><tt class="docutils literal"><span class="pre">inverse</span></tt></dt>
-<dd><p class="first">[only for <cite>bool</cite> parameter]
-Set inverse flag long parameter name, value will be set to <tt class="docutils literal"><span class="pre">False</span></tt>
-(see example below).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">required:</th><td class="field-body">optional</td>
-</tr>
-<tr class="field-even field"><th class="field-name">type:</th><td class="field-body"><cite>str</cite></td>
-</tr>
-</tbody>
-</table>
-<p>Example, given following code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_with_flag</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">_task</span><span class="p">(</span><span class="n">flag</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&quot;Flag {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;On&quot;</span> <span class="k">if</span> <span class="n">flag</span> <span class="k">else</span> <span class="s">&quot;Off&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;params&#39;</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;flag&#39;</span><span class="p">,</span>
-            <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;flagon&#39;</span><span class="p">,</span>
-            <span class="s">&#39;short&#39;</span><span class="p">:</span> <span class="s">&#39;f&#39;</span><span class="p">,</span>
-            <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
-            <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-            <span class="s">&#39;inverse&#39;</span><span class="p">:</span> <span class="s">&#39;flagoff&#39;</span><span class="p">}],</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">_task</span><span class="p">,</span> <span class="p">)],</span>
-        <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span>
-        <span class="p">}</span>
-</pre></div>
-</div>
-<p>calls to task <cite>with_flag</cite> show flag on or off:</p>
-<div class="last highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit with_flag
-<span class="go">.  with_flag</span>
-<span class="go">Flag On</span>
-<span class="gp">$</span> doit with_flag --flagoff
-<span class="go">.  with_flag</span>
-<span class="go">Flag Off</span>
-</pre></div>
-</div>
-</dd>
-</dl>
-</div>
-</div>
-<div class="section" id="positional-arguments">
-<h2>positional arguments<a class="headerlink" href="#positional-arguments" title="Permalink to this headline">¶</a></h2>
-<p>Tasks might also get positional arguments from the command line
-as standard unix commands do,
-with positional arguments <em>after</em> optional arguments.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_pos_args</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">show_params</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&#39;param1 is: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param1</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">pos_arg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">&#39;positional-{0}: {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">pos_arg</span><span class="p">))</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">show_params</span><span class="p">,)],</span>
-            <span class="s">&#39;params&#39;</span><span class="p">:[{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;param1&#39;</span><span class="p">,</span>
-                       <span class="s">&#39;short&#39;</span><span class="p">:</span><span class="s">&#39;p&#39;</span><span class="p">,</span>
-                       <span class="s">&#39;default&#39;</span><span class="p">:</span><span class="s">&#39;default value&#39;</span><span class="p">},</span>
-                      <span class="p">],</span>
-            <span class="s">&#39;pos_arg&#39;</span><span class="p">:</span> <span class="s">&#39;pos&#39;</span><span class="p">,</span>
-            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="p">}</span>
-</pre></div>
-</div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit pos_args -p 4 foo bar
-<span class="go">.  pos_args</span>
-<span class="go">param1 is: 4</span>
-<span class="go">positional-0: foo</span>
-<span class="go">positional-1: bar</span>
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>If a task accepts positional arguments, it is not allowed to pass
-other tasks after it in the command line. For example if <cite>task1</cite>
-takes positional arguments you can not call:</p>
-<div class="highlight-python"><pre>$ doit task1 pos1 task2</pre>
-</div>
-<p class="last">As the string <cite>task2</cite> would be interpreted as positional argument from
-<cite>task1</cite> not as another task name.</p>
-</div>
-</div>
-<div class="section" id="command-line-variables-doit-get-var">
-<span id="command-line-variables"></span><h2>command line variables (<em>doit.get_var</em>)<a class="headerlink" href="#command-line-variables-doit-get-var" title="Permalink to this headline">¶</a></h2>
-<p>It is possible to pass variable values to be used in dodo.py from the command line.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">get_var</span>
-
-<span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;abc&quot;</span><span class="p">:</span> <span class="n">get_var</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">,</span> <span class="s">&#39;NO&#39;</span><span class="p">)}</span>
-
-<span class="k">def</span> <span class="nf">task_echo</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hi </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">config</span><span class="p">],</span>
-            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="p">}</span>
-</pre></div>
-</div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
-<span class="go">.  echo</span>
-<span class="go">hi {abc: NO}</span>
-<span class="gp">$</span> doit <span class="nv">abc</span><span class="o">=</span>xyz <span class="nv">x</span><span class="o">=</span>3
-<span class="go">.  echo</span>
-<span class="go">hi {abc: xyz}</span>
-</pre></div>
 </div>
 </div>
 <div class="section" id="private-hidden-tasks">
@@ -945,67 +761,8 @@ console. If the task fails or there is an error the stdout and a traceback
 </pre></div>
 </div>
 <ul class="simple">
-<li>from command line, see <a class="reference internal" href="cmd_run.html#verbosity-option"><em>verbosity option</em></a>.</li>
+<li>from command line, see <a class="reference internal" href="cmd_run.html#verbosity-option"><span>verbosity option</span></a>.</li>
 </ul>
-</div>
-<div class="section" id="custom-task-definition">
-<span id="create-doit-tasks"></span><h2>custom task definition<a class="headerlink" href="#custom-task-definition" title="Permalink to this headline">¶</a></h2>
-<p>Apart from collect functions that start with the name <cite>task_</cite>.
-The <em>doit</em> loader will also execute the <tt class="docutils literal"><span class="pre">create_doit_tasks</span></tt>
-callable from any object that contains this attribute.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">make_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;make decorated function a task-creator&quot;&quot;&quot;</span>
-    <span class="n">func</span><span class="o">.</span><span class="n">create_doit_tasks</span> <span class="o">=</span> <span class="n">func</span>
-    <span class="k">return</span> <span class="n">func</span>
-
-<span class="nd">@make_task</span>
-<span class="k">def</span> <span class="nf">sample</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hi&#39;</span><span class="p">],</span>
-        <span class="p">}</span>
-</pre></div>
-</div>
-<p>The <a class="reference external" href="https://bitbucket.org/takluyver/letsdoit">project letsdoit</a>
-has some real-world implementations.</p>
-<p>For simple examples to help you create your own check this
-<a class="reference external" href="http://blog.schettino72.net/posts/doit-task-creation.html">blog post</a>.</p>
-</div>
-<div class="section" id="importing-tasks">
-<h2>importing tasks<a class="headerlink" href="#importing-tasks" title="Permalink to this headline">¶</a></h2>
-<p>The <em>doit</em> loader will look at <strong>all</strong> objects in the namespace of the <em>dodo</em>.
-It will look for functions staring with <tt class="docutils literal"><span class="pre">task_</span></tt> and objects with
-<tt class="docutils literal"><span class="pre">create_doit_tasks</span></tt>.
-So it is also possible to load task definitions from other
-modules just by importing them into your <em>dodo</em> file.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># import task_ functions</span>
-<span class="kn">from</span> <span class="nn">get_var</span> <span class="kn">import</span> <span class="n">task_echo</span>
-
-<span class="c"># import tasks with create_doit_tasks callable</span>
-<span class="kn">from</span> <span class="nn">custom_task_def</span> <span class="kn">import</span> <span class="n">sample</span>
-
-
-<span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hello&#39;</span><span class="p">]}</span>
-</pre></div>
-</div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit list
-<span class="go">echo</span>
-<span class="go">hello</span>
-<span class="go">sample</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>Importing tasks from different modules is useful if you want to split
-your task definitions in different modules.</p>
-<p class="last">The best way to create re-usable tasks that can be used in several projects
-is to call functions that return task dict&#8217;s.
-For example take a look at a reusable <em>pyflakes</em>
-<a class="reference external" href="https://github.com/pydoit/doit-py/blob/master/doitpy/pyflakes.py">task generator</a>.
-Check the project <a class="reference external" href="https://github.com/pydoit/doit-py">doit-py</a>
-for more examples.</p>
-</div>
 </div>
 </div>
 
@@ -1015,7 +772,7 @@ for more examples.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -1030,13 +787,14 @@ for more examples.</p>
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

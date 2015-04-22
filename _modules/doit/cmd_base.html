@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.27',
+        VERSION:     '0.28',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="../../index.html" />
+    <link rel="top" title="doit - automation tool" href="../../contents.html" />
     <link rel="up" title="Module code" href="../index.html" />
 <style>
   body {
@@ -32,9 +32,20 @@
   }
 
   div.topic {
-    padding: 2px;
+    padding: 0;
     background-color: #F8F4A6;
-    border: none;
+    border: 1px solid #D8D486;
+  }
+
+  div.topic p.first {
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    background-color: #E8E496;
+    border-bottom: 1px solid #C8C476;
+  }
+
+  div.topic p {
+    margin: 0.5em 1em 0.5em 1em;
   }
 
   p.topic-title {
@@ -75,12 +86,12 @@
 
 
   </head>
-  <body>
+  <body role="document">
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="../../_static/doit.png" alt="doit logo" />
 </div>
 
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
   <li><a href="../../index.html">Home</a>&nbsp;|&nbsp;</li>
@@ -89,16 +100,17 @@
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
 
-          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
 
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
@@ -131,12 +143,12 @@
 <br/>
 
 <div class="sidebartext">
-Why Donate? Help keep the project alive! Donations will be used for project maintanance tasks (bug fixes, merge patches, reply users).<br/>
+If you use <em>doit</em> and think it is a useful project. Please consider to make a donation to support the developer/maintainer with maintanance tasks (bug fixes, merge patches, reply users) and further development.<br/>
   <script data-gratipay-username="schettino72"
         data-gratipay-widget="button"
         src="//gttp.co/v1.js"></script>
 <br/>
-For corporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+If you use it at work, ask your company to sponsor the project. The logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
 </div>
 
 <h3>Hire me</h3>
@@ -161,17 +173,20 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <h1>Source code for doit.cmd_base</h1><div class="highlight"><pre>
 <span class="kn">import</span> <span class="nn">inspect</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 
+<span class="kn">import</span> <span class="nn">six</span>
+
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">version</span>
 <span class="kn">from</span> <span class="nn">.cmdparse</span> <span class="kn">import</span> <span class="n">CmdOption</span><span class="p">,</span> <span class="n">CmdParse</span>
 <span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">InvalidCommand</span><span class="p">,</span> <span class="n">InvalidDodoFile</span>
-<span class="kn">from</span> <span class="nn">.dependency</span> <span class="kn">import</span> <span class="n">backend_map</span>
+<span class="kn">from</span> <span class="nn">.dependency</span> <span class="kn">import</span> <span class="n">CHECKERS</span><span class="p">,</span> <span class="n">DbmDB</span><span class="p">,</span> <span class="n">JsonDB</span><span class="p">,</span> <span class="n">SqliteDB</span><span class="p">,</span> <span class="n">Dependency</span>
+<span class="kn">from</span> <span class="nn">.plugin</span> <span class="kn">import</span> <span class="n">PluginDict</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">loader</span>
 
 
@@ -180,7 +195,10 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 <span class="sd">    Any part that is not a number (dev0, a2, b4) will be converted to -1</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">parts</span> <span class="o">=</span> <span class="n">ver_in</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ver_in</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">ver_in</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ver_in</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">ver_in</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">ver_in</span>
     <span class="k">for</span> <span class="n">rev</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">rev</span><span class="p">))</span>
@@ -200,7 +218,6 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 <span class="sd">    :cvar cmd_options:</span>
 <span class="sd">          (list of dict) see cmdparse.CmdOption for dict format</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">CMD_LIST</span> <span class="o">=</span> <span class="p">[]</span> <span class="c"># register with the name of all created commands</span>
 
     <span class="c"># if not specified uses the class name</span>
     <span class="n">name</span> <span class="o">=</span> <span class="bp">None</span>
@@ -218,17 +235,50 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <span class="c"># should be used.</span>
     <span class="n">execute_tasks</span> <span class="o">=</span> <span class="bp">False</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-        <span class="n">Command</span><span class="o">.</span><span class="n">CMD_LIST</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_options</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">opt_values</span> <span class="o">=</span> <span class="bp">None</span> <span class="c"># option values</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;configure command</span>
 
-    <span class="k">def</span> <span class="nf">set_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="sd">        :param config: dict</span>
+
+<span class="sd">        Set extra configuration values, this vals can come from:</span>
+<span class="sd">         * directly passed when using the API - through DoitMain.run()</span>
+<span class="sd">         * from an INI configuration file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+        <span class="c"># config includes all option values and plugins</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span> <span class="k">if</span> <span class="n">config</span> <span class="k">else</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cmdparser</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="c"># config_vals contains cmd option values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_vals</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="s">&#39;GLOBAL&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config_vals</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;GLOBAL&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config_vals</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
+
+        <span class="c"># Use post-mortem PDB in case of error loading tasks.</span>
+        <span class="c"># Only available for `run` command.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pdb</span> <span class="o">=</span> <span class="bp">False</span>
+
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;get command name as used from command line&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">name</span> <span class="ow">or</span> <span class="n">cls</span><span class="o">.</span><span class="n">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cmdparser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;get CmdParser instance for this command&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmdparser</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cmdparser</span> <span class="o">=</span> <span class="n">CmdParse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_options</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cmdparser</span><span class="o">.</span><span class="n">overwrite_defaults</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_vals</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmdparser</span>
+
+
+    <span class="k">def</span> <span class="nf">get_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;@reutrn list of CmdOption</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">opt_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd_options</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">CmdOption</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span> <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">opt_list</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">CmdOption</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span> <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd_options</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="Command.execute"><a class="viewcode-back" href="../../extending.html#doit.cmd_base.Command.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt_values</span><span class="p">,</span> <span class="n">pos_args</span><span class="p">):</span> <span class="c"># pragma: no cover</span>
@@ -245,8 +295,8 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 <span class="sd">        @args: see method parse</span>
 <span class="sd">        @returns: result of self.execute</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">params</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">CmdParse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">in_args</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">opt_values</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="n">params</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmdparser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">in_args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pdb</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;pdb&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
 
 
@@ -258,7 +308,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
         <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
 
         <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;Options:&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmdparser</span><span class="o">.</span><span class="n">options</span><span class="p">:</span>
             <span class="n">text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">help_doc</span><span class="p">())</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc_description</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
@@ -277,7 +327,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;db-file&#39;</span><span class="p">,</span>
     <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&quot;.doit.db&quot;</span><span class="p">,</span>
-    <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="s">&quot;file used to save successful runs&quot;</span>
+    <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="s">&quot;file used to save successful runs [default: </span><span class="si">%(default)s</span><span class="s">]&quot;</span>
 <span class="p">}</span>
 
 <span class="c"># dependency file DB backend</span>
@@ -287,9 +337,23 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;backend&#39;</span><span class="p">,</span>
     <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&quot;dbm&quot;</span><span class="p">,</span>
-    <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&quot;Select dependency file backend. &quot;</span> <span class="o">+</span>
-             <span class="s">&quot;Available options dbm, json, sqlite3. [default: </span><span class="si">%(default)s</span><span class="s">]&quot;</span><span class="p">)</span>
+    <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&quot;Select dependency file backend. [default: </span><span class="si">%(default)s</span><span class="s">]&quot;</span><span class="p">)</span>
 <span class="p">}</span>
+
+<span class="n">opt_check_file_uptodate</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;check_file_uptodate&#39;</span><span class="p">,</span>
+    <span class="s">&#39;short&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="s">&#39;long&#39;</span><span class="p">:</span> <span class="s">&#39;check_file_uptodate&#39;</span><span class="p">,</span>
+    <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&#39;md5&#39;</span><span class="p">,</span>
+    <span class="s">&#39;help&#39;</span><span class="p">:</span> <span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s">Choose how to check if files have been modified.</span>
+<span class="s">Available options [default: </span><span class="si">%(default)s</span><span class="s">]:</span>
+<span class="s">  &#39;md5&#39;: use the md5sum</span>
+<span class="s">  &#39;timestamp&#39;: use the timestamp</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="p">}</span>
+
 
 
 <span class="c">#### options related to dodo.py</span>
@@ -336,6 +400,11 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cmd_options</span> <span class="o">=</span> <span class="p">()</span>
 
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># list of command names, used to detect clash of task names and commands</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmd_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="bp">None</span> <span class="c"># reference to config object taken from Command</span>
+
 <div class="viewcode-block" id="TaskLoader.load_tasks"><a class="viewcode-back" href="../../extending.html#doit.cmd_base.TaskLoader.load_tasks">[docs]</a>    <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">opt_values</span><span class="p">,</span> <span class="n">pos_args</span><span class="p">):</span> <span class="c"># pragma: no cover</span>
         <span class="sd">&quot;&quot;&quot;load tasks and DOIT_CONFIG</span>
 
@@ -365,10 +434,11 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <span class="n">cmd_options</span> <span class="o">=</span> <span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod_dict</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ModuleTaskLoader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mod_dict</span> <span class="o">=</span> <span class="n">mod_dict</span>
 
     <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mod_dict</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">CMD_LIST</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mod_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd_names</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">DodoTaskLoader</span><span class="p">(</span><span class="n">TaskLoader</span><span class="p">):</span>
@@ -378,7 +448,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="n">dodo_module</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s">&#39;dodoFile&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s">&#39;cwdPath&#39;</span><span class="p">],</span>
                                         <span class="n">params</span><span class="p">[</span><span class="s">&#39;seek_file&#39;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">dodo_module</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">CMD_LIST</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">dodo_module</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd_names</span><span class="p">)</span>
 
 
 
@@ -388,57 +458,126 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 <span class="sd">    cmd_options =&gt; list of option dictionary (see CmdOption)</span>
 <span class="sd">    _execute =&gt; method, argument names must be option names</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">base_options</span> <span class="o">=</span> <span class="p">(</span><span class="n">opt_depfile</span><span class="p">,</span> <span class="n">opt_backend</span><span class="p">)</span>
+    <span class="n">base_options</span> <span class="o">=</span> <span class="p">(</span><span class="n">opt_depfile</span><span class="p">,</span> <span class="n">opt_backend</span><span class="p">,</span> <span class="n">opt_check_file_uptodate</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_loader</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dep_file</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                 <span class="n">config</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">task_list</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">sel_tasks</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">outstream</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;this initializer is usually just used on tests&quot;&quot;&quot;</span>
-        <span class="c"># FIXME &#39;or TaskLoader()&#39; below is hack for tests</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_loader</span> <span class="o">=</span> <span class="n">task_loader</span> <span class="ow">or</span> <span class="n">TaskLoader</span><span class="p">()</span>
-        <span class="n">Command</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="c"># TODO: helper to test code should not be here</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dep_class</span> <span class="o">=</span> <span class="n">backend_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">backend</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dep_file</span> <span class="o">=</span> <span class="n">dep_file</span>   <span class="c"># (str) filename usually &#39;.doit.db&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span> <span class="ow">or</span> <span class="p">{}</span> <span class="c"># config from dodo.py &amp; cmdline</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">task_list</span> <span class="o">=</span> <span class="n">task_list</span> <span class="c"># list of tasks</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sel_tasks</span> <span class="o">=</span> <span class="n">sel_tasks</span> <span class="c"># from command line or default_tasks</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">outstream</span> <span class="o">=</span> <span class="n">outstream</span> <span class="ow">or</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_loader</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">cmds</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DoitCmdBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_tasks</span> <span class="o">=</span> <span class="bp">None</span> <span class="c"># selected tasks for command</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dep_manager</span> <span class="o">=</span> <span class="bp">None</span> <span class="c">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outstream</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_loader</span><span class="p">(</span><span class="n">task_loader</span><span class="p">,</span> <span class="n">cmds</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_backends</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_backends</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">set_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">get_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;from base class - merge base_options, loader_options and cmd_options</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">opt_list</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_options</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loader</span><span class="o">.</span><span class="n">cmd_options</span> <span class="o">+</span>
+        <span class="n">opt_list</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_options</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">cmd_options</span> <span class="o">+</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">cmd_options</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">CmdOption</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span> <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">opt_list</span><span class="p">]</span>
+
 
     <span class="k">def</span> <span class="nf">_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c"># pragma: no cover</span>
         <span class="sd">&quot;&quot;&quot;to be subclassed - actual command implementation&quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 
-    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;load dodo.py, set attributes and call self._execute&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">task_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span>
-                                                              <span class="n">args</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sel_tasks</span> <span class="o">=</span> <span class="n">args</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;default_tasks&#39;</span><span class="p">)</span>
 
-        <span class="c"># check minversion</span>
-        <span class="n">minversion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;minversion&#39;</span><span class="p">)</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">check_minversion</span><span class="p">(</span><span class="n">minversion</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;check if this version of doit statisfy minimum required version</span>
+<span class="sd">        Minimum version specified by configuration on dodo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">minversion</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">version_tuple</span><span class="p">(</span><span class="n">minversion</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">version_tuple</span><span class="p">(</span><span class="n">version</span><span class="o">.</span><span class="n">VERSION</span><span class="p">):</span>
                 <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;Please update doit. &#39;</span>
-                <span class="s">&#39;Minimum version required is {required}. &#39;</span>
-                <span class="s">&#39;You are using {actual}. &#39;</span><span class="p">)</span>
+                       <span class="s">&#39;Minimum version required is {required}. &#39;</span>
+                       <span class="s">&#39;You are using {actual}. &#39;</span><span class="p">)</span>
                 <span class="k">raise</span> <span class="n">InvalidDodoFile</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="n">minversion</span><span class="p">,</span>
                                                  <span class="n">actual</span><span class="o">=</span><span class="n">version</span><span class="o">.</span><span class="n">VERSION</span><span class="p">))</span>
 
-        <span class="c"># merge config values into params</span>
-        <span class="n">params</span><span class="o">.</span><span class="n">update_defaults</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dep_file</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s">&#39;dep_file&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dep_class</span> <span class="o">=</span> <span class="n">backend_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s">&#39;backend&#39;</span><span class="p">])</span>
-        <span class="n">params</span><span class="p">[</span><span class="s">&#39;pos_args&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span> <span class="c"># hack</span>
-        <span class="n">params</span><span class="p">[</span><span class="s">&#39;continue_&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;continue&#39;</span><span class="p">)</span> <span class="c"># hack</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_checker_cls</span><span class="p">(</span><span class="n">check_file_uptodate</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;return checker class to be used by dep_manager&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">check_file_uptodate</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">check_file_uptodate</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">CHECKERS</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;No check_file_uptodate named &#39;{}&#39;.&quot;</span>
+                       <span class="s">&quot; Type &#39;doit help run&#39; to see a list &quot;</span>
+                       <span class="s">&quot;of available checkers.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">InvalidCommand</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">check_file_uptodate</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">CHECKERS</span><span class="p">[</span><span class="n">check_file_uptodate</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># user defined class</span>
+            <span class="k">return</span> <span class="n">check_file_uptodate</span>
 
-        <span class="c"># magic - create dict based on signature of _execute method</span>
+
+    <span class="k">def</span> <span class="nf">_get_loader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_loader</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">cmds</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;return task loader</span>
+<span class="sd">        :param task_loader: a TaskLoader class</span>
+<span class="sd">        :param cmds: dict of available commands</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="n">task_loader</span><span class="p">:</span>
+            <span class="n">loader</span> <span class="o">=</span> <span class="n">task_loader</span>  <span class="c"># task_loader set from the API</span>
+        <span class="k">elif</span> <span class="s">&#39;loader&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_vals</span><span class="p">:</span>
+            <span class="c"># a plugin loader</span>
+            <span class="n">loader_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_vals</span><span class="p">[</span><span class="s">&#39;loader&#39;</span><span class="p">]</span>
+            <span class="n">plugins</span> <span class="o">=</span> <span class="n">PluginDict</span><span class="p">()</span>
+            <span class="n">plugins</span><span class="o">.</span><span class="n">add_plugins</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="s">&#39;LOADER&#39;</span><span class="p">)</span>
+            <span class="n">loader</span> <span class="o">=</span> <span class="n">plugins</span><span class="o">.</span><span class="n">get_plugin</span><span class="p">(</span><span class="n">loader_name</span><span class="p">)()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">loader</span> <span class="o">=</span> <span class="n">DodoTaskLoader</span><span class="p">()</span> <span class="c"># default loader</span>
+
+        <span class="k">if</span> <span class="n">cmds</span><span class="p">:</span>
+            <span class="n">loader</span><span class="o">.</span><span class="n">cmd_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">cmds</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+        <span class="n">loader</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span>
+        <span class="k">return</span> <span class="n">loader</span>
+
+
+    <span class="k">def</span> <span class="nf">get_backends</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;return PluginDict of DB backends, including core and plugins&quot;&quot;&quot;</span>
+        <span class="n">backend_map</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;dbm&#39;</span><span class="p">:</span> <span class="n">DbmDB</span><span class="p">,</span> <span class="s">&#39;json&#39;</span><span class="p">:</span> <span class="n">JsonDB</span><span class="p">,</span> <span class="s">&#39;sqlite3&#39;</span><span class="p">:</span> <span class="n">SqliteDB</span><span class="p">}</span>
+        <span class="c"># add plugins</span>
+        <span class="n">plugins</span> <span class="o">=</span> <span class="n">PluginDict</span><span class="p">()</span>
+        <span class="n">plugins</span><span class="o">.</span><span class="n">add_plugins</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="s">&#39;BACKEND&#39;</span><span class="p">)</span>
+        <span class="n">backend_map</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">plugins</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+
+        <span class="c"># set choices, sub-classes might not have this option</span>
+        <span class="k">if</span> <span class="s">&#39;backend&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmdparser</span><span class="p">:</span>
+            <span class="n">choices</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s">&#39;desc&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">backend_map</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cmdparser</span><span class="p">[</span><span class="s">&#39;backend&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">choices</span> <span class="o">=</span> <span class="n">choices</span>
+
+        <span class="k">return</span> <span class="n">backend_map</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;load dodo.py, set attributes and call self._execute</span>
+
+<span class="sd">        :param params: instance of cmdparse.DefaultUpdate</span>
+<span class="sd">        :param args: list of string arguments (containing task names)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_list</span><span class="p">,</span> <span class="n">dodo_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+        <span class="c"># merge config values from dodo.py into params</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">update_defaults</span><span class="p">(</span><span class="n">dodo_config</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_minversion</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;minversion&#39;</span><span class="p">))</span>
+
+        <span class="c"># set selected tasks for command</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_tasks</span> <span class="o">=</span> <span class="n">args</span> <span class="ow">or</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;default_tasks&#39;</span><span class="p">)</span>
+
+        <span class="c"># create dep manager</span>
+        <span class="n">db_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backends</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s">&#39;backend&#39;</span><span class="p">])</span>
+        <span class="n">checker_cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_checker_cls</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s">&#39;check_file_uptodate&#39;</span><span class="p">])</span>
+        <span class="c"># note the command have the responsability to call dep_manager.close()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dep_manager</span> <span class="o">=</span> <span class="n">Dependency</span><span class="p">(</span><span class="n">db_class</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s">&#39;dep_file&#39;</span><span class="p">],</span> <span class="n">checker_cls</span><span class="p">)</span>
+
+        <span class="c"># hack to pass parameter into _execute() calls that are not part</span>
+        <span class="c"># of command line options</span>
+        <span class="n">params</span><span class="p">[</span><span class="s">&#39;pos_args&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="n">params</span><span class="p">[</span><span class="s">&#39;continue_&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;continue&#39;</span><span class="p">)</span>
+
+        <span class="c"># magic - create dict based on signature of _execute() method.</span>
+        <span class="c"># this done so that _execute() have a nice API with name parameters</span>
+        <span class="c"># instead of just taking a dict.</span>
         <span class="n">args_name</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getargspec</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">exec_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">args_name</span> <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="s">&#39;self&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">(</span><span class="o">**</span><span class="n">exec_params</span><span class="p">)</span>
@@ -494,7 +633,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
   <li><a href="../../index.html">Home</a>&nbsp;|&nbsp;</li>
@@ -503,14 +642,15 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
 
-          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.27',
+        VERSION:     '0.28',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="index.html" />
+    <link rel="top" title="doit - automation tool" href="contents.html" />
     <link rel="next" title="FAQ" href="faq.html" />
     <link rel="prev" title="Tools" href="tools.html" />
 <style>
@@ -33,9 +33,20 @@
   }
 
   div.topic {
-    padding: 2px;
+    padding: 0;
     background-color: #F8F4A6;
-    border: none;
+    border: 1px solid #D8D486;
+  }
+
+  div.topic p.first {
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    background-color: #E8E496;
+    border-bottom: 1px solid #C8C476;
+  }
+
+  div.topic p {
+    margin: 0.5em 1em 0.5em 1em;
   }
 
   p.topic-title {
@@ -76,12 +87,12 @@
 
 
   </head>
-  <body>
+  <body role="document">
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
 
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -96,11 +107,12 @@
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="contents.html">Table Of Contents</a></h3>
   <ul>
@@ -110,17 +122,25 @@
 <li><a class="reference internal" href="#example-load-tasks-from-a-module">Example: load tasks from a module</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#sub-command-customization">sub-command customization</a><ul>
+<li><a class="reference internal" href="#command-customization">command customization</a><ul>
 <li><a class="reference internal" href="#example-scaffolding">Example: scaffolding</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#plugins">plugins</a><ul>
+<li><a class="reference internal" href="#config-plugin">config plugin</a></li>
+<li><a class="reference internal" href="#category-command">category COMMAND</a></li>
+<li><a class="reference internal" href="#category-backend">category BACKEND</a></li>
+<li><a class="reference internal" href="#category-reporter">category REPORTER</a></li>
+<li><a class="reference internal" href="#category-loader">category LOADER</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 
 
 
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -153,12 +173,12 @@
 <br/>
 
 <div class="sidebartext">
-Why Donate? Help keep the project alive! Donations will be used for project maintanance tasks (bug fixes, merge patches, reply users).<br/>
+If you use <em>doit</em> and think it is a useful project. Please consider to make a donation to support the developer/maintainer with maintanance tasks (bug fixes, merge patches, reply users) and further development.<br/>
   <script data-gratipay-username="schettino72"
         data-gratipay-widget="button"
         src="//gttp.co/v1.js"></script>
 <br/>
-For corporate donations the logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
+If you use it at work, ask your company to sponsor the project. The logo of your company will be placed on this website side-bar (see above). For more information please contact <em>schettino72</em>&#64<span>gmail.com</span><br/>
 </div>
 
 <h3>Hire me</h3>
@@ -183,7 +203,7 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="extending-doit">
 <h1>Extending <cite>doit</cite><a class="headerlink" href="#extending-doit" title="Permalink to this headline">¶</a></h1>
@@ -191,18 +211,18 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
 So far we have seen:</p>
 <ol class="arabic simple">
 <li>User&#8217;s can create new ways to define when a task is up-to-date using
-the <cite>uptodate</cite> task parameter (<a class="reference internal" href="uptodate.html#uptodate-api"><em>more</em></a>)</li>
-<li>Tasks can be created in different styles by creating a custom
-task creators (<a class="reference internal" href="tasks.html#create-doit-tasks"><em>more</em></a>)</li>
-<li>The output can be configured by creating custom
-reports (<a class="reference internal" href="cmd_run.html#reporter"><em>more</em></a>)</li>
+the <cite>uptodate</cite> task parameter (<a class="reference internal" href="uptodate.html#uptodate-api"><span>more</span></a>)</li>
 <li>You can customize how tasks are executed by creating new Action types
-(<a class="reference internal" href="tasks.html#custom-actions"><em>more</em></a>)</li>
+(<a class="reference internal" href="tasks.html#custom-actions"><span>more</span></a>)</li>
+<li>Tasks can be created in different styles by creating custom
+task creators (<a class="reference internal" href="task_creation.html#create-doit-tasks"><span>more</span></a>)</li>
+<li>The output can be configured by creating custom
+reports (<a class="reference internal" href="cmd_run.html#reporter"><span>more</span></a>)</li>
 </ol>
-<p>Apart from those <cite>doit</cite> also expose it&#8217;s internal API so you can create
-new applications on top of <cite>doit</cite>.</p>
+<p>Apart from those, <cite>doit</cite> also provides a plugin system and
+expose it&#8217;s internal API so you can create new applications on top of <cite>doit</cite>.</p>
 <div class="section" id="task-loader-customization">
-<h2>task loader customization<a class="headerlink" href="#task-loader-customization" title="Permalink to this headline">¶</a></h2>
+<span id="custom-loader"></span><h2>task loader customization<a class="headerlink" href="#task-loader-customization" title="Permalink to this headline">¶</a></h2>
 <p>The task loader controls the source/creation of tasks.
 Normally <cite>doit</cite> tasks are defined in a <cite>dodo.py</cite> file.
 This file is loaded, and the list of tasks is created from
@@ -210,7 +230,7 @@ the dict containing task meta-data from the <em>task-creator</em> functions.</p>
 <p>Subclass TaskLoader to create a custom loader:</p>
 <dl class="class">
 <dt id="doit.cmd_base.TaskLoader">
-<em class="property">class </em><tt class="descclassname">doit.cmd_base.</tt><tt class="descname">TaskLoader</tt><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">doit.cmd_base.</code><code class="descname">TaskLoader</code><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>task-loader interface responsible of creating Task objects</p>
 <p>Subclasses must implement the method <cite>load_tasks</cite></p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -223,7 +243,7 @@ the dict containing task meta-data from the <em>task-creator</em> functions.</p>
 </table>
 <dl class="method">
 <dt id="doit.cmd_base.TaskLoader.load_tasks">
-<tt class="descname">load_tasks</tt><big>(</big><em>cmd</em>, <em>opt_values</em>, <em>pos_args</em><big>)</big><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader.load_tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader.load_tasks" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_tasks</code><span class="sig-paren">(</span><em>cmd</em>, <em>opt_values</em>, <em>pos_args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader.load_tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader.load_tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>load tasks and DOIT_CONFIG</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -299,15 +319,18 @@ where this module specifies tasks in the same way as in <cite>dodo.py</cite>.
 or methods of an object.</p>
 </div>
 </div>
-<div class="section" id="sub-command-customization">
-<h2>sub-command customization<a class="headerlink" href="#sub-command-customization" title="Permalink to this headline">¶</a></h2>
-<p>The <cite>doit</cite> command line has several sub-commands: <cite>run</cite>, <cite>help</cite>, <cite>list</cite>, <cite>clean</cite>...
-By sub-classing <cite>DoitMain.get_commands</cite> it is possible to add/remove commands.</p>
-<p>To create a new sub-cmd, subclass <cite>doit.cmd_base.Command</cite>
+<div class="section" id="command-customization">
+<span id="custom-command"></span><h2>command customization<a class="headerlink" href="#command-customization" title="Permalink to this headline">¶</a></h2>
+<p>In <cite>doit</cite> a command usually perform some kind of operations on tasks.
+<cite>run</cite> to execute tasks, <cite>list</cite> to display available tasks, etc.</p>
+<p>Most of the time you should really be creating tasks but
+when developing a custom application on top of <cite>doit</cite> it may make sense
+to provide some extra commands...</p>
+<p>To create a new command, subclass <cite>doit.cmd_base.Command</cite>
 set some class variables and implement the <cite>execute</cite> method.</p>
 <dl class="class">
 <dt id="doit.cmd_base.Command">
-<em class="property">class </em><tt class="descclassname">doit.cmd_base.</tt><tt class="descname">Command</tt><a class="reference internal" href="_modules/doit/cmd_base.html#Command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.Command" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">doit.cmd_base.</code><code class="descname">Command</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#Command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.Command" title="Permalink to this definition">¶</a></dt>
 <dd><p>third-party should subclass this for commands that do no use tasks</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -326,7 +349,7 @@ set some class variables and implement the <cite>execute</cite> method.</p>
 </table>
 <dl class="method">
 <dt id="doit.cmd_base.Command.execute">
-<tt class="descname">execute</tt><big>(</big><em>opt_values</em>, <em>pos_args</em><big>)</big><a class="reference internal" href="_modules/doit/cmd_base.html#Command.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.Command.execute" title="Permalink to this definition">¶</a></dt>
+<code class="descname">execute</code><span class="sig-paren">(</span><em>opt_values</em>, <em>pos_args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#Command.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.Command.execute" title="Permalink to this definition">¶</a></dt>
 <dd><p>execute command
 :param opt_values: (dict) with cmd_options values
 :param pos_args: (list) of cmd-line positinal arguments</p>
@@ -334,39 +357,85 @@ set some class variables and implement the <cite>execute</cite> method.</p>
 
 </dd></dl>
 
-<p><tt class="docutils literal"><span class="pre">cmd_options</span></tt> uses the same format as
-<a class="reference internal" href="tasks.html#parameters-attributes"><em>task parameters</em></a>.</p>
+<p><code class="docutils literal"><span class="pre">cmd_options</span></code> uses the same format as
+<a class="reference internal" href="task_args.html#parameters-attributes"><span>task parameters</span></a>.</p>
+<p>If the command needs to access tasks it should
+sub-class <cite>doit.cmd_base.DoitCmdBase</cite>.</p>
 <div class="section" id="example-scaffolding">
 <h3>Example: scaffolding<a class="headerlink" href="#example-scaffolding" title="Permalink to this headline">¶</a></h3>
 <p>A common example is applications that provide some kind of scaffolding when
 creating new projects.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
-
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 <span class="kn">from</span> <span class="nn">doit.cmd_base</span> <span class="kn">import</span> <span class="n">Command</span>
-<span class="kn">from</span> <span class="nn">doit.doit_cmd</span> <span class="kn">import</span> <span class="n">DoitMain</span>
 
 
-<span class="k">class</span> <span class="nc">MyCmd</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
-    <span class="n">doc_purpose</span> <span class="o">=</span> <span class="s">&#39;test extending doit commands&#39;</span>
-    <span class="n">doc_usage</span> <span class="o">=</span> <span class="s">&#39;[XXX]&#39;</span>
-    <span class="n">doc_description</span> <span class="o">=</span> <span class="s">&#39;my command description&#39;</span>
+<span class="k">class</span> <span class="nc">Init</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">doc_purpose</span> <span class="o">=</span> <span class="s">&#39;create a project scaffolding&#39;</span>
+    <span class="n">doc_usage</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">doc_description</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;This is a multiline command description.</span>
+<span class="s">It will be displayed on `doit help init`&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt_values</span><span class="p">,</span> <span class="n">pos_args</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&quot;this command does nothing!&quot;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;TODO: create some files for my project&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="plugins">
+<span id="id1"></span><h2>plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h2>
+<p><cite>doit</cite> plugin system is based on the use of <em>entry points</em>, the plugin
+does not need to implement any kind of &#8220;plugin interface&#8221;.
+It needs only to implement the API of the component it is extending.</p>
+<p>Plugins can be enabled in 2 different ways:</p>
+<ul class="simple">
+<li><em>local plugins</em> are enabled through the <cite>doit.cfg</cite> file.</li>
+<li>plugins installed with <em>setuptools</em> (that provide an entry point),
+are automatically enabled on installation.</li>
+</ul>
+<p>Check this <a class="reference external" href="https://github.com/pydoit/doit-plugin-sample">sample plugin</a>
+for details on how to create a plugin.</p>
+<div class="section" id="config-plugin">
+<h3>config plugin<a class="headerlink" href="#config-plugin" title="Permalink to this headline">¶</a></h3>
+<p>To enable a plugin create a section named after the plugin category.
+The value is an entry point to the python class/function/object
+that implements the plugin. The format is &lt;module-name&gt;:&lt;attribute-name&gt;.</p>
+<p>Example of command plugin implemented in the <em>class</em> <cite>FooCmd</cite>,
+located at the module <cite>my_plugins.py</cite>:</p>
+<div class="highlight-python"><div class="highlight"><pre>[COMMAND]
+foo = my_plugins:FooCmd
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The python module containing the plugin must be in the <em>PYTHONPATH</em>.</p>
+</div>
+</div>
+<div class="section" id="category-command">
+<h3>category COMMAND<a class="headerlink" href="#category-command" title="Permalink to this headline">¶</a></h3>
+<p>Creates a new sub-command. Check <a class="reference internal" href="#custom-command"><span>command</span></a> section
+for details on how to create a new command.</p>
+</div>
+<div class="section" id="category-backend">
+<h3>category BACKEND<a class="headerlink" href="#category-backend" title="Permalink to this headline">¶</a></h3>
+<p>Implements the internal <cite>doit</cite> DB storage system.
+Check the module <cite>doit/dependency.py</cite> to see the existing implementation / API.</p>
+</div>
+<div class="section" id="category-reporter">
+<span id="plugin-reporter"></span><h3>category REPORTER<a class="headerlink" href="#category-reporter" title="Permalink to this headline">¶</a></h3>
+<p>Register a custom reporter as introduced in the
+<a class="reference internal" href="cmd_run.html#custom-reporter"><span>custom reporter</span></a> section.</p>
+</div>
+<div class="section" id="category-loader">
+<h3>category LOADER<a class="headerlink" href="#category-loader" title="Permalink to this headline">¶</a></h3>
+<p>Creates a custom task loader. Check <a class="reference internal" href="#custom-loader"><span>loader</span></a> section
+for details on how to create a new command.</p>
+<p>Apart from getting the plugin you also need to indicate which loader will be
+used in the <cite>GLOBAL</cite> section of your config file.</p>
+<div class="highlight-INI"><div class="highlight"><pre><span class="k">[GLOBAL]</span>
+<span class="na">loader</span> <span class="o">=</span> <span class="s">my_loader</span>
 
-
-<span class="k">class</span> <span class="nc">MyTool</span><span class="p">(</span><span class="n">DoitMain</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">get_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">cmds</span> <span class="o">=</span> <span class="n">DoitMain</span><span class="o">.</span><span class="n">get_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">my_cmd</span> <span class="o">=</span> <span class="n">MyCmd</span><span class="p">()</span>
-        <span class="n">cmds</span><span class="p">[</span><span class="n">my_cmd</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_cmd</span>
-        <span class="k">return</span> <span class="n">cmds</span>
-
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">MyTool</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+<span class="k">[LOADER]</span>
+<span class="na">my_loader</span> <span class="o">=</span> <span class="s">my_plugins:MyLoader</span>
 </pre></div>
 </div>
 </div>
@@ -379,7 +448,7 @@ creating new projects.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -394,13 +463,14 @@ creating new projects.</p>
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a></li>
+  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

@@ -96,6 +96,9 @@ usually a server or service.</em>
     <li> <strong class="uidlink"><a href="doit.dependency.DatabaseException-class.html">doit.dependency.DatabaseException</a></strong>:
       <em class="summary">Exception class for whatever backend exception</em>
     </li>
+    <li> <strong class="uidlink"><a href="doit.dependency.DependencyException-class.html">doit.dependency.DependencyException</a></strong>:
+      <em class="summary">Exception class for whatever backend exception</em>
+    </li>
     <li> <strong class="uidlink"><a href="doit.exceptions.InvalidCommand-class.html">doit.exceptions.InvalidCommand</a></strong>:
       <em class="summary">Invalid command line argument.</em>
     </li>
@@ -168,6 +171,8 @@ usually a server or service.</em>
     </li>
     <li> <strong class="uidlink"><a href="doit.cmd_list.List-class.html">doit.cmd_list.List</a></strong>
     </li>
+    <li> <strong class="uidlink"><a href="doit.cmd_resetdep.ResetDep-class.html">doit.cmd_resetdep.ResetDep</a></strong>
+    </li>
     <li> <strong class="uidlink"><a href="doit.cmd_run.Run-class.html">doit.cmd_run.Run</a></strong>
     <ul>
     <li> <strong class="uidlink"><a href="doit.cmd_strace.Strace-class.html">doit.cmd_strace.Strace</a></strong>
@@ -201,25 +206,25 @@ usually a server or service.</em>
     <li> <strong class="uidlink"><a href="doit.task.DelayedLoader-class.html">doit.task.DelayedLoader</a></strong>:
       <em class="summary">contains info for delayed creation of tasks from a task-creator</em>
     </li>
-    <li> <strong class="uidlink"><a href="doit.dependency.DependencyBase-class.html">doit.dependency.DependencyBase</a></strong>:
-      <em class="summary">Manage tasks dependencies (abstract class)</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="doit.dependency.DbmDependency-class.html">doit.dependency.DbmDependency</a></strong>:
-      <em class="summary">Task dependency manager with DBM backend</em>
-    </li>
-    <li> <strong class="uidlink"><a href="doit.dependency.JsonDependency-class.html">doit.dependency.JsonDependency</a></strong>:
-      <em class="summary">Task dependency manager with JSON backend</em>
-    </li>
-    <li> <strong class="uidlink"><a href="doit.dependency.SqliteDependency-class.html">doit.dependency.SqliteDependency</a></strong>:
-      <em class="summary">Task dependency manager with sqlite backend</em>
-    </li>
-    </ul>
+    <li> <strong class="uidlink"><a href="doit.dependency.Dependency-class.html">doit.dependency.Dependency</a></strong>:
+      <em class="summary">Manage tasks dependencies</em>
     </li>
     <li> <strong class="uidlink"><a href="doit.doit_cmd.DoitMain-class.html">doit.doit_cmd.DoitMain</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="doit.control.ExecNode-class.html">doit.control.ExecNode</a></strong>:
       <em class="summary">Each task will have an instace of this
 This used to keep track of waiting events and the generator for dep nodes</em>
+    </li>
+    <li> <strong class="uidlink"><a href="doit.dependency.FileChangedChecker-class.html">doit.dependency.FileChangedChecker</a></strong>:
+      <em class="summary">Base checker for dependencies, must be inherited.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="doit.dependency.MD5Checker-class.html">doit.dependency.MD5Checker</a></strong>:
+      <em class="summary">MD5 checker, uses the md5sum.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="doit.dependency.TimestampChecker-class.html">doit.dependency.TimestampChecker</a></strong>:
+      <em class="summary">Checker that use only the timestamp.</em>
+    </li>
+    </ul>
     </li>
     <li> <strong class="uidlink"><a href="doit.filewatch.FileModifyWatcher-class.html">doit.filewatch.FileModifyWatcher</a></strong>:
       <em class="summary">Use inotify to watch file-system for file modifications</em>
@@ -242,6 +247,9 @@ This used to keep track of waiting events and the generator for dep nodes</em>
     <li> <strong class="uidlink"><a href="doit.runner.MReporter-class.html">doit.runner.MReporter</a></strong>:
       <em class="summary">send reported messages to master process</em>
     </li>
+    <li> <strong class="uidlink"><a href="doit.plugin.PluginEntry-class.html">doit.plugin.PluginEntry</a></strong>:
+      <em class="summary">A Plugin entry point</em>
+    </li>
     <li> <strong class="uidlink"><a href="doit.runner.Runner-class.html">doit.runner.Runner</a></strong>:
       <em class="summary">Task runner</em>
     <ul>
@@ -254,6 +262,8 @@ This used to keep track of waiting events and the generator for dep nodes</em>
     </ul>
     </li>
     </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="doit.plugin.PluginEntry.Sentinel-class.html">doit.plugin.PluginEntry.Sentinel</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="doit.dependency.SqliteDB-class.html">doit.dependency.SqliteDB</a></strong>:
       <em class="summary">sqlite3 json backend</em>
@@ -329,6 +339,9 @@ dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs
       <em class="summary">A dictionary that has an &quot;update_defaults&quot; method where 
         only items with default values are updated.</em>
     </li>
+    <li> <strong class="uidlink"><a href="doit.plugin.PluginDict-class.html">doit.plugin.PluginDict</a></strong>:
+      <em class="summary">A dict where item values *might* be a PluginEntry</em>
+    </li>
     </ul>
     </li>
     <li> <strong class="uidlink"><a href="doit.tools.timeout-class.html">doit.tools.timeout</a></strong>:
@@ -368,7 +381,7 @@ dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jan 30 17:24:01 2015
+    Generated by Epydoc 3.0.1 on Wed Apr 22 16:12:45 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
