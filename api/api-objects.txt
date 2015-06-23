@@ -92,6 +92,7 @@ doit.cmd_run.opt_num_process	doit.cmd_run-module.html#opt_num_process
 doit.cmd_run.opt_verbosity	doit.cmd_run-module.html#opt_verbosity
 doit.cmd_run.opt_always	doit.cmd_run-module.html#opt_always
 doit.cmd_run.opt_single	doit.cmd_run-module.html#opt_single
+doit.cmd_run.opt_auto_delayed_regex	doit.cmd_run-module.html#opt_auto_delayed_regex
 doit.cmd_run.opt_outfile	doit.cmd_run-module.html#opt_outfile
 doit.cmd_run.opt_pdb	doit.cmd_run-module.html#opt_pdb
 doit.cmd_strace	doit.cmd_strace-module.html
@@ -556,6 +557,7 @@ doit.control.ExecNode.__repr__	doit.control.ExecNode-class.html#__repr__
 doit.control.ExecNode.reset_task	doit.control.ExecNode-class.html#reset_task
 doit.control.ExecNode.__init__	doit.control.ExecNode-class.html#__init__
 doit.control.TaskControl	doit.control.TaskControl-class.html
+doit.control.TaskControl.REGEX_TARGET_PREFIX	doit.control.TaskControl-class.html#REGEX_TARGET_PREFIX
 doit.control.TaskControl.process	doit.control.TaskControl-class.html#process
 doit.control.TaskControl._filter_tasks	doit.control.TaskControl-class.html#_filter_tasks
 doit.control.TaskControl.add_implicit_task_dep	doit.control.TaskControl-class.html#add_implicit_task_dep
