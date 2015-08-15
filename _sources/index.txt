@@ -161,7 +161,10 @@ What people are saying about `doit`
 Project Details
 ===============
 
-* This is an open-source project (`MIT license <http://opensource.org/licenses/mit-license.php>`_) written in python. Runs on Python 2.7 through 3.4 with a single codebase.
+* This is an open-source project
+  (`MIT license <http://opensource.org/licenses/mit-license.php>`_)
+  written in python. Runs on Python 2.7 through 3.4 (including PyPy support)
+  with a single codebase.
 
 * Download from `PyPi <http://pypi.python.org/pypi/doit>`_
 
@@ -169,7 +172,7 @@ Project Details
 
 * Project management (bug tracker, feature requests and source code ) on `github <https://github.com/pydoit/doit>`_.
 
-* `doit projects <https://github.com/pydoit>`_ contains a collection of plugins, non-trivial examples and re-usable task creators for `doit`.
+* `doit projects <https://github.com/pydoit/doit/wiki/powered-by-doit>`_ contains a collection of third-party projects, plugins, extensions, non-trivial examples and re-usable task creators for `doit`.
 
 * Questions and feedback on `Google group <http://groups.google.co.in/group/python-doit>`_. Please do **not** send questions to my private email.
 
@@ -185,7 +188,7 @@ Status
 
 This blog `post <http://schettino72.wordpress.com/2008/04/14/doit-a-build-tool-tale/>`_ explains how everything started in 2008.
 
-`doit` is under active development. Version 0.28 released on 2015-04.
+`doit` is under active development. Version 0.29 released on 2015-08.
 
 `doit` core features are quite stable. If there is no recent development,
 it does NOT mean `doit` is not being maintained...

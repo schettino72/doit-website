@@ -109,7 +109,8 @@ different backends:
 
  - `json`: Plain text using a json structure, it is slow but good for debugging.
 
- - `sqlite3`: (experimental) very slow implementation, support concurrent access.
+ - `sqlite3`: Support concurrent access
+   (DB is updated only once when process is terminated for better performance).
 
 
 From the command line you can select the backend using the ``--backend`` option.
@@ -209,6 +210,13 @@ You can also execute in parallel using threads by specifying the option
 
    The actions of a single task are always run sequentially;
    only tasks and sub-tasks are affected by the parallel execution option.
+
+.. warning::
+
+   On Windows, due to some limitations on how `multiprocess` works,
+   there are stricter requirements for task properties being picklable than
+   other platforms.
+
 
 .. _reporter:
 

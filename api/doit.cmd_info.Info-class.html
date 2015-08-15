@@ -95,7 +95,8 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="doit.cmd_info.Info-class.html#_execute" class="summary-sig-name" onclick="show_private();">_execute</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">pos_args</span>)</span><br />
+        <span class="summary-sig-arg">pos_args</span>,
+        <span class="summary-sig-arg">show_execute_status</span>=<span class="summary-sig-default">False</span>)</span><br />
       to be subclassed - actual command implementation</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="doit.cmd_info-pysrc.html#Info._execute">source&nbsp;code</a></span>
@@ -180,6 +181,23 @@
     </table>
   </td>
 </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_reasons"></a><span class="summary-sig-name">get_reasons</span>(<span class="summary-sig-arg">reasons</span>)</span><br />
+      return string with description of reason task is not up-to-date</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="doit.cmd_info-pysrc.html#Info.get_reasons">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
   <tr>
     <td colspan="2" class="summary">
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b>:
@@ -228,13 +246,25 @@
       hash(x)
     </td>
   </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="doit.cmd_info.Info-class.html#cmd_options" class="summary-name">cmd_options</a> = <code title="({'default': False,
+  'help': '''Shows reasons why this task would be executed.
+ [default: %(default)s]''',
+  'long': 'status',
+  'name': 'show_execute_status',
+  'short': 's',
+  'type': &lt;type 'bool'&gt;})"><code class="variable-group">(</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code>False<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Shows reasons why t</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
   <tr>
     <td colspan="2" class="summary">
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.DoitCmdBase-class.html">cmd_base.DoitCmdBase</a></code></b>:
       <code><a href="doit.cmd_base.DoitCmdBase-class.html#base_options">base_options</a></code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code><a href="doit.cmd_base.Command-class.html">cmd_base.Command</a></code></b>:
-      <code><a href="doit.cmd_base.Command-class.html#cmd_options">cmd_options</a></code>,
       <code><a href="doit.cmd_base.Command-class.html#execute_tasks">execute_tasks</a></code>,
       <code><a href="doit.cmd_base.Command-class.html#name">name</a></code>
       </p>
@@ -295,7 +325,8 @@
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">_execute</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">pos_args</span>)</span>
+        <span class="sig-arg">pos_args</span>,
+        <span class="sig-arg">show_execute_status</span>=<span class="sig-default">False</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="doit.cmd_info-pysrc.html#Info._execute">source&nbsp;code</a></span>&nbsp;
@@ -308,6 +339,49 @@
         <a href="doit.cmd_base.DoitCmdBase-class.html#_execute" onclick="show_private();">cmd_base.DoitCmdBase._execute</a>
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="cmd_options"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">cmd_options</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">(</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">default</code><code class="variable-quote">'</code><code class="variable-op">: </code>False<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">help</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'''</code><code class="variable-string">Shows reasons why this task would be executed.</code>
+<code class="variable-string"> [default: %(default)s]</code><code class="variable-quote">'''</code><code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">long</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">status</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">show_execute_status</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">short</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">s</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">type</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;type 'bool'&gt;<code class="variable-group">}</code><code class="variable-group">)</code>
+</pre></td></tr></table>
+</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -343,7 +417,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jun 23 17:44:08 2015
+    Generated by Epydoc 3.0.1 on Sun Aug 16 02:09:13 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

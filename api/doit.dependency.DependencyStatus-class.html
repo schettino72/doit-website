@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>doit.cmdparse.DefaultUpdate</title>
+  <title>doit.dependency.DependencyStatus</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -43,8 +43,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="doit-module.html">Package&nbsp;doit</a> ::
-        <a href="doit.cmdparse-module.html" onclick="show_private();">Module&nbsp;cmdparse</a> ::
-        Class&nbsp;DefaultUpdate
+        <a href="doit.dependency-module.html" onclick="show_private();">Module&nbsp;dependency</a> ::
+        Class&nbsp;DependencyStatus
       </span>
     </td>
     <td>
@@ -57,23 +57,15 @@
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class DefaultUpdate</h1><p class="nomargin-top"><span class="codelink"><a href="doit.cmdparse-pysrc.html#DefaultUpdate">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class DependencyStatus</h1><p class="nomargin-top"><span class="codelink"><a href="doit.dependency-pysrc.html#DependencyStatus">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-object --+    
-         |    
-      dict --+
-             |
-            <strong class="uidshort">DefaultUpdate</strong>
+object --+
+         |
+        <strong class="uidshort">DependencyStatus</strong>
 </pre>
 
 <hr />
-<p>A dictionary that has an &quot;update_defaults&quot; method where only
-  items with default values are updated.</p>
-  <p>This is used when you have a dict that has multiple source of values 
-  (i.e. hardcoded, config file, command line). And values are updated 
-  beggining from the source with higher priority.</p>
-  <p>A default value is added with the method set_default or 
-  add_defaults.</p>
+<p>Result object for Dependency.get_status.</p>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -94,19 +86,15 @@ object --+
 </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type"><pre class="literalblock">
-new empty dictionary
-
-</pre></span>
+      <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="doit.cmdparse.DefaultUpdate-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">*args</span>,
-        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+          <td><span class="summary-sig"><a href="doit.dependency.DependencyStatus-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">get_log</span>)</span><br />
       x.__init__(...) initializes x; see help(type(x)) for signature</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.cmdparse-pysrc.html#DefaultUpdate.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyStatus.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -120,12 +108,14 @@ new empty dictionary
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="set_default"></a><span class="summary-sig-name">set_default</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">key</span>,
-        <span class="summary-sig-arg">value</span>)</span><br />
-      set default value for given key</td>
+          <td><span class="summary-sig"><a name="add_reason"></a><span class="summary-sig-name">add_reason</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">reason</span>,
+        <span class="summary-sig-arg">arg</span>,
+        <span class="summary-sig-arg">status</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">run</code><code class="variable-quote">'</code></span>)</span><br />
+      sets state and append reason for not being up-to-date :return 
+      boolean: processing should be interrupted</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.cmdparse-pysrc.html#DefaultUpdate.set_default">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyStatus.add_reason">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -139,11 +129,13 @@ new empty dictionary
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="doit.cmdparse.DefaultUpdate-class.html#add_defaults" class="summary-sig-name">add_defaults</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">source</span>)</span><br />
-      add default values from another dict</td>
+          <td><span class="summary-sig"><a name="set_reason"></a><span class="summary-sig-name">set_reason</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">reason</span>,
+        <span class="summary-sig-arg">arg</span>)</span><br />
+      sets state and reason for not being up-to-date :return boolean: 
+      processing should be interrupted</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.cmdparse-pysrc.html#DefaultUpdate.add_defaults">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyStatus.set_reason">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -157,31 +149,10 @@ new empty dictionary
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="update_defaults"></a><span class="summary-sig-name">update_defaults</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">update_dict</span>)</span><br />
-      like dict.update but do not update items that have a non-default 
-      value</td>
+          <td><span class="summary-sig"><a name="get_error_message"></a><span class="summary-sig-name">get_error_message</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      return str with error message</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="doit.cmdparse-pysrc.html#DefaultUpdate.update_defaults">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="doit.cmdparse.DefaultUpdate-class.html#__setitem__" class="summary-sig-name">__setitem__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">key</span>,
-        <span class="summary-sig-arg">value</span>)</span><br />
-      overwrite to keep track of _non_default_keys</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="doit.cmdparse-pysrc.html#DefaultUpdate.__setitem__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="doit.dependency-pysrc.html#DependencyStatus.get_error_message">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -191,76 +162,47 @@ new empty dictionary
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>dict</code></b>:
-      <code>__cmp__</code>,
-      <code>__contains__</code>,
-      <code>__delitem__</code>,
-      <code>__eq__</code>,
-      <code>__ge__</code>,
-      <code>__getattribute__</code>,
-      <code>__getitem__</code>,
-      <code>__gt__</code>,
-      <code>__iter__</code>,
-      <code>__le__</code>,
-      <code>__len__</code>,
-      <code>__lt__</code>,
-      <code>__ne__</code>,
-      <code>__new__</code>,
-      <code>__repr__</code>,
-      <code>__sizeof__</code>,
-      <code>clear</code>,
-      <code>copy</code>,
-      <code>fromkeys</code>,
-      <code>get</code>,
-      <code>has_key</code>,
-      <code>items</code>,
-      <code>iteritems</code>,
-      <code>iterkeys</code>,
-      <code>itervalues</code>,
-      <code>keys</code>,
-      <code>pop</code>,
-      <code>popitem</code>,
-      <code>setdefault</code>,
-      <code>update</code>,
-      <code>values</code>,
-      <code>viewitems</code>,
-      <code>viewkeys</code>,
-      <code>viewvalues</code>
-      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
       <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
       <code>__reduce__</code>,
       <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
       <code>__setattr__</code>,
+      <code>__sizeof__</code>,
       <code>__str__</code>,
       <code>__subclasshook__</code>
       </p>
     </td>
   </tr>
 </table>
-<!-- ==================== CLASS VARIABLES ==================== -->
-<a name="section-ClassVariables"></a>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="left"><span class="table-header">Instance Variables</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-ClassVariables"
+         ><span class="options">[<a href="#section-InstanceVariables"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
     </table>
   </td>
 </tr>
-  <tr>
-    <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>dict</code></b>:
-      <code>__hash__</code>
-      </p>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="status"></a><span class="summary-name">status</span><br />
+      (str) one of &quot;run&quot;, &quot;up-to-date&quot; or 
+      &quot;error&quot;
     </td>
   </tr>
 </table>
@@ -315,73 +257,19 @@ new empty dictionary
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">*args</span>,
-        <span class="sig-arg">**kwargs</span>)</span>
+        <span class="sig-arg">get_log</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="doit.cmdparse-pysrc.html#DefaultUpdate.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="doit.dependency-pysrc.html#DependencyStatus.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
   <p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
   <dl class="fields">
-    <dt>Returns: <pre class="literalblock">
-new empty dictionary
-
-</pre></dt>
     <dt>Overrides:
         object.__init__
         <dd><em class="note">(inherited documentation)</em></dd>
-    </dt>
-  </dl>
-</td></tr></table>
-</div>
-<a name="add_defaults"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_defaults</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">source</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="doit.cmdparse-pysrc.html#DefaultUpdate.add_defaults">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>add default values from another dict</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>source</code></strong> - (dict)</li>
-    </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="__setitem__"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setitem__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">key</span>,
-        <span class="sig-arg">value</span>)</span>
-    <br /><em class="fname">(Index assignment operator)</em>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="doit.cmdparse-pysrc.html#DefaultUpdate.__setitem__">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>overwrite to keep track of _non_default_keys</p>
-  <dl class="fields">
-    <dt>Overrides:
-        dict.__setitem__
     </dt>
   </dl>
 </td></tr></table>

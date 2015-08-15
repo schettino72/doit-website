@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.28',
+        VERSION:     '0.29',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -114,7 +114,7 @@
   <h3><a href="contents.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Changes</a><ul>
-<li><a class="reference internal" href="#id1">0.29.0</a></li>
+<li><a class="reference internal" href="#id1">0.29.0 (<em>2015-08-16</em>)</a></li>
 <li><a class="reference internal" href="#id2">0.28.0 (<em>2015-04-22</em>)</a></li>
 <li><a class="reference internal" href="#id3">0.27.0 (<em>2015-01-30</em>)</a></li>
 <li><a class="reference internal" href="#id4">0.26.0 (<em>2014-08-30</em>)</a></li>
@@ -222,12 +222,24 @@ Contact: <em>schettino72</em>&#64<span>gmail.com</span>
   <div class="section" id="changes">
 <h1>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>0.29.0<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>0.29.0 (<em>2015-08-16</em>)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>GH-#59: fix command <cite>list</cite> issue with unicode names</li>
+<li>BACKWARD INCOMPATIBLE: revert - <cite>result_dep</cite> to create an implicit <cite>task_dep</cite></li>
+<li>fix GH-#59: command <cite>list</cite> issue with unicode names</li>
+<li>fix GH-#72: cmd <cite>completion</cite> escaping of apostrophes in zsh</li>
+<li>fix GH-#74: Task action&#8217;s handle python3 callables with keyword only args</li>
+<li>fix GH-#50: Executing tasks in parallel (multi-process) fails on Windows</li>
+<li>fix GH-#71 #92: Better error messages for invalid command line tasks/commands</li>
+<li>fix issue with <cite>&#8211;always-execute</cite> and <cite>setup</cite> tasks</li>
+<li>GH-#67: multiprocess runner handles closures in tasks (using cloudpickle)</li>
 <li>GH-#58: add <cite>DelayedLoader</cite> parameter <cite>target_regex</cite></li>
-<li>GH-#58: cmd <cite>Run</cite> add option <cite>auto-delayed-regex</cite></li>
+<li>GH-#30: add <cite>DelayedLoader</cite> parameter <cite>creates</cite></li>
+<li>GH-#58: cmd <cite>Run</cite> add option <cite>&#8211;auto-delayed-regex</cite></li>
+<li>GH-#24: cmd <cite>info</cite> add option <cite>&#8211;status</cite> show reason a task is not up-to-date</li>
+<li>GH-#66: cmd <cite>auto</cite> support custom ( user specified ) commands to be executed
+after each task execution</li>
+<li>GH-#61: speed up sqlite3 backend (use internal memory cache)</li>
 </ul>
 </div></blockquote>
 </div>

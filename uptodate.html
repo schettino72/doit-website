@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.28',
+        VERSION:     '0.29',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -435,12 +435,12 @@ with the time that was saved on last successful execution.</p>
 <div class="section" id="example-result-dep-implementation">
 <h3>Example: result_dep implementation<a class="headerlink" href="#example-result-dep-implementation" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal"><span class="pre">result_dep</span></code> is more complicated due to two factors. It needs to modify
-the task&#8217;s <code class="docutils literal"><span class="pre">setup_tasks</span></code>.
+the task&#8217;s <code class="docutils literal"><span class="pre">task_dep</span></code>.
 And it needs to check the task&#8217;s saved values and metadata
 from a task different from where it is being applied.</p>
-<p>A <code class="docutils literal"><span class="pre">result_dep</span></code> implies that its dependency is also a <code class="docutils literal"><span class="pre">setup</span></code>.
+<p>A <code class="docutils literal"><span class="pre">result_dep</span></code> implies that its dependency is also a <code class="docutils literal"><span class="pre">task_dep</span></code>.
 We have seen that the callable takes a <cite>task</cite> parameter that we used
-to modify the task object. The problem is that modifying <code class="docutils literal"><span class="pre">setup_tasks</span></code>
+to modify the task object. The problem is that modifying <code class="docutils literal"><span class="pre">task_dep</span></code>
 when the callable gets called would be &#8220;too late&#8221; according to the
 way <cite>doit</cite> works. When an object is passed <code class="docutils literal"><span class="pre">uptodate</span></code> and this
 object&#8217;s class has a method named <code class="docutils literal"><span class="pre">configure_task</span></code> it will be called
@@ -450,7 +450,7 @@ an attribute named <code class="docutils literal"><span class="pre">tasks_dict</
 all task objects where the <code class="docutils literal"><span class="pre">key</span></code> is the task name (this is used to get all
 sub-tasks from a task-group). And also a method called <code class="docutils literal"><span class="pre">get_val</span></code> to access
 the saved values and results from any task.</p>
-<p>See the <cite>result_dep</cite> <a class="reference external" href="https://github.com/pydoit/doit/blob/master/doit/task.py#L485">source</a>.</p>
+<p>See the <cite>result_dep</cite> <a class="reference external" href="https://github.com/pydoit/doit/blob/master/doit/task.py">source</a>.</p>
 </div>
 </div>
 </div>

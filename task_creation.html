@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.28',
+        VERSION:     '0.29',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -115,7 +115,10 @@
   <ul>
 <li><a class="reference internal" href="#">More on Task creation</a><ul>
 <li><a class="reference internal" href="#importing-tasks">importing tasks</a></li>
-<li><a class="reference internal" href="#delayed-task-creation">delayed task creation</a></li>
+<li><a class="reference internal" href="#delayed-task-creation">delayed task creation</a><ul>
+<li><a class="reference internal" href="#parameter-creates">Parameter: <cite>creates</cite></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#custom-task-definition">custom task definition</a></li>
 </ul>
 </li>
@@ -292,14 +295,33 @@ the regex <cite>.*\.out</cite> matches every target name ending with <cite>.out<
 Alternatively, one can use the command line option <cite>&#8211;auto-delayed-regex</cite>
 to <cite>doit run</cite>; see <a class="reference internal" href="cmd_run.html#auto-delayed-regex"><span>here</span></a> for more information.</p>
 </div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>There is a limitation in the use of the delayed task creation with
-multiprocessing. Multiprocessing relies on a task being pickled and
-sent to sub-process, so your task can not contain closures because
-closures are not picklable. See <a class="reference external" href="https://docs.python.org/3/library/pickle.html#pickle-picklable">What can be pickled</a></p>
-<p class="last"><cite>doit</cite> manages to avoid this limitation for tasks that are created before
-the <em>task-execution</em> begins but for delayed tasks it is not possible.</p>
+<div class="section" id="parameter-creates">
+<h3>Parameter: <cite>creates</cite><a class="headerlink" href="#parameter-creates" title="Permalink to this headline">¶</a></h3>
+<p>In case the task created by a <cite>DelayedTask</cite> has a different <em>basename</em> than
+then creator function, or creates several tasks with different <em>basenames</em>,
+you should pass the parameter <cite>creates</cite>.</p>
+<p>Since <cite>doit</cite> will only execute the body of the task-creator function on demand,
+the tasks names must be explicitly specified... Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">create_after</span>
+
+<span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="n">your_name</span><span class="p">):</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Hello from {}!</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">your_name</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">task_a</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">say_hello</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">])</span> <span class="p">]</span>
+    <span class="p">}</span>
+
+<span class="nd">@create_after</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="n">creates</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">task_another_task</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&quot;basename&quot;</span><span class="p">:</span> <span class="s">&quot;b&quot;</span><span class="p">,</span>
+        <span class="s">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">say_hello</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;b&quot;</span><span class="p">])</span> <span class="p">],</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="custom-task-definition">

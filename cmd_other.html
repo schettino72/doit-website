@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.28',
+        VERSION:     '0.29',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -121,6 +121,7 @@
 <li><a class="reference internal" href="#clean">clean</a></li>
 <li><a class="reference internal" href="#ignore">ignore</a></li>
 <li><a class="reference internal" href="#auto-watch">auto (watch)</a><ul>
+<li><a class="reference internal" href="#callbacks">callbacks</a></li>
 <li><a class="reference internal" href="#watch-parameter"><code class="docutils literal"><span class="pre">watch</span></code> parameter</a></li>
 </ul>
 </li>
@@ -289,6 +290,16 @@ the task meta-data.</p>
 <span class="go">targets:[&#39;edit&#39;]</span>
 </pre></div>
 </div>
+<p>Use the option <cite>&#8211;status</cite>, to check the reason a task is not up-to-date.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit info link
+
+<span class="go">Task is not up-to-date:</span>
+<span class="go"> * The following file dependencies have changed:</span>
+<span class="go">    - main.o</span>
+<span class="go">    - kbd.o</span>
+<span class="go">    - command.o</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="forget">
 <h2>forget<a class="headerlink" href="#forget" title="Permalink to this headline">¶</a></h2>
@@ -389,6 +400,20 @@ When a file is modified the tasks are re-executed.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">The <cite>dodo</cite> file is actually re-loaded/executed in a separate process
 every time tasks need to be re-executed.</p>
+</div>
+<div class="section" id="callbacks">
+<h3>callbacks<a class="headerlink" href="#callbacks" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to specify shell commands to executed after every cycle
+of task execution.
+This can used to display desktop notifications, so you do not need to keep
+an eye in the terminal to notice when tasks succeed or failed.</p>
+<p>Example of sound and desktop notification on Ubuntu.
+Contents of a <cite>doit.cfg</cite> file:</p>
+<div class="highlight-INI"><div class="highlight"><pre><span class="k">[auto]</span>
+<span class="na">success_callback</span> <span class="o">=</span> <span class="s">notify-send -u low -i /usr/share/icons/gnome/16x16/emotes/face-smile.png &quot;doit:   success&quot;; aplay -q /usr/share/sounds/purple/send.wav</span>
+<span class="na">failure_callback</span> <span class="o">=</span> <span class="s">notify-send -u normal -i /usr/share/icons/gnome/16x16/status/error.png &quot;doit:  fail&quot;; aplay -q /usr/share/sounds/purple/alert.wav</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="watch-parameter">
 <h3><code class="docutils literal"><span class="pre">watch</span></code> parameter<a class="headerlink" href="#watch-parameter" title="Permalink to this headline">¶</a></h3>

@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.28',
+        VERSION:     '0.29',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -316,6 +316,23 @@ The body of task-creators should be used to create task metadata only,
 not execute tasks!
 From now on when the  documentation says that a <em>task</em> is executed,
 read &#8220;the task&#8217;s actions are executed&#8221;.</p>
+</div>
+<p><cite>action</cite> parameters can be passed as <code class="docutils literal"><span class="pre">kwargs</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="k">def</span> <span class="nf">func_with_args</span><span class="p">(</span><span class="n">arg_first</span><span class="p">,</span> <span class="n">arg_second</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">arg_first</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">arg_second</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">True</span>
+
+<span class="k">def</span> <span class="nf">task_call_func</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">func_with_args</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span>
+            <span class="s">&#39;arg_second&#39;</span><span class="p">:</span> <span class="s">&#39;This is a second argument.&#39;</span><span class="p">,</span>
+            <span class="s">&#39;arg_first&#39;</span><span class="p">:</span> <span class="s">&#39;This is a first argument.&#39;</span><span class="p">})</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="cmd-action">

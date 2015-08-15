@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.28',
+        VERSION:     '0.29',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -310,7 +310,8 @@ different backends:</p>
 <div><ul class="simple">
 <li><cite>dbm</cite>: (default) It uses <a class="reference external" href="https://docs.python.org/3/library/dbm.html">python dbm module</a>. The actual DBM used depends on what is available on your machine/platform.</li>
 <li><cite>json</cite>: Plain text using a json structure, it is slow but good for debugging.</li>
-<li><cite>sqlite3</cite>: (experimental) very slow implementation, support concurrent access.</li>
+<li><cite>sqlite3</cite>: Support concurrent access
+(DB is updated only once when process is terminated for better performance).</li>
 </ul>
 </div></blockquote>
 <p>From the command line you can select the backend using the <code class="docutils literal"><span class="pre">--backend</span></code> option.</p>
@@ -380,6 +381,12 @@ So the same restrictions also apply to the use of multiprocessing in <cite>doit<
 <p class="first admonition-title">Note</p>
 <p class="last">The actions of a single task are always run sequentially;
 only tasks and sub-tasks are affected by the parallel execution option.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">On Windows, due to some limitations on how <cite>multiprocess</cite> works,
+there are stricter requirements for task properties being picklable than
+other platforms.</p>
 </div>
 </div>
 <div class="section" id="reporter">
