@@ -154,12 +154,14 @@ doit.cmd_strace.Strace.cmd_options" class="py-name" href="#" onclick="return doc
 doit.dependency.JsonDB.set
 doit.dependency.SqliteDB.set" class="py-name" href="#" onclick="return doclink('link-16', 'set', 'link-16');">set</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt id="link-17" class="py-name" targets="Module doit.task=doit.task-module.html"><a title="doit.task" class="py-name" href="#" onclick="return doclink('link-17', 'task', 'link-17');">task</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">tasks</tt><tt class="py-op">:</tt> </tt>
-<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-18" class="py-name"><a title="doit.task" class="py-name" href="#" onclick="return doclink('link-18', 'task', 'link-17');">task</a></tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Variable doit.cmd_base.Command.name=doit.cmd_base.Command-class.html#name,Variable doit.cmd_resetdep.ResetDep.name=doit.cmd_resetdep.ResetDep-class.html#name,Variable doit.runner.JobTaskPickle.name=doit.runner.JobTaskPickle-class.html#name"><a title="doit.cmd_base.Command.name
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-18" class="py-name"><a title="doit.task" class="py-name" href="#" onclick="return doclink('link-18', 'task', 'link-17');">task</a></tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Variable doit.cmd_base.Command.name=doit.cmd_base.Command-class.html#name,Variable doit.cmd_resetdep.ResetDep.name=doit.cmd_resetdep.ResetDep-class.html#name,Variable doit.runner.JobTaskPickle.name=doit.runner.JobTaskPickle-class.html#name,Variable doit.task.Task.name=doit.task.Task-class.html#name"><a title="doit.cmd_base.Command.name
 doit.cmd_resetdep.ResetDep.name
-doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-19', 'name', 'link-19');">name</a></tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">cleaned</tt><tt class="py-op">:</tt> </tt>
+doit.runner.JobTaskPickle.name
+doit.task.Task.name" class="py-name" href="#" onclick="return doclink('link-19', 'name', 'link-19');">name</a></tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">cleaned</tt><tt class="py-op">:</tt> </tt>
 <a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">                <tt class="py-name">cleaned</tt><tt class="py-op">.</tt><tt class="py-name">add</tt><tt class="py-op">(</tt><tt id="link-20" class="py-name"><a title="doit.task" class="py-name" href="#" onclick="return doclink('link-20', 'task', 'link-17');">task</a></tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="doit.cmd_base.Command.name
 doit.cmd_resetdep.ResetDep.name
-doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-21', 'name', 'link-19');">name</a></tt><tt class="py-op">)</tt> </tt>
+doit.runner.JobTaskPickle.name
+doit.task.Task.name" class="py-name" href="#" onclick="return doclink('link-21', 'name', 'link-19');">name</a></tt><tt class="py-op">)</tt> </tt>
 <a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">                <tt id="link-22" class="py-name"><a title="doit.task" class="py-name" href="#" onclick="return doclink('link-22', 'task', 'link-17');">task</a></tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Method doit.task.Task.clean()=doit.task.Task-class.html#clean"><a title="doit.task.Task.clean" class="py-name" href="#" onclick="return doclink('link-23', 'clean', 'link-23');">clean</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">outstream</tt><tt class="py-op">,</tt> <tt class="py-name">dryrun</tt><tt class="py-op">)</tt> </tt>
 </div><a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"> </tt>
 <a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"> </tt>
@@ -176,7 +178,8 @@ doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink
 <a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
 <a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">        <tt class="py-name">tasks</tt> <tt class="py-op">=</tt> <tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">t</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="doit.cmd_base.Command.name
 doit.cmd_resetdep.ResetDep.name
-doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-24', 'name', 'link-19');">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">t</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">task_list</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+doit.runner.JobTaskPickle.name
+doit.task.Task.name" class="py-name" href="#" onclick="return doclink('link-24', 'name', 'link-19');">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">t</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">task_list</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
 <a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-comment"># behaviour of cleandep is different if selected_tasks comes from</tt> </tt>
 <a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-comment"># command line or DOIT_CONFIG.default_tasks</tt> </tt>
 <a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">        <tt class="py-name">selected_tasks</tt> <tt class="py-op">=</tt> <tt class="py-name">pos_args</tt> </tt>
@@ -186,14 +189,16 @@ doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink
 <a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">cleanall</tt><tt class="py-op">:</tt> </tt>
 <a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">            <tt class="py-name">clean_list</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">t</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="doit.cmd_base.Command.name
 doit.cmd_resetdep.ResetDep.name
-doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-26', 'name', 'link-19');">name</a></tt> <tt class="py-keyword">for</tt> <tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">task_list</tt><tt class="py-op">]</tt> </tt>
+doit.runner.JobTaskPickle.name
+doit.task.Task.name" class="py-name" href="#" onclick="return doclink('link-26', 'name', 'link-19');">name</a></tt> <tt class="py-keyword">for</tt> <tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">task_list</tt><tt class="py-op">]</tt> </tt>
 <a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">selected_tasks</tt><tt class="py-op">:</tt> </tt>
 <a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">            <tt class="py-name">clean_list</tt> <tt class="py-op">=</tt> <tt class="py-name">selected_tasks</tt> </tt>
 <a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
 <a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sel_tasks</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
 <a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">                <tt class="py-name">clean_list</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">t</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="doit.cmd_base.Command.name
 doit.cmd_resetdep.ResetDep.name
-doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-27', 'name', 'link-19');">name</a></tt> <tt class="py-keyword">for</tt> <tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">task_list</tt><tt class="py-op">]</tt> </tt>
+doit.runner.JobTaskPickle.name
+doit.task.Task.name" class="py-name" href="#" onclick="return doclink('link-27', 'name', 'link-19');">name</a></tt> <tt class="py-keyword">for</tt> <tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">task_list</tt><tt class="py-op">]</tt> </tt>
 <a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
 <a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">                <tt class="py-name">clean_list</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sel_tasks</tt> </tt>
 <a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">            <tt class="py-comment"># if cleaning default tasks enable clean_dep automatically</tt> </tt>
@@ -209,10 +214,12 @@ doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink
 <a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line">            <tt class="py-name">to_clean</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
 <a name="L89"></a><tt class="py-lineno">89</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt id="link-29" class="py-name"><a title="doit.cmd_base.Command.name
 doit.cmd_resetdep.ResetDep.name
-doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-29', 'name', 'link-19');">name</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">reversed</tt><tt class="py-op">(</tt><tt class="py-name">clean_list</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+doit.runner.JobTaskPickle.name
+doit.task.Task.name" class="py-name" href="#" onclick="return doclink('link-29', 'name', 'link-19');">name</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">reversed</tt><tt class="py-op">(</tt><tt class="py-name">clean_list</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 <a name="L90"></a><tt class="py-lineno">90</tt>  <tt class="py-line">                <tt id="link-30" class="py-name"><a title="doit.task" class="py-name" href="#" onclick="return doclink('link-30', 'task', 'link-17');">task</a></tt> <tt class="py-op">=</tt> <tt class="py-name">tasks</tt><tt class="py-op">[</tt><tt id="link-31" class="py-name"><a title="doit.cmd_base.Command.name
 doit.cmd_resetdep.ResetDep.name
-doit.runner.JobTaskPickle.name" class="py-name" href="#" onclick="return doclink('link-31', 'name', 'link-19');">name</a></tt><tt class="py-op">]</tt> </tt>
+doit.runner.JobTaskPickle.name
+doit.task.Task.name" class="py-name" href="#" onclick="return doclink('link-31', 'name', 'link-19');">name</a></tt><tt class="py-op">]</tt> </tt>
 <a name="L91"></a><tt class="py-lineno">91</tt>  <tt class="py-line">                <tt class="py-name">to_clean</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt id="link-32" class="py-name"><a title="doit.task" class="py-name" href="#" onclick="return doclink('link-32', 'task', 'link-17');">task</a></tt><tt class="py-op">)</tt> </tt>
 <a name="L92"></a><tt class="py-lineno">92</tt>  <tt class="py-line">                <tt class="py-name">to_clean</tt><tt class="py-op">.</tt><tt class="py-name">extend</tt><tt class="py-op">(</tt><tt id="link-33" class="py-name"><a title="doit.cmd_base.subtasks_iter" class="py-name" href="#" onclick="return doclink('link-33', 'subtasks_iter', 'link-5');">subtasks_iter</a></tt><tt class="py-op">(</tt><tt class="py-name">tasks</tt><tt class="py-op">,</tt> <tt id="link-34" class="py-name"><a title="doit.task" class="py-name" href="#" onclick="return doclink('link-34', 'task', 'link-17');">task</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
 <a name="L93"></a><tt class="py-lineno">93</tt>  <tt class="py-line">        <tt class="py-name">to_clean</tt><tt class="py-op">.</tt><tt class="py-name">reverse</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
@@ -255,7 +262,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Aug 16 02:09:13 2015
+    Generated by Epydoc 3.0.1 on Fri Nov  6 18:23:36 2015
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
