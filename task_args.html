@@ -126,6 +126,7 @@
 
 
 
+
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -139,6 +140,11 @@
     </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+<h3>Funding Campaign</h3>
+<iframe src="https://www.indiegogo.com/project/doit-python-automation-tool-release-0-30/embedded/2922409" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
+
 
 <h3>Sponsors</h3>
 
@@ -190,8 +196,7 @@ define a name, and a default value. It can optionally define a &#8220;short&#822
 conventions). It may also specify additional attributes, such as
 <cite>type</cite> and <cite>help</cite> (see <a class="reference internal" href="#parameters-attributes"><span>below</span></a>).</p>
 <p>See the example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="k">def</span> <span class="nf">task_py_params</span><span class="p">():</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_py_params</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">show_params</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="n">param1</span><span class="p">)</span>
         <span class="k">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="n">param2</span><span class="p">)</span>
@@ -404,8 +409,7 @@ Set inverse flag long parameter name, value will be set to <code class="docutils
 </tbody>
 </table>
 <p>Example, given following code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="k">def</span> <span class="nf">task_with_flag</span><span class="p">():</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_with_flag</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">_task</span><span class="p">(</span><span class="n">flag</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="s">&quot;Flag {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;On&quot;</span> <span class="k">if</span> <span class="n">flag</span> <span class="k">else</span> <span class="s">&quot;Off&quot;</span><span class="p">))</span>
 
@@ -440,8 +444,7 @@ Set inverse flag long parameter name, value will be set to <code class="docutils
 <p>Tasks might also get positional arguments from the command line
 as standard unix commands do,
 with positional arguments <em>after</em> optional arguments.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="k">def</span> <span class="nf">task_pos_args</span><span class="p">():</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_pos_args</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">show_params</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="s">&#39;param1 is: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param1</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">pos_arg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>

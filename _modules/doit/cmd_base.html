@@ -107,6 +107,7 @@
         <div class="sphinxsidebarwrapper">
 
 
+
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
@@ -120,6 +121,11 @@
     </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+<h3>Funding Campaign</h3>
+<iframe src="https://www.indiegogo.com/project/doit-python-automation-tool-release-0-30/embedded/2922409" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
+
 
 <h3>Sponsors</h3>
 
@@ -164,8 +170,6 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 
-<span class="kn">import</span> <span class="nn">six</span>
-
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">version</span>
 <span class="kn">from</span> <span class="nn">.cmdparse</span> <span class="kn">import</span> <span class="n">CmdOption</span><span class="p">,</span> <span class="n">CmdParse</span>
 <span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">InvalidCommand</span><span class="p">,</span> <span class="n">InvalidDodoFile</span>
@@ -179,7 +183,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <span class="sd">    Any part that is not a number (dev0, a2, b4) will be converted to -1</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ver_in</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ver_in</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">parts</span> <span class="o">=</span> <span class="n">ver_in</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">parts</span> <span class="o">=</span> <span class="n">ver_in</span>
@@ -482,7 +486,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_checker_cls</span><span class="p">(</span><span class="n">check_file_uptodate</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;return checker class to be used by dep_manager&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">check_file_uptodate</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">check_file_uptodate</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">check_file_uptodate</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">CHECKERS</span><span class="p">:</span>
                 <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;No check_file_uptodate named &#39;{}&#39;.&quot;</span>
                        <span class="s">&quot; Type &#39;doit help run&#39; to see a list &quot;</span>
@@ -562,9 +566,10 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
         <span class="c"># magic - create dict based on signature of _execute() method.</span>
         <span class="c"># this done so that _execute() have a nice API with name parameters</span>
         <span class="c"># instead of just taking a dict.</span>
-        <span class="n">args_name</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getargspec</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">exec_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">args_name</span> <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="s">&#39;self&#39;</span><span class="p">)</span>
+        <span class="n">args_name</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">exec_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">args_name</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">(</span><span class="o">**</span><span class="n">exec_params</span><span class="p">)</span>
+
 
 
 <span class="c"># helper functions to find list of tasks</span>

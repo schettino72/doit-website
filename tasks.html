@@ -141,9 +141,11 @@
 <li><a class="reference internal" href="#private-hidden-tasks">private/hidden tasks</a></li>
 <li><a class="reference internal" href="#title">title</a></li>
 <li><a class="reference internal" href="#verbosity">verbosity</a></li>
+<li><a class="reference internal" href="#id6">pathlib</a></li>
 </ul>
 </li>
 </ul>
+
 
 
 
@@ -160,6 +162,11 @@
     </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+<h3>Funding Campaign</h3>
+<iframe src="https://www.indiegogo.com/project/doit-python-automation-tool-release-0-30/embedded/2922409" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
+
 
 <h3>Sponsors</h3>
 
@@ -305,9 +312,7 @@ From now on when the  documentation says that a <em>task</em> is executed,
 read &#8220;the task&#8217;s actions are executed&#8221;.</p>
 </div>
 <p><cite>action</cite> parameters can be passed as <code class="docutils literal"><span class="pre">kwargs</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-
-<span class="k">def</span> <span class="nf">func_with_args</span><span class="p">(</span><span class="n">arg_first</span><span class="p">,</span> <span class="n">arg_second</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">func_with_args</span><span class="p">(</span><span class="n">arg_first</span><span class="p">,</span> <span class="n">arg_second</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">arg_first</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">arg_second</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">True</span>
@@ -317,7 +322,8 @@ read &#8220;the task&#8217;s actions are executed&#8221;.</p>
         <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">func_with_args</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span>
             <span class="s">&#39;arg_second&#39;</span><span class="p">:</span> <span class="s">&#39;This is a second argument.&#39;</span><span class="p">,</span>
             <span class="s">&#39;arg_first&#39;</span><span class="p">:</span> <span class="s">&#39;This is a first argument.&#39;</span><span class="p">})</span>
-        <span class="p">]</span>
+        <span class="p">],</span>
+        <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
     <span class="p">}</span>
 </pre></div>
 </div>
@@ -346,7 +352,9 @@ python code from the <cite>dodo</cite> file. Let&#8217;s take a look at another 
 <p class="last">The body of the <em>task-creator</em> is always executed,
 so in this example the line <cite>msg = 3 * &#8220;hi! &#8220;</cite> will always be executed.</p>
 </div>
-<p>If <cite>action</cite> is a list of strings, by default it will be executed <strong>without the shell</strong> (Popen argument shell=False).</p>
+<p>If <cite>action</cite> is a list of strings and instances of any Path class from
+<a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>, by default it will
+be executed <strong>without the shell</strong> (Popen argument shell=False).</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_python_version</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;--version&#39;</span><span class="p">]]</span>
@@ -414,8 +422,7 @@ The values are passed as list of strings.</p>
 </div>
 <p>You can also pass the keyword <em>task</em> to have a reference to all task
 metadata.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&#39;my name is&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
 
@@ -504,7 +511,7 @@ additional field <code class="docutils literal"><span class="pre">name</span></c
 <p>If you are not sure sub-tasks will be created for a given <code class="docutils literal"><span class="pre">basename</span></code>
 but you want to make sure that a task exist,
 you can yield a sub-task with <code class="docutils literal"><span class="pre">name</span></code> equal to <code class="docutils literal"><span class="pre">None</span></code>.
-This can also used to set the task <code class="docutils literal"><span class="pre">doc</span></code> and <code class="docutils literal"><span class="pre">watch</span></code> attribute.</p>
+This can also be used to set the task <code class="docutils literal"><span class="pre">doc</span></code> and <code class="docutils literal"><span class="pre">watch</span></code> attributes.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">glob</span>
 
 <span class="k">def</span> <span class="nf">task_xxx</span><span class="p">():</span>
@@ -520,7 +527,8 @@ This can also used to set the task <code class="docutils literal"><span class="p
         <span class="k">yield</span> <span class="p">{</span>
             <span class="s">&#39;basename&#39;</span><span class="p">:</span> <span class="s">&#39;do_x&#39;</span><span class="p">,</span>
             <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">,</span>
-            <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">item</span><span class="p">]</span>
+            <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">item</span><span class="p">],</span>
+            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="p">}</span>
 </pre></div>
 </div>
@@ -574,7 +582,11 @@ even for tasks that don&#8217;t define targets.</p>
 You don&#8217;t need to compile anything but you probably want to apply a lint-like
 tool (i.e. <a class="reference external" href="http://pypi.python.org/pypi/pyflakes">pyflakes</a>) to your
 source code files. You can define the source code as a dependency to the task.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_checker</span><span class="p">():</span>
+<p>Every dependency in file_dep list should be a string or an instance of any
+Path class from <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">task_checker</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;pyflakes sample.py&quot;</span><span class="p">],</span>
             <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;sample.py&quot;</span><span class="p">]}</span>
 </pre></div>
@@ -593,7 +605,9 @@ source code files. You can define the source code as a dependency to the task.</
 <h2>targets<a class="headerlink" href="#targets" title="Permalink to this headline">¶</a></h2>
 <p>Targets can be any file path (a file or folder). If a target doesn&#8217;t exist
 the task will be executed. There is no limitation on the number of targets
-a task may define. Two different tasks can not have the same target.</p>
+a task may define. Two different tasks can not have the same target. Target
+can be specified as a string or as an instance of any Path class from
+<a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>.</p>
 <p>Lets take the compilation example again.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;cc -c main.c&quot;</span><span class="p">],</span>
@@ -642,9 +656,15 @@ executed in the correct order.</p>
 <span class="go">.  modify</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><cite>doit</cite> compares the path (string) of the file of <cite>file_dep</cite> and <cite>targets</cite>.
+So although <cite>my_file</cite> and <cite>./my_file</cite> are actually the same file, <cite>doit</cite>
+will think they are different files.</p>
+</div>
 </div>
 <div class="section" id="task-selection">
-<span id="id2"></span><h2>Task selection<a class="headerlink" href="#task-selection" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>Task selection<a class="headerlink" href="#task-selection" title="Permalink to this headline">¶</a></h2>
 <p>By default all tasks are executed in the same order as they were defined (the order may change to satisfy dependencies). You can control which tasks will run in 2 ways.</p>
 <p>Another example</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;t3&#39;</span><span class="p">]}</span>
@@ -734,7 +754,7 @@ You can customize the output passing a &#8220;title&#8221; function to the task:
 </div>
 </div>
 <div class="section" id="verbosity">
-<span id="id3"></span><h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
 <p>By default the stdout from a task is captured and its stderr is sent to the
 console. If the task fails or there is an error the stdout and a traceback
 (if any) is displayed.</p>
@@ -764,6 +784,30 @@ console. If the task fails or there is an error the stdout and a traceback
 <ul class="simple">
 <li>from command line, see <a class="reference internal" href="cmd_run.html#verbosity-option"><span>verbosity option</span></a>.</li>
 </ul>
+</div>
+<div class="section" id="id6">
+<h2>pathlib<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p><cite>doit</cite> supports <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>:
+file_dep, targets and CmdAction specified as a list can take as elements not
+only strings but also instances of any Path class from pathlib.</p>
+<p>Lets take the compilation example and modify it to work with any number
+of header and source files in current directory using pathlib.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
+    <span class="n">working_directory</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
+    <span class="c"># Path.glob returns an iterator so turn it into a list</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">working_directory</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.h&#39;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">source_file</span> <span class="ow">in</span> <span class="n">working_directory</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.c&#39;</span><span class="p">):</span>
+        <span class="n">object_file</span> <span class="o">=</span> <span class="n">source_file</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s">&#39;.o&#39;</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="p">{</span>
+            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">object_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="s">&#39;cc&#39;</span><span class="p">,</span> <span class="s">&#39;-c&#39;</span><span class="p">,</span> <span class="n">source_file</span><span class="p">]],</span>
+            <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">source_file</span><span class="p">]</span> <span class="o">+</span> <span class="n">headers</span><span class="p">,</span>
+            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">object_file</span><span class="p">],</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 

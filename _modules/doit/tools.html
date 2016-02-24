@@ -107,6 +107,7 @@
         <div class="sphinxsidebarwrapper">
 
 
+
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
@@ -120,6 +121,11 @@
     </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+<h3>Funding Campaign</h3>
+<iframe src="https://www.indiegogo.com/project/doit-python-automation-tool-release-0-30/embedded/2922409" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
+
 
 <h3>Sponsors</h3>
 
@@ -168,7 +174,6 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">import</span> <span class="nn">operator</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
-<span class="kn">import</span> <span class="nn">six</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">exceptions</span>
 <span class="kn">from</span> <span class="nn">.action</span> <span class="kn">import</span> <span class="n">CmdAction</span><span class="p">,</span> <span class="n">PythonAction</span>
@@ -186,7 +191,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <span class="k">def</span> <span class="nf">title_with_actions</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;return task name task actions&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">actions</span><span class="p">:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\n\t</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">action</span><span class="p">)</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">task</span><span class="o">.</span><span class="n">actions</span><span class="p">])</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\n\t</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">action</span><span class="p">)</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">task</span><span class="o">.</span><span class="n">actions</span><span class="p">])</span>
     <span class="c"># A task that contains no actions at all</span>
     <span class="c"># is used as group task</span>
     <span class="k">else</span><span class="p">:</span>
@@ -217,16 +222,13 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
         <span class="bp">self</span><span class="o">.</span><span class="n">config_digest</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="k">def</span> <span class="nf">_calc_digest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
             <span class="n">data</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">):</span>
                 <span class="n">data</span> <span class="o">+=</span> <span class="n">key</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">):</span> <span class="c"># pragma: no cover # python3</span>
-                <span class="n">byte_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&quot;utf-8&quot;</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">byte_data</span> <span class="o">=</span> <span class="n">data</span>
+            <span class="n">byte_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&quot;utf-8&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">byte_data</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">((</span><span class="s">&#39;Invalid type of config_changed parameter got </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">+</span>
@@ -385,7 +387,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
             <span class="n">returned_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">py_callable</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">TaskError</span><span class="p">(</span><span class="s">&quot;PythonAction Error&quot;</span><span class="p">,</span> <span class="n">exception</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">returned_value</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">returned_value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="n">returned_value</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">returned_value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">returned_value</span>

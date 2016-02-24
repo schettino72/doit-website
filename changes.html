@@ -155,6 +155,7 @@
 
 
 
+
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -168,6 +169,11 @@
     </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+<h3>Funding Campaign</h3>
+<iframe src="https://www.indiegogo.com/project/doit-python-automation-tool-release-0-30/embedded/2922409" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
+
 
 <h3>Sponsors</h3>
 
@@ -213,6 +219,8 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <h2>0.30.0 (<em>unreleased</em>)<a class="headerlink" href="#unreleased" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul>
+<li><p class="first">BACKWARD INCOMPATIBLE: #112 drop python2 compatibility</p>
+</li>
 <li><p class="first">fix GH-#100: make cmd <cite>completion</cite> output deterministic</p>
 </li>
 <li><p class="first">fix GH-#99: positional argument on tasks not specified from cmd-line</p>
@@ -222,6 +230,8 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <dd><p class="first last">when <cite>creates</cite> is specified</p>
 </dd>
 </dl>
+</li>
+<li><p class="first">GH-#114: <cite>file_dep</cite>, <cite>targets</cite> and <cite>CmdAction</cite> support pathlib.</p>
 </li>
 </ul>
 </div></blockquote>

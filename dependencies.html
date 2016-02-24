@@ -133,6 +133,7 @@
 
 
 
+
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -146,6 +147,11 @@
     </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+<h3>Funding Campaign</h3>
+<iframe src="https://www.indiegogo.com/project/doit-python-automation-tool-release-0-30/embedded/2922409" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
+
 
 <h3>Sponsors</h3>
 
@@ -343,8 +349,7 @@ dictionary with <cite>file_dep</cite>, <cite>task_dep</cite>, <cite>uptodate</ci
 <p>On the example below <code class="docutils literal"><span class="pre">mod_deps</span></code> prints on the screen all direct dependencies
 from a module. The dependencies itself are calculated on task <code class="docutils literal"><span class="pre">get_dep</span></code>
 (note: get_dep has a fake implementation where the results are taken from a dict).</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 
 <span class="n">MOD_IMPORTS</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">],</span>
                <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;f&#39;</span><span class="p">,</span><span class="s">&#39;g&#39;</span><span class="p">],</span>
@@ -397,8 +402,7 @@ it is executed only if the task is not up-to-date and will be executed.</p>
 These actions are executed after all tasks have finished their execution.
 They are executed in reverse order their tasks were executed.</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="c">### task setup env. good for functional tests!</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">### task setup env. good for functional tests!</span>
 <span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
                <span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;withenvX&#39;</span><span class="p">,</span> <span class="s">&#39;withenvY&#39;</span><span class="p">]}</span>
 
@@ -476,8 +480,7 @@ The values are taken from &#8220;saved computed values&#8221;
 from <cite>getargs</cite>.</p>
 <p><cite>getargs</cite> is a dictionary where the key is the argument name used on actions,
 and the value is a tuple with 2 strings: task name, &#8220;value name&#8221;.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;use_cmd&#39;</span><span class="p">,</span> <span class="s">&#39;use_python&#39;</span><span class="p">]}</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;use_cmd&#39;</span><span class="p">,</span> <span class="s">&#39;use_python&#39;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">comp</span><span class="p">():</span>
@@ -506,8 +509,7 @@ and the value is a tuple with 2 strings: task name, &#8220;value name&#8221;.</p
 </div>
 <p>The values are being passed on to a python-action you can pass the whole dict
 by specifying the value name as <code class="docutils literal"><span class="pre">None</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">comp</span><span class="p">():</span>
        <span class="k">return</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">comp</span><span class="p">,)]}</span>
@@ -524,8 +526,7 @@ by specifying the value name as <code class="docutils literal"><span class="pre"
 </pre></div>
 </div>
 <p>If a group-task is used, the values from all its sub-tasks are passed as a dict.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">comp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
        <span class="k">return</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">}</span>
    <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;5&#39;</span><span class="p">,</span>

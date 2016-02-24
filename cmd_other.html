@@ -140,6 +140,7 @@
 
 
 
+
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -153,6 +154,11 @@
     </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+<h3>Funding Campaign</h3>
+<iframe src="https://www.indiegogo.com/project/doit-python-automation-tool-release-0-30/embedded/2922409" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
+
 
 <h3>Sponsors</h3>
 
@@ -314,8 +320,7 @@ is empty, otherwise it will display a warning message.</p>
 string with a shell command or a tuple with a python callable.</p>
 <p>If you want to clean the targets and add some custom clean actions,
 you can include the <cite>doit.task.clean_targets</cite> instead of passing <cite>True</cite>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">doit.task</span> <span class="kn">import</span> <span class="n">clean_targets</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.task</span> <span class="kn">import</span> <span class="n">clean_targets</span>
 
 <span class="k">def</span> <span class="nf">simple</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;ok&quot;</span><span class="p">)</span>
@@ -422,7 +427,8 @@ be specified for a group of &#8220;sub-tasks&#8221;.</p>
         <span class="k">yield</span> <span class="p">{</span>
             <span class="s">&#39;basename&#39;</span><span class="p">:</span> <span class="s">&#39;do_x&#39;</span><span class="p">,</span>
             <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">,</span>
-            <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">item</span><span class="p">]</span>
+            <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">item</span><span class="p">],</span>
+            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="p">}</span>
 </pre></div>
 </div>

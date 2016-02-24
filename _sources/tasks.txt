@@ -133,7 +133,9 @@ python code from the `dodo` file. Let's take a look at another example:
   so in this example the line `msg = 3 * "hi! "` will always be executed.
 
 
-If `action` is a list of strings, by default it will be executed **without the shell** (Popen argument shell=False).
+If `action` is a list of strings and instances of any Path class from
+`pathlib <https://docs.python.org/3/library/pathlib.html>`_, by default it will
+be executed **without the shell** (Popen argument shell=False).
 
 .. literalinclude:: tutorial/cmd_actions_list.py
 
@@ -266,7 +268,7 @@ avoiding empty sub-tasks
 If you are not sure sub-tasks will be created for a given ``basename``
 but you want to make sure that a task exist,
 you can yield a sub-task with ``name`` equal to ``None``.
-This can also used to set the task ``doc`` and ``watch`` attribute.
+This can also be used to set the task ``doc`` and ``watch`` attributes.
 
 .. literalinclude:: tutorial/empty_subtasks.py
 
@@ -330,6 +332,9 @@ You don't need to compile anything but you probably want to apply a lint-like
 tool (i.e. `pyflakes <http://pypi.python.org/pypi/pyflakes>`_) to your
 source code files. You can define the source code as a dependency to the task.
 
+Every dependency in file_dep list should be a string or an instance of any
+Path class from `pathlib <https://docs.python.org/3/library/pathlib.html>`_.
+
 
 .. literalinclude:: tutorial/checker.py
 
@@ -351,7 +356,9 @@ targets
 
 Targets can be any file path (a file or folder). If a target doesn't exist
 the task will be executed. There is no limitation on the number of targets
-a task may define. Two different tasks can not have the same target.
+a task may define. Two different tasks can not have the same target. Target
+can be specified as a string or as an instance of any Path class from
+`pathlib <https://docs.python.org/3/library/pathlib.html>`_.
 
 Lets take the compilation example again.
 
@@ -391,6 +398,12 @@ executed in the correct order.
   .  create
   .  modify
 
+
+.. note::
+
+  `doit` compares the path (string) of the file of `file_dep` and `targets`.
+  So although `my_file` and `./my_file` are actually the same file, `doit`
+  will think they are different files.
 
 
 .. _task-selection:
@@ -523,3 +536,16 @@ You can control the verbosity by:
     hello
 
 * from command line, see :ref:`verbosity option<verbosity_option>`.
+
+
+pathlib
+--------
+
+`doit` supports `pathlib <https://docs.python.org/3/library/pathlib.html>`_:
+file_dep, targets and CmdAction specified as a list can take as elements not
+only strings but also instances of any Path class from pathlib.
+
+Lets take the compilation example and modify it to work with any number
+of header and source files in current directory using pathlib.
+
+.. literalinclude:: tutorial/compile_pathlib.py
