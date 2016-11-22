@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.29',
+        VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -135,14 +135,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
 
@@ -191,7 +188,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
             
   <div class="section" id="custom-uptodate">
 <h1>custom uptodate<a class="headerlink" href="#custom-uptodate" title="Permalink to this headline">¶</a></h1>
-<p>The basics of <cite>uptodate</cite> was already <a class="reference internal" href="dependencies.html#attr-uptodate"><span>introduced</span></a>.
+<p>The basics of <cite>uptodate</cite> was already <a class="reference internal" href="dependencies.html#attr-uptodate"><span class="std std-ref">introduced</span></a>.
 Here we look in more
 detail into some implementations shipped with <cite>doit</cite>. And the API used by those.</p>
 <div class="section" id="result-dependency">
@@ -202,14 +199,14 @@ input files, the input could come from a database or an external process.
 create an intermediate file with the results of the process.</p>
 <p>i.e. Suppose you want to send an email every time you run <em>doit</em> on a mercurial
 repository that contains a new revision number.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">result_dep</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">result_dep</span>
 
 <span class="k">def</span> <span class="nf">task_version</span><span class="p">():</span>
-	<span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hg tip --template &#39;{rev}:{node}&#39;&quot;</span><span class="p">]}</span>
+	<span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hg tip --template &#39;</span><span class="si">{rev}</span><span class="s2">:</span><span class="si">{node}</span><span class="s2">&#39;&quot;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_send_email</span><span class="p">():</span>
-	<span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo &quot;TODO: send an email&quot;&#39;</span><span class="p">],</span>
-	        <span class="s">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">result_dep</span><span class="p">(</span><span class="s">&#39;version&#39;</span><span class="p">)]}</span>
+	<span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo &quot;TODO: send an email&quot;&#39;</span><span class="p">],</span>
+	        <span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">result_dep</span><span class="p">(</span><span class="s1">&#39;version&#39;</span><span class="p">)]}</span>
 </pre></div>
 </div>
 <p>Note the <cite>result_dep</cite> with the name of the task (&#8216;version&#8217;). <cite>doit</cite> will keep
@@ -231,18 +228,18 @@ all the time. With &#8220;run_once&#8221; the task will not be executed again af
 successful run. This is mostly used together with targets.</p>
 <p>Suppose you need to download something from internet.
 There is no dependency, but you do not want to download it many times.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">run_once</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">run_once</span>
 
 <span class="k">def</span> <span class="nf">task_get_pylogo</span><span class="p">():</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://python.org/images/python-logo.gif&quot;</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;wget </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">url</span><span class="p">],</span>
-            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;python-logo.gif&quot;</span><span class="p">],</span>
-            <span class="s">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">run_once</span><span class="p">],</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://python.org/images/python-logo.gif&quot;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;wget </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">url</span><span class="p">],</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;python-logo.gif&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">run_once</span><span class="p">],</span>
             <span class="p">}</span>
 </pre></div>
 </div>
 <p>Note that even with <em>run_once</em> the file will be downloaded again in case the target is removed.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  get_pylogo</span>
 <span class="gp">$</span> doit
 <span class="go">-- get_pylogo</span>
@@ -257,14 +254,14 @@ There is no dependency, but you do not want to download it many times.</p>
 <p><code class="docutils literal"><span class="pre">timeout</span></code> is used to expire a task after a certain time interval.</p>
 <p>i.e. You want to re-execute a task only if the time elapsed since the last
 time it was executed is bigger than 5 minutes.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">datetime</span>
-<span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">timeout</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">timeout</span>
 
 <span class="k">def</span> <span class="nf">task_expire</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-            <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo test expire; date&#39;</span><span class="p">],</span>
-            <span class="s">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">timeout</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">))],</span>
-            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo test expire; date&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">timeout</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">))],</span>
+            <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
            <span class="p">}</span>
 </pre></div>
 </div>
@@ -277,13 +274,13 @@ parameter. It returns a callable suitable to be used as an <code class="docutils
 changed. Config values can be a string or dict.</p>
 <p>For dict&#8217;s the values are converted to string (actually it uses python&#8217;s <cite>repr()</cite>)
 and only a digest/checksum of the dictionaries keys and values are saved.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">config_changed</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">config_changed</span>
 
-<span class="n">option</span> <span class="o">=</span> <span class="s">&quot;AB&quot;</span>
+<span class="n">option</span> <span class="o">=</span> <span class="s2">&quot;AB&quot;</span>
 <span class="k">def</span> <span class="nf">task_with_params</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">option</span><span class="p">],</span>
-            <span class="s">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">config_changed</span><span class="p">(</span><span class="n">option</span><span class="p">)],</span>
-            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">option</span><span class="p">],</span>
+            <span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">config_changed</span><span class="p">(</span><span class="n">option</span><span class="p">)],</span>
+            <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="p">}</span>
 </pre></div>
 </div>
@@ -308,21 +305,21 @@ is the time obtained in current run.</p>
 <p>If the specified file does not exist, an exception will be raised.
 If a file is a target of another task you should probably add
 <code class="docutils literal"><span class="pre">task_dep</span></code> on that task to ensure the file is created before it is checked.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">check_timestamp_unchanged</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">check_timestamp_unchanged</span>
 
 <span class="k">def</span> <span class="nf">task_create_foo</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;touch foo&#39;</span><span class="p">,</span> <span class="s">&#39;chmod 750 foo&#39;</span><span class="p">],</span>
-        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;foo&#39;</span><span class="p">],</span>
-        <span class="s">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="bp">True</span><span class="p">],</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;touch foo&#39;</span><span class="p">,</span> <span class="s1">&#39;chmod 750 foo&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">],</span>
         <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">task_on_foo_changed</span><span class="p">():</span>
-    <span class="c"># will execute if foo or its metadata is modified</span>
+    <span class="c1"># will execute if foo or its metadata is modified</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo foo modified&#39;</span><span class="p">],</span>
-        <span class="s">&#39;task_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;create_foo&#39;</span><span class="p">],</span>
-        <span class="s">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">check_timestamp_unchanged</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;ctime&#39;</span><span class="p">)],</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo foo modified&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;task_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;create_foo&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">check_timestamp_unchanged</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;ctime&#39;</span><span class="p">)],</span>
         <span class="p">}</span>
 </pre></div>
 </div>
@@ -334,7 +331,8 @@ implementation. So unless you need to write an <code class="docutils literal"><s
 you can skip this.</p>
 <p>Let&#8217;s start with trivial example. <cite>uptodate</cite> is a function that returns
 a boolean value.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fake_get_value_from_db</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">fake_get_value_from_db</span><span class="p">():</span>
     <span class="k">return</span> <span class="mi">5</span>
 
 <span class="k">def</span> <span class="nf">check_outdated</span><span class="p">():</span>
@@ -344,8 +342,8 @@ a boolean value.</p>
 
 <span class="k">def</span> <span class="nf">task_put_more_stuff_in_db</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">put_stuff</span><span class="p">():</span> <span class="k">pass</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">put_stuff</span><span class="p">],</span>
-            <span class="s">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">check_outdated</span><span class="p">],</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">put_stuff</span><span class="p">],</span>
+            <span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">check_outdated</span><span class="p">],</span>
             <span class="p">}</span>
 </pre></div>
 </div>
@@ -380,11 +378,12 @@ to its metadata and opportunity to modify the task itself!</p>
 </ul>
 </div></blockquote>
 <p>Let&#8217;s take a look in the <code class="docutils literal"><span class="pre">run_once</span></code> implementation.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">run_once</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">run_once</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">save_executed</span><span class="p">():</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s">&#39;run-once&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;run-once&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
     <span class="n">task</span><span class="o">.</span><span class="n">value_savers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">save_executed</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;run-once&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;run-once&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The function <code class="docutils literal"><span class="pre">save_executed</span></code> returns a dict. In this case it is not checking
@@ -403,15 +402,15 @@ So it just checks if this task was executed before by looking for the
 <p>Let&#8217;s look another example, the <code class="docutils literal"><span class="pre">timeout</span></code>. The main difference is that
 we actually pass the parameter <code class="docutils literal"><span class="pre">timeout_limit</span></code>. Here we present
 a simplified version that only accepts integers (seconds) as a parameter.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">timeout</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">timeout</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_limit</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">limit_sec</span> <span class="o">=</span> <span class="n">timeout_limit</span>
 
     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">save_now</span><span class="p">():</span>
-            <span class="k">return</span> <span class="p">{</span><span class="s">&#39;success-time&#39;</span><span class="p">:</span> <span class="n">time_module</span><span class="o">.</span><span class="n">time</span><span class="p">()}</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;success-time&#39;</span><span class="p">:</span> <span class="n">time_module</span><span class="o">.</span><span class="n">time</span><span class="p">()}</span>
         <span class="n">task</span><span class="o">.</span><span class="n">value_savers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">save_now</span><span class="p">)</span>
-        <span class="n">last_success</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;success-time&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="n">last_success</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;success-time&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">last_success</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">False</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">time_module</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">last_success</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit_sec</span>
@@ -476,7 +475,7 @@ the saved values and results from any task.</p>
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

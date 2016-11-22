@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.29',
+        VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -131,14 +131,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
 
@@ -194,14 +191,14 @@ section.</p>
 <div class="section" id="create-folder-action">
 <h2>create_folder (action)<a class="headerlink" href="#create-folder-action" title="Permalink to this headline">¶</a></h2>
 <p>Creates a folder if it does not exist yet. Uses <cite>os.makedirs() &lt;http://docs.python.org/2/library/os#os.makedirs&gt;_</cite>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">create_folder</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">create_folder</span>
 
-<span class="n">BUILD_PATH</span> <span class="o">=</span> <span class="s">&quot;_build&quot;</span>
+<span class="n">BUILD_PATH</span> <span class="o">=</span> <span class="s2">&quot;_build&quot;</span>
 
 <span class="k">def</span> <span class="nf">task_build</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">create_folder</span><span class="p">,</span> <span class="p">[</span><span class="n">BUILD_PATH</span><span class="p">]),</span>
-                        <span class="s">&#39;touch </span><span class="si">%(targets)s</span><span class="s">&#39;</span><span class="p">],</span>
-            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">/file.o&quot;</span> <span class="o">%</span> <span class="n">BUILD_PATH</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">create_folder</span><span class="p">,</span> <span class="p">[</span><span class="n">BUILD_PATH</span><span class="p">]),</span>
+                        <span class="s1">&#39;touch </span><span class="si">%(targets)s</span><span class="s1">&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/file.o&quot;</span> <span class="o">%</span> <span class="n">BUILD_PATH</span><span class="p">]</span>
             <span class="p">}</span>
 </pre></div>
 </div>
@@ -209,11 +206,11 @@ section.</p>
 <div class="section" id="title-with-actions-title">
 <h2>title_with_actions (title)<a class="headerlink" href="#title-with-actions-title" title="Permalink to this headline">¶</a></h2>
 <p>Return task name task actions from a task. This function can be used as &#8216;title&#8217; attribute of a task dictionary to provide more detailed information of the action being executed.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">title_with_actions</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">title_with_actions</span>
 
 <span class="k">def</span> <span class="nf">task_with_details</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo abc 123&#39;</span><span class="p">],</span>
-            <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="n">title_with_actions</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo abc 123&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">title_with_actions</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -221,7 +218,7 @@ section.</p>
 <span id="tools-longrunning"></span><h2>LongRunning (action)<a class="headerlink" href="#longrunning-action" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="doit.tools.LongRunning">
-<em class="property">class </em><code class="descclassname">doit.tools.</code><code class="descname">LongRunning</code><span class="sig-paren">(</span><em>action</em>, <em>task=None</em>, <em>save_out=None</em>, <em>shell=True</em>, <em>encoding='utf-8'</em>, <em>decode_error='replace'</em>, <em>**pkwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#LongRunning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.LongRunning" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">doit.tools.</code><code class="descname">LongRunning</code><span class="sig-paren">(</span><em>action</em>, <em>task=None</em>, <em>save_out=None</em>, <em>shell=True</em>, <em>encoding='utf-8'</em>, <em>decode_error='replace'</em>, <em>buffering=0</em>, <em>**pkwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#LongRunning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.LongRunning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to handle a Long running shell process,
 usually a server or service.
 Properties:</p>
@@ -235,11 +232,11 @@ Properties:</p>
 </dd></dl>
 
 <p>This is useful for executing long running process like a web-server.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">LongRunning</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">LongRunning</span>
 
 <span class="k">def</span> <span class="nf">task_top</span><span class="p">():</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="s">&quot;top&quot;</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">LongRunning</span><span class="p">(</span><span class="n">cmd</span><span class="p">)],}</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;top&quot;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">LongRunning</span><span class="p">(</span><span class="n">cmd</span><span class="p">)],}</span>
 </pre></div>
 </div>
 </div>
@@ -247,7 +244,7 @@ Properties:</p>
 <h2>Interactive (action)<a class="headerlink" href="#interactive-action" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="doit.tools.Interactive">
-<em class="property">class </em><code class="descclassname">doit.tools.</code><code class="descname">Interactive</code><span class="sig-paren">(</span><em>action</em>, <em>task=None</em>, <em>save_out=None</em>, <em>shell=True</em>, <em>encoding='utf-8'</em>, <em>decode_error='replace'</em>, <em>**pkwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#Interactive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.Interactive" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">doit.tools.</code><code class="descname">Interactive</code><span class="sig-paren">(</span><em>action</em>, <em>task=None</em>, <em>save_out=None</em>, <em>shell=True</em>, <em>encoding='utf-8'</em>, <em>decode_error='replace'</em>, <em>buffering=0</em>, <em>**pkwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#Interactive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.Interactive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to handle Interactive shell process:</p>
 <ul class="simple">
 <li>the output is never captured</li>
@@ -274,14 +271,15 @@ Properties:</p>
 use the python debugger with <code class="docutils literal"><span class="pre">pdb.set_trace</span></code>, it does not work properly.
 To make sure you get a proper PDB shell you should use doit.tools.set_trace
 instead of <code class="docutils literal"><span class="pre">pdb.set_trace</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">need_to_debug</span><span class="p">():</span>
-    <span class="c"># some code here</span>
-    <span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">tools</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">need_to_debug</span><span class="p">():</span>
+    <span class="c1"># some code here</span>
+    <span class="kn">from</span> <span class="nn">doit</span> <span class="k">import</span> <span class="n">tools</span>
     <span class="n">tools</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
-    <span class="c"># more code</span>
+    <span class="c1"># more code</span>
 
 <span class="k">def</span> <span class="nf">task_X</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">need_to_debug</span><span class="p">,)]}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">need_to_debug</span><span class="p">,)]}</span>
 </pre></div>
 </div>
 </div>
@@ -291,7 +289,7 @@ instead of <code class="docutils literal"><span class="pre">pdb.set_trace</span>
 within <em>ipython</em> sessions and use the <code class="docutils literal"><span class="pre">%doit</span></code> <a class="reference external" href="http://ipython.org/ipython-doc/dev/interactive/tutorial.html#magic-functions">magic function</a>
 to discover and execute them.</p>
 <p>First you need to register the new magic function into ipython shell.</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">register_doit_as_IPython_magic</span>
+<div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">register_doit_as_IPython_magic</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">register_doit_as_IPython_magic</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -302,7 +300,7 @@ to discover and execute them.</p>
 create a new script inside your startup-profile
 (i.e. <code class="file docutils literal"><span class="pre">~/.ipython/profile_default/startup/doit_magic.ipy</span></code>)
 with the following content:</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">register_doit_as_IPython_magic</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">register_doit_as_IPython_magic</span>
 <span class="n">register_doit_as_IPython_magic</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -311,16 +309,16 @@ with the following content:</p>
 magic-function, instead of invoking the cmd-line script with a <code class="file docutils literal"><span class="pre">dodo.py</span></code>
 file.</p>
 <p>Examples:</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">doit</span> <span class="o">--</span><span class="n">help</span>          <span class="c">## Show help for options and arguments.</span>
+<div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">doit</span> <span class="o">--</span><span class="n">help</span>          <span class="c1">## Show help for options and arguments.</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">task_foo</span><span class="p">():</span>
 <span class="go">        return {&#39;actions&#39;: [&quot;echo hi IPython&quot;],</span>
 <span class="go">                &#39;verbosity&#39;: 2}</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">doit</span> <span class="nb">list</span>            <span class="c">## List any tasks discovered.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">doit</span> <span class="nb">list</span>            <span class="c1">## List any tasks discovered.</span>
 <span class="go">foo</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">doit</span>                 <span class="c">## Run any tasks.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">doit</span>                 <span class="c1">## Run any tasks.</span>
 <span class="go">.  foo</span>
 <span class="go">hi IPython</span>
 </pre></div>
@@ -356,7 +354,7 @@ file.</p>
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.29',
+        VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -122,14 +122,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
 
@@ -178,7 +175,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
             
   <div class="section" id="doit-documentation">
 <h1><cite>doit</cite> documentation<a class="headerlink" href="#doit-documentation" title="Permalink to this headline">¶</a></h1>
-<p><cite>doit</cite> <a class="reference internal" href="#main-doc-toc"><span>documentation</span></a> introduces the concepts of <em>every</em>
+<p><cite>doit</cite> <a class="reference internal" href="#main-doc-toc"><span class="std std-ref">documentation</span></a> introduces the concepts of <em>every</em>
 feature one by one with examples. It is the preferred way to learn <cite>doit</cite> and it
 also serves as a complete reference. You may skip parts of advanced task
 configuration used on non trivial work-flows on a first read, but make sure you
@@ -236,6 +233,7 @@ reach the docs describing the command line...</p>
 <li class="toctree-l2"><a class="reference internal" href="cmd_run.html#db-backend">DB backend</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmd_run.html#db-file">DB-file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmd_run.html#verbosity">verbosity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#output-buffering">output buffering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmd_run.html#dir-cwd">dir (cwd)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmd_run.html#continue">continue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmd_run.html#single-task-execution">single task execution</a></li>
@@ -245,7 +243,7 @@ reach the docs describing the command line...</p>
 <li class="toctree-l2"><a class="reference internal" href="cmd_run.html#check-file-uptodate">check_file_uptodate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmd_run.html#output-file">output-file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmd_run.html#pdb">pdb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#get-initial-workdir">get_initial_workdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_run.html#get-initial-workdir">get_initial_workdir()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmd_run.html#minversion">minversion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmd_run.html#automatic-regex-for-delayed-task-loaders">automatic regex for delayed task loaders</a></li>
 </ul>
@@ -320,41 +318,41 @@ reach the docs describing the command line...</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#unreleased">0.30.0 (<em>unreleased</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id1">0.29.0 (<em>2015-08-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id2">0.28.0 (<em>2015-04-22</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id3">0.27.0 (<em>2015-01-30</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id4">0.26.0 (<em>2014-08-30</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id5">0.25.0 (<em>2014-03-26</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id6">0.24.0 (<em>2013-11-24</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id7">0.23.0 (<em>2013-09-20</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id8">0.22.1 (<em>2013-08-04</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id9">0.22.0 (<em>2013-07-05</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id10">0.21.1 (<em>2013-05-21</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id11">0.21.0 (<em>2013-04-29</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id12">0.20.0 (<em>2013-01-09</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id13">0.19.0 (<em>2012-12-18</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id14">0.18.1 (<em>2012-12-03</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id15">0.18.0 (<em>2012-11-27</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id16">0.17.0 (<em>2012-09-20</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id17">0.16.1 (<em>2012-05-13</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id18">0.16.0 (<em>2012-04-23</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id19">0.15.0 (<em>2012-01-10</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id20">0.14.0 (<em>2011-11-05</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id21">0.13.0 (<em>2011-07-18</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id22">0.12.0 (<em>2011-05-29</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id23">0.11.0 (<em>2011-04-20</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id24">0.10.0 (<em>2011-01-24</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id25">0.9.0 (<em>2010-06-08</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id26">0.8.0 (<em>2010-05-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id27">0.7.0 (<em>2010-04-08</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id28">0.6.0 (<em>2010-01-25</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id29">0.5.1 (<em>2009-12-03</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id30">0.5.0 (<em>2009-11-30</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id31">0.4.0 (<em>2009-10-05</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id32">0.3.0 (<em>2009-08-30</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id33">0.2.0 (<em>2009-04-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id34">0.1.0 (<em>2008-04-14</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id1">0.30.0 (<em>2016-11-22</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id2">0.29.0 (<em>2015-08-16</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id3">0.28.0 (<em>2015-04-22</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id4">0.27.0 (<em>2015-01-30</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id5">0.26.0 (<em>2014-08-30</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id6">0.25.0 (<em>2014-03-26</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id7">0.24.0 (<em>2013-11-24</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id8">0.23.0 (<em>2013-09-20</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id9">0.22.1 (<em>2013-08-04</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id10">0.22.0 (<em>2013-07-05</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id11">0.21.1 (<em>2013-05-21</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id12">0.21.0 (<em>2013-04-29</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id13">0.20.0 (<em>2013-01-09</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id14">0.19.0 (<em>2012-12-18</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id15">0.18.1 (<em>2012-12-03</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id16">0.18.0 (<em>2012-11-27</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id17">0.17.0 (<em>2012-09-20</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id18">0.16.1 (<em>2012-05-13</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id19">0.16.0 (<em>2012-04-23</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id20">0.15.0 (<em>2012-01-10</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id21">0.14.0 (<em>2011-11-05</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id22">0.13.0 (<em>2011-07-18</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id23">0.12.0 (<em>2011-05-29</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id24">0.11.0 (<em>2011-04-20</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id25">0.10.0 (<em>2011-01-24</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id26">0.9.0 (<em>2010-06-08</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id27">0.8.0 (<em>2010-05-16</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id28">0.7.0 (<em>2010-04-08</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id29">0.6.0 (<em>2010-01-25</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id30">0.5.1 (<em>2009-12-03</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id31">0.5.0 (<em>2009-11-30</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id32">0.4.0 (<em>2009-10-05</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id33">0.3.0 (<em>2009-08-30</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id34">0.2.0 (<em>2009-04-16</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id35">0.1.0 (<em>2008-04-14</em>)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>
@@ -388,7 +386,7 @@ reach the docs describing the command line...</p>
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

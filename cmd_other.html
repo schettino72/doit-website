@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.29',
+        VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -144,14 +144,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
 
@@ -207,40 +204,40 @@ Always check <cite>doit help &lt;cmd&gt;</cite> to see a complete list of option
 </div>
 <p>Let&#8217;s use a more complex example to demonstrate the command line features.
 The example below is used to manage a very simple C project.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;link&#39;</span><span class="p">]}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]}</span>
 
-<span class="c"># map source file to dependencies</span>
+<span class="c1"># map source file to dependencies</span>
 <span class="n">SOURCE</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;main&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;defs.h&quot;</span><span class="p">],</span>
-    <span class="s">&#39;kbd&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;defs.h&quot;</span><span class="p">,</span> <span class="s">&quot;command.h&quot;</span><span class="p">],</span>
-    <span class="s">&#39;command&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;defs.h&quot;</span><span class="p">,</span> <span class="s">&quot;command.h&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;main&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;defs.h&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;kbd&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;defs.h&quot;</span><span class="p">,</span> <span class="s2">&quot;command.h&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;command&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;defs.h&quot;</span><span class="p">,</span> <span class="s2">&quot;command.h&quot;</span><span class="p">],</span>
     <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">task_link</span><span class="p">():</span>
-    <span class="s">&quot;create binary program&quot;</span>
-    <span class="n">OBJECTS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">.o&quot;</span> <span class="o">%</span> <span class="n">module</span> <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">SOURCE</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;cc -o </span><span class="si">%(targets)s</span><span class="s"> </span><span class="si">%(dependencies)s</span><span class="s">&#39;</span><span class="p">],</span>
-            <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="n">OBJECTS</span><span class="p">,</span>
-            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;edit&#39;</span><span class="p">],</span>
-            <span class="s">&#39;clean&#39;</span><span class="p">:</span> <span class="bp">True</span>
+    <span class="s2">&quot;create binary program&quot;</span>
+    <span class="n">OBJECTS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.o&quot;</span> <span class="o">%</span> <span class="n">module</span> <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">SOURCE</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;cc -o </span><span class="si">%(targets)s</span><span class="s1"> </span><span class="si">%(dependencies)s</span><span class="s1">&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="n">OBJECTS</span><span class="p">,</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;edit&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;clean&#39;</span><span class="p">:</span> <span class="kc">True</span>
             <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
-    <span class="s">&quot;compile C files&quot;</span>
+    <span class="s2">&quot;compile C files&quot;</span>
     <span class="k">for</span> <span class="n">module</span><span class="p">,</span> <span class="n">dep</span> <span class="ow">in</span> <span class="n">SOURCE</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">dependencies</span> <span class="o">=</span> <span class="n">dep</span> <span class="o">+</span> <span class="p">[</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">.c&#39;</span> <span class="o">%</span> <span class="n">module</span><span class="p">]</span>
-        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">module</span><span class="p">,</span>
-               <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;cc -c </span><span class="si">%s</span><span class="s">.c&quot;</span> <span class="o">%</span> <span class="n">module</span><span class="p">],</span>
-               <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">.o&quot;</span> <span class="o">%</span> <span class="n">module</span><span class="p">],</span>
-               <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="n">dependencies</span><span class="p">,</span>
-               <span class="s">&#39;clean&#39;</span><span class="p">:</span> <span class="bp">True</span>
+        <span class="n">dependencies</span> <span class="o">=</span> <span class="n">dep</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.c&#39;</span> <span class="o">%</span> <span class="n">module</span><span class="p">]</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">module</span><span class="p">,</span>
+               <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cc -c </span><span class="si">%s</span><span class="s2">.c&quot;</span> <span class="o">%</span> <span class="n">module</span><span class="p">],</span>
+               <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.o&quot;</span> <span class="o">%</span> <span class="n">module</span><span class="p">],</span>
+               <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="n">dependencies</span><span class="p">,</span>
+               <span class="s1">&#39;clean&#39;</span><span class="p">:</span> <span class="kc">True</span>
                <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">task_install</span><span class="p">():</span>
-    <span class="s">&quot;install&quot;</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo install comes here...&#39;</span><span class="p">],</span>
-            <span class="s">&#39;task_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;link&#39;</span><span class="p">],</span>
-            <span class="s">&#39;doc&#39;</span><span class="p">:</span> <span class="s">&#39;install executable (TODO)&#39;</span>
+    <span class="s2">&quot;install&quot;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo install comes here...&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;task_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;doc&#39;</span><span class="p">:</span> <span class="s1">&#39;install executable (TODO)&#39;</span>
             <span class="p">}</span>
 </pre></div>
 </div>
@@ -252,11 +249,12 @@ The example below is used to manage a very simple C project.</p>
 </div>
 <div class="section" id="list">
 <span id="cmd-list"></span><h2>list<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h2>
-<p><em>list</em> is used to show all tasks available in a <em>dodo</em> file.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit list
-<span class="go">link : create binary program</span>
+<p><em>list</em> is used to show all tasks available in a <em>dodo</em> file.
+Tasks are listed in alphabetical order, not by order of execution.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
 <span class="go">compile : compile C files</span>
 <span class="go">install : install executable (TODO)</span>
+<span class="go">link : create binary program</span>
 </pre></div>
 </div>
 <p>By default task name and description are listed. The task description is taken
@@ -275,7 +273,7 @@ are listed if the option <em>-p</em>/<em>&#8211;private</em> is used.</p>
 <p>You can check a task meta-data using the <em>info</em> command.
 This might be useful when have some complex code generating
 the task meta-data.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit info link
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info link
 <span class="go">name:&#39;link&#39;</span>
 
 <span class="go">file_dep:set([&#39;command.o&#39;, &#39;kbd.o&#39;, &#39;main.o&#39;])</span>
@@ -284,7 +282,7 @@ the task meta-data.</p>
 </pre></div>
 </div>
 <p>Use the option <cite>&#8211;status</cite>, to check the reason a task is not up-to-date.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit info link
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info link
 
 <span class="go">Task is not up-to-date:</span>
 <span class="go"> * The following file dependencies have changed:</span>
@@ -302,7 +300,7 @@ based on the dependencies but actually it is not! In this case you can use the
 <em>forget</em> command to make sure the given task will be executed again even with no
 changes in the dependencies.</p>
 <p>If you do not specify any task, the default tasks are &#8220;<em>forget</em>&#8221;.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit forget
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit forget
 </pre></div>
 </div>
 <div class="admonition note">
@@ -320,21 +318,21 @@ is empty, otherwise it will display a warning message.</p>
 string with a shell command or a tuple with a python callable.</p>
 <p>If you want to clean the targets and add some custom clean actions,
 you can include the <cite>doit.task.clean_targets</cite> instead of passing <cite>True</cite>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.task</span> <span class="kn">import</span> <span class="n">clean_targets</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.task</span> <span class="k">import</span> <span class="n">clean_targets</span>
 
 <span class="k">def</span> <span class="nf">simple</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;ok&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ok&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">task_poo</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;touch poo&#39;</span><span class="p">],</span>
-        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;poo&#39;</span><span class="p">],</span>
-        <span class="s">&#39;clean&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">clean_targets</span><span class="p">,</span> <span class="n">simple</span><span class="p">],</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;touch poo&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;poo&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;clean&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">clean_targets</span><span class="p">,</span> <span class="n">simple</span><span class="p">],</span>
         <span class="p">}</span>
 </pre></div>
 </div>
 <p>You can specify which task to <em>clean</em>. If no task is specified the clean operation of default tasks are executed.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit clean
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit clean
 </pre></div>
 </div>
 <p>By default if a task contains task-dependencies those are not automatically
@@ -352,14 +350,14 @@ You can clean all tasks using the <em>-a</em>/<em>&#8211;all</em> argument.</p>
 <p>It is possible to set a task to be ignored/skipped (that is, not executed). This
 is useful, for example, when you are performing checks in several files and you
 want to skip the check in some of them temporarily.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;file</span><span class="si">%d</span><span class="s">.txt&quot;</span> <span class="o">%</span> <span class="n">i</span>
-        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
-               <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;touch </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;file</span><span class="si">%d</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="n">i</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
+               <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;touch </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  create_file:file0.txt</span>
 <span class="go">.  create_file:file1.txt</span>
 <span class="go">.  create_file:file2.txt</span>
@@ -385,7 +383,7 @@ running process that only terminates when it is interrupted (Ctrl-C).
 When started it will execute the given tasks. After that it will watch the
 file system for modifications in the file-dependencies.
 When a file is modified the tasks are re-executed.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit auto
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit auto
 </pre></div>
 </div>
 <div class="admonition note">
@@ -401,7 +399,7 @@ This can used to display desktop notifications, so you do not need to keep
 an eye in the terminal to notice when tasks succeed or failed.</p>
 <p>Example of sound and desktop notification on Ubuntu.
 Contents of a <cite>doit.cfg</cite> file:</p>
-<div class="highlight-INI"><div class="highlight"><pre><span class="k">[auto]</span>
+<div class="highlight-INI"><div class="highlight"><pre><span></span><span class="k">[auto]</span>
 <span class="na">success_callback</span> <span class="o">=</span> <span class="s">notify-send -u low -i /usr/share/icons/gnome/16x16/emotes/face-smile.png &quot;doit:   success&quot;; aplay -q /usr/share/sounds/purple/send.wav</span>
 <span class="na">failure_callback</span> <span class="o">=</span> <span class="s">notify-send -u normal -i /usr/share/icons/gnome/16x16/status/error.png &quot;doit:  fail&quot;; aplay -q /usr/share/sounds/purple/alert.wav</span>
 </pre></div>
@@ -412,23 +410,23 @@ Contents of a <cite>doit.cfg</cite> file:</p>
 <p>Apart from <code class="docutils literal"><span class="pre">file_dep</span></code> you can use the parameter <code class="docutils literal"><span class="pre">watch</span></code> to pass extra
 paths to be watched for (including folders). The <code class="docutils literal"><span class="pre">watch</span></code> parameter can also
 be specified for a group of &#8220;sub-tasks&#8221;.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
 
 <span class="k">def</span> <span class="nf">task_xxx</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;my doc&quot;&quot;&quot;</span>
-    <span class="n">LIST</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.xyz&#39;</span><span class="p">)</span> <span class="c"># might be empty</span>
+    <span class="n">LIST</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.xyz&#39;</span><span class="p">)</span> <span class="c1"># might be empty</span>
     <span class="k">yield</span> <span class="p">{</span>
-        <span class="s">&#39;basename&#39;</span><span class="p">:</span> <span class="s">&#39;do_x&#39;</span><span class="p">,</span>
-        <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-        <span class="s">&#39;doc&#39;</span><span class="p">:</span> <span class="s">&#39;docs for X&#39;</span><span class="p">,</span>
-        <span class="s">&#39;watch&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;.&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;basename&#39;</span><span class="p">:</span> <span class="s1">&#39;do_x&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;doc&#39;</span><span class="p">:</span> <span class="s1">&#39;docs for X&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;watch&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">],</span>
         <span class="p">}</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">LIST</span><span class="p">:</span>
         <span class="k">yield</span> <span class="p">{</span>
-            <span class="s">&#39;basename&#39;</span><span class="p">:</span> <span class="s">&#39;do_x&#39;</span><span class="p">,</span>
-            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">,</span>
-            <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">item</span><span class="p">],</span>
-            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s1">&#39;basename&#39;</span><span class="p">:</span> <span class="s1">&#39;do_x&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">,</span>
+            <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">item</span><span class="p">],</span>
+            <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="p">}</span>
 </pre></div>
 </div>
@@ -441,23 +439,23 @@ The generated script is written on stdout.</p>
 <div class="section" id="bash">
 <h3>bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h3>
 <p>To use a completion script you need to <cite>source</cite> it first.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit tabcompletion &gt; bash_completion_doit
-<span class="gp">$</span> <span class="nb">source </span>bash_completion_doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit tabcompletion &gt; bash_completion_doit
+<span class="gp">$</span> <span class="nb">source</span> bash_completion_doit
 </pre></div>
 </div>
 </div>
 <div class="section" id="zsh">
 <h3>zsh<a class="headerlink" href="#zsh" title="Permalink to this headline">¶</a></h3>
 <p>zsh completion scripts should be placed in a folder in the &#8220;autoload&#8221; path.</p>
-<div class="highlight-sh"><div class="highlight"><pre><span class="c"># add folder with completion scripts</span>
-<span class="nv">fpath</span><span class="o">=(</span>~/.zsh/completion <span class="nv">$fpath</span><span class="o">)</span>
+<div class="highlight-sh"><div class="highlight"><pre><span></span><span class="c1"># add folder with completion scripts</span>
+<span class="nv">fpath</span><span class="o">=(</span>~/.zsh/tabcompletion <span class="nv">$fpath</span><span class="o">)</span>
 
-<span class="c"># Use modern completion system</span>
+<span class="c1"># Use modern completion system</span>
 autoload -Uz compinit
 compinit
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit tabcompletion --shell zsh &gt; _doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit tabcompletion --shell zsh &gt; _doit
 <span class="gp">$</span> cp _doit ~/.zsh/tabcompletion/_doit
 </pre></div>
 </div>
@@ -468,7 +466,7 @@ compinit
 or if you tasks take a long time to load you may create
 a completion script that includes the list of tasks
 from your dodo.py.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> my_app tabcompletion --hardcode-tasks &gt; _my_app
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> my_app tabcompletion --hardcode-tasks &gt; _my_app
 </pre></div>
 </div>
 </div>
@@ -478,7 +476,7 @@ from your dodo.py.</p>
 <p><cite>doit</cite> saves internal data in a file (<cite>.doit.db</cite> by default).
 It uses a binary format (whatever python&#8217;s dbm is using in your system).
 This command will simply dump its content in readable text format in the output.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit dumpdb
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit dumpdb
 </pre></div>
 </div>
 </div>
@@ -501,7 +499,7 @@ that means it might not write a target file if it exist</li>
 </dd>
 </dl>
 <p>So this is NOT 100% reliable, use with care!</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit strace &lt;task-name&gt;
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit strace &lt;task-name&gt;
 </pre></div>
 </div>
 </div>
@@ -518,7 +516,7 @@ change the <code class="docutils literal"><span class="pre">check_file_uptodate<
 your tasks as not up-to-date. It is also useful if you start using doit while
 some of your data as already been computed, or when you add a file dependency
 to a task that has already run.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit reset-dep
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit reset-dep
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -562,7 +560,7 @@ otherwise they will not be set at all.</p>
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.29',
+        VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -130,14 +130,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
 
@@ -193,18 +190,19 @@ It will look for functions staring with <code class="docutils literal"><span cla
 <code class="docutils literal"><span class="pre">create_doit_tasks</span></code>.
 So it is also possible to load task definitions from other
 modules just by importing them into your <em>dodo</em> file.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># import task_ functions</span>
-<span class="kn">from</span> <span class="nn">get_var</span> <span class="kn">import</span> <span class="n">task_echo</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># import task_ functions</span>
+<span class="kn">from</span> <span class="nn">get_var</span> <span class="k">import</span> <span class="n">task_echo</span>
 
-<span class="c"># import tasks with create_doit_tasks callable</span>
-<span class="kn">from</span> <span class="nn">custom_task_def</span> <span class="kn">import</span> <span class="n">sample</span>
+<span class="c1"># import tasks with create_doit_tasks callable</span>
+<span class="kn">from</span> <span class="nn">custom_task_def</span> <span class="k">import</span> <span class="n">sample</span>
 
 
 <span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hello&#39;</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hello&#39;</span><span class="p">]}</span>
+
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit list
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
 <span class="go">echo</span>
 <span class="go">hello</span>
 <span class="go">sample</span>
@@ -242,29 +240,29 @@ some tasks are executed. For these cases <cite>doit</cite> supports
 <p>When <em>task-creator</em> function is decorated with <cite>doit.create_after</cite>,
 its evaluation to create the tasks will be delayed to happen after the
 execution of the specified task in the <cite>executed</cite> param.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
 
-<span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">create_after</span>
+<span class="kn">from</span> <span class="nn">doit</span> <span class="k">import</span> <span class="n">create_after</span>
 
 
-<span class="nd">@create_after</span><span class="p">(</span><span class="n">executed</span><span class="o">=</span><span class="s">&#39;early&#39;</span><span class="p">,</span> <span class="n">target_regex</span><span class="o">=</span><span class="s">&#39;.*\.out&#39;</span><span class="p">)</span>
+<span class="nd">@create_after</span><span class="p">(</span><span class="n">executed</span><span class="o">=</span><span class="s1">&#39;early&#39;</span><span class="p">,</span> <span class="n">target_regex</span><span class="o">=</span><span class="s1">&#39;.*\.out&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">task_build</span><span class="p">():</span>
-    <span class="k">for</span> <span class="n">inf</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.in&#39;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">inf</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.in&#39;</span><span class="p">):</span>
         <span class="k">yield</span> <span class="p">{</span>
-            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">inf</span><span class="p">,</span>
-            <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;cp </span><span class="si">%(dependencies)s</span><span class="s"> </span><span class="si">%(targets)s</span><span class="s">&#39;</span><span class="p">],</span>
-            <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">inf</span><span class="p">],</span>
-            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">inf</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39;.out&#39;</span><span class="p">],</span>
-            <span class="s">&#39;clean&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">inf</span><span class="p">,</span>
+            <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;cp </span><span class="si">%(dependencies)s</span><span class="s1"> </span><span class="si">%(targets)s</span><span class="s1">&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">inf</span><span class="p">],</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">inf</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.out&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;clean&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
         <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">task_early</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;a task that create some files...&quot;&quot;&quot;</span>
-    <span class="n">inter_files</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;a.in&#39;</span><span class="p">,</span> <span class="s">&#39;b.in&#39;</span><span class="p">,</span> <span class="s">&#39;c.in&#39;</span><span class="p">)</span>
+    <span class="n">inter_files</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a.in&#39;</span><span class="p">,</span> <span class="s1">&#39;b.in&#39;</span><span class="p">,</span> <span class="s1">&#39;c.in&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;touch </span><span class="si">%(targets)s</span><span class="s">&#39;</span><span class="p">],</span>
-        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="n">inter_files</span><span class="p">,</span>
-        <span class="s">&#39;clean&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;touch </span><span class="si">%(targets)s</span><span class="s1">&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="n">inter_files</span><span class="p">,</span>
+        <span class="s1">&#39;clean&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">}</span>
 </pre></div>
 </div>
@@ -278,7 +276,7 @@ the additional <em>task-generator</em> argument <cite>target_regex</cite>. In th
 the regex <cite>.*\.out</cite> matches every target name ending with <cite>.out</cite>.</p>
 <p class="last">It is possible to match every possible target name by specifying <cite>.*</cite>.
 Alternatively, one can use the command line option <cite>&#8211;auto-delayed-regex</cite>
-to <cite>doit run</cite>; see <a class="reference internal" href="cmd_run.html#auto-delayed-regex"><span>here</span></a> for more information.</p>
+to <cite>doit run</cite>; see <a class="reference internal" href="cmd_run.html#auto-delayed-regex"><span class="std std-ref">here</span></a> for more information.</p>
 </div>
 <div class="section" id="parameter-creates">
 <h3>Parameter: <cite>creates</cite><a class="headerlink" href="#parameter-creates" title="Permalink to this headline">¶</a></h3>
@@ -287,23 +285,23 @@ then creator function, or creates several tasks with different <em>basenames</em
 you should pass the parameter <cite>creates</cite>.</p>
 <p>Since <cite>doit</cite> will only execute the body of the task-creator function on demand,
 the tasks names must be explicitly specified... Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">create_after</span>
+<span class="kn">from</span> <span class="nn">doit</span> <span class="k">import</span> <span class="n">create_after</span>
 
 <span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="n">your_name</span><span class="p">):</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Hello from {}!</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">your_name</span><span class="p">))</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello from </span><span class="si">{}</span><span class="s2">!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">your_name</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">task_a</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">say_hello</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">])</span> <span class="p">]</span>
+        <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">say_hello</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span> <span class="p">]</span>
     <span class="p">}</span>
 
-<span class="nd">@create_after</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="n">creates</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">])</span>
+<span class="nd">@create_after</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">creates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">task_another_task</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&quot;basename&quot;</span><span class="p">:</span> <span class="s">&quot;b&quot;</span><span class="p">,</span>
-        <span class="s">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">say_hello</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;b&quot;</span><span class="p">])</span> <span class="p">],</span>
+        <span class="s2">&quot;basename&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">say_hello</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">])</span> <span class="p">],</span>
     <span class="p">}</span>
 </pre></div>
 </div>
@@ -314,7 +312,7 @@ the tasks names must be explicitly specified... Example:</p>
 <p>Apart from collect functions that start with the name <cite>task_</cite>.
 The <em>doit</em> loader will also execute the <code class="docutils literal"><span class="pre">create_doit_tasks</span></code>
 callable from any object that contains this attribute.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">make_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;make decorated function a task-creator&quot;&quot;&quot;</span>
     <span class="n">func</span><span class="o">.</span><span class="n">create_doit_tasks</span> <span class="o">=</span> <span class="n">func</span>
     <span class="k">return</span> <span class="n">func</span>
@@ -322,8 +320,8 @@ callable from any object that contains this attribute.</p>
 <span class="nd">@make_task</span>
 <span class="k">def</span> <span class="nf">sample</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hi&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hi&#39;</span><span class="p">],</span>
         <span class="p">}</span>
 </pre></div>
 </div>
@@ -362,7 +360,7 @@ has some real-world implementations.</p>
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

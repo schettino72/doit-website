@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.29',
+        VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -152,14 +152,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
 
@@ -227,22 +224,23 @@ These functions must return (or yield) dictionaries representing a <em>task</em>
 A python module/file that defines <em>tasks</em> for <cite>doit</cite> is called <strong>dodo</strong> file
 (that is something like a <cite>Makefile</cite> for <cite>make</cite>).</p>
 <p>Take a look at this example (file dodo.py):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">python_hello</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
-            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Python says Hello World!!!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Python says Hello World!!!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">python_hello</span><span class="p">],</span>
-        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello.txt&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">python_hello</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hello.txt&quot;</span><span class="p">],</span>
         <span class="p">}</span>
+
 </pre></div>
 </div>
 <p>When <cite>doit</cite> is executed without any parameters it will look for tasks in a
 file named <cite>dodo.py</cite> in the current folder and execute its tasks.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  hello</span>
 </pre></div>
 </div>
@@ -287,15 +285,15 @@ or <code class="xref py py-class docutils literal"><span class="pre">TaskError</
 <p>If the action returns a type other than the types already discussed, the action
 will be considered a failure, although this behavior might change in future
 versions.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello py &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">python_hello</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
             <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">times</span> <span class="o">*</span> <span class="n">text</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">python_hello</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s">&quot;py!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">])],</span>
-            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello.txt&quot;</span><span class="p">],</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">python_hello</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;py!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">])],</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hello.txt&quot;</span><span class="p">],</span>
             <span class="p">}</span>
 </pre></div>
 </div>
@@ -312,18 +310,18 @@ From now on when the  documentation says that a <em>task</em> is executed,
 read &#8220;the task&#8217;s actions are executed&#8221;.</p>
 </div>
 <p><cite>action</cite> parameters can be passed as <code class="docutils literal"><span class="pre">kwargs</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">func_with_args</span><span class="p">(</span><span class="n">arg_first</span><span class="p">,</span> <span class="n">arg_second</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">arg_first</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">arg_second</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">True</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_with_args</span><span class="p">(</span><span class="n">arg_first</span><span class="p">,</span> <span class="n">arg_second</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">arg_first</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">arg_second</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
 
 <span class="k">def</span> <span class="nf">task_call_func</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">func_with_args</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span>
-            <span class="s">&#39;arg_second&#39;</span><span class="p">:</span> <span class="s">&#39;This is a second argument.&#39;</span><span class="p">,</span>
-            <span class="s">&#39;arg_first&#39;</span><span class="p">:</span> <span class="s">&#39;This is a first argument.&#39;</span><span class="p">})</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">func_with_args</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span>
+            <span class="s1">&#39;arg_second&#39;</span><span class="p">:</span> <span class="s1">&#39;This is a second argument.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;arg_first&#39;</span><span class="p">:</span> <span class="s1">&#39;This is a first argument.&#39;</span><span class="p">})</span>
         <span class="p">],</span>
-        <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
     <span class="p">}</span>
 </pre></div>
 </div>
@@ -338,13 +336,14 @@ read &#8220;the task&#8217;s actions are executed&#8221;.</p>
 <a class="reference external" href="http://docs.python.org/library/stdtypes.html#string-formatting-operations">python string formatting</a>.</p>
 <p>It is easy to include dynamic (on-the-fly) behavior to your tasks with
 python code from the <cite>dodo</cite> file. Let&#8217;s take a look at another example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello cmd &quot;&quot;&quot;</span>
-    <span class="n">msg</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="s">&quot;hi! &quot;</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="s2">&quot;hi! &quot;</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo </span><span class="si">%s</span><span class="s"> &#39;</span> <span class="o">%</span> <span class="n">msg</span> <span class="o">+</span> <span class="s">&#39; &gt; </span><span class="si">%(targets)s</span><span class="s">&#39;</span><span class="p">,],</span>
-        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello.txt&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">msg</span> <span class="o">+</span> <span class="s1">&#39; &gt; </span><span class="si">%(targets)s</span><span class="s1">&#39;</span><span class="p">,],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hello.txt&quot;</span><span class="p">],</span>
         <span class="p">}</span>
+
 </pre></div>
 </div>
 <div class="admonition note">
@@ -355,25 +354,26 @@ so in this example the line <cite>msg = 3 * &#8220;hi! &#8220;</cite> will alway
 <p>If <cite>action</cite> is a list of strings and instances of any Path class from
 <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>, by default it will
 be executed <strong>without the shell</strong> (Popen argument shell=False).</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_python_version</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_python_version</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;--version&#39;</span><span class="p">]]</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;--version&#39;</span><span class="p">]]</span>
         <span class="p">}</span>
+
 </pre></div>
 </div>
 <p>For complex commands it is also possible to pass a callable that returns
 the command string. In this case you must explicit import CmdAction.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.action</span> <span class="kn">import</span> <span class="n">CmdAction</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.action</span> <span class="k">import</span> <span class="n">CmdAction</span>
 
 <span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello cmd &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">create_cmd_string</span><span class="p">():</span>
-        <span class="k">return</span> <span class="s">&quot;echo hi&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;echo hi&quot;</span>
 
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">CmdAction</span><span class="p">(</span><span class="n">create_cmd_string</span><span class="p">)],</span>
-        <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">CmdAction</span><span class="p">(</span><span class="n">create_cmd_string</span><span class="p">)],</span>
+        <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
         <span class="p">}</span>
 </pre></div>
 </div>
@@ -394,7 +394,7 @@ Any other value means the task failed.</p>
 <div class="section" id="custom-actions">
 <span id="id1"></span><h3>custom actions<a class="headerlink" href="#custom-actions" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to create other type of actions,
-check <a class="reference internal" href="tools.html#tools-longrunning"><span>tools.LongRunning</span></a> as an example.</p>
+check <a class="reference internal" href="tools.html#tools-longrunning"><span class="std std-ref">tools.LongRunning</span></a> as an example.</p>
 </div>
 </div>
 <div class="section" id="keywords-on-actions">
@@ -407,40 +407,41 @@ on strings. The string will contain all values separated by a space (&#8221; &#8
 <p>For <em>python-action</em> create a parameter in the function, <cite>doit</cite> will take care
 of passing the value when the function is called.
 The values are passed as list of strings.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">python_hello</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
-            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Python says Hello World!!!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Python says Hello World!!!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">python_hello</span><span class="p">],</span>
-        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello.txt&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">python_hello</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hello.txt&quot;</span><span class="p">],</span>
         <span class="p">}</span>
+
 </pre></div>
 </div>
 <p>You can also pass the keyword <em>task</em> to have a reference to all task
 metadata.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&#39;my name is&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my name is&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">task_x</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">who</span><span class="p">],</span>
-        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;asdf&#39;</span><span class="p">],</span>
-        <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">who</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;asdf&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
         <span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Note that the <em>task</em> argument is a <cite>Task</cite> object instance, not
+<p class="last">Note that the <em>task</em> argument is a <cite>Task</cite> object instance, not
 the metadata <em>dict</em>.</p>
-<p class="last">It is possible not only to retrieve task&#8217;s attributes but also to modify
-them while the action is running!</p>
 </div>
+<p>It is possible not only to retrieve task&#8217;s attributes but also to modify
+them while the action is running!</p>
 </div>
 <div class="section" id="task-name">
 <h2>task name<a class="headerlink" href="#task-name" title="Permalink to this headline">¶</a></h2>
@@ -448,19 +449,19 @@ them while the action is running!</p>
 that generates the task.
 For example a <cite>def task_hello</cite> would create a task named <code class="docutils literal"><span class="pre">hello</span></code>.</p>
 <p>It is possible to explicitly set a task name with the parameter <code class="docutils literal"><span class="pre">basename</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hello&#39;</span><span class="p">]</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hello&#39;</span><span class="p">]</span>
         <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">task_xxx</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;basename&#39;</span><span class="p">:</span> <span class="s">&#39;hello2&#39;</span><span class="p">,</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hello2&#39;</span><span class="p">]</span>
+        <span class="s1">&#39;basename&#39;</span><span class="p">:</span> <span class="s1">&#39;hello2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hello2&#39;</span><span class="p">]</span>
         <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  hello</span>
 <span class="go">.  hello2</span>
 </pre></div>
@@ -470,17 +471,18 @@ to create only one task.
 Using <code class="docutils literal"><span class="pre">yield</span></code> it can generate several tasks at once.
 It is also possible to <code class="docutils literal"><span class="pre">yield</span></code> a generator that generate tasks.
 This is useful to write some generic/reusable task-creators.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">gen_many_tasks</span><span class="p">():</span>
-    <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;basename&#39;</span><span class="p">:</span> <span class="s">&#39;t1&#39;</span><span class="p">,</span>
-           <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo t1&#39;</span><span class="p">]}</span>
-    <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;basename&#39;</span><span class="p">:</span> <span class="s">&#39;t2&#39;</span><span class="p">,</span>
-           <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo t2&#39;</span><span class="p">]}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">gen_many_tasks</span><span class="p">():</span>
+    <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;basename&#39;</span><span class="p">:</span> <span class="s1">&#39;t1&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo t1&#39;</span><span class="p">]}</span>
+    <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;basename&#39;</span><span class="p">:</span> <span class="s1">&#39;t2&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo t2&#39;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_all</span><span class="p">():</span>
     <span class="k">yield</span> <span class="n">gen_many_tasks</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  t2</span>
 <span class="go">.  t1</span>
 </pre></div>
@@ -493,14 +495,14 @@ in different contexts.</p>
 <p>The task function can return a python-generator that yields dictionaries.
 Since each sub-task must be uniquely identified it requires an
 additional field <code class="docutils literal"><span class="pre">name</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;file</span><span class="si">%d</span><span class="s">.txt&quot;</span> <span class="o">%</span> <span class="n">i</span>
-        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
-               <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;touch </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;file</span><span class="si">%d</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="n">i</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
+               <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;touch </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  create_file:file0.txt</span>
 <span class="go">.  create_file:file1.txt</span>
 <span class="go">.  create_file:file2.txt</span>
@@ -512,27 +514,27 @@ additional field <code class="docutils literal"><span class="pre">name</span></c
 but you want to make sure that a task exist,
 you can yield a sub-task with <code class="docutils literal"><span class="pre">name</span></code> equal to <code class="docutils literal"><span class="pre">None</span></code>.
 This can also be used to set the task <code class="docutils literal"><span class="pre">doc</span></code> and <code class="docutils literal"><span class="pre">watch</span></code> attributes.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
 
 <span class="k">def</span> <span class="nf">task_xxx</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;my doc&quot;&quot;&quot;</span>
-    <span class="n">LIST</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.xyz&#39;</span><span class="p">)</span> <span class="c"># might be empty</span>
+    <span class="n">LIST</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.xyz&#39;</span><span class="p">)</span> <span class="c1"># might be empty</span>
     <span class="k">yield</span> <span class="p">{</span>
-        <span class="s">&#39;basename&#39;</span><span class="p">:</span> <span class="s">&#39;do_x&#39;</span><span class="p">,</span>
-        <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-        <span class="s">&#39;doc&#39;</span><span class="p">:</span> <span class="s">&#39;docs for X&#39;</span><span class="p">,</span>
-        <span class="s">&#39;watch&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;.&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;basename&#39;</span><span class="p">:</span> <span class="s1">&#39;do_x&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;doc&#39;</span><span class="p">:</span> <span class="s1">&#39;docs for X&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;watch&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">],</span>
         <span class="p">}</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">LIST</span><span class="p">:</span>
         <span class="k">yield</span> <span class="p">{</span>
-            <span class="s">&#39;basename&#39;</span><span class="p">:</span> <span class="s">&#39;do_x&#39;</span><span class="p">,</span>
-            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">,</span>
-            <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">item</span><span class="p">],</span>
-            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s1">&#39;basename&#39;</span><span class="p">:</span> <span class="s1">&#39;do_x&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">,</span>
+            <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">item</span><span class="p">],</span>
+            <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="gp">$</span> doit list
 <span class="go">do_x   docs for X</span>
 </pre></div>
@@ -553,10 +555,10 @@ save time, as it would produce the same output from the previous run.</p>
 </dl>
 <p>i.e. In a compilation task the source file is a <em>file_dep</em>,
 the object file is a <em>target</em>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;cc -c main.c&quot;</span><span class="p">],</span>
-            <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;main.c&quot;</span><span class="p">,</span> <span class="s">&quot;defs.h&quot;</span><span class="p">],</span>
-            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;main.o&quot;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cc -c main.c&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;main.c&quot;</span><span class="p">,</span> <span class="s2">&quot;defs.h&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;main.o&quot;</span><span class="p">]</span>
             <span class="p">}</span>
 </pre></div>
 </div>
@@ -564,7 +566,7 @@ the object file is a <em>target</em>.</p>
 signature (MD5) of the dependencies every time the task is completed successfully.</p>
 <p>So if there are no modifications to the dependencies and you run <cite>doit</cite> again.
 The execution of the task&#8217;s actions is skipped.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  compile</span>
 <span class="gp">$</span> doit
 <span class="go">-- compile</span>
@@ -584,22 +586,32 @@ tool (i.e. <a class="reference external" href="http://pypi.python.org/pypi/pyfla
 source code files. You can define the source code as a dependency to the task.</p>
 <p>Every dependency in file_dep list should be a string or an instance of any
 Path class from <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 
 <span class="k">def</span> <span class="nf">task_checker</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;pyflakes sample.py&quot;</span><span class="p">],</span>
-            <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;sample.py&quot;</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;pyflakes sample.py&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;sample.py&quot;</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  checker</span>
 <span class="gp">$</span> doit
 <span class="go">-- checker</span>
 </pre></div>
 </div>
+<p><cite>doit</cite> checks if <cite>file_dep</cite> was modified or not
+(by comparing the file content&#8217;s MD5). If there are no changes the action
+is not executed again as it would produce the same result.</p>
 <p>Note the <code class="docutils literal"><span class="pre">--</span></code> again to indicate the execution was skipped.</p>
 <p>Traditional build-tools can only handle files as &#8220;dependencies&#8221;.
 <cite>doit</cite> has several ways to check for dependencies, those will be introduced later.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><cite>doit</cite> saves the MD5 of a <cite>file_dep</cite> after the actions are executed.
+Be careful about editing a <cite>file_dep</cite> while a task is running because
+<cite>doit</cite> might saves the MD5 of a version of the file that is different
+than it actually used to execute the task.</p>
+</div>
 </div>
 <div class="section" id="targets">
 <h2>targets<a class="headerlink" href="#targets" title="Permalink to this headline">¶</a></h2>
@@ -609,10 +621,10 @@ a task may define. Two different tasks can not have the same target. Target
 can be specified as a string or as an instance of any Path class from
 <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>.</p>
 <p>Lets take the compilation example again.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;cc -c main.c&quot;</span><span class="p">],</span>
-            <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;main.c&quot;</span><span class="p">,</span> <span class="s">&quot;defs.h&quot;</span><span class="p">],</span>
-            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;main.o&quot;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cc -c main.c&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;main.c&quot;</span><span class="p">,</span> <span class="s2">&quot;defs.h&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;main.o&quot;</span><span class="p">]</span>
             <span class="p">}</span>
 </pre></div>
 </div>
@@ -622,14 +634,14 @@ can be specified as a string or as an instance of any Path class from
 <li>But only if it does not exist. If the target is modified but the dependencies
 do not change the task is not executed again.</li>
 </ul>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  compile</span>
 <span class="gp">$</span> doit
 <span class="go">-- compile</span>
 <span class="gp">$</span> rm main.o
 <span class="gp">$</span> doit
 <span class="go">.  compile</span>
-<span class="gp">$</span> <span class="nb">echo </span>xxx &gt; main.o
+<span class="gp">$</span> <span class="nb">echo</span> xxx &gt; main.o
 <span class="gp">$</span> doit
 <span class="go">-- compile</span>
 </pre></div>
@@ -640,18 +652,18 @@ do not change the task is not executed again.</li>
 <p>If your tasks interact in a way where the target (output) of one task is a
 file_dep (input) of another task, <cite>doit</cite> will make sure your tasks are
 executed in the correct order.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_modify</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;echo bar &gt; foo.txt&quot;</span><span class="p">],</span>
-            <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;foo.txt&quot;</span><span class="p">],</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_modify</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;echo bar &gt; foo.txt&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo.txt&quot;</span><span class="p">],</span>
             <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">task_create</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;touch foo.txt&quot;</span><span class="p">],</span>
-            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;foo.txt&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;touch foo.txt&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo.txt&quot;</span><span class="p">]</span>
             <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  create</span>
 <span class="go">.  modify</span>
 </pre></div>
@@ -667,24 +679,25 @@ will think they are different files.</p>
 <span id="id4"></span><h2>Task selection<a class="headerlink" href="#task-selection" title="Permalink to this headline">¶</a></h2>
 <p>By default all tasks are executed in the same order as they were defined (the order may change to satisfy dependencies). You can control which tasks will run in 2 ways.</p>
 <p>Another example</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;t3&#39;</span><span class="p">]}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+<span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;t3&#39;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_t1</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;touch task1&quot;</span><span class="p">],</span>
-            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;task1&#39;</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;touch task1&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;task1&#39;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_t2</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;echo task2&quot;</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;echo task2&quot;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_t3</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;echo task3&quot;</span><span class="p">],</span>
-            <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;task1&#39;</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;echo task3&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;task1&#39;</span><span class="p">]}</span>
 </pre></div>
 </div>
 <div class="section" id="doit-config-default-tasks">
 <h3>DOIT_CONFIG -&gt; default_tasks<a class="headerlink" href="#doit-config-default-tasks" title="Permalink to this headline">¶</a></h3>
 <p><em>dodo</em> file defines a dictionary <code class="docutils literal"><span class="pre">DOIT_CONFIG</span></code> with <code class="docutils literal"><span class="pre">default_tasks</span></code>, a list of strings where each element is a task name.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  t1</span>
 <span class="go">.  t3</span>
 </pre></div>
@@ -696,12 +709,12 @@ So that task was automatically executed also.</p>
 <div class="section" id="command-line-selection">
 <h3>command line selection<a class="headerlink" href="#command-line-selection" title="Permalink to this headline">¶</a></h3>
 <p>From the command line you can control which tasks are going to be execute by passing its task name. Any number of tasks can be passed as positional arguments.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit t2
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit t2
 <span class="go">.  t2</span>
 </pre></div>
 </div>
 <p>You can also specify which task to execute by its target:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit task1
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit task1
 <span class="go">.  t1</span>
 </pre></div>
 </div>
@@ -709,14 +722,14 @@ So that task was automatically executed also.</p>
 <div class="section" id="sub-task-selection">
 <h3>sub-task selection<a class="headerlink" href="#sub-task-selection" title="Permalink to this headline">¶</a></h3>
 <p>You can select sub-tasks from the command line specifying its full name.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;file</span><span class="si">%d</span><span class="s">.txt&quot;</span> <span class="o">%</span> <span class="n">i</span>
-        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
-               <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;touch </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;file</span><span class="si">%d</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="n">i</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
+               <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;touch </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit create_file:file2.txt
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit create_file:file2.txt
 <span class="go">.  create_file:file2.txt</span>
 </pre></div>
 </div>
@@ -724,7 +737,7 @@ So that task was automatically executed also.</p>
 <div class="section" id="wildcard-selection">
 <h3>wildcard selection<a class="headerlink" href="#wildcard-selection" title="Permalink to this headline">¶</a></h3>
 <p>You can also select tasks to be executed using a <a class="reference external" href="http://docs.python.org/library/glob.html">glob</a> like syntax (it must contains a <code class="docutils literal"><span class="pre">*</span></code>).</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit create_file:file*
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit create_file:file*
 <span class="go">.  create_file:file1.txt</span>
 <span class="go">.  create_file:file2.txt</span>
 <span class="go">.  create_file:file3.txt</span>
@@ -740,15 +753,16 @@ So that task was automatically executed also.</p>
 <h2>title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h2>
 <p>By default when you run <cite>doit</cite> only the task name is printed out on the output.
 You can customize the output passing a &#8220;title&#8221; function to the task:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">show_cmd</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
-    <span class="k">return</span> <span class="s">&quot;executing... </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">show_cmd</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;executing... </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span>
 
 <span class="k">def</span> <span class="nf">task_custom_display</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[</span><span class="s">&#39;echo abc efg&#39;</span><span class="p">],</span>
-            <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="n">show_cmd</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:[</span><span class="s1">&#39;echo abc efg&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">show_cmd</span><span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  executing... Cmd: echo abc efg</span>
 </pre></div>
 </div>
@@ -771,18 +785,18 @@ console. If the task fails or there is an error the stdout and a traceback
 <ul class="simple">
 <li>task attribute verbosity</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_print</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo hello&#39;</span><span class="p">],</span>
-            <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_print</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hello&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  print</span>
 <span class="go">hello</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>from command line, see <a class="reference internal" href="cmd_run.html#verbosity-option"><span>verbosity option</span></a>.</li>
+<li>from command line, see <a class="reference internal" href="cmd_run.html#verbosity-option"><span class="std std-ref">verbosity option</span></a>.</li>
 </ul>
 </div>
 <div class="section" id="id6">
@@ -792,19 +806,19 @@ file_dep, targets and CmdAction specified as a list can take as elements not
 only strings but also instances of any Path class from pathlib.</p>
 <p>Lets take the compilation example and modify it to work with any number
 of header and source files in current directory using pathlib.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 
 <span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
-    <span class="n">working_directory</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
-    <span class="c"># Path.glob returns an iterator so turn it into a list</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">working_directory</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.h&#39;</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">source_file</span> <span class="ow">in</span> <span class="n">working_directory</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.c&#39;</span><span class="p">):</span>
-        <span class="n">object_file</span> <span class="o">=</span> <span class="n">source_file</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s">&#39;.o&#39;</span><span class="p">)</span>
+    <span class="n">working_directory</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="c1"># Path.glob returns an iterator so turn it into a list</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">working_directory</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.h&#39;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">source_file</span> <span class="ow">in</span> <span class="n">working_directory</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.c&#39;</span><span class="p">):</span>
+        <span class="n">object_file</span> <span class="o">=</span> <span class="n">source_file</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.o&#39;</span><span class="p">)</span>
         <span class="k">yield</span> <span class="p">{</span>
-            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">object_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-            <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="s">&#39;cc&#39;</span><span class="p">,</span> <span class="s">&#39;-c&#39;</span><span class="p">,</span> <span class="n">source_file</span><span class="p">]],</span>
-            <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">source_file</span><span class="p">]</span> <span class="o">+</span> <span class="n">headers</span><span class="p">,</span>
-            <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">object_file</span><span class="p">],</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">object_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="n">source_file</span><span class="p">]],</span>
+            <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">source_file</span><span class="p">]</span> <span class="o">+</span> <span class="n">headers</span><span class="p">,</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">object_file</span><span class="p">],</span>
         <span class="p">}</span>
 </pre></div>
 </div>
@@ -839,7 +853,7 @@ of header and source files in current directory using pathlib.</p>
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>

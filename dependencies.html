@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.29',
+        VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -137,14 +137,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
 
@@ -232,18 +229,18 @@ task is no <cite>up-to-date</cite> it will not execute remaining <code class="do
 </div>
 <p><cite>doit</cite> includes several implementations to be used as <code class="docutils literal"><span class="pre">uptodate</span></code>.
 They are all included in module <cite>doit.tools</cite> and will be discussed in detail
-<a class="reference internal" href="uptodate.html#uptodate-api"><span>later</span></a>:</p>
+<a class="reference internal" href="uptodate.html#uptodate-api"><span class="std std-ref">later</span></a>:</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="uptodate.html#result-dep"><span>result_dep</span></a>: check if the result of another task
+<li><a class="reference internal" href="uptodate.html#result-dep"><span class="std std-ref">result_dep</span></a>: check if the result of another task
 has changed</li>
-<li><a class="reference internal" href="uptodate.html#run-once"><span>run_once</span></a>: execute a task only once
+<li><a class="reference internal" href="uptodate.html#run-once"><span class="std std-ref">run_once</span></a>: execute a task only once
 (used for tasks without dependencies)</li>
-<li><a class="reference internal" href="uptodate.html#timeout"><span>timeout</span></a>: indicate that a task should &#8220;expire&#8221; after
+<li><a class="reference internal" href="uptodate.html#timeout"><span class="std std-ref">timeout</span></a>: indicate that a task should &#8220;expire&#8221; after
 a certain time interval</li>
-<li><a class="reference internal" href="uptodate.html#config-changed"><span>config_changed</span></a>: check for changes in
+<li><a class="reference internal" href="uptodate.html#config-changed"><span class="std std-ref">config_changed</span></a>: check for changes in
 a &#8220;configuration&#8221; string or dictionary</li>
-<li><a class="reference internal" href="uptodate.html#check-timestamp-unchanged"><span>check_timestamp_unchanged()</span></a>: check access,
+<li><a class="reference internal" href="uptodate.html#check-timestamp-unchanged"><span class="std std-ref">check_timestamp_unchanged()</span></a>: check access,
 status change/create or modify timestamp of a given file/directory</li>
 </ul>
 </div></blockquote>
@@ -253,7 +250,7 @@ status change/create or modify timestamp of a given file/directory</li>
 <p>A task is <strong>not</strong> up-to-date if any of:</p>
 <blockquote>
 <div><ul class="simple">
-<li>an <a class="reference internal" href="#attr-uptodate"><span>uptodate</span></a> item is (or evaluates to) <cite>False</cite></li>
+<li>an <a class="reference internal" href="#attr-uptodate"><span class="std std-ref">uptodate</span></a> item is (or evaluates to) <cite>False</cite></li>
 <li>a file is added to or removed from <cite>file_dep</cite></li>
 <li>a <cite>file_dep</cite> changed since last successful execution</li>
 <li>a <cite>target</cite> path does not exist</li>
@@ -268,15 +265,15 @@ But its existence by itself is not enough to mark a task <cite>up-to-date</cite>
 <p>In some situations, it is useful to define a task with targets but no
 dependencies. If you want to re-execute this task only when targets are missing
 you must explicitly add a dependency: you could add a <code class="docutils literal"><span class="pre">uptodate</span></code> with <code class="docutils literal"><span class="pre">True</span></code>
-value or use <a class="reference internal" href="uptodate.html#run-once"><span>run_once()</span></a> to force at least one
+value or use <a class="reference internal" href="uptodate.html#run-once"><span class="std std-ref">run_once()</span></a> to force at least one
 execution managed by <cite>doit</cite>. Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_touch</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_touch</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;touch foo.txt&#39;</span><span class="p">],</span>
-        <span class="s">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;foo.txt&#39;</span><span class="p">],</span>
-        <span class="c"># force doit to always mark the task</span>
-        <span class="c"># as up-to-date (unless target removed)</span>
-        <span class="s">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="bp">True</span><span class="p">],</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;touch foo.txt&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;foo.txt&#39;</span><span class="p">],</span>
+        <span class="c1"># force doit to always mark the task</span>
+        <span class="c1"># as up-to-date (unless target removed)</span>
+        <span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">],</span>
         <span class="p">}</span>
 </pre></div>
 </div>
@@ -306,16 +303,16 @@ not. If a task defines only <em>task-dependency</em> it will always be executed.
 </div>
 <p>This example we make sure we include a file with the latest revision number of
 the mercurial repository on the tar file.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_tar</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;tar -cf foo.tar *&quot;</span><span class="p">],</span>
-            <span class="s">&#39;task_dep&#39;</span><span class="p">:[</span><span class="s">&#39;version&#39;</span><span class="p">],</span>
-            <span class="s">&#39;targets&#39;</span><span class="p">:[</span><span class="s">&#39;foo.tar&#39;</span><span class="p">]}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_tar</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;tar -cf foo.tar *&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;task_dep&#39;</span><span class="p">:[</span><span class="s1">&#39;version&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:[</span><span class="s1">&#39;foo.tar&#39;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_version</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hg tip --template &#39;{rev}&#39; &gt; revision.txt&quot;</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hg tip --template &#39;</span><span class="si">{rev}</span><span class="s2">&#39; &gt; revision.txt&quot;</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  version</span>
 <span class="go">.  tar</span>
 </pre></div>
@@ -324,15 +321,15 @@ the mercurial repository on the tar file.</p>
 <h3>groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h3>
 <p>You can define a group of tasks by adding tasks as dependencies and setting
 its <cite>actions</cite> to <code class="docutils literal"><span class="pre">None</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_foo</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;echo foo&quot;</span><span class="p">]}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_foo</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;echo foo&quot;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_bar</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;echo bar&quot;</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;echo bar&quot;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_mygroup</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
-            <span class="s">&#39;task_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s1">&#39;task_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">]}</span>
 </pre></div>
 </div>
 <p>Note that tasks are never executed twice in the same &#8220;run&#8221;.</p>
@@ -349,35 +346,35 @@ dictionary with <cite>file_dep</cite>, <cite>task_dep</cite>, <cite>uptodate</ci
 <p>On the example below <code class="docutils literal"><span class="pre">mod_deps</span></code> prints on the screen all direct dependencies
 from a module. The dependencies itself are calculated on task <code class="docutils literal"><span class="pre">get_dep</span></code>
 (note: get_dep has a fake implementation where the results are taken from a dict).</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 
-<span class="n">MOD_IMPORTS</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">],</span>
-               <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;f&#39;</span><span class="p">,</span><span class="s">&#39;g&#39;</span><span class="p">],</span>
-               <span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="p">[],</span>
-               <span class="s">&#39;f&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">],</span>
-               <span class="s">&#39;g&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="n">MOD_IMPORTS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[],</span>
+               <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="p">[]}</span>
 
 
 <span class="k">def</span> <span class="nf">print_deps</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> -&gt; </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> -&gt; </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">task_mod_deps</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;task that depends on all direct imports&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">MOD_IMPORTS</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">mod</span><span class="p">,</span>
-               <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">print_deps</span><span class="p">,(</span><span class="n">mod</span><span class="p">,))],</span>
-               <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mod</span><span class="p">],</span>
-               <span class="s">&#39;calc_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;get_dep:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">mod</span><span class="p">],</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">mod</span><span class="p">,</span>
+               <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">print_deps</span><span class="p">,(</span><span class="n">mod</span><span class="p">,))],</span>
+               <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mod</span><span class="p">],</span>
+               <span class="s1">&#39;calc_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;get_dep:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mod</span><span class="p">],</span>
                <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">get_dep</span><span class="p">(</span><span class="n">mod</span><span class="p">):</span>
-    <span class="c"># fake implementation</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="n">MOD_IMPORTS</span><span class="p">[</span><span class="n">mod</span><span class="p">]}</span>
+    <span class="c1"># fake implementation</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="n">MOD_IMPORTS</span><span class="p">[</span><span class="n">mod</span><span class="p">]}</span>
 <span class="k">def</span> <span class="nf">task_get_dep</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;get direct dependencies for each module&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">MOD_IMPORTS</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">mod</span><span class="p">,</span>
-               <span class="s">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">get_dep</span><span class="p">,[</span><span class="n">mod</span><span class="p">])],</span>
-               <span class="s">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mod</span><span class="p">],</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">mod</span><span class="p">,</span>
+               <span class="s1">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">get_dep</span><span class="p">,[</span><span class="n">mod</span><span class="p">])],</span>
+               <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mod</span><span class="p">],</span>
                <span class="p">}</span>
 </pre></div>
 </div>
@@ -402,36 +399,36 @@ it is executed only if the task is not up-to-date and will be executed.</p>
 These actions are executed after all tasks have finished their execution.
 They are executed in reverse order their tasks were executed.</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">### task setup env. good for functional tests!</span>
-<span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-               <span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;withenvX&#39;</span><span class="p">,</span> <span class="s">&#39;withenvY&#39;</span><span class="p">]}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">### task setup env. good for functional tests!</span>
+<span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+               <span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;withenvX&#39;</span><span class="p">,</span> <span class="s1">&#39;withenvY&#39;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;start </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;start </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;stop </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">task_setup_sample</span><span class="p">():</span>
-    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;setupX&#39;</span><span class="p">,</span> <span class="s">&#39;setupY&#39;</span><span class="p">):</span>
-        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
-               <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">start</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,))],</span>
-               <span class="s">&#39;teardown&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">stop</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,))],</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;setupX&#39;</span><span class="p">,</span> <span class="s1">&#39;setupY&#39;</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+               <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">start</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,))],</span>
+               <span class="s1">&#39;teardown&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">stop</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,))],</span>
                <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">task_withenvX</span><span class="p">():</span>
-    <span class="k">for</span> <span class="n">fin</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">):</span>
-        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">fin</span><span class="p">,</span>
-               <span class="s">&#39;actions&#39;</span><span class="p">:[</span><span class="s">&#39;echo x </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">fin</span><span class="p">],</span>
-               <span class="s">&#39;setup&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;setup_sample:setupX&#39;</span><span class="p">],</span>
+    <span class="k">for</span> <span class="n">fin</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">fin</span><span class="p">,</span>
+               <span class="s1">&#39;actions&#39;</span><span class="p">:[</span><span class="s1">&#39;echo x </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">fin</span><span class="p">],</span>
+               <span class="s1">&#39;setup&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;setup_sample:setupX&#39;</span><span class="p">],</span>
                <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">task_withenvY</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:[</span><span class="s">&#39;echo y&#39;</span><span class="p">],</span>
-            <span class="s">&#39;setup&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;setup_sample:setupY&#39;</span><span class="p">],</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:[</span><span class="s1">&#39;echo y&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;setup&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;setup_sample:setupY&#39;</span><span class="p">],</span>
             <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> doit withenvX
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit withenvX
 <span class="go">.  setup_sample:setupX</span>
 <span class="go">start setupX</span>
 <span class="go">.  withenvX:c</span>
@@ -458,13 +455,13 @@ The values must be JSON encodable.</p>
 <p>A cmd-action can also save it&#8217;s output.
 But for this you will need to explicitly import <cite>CmdAction</cite> and set its <cite>save_out</cite>
 parameter with the <em>name</em> used to save the output in <em>values</em></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">doit.action</span> <span class="kn">import</span> <span class="n">CmdAction</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.action</span> <span class="k">import</span> <span class="n">CmdAction</span>
 
 <span class="k">def</span> <span class="nf">task_save_output</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">CmdAction</span><span class="p">(</span><span class="s">&quot;echo x1&quot;</span><span class="p">,</span> <span class="n">save_out</span><span class="o">=</span><span class="s">&#39;out&#39;</span><span class="p">)],</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">CmdAction</span><span class="p">(</span><span class="s2">&quot;echo x1&quot;</span><span class="p">,</span> <span class="n">save_out</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">)],</span>
         <span class="p">}</span>
-<span class="c"># The task values will contain: {&#39;out&#39;: u&#39;x1&#39;}</span>
+<span class="c1"># The task values will contain: {&#39;out&#39;: u&#39;x1&#39;}</span>
 </pre></div>
 </div>
 <p>These values can be used on <a class="reference internal" href="#uptodate">uptodate</a> and <a class="reference internal" href="#getargs">getargs</a>.
@@ -480,71 +477,71 @@ The values are taken from &#8220;saved computed values&#8221;
 from <cite>getargs</cite>.</p>
 <p><cite>getargs</cite> is a dictionary where the key is the argument name used on actions,
 and the value is a tuple with 2 strings: task name, &#8220;value name&#8221;.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;use_cmd&#39;</span><span class="p">,</span> <span class="s">&#39;use_python&#39;</span><span class="p">]}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;use_cmd&#39;</span><span class="p">,</span> <span class="s1">&#39;use_python&#39;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">comp</span><span class="p">():</span>
-       <span class="k">return</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-   <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">comp</span><span class="p">,)]}</span>
+       <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+   <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">comp</span><span class="p">,)]}</span>
 
 
 <span class="k">def</span> <span class="nf">task_use_cmd</span><span class="p">():</span>
-   <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;echo x=</span><span class="si">%(x)s</span><span class="s">, z=</span><span class="si">%(z)s</span><span class="s">&#39;</span><span class="p">],</span>
-           <span class="s">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;compute&#39;</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">),</span>
-                       <span class="s">&#39;z&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;compute&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">)},</span>
-           <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+   <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo x=</span><span class="si">%(x)s</span><span class="s1">, z=</span><span class="si">%(z)s</span><span class="s1">&#39;</span><span class="p">],</span>
+           <span class="s1">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;compute&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">),</span>
+                       <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;compute&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">)},</span>
+           <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
            <span class="p">}</span>
 
 
 <span class="k">def</span> <span class="nf">task_use_python</span><span class="p">():</span>
-  <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">show_getargs</span><span class="p">],</span>
-          <span class="s">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;compute&#39;</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">),</span>
-                      <span class="s">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;compute&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">)},</span>
-          <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">show_getargs</span><span class="p">],</span>
+          <span class="s1">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;compute&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">),</span>
+                      <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;compute&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">)},</span>
+          <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
           <span class="p">}</span>
 <span class="k">def</span> <span class="nf">show_getargs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-   <span class="k">print</span><span class="p">(</span><span class="s">&quot;this is x:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
-   <span class="k">print</span><span class="p">(</span><span class="s">&quot;this is y:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">y</span><span class="p">)</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is x:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is y:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The values are being passed on to a python-action you can pass the whole dict
 by specifying the value name as <code class="docutils literal"><span class="pre">None</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">comp</span><span class="p">():</span>
-       <span class="k">return</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-   <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">comp</span><span class="p">,)]}</span>
+       <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+   <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">comp</span><span class="p">,)]}</span>
 
 
 <span class="k">def</span> <span class="nf">show_getargs</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
-   <span class="k">print</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">task_args_dict</span><span class="p">():</span>
-  <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">show_getargs</span><span class="p">],</span>
-          <span class="s">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;values&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;compute&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)},</span>
-          <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">show_getargs</span><span class="p">],</span>
+          <span class="s1">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;values&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;compute&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)},</span>
+          <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
           <span class="p">}</span>
 </pre></div>
 </div>
 <p>If a group-task is used, the values from all its sub-tasks are passed as a dict.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">comp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-       <span class="k">return</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">}</span>
-   <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;5&#39;</span><span class="p">,</span>
-          <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="p">]</span>
+       <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">}</span>
+   <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="p">]</span>
           <span class="p">}</span>
-   <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;7&#39;</span><span class="p">,</span>
-          <span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="p">[</span><span class="mi">7</span><span class="p">])</span> <span class="p">]</span>
+   <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">comp</span><span class="p">,</span> <span class="p">[</span><span class="mi">7</span><span class="p">])</span> <span class="p">]</span>
           <span class="p">}</span>
 
 
 <span class="k">def</span> <span class="nf">show_getargs</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="nb">sum</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">==</span> <span class="mi">12</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">sum</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">==</span> <span class="mi">12</span>
 
 <span class="k">def</span> <span class="nf">task_args_dict</span><span class="p">():</span>
-  <span class="k">return</span> <span class="p">{</span><span class="s">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">show_getargs</span><span class="p">],</span>
-          <span class="s">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;values&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;compute&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)},</span>
-          <span class="s">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">show_getargs</span><span class="p">],</span>
+          <span class="s1">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;values&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;compute&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)},</span>
+          <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
           <span class="p">}</span>
 </pre></div>
 </div>
@@ -583,7 +580,7 @@ by specifying the value name as <code class="docutils literal"><span class="pre"
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
     </div>
   </body>
 </html>
