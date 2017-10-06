@@ -121,7 +121,6 @@
 <li><a class="reference internal" href="#custom-actions">custom actions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#keywords-on-actions">keywords on actions</a></li>
 <li><a class="reference internal" href="#task-name">task name</a></li>
 <li><a class="reference internal" href="#sub-tasks">sub-tasks</a><ul>
 <li><a class="reference internal" href="#avoiding-empty-sub-tasks">avoiding empty sub-tasks</a></li>
@@ -130,6 +129,12 @@
 <li><a class="reference internal" href="#dependencies-targets">Dependencies &amp; Targets</a></li>
 <li><a class="reference internal" href="#file-dep-file-dependency">file_dep (file dependency)</a></li>
 <li><a class="reference internal" href="#targets">targets</a></li>
+<li><a class="reference internal" href="#parameters-on-actions">parameters on actions</a><ul>
+<li><a class="reference internal" href="#keywords-with-task-metadata">keywords with task metadata</a></li>
+<li><a class="reference internal" href="#keywords-on-cmd-action-string">keywords on cmd-action string</a></li>
+<li><a class="reference internal" href="#keywords-on-python-action">keywords on <em>python-action</em></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#execution-order">execution order</a></li>
 <li><a class="reference internal" href="#task-selection">Task selection</a><ul>
 <li><a class="reference internal" href="#doit-config-default-tasks">DOIT_CONFIG -&gt; default_tasks</a></li>
@@ -161,15 +166,6 @@
 <script type="text/javascript">$('#searchbox').show(0);</script>
 
 
-<h3>Funding Campaign</h3>
-<iframe src="https://www.indiegogo.com/project/doit-python-automation-tool-release-0-30/embedded/2922409" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
-
-
-<h3>Sponsors</h3>
-
-<div>
-  <a href="http://pygarden.com"><img src="_static/pygarden.png" alt="pygarden.com logo" style="display:block; margin:auto;"/></a><br/>
-</div>
 
 
 <h3>Donate</h3>
@@ -249,11 +245,11 @@ In this case the <cite>dodo</cite> file has only one task, <cite>hello</cite>.</
 </div>
 <div class="section" id="actions">
 <h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
-<p>Every <em>task</em> must define <strong>actions</strong>.
+<p>Every <em>task</em> must define <cite>actions</cite>.
 It can optionally define other attributes like <cite>targets</cite>, <cite>file_dep</cite>,
 <cite>verbosity</cite>, <cite>doc</cite> ...</p>
-<p>Actions define what the task actually does.
-<em>Actions</em> is always a list that can have any number of elements.
+<p><cite>actions</cite> define what the task actually does.
+<cite>actions</cite> is always a list that can have any number of elements.
 The actions of a task are always run sequentially.
 There are 2 basic kinds of <cite>actions</cite>: <em>cmd-action</em> and <em>python-action</em>.
 The action &#8220;result&#8221; is used to determine if task execution was successful or not.</p>
@@ -265,7 +261,7 @@ The callable must be a function, method or callable object.
 Classes and built-in functions are not allowed.
 <code class="docutils literal"><span class="pre">args</span></code> is a sequence and <code class="docutils literal"><span class="pre">kwargs</span></code> is a dictionary that will be used
 as positional and keywords arguments for the callable.
-see <a class="reference external" href="http://docs.python.org/tutorial/controlflow.html#keyword-arguments">Keyword Arguments</a>.</p>
+See <a class="reference external" href="http://docs.python.org/tutorial/controlflow.html#keyword-arguments">Keyword Arguments</a>.</p>
 <p>The result of the task is given by the returned value of the
 <code class="docutils literal"><span class="pre">action</span></code> function.</p>
 <p>For <strong>successful</strong> completion it must return one of:</p>
@@ -332,16 +328,13 @@ read &#8220;the task&#8217;s actions are executed&#8221;.</p>
 <a class="reference external" href="http://docs.python.org/library/subprocess.html#popen-constructor">subprocess.Popen</a>).</p>
 <p>If <cite>action</cite> is a string, the command will be executed through the shell.
 (Popen argument shell=True).</p>
-<p>Note that the string must be escaped according to
-<a class="reference external" href="http://docs.python.org/library/stdtypes.html#string-formatting-operations">python string formatting</a>.</p>
 <p>It is easy to include dynamic (on-the-fly) behavior to your tasks with
 python code from the <cite>dodo</cite> file. Let&#8217;s take a look at another example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello cmd &quot;&quot;&quot;</span>
     <span class="n">msg</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="s2">&quot;hi! &quot;</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">msg</span> <span class="o">+</span> <span class="s1">&#39; &gt; </span><span class="si">%(targets)s</span><span class="s1">&#39;</span><span class="p">,],</span>
-        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hello.txt&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">msg</span><span class="p">],</span>
         <span class="p">}</span>
 
 </pre></div>
@@ -396,52 +389,6 @@ Any other value means the task failed.</p>
 <p>It is possible to create other type of actions,
 check <a class="reference internal" href="tools.html#tools-longrunning"><span class="std std-ref">tools.LongRunning</span></a> as an example.</p>
 </div>
-</div>
-<div class="section" id="keywords-on-actions">
-<h2>keywords on actions<a class="headerlink" href="#keywords-on-actions" title="Permalink to this headline">¶</a></h2>
-<p>It is common situation to use task information such as <em>targets</em>,
-<em>dependencies</em>, or <em>changed</em> in its own actions.
-Note: Dependencies here refers only to <em>file-dependencies</em>.</p>
-<p>For <em>cmd-action</em> you can use the python notation for keyword substitution
-on strings. The string will contain all values separated by a space (&#8221; &#8221;).</p>
-<p>For <em>python-action</em> create a parameter in the function, <cite>doit</cite> will take care
-of passing the value when the function is called.
-The values are passed as list of strings.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;hello&quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">python_hello</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
-            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Python says Hello World!!!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">python_hello</span><span class="p">],</span>
-        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hello.txt&quot;</span><span class="p">],</span>
-        <span class="p">}</span>
-
-</pre></div>
-</div>
-<p>You can also pass the keyword <em>task</em> to have a reference to all task
-metadata.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my name is&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">task_x</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">who</span><span class="p">],</span>
-        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;asdf&#39;</span><span class="p">],</span>
-        <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="p">}</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Note that the <em>task</em> argument is a <cite>Task</cite> object instance, not
-the metadata <em>dict</em>.</p>
-</div>
-<p>It is possible not only to retrieve task&#8217;s attributes but also to modify
-them while the action is running!</p>
 </div>
 <div class="section" id="task-name">
 <h2>task name<a class="headerlink" href="#task-name" title="Permalink to this headline">¶</a></h2>
@@ -586,9 +533,7 @@ tool (i.e. <a class="reference external" href="http://pypi.python.org/pypi/pyfla
 source code files. You can define the source code as a dependency to the task.</p>
 <p>Every dependency in file_dep list should be a string or an instance of any
 Path class from <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
-
-<span class="k">def</span> <span class="nf">task_checker</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_checker</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;pyflakes sample.py&quot;</span><span class="p">],</span>
             <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;sample.py&quot;</span><span class="p">]}</span>
 </pre></div>
@@ -645,6 +590,100 @@ do not change the task is not executed again.</li>
 <span class="gp">$</span> doit
 <span class="go">-- compile</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="parameters-on-actions">
+<h2>parameters on actions<a class="headerlink" href="#parameters-on-actions" title="Permalink to this headline">¶</a></h2>
+<p>Actions may take optional parameters provided as function keywords arguments for <em>python-action</em>. Or values for <em>printf-style</em> formatting on <em>cmd-action</em>.</p>
+<p>There are three sources of parameter values:</p>
+<blockquote>
+<div><ul class="simple">
+<li>specified on action&#8217;s <cite>kwargs</cite> definition</li>
+<li>keywords with task metadata such as <cite>dependencies</cite>, <cite>changed</cite>, <cite>targets</cite> and <cite>task</cite></li>
+<li>values computed in other tasks. <a class="reference internal" href="dependencies.html#getargs"><span class="std std-ref">getargs</span></a> describes, how a task can calculate and store values and how other tasks can refer to them.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="keywords-with-task-metadata">
+<h3>keywords with task metadata<a class="headerlink" href="#keywords-with-task-metadata" title="Permalink to this headline">¶</a></h3>
+<p>These values are automatically calculated by <cite>doit</cite>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>dependencies</cite>: list of <cite>file_dep</cite></li>
+<li><cite>changed</cite>: list of <cite>file_dep</cite> that changed since last
+successful execution</li>
+<li><cite>targets</cite>: list of <cite>targets</cite></li>
+<li><cite>task</cite>: only available to <em>python-action</em>.
+Note: the value is a <cite>Task</cite> object instance, not the metadata <em>dict</em>.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="keywords-on-cmd-action-string">
+<h3>keywords on cmd-action string<a class="headerlink" href="#keywords-on-cmd-action-string" title="Permalink to this headline">¶</a></h3>
+<p>For <em>cmd-action</em> you can take advantage of implicit keyword
+substitution on <em>cmd-action</em> strings and use
+python <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#old-string-formatting">old-string-formatting</a> for it.</p>
+<p>The keyword value is a string containing all respective
+file names separated by a space (&#8221; &#8221;).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_report_deps</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;report dependencies and changed dependencies to a file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;req.in&#39;</span><span class="p">,</span> <span class="s1">&#39;req-dev.in&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo D: </span><span class="si">%(dependencies)s</span><span class="s1">, CH: </span><span class="si">%(changed)s</span><span class="s1"> &gt; </span><span class="si">%(targets)s</span><span class="s1">&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;report.txt&#39;</span><span class="p">],</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>Before the string is actually executed, it is always formatted using the
+python <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#old-string-formatting">old-string-formatting</a> using the <cite>%</cite> operator.
+If using <cite>%</cite> in your action string, make sure it does not break
+this formatting.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><em>cmd-action</em> may have the form of a string (as <cite>&#8220;echo hello world&#8221;</cite>)
+or list of arguments (as <cite>[&#8220;echo&#8221;, &#8220;hello&#8221;, &#8220;world&#8221;]</cite>).
+Implicit keywords substitution applies only to the string form
+and does not affect the list form.</p>
+</div>
+</div>
+<div class="section" id="keywords-on-python-action">
+<h3>keywords on <em>python-action</em><a class="headerlink" href="#keywords-on-python-action" title="Permalink to this headline">¶</a></h3>
+<p>For <em>python-action</em> add a keyword parameter in the function,
+<cite>doit</cite> will take care of passing the value when the function is called.
+<cite>dependencies</cite>, <cite>changed</cite>, <cite>targets</cite> are passed as list of strings.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;hello&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">python_hello</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Python says Hello World!!!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">python_hello</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hello.txt&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+
+</pre></div>
+</div>
+<p>You can also pass the keyword <cite>task</cite> to have a reference to all task
+metadata.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my name is&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">task_x</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">who</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;asdf&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is possible not only to retrieve task&#8217;s attributes but also to
+modify them while the action is running!</p>
+</div>
 </div>
 </div>
 <div class="section" id="execution-order">

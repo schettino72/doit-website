@@ -120,15 +120,6 @@
 <script type="text/javascript">$('#searchbox').show(0);</script>
 
 
-<h3>Funding Campaign</h3>
-<iframe src="https://www.indiegogo.com/project/doit-python-automation-tool-release-0-30/embedded/2922409" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
-
-
-<h3>Sponsors</h3>
-
-<div>
-  <a href="http://pygarden.com"><img src="_static/pygarden.png" alt="pygarden.com logo" style="display:block; margin:auto;"/></a><br/>
-</div>
 
 
 <h3>Donate</h3>
@@ -210,12 +201,12 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
     <span class="c1"># doc attributes, should be sub-classed</span>
     <span class="n">doc_purpose</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="n">doc_usage</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-    <span class="n">doc_description</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1"># None value will completely ommit line from doc</span>
+    <span class="n">doc_description</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1"># None value will completely omit line from doc</span>
 
     <span class="c1"># sequence of dicts</span>
     <span class="n">cmd_options</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">()</span>
 
-    <span class="c1"># `execute_tasks` indicates wheather this command execute task&#39;s actions.</span>
+    <span class="c1"># `execute_tasks` indicates whether this command execute task&#39;s actions.</span>
     <span class="c1"># This is used by the loader to indicate when delayed task creation</span>
     <span class="c1"># should be used.</span>
     <span class="n">execute_tasks</span> <span class="o">=</span> <span class="bp">False</span>
@@ -253,7 +244,12 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cmdparser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;get CmdParser instance for this command&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;get CmdParser instance for this command</span>
+
+<span class="sd">        initialize option values:</span>
+<span class="sd">          - Default are taken from harded option definition</span>
+<span class="sd">          - Defaults are overwritten from user&#39;s cfg (INI) file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmdparser</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_cmdparser</span> <span class="o">=</span> <span class="n">CmdParse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_options</span><span class="p">())</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_cmdparser</span><span class="o">.</span><span class="n">overwrite_defaults</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_vals</span><span class="p">)</span>
@@ -269,7 +265,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <div class="viewcode-block" id="Command.execute"><a class="viewcode-back" href="../../extending.html#doit.cmd_base.Command.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt_values</span><span class="p">,</span> <span class="n">pos_args</span><span class="p">):</span> <span class="c1"># pragma: no cover</span>
         <span class="sd">&quot;&quot;&quot;execute command</span>
 <span class="sd">        :param opt_values: (dict) with cmd_options values</span>
-<span class="sd">        :param pos_args: (list) of cmd-line positinal arguments</span>
+<span class="sd">        :param pos_args: (list) of cmd-line positional arguments</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
@@ -370,6 +366,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
     <span class="s1">&#39;long&#39;</span><span class="p">:</span> <span class="s1">&#39;seek-file&#39;</span><span class="p">,</span>
     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="s1">&#39;env_var&#39;</span><span class="p">:</span> <span class="s1">&#39;DOIT_SEEK_FILE&#39;</span><span class="p">,</span>
     <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;seek dodo file on parent folders &quot;</span> <span class="o">+</span>
              <span class="s2">&quot;[default: </span><span class="si">%(default)s</span><span class="s2">]&quot;</span><span class="p">)</span>
 <span class="p">}</span>
@@ -431,8 +428,10 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
     <span class="n">cmd_options</span> <span class="o">=</span> <span class="p">(</span><span class="n">opt_dodo</span><span class="p">,</span> <span class="n">opt_cwd</span><span class="p">,</span> <span class="n">opt_seek_file</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="n">dodo_module</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dodoFile&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;cwdPath&#39;</span><span class="p">],</span>
-                                        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;seek_file&#39;</span><span class="p">])</span>
+        <span class="n">dodo_module</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span>
+            <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dodoFile&#39;</span><span class="p">],</span>
+            <span class="n">params</span><span class="p">[</span><span class="s1">&#39;cwdPath&#39;</span><span class="p">],</span>
+            <span class="n">params</span><span class="p">[</span><span class="s1">&#39;seek_file&#39;</span><span class="p">])</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">dodo_module</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd_names</span><span class="p">)</span>
 
 
@@ -469,7 +468,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">check_minversion</span><span class="p">(</span><span class="n">minversion</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;check if this version of doit statisfy minimum required version</span>
+        <span class="sd">&quot;&quot;&quot;check if this version of doit satisfy minimum required version</span>
 <span class="sd">        Minimum version specified by configuration on dodo.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">minversion</span><span class="p">:</span>
@@ -552,7 +551,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
         <span class="c1"># create dep manager</span>
         <span class="n">db_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backends</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;backend&#39;</span><span class="p">])</span>
         <span class="n">checker_cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_checker_cls</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;check_file_uptodate&#39;</span><span class="p">])</span>
-        <span class="c1"># note the command have the responsability to call dep_manager.close()</span>
+        <span class="c1"># note the command have the responsibility to call dep_manager.close()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dep_manager</span> <span class="o">=</span> <span class="n">Dependency</span><span class="p">(</span><span class="n">db_class</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dep_file&#39;</span><span class="p">],</span> <span class="n">checker_cls</span><span class="p">)</span>
 
         <span class="c1"># hack to pass parameter into _execute() calls that are not part</span>

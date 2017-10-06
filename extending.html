@@ -150,15 +150,6 @@
 <script type="text/javascript">$('#searchbox').show(0);</script>
 
 
-<h3>Funding Campaign</h3>
-<iframe src="https://www.indiegogo.com/project/doit-python-automation-tool-release-0-30/embedded/2922409" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
-
-
-<h3>Sponsors</h3>
-
-<div>
-  <a href="http://pygarden.com"><img src="_static/pygarden.png" alt="pygarden.com logo" style="display:block; margin:auto;"/></a><br/>
-</div>
 
 
 <h3>Donate</h3>
@@ -258,7 +249,7 @@ takes an instance of the task loader to be used.</p>
 <h3>Example: pre-defined task<a class="headerlink" href="#example-pre-defined-task" title="Permalink to this headline">¶</a></h3>
 <p>In the full example below a application is created where the only
 task available is defined using a dict (so no <cite>dodo.py</cite> will be used).</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#! /usr/bin/env python</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#! /usr/bin/env python3</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -290,7 +281,7 @@ task available is defined using a dict (so no <cite>dodo.py</cite> will be used)
 <p>The <cite>ModuleTaskLoader</cite> can be used to load tasks from a specified module,
 where this module specifies tasks in the same way as in <cite>dodo.py</cite>.
 <cite>ModuleTaskLoader</cite> is included in <cite>doit</cite> source.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#! /usr/bin/env python</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#! /usr/bin/env python3</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -339,7 +330,7 @@ set some class variables and implement the <cite>execute</cite> method.</p>
 <code class="descname">execute</code><span class="sig-paren">(</span><em>opt_values</em>, <em>pos_args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#Command.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.Command.execute" title="Permalink to this definition">¶</a></dt>
 <dd><p>execute command
 :param opt_values: (dict) with cmd_options values
-:param pos_args: (list) of cmd-line positinal arguments</p>
+:param pos_args: (list) of cmd-line positional arguments</p>
 </dd></dl>
 
 </dd></dl>
