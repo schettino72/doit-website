@@ -1,30 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Extending doit &mdash; doit - automation tool</title>
-    
+    <title>Extending doit &#8212; doit - automation tool</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="contents.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="FAQ" href="faq.html" />
     <link rel="prev" title="Tools" href="tools.html" />
 <style>
@@ -84,7 +82,7 @@
 
 
   </head>
-  <body role="document">
+  <body>
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
@@ -188,7 +186,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <p id="extending"><cite>doit</cite> is built to be extended and this can be done in several levels.
 So far we have seen:</p>
 <ol class="arabic simple">
-<li>User&#8217;s can create new ways to define when a task is up-to-date using
+<li>User’s can create new ways to define when a task is up-to-date using
 the <cite>uptodate</cite> task parameter (<a class="reference internal" href="uptodate.html#uptodate-api"><span class="std std-ref">more</span></a>)</li>
 <li>You can customize how tasks are executed by creating new Action types
 (<a class="reference internal" href="tasks.html#custom-actions"><span class="std std-ref">more</span></a>)</li>
@@ -198,7 +196,7 @@ task creators (<a class="reference internal" href="task_creation.html#create-doi
 reports (<a class="reference internal" href="cmd_run.html#reporter"><span class="std std-ref">more</span></a>)</li>
 </ol>
 <p>Apart from those, <cite>doit</cite> also provides a plugin system and
-expose it&#8217;s internal API so you can create new applications on top of <cite>doit</cite>.</p>
+expose it’s internal API so you can create new applications on top of <cite>doit</cite>.</p>
 <div class="section" id="task-loader-customization">
 <span id="custom-loader"></span><h2>task loader customization<a class="headerlink" href="#task-loader-customization" title="Permalink to this headline">¶</a></h2>
 <p>The task loader controls the source/creation of tasks.
@@ -215,7 +213,7 @@ the dict containing task meta-data from the <em>task-creator</em> functions.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><strong>cmd_options</strong> &#8211; (list of dict) see cmdparse.CmdOption for dict format</td>
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><strong>cmd_options</strong> – (list of dict) see cmdparse.CmdOption for dict format</td>
 </tr>
 </tbody>
 </table>
@@ -231,9 +229,9 @@ the dict containing task meta-data from the <em>task-creator</em> functions.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>cmd</strong> &#8211; (doit.cmd_base.Command) current command being executed</li>
-<li><strong>opt_values</strong> &#8211; (dict) with values for cmd_options</li>
-<li><strong>pos_args</strong> &#8211; (list str) positional arguments from command line</li>
+<li><strong>cmd</strong> – (doit.cmd_base.Command) current command being executed</li>
+<li><strong>opt_values</strong> – (dict) with values for cmd_options</li>
+<li><strong>pos_args</strong> – (list str) positional arguments from command line</li>
 </ul>
 </td>
 </tr>
@@ -243,7 +241,7 @@ the dict containing task meta-data from the <em>task-creator</em> functions.</p>
 
 </dd></dl>
 
-<p>The main program is implemented in the <cite>DoitMain</cite>. It&#8217;s constructor
+<p>The main program is implemented in the <cite>DoitMain</cite>. It’s constructor
 takes an instance of the task loader to be used.</p>
 <div class="section" id="example-pre-defined-task">
 <h3>Example: pre-defined task<a class="headerlink" href="#example-pre-defined-task" title="Permalink to this headline">¶</a></h3>
@@ -271,7 +269,7 @@ task available is defined using a dict (so no <cite>dodo.py</cite> will be used)
         <span class="k">return</span> <span class="n">task_list</span><span class="p">,</span> <span class="n">config</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">DoitMain</span><span class="p">(</span><span class="n">MyLoader</span><span class="p">())</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
 </pre></div>
 </div>
@@ -288,7 +286,7 @@ where this module specifies tasks in the same way as in <cite>dodo.py</cite>.
 <span class="kn">from</span> <span class="nn">doit.cmd_base</span> <span class="k">import</span> <span class="n">ModuleTaskLoader</span>
 <span class="kn">from</span> <span class="nn">doit.doit_cmd</span> <span class="k">import</span> <span class="n">DoitMain</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">my_module_with_tasks</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">DoitMain</span><span class="p">(</span><span class="n">ModuleTaskLoader</span><span class="p">(</span><span class="n">my_module_with_tasks</span><span class="p">))</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
 </pre></div>
@@ -303,23 +301,23 @@ or methods of an object.</p>
 <cite>run</cite> to execute tasks, <cite>list</cite> to display available tasks, etc.</p>
 <p>Most of the time you should really be creating tasks but
 when developing a custom application on top of <cite>doit</cite> it may make sense
-to provide some extra commands...</p>
+to provide some extra commands…</p>
 <p>To create a new command, subclass <cite>doit.cmd_base.Command</cite>
 set some class variables and implement the <cite>execute</cite> method.</p>
 <dl class="class">
 <dt id="doit.cmd_base.Command">
-<em class="property">class </em><code class="descclassname">doit.cmd_base.</code><code class="descname">Command</code><span class="sig-paren">(</span><em>config=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#Command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.Command" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">doit.cmd_base.</code><code class="descname">Command</code><span class="sig-paren">(</span><em>config=None</em>, <em>bin_name='doit'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#Command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.cmd_base.Command" title="Permalink to this definition">¶</a></dt>
 <dd><p>third-party should subclass this for commands that do no use tasks</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> &#8211; (str) name of sub-cmd to be use from cmdline</li>
-<li><strong>doc_purpose</strong> &#8211; (str) single line cmd description</li>
-<li><strong>doc_usage</strong> &#8211; (str) describe accepted parameters</li>
-<li><strong>doc_description</strong> &#8211; (str) long description/help for cmd</li>
-<li><strong>cmd_options</strong> &#8211; (list of dict) see cmdparse.CmdOption for dict format</li>
+<li><strong>name</strong> – (str) name of sub-cmd to be use from cmdline</li>
+<li><strong>doc_purpose</strong> – (str) single line cmd description</li>
+<li><strong>doc_usage</strong> – (str) describe accepted parameters</li>
+<li><strong>doc_description</strong> – (str) long description/help for cmd</li>
+<li><strong>cmd_options</strong> – (list of dict) see cmdparse.CmdOption for dict format</li>
 </ul>
 </td>
 </tr>
@@ -361,7 +359,7 @@ creating new projects.</p>
 <div class="section" id="plugins">
 <span id="id1"></span><h2>plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> plugin system is based on the use of <em>entry points</em>, the plugin
-does not need to implement any kind of &#8220;plugin interface&#8221;.
+does not need to implement any kind of “plugin interface”.
 It needs only to implement the API of the component it is extending.</p>
 <p>Plugins can be enabled in 2 different ways:</p>
 <ul class="simple">
@@ -446,8 +444,8 @@ used in the <cite>GLOBAL</cite> section of your config file.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+        &#169; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

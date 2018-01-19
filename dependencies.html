@@ -1,30 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>More on dependencies &mdash; doit - automation tool</title>
-    
+    <title>More on dependencies &#8212; doit - automation tool</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="contents.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Command line interface - run" href="cmd_run.html" />
     <link rel="prev" title="Tasks" href="tasks.html" />
 <style>
@@ -84,7 +82,7 @@
 
 
   </head>
-  <body role="document">
+  <body>
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
@@ -227,10 +225,10 @@ They are all included in module <cite>doit.tools</cite> and will be discussed in
 has changed</li>
 <li><a class="reference internal" href="uptodate.html#run-once"><span class="std std-ref">run_once</span></a>: execute a task only once
 (used for tasks without dependencies)</li>
-<li><a class="reference internal" href="uptodate.html#timeout"><span class="std std-ref">timeout</span></a>: indicate that a task should &#8220;expire&#8221; after
+<li><a class="reference internal" href="uptodate.html#timeout"><span class="std std-ref">timeout</span></a>: indicate that a task should “expire” after
 a certain time interval</li>
 <li><a class="reference internal" href="uptodate.html#config-changed"><span class="std std-ref">config_changed</span></a>: check for changes in
-a &#8220;configuration&#8221; string or dictionary</li>
+a “configuration” string or dictionary</li>
 <li><a class="reference internal" href="uptodate.html#check-timestamp-unchanged"><span class="std std-ref">check_timestamp_unchanged()</span></a>: check access,
 status change/create or modify timestamp of a given file/directory</li>
 </ul>
@@ -280,10 +278,10 @@ so they are executed in appropriate order.</p>
 By default tasks are executed on the same order as they were defined in
 the <cite>dodo</cite> file. To define a dependency on another task use the
 task name (whatever comes after <code class="docutils literal"><span class="pre">task_</span></code> on the function name) in the
-&#8220;task_dep&#8221; attribute.</p>
+“task_dep” attribute.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">A <em>task-dependency</em> <strong>only</strong> indicates that another task should be &#8220;executed&#8221;
+<p class="last">A <em>task-dependency</em> <strong>only</strong> indicates that another task should be “executed”
 before itself. The task-dependency might not really be executed if it
 is <em>up-to-date</em>.</p>
 </div>
@@ -323,7 +321,7 @@ its <cite>actions</cite> to <code class="docutils literal"><span class="pre">Non
             <span class="s1">&#39;task_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">]}</span>
 </pre></div>
 </div>
-<p>Note that tasks are never executed twice in the same &#8220;run&#8221;.</p>
+<p>Note that tasks are never executed twice in the same “run”.</p>
 </div>
 </div>
 <div class="section" id="calculated-dependencies">
@@ -373,7 +371,7 @@ from a module. The dependencies itself are calculated on task <code class="docut
 <div class="section" id="setup-task">
 <h2>setup-task<a class="headerlink" href="#setup-task" title="Permalink to this headline">¶</a></h2>
 <p>Some tasks may require some kind of environment setup.
-In this case they can define a list of &#8220;setup&#8221; tasks.</p>
+In this case they can define a list of “setup” tasks.</p>
 <ul class="simple">
 <li>the setup-task will be executed only if the task is to be executed (not up-to-date)</li>
 <li>setup-tasks are just normal tasks that follow all other task behavior</li>
@@ -386,7 +384,7 @@ it is executed only if the task is not up-to-date and will be executed.</p>
 </div>
 <div class="section" id="teardown">
 <h3>teardown<a class="headerlink" href="#teardown" title="Permalink to this headline">¶</a></h3>
-<p>Task may also define &#8216;teardown&#8217; actions.
+<p>Task may also define ‘teardown’ actions.
 These actions are executed after all tasks have finished their execution.
 They are executed in reverse order their tasks were executed.</p>
 <p>Example:</p>
@@ -441,9 +439,9 @@ They are executed in reverse order their tasks were executed.</p>
 </div>
 <div class="section" id="saving-computed-values">
 <h2>saving computed values<a class="headerlink" href="#saving-computed-values" title="Permalink to this headline">¶</a></h2>
-<p>Tasks can save computed values by returning a dictionary on it&#8217;s python-actions.
+<p>Tasks can save computed values by returning a dictionary on it’s python-actions.
 The values must be JSON encodable.</p>
-<p>A cmd-action can also save it&#8217;s output.
+<p>A cmd-action can also save it’s output.
 But for this you will need to explicitly import <cite>CmdAction</cite> and set its <cite>save_out</cite>
 parameter with the <em>name</em> used to save the output in <em>values</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.action</span> <span class="k">import</span> <span class="n">CmdAction</span>
@@ -461,13 +459,13 @@ Check those sections for examples.</p>
 <div class="section" id="getargs">
 <span id="id1"></span><h2>getargs<a class="headerlink" href="#getargs" title="Permalink to this headline">¶</a></h2>
 <p><cite>getargs</cite> provides a way to use values computed from one task in another task.
-The values are taken from &#8220;saved computed values&#8221;
+The values are taken from “saved computed values”
 (returned dict from a python-action).</p>
 <p>For <em>cmd-action</em> use dictionary-based string formatting.</p>
 <p>For <em>python-action</em> the action callable parameter names must match with keys
 from <cite>getargs</cite>.</p>
 <p><cite>getargs</cite> is a dictionary where the key is the argument name used on actions,
-and the value is a tuple with 2 strings: task name, &#8220;value name&#8221;.</p>
+and the value is a tuple with 2 strings: task name, “value name”.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;use_cmd&#39;</span><span class="p">,</span> <span class="s1">&#39;use_python&#39;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
@@ -570,8 +568,8 @@ by specifying the value name as <code class="docutils literal"><span class="pre"
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+        &#169; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

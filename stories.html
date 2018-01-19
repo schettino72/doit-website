@@ -1,30 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Success Stories &mdash; doit - automation tool</title>
-    
+    <title>Success Stories &#8212; doit - automation tool</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="contents.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Changes" href="changes.html" />
     <link rel="prev" title="FAQ" href="faq.html" />
 <style>
@@ -84,7 +82,7 @@
 
 
   </head>
-  <body role="document">
+  <body>
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
@@ -118,6 +116,10 @@
 <li><a class="reference internal" href="#software-carpentry">Software Carpentry</a></li>
 <li><a class="reference internal" href="#biomechanics-lab-stanford-university-usa">Biomechanics Lab / Stanford University, USA</a></li>
 <li><a class="reference internal" href="#computational-metagenomics-lab-university-of-trento-italy">Computational Metagenomics Lab / University of Trento, Italy</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#build-system">Build System</a><ul>
+<li><a class="reference internal" href="#game-development">Game Development</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#content-generation">Content Generation</a><ul>
@@ -189,8 +191,12 @@ and why <cite>doit</cite> was chosen.</p>
 <li><a class="reference internal" href="#computational-metagenomics-lab-university-of-trento-italy" id="id5">Computational Metagenomics Lab / University of Trento, Italy</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#content-generation" id="id6">Content Generation</a><ul>
-<li><a class="reference internal" href="#nikola" id="id7">Nikola</a></li>
+<li><a class="reference internal" href="#build-system" id="id6">Build System</a><ul>
+<li><a class="reference internal" href="#game-development" id="id7">Game Development</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#content-generation" id="id8">Content Generation</a><ul>
+<li><a class="reference internal" href="#nikola" id="id9">Nikola</a></li>
 </ul>
 </li>
 </ul>
@@ -210,7 +216,7 @@ among researchers in science, engineering, medicine, and other disciplines.</p>
 <p>by <a class="reference external" href="http://chrisdembia.github.io">Christopher Dembia</a> (2014-04-03)</p>
 <p>I am a graduate student in a biomechanics lab that studies how humans coordinate
 their muscles in movements like walking or running.
-We record someone&#8217;s motion using reflective motion capture markers and by
+We record someone’s motion using reflective motion capture markers and by
 recording the force their feet exert on the ground.
 We put this data into our software, which gives back an estimate of the
 force each muscle (92 muscles) was generating throughout the observed motion.
@@ -233,12 +239,12 @@ that is an input toward the beginning of this workflow,
 <cite>doit</cite> will allow me to automatically update all my
 results without missing a step.</p>
 <p>I tried to do this with <cite>Make</cite> first.
-<cite>Make</cite> just wasn&#8217;t made to do what I want.
-Also, my lab&#8217;s software has python bindings, so my entire workflow can be
+<cite>Make</cite> just wasn’t made to do what I want.
+Also, my lab’s software has python bindings, so my entire workflow can be
 in python.
 Also, the ability to script anything directly into the workflow is
-important, and <cite>Make</cite> can&#8217;t do that.
-<cite>CMake</cite> was another option, but that&#8217;s not general enough.
+important, and <cite>Make</cite> can’t do that.
+<cite>CMake</cite> was another option, but that’s not general enough.
 <cite>doit</cite> is just completely generic, and the interface is simple yet very flexible.</p>
 </div>
 <div class="section" id="computational-metagenomics-lab-university-of-trento-italy">
@@ -254,19 +260,32 @@ account these dependencies.</p>
 <p><cite>doit</cite> is just the right way to do this. We actually even tried to implement
 something like this on our own, but we are now switching to <cite>doit</cite> because it
 has all the features we need and it is intuitive to use. We particularly love
-the possibility of specifying dependencies &#8220;on the fly&#8221;.</p>
+the possibility of specifying dependencies “on the fly”.</p>
 <p>We are now thinking to convert all our pipelines to the <cite>doit</cite> format. Given the
 importance of <cite>doit</cite> for our research and its potential for bioinformatic
 pipelines we are happy to support this project scientifically (by citing it in
 our papers, mentioning it in our funding requests, etc).</p>
-<p>Thanks for developing <cite>doit</cite>, it&#8217;s just wonderful for computational biology (and
+<p>Thanks for developing <cite>doit</cite>, it’s just wonderful for computational biology (and
 for many other tasks, of course, but this is our research field:)!</p>
 </div>
 </div>
+<div class="section" id="build-system">
+<h2><a class="toc-backref" href="#id6">Build System</a><a class="headerlink" href="#build-system" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="game-development">
+<h3><a class="toc-backref" href="#id7">Game Development</a><a class="headerlink" href="#game-development" title="Permalink to this headline">¶</a></h3>
+<p>by <a class="reference external" href="https://github.com/pydoit/doit/issues/207#issuecomment-333367177">&#64;FrankStain</a> (2017-10-01)</p>
+<p>I’m professional game developer. Also, i support my own huge game framework written on C++. :)</p>
+<p>So, the large scalable build systems are the game building automation tools. It consists of game binary image builders for different platforms, including cross-compilation of source code and source code generation from some DSL schemes. Also it consists of resource generators, where a lot of resource types (dozens of types: textures, 3d objects and scene graphs, sounds, database and state machine raw data) have to pass through dozens of compilation steps. After all, such build system consists of dynamic testing tool, which makes some tests on build target before make it published for Draft usage, QA or Retail customers. And, yep, publishing/QA deployment also implemented as part of build system.</p>
+<p>Just imagine you need to read PNG into pixelmap, compress it into ETC2, ATCI, S3-TC5/BC3 and PVR-TC4, after what each of compressed texture should be placed into different resource pack, obfuscated and encrypted. And all is done by different tasks, because i can read textures even from database, zip-file or other pack and may not wish to compress it into some formats.
+Each sound should be loaded from PCM, converted into MP3 or OGG and linked with each sound mixer where it used, after what it also have to be placed at proper resource pack, obfuscated and encrypted.
+3d location compilation process is about two hundreds tasks on just objects, not files. It’s most complex resource pipeline in build system.</p>
+<p>doit is well designed tool for such purposes, i think.</p>
+</div>
+</div>
 <div class="section" id="content-generation">
-<h2><a class="toc-backref" href="#id6">Content Generation</a><a class="headerlink" href="#content-generation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">Content Generation</a><a class="headerlink" href="#content-generation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="nikola">
-<h3><a class="toc-backref" href="#id7">Nikola</a><a class="headerlink" href="#nikola" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">Nikola</a><a class="headerlink" href="#nikola" title="Permalink to this headline">¶</a></h3>
 <p>by <a class="reference external" href="https://getnikola.com/">the Nikola team</a></p>
 <p><a class="reference external" href="https://getnikola.com/">Nikola</a> is a Static Site and Blog Generator.  doit
 is used to process all the tasks required for building the website (HTML files,
@@ -310,8 +329,8 @@ many users and contributors.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+        &#169; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

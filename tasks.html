@@ -1,30 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Tasks &mdash; doit - automation tool</title>
-    
+    <title>Tasks &#8212; doit - automation tool</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="contents.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="More on dependencies" href="dependencies.html" />
     <link rel="prev" title="Installing" href="install.html" />
 <style>
@@ -84,7 +82,7 @@
 
 
   </head>
-  <body role="document">
+  <body>
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
@@ -211,7 +209,7 @@ So a task can be anything you can code :)</p>
 conventions.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You should be comfortable with python basics. If you don&#8217;t know python yet
+<p class="last">You should be comfortable with python basics. If you don’t know python yet
 check <a class="reference external" href="http://docs.python.org/tut/">Python tutorial</a>.</p>
 </div>
 <p>A function that starts with the name <cite>task_</cite> defines a <em>task-creator</em> recognized
@@ -247,12 +245,12 @@ In this case the <cite>dodo</cite> file has only one task, <cite>hello</cite>.</
 <h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
 <p>Every <em>task</em> must define <cite>actions</cite>.
 It can optionally define other attributes like <cite>targets</cite>, <cite>file_dep</cite>,
-<cite>verbosity</cite>, <cite>doc</cite> ...</p>
+<cite>verbosity</cite>, <cite>doc</cite> …</p>
 <p><cite>actions</cite> define what the task actually does.
 <cite>actions</cite> is always a list that can have any number of elements.
 The actions of a task are always run sequentially.
 There are 2 basic kinds of <cite>actions</cite>: <em>cmd-action</em> and <em>python-action</em>.
-The action &#8220;result&#8221; is used to determine if task execution was successful or not.</p>
+The action “result” is used to determine if task execution was successful or not.</p>
 <div class="section" id="python-action">
 <h3>python-action<a class="headerlink" href="#python-action" title="Permalink to this headline">¶</a></h3>
 <p>If <cite>action</cite> is a python callable or a tuple <cite>(callable, *args, **kwargs)</cite>
@@ -303,7 +301,7 @@ to be executed.
 The body of task-creators should be used to create task metadata only,
 not execute tasks!
 From now on when the  documentation says that a <em>task</em> is executed,
-read &#8220;the task&#8217;s actions are executed&#8221;.</p>
+read “the task’s actions are executed”.</p>
 </div>
 <p><cite>action</cite> parameters can be passed as <code class="docutils literal"><span class="pre">kwargs</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_with_args</span><span class="p">(</span><span class="n">arg_first</span><span class="p">,</span> <span class="n">arg_second</span><span class="p">):</span>
@@ -324,12 +322,12 @@ read &#8220;the task&#8217;s actions are executed&#8221;.</p>
 </div>
 <div class="section" id="cmd-action">
 <h3>cmd-action<a class="headerlink" href="#cmd-action" title="Permalink to this headline">¶</a></h3>
-<p>CmdAction&#8217;s are executed in a subprocess (using python
+<p>CmdAction’s are executed in a subprocess (using python
 <a class="reference external" href="http://docs.python.org/library/subprocess.html#popen-constructor">subprocess.Popen</a>).</p>
 <p>If <cite>action</cite> is a string, the command will be executed through the shell.
 (Popen argument shell=True).</p>
 <p>It is easy to include dynamic (on-the-fly) behavior to your tasks with
-python code from the <cite>dodo</cite> file. Let&#8217;s take a look at another example:</p>
+python code from the <cite>dodo</cite> file. Let’s take a look at another example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello cmd &quot;&quot;&quot;</span>
     <span class="n">msg</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="s2">&quot;hi! &quot;</span>
@@ -342,7 +340,7 @@ python code from the <cite>dodo</cite> file. Let&#8217;s take a look at another 
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The body of the <em>task-creator</em> is always executed,
-so in this example the line <cite>msg = 3 * &#8220;hi! &#8220;</cite> will always be executed.</p>
+so in this example the line <cite>msg = 3 * “hi! “</cite> will always be executed.</p>
 </div>
 <p>If <cite>action</cite> is a list of strings and instances of any Path class from
 <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>, by default it will
@@ -512,7 +510,7 @@ the object file is a <em>target</em>.</p>
 <p><cite>doit</cite> automatically keeps track of file dependencies. It saves the
 signature (MD5) of the dependencies every time the task is completed successfully.</p>
 <p>So if there are no modifications to the dependencies and you run <cite>doit</cite> again.
-The execution of the task&#8217;s actions is skipped.</p>
+The execution of the task’s actions is skipped.</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  compile</span>
 <span class="gp">$</span> doit
@@ -525,10 +523,10 @@ time it is executed. It means, this task was up-to-date and not executed.</p>
 <div class="section" id="file-dep-file-dependency">
 <span id="file-dep"></span><h2>file_dep (file dependency)<a class="headerlink" href="#file-dep-file-dependency" title="Permalink to this headline">¶</a></h2>
 <p>Different from most build-tools dependencies are on tasks, not on targets.
-So <cite>doit</cite> can take advantage of the &#8220;execute only if not up-to-date&#8221; feature
-even for tasks that don&#8217;t define targets.</p>
-<p>Let&#8217;s say you work with a dynamic language (python in this example).
-You don&#8217;t need to compile anything but you probably want to apply a lint-like
+So <cite>doit</cite> can take advantage of the “execute only if not up-to-date” feature
+even for tasks that don’t define targets.</p>
+<p>Let’s say you work with a dynamic language (python in this example).
+You don’t need to compile anything but you probably want to apply a lint-like
 tool (i.e. <a class="reference external" href="http://pypi.python.org/pypi/pyflakes">pyflakes</a>) to your
 source code files. You can define the source code as a dependency to the task.</p>
 <p>Every dependency in file_dep list should be a string or an instance of any
@@ -545,10 +543,10 @@ Path class from <a class="reference external" href="https://docs.python.org/3/li
 </pre></div>
 </div>
 <p><cite>doit</cite> checks if <cite>file_dep</cite> was modified or not
-(by comparing the file content&#8217;s MD5). If there are no changes the action
+(by comparing the file content’s MD5). If there are no changes the action
 is not executed again as it would produce the same result.</p>
 <p>Note the <code class="docutils literal"><span class="pre">--</span></code> again to indicate the execution was skipped.</p>
-<p>Traditional build-tools can only handle files as &#8220;dependencies&#8221;.
+<p>Traditional build-tools can only handle files as “dependencies”.
 <cite>doit</cite> has several ways to check for dependencies, those will be introduced later.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -560,7 +558,7 @@ than it actually used to execute the task.</p>
 </div>
 <div class="section" id="targets">
 <h2>targets<a class="headerlink" href="#targets" title="Permalink to this headline">¶</a></h2>
-<p>Targets can be any file path (a file or folder). If a target doesn&#8217;t exist
+<p>Targets can be any file path (a file or folder). If a target doesn’t exist
 the task will be executed. There is no limitation on the number of targets
 a task may define. Two different tasks can not have the same target. Target
 can be specified as a string or as an instance of any Path class from
@@ -598,7 +596,7 @@ do not change the task is not executed again.</li>
 <p>There are three sources of parameter values:</p>
 <blockquote>
 <div><ul class="simple">
-<li>specified on action&#8217;s <cite>kwargs</cite> definition</li>
+<li>specified on action’s <cite>kwargs</cite> definition</li>
 <li>keywords with task metadata such as <cite>dependencies</cite>, <cite>changed</cite>, <cite>targets</cite> and <cite>task</cite></li>
 <li>values computed in other tasks. <a class="reference internal" href="dependencies.html#getargs"><span class="std std-ref">getargs</span></a> describes, how a task can calculate and store values and how other tasks can refer to them.</li>
 </ul>
@@ -623,7 +621,7 @@ Note: the value is a <cite>Task</cite> object instance, not the metadata <em>dic
 substitution on <em>cmd-action</em> strings and use
 python <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#old-string-formatting">old-string-formatting</a> for it.</p>
 <p>The keyword value is a string containing all respective
-file names separated by a space (&#8221; &#8221;).</p>
+file names separated by a space (” “).</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_report_deps</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;report dependencies and changed dependencies to a file</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -640,8 +638,8 @@ If using <cite>%</cite> in your action string, make sure it does not break
 this formatting.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><em>cmd-action</em> may have the form of a string (as <cite>&#8220;echo hello world&#8221;</cite>)
-or list of arguments (as <cite>[&#8220;echo&#8221;, &#8220;hello&#8221;, &#8220;world&#8221;]</cite>).
+<p class="last"><em>cmd-action</em> may have the form of a string (as <cite>“echo hello world”</cite>)
+or list of arguments (as <cite>[“echo”, “hello”, “world”]</cite>).
 Implicit keywords substitution applies only to the string form
 and does not affect the list form.</p>
 </div>
@@ -681,7 +679,7 @@ metadata.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">It is possible not only to retrieve task&#8217;s attributes but also to
+<p class="last">It is possible not only to retrieve task’s attributes but also to
 modify them while the action is running!</p>
 </div>
 </div>
@@ -786,12 +784,12 @@ So that task was automatically executed also.</p>
 </div>
 <div class="section" id="private-hidden-tasks">
 <h2>private/hidden tasks<a class="headerlink" href="#private-hidden-tasks" title="Permalink to this headline">¶</a></h2>
-<p>If task name starts with an underscore &#8216;_&#8217;, it will not be included in the output.</p>
+<p>If task name starts with an underscore ‘_’, it will not be included in the output.</p>
 </div>
 <div class="section" id="title">
 <h2>title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h2>
 <p>By default when you run <cite>doit</cite> only the task name is printed out on the output.
-You can customize the output passing a &#8220;title&#8221; function to the task:</p>
+You can customize the output passing a “title” function to the task:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>
 <span class="k">def</span> <span class="nf">show_cmd</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
     <span class="k">return</span> <span class="s2">&quot;executing... </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span>
@@ -891,8 +889,8 @@ of header and source files in current directory using pathlib.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+        &#169; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

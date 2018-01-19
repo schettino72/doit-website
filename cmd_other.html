@@ -1,30 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Other Commands &mdash; doit - automation tool</title>
-    
+    <title>Other Commands &#8212; doit - automation tool</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="contents.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Configuration" href="configuration.html" />
     <link rel="prev" title="Command line interface - run" href="cmd_run.html" />
 <style>
@@ -84,7 +82,7 @@
 
 
   </head>
-  <body role="document">
+  <body>
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
@@ -193,7 +191,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <p class="last">Not all options/arguments are documented below.
 Always check <cite>doit help &lt;cmd&gt;</cite> to see a complete list of options.</p>
 </div>
-<p>Let&#8217;s use a more complex example to demonstrate the command line features.
+<p>Let’s use a more complex example to demonstrate the command line features.
 The example below is used to manage a very simple C project.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]}</span>
 
@@ -251,13 +249,13 @@ Tasks are listed in alphabetical order, not by order of execution.</p>
 <p>By default task name and description are listed. The task description is taken
 from the first line of task function doc-string. You can also set it using the
 <em>doc</em> attribute on the task dictionary. It is possible to omit the description
-using the option <em>-q</em>/<em>&#8211;quiet</em>.</p>
+using the option <em>-q</em>/<em>–quiet</em>.</p>
 <p>By default sub-tasks are not listed. It can list sub-tasks using the option
-<em>&#8211;all</em>.</p>
+<em>–all</em>.</p>
 <p>By default task names that start with an underscore(<em>_</em>) are not listed. They
-are listed if the option <em>-p</em>/<em>&#8211;private</em> is used.</p>
-<p>Task status can be printed using the option <em>-s</em>/<em>&#8211;status</em>.</p>
-<p>Task&#8217;s file-dependencies can be printed using the option <em>&#8211;deps</em>.</p>
+are listed if the option <em>-p</em>/<em>–private</em> is used.</p>
+<p>Task status can be printed using the option <em>-s</em>/<em>–status</em>.</p>
+<p>Task’s file-dependencies can be printed using the option <em>–deps</em>.</p>
 </div>
 <div class="section" id="info">
 <h2>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h2>
@@ -272,7 +270,7 @@ the task meta-data.</p>
 <span class="go">targets:[&#39;edit&#39;]</span>
 </pre></div>
 </div>
-<p>Use the option <cite>&#8211;status</cite>, to check the reason a task is not up-to-date.</p>
+<p>Use the option <cite>–status</cite>, to check the reason a task is not up-to-date.</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info link
 
 <span class="go">Task is not up-to-date:</span>
@@ -290,7 +288,7 @@ changed the code from a python-action. <em>doit</em> will think your task is up-
 based on the dependencies but actually it is not! In this case you can use the
 <em>forget</em> command to make sure the given task will be executed again even with no
 changes in the dependencies.</p>
-<p>If you do not specify any task, the default tasks are &#8220;<em>forget</em>&#8221;.</p>
+<p>If you do not specify any task, the default tasks are “<em>forget</em>”.</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit forget
 </pre></div>
 </div>
@@ -301,7 +299,7 @@ changes in the dependencies.</p>
 </div>
 <div class="section" id="clean">
 <h2>clean<a class="headerlink" href="#clean" title="Permalink to this headline">¶</a></h2>
-<p>A common scenario is a task that needs to &#8220;revert&#8221; its actions. A task may
+<p>A common scenario is a task that needs to “revert” its actions. A task may
 include a <em>clean</em> attribute. This attribute can be <code class="docutils literal"><span class="pre">True</span></code> to remove all of its
 target files. If there is a folder as a target it will be removed if the folder
 is empty, otherwise it will display a warning message.</p>
@@ -327,14 +325,22 @@ you can include the <cite>doit.task.clean_targets</cite> instead of passing <cit
 </pre></div>
 </div>
 <p>By default if a task contains task-dependencies those are not automatically
-cleaned too. You can enable this using the option <em>-c</em>/<em>&#8211;clean-dep</em>.
+cleaned too. You can enable this using the option <em>-c</em>/<em>–clean-dep</em>.
 If you are executing the default tasks this flag is automatically set.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">By default only the default tasks&#8217; clean are executed, not from all tasks.
-You can clean all tasks using the <em>-a</em>/<em>&#8211;all</em> argument.</p>
+<p class="last">By default only the default tasks’ clean are executed, not from all tasks.
+You can clean all tasks using the <em>-a</em>/<em>–all</em> argument.</p>
 </div>
-<p>If you want check which tasks the clean operation would affect you can use the option <em>-n</em>/<em>&#8211;dry-run</em>.</p>
+<p>If you want check which tasks the clean operation would affect you can use the option <em>-n</em>/<em>–dry-run</em>.</p>
+<p>If you like to also make doit forget previous execution of cleaned tasks, use option
+<em>–forget</em>. This can be made the default behavior by adding the corresponding <code class="docutils literal"><span class="pre">cleanforget</span></code>
+configuration switch:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;cleanforget&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="ignore">
 <h2>ignore<a class="headerlink" href="#ignore" title="Permalink to this headline">¶</a></h2>
@@ -400,7 +406,7 @@ Contents of a <cite>doit.cfg</cite> file:</p>
 <h3><code class="docutils literal"><span class="pre">watch</span></code> parameter<a class="headerlink" href="#watch-parameter" title="Permalink to this headline">¶</a></h3>
 <p>Apart from <code class="docutils literal"><span class="pre">file_dep</span></code> you can use the parameter <code class="docutils literal"><span class="pre">watch</span></code> to pass extra
 paths to be watched for (including folders). The <code class="docutils literal"><span class="pre">watch</span></code> parameter can also
-be specified for a group of &#8220;sub-tasks&#8221;.</p>
+be specified for a group of “sub-tasks”.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
 
 <span class="k">def</span> <span class="nf">task_xxx</span><span class="p">():</span>
@@ -437,7 +443,7 @@ The generated script is written on stdout.</p>
 </div>
 <div class="section" id="zsh">
 <h3>zsh<a class="headerlink" href="#zsh" title="Permalink to this headline">¶</a></h3>
-<p>zsh completion scripts should be placed in a folder in the &#8220;autoload&#8221; path.</p>
+<p>zsh completion scripts should be placed in a folder in the “autoload” path.</p>
 <div class="highlight-sh"><div class="highlight"><pre><span></span><span class="c1"># add folder with completion scripts</span>
 <span class="nv">fpath</span><span class="o">=(</span>~/.zsh/tabcompletion <span class="nv">$fpath</span><span class="o">)</span>
 
@@ -465,7 +471,7 @@ from your dodo.py.</p>
 <div class="section" id="dumpdb">
 <h2>dumpdb<a class="headerlink" href="#dumpdb" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> saves internal data in a file (<cite>.doit.db</cite> by default).
-It uses a binary format (whatever python&#8217;s dbm is using in your system).
+It uses a binary format (whatever python’s dbm is using in your system).
 This command will simply dump its content in readable text format in the output.</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit dumpdb
 </pre></div>
@@ -497,7 +503,7 @@ that means it might not write a target file if it exist</li>
 <div class="section" id="reset-dep">
 <h2>reset-dep<a class="headerlink" href="#reset-dep" title="Permalink to this headline">¶</a></h2>
 <p>This command allows to recompute the informations on file dependencies
-(timestamp, md5sum, ... depending on the <code class="docutils literal"><span class="pre">check_file_uptodate</span></code> setting), and
+(timestamp, md5sum, … depending on the <code class="docutils literal"><span class="pre">check_file_uptodate</span></code> setting), and
 save this in the database, without executing the actions.</p>
 <p>The command run on all tasks by default, but it is possible to specify a list
 of tasks to work on.</p>
@@ -550,8 +556,8 @@ otherwise they will not be set at all.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+        &#169; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

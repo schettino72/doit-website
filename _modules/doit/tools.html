@@ -1,31 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>doit.tools &mdash; doit - automation tool</title>
-    
+    <title>doit.tools &#8212; doit - automation tool</title>
     <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
         VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="../../contents.html" />
-    <link rel="up" title="Module code" href="../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
 <style>
   body {
     font-size: 16px;
@@ -83,7 +80,7 @@
 
 
   </head>
-  <body role="document">
+  <body>
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="../../_static/doit.png" alt="doit logo" />
 </div>
@@ -100,7 +97,7 @@
   <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -157,21 +154,21 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <span></span><span class="sd">&quot;&quot;&quot;extra goodies to be used in dodo files&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">time</span> <span class="kn">as</span> <span class="nn">time_module</span>
+<span class="kn">import</span> <span class="nn">time</span> <span class="k">as</span> <span class="nn">time_module</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">import</span> <span class="nn">operator</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">exceptions</span>
-<span class="kn">from</span> <span class="nn">.action</span> <span class="kn">import</span> <span class="n">CmdAction</span><span class="p">,</span> <span class="n">PythonAction</span>
-<span class="kn">from</span> <span class="nn">.task</span> <span class="kn">import</span> <span class="n">result_dep</span> <span class="c1"># imported for backward compatibility</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">exceptions</span>
+<span class="kn">from</span> <span class="nn">.action</span> <span class="k">import</span> <span class="n">CmdAction</span><span class="p">,</span> <span class="n">PythonAction</span>
+<span class="kn">from</span> <span class="nn">.task</span> <span class="k">import</span> <span class="n">result_dep</span> <span class="c1"># imported for backward compatibility</span>
 <span class="n">result_dep</span> <span class="c1"># pyflakes</span>
 
 <span class="c1"># action</span>
 <span class="k">def</span> <span class="nf">create_folder</span><span class="p">(</span><span class="n">dir_path</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;create a folder in the given path if it doesnt exist yet.&quot;&quot;&quot;</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
 <span class="c1"># title</span>
@@ -193,9 +190,9 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <span class="sd">    used when user manually manages a dependency</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">save_executed</span><span class="p">():</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;run-once&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;run-once&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
     <span class="n">task</span><span class="o">.</span><span class="n">value_savers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">save_executed</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;run-once&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;run-once&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
 
 
@@ -206,7 +203,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">config_digest</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_digest</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">_calc_digest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -228,8 +225,8 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
         <span class="sd">&quot;&quot;&quot;return True if config values are UNCHANGED&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config_digest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_digest</span><span class="p">()</span>
         <span class="n">last_success</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;_config_changed&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">last_success</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="n">last_success</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">last_success</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_digest</span><span class="p">)</span>
 
 
@@ -258,9 +255,9 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
         <span class="k">def</span> <span class="nf">save_now</span><span class="p">():</span>
             <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;success-time&#39;</span><span class="p">:</span> <span class="n">time_module</span><span class="o">.</span><span class="n">time</span><span class="p">()}</span>
         <span class="n">task</span><span class="o">.</span><span class="n">value_savers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">save_now</span><span class="p">)</span>
-        <span class="n">last_success</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;success-time&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">last_success</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">last_success</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;success-time&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">last_success</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">time_module</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">last_success</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit_sec</span>
 
 
@@ -316,8 +313,8 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
         <span class="n">task</span><span class="o">.</span><span class="n">value_savers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">save_now</span><span class="p">)</span>
 
         <span class="n">prev_time</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">prev_time</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="c1"># this is first run</span>
-            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="n">prev_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># this is first run</span>
+            <span class="k">return</span> <span class="kc">False</span>
         <span class="n">current_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_time</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmp_op</span><span class="p">(</span><span class="n">prev_time</span><span class="p">,</span> <span class="n">current_time</span><span class="p">)</span>
 
@@ -332,7 +329,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <span class="sd">        * it is always successful (return code is not used)</span>
 <span class="sd">        * &quot;swallow&quot; KeyboardInterrupt</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">err</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">err</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expand_action</span><span class="p">()</span>
         <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">pkwargs</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
@@ -350,7 +347,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 
 <span class="sd">       * the output is never captured</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">err</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">err</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expand_action</span><span class="p">()</span>
         <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">pkwargs</span><span class="p">)</span>
         <span class="n">process</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
@@ -368,7 +365,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <span class="sd">       * the output is never captured</span>
 <span class="sd">       * it is successful unless a exception is raised</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">err</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">err</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_kwargs</span><span class="p">()</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">returned_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">py_callable</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -393,7 +390,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 
 
 
-<span class="k">def</span> <span class="nf">register_doit_as_IPython_magic</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
+<span class="k">def</span> <span class="nf">load_ipython_extension</span><span class="p">(</span><span class="n">ip</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Defines a ``%doit`` magic function[1] that discovers and execute tasks</span>
 <span class="sd">    from IPython&#39;s interactive variables (global namespace).</span>
@@ -406,16 +403,20 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <span class="sd">        (``~/.ipython/profile_default/startup/doit_magic.ipy``) with the</span>
 <span class="sd">        following content:</span>
 
-<span class="sd">            from doit.tools import register_doit_as_IPython_magic</span>
-<span class="sd">            register_doit_as_IPython_magic()</span>
+<span class="sd">            %load_ext doit</span>
+<span class="sd">            %reload_ext doit</span>
+<span class="sd">            %doit list</span>
 
 <span class="sd">    [1] http://ipython.org/ipython-doc/dev/interactive/tutorial.html#magic-functions</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">IPython.core.magic</span> <span class="kn">import</span> <span class="n">register_line_magic</span>
-    <span class="kn">from</span> <span class="nn">IPython.core.getipython</span> <span class="kn">import</span> <span class="n">get_ipython</span>
+    <span class="kn">from</span> <span class="nn">IPython.core.getipython</span> <span class="k">import</span> <span class="n">get_ipython</span>
+    <span class="kn">from</span> <span class="nn">IPython.core.magic</span> <span class="k">import</span> <span class="n">register_line_magic</span>
 
-    <span class="kn">from</span> <span class="nn">doit.cmd_base</span> <span class="kn">import</span> <span class="n">ModuleTaskLoader</span>
-    <span class="kn">from</span> <span class="nn">doit.doit_cmd</span> <span class="kn">import</span> <span class="n">DoitMain</span>
+    <span class="kn">from</span> <span class="nn">doit.cmd_base</span> <span class="k">import</span> <span class="n">ModuleTaskLoader</span>
+    <span class="kn">from</span> <span class="nn">doit.doit_cmd</span> <span class="k">import</span> <span class="n">DoitMain</span>
+
+    <span class="c1"># Only (re)load_ext provides the ip context.</span>
+    <span class="n">ip</span> <span class="o">=</span> <span class="n">ip</span> <span class="ow">or</span> <span class="n">get_ipython</span><span class="p">()</span>
 
     <span class="nd">@register_line_magic</span>
     <span class="k">def</span> <span class="nf">doit</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
@@ -439,14 +440,17 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <span class="sd">            hi IPython</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">ip</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>
         <span class="c1"># Override db-files location inside ipython-profile dir,</span>
         <span class="c1"># which is certainly writable.</span>
         <span class="n">prof_dir</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">profile_dir</span><span class="o">.</span><span class="n">location</span>
         <span class="n">opt_vals</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dep_file&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prof_dir</span><span class="p">,</span> <span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="s1">&#39;.doit.db&#39;</span><span class="p">)}</span>
         <span class="n">commander</span> <span class="o">=</span> <span class="n">DoitMain</span><span class="p">(</span><span class="n">ModuleTaskLoader</span><span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">user_module</span><span class="p">),</span>
                              <span class="n">extra_config</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GLOBAL&#39;</span><span class="p">:</span> <span class="n">opt_vals</span><span class="p">})</span>
+        <span class="n">commander</span><span class="o">.</span><span class="n">BIN_NAME</span> <span class="o">=</span> <span class="s1">&#39;doit&#39;</span>
         <span class="n">commander</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+
+<span class="c1"># also expose another way of registering ipython extension</span>
+<span class="n">register_doit_as_IPython_magic</span> <span class="o">=</span> <span class="n">load_ipython_extension</span>
 </pre></div>
 
           </div>
@@ -466,12 +470,12 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
   <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+        &#169; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

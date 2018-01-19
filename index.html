@@ -1,30 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>introduction &mdash; doit - automation tool</title>
-    
+    <title>introduction &#8212; doit - automation tool</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="contents.html" />
+    <link rel="search" title="Search" href="search.html" />
 <style>
   body {
     font-size: 16px;
@@ -82,7 +80,7 @@
 
 
   </head>
-  <body role="document">
+  <body>
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
@@ -169,7 +167,7 @@ there is no out-of-the-box solution available.</p>
 <p><cite>doit</cite> has been successfully used on: systems test/integration automation,
 scientific computational pipelines, content generation,
 configuration management, etc.
-Check some <a class="reference external" href="stories.html">success stories</a> ...</p>
+Check some <a class="reference external" href="stories.html">success stories</a> …</p>
 <div class="section" id="introduction">
 <h1>introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>A <strong>task</strong> describes some computation to be done (<em>actions</em>),
@@ -193,9 +191,9 @@ python functions.</li>
 <li>task meta-data includes a description of input file for the <em>actions</em>
 (<strong>dependencies</strong>), and result files <strong>targets</strong></li>
 <li>there are many other meta-data fields to control how and when a task is
-executed...</li>
+executed…</li>
 </ul>
-<p><em>doit</em> uses the task&#8217;s meta-data to:</p>
+<p><em>doit</em> uses the task’s meta-data to:</p>
 <div class="topic">
 <p class="topic-title first">cache task results (aka <em>incremental-builds</em>)</p>
 <p><cite>doit</cite> checks if the task is <strong>up-to-date</strong> and skips its execution if the
@@ -225,7 +223,7 @@ it can be customized for each task (<a class="reference internal" href="dependen
 (<a class="reference internal" href="dependencies.html#attr-calc-dep"><span class="std std-ref">more</span></a>)</li>
 </ul>
 </div>
-<p>Task&#8217;s metadata (actions, dependencies, targets...) are better described
+<p>Task’s metadata (actions, dependencies, targets…) are better described
 in a declarative way,
 but often you want to create this metadata programmatically.</p>
 <div class="topic">
@@ -242,7 +240,7 @@ But it can be easily customized. (<a class="reference internal" href="task_creat
 <p>Since plain python is used to define your tasks the python debugger (<cite>pdb</cite>)
 is available as in any other python application</p>
 </div>
-<p>Other features...</p>
+<p>Other features…</p>
 <div class="topic">
 <p class="topic-title first">self documented</p>
 <p><cite>doit</cite> command allows you to list and obtain help/documentation for tasks
@@ -266,7 +264,7 @@ based on file changes by external process (linux/mac only)
 </div>
 <div class="topic">
 <p class="topic-title first">IPython integration</p>
-<p>provide <cite>%doit</cite> magic function that loads tasks defined directly in IPython&#8217;s
+<p>provide <cite>%doit</cite> magic function that loads tasks defined directly in IPython’s
 global namespace
 (<a class="reference internal" href="tools.html#tools-ipython"><span class="std std-ref">more</span></a>)</p>
 </div>
@@ -276,31 +274,32 @@ global namespace
 so you can create new applications/tools using <cite>doit</cite> functionality
 (<a class="reference internal" href="extending.html#extending"><span class="std std-ref">more</span></a>)</p>
 </div>
-<p>Check the <a class="reference external" href="contents.html">documentation</a> for more features...</p>
+<p>Check the <a class="reference external" href="contents.html">documentation</a> for more features…</p>
 </div>
 <div class="section" id="what-people-are-saying-about-doit">
 <h1>What people are saying about <cite>doit</cite><a class="headerlink" href="#what-people-are-saying-about-doit" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>Congratulations! Your tool follows the KISS principle very closely. I always wondered why build tools had to be that complicated. - <a class="reference external" href="http://schettino72.wordpress.com/2008/04/14/doit-a-build-tool-tale/#comment-514">Elena</a></p>
-<p>Let me start by saying I&#8217;m really lovin doit, at first the interface seemed verbose but quickly changed my mind when I started using it and realized the flexibility.  Many thanks for the great software! - <a class="reference external" href="https://groups.google.com/d/msg/python-doit/7cD2RiBhB9c/FzrAWkVhEgUJ">Michael Gliwinski</a></p>
-<p>I love all the traditional unix power tools, like cron, make, perl, ..., I also like new comprehensive configuration management tools like CFEngine and Puppet.  But I find doit to be so versatile and so productive. - <a class="reference external" href="https://groups.google.com/d/msg/python-doit/JXElpPfcmmM/znvBT0OFhMYJ">Charlie Guo</a></p>
-<p>I went back and forth on different Pythonic build tools for awhile. Scons is pretty great if you&#8217;re doing &#8216;standard&#8217; sorts of builds, but I found it a little heavy for my tastes and really hard to customize to my tool flow (in FPGA land, there are all kinds of nonstandard vendor tools that all need to play together). I&#8217;ve been using doit more and more over the past few months, and I&#8217;m continually impressed by the tool (aside from the goofy name). It works amazingly well for automating tricky/exotic build processes. Check it out! <a class="reference external" href="http://news.slashdot.org/comments.pl?sid=4319575&amp;cid=45085519">SkOink</a></p>
-<p>I needed a sort of &#8216;make&#8217; tool to glue things together and after trying out all kinds, doit ... has actually turned out to be beautiful. Its easy to add and manage tasks, even complex ones&#8211; gluing things together with decorators and &#8216;library&#8217; functions I&#8217;ve written to do certain similar things. - <a class="reference external" href="https://groups.google.com/d/msg/python-doit/eKI0uu02ZeY/cBU0RRsO0_cJ">Matthew</a></p>
-<p>Some time ago, I grew frustrated with Make and Ant and started porting my build files to every build tool I found (SCons, Waf, etc.). Each time, as soon as I stepped out of already available rules, I ran into some difficult to overcome stumbling blocks. Then I discovered this little gem of simplicity: doit. It&#8217;s Python-based. It doesn&#8217;t try to be smart, it does not try to be cool, it just works. If you are looking for a flexible little build tool for different languages and tasks, give it a chance. (...) - <a class="reference external" href="http://www.hnsearch.com/search#request/all&amp;q=python-doit.sourceforge.net&amp;start=0">lelele</a></p>
+<p>Let me start by saying I’m really lovin doit, at first the interface seemed verbose but quickly changed my mind when I started using it and realized the flexibility.  Many thanks for the great software! - <a class="reference external" href="https://groups.google.com/d/msg/python-doit/7cD2RiBhB9c/FzrAWkVhEgUJ">Michael Gliwinski</a></p>
+<p>I love all the traditional unix power tools, like cron, make, perl, …, I also like new comprehensive configuration management tools like CFEngine and Puppet.  But I find doit to be so versatile and so productive. - <a class="reference external" href="https://groups.google.com/d/msg/python-doit/JXElpPfcmmM/znvBT0OFhMYJ">Charlie Guo</a></p>
+<p>I went back and forth on different Pythonic build tools for awhile. Scons is pretty great if you’re doing ‘standard’ sorts of builds, but I found it a little heavy for my tastes and really hard to customize to my tool flow (in FPGA land, there are all kinds of nonstandard vendor tools that all need to play together). I’ve been using doit more and more over the past few months, and I’m continually impressed by the tool (aside from the goofy name). It works amazingly well for automating tricky/exotic build processes. Check it out! <a class="reference external" href="http://news.slashdot.org/comments.pl?sid=4319575&amp;cid=45085519">SkOink</a></p>
+<p>I needed a sort of ‘make’ tool to glue things together and after trying out all kinds, doit … has actually turned out to be beautiful. Its easy to add and manage tasks, even complex ones– gluing things together with decorators and ‘library’ functions I’ve written to do certain similar things. - <a class="reference external" href="https://groups.google.com/d/msg/python-doit/eKI0uu02ZeY/cBU0RRsO0_cJ">Matthew</a></p>
+<p>Some time ago, I grew frustrated with Make and Ant and started porting my build files to every build tool I found (SCons, Waf, etc.). Each time, as soon as I stepped out of already available rules, I ran into some difficult to overcome stumbling blocks. Then I discovered this little gem of simplicity: doit. It’s Python-based. It doesn’t try to be smart, it does not try to be cool, it just works. If you are looking for a flexible little build tool for different languages and tasks, give it a chance. (…) - <a class="reference external" href="http://www.hnsearch.com/search#request/all&amp;q=python-doit.sourceforge.net&amp;start=0">lelele</a></p>
 </div></blockquote>
-<p><a class="reference external" href="stories.html">Success Stories...</a></p>
+<p><a class="reference external" href="stories.html">Success Stories…</a></p>
 </div>
 <div class="section" id="project-details">
 <h1>Project Details<a class="headerlink" href="#project-details" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li>This is an open-source project
+<li><strong>LICENSE</strong> This is an open-source project
 (<a class="reference external" href="http://opensource.org/licenses/mit-license.php">MIT license</a>)
 written in python. Runs on Python 3.4 through 3.6 (including PyPy support). For python 2 support please use <em>doit</em> version 0.29.</li>
-<li>Download from <a class="reference external" href="http://pypi.python.org/pypi/doit">PyPi</a></li>
-<li>Please check the community <a class="reference external" href="https://github.com/pydoit/doit/blob/master/CONTRIBUTING.md">guidelines</a> before asking questions and reporting issues.</li>
-<li>Project management (bug tracker, feature requests and source code ) on <a class="reference external" href="https://github.com/pydoit/doit">github</a>.</li>
+<li><strong>DOWNLOAD</strong> from <a class="reference external" href="http://pypi.python.org/pypi/doit">PyPi</a></li>
+<li><strong>CONTRIBUTE</strong> Please check the community <a class="reference external" href="https://github.com/pydoit/doit/blob/master/CONTRIBUTING.md">guidelines</a> before asking questions and reporting issues.</li>
+<li><strong>DEVELOP</strong> Project management (bug tracker, feature requests and source code ) on <a class="reference external" href="https://github.com/pydoit/doit">github</a>.</li>
+<li><strong>QUESTIONS</strong> on StackOverflow, use tag <cite>doit</cite>.</li>
+<li><strong>FORUM</strong> (questions/feedback/discussion) on <a class="reference external" href="http://groups.google.co.in/group/python-doit">Google group</a>. Please do <strong>not</strong> send questions to my private email.</li>
 <li><a class="reference external" href="https://github.com/pydoit/doit/wiki/powered-by-doit">doit projects</a> contains a collection of third-party projects, plugins, extensions, non-trivial examples and re-usable task creators for <cite>doit</cite>.</li>
-<li>Questions and feedback on <a class="reference external" href="http://groups.google.co.in/group/python-doit">Google group</a>. Please do <strong>not</strong> send questions to my private email.</li>
 <li>This web site is hosted on <a class="reference external" href="http://pages.github.com">http://pages.github.com</a></li>
 <li>Professional support and consulting services available from <cite>doit</cite>
 creator &amp; maintainer (<em>schettino72</em> at gmail.com).</li>
@@ -311,7 +310,7 @@ creator &amp; maintainer (<em>schettino72</em> at gmail.com).</li>
 <p>This blog <a class="reference external" href="http://schettino72.wordpress.com/2008/04/14/doit-a-build-tool-tale/">post</a> explains how everything started in 2008.</p>
 <p><cite>doit</cite> is under active development. Version 0.30 released on 2016-11.</p>
 <p><cite>doit</cite> core features are quite stable. If there is no recent development,
-it does NOT mean <cite>doit</cite> is not being maintained...
+it does NOT mean <cite>doit</cite> is not being maintained…
 The project has 100% unit-test code coverage.</p>
 <p>Development is done based on real world use cases.
 It is well designed and has a small code base,
@@ -339,8 +338,8 @@ so adding new features is not hard. Patches are welcome.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+        &#169; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

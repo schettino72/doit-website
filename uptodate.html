@@ -1,30 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>custom uptodate &mdash; doit - automation tool</title>
-    
+    <title>custom uptodate &#8212; doit - automation tool</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="contents.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Tools" href="tools.html" />
     <link rel="prev" title="More on Task creation" href="task_creation.html" />
 <style>
@@ -84,7 +82,7 @@
 
 
   </head>
-  <body role="document">
+  <body>
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
@@ -184,9 +182,9 @@ Here we look in more
 detail into some implementations shipped with <cite>doit</cite>. And the API used by those.</p>
 <div class="section" id="result-dependency">
 <span id="result-dep"></span><h2>result-dependency<a class="headerlink" href="#result-dependency" title="Permalink to this headline">¶</a></h2>
-<p>In some cases you can not determine if a task is &#8220;up-to-date&#8221; only based on
+<p>In some cases you can not determine if a task is “up-to-date” only based on
 input files, the input could come from a database or an external process.
-<em>doit</em> defines a &#8220;result-dependency&#8221; to deal with these cases without need to
+<em>doit</em> defines a “result-dependency” to deal with these cases without need to
 create an intermediate file with the results of the process.</p>
 <p>i.e. Suppose you want to send an email every time you run <em>doit</em> on a mercurial
 repository that contains a new revision number.</p>
@@ -200,11 +198,11 @@ repository that contains a new revision number.</p>
 	        <span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">result_dep</span><span class="p">(</span><span class="s1">&#39;version&#39;</span><span class="p">)]}</span>
 </pre></div>
 </div>
-<p>Note the <cite>result_dep</cite> with the name of the task (&#8216;version&#8217;). <cite>doit</cite> will keep
+<p>Note the <cite>result_dep</cite> with the name of the task (‘version’). <cite>doit</cite> will keep
 track of the output of the task <em>version</em> and will execute <em>send_email</em> only
 when the mercurial repository has a new version since last
 time <em>doit</em> was executed.</p>
-<p>The &#8220;result&#8221; from the dependent task compared between different runs is given
+<p>The “result” from the dependent task compared between different runs is given
 by its last action.
 The content for python-action is the value of the returned string or dict.
 For cmd-actions it is the output send to stdout plus stderr.</p>
@@ -215,7 +213,7 @@ the same.</p>
 <div class="section" id="run-once">
 <span id="id1"></span><h2>run_once()<a class="headerlink" href="#run-once" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes there is no dependency for a task but you do not want to execute it
-all the time. With &#8220;run_once&#8221; the task will not be executed again after the first
+all the time. With “run_once” the task will not be executed again after the first
 successful run. This is mostly used together with targets.</p>
 <p>Suppose you need to download something from internet.
 There is no dependency, but you do not want to download it many times.</p>
@@ -261,9 +259,9 @@ parameter. It returns a callable suitable to be used as an <code class="docutils
 </div>
 <div class="section" id="config-changed">
 <span id="id3"></span><h2>config_changed()<a class="headerlink" href="#config-changed" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">config_changed</span></code> is used to check if any &#8220;configuration&#8221; value for the task has
+<p><code class="docutils literal"><span class="pre">config_changed</span></code> is used to check if any “configuration” value for the task has
 changed. Config values can be a string or dict.</p>
-<p>For dict&#8217;s the values are converted to string (actually it uses python&#8217;s <cite>repr()</cite>)
+<p>For dict’s the values are converted to string (actually it uses python’s <cite>repr()</cite>)
 and only a digest/checksum of the dictionaries keys and values are saved.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">config_changed</span>
 
@@ -320,7 +318,7 @@ If a file is a target of another task you should probably add
 <p>This section will explain how to extend <code class="docutils literal"><span class="pre">doit</span></code> writing an <code class="docutils literal"><span class="pre">uptodate</span></code>
 implementation. So unless you need to write an <code class="docutils literal"><span class="pre">uptodate</span></code> implementation
 you can skip this.</p>
-<p>Let&#8217;s start with trivial example. <cite>uptodate</cite> is a function that returns
+<p>Let’s start with trivial example. <cite>uptodate</cite> is a function that returns
 a boolean value.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>
 <span class="k">def</span> <span class="nf">fake_get_value_from_db</span><span class="p">():</span>
@@ -346,29 +344,27 @@ check will not be executed at all if the task was not selected to be executed.</
 <p>Most of the time an <cite>uptodate</cite> implementation will compare the current value
 of something with the value it had last time the task was executed.</p>
 <p>We already saw how tasks can save values by returning dict on its actions.
-But usually the &#8220;value&#8221; we want to check is independent from the task actions.
+But usually the “value” we want to check is independent from the task actions.
 So the first step is to add a callable to the task so it can save some extra
 values. These values are not used by the task itself, they are only used
 for dependency checking.</p>
 <p>The Task has a property called <code class="docutils literal"><span class="pre">value_savers</span></code> that contains a list of
 callables. These callables should return a dict that will be saved together
 with other task values. The <code class="docutils literal"><span class="pre">value_savers</span></code> will be executed after all actions.</p>
-<p>The second step is to actually compare the saved value with its &#8220;current&#8221; value.</p>
+<p>The second step is to actually compare the saved value with its “current” value.</p>
 <p>The <cite>uptodate</cite> callable can take two positional parameters <code class="docutils literal"><span class="pre">task</span></code> and <code class="docutils literal"><span class="pre">values</span></code>. The callable can also be represented by a tuple (callable, args, kwargs).</p>
 <blockquote>
-<div><ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">task</span></code> parameter will give you access to task object. So you have access
-to its metadata and opportunity to modify the task itself!</p>
-</li>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">task</span></code> parameter will give you access to task object. So you have access
+to its metadata and opportunity to modify the task itself!</li>
 <li><dl class="first docutils">
 <dt><code class="docutils literal"><span class="pre">values</span></code> is a dictionary with the computed values saved in the last</dt>
-<dd><p class="first last">successful execution of the task.</p>
-</dd>
+<dd>successful execution of the task.</dd>
 </dl>
 </li>
 </ul>
 </div></blockquote>
-<p>Let&#8217;s take a look in the <code class="docutils literal"><span class="pre">run_once</span></code> implementation.</p>
+<p>Let’s take a look in the <code class="docutils literal"><span class="pre">run_once</span></code> implementation.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>
 <span class="k">def</span> <span class="nf">run_once</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">save_executed</span><span class="p">():</span>
@@ -381,23 +377,23 @@ to its metadata and opportunity to modify the task itself!</p>
 for any value because it just checks it the task was ever executed.</p>
 <p>The next line we use the <code class="docutils literal"><span class="pre">task</span></code> parameter adding
 <code class="docutils literal"><span class="pre">save_executed</span></code> to <code class="docutils literal"><span class="pre">task.value_savers</span></code>.So whenever this task is executed this
-task value &#8216;run-once&#8217; will be saved.</p>
+task value ‘run-once’ will be saved.</p>
 <p>Finally the return value should be a boolean to indicate if the task is
-up-to-date or not. Remember that the &#8216;values&#8217; parameter contains the dict with
+up-to-date or not. Remember that the ‘values’ parameter contains the dict with
 the values saved from last successful execution of the task.
 So it just checks if this task was executed before by looking for the
 <code class="docutils literal"><span class="pre">run-once</span></code> entry in <code class="docutils literal"><span class="pre">`values</span></code>.</p>
 </div>
 <div class="section" id="example-timeout-implementation">
 <h3>Example: timeout implementation<a class="headerlink" href="#example-timeout-implementation" title="Permalink to this headline">¶</a></h3>
-<p>Let&#8217;s look another example, the <code class="docutils literal"><span class="pre">timeout</span></code>. The main difference is that
+<p>Let’s look another example, the <code class="docutils literal"><span class="pre">timeout</span></code>. The main difference is that
 we actually pass the parameter <code class="docutils literal"><span class="pre">timeout_limit</span></code>. Here we present
 a simplified version that only accepts integers (seconds) as a parameter.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">timeout</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_limit</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_limit</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">limit_sec</span> <span class="o">=</span> <span class="n">timeout_limit</span>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">save_now</span><span class="p">():</span>
             <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;success-time&#39;</span><span class="p">:</span> <span class="n">time_module</span><span class="o">.</span><span class="n">time</span><span class="p">()}</span>
         <span class="n">task</span><span class="o">.</span><span class="n">value_savers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">save_now</span><span class="p">)</span>
@@ -418,15 +414,15 @@ with the time that was saved on last successful execution.</p>
 <div class="section" id="example-result-dep-implementation">
 <h3>Example: result_dep implementation<a class="headerlink" href="#example-result-dep-implementation" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal"><span class="pre">result_dep</span></code> is more complicated due to two factors. It needs to modify
-the task&#8217;s <code class="docutils literal"><span class="pre">task_dep</span></code>.
-And it needs to check the task&#8217;s saved values and metadata
+the task’s <code class="docutils literal"><span class="pre">task_dep</span></code>.
+And it needs to check the task’s saved values and metadata
 from a task different from where it is being applied.</p>
 <p>A <code class="docutils literal"><span class="pre">result_dep</span></code> implies that its dependency is also a <code class="docutils literal"><span class="pre">task_dep</span></code>.
 We have seen that the callable takes a <cite>task</cite> parameter that we used
 to modify the task object. The problem is that modifying <code class="docutils literal"><span class="pre">task_dep</span></code>
-when the callable gets called would be &#8220;too late&#8221; according to the
+when the callable gets called would be “too late” according to the
 way <cite>doit</cite> works. When an object is passed <code class="docutils literal"><span class="pre">uptodate</span></code> and this
-object&#8217;s class has a method named <code class="docutils literal"><span class="pre">configure_task</span></code> it will be called
+object’s class has a method named <code class="docutils literal"><span class="pre">configure_task</span></code> it will be called
 during the task creation.</p>
 <p>The base class <code class="docutils literal"><span class="pre">dependency.UptodateCalculator</span></code> gives access to
 an attribute named <code class="docutils literal"><span class="pre">tasks_dict</span></code> containing a dictionary with
@@ -465,8 +461,8 @@ the saved values and results from any task.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+        &#169; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

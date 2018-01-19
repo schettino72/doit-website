@@ -1,30 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>FAQ &mdash; doit - automation tool</title>
-    
+    <title>FAQ &#8212; doit - automation tool</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="contents.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Success Stories" href="stories.html" />
     <link rel="prev" title="Extending doit" href="extending.html" />
 <style>
@@ -84,7 +82,7 @@
 
 
   </head>
-  <body role="document">
+  <body>
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
@@ -115,7 +113,7 @@
   <ul>
 <li><a class="reference internal" href="#">FAQ</a><ul>
 <li><a class="reference internal" href="#why-is-doit-written-in-all-lowercase-instead-of-camelcase">Why is <cite>doit</cite> written in all lowercase instead of CamelCase?</a></li>
-<li><a class="reference internal" href="#doit-is-too-verbose-why-don-t-you-use-decorators"><em>doit</em> is too verbose, why don&#8217;t you use decorators?</a></li>
+<li><a class="reference internal" href="#doit-is-too-verbose-why-don-t-you-use-decorators"><em>doit</em> is too verbose, why don’t you use decorators?</a></li>
 <li><a class="reference internal" href="#dodo-py-file-itself-should-be-a-file-dep-for-all-tasks"><cite>dodo.py</cite> file itself should be a <cite>file_dep</cite> for all tasks</a></li>
 <li><a class="reference internal" href="#why-file-dep-can-not-depend-on-a-directory-folder">Why <cite>file_dep</cite> can not depend on a directory/folder?</a></li>
 <li><a class="reference internal" href="#how-to-make-a-dependency-on-all-files-in-a-folder">How to make a dependency on all files in a folder?</a></li>
@@ -180,7 +178,7 @@ some people would read it as <a class="reference external" href="http://en.wikti
 with an <cite>L</cite> instead of <cite>I</cite>. So I just set it as lowercase to avoid confusion.</p>
 </div>
 <div class="section" id="doit-is-too-verbose-why-don-t-you-use-decorators">
-<h2><em>doit</em> is too verbose, why don&#8217;t you use decorators?<a class="headerlink" href="#doit-is-too-verbose-why-don-t-you-use-decorators" title="Permalink to this headline">¶</a></h2>
+<h2><em>doit</em> is too verbose, why don’t you use decorators?<a class="headerlink" href="#doit-is-too-verbose-why-don-t-you-use-decorators" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> is designed to be extensible.
 A simple dictionary is actually the most flexible representation.
 It is possible to create different interfaces on top of it.
@@ -221,7 +219,7 @@ cases you should implement a custom <code class="docutils literal"><span class="
 <p><code class="docutils literal"><span class="pre">file_dep</span></code> does NOT support folders.
 If you want to specify all files from a folder you can use a third
 party library like <a class="reference external" href="https://pypi.python.org/pypi/pathlib">pathlib</a> (
-<cite>pathlib</cite> was add on python&#8217;s 3.4 stdlib).</p>
+<cite>pathlib</cite> was add on python’s 3.4 stdlib).</p>
 </div>
 </div>
 
@@ -252,8 +250,8 @@ party library like <a class="reference external" href="https://pypi.python.org/p
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+        &#169; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

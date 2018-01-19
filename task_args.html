@@ -1,30 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Passing Task Arguments from the command line &mdash; doit - automation tool</title>
-    
+    <title>Passing Task Arguments from the command line &#8212; doit - automation tool</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="contents.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="More on Task creation" href="task_creation.html" />
     <link rel="prev" title="Configuration" href="configuration.html" />
 <style>
@@ -84,7 +82,7 @@
 
 
   </head>
-  <body role="document">
+  <body>
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
@@ -179,8 +177,8 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
 <p>It is possible to pass option parameters to the task through the command line.</p>
 <p>Just add a <code class="docutils literal"><span class="pre">params</span></code> field to the task dictionary. <code class="docutils literal"><span class="pre">params</span></code> must be a list of
 dictionaries where every entry is an option parameter. Each parameter must
-define a name, and a default value. It can optionally define a &#8220;short&#8221; and
-&#8220;long&#8221; names to be used from the command line (it follows unix command line
+define a name, and a default value. It can optionally define a “short” and
+“long” names to be used from the command line (it follows unix command line
 conventions). It may also specify additional attributes, such as
 <cite>type</cite> and <cite>help</cite> (see <a class="reference internal" href="#parameters-attributes"><span class="std std-ref">below</span></a>).</p>
 <p>See the example:</p>
@@ -241,7 +239,7 @@ conventions). It may also specify additional attributes, such as
 </pre></div>
 </div>
 <p>For python-actions the python function must define arguments with the same name as a task parameter.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit py_params -p abc --param2 4
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit py_params -p abc --param2 <span class="m">4</span>
 <span class="go">.  py_params</span>
 <span class="go">abc</span>
 <span class="go">9</span>
@@ -483,7 +481,7 @@ takes positional arguments you can not call:</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  echo</span>
 <span class="go">hi {abc: NO}</span>
-<span class="gp">$</span> doit <span class="nv">abc</span><span class="o">=</span>xyz <span class="nv">x</span><span class="o">=</span>3
+<span class="gp">$</span> doit <span class="nv">abc</span><span class="o">=</span>xyz <span class="nv">x</span><span class="o">=</span><span class="m">3</span>
 <span class="go">.  echo</span>
 <span class="go">hi {abc: xyz}</span>
 </pre></div>
@@ -518,8 +516,8 @@ takes positional arguments you can not call:</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+        &#169; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

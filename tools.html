@@ -1,30 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Tools &mdash; doit - automation tool</title>
-    
+    <title>Tools &#8212; doit - automation tool</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '0.30',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
-    <link rel="top" title="doit - automation tool" href="contents.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Extending doit" href="extending.html" />
     <link rel="prev" title="custom uptodate" href="uptodate.html" />
 <style>
@@ -84,7 +82,7 @@
 
 
   </head>
-  <body role="document">
+  <body>
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
 <img src="_static/doit.png" alt="doit logo" />
 </div>
@@ -176,7 +174,7 @@ If you use <em>doit</em> and think it is a useful project. Please consider to ma
   <div class="section" id="tools">
 <h1>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h1>
 <p><cite>doit.tools</cite> includes some commonly used code. These are not used by the <cite>doit</cite>
-core, you can see it as a &#8220;standard library&#8221;.
+core, you can see it as a “standard library”.
 The functions/class used with <cite>uptodate</cite> were already introduced in the previous
 section.</p>
 <div class="section" id="create-folder-action">
@@ -196,7 +194,7 @@ section.</p>
 </div>
 <div class="section" id="title-with-actions-title">
 <h2>title_with_actions (title)<a class="headerlink" href="#title-with-actions-title" title="Permalink to this headline">¶</a></h2>
-<p>Return task name task actions from a task. This function can be used as &#8216;title&#8217; attribute of a task dictionary to provide more detailed information of the action being executed.</p>
+<p>Return task name task actions from a task. This function can be used as ‘title’ attribute of a task dictionary to provide more detailed information of the action being executed.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">title_with_actions</span>
 
 <span class="k">def</span> <span class="nf">task_with_details</span><span class="p">():</span>
@@ -217,7 +215,7 @@ Properties:</p>
 <div><ul class="simple">
 <li>the output is never captured</li>
 <li>it is always successful (return code is not used)</li>
-<li>&#8220;swallow&#8221; KeyboardInterrupt</li>
+<li>“swallow” KeyboardInterrupt</li>
 </ul>
 </div></blockquote>
 </dd></dl>
@@ -280,8 +278,7 @@ instead of <code class="docutils literal"><span class="pre">pdb.set_trace</span>
 within <em>ipython</em> sessions and use the <code class="docutils literal"><span class="pre">%doit</span></code> <a class="reference external" href="http://ipython.org/ipython-doc/dev/interactive/tutorial.html#magic-functions">magic function</a>
 to discover and execute them.</p>
 <p>First you need to register the new magic function into ipython shell.</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">register_doit_as_IPython_magic</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">register_doit_as_IPython_magic</span><span class="p">()</span>
+<div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">load_ext</span> <span class="n">doit</span><span class="o">.</span><span class="n">tools</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -291,8 +288,8 @@ to discover and execute them.</p>
 create a new script inside your startup-profile
 (i.e. <code class="file docutils literal"><span class="pre">~/.ipython/profile_default/startup/doit_magic.ipy</span></code>)
 with the following content:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">register_doit_as_IPython_magic</span>
-<span class="n">register_doit_as_IPython_magic</span><span class="p">()</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit</span> <span class="k">import</span> <span class="n">load_ipython_extension</span>
+<span class="n">load_ipython_extension</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -344,8 +341,8 @@ file.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+        &#169; Copyright 2008-2015, Eduardo Schettino.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>
