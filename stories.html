@@ -98,10 +98,10 @@
              accesskey="P">previous</a> |</li>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <!-- TODO news -->
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
@@ -124,6 +124,7 @@
 </li>
 <li><a class="reference internal" href="#content-generation">Content Generation</a><ul>
 <li><a class="reference internal" href="#nikola">Nikola</a></li>
+<li><a class="reference internal" href="#document-production">Document Production</a></li>
 </ul>
 </li>
 </ul>
@@ -151,6 +152,20 @@
 
 
 <div>
+
+<div class="sidebartext">
+
+<p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
+
+<p>Abandoned open-source project does not work for long. Thriving project requires a maintainer to keep list of issues and list of pull requests short. Financial goal is 500 USD per month to allow the maintainer working few hours a week on the project.</p>
+</div>
+
+<h5>OpenCollective</h5>
+<div>
+  <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
+</div>
+
+<h5>Paypal</h5>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
@@ -160,10 +175,6 @@
 </div>
 
 <br/>
-
-<div class="sidebartext">
-If you use <em>doit</em> and think it is a useful project. Please consider to make a donation to support the developer/maintainer with maintanance tasks (bug fixes, merge patches, reply users) and further development.<br/>
-</div>
 
 
 
@@ -197,6 +208,7 @@ and why <cite>doit</cite> was chosen.</p>
 </li>
 <li><a class="reference internal" href="#content-generation" id="id8">Content Generation</a><ul>
 <li><a class="reference internal" href="#nikola" id="id9">Nikola</a></li>
+<li><a class="reference internal" href="#document-production" id="id10">Document Production</a></li>
 </ul>
 </li>
 </ul>
@@ -279,7 +291,7 @@ for many other tasks, of course, but this is our research field:)!</p>
 <p>Just imagine you need to read PNG into pixelmap, compress it into ETC2, ATCI, S3-TC5/BC3 and PVR-TC4, after what each of compressed texture should be placed into different resource pack, obfuscated and encrypted. And all is done by different tasks, because i can read textures even from database, zip-file or other pack and may not wish to compress it into some formats.
 Each sound should be loaded from PCM, converted into MP3 or OGG and linked with each sound mixer where it used, after what it also have to be placed at proper resource pack, obfuscated and encrypted.
 3d location compilation process is about two hundreds tasks on just objects, not files. It’s most complex resource pipeline in build system.</p>
-<p>doit is well designed tool for such purposes, i think.</p>
+<p><cite>doit</cite> is well designed tool for such purposes, i think.</p>
 </div>
 </div>
 <div class="section" id="content-generation">
@@ -287,17 +299,26 @@ Each sound should be loaded from PCM, converted into MP3 or OGG and linked with 
 <div class="section" id="nikola">
 <h3><a class="toc-backref" href="#id9">Nikola</a><a class="headerlink" href="#nikola" title="Permalink to this headline">¶</a></h3>
 <p>by <a class="reference external" href="https://getnikola.com/">the Nikola team</a></p>
-<p><a class="reference external" href="https://getnikola.com/">Nikola</a> is a Static Site and Blog Generator.  doit
+<p><a class="reference external" href="https://getnikola.com/">Nikola</a> is a Static Site and Blog Generator.  <cite>doit</cite>
 is used to process all the tasks required for building the website (HTML files,
-indexes, RSS, copying files…).  Use of doit makes Nikola unique: unlike other
+indexes, RSS, copying files…).  Use of <cite>doit</cite> makes Nikola unique: unlike other
 static site generators, Nikola regenerates only the files that were changed
 since last build (and not all files in the site!).  <code class="docutils literal"><span class="pre">nikola</span> <span class="pre">build</span></code>, the
 centerpiece of Nikola, is basically the usual <code class="docutils literal"><span class="pre">doit</span> <span class="pre">run</span></code> command.</p>
-<p>doit is what makes Nikola extremely fast, even for large sites.  Only a handful
+<p><cite>doit</cite> is what makes Nikola extremely fast, even for large sites.  Only a handful
 of files actually <em>change</em> on a rebuild.  Using the dependency architecture of
-doit (for files and configuration), we are able to rebuild only what is needed.</p>
+<cite>doit</cite> (for files and configuration), we are able to rebuild only what is needed.</p>
 <p>Nikola is an <a class="reference external" href="https://github.com/getnikola/nikola">open-source</a> project with
 many users and contributors.</p>
+</div>
+<div class="section" id="document-production">
+<h3><a class="toc-backref" href="#id10">Document Production</a><a class="headerlink" href="#document-production" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://carvesystems.com">Carve Systems</a> uses <cite>doit</cite> as the core automation tool
+for all of our document production. This customized tool based on Pandoc, Latex, and
+coordinated by <cite>doit</cite> is used by everyone in our company to prepare our primary
+customer facing deliverable. Previously we used makefiles to coordinate builds. <cite>doit</cite>
+let us create a system that can be more easily maintained, tested, and extended using
+plugins.</p>
 </div>
 </div>
 </div>
@@ -319,10 +340,10 @@ many users and contributors.</p>
              >previous</a> |</li>
   <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
   <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <!-- TODO news -->
   <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
+  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
   <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
  
@@ -330,7 +351,7 @@ many users and contributors.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2008-2015, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>
