@@ -11,7 +11,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.30',
+        VERSION:     '0.31',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -304,6 +304,15 @@ the tasks names must be explicitly specified… Example:</p>
     <span class="p">}</span>
 </pre></div>
 </div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><cite>doit</cite> normally automatically sets <cite>task_dep</cite> between tasks by checking
+the relation of <cite>file_dep</cite> and <cite>targets</cite>.
+Due to performance reasons, these <cite>task_dep</cite> relations are NOT computed
+for delayed-task’s <cite>targets</cite>.
+This problem can avoided by ordering the creation of delayed-tasks with
+the expected order of execution.</p>
+</div>
 </div>
 </div>
 <div class="section" id="custom-task-definition">
@@ -358,7 +367,7 @@ has some real-world implementations.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2008-2015, Eduardo Schettino.
+        &#169; Copyright 2008-2018, Eduardo Schettino.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>

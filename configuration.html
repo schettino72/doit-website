@@ -11,7 +11,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.30',
+        VERSION:     '0.31',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -112,6 +112,7 @@
   <h3><a href="contents.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Configuration</a><ul>
+<li><a class="reference internal" href="#config-param-names">config param names</a></li>
 <li><a class="reference internal" href="#doit-cfg">doit.cfg</a><ul>
 <li><a class="reference internal" href="#global-section">GLOBAL section</a></li>
 <li><a class="reference internal" href="#commands-section">commands section</a></li>
@@ -183,6 +184,18 @@
             
   <div class="section" id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="config-param-names">
+<h2>config param names<a class="headerlink" href="#config-param-names" title="Permalink to this headline">¶</a></h2>
+<p>Note that the configuration option’s name is not always the same as the
+<em>long</em> argument name used in the command line.</p>
+<p>I.e. To specify dodo file other than <cite>dodo.py</cite> from the command line
+you specify the option as <code class="docutils literal"><span class="pre">-f</span></code> or <code class="docutils literal"><span class="pre">--file</span></code>, but from a config file
+it is called <code class="docutils literal"><span class="pre">dodoFile</span></code>.</p>
+<p>The name can be seem from <code class="docutils literal"><span class="pre">doit</span> <span class="pre">help</span></code> output:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">f</span> <span class="n">ARG</span><span class="p">,</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">ARG</span>        <span class="n">load</span> <span class="n">task</span> <span class="kn">from</span> <span class="nn">dodo</span> <span class="n">FILE</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="n">dodo</span><span class="o">.</span><span class="n">py</span><span class="p">]</span>  <span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">dodoFile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="doit-cfg">
 <h2>doit.cfg<a class="headerlink" href="#doit-cfg" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> uses an INI style configuration file
@@ -215,12 +228,6 @@ the command name:</p>
 <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">subtasks</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The key name is the internal option name, it might not be the same as
-the string using in the command line. i.e. <cite>subtasks</cite> above refers to
-<cite>–all</cite>.</p>
 </div>
 </div>
 <div class="section" id="plugins-sections">
@@ -286,7 +293,7 @@ not be used.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2008-2015, Eduardo Schettino.
+        &#169; Copyright 2008-2018, Eduardo Schettino.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>

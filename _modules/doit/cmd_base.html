@@ -11,7 +11,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.30',
+        VERSION:     '0.31',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -568,6 +568,8 @@
         <span class="c1"># of command line options</span>
         <span class="n">params</span><span class="p">[</span><span class="s1">&#39;pos_args&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span>
         <span class="n">params</span><span class="p">[</span><span class="s1">&#39;continue_&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;continue&#39;</span><span class="p">)</span>
+        <span class="c1"># hack: determine if value came from command line or config</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;force_verbosity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;verbosity&#39;</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">_non_default_keys</span>
 
         <span class="c1"># magic - create dict based on signature of _execute() method.</span>
         <span class="c1"># this done so that _execute() have a nice API with name parameters</span>
@@ -591,9 +593,10 @@
             <span class="k">raise</span> <span class="n">InvalidCommand</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="n">task_name</span><span class="p">)</span>
 
 
-<span class="c1"># this is used by commands that do not execute tasks (list, clean, forget...)</span>
+<span class="c1"># this is used by commands that do not execute tasks (forget, auto...)</span>
 <span class="k">def</span> <span class="nf">tasks_and_deps_iter</span><span class="p">(</span><span class="n">tasks</span><span class="p">,</span> <span class="n">sel_tasks</span><span class="p">,</span> <span class="n">yield_duplicates</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;iterator of select_tasks and its dependencies</span>
+
 <span class="sd">    @param tasks (dict - Task)</span>
 <span class="sd">    @param sel_tasks(list - str)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -619,7 +622,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">task</span><span class="o">.</span><span class="n">task_dep</span><span class="p">:</span>
         <span class="n">dep</span> <span class="o">=</span> <span class="n">tasks</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">dep</span><span class="o">.</span><span class="n">is_subtask</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dep</span><span class="o">.</span><span class="n">subtask_of</span> <span class="o">==</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">dep</span>
 </pre></div>
 
@@ -644,7 +647,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2008-2015, Eduardo Schettino.
+        &#169; Copyright 2008-2018, Eduardo Schettino.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>

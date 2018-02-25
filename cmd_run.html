@@ -11,7 +11,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.30',
+        VERSION:     '0.31',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -124,6 +124,7 @@
 <li><a class="reference internal" href="#db-backend">DB backend</a></li>
 <li><a class="reference internal" href="#db-file">DB-file</a></li>
 <li><a class="reference internal" href="#verbosity">verbosity</a></li>
+<li><a class="reference internal" href="#failure-verbosity">failure-verbosity</a></li>
 <li><a class="reference internal" href="#output-buffering">output buffering</a></li>
 <li><a class="reference internal" href="#dir-cwd">dir (cwd)</a></li>
 <li><a class="reference internal" href="#continue">continue</a></li>
@@ -321,6 +322,14 @@ the specified name is used as a base name.</p>
 <span id="verbosity-option"></span><h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
 <p>Option to change the default global task <a class="reference internal" href="tasks.html#verbosity"><span class="std std-ref">verbosity</span></a> value.</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --verbosity <span class="m">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="failure-verbosity">
+<h2>failure-verbosity<a class="headerlink" href="#failure-verbosity" title="Permalink to this headline">¶</a></h2>
+<p>Option to control if stdout/stderr should be re-displayed in the end of
+of report. This is useful when used in conjunction with <cite>–continue</cite> option.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --failure-verbosity <span class="m">1</span>
 </pre></div>
 </div>
 </div>
@@ -597,7 +606,7 @@ matches any target.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2008-2015, Eduardo Schettino.
+        &#169; Copyright 2008-2018, Eduardo Schettino.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
