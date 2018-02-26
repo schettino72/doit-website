@@ -127,6 +127,10 @@
 <li><a class="reference internal" href="#document-production">Document Production</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#devops">DevOps</a><ul>
+<li><a class="reference internal" href="#https-data-ub-uio-no">https://data.ub.uio.no</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -209,6 +213,10 @@ and why <cite>doit</cite> was chosen.</p>
 <li><a class="reference internal" href="#content-generation" id="id8">Content Generation</a><ul>
 <li><a class="reference internal" href="#nikola" id="id9">Nikola</a></li>
 <li><a class="reference internal" href="#document-production" id="id10">Document Production</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#devops" id="id11">DevOps</a><ul>
+<li><a class="reference internal" href="#https-data-ub-uio-no" id="id12">https://data.ub.uio.no</a></li>
 </ul>
 </li>
 </ul>
@@ -313,12 +321,33 @@ many users and contributors.</p>
 </div>
 <div class="section" id="document-production">
 <h3><a class="toc-backref" href="#id10">Document Production</a><a class="headerlink" href="#document-production" title="Permalink to this headline">¶</a></h3>
+<p>(2018-02-01)</p>
 <p><a class="reference external" href="https://carvesystems.com">Carve Systems</a> uses <cite>doit</cite> as the core automation tool
 for all of our document production. This customized tool based on Pandoc, Latex, and
 coordinated by <cite>doit</cite> is used by everyone in our company to prepare our primary
 customer facing deliverable. Previously we used makefiles to coordinate builds. <cite>doit</cite>
 let us create a system that can be more easily maintained, tested, and extended using
 plugins.</p>
+</div>
+</div>
+<div class="section" id="devops">
+<h2><a class="toc-backref" href="#id11">DevOps</a><a class="headerlink" href="#devops" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="https-data-ub-uio-no">
+<h3><a class="reference external" href="https://data.ub.uio.no">https://data.ub.uio.no</a><a class="headerlink" href="#https-data-ub-uio-no" title="Permalink to this headline">¶</a></h3>
+<p>by <a class="reference external" href="https://github.com/danmichaelo">Dan Michael O. Heggø</a> (2018-02-26)</p>
+<p>I’m using <cite>doit</cite> for the publishing workflow at the vocabulary server <a class="reference external" href="https://data.ub.uio.no/">https://data.ub.uio.no/</a> .
+The server fetches data from various remote sources, and when there’s new changes in one of them, the data is fetched,
+converted to various formats, published and pushed to Fuseki and ElasticSearch.</p>
+<p>One part I love about <cite>doit</cite> is that you can control what is considered a change.
+For remote files, I’ve created a task that checks if some header, like ETag or Last-Modified, has changed.
+If it hasn’t, I set <cite>uptodate</cite> to True and stop there.</p>
+<p>Another part I love is the ability to re-use tasks.
+Each vocabulary (like <a class="reference external" href="https://github.com/realfagstermer/realfagstermer">https://github.com/realfagstermer/realfagstermer</a> and <a class="reference external" href="https://github.com/scriptotek/humord">https://github.com/scriptotek/humord</a>)
+has a different publication workflow, but many tasks are shared.
+With <cite>doit</cite>, I’ve created a collection of tasks and task generators (<a class="reference external" href="https://github.com/scriptotek/data_ub_tasks/">https://github.com/scriptotek/data_ub_tasks/</a>)
+that I use with all the vocabularies.</p>
+<p>Finally, it’s great that you can mix shell commands and Python tasks so easily.
+This cuts development time and makes the move from using Makefiles much easier.</p>
 </div>
 </div>
 </div>
