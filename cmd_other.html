@@ -116,7 +116,10 @@
 <li><a class="reference internal" href="#list">list</a></li>
 <li><a class="reference internal" href="#info">info</a></li>
 <li><a class="reference internal" href="#forget">forget</a></li>
-<li><a class="reference internal" href="#clean">clean</a></li>
+<li><a class="reference internal" href="#clean">clean</a><ul>
+<li><a class="reference internal" href="#dry-run">dry run</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#ignore">ignore</a></li>
 <li><a class="reference internal" href="#auto-watch">auto (watch)</a><ul>
 <li><a class="reference internal" href="#callbacks">callbacks</a></li>
@@ -313,7 +316,7 @@ changes in the dependencies.</p>
 include a <em>clean</em> attribute. This attribute can be <code class="docutils literal"><span class="pre">True</span></code> to remove all of its
 target files. If there is a folder as a target it will be removed if the folder
 is empty, otherwise it will display a warning message.</p>
-<p>The <em>clean</em> attribute can be a list of actions, again, an action could be a
+<p>The <em>clean</em> attribute can be a list of actions. An action could be a
 string with a shell command or a tuple with a python callable.</p>
 <p>If you want to clean the targets and add some custom clean actions,
 you can include the <cite>doit.task.clean_targets</cite> instead of passing <cite>True</cite>:</p>
@@ -342,7 +345,6 @@ If you are executing the default tasks this flag is automatically set.</p>
 <p class="last">By default only the default tasks’ clean are executed, not from all tasks.
 You can clean all tasks using the <em>-a</em>/<em>–all</em> argument.</p>
 </div>
-<p>If you want check which tasks the clean operation would affect you can use the option <em>-n</em>/<em>–dry-run</em>.</p>
 <p>If you like to also make doit forget previous execution of cleaned tasks, use option
 <em>–forget</em>. This can be made the default behavior by adding the corresponding <code class="docutils literal"><span class="pre">cleanforget</span></code>
 configuration switch:</p>
@@ -350,6 +352,28 @@ configuration switch:</p>
     <span class="s1">&#39;cleanforget&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="section" id="dry-run">
+<h3>dry run<a class="headerlink" href="#dry-run" title="Permalink to this headline">¶</a></h3>
+<p>If you want check which tasks the clean operation would affect you can use the option <cite>-n/–dry-run</cite>.</p>
+<p>When using a custom action on <cite>dry-run</cite>, the action is not executed at all
+<strong>if</strong> it does not include a <cite>dryrun</cite> parameter.</p>
+<p>If it includes a <cite>dryrun</cite> parameter the action will <strong>always</strong> be executed,
+and its implementation is responsible for handling the <em>dry-run</em> logic.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_cleaner</span><span class="p">(</span><span class="n">dryrun</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">dryrun</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dryrun, dont really execute&#39;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;execute cleaner...&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">task_sample</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;actions&quot;</span> <span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;clean&quot;</span>   <span class="p">:</span> <span class="p">[</span><span class="n">my_cleaner</span><span class="p">],</span>
+    <span class="p">}</span>
+
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="ignore">

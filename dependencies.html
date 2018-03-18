@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favico.ico"/>
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Command line interface - run" href="cmd_run.html" />
+    <link rel="next" title="More on Task creation" href="task_creation.html" />
     <link rel="prev" title="Tasks" href="tasks.html" />
 <style>
   body {
@@ -91,7 +91,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="cmd_run.html" title="Command line interface - run"
+          <a href="task_creation.html" title="More on Task creation"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="tasks.html" title="Tasks"
@@ -114,17 +114,23 @@
 <li><a class="reference internal" href="#">More on dependencies</a><ul>
 <li><a class="reference internal" href="#uptodate">uptodate</a></li>
 <li><a class="reference internal" href="#doit-up-to-date-definition">doit up-to-date definition</a></li>
+<li><a class="reference internal" href="#uptodate-api">uptodate API</a><ul>
+<li><a class="reference internal" href="#example-run-once-implementation">Example: run-once implementation</a></li>
+<li><a class="reference internal" href="#example-timeout-implementation">Example: timeout implementation</a></li>
+<li><a class="reference internal" href="#example-result-dep-implementation">Example: result_dep implementation</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#task-dependency">task-dependency</a><ul>
 <li><a class="reference internal" href="#groups">groups</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#calculated-dependencies">calculated-dependencies</a></li>
 <li><a class="reference internal" href="#setup-task">setup-task</a><ul>
 <li><a class="reference internal" href="#teardown">teardown</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#saving-computed-values">saving computed values</a></li>
 <li><a class="reference internal" href="#getargs">getargs</a></li>
+<li><a class="reference internal" href="#calculated-dependencies">calculated-dependencies</a></li>
 </ul>
 </li>
 </ul>
@@ -228,7 +234,7 @@ task is no <cite>up-to-date</cite> it will not execute remaining <code class="do
 </div>
 <p><cite>doit</cite> includes several implementations to be used as <code class="docutils literal"><span class="pre">uptodate</span></code>.
 They are all included in module <cite>doit.tools</cite> and will be discussed in detail
-<a class="reference internal" href="uptodate.html#uptodate-api"><span class="std std-ref">later</span></a>:</p>
+<a class="reference internal" href="#uptodate-api"><span class="std std-ref">later</span></a>:</p>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="uptodate.html#result-dep"><span class="std std-ref">result_dep</span></a>: check if the result of another task
@@ -282,6 +288,125 @@ is <cite>up-to-date</cite> or not,
 to help you combine tasks
 so they are executed in appropriate order.</p>
 </div>
+<div class="section" id="uptodate-api">
+<span id="id1"></span><h2>uptodate API<a class="headerlink" href="#uptodate-api" title="Permalink to this headline">¶</a></h2>
+<p>This section will explain how to extend <code class="docutils literal"><span class="pre">doit</span></code> writing an <code class="docutils literal"><span class="pre">uptodate</span></code>
+implementation. So unless you need to write an <code class="docutils literal"><span class="pre">uptodate</span></code> implementation
+you can skip this.</p>
+<p>Let’s start with trivial example. <cite>uptodate</cite> is a function that returns
+a boolean value.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">fake_get_value_from_db</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">5</span>
+
+<span class="k">def</span> <span class="nf">check_outdated</span><span class="p">():</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">fake_get_value_from_db</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="mi">10</span>
+
+
+<span class="k">def</span> <span class="nf">task_put_more_stuff_in_db</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">put_stuff</span><span class="p">():</span> <span class="k">pass</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">put_stuff</span><span class="p">],</span>
+            <span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">check_outdated</span><span class="p">],</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+<p>You could also execute this function in the task-creator and pass the value
+to to <cite>uptodate</cite>. The advantage of just passing the callable is that this
+check will not be executed at all if the task was not selected to be executed.</p>
+<div class="section" id="example-run-once-implementation">
+<h3>Example: run-once implementation<a class="headerlink" href="#example-run-once-implementation" title="Permalink to this headline">¶</a></h3>
+<p>Most of the time an <cite>uptodate</cite> implementation will compare the current value
+of something with the value it had last time the task was executed.</p>
+<p>We already saw how tasks can save values by returning dict on its actions.
+But usually the “value” we want to check is independent from the task actions.
+So the first step is to add a callable to the task so it can save some extra
+values. These values are not used by the task itself, they are only used
+for dependency checking.</p>
+<p>The Task has a property called <code class="docutils literal"><span class="pre">value_savers</span></code> that contains a list of
+callables. These callables should return a dict that will be saved together
+with other task values. The <code class="docutils literal"><span class="pre">value_savers</span></code> will be executed after all actions.</p>
+<p>The second step is to actually compare the saved value with its “current” value.</p>
+<p>The <cite>uptodate</cite> callable can take two positional parameters <code class="docutils literal"><span class="pre">task</span></code> and <code class="docutils literal"><span class="pre">values</span></code>. The callable can also be represented by a tuple (callable, args, kwargs).</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">task</span></code> parameter will give you access to task object. So you have access
+to its metadata and opportunity to modify the task itself!</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">values</span></code> is a dictionary with the computed values saved in the last</dt>
+<dd>successful execution of the task.</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>Let’s take a look in the <code class="docutils literal"><span class="pre">run_once</span></code> implementation.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">run_once</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">save_executed</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;run-once&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+    <span class="n">task</span><span class="o">.</span><span class="n">value_savers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">save_executed</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;run-once&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal"><span class="pre">save_executed</span></code> returns a dict. In this case it is not checking
+for any value because it just checks it the task was ever executed.</p>
+<p>The next line we use the <code class="docutils literal"><span class="pre">task</span></code> parameter adding
+<code class="docutils literal"><span class="pre">save_executed</span></code> to <code class="docutils literal"><span class="pre">task.value_savers</span></code>.So whenever this task is executed this
+task value ‘run-once’ will be saved.</p>
+<p>Finally the return value should be a boolean to indicate if the task is
+up-to-date or not. Remember that the ‘values’ parameter contains the dict with
+the values saved from last successful execution of the task.
+So it just checks if this task was executed before by looking for the
+<code class="docutils literal"><span class="pre">run-once</span></code> entry in <code class="docutils literal"><span class="pre">`values</span></code>.</p>
+</div>
+<div class="section" id="example-timeout-implementation">
+<h3>Example: timeout implementation<a class="headerlink" href="#example-timeout-implementation" title="Permalink to this headline">¶</a></h3>
+<p>Let’s look another example, the <code class="docutils literal"><span class="pre">timeout</span></code>. The main difference is that
+we actually pass the parameter <code class="docutils literal"><span class="pre">timeout_limit</span></code>. Here we present
+a simplified version that only accepts integers (seconds) as a parameter.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">timeout</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_limit</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">limit_sec</span> <span class="o">=</span> <span class="n">timeout_limit</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">save_now</span><span class="p">():</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;success-time&#39;</span><span class="p">:</span> <span class="n">time_module</span><span class="o">.</span><span class="n">time</span><span class="p">()}</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">value_savers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">save_now</span><span class="p">)</span>
+        <span class="n">last_success</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;success-time&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">last_success</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">time_module</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">last_success</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit_sec</span>
+</pre></div>
+</div>
+<p>This is a class-based implementation where the objects are made callable
+by implementing a <code class="docutils literal"><span class="pre">__call__</span></code> method.</p>
+<p>On <code class="docutils literal"><span class="pre">__init__</span></code> we just save the <code class="docutils literal"><span class="pre">timeout_limit</span></code> as an attribute.</p>
+<p>The <code class="docutils literal"><span class="pre">__call__</span></code> is very similar with the <code class="docutils literal"><span class="pre">run-once</span></code> implementation.
+First it defines a function (<code class="docutils literal"><span class="pre">save_now</span></code>) that is registered
+into <code class="docutils literal"><span class="pre">task.value_savers</span></code>. Than it compares the current time
+with the time that was saved on last successful execution.</p>
+</div>
+<div class="section" id="example-result-dep-implementation">
+<h3>Example: result_dep implementation<a class="headerlink" href="#example-result-dep-implementation" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">result_dep</span></code> is more complicated due to two factors. It needs to modify
+the task’s <code class="docutils literal"><span class="pre">task_dep</span></code>.
+And it needs to check the task’s saved values and metadata
+from a task different from where it is being applied.</p>
+<p>A <code class="docutils literal"><span class="pre">result_dep</span></code> implies that its dependency is also a <code class="docutils literal"><span class="pre">task_dep</span></code>.
+We have seen that the callable takes a <cite>task</cite> parameter that we used
+to modify the task object. The problem is that modifying <code class="docutils literal"><span class="pre">task_dep</span></code>
+when the callable gets called would be “too late” according to the
+way <cite>doit</cite> works. When an object is passed <code class="docutils literal"><span class="pre">uptodate</span></code> and this
+object’s class has a method named <code class="docutils literal"><span class="pre">configure_task</span></code> it will be called
+during the task creation.</p>
+<p>The base class <code class="docutils literal"><span class="pre">dependency.UptodateCalculator</span></code> gives access to
+an attribute named <code class="docutils literal"><span class="pre">tasks_dict</span></code> containing a dictionary with
+all task objects where the <code class="docutils literal"><span class="pre">key</span></code> is the task name (this is used to get all
+sub-tasks from a task-group). And also a method called <code class="docutils literal"><span class="pre">get_val</span></code> to access
+the saved values and results from any task.</p>
+<p>See the <cite>result_dep</cite> <a class="reference external" href="https://github.com/pydoit/doit/blob/master/doit/task.py">source</a>.</p>
+</div>
+</div>
 <div class="section" id="task-dependency">
 <h2>task-dependency<a class="headerlink" href="#task-dependency" title="Permalink to this headline">¶</a></h2>
 <p>It is used to enforce tasks are executed on the desired order.
@@ -332,50 +457,6 @@ its <cite>actions</cite> to <code class="docutils literal"><span class="pre">Non
 </pre></div>
 </div>
 <p>Note that tasks are never executed twice in the same “run”.</p>
-</div>
-</div>
-<div class="section" id="calculated-dependencies">
-<span id="attr-calc-dep"></span><h2>calculated-dependencies<a class="headerlink" href="#calculated-dependencies" title="Permalink to this headline">¶</a></h2>
-<p>Calculation of dependencies might be an expensive operation, so not suitable
-to be done on load time by task-creators.
-For this situation it is better to delegate
-the calculation of dependencies to another task.
-The task calculating dependencies must have a python-action returning a
-dictionary with <cite>file_dep</cite>, <cite>task_dep</cite>, <cite>uptodate</cite> or another <cite>calc_dep</cite>.</p>
-<p>On the example below <code class="docutils literal"><span class="pre">mod_deps</span></code> prints on the screen all direct dependencies
-from a module. The dependencies itself are calculated on task <code class="docutils literal"><span class="pre">get_dep</span></code>
-(note: get_dep has a fake implementation where the results are taken from a dict).</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-
-<span class="n">MOD_IMPORTS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">],</span>
-               <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">],</span>
-               <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[],</span>
-               <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">],</span>
-               <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="p">[]}</span>
-
-
-<span class="k">def</span> <span class="nf">print_deps</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> -&gt; </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">))</span>
-<span class="k">def</span> <span class="nf">task_mod_deps</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;task that depends on all direct imports&quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">MOD_IMPORTS</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">mod</span><span class="p">,</span>
-               <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">print_deps</span><span class="p">,(</span><span class="n">mod</span><span class="p">,))],</span>
-               <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mod</span><span class="p">],</span>
-               <span class="s1">&#39;calc_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;get_dep:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mod</span><span class="p">],</span>
-               <span class="p">}</span>
-
-<span class="k">def</span> <span class="nf">get_dep</span><span class="p">(</span><span class="n">mod</span><span class="p">):</span>
-    <span class="c1"># fake implementation</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="n">MOD_IMPORTS</span><span class="p">[</span><span class="n">mod</span><span class="p">]}</span>
-<span class="k">def</span> <span class="nf">task_get_dep</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;get direct dependencies for each module&quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">MOD_IMPORTS</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">mod</span><span class="p">,</span>
-               <span class="s1">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">get_dep</span><span class="p">,[</span><span class="n">mod</span><span class="p">])],</span>
-               <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mod</span><span class="p">],</span>
-               <span class="p">}</span>
-</pre></div>
 </div>
 </div>
 <div class="section" id="setup-task">
@@ -467,7 +548,7 @@ parameter with the <em>name</em> used to save the output in <em>values</em></p>
 Check those sections for examples.</p>
 </div>
 <div class="section" id="getargs">
-<span id="id1"></span><h2>getargs<a class="headerlink" href="#getargs" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>getargs<a class="headerlink" href="#getargs" title="Permalink to this headline">¶</a></h2>
 <p><cite>getargs</cite> provides a way to use values computed from one task in another task.
 The values are taken from “saved computed values”
 (returned dict from a python-action).</p>
@@ -549,6 +630,55 @@ by specifying the value name as <code class="docutils literal"><span class="pre"
 <p class="last"><code class="docutils literal"><span class="pre">getargs</span></code> creates an implicit setup-task.</p>
 </div>
 </div>
+<div class="section" id="calculated-dependencies">
+<span id="attr-calc-dep"></span><h2>calculated-dependencies<a class="headerlink" href="#calculated-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Calculation of dependencies might be an expensive operation, so not suitable
+to be done on load time by task-creators.
+For this situation it is better to delegate
+the calculation of dependencies to another task.
+The task calculating dependencies must have a python-action returning a
+dictionary with <cite>file_dep</cite>, <cite>task_dep</cite>, <cite>uptodate</cite> or another <cite>calc_dep</cite>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">An alternative way (and often easier) to have task attributes that
+rely on other tasks execution is to use <cite>delayed tasks &lt;delayed-task-creation&gt;</cite>.</p>
+</div>
+<p>On the example below <code class="docutils literal"><span class="pre">mod_deps</span></code> prints on the screen all direct dependencies
+from a module. The dependencies itself are calculated on task <code class="docutils literal"><span class="pre">get_dep</span></code>
+(note: get_dep has a fake implementation where the results are taken from a dict).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+
+<span class="n">MOD_IMPORTS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[],</span>
+               <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+
+
+<span class="k">def</span> <span class="nf">print_deps</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> -&gt; </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">task_mod_deps</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;task that depends on all direct imports&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">MOD_IMPORTS</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">mod</span><span class="p">,</span>
+               <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">print_deps</span><span class="p">,(</span><span class="n">mod</span><span class="p">,))],</span>
+               <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mod</span><span class="p">],</span>
+               <span class="s1">&#39;calc_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;get_dep:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mod</span><span class="p">],</span>
+               <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">get_dep</span><span class="p">(</span><span class="n">mod</span><span class="p">):</span>
+    <span class="c1"># fake implementation</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="n">MOD_IMPORTS</span><span class="p">[</span><span class="n">mod</span><span class="p">]}</span>
+<span class="k">def</span> <span class="nf">task_get_dep</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;get direct dependencies for each module&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">MOD_IMPORTS</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">mod</span><span class="p">,</span>
+               <span class="s1">&#39;actions&#39;</span><span class="p">:[(</span><span class="n">get_dep</span><span class="p">,[</span><span class="n">mod</span><span class="p">])],</span>
+               <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mod</span><span class="p">],</span>
+               <span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -561,7 +691,7 @@ by specifying the value name as <code class="docutils literal"><span class="pre"
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="cmd_run.html" title="Command line interface - run"
+          <a href="task_creation.html" title="More on Task creation"
              >next</a></li>
         <li class="right" >
           <a href="tasks.html" title="Tasks"

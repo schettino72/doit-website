@@ -195,7 +195,14 @@ reach the docs describing the command line…</p>
 <span id="main-doc-toc"></span><h2>documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#pip">pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#source">Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#git-repository">git repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#os-package">OS package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#anaconda">Anaconda</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tasks.html#intro">Intro</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tasks.html#actions">Actions</a></li>
@@ -216,11 +223,18 @@ reach the docs describing the command line…</p>
 <li class="toctree-l1"><a class="reference internal" href="dependencies.html">More on dependencies</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html#uptodate">uptodate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html#doit-up-to-date-definition">doit up-to-date definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#uptodate-api">uptodate API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html#task-dependency">task-dependency</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dependencies.html#calculated-dependencies">calculated-dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html#setup-task">setup-task</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html#saving-computed-values">saving computed values</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html#getargs">getargs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#calculated-dependencies">calculated-dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task_creation.html">More on Task creation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task_creation.html#importing-tasks">importing tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_creation.html#delayed-task-creation">delayed task creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_creation.html#custom-task-definition">custom task definition</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cmd_run.html">Command line interface - run</a><ul>
@@ -274,19 +288,12 @@ reach the docs describing the command line…</p>
 <li class="toctree-l2"><a class="reference internal" href="task_args.html#command-line-variables-doit-get-var">command line variables (<em>doit.get_var</em>)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="task_creation.html">More on Task creation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="task_creation.html#importing-tasks">importing tasks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_creation.html#delayed-task-creation">delayed task creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_creation.html#custom-task-definition">custom task definition</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="uptodate.html">custom uptodate</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="uptodate.html#result-dependency">result-dependency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uptodate.html#run-once">run_once()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uptodate.html#timeout">timeout()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uptodate.html#config-changed">config_changed()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uptodate.html#check-timestamp-unchanged">check_timestamp_unchanged()</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uptodate.html#uptodate-api">uptodate API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a><ul>
@@ -321,45 +328,46 @@ reach the docs describing the command line…</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id1">0.31.0 (<em>2018-02-25</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id2">0.30.3 (<em>2017-02-20</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id3">0.30.2 (<em>2017-02-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id4">0.30.1 (<em>2017-02-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id5">0.30.0 (<em>2016-11-22</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id6">0.29.0 (<em>2015-08-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id7">0.28.0 (<em>2015-04-22</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id8">0.27.0 (<em>2015-01-30</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id9">0.26.0 (<em>2014-08-30</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id10">0.25.0 (<em>2014-03-26</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id11">0.24.0 (<em>2013-11-24</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id12">0.23.0 (<em>2013-09-20</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id13">0.22.1 (<em>2013-08-04</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id14">0.22.0 (<em>2013-07-05</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id15">0.21.1 (<em>2013-05-21</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id16">0.21.0 (<em>2013-04-29</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id17">0.20.0 (<em>2013-01-09</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id18">0.19.0 (<em>2012-12-18</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id19">0.18.1 (<em>2012-12-03</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id20">0.18.0 (<em>2012-11-27</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id21">0.17.0 (<em>2012-09-20</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id22">0.16.1 (<em>2012-05-13</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id23">0.16.0 (<em>2012-04-23</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id24">0.15.0 (<em>2012-01-10</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id25">0.14.0 (<em>2011-11-05</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id26">0.13.0 (<em>2011-07-18</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id27">0.12.0 (<em>2011-05-29</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id28">0.11.0 (<em>2011-04-20</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id29">0.10.0 (<em>2011-01-24</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id30">0.9.0 (<em>2010-06-08</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id31">0.8.0 (<em>2010-05-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id32">0.7.0 (<em>2010-04-08</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id33">0.6.0 (<em>2010-01-25</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id34">0.5.1 (<em>2009-12-03</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id35">0.5.0 (<em>2009-11-30</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id36">0.4.0 (<em>2009-10-05</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id37">0.3.0 (<em>2009-08-30</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id38">0.2.0 (<em>2009-04-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id39">0.1.0 (<em>2008-04-14</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id1">0.31.1 (<em>2018-03-18</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id2">0.31.0 (<em>2018-02-25</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id3">0.30.3 (<em>2017-02-20</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id4">0.30.2 (<em>2017-02-16</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id5">0.30.1 (<em>2017-02-16</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id6">0.30.0 (<em>2016-11-22</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id7">0.29.0 (<em>2015-08-16</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id8">0.28.0 (<em>2015-04-22</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id9">0.27.0 (<em>2015-01-30</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id10">0.26.0 (<em>2014-08-30</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id11">0.25.0 (<em>2014-03-26</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id12">0.24.0 (<em>2013-11-24</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id13">0.23.0 (<em>2013-09-20</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id14">0.22.1 (<em>2013-08-04</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id15">0.22.0 (<em>2013-07-05</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id16">0.21.1 (<em>2013-05-21</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id17">0.21.0 (<em>2013-04-29</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id18">0.20.0 (<em>2013-01-09</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id19">0.19.0 (<em>2012-12-18</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id20">0.18.1 (<em>2012-12-03</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id21">0.18.0 (<em>2012-11-27</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id22">0.17.0 (<em>2012-09-20</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id23">0.16.1 (<em>2012-05-13</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id24">0.16.0 (<em>2012-04-23</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id25">0.15.0 (<em>2012-01-10</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id26">0.14.0 (<em>2011-11-05</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id27">0.13.0 (<em>2011-07-18</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id28">0.12.0 (<em>2011-05-29</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id29">0.11.0 (<em>2011-04-20</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id30">0.10.0 (<em>2011-01-24</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id31">0.9.0 (<em>2010-06-08</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id32">0.8.0 (<em>2010-05-16</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id33">0.7.0 (<em>2010-04-08</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id34">0.6.0 (<em>2010-01-25</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id35">0.5.1 (<em>2009-12-03</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id36">0.5.0 (<em>2009-11-30</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id37">0.4.0 (<em>2009-10-05</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id38">0.3.0 (<em>2009-08-30</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id39">0.2.0 (<em>2009-04-16</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id40">0.1.0 (<em>2008-04-14</em>)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>

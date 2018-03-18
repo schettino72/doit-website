@@ -562,7 +562,11 @@
         <span class="n">db_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backends</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;backend&#39;</span><span class="p">])</span>
         <span class="n">checker_cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_checker_cls</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;check_file_uptodate&#39;</span><span class="p">])</span>
         <span class="c1"># note the command have the responsibility to call dep_manager.close()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dep_manager</span> <span class="o">=</span> <span class="n">Dependency</span><span class="p">(</span><span class="n">db_class</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dep_file&#39;</span><span class="p">],</span> <span class="n">checker_cls</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dep_manager</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># dep_manager might have been already set (used on unit-test)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dep_manager</span> <span class="o">=</span> <span class="n">Dependency</span><span class="p">(</span>
+                <span class="n">db_class</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dep_file&#39;</span><span class="p">],</span> <span class="n">checker_cls</span><span class="p">)</span>
 
         <span class="c1"># hack to pass parameter into _execute() calls that are not part</span>
         <span class="c1"># of command line options</span>
