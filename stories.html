@@ -259,7 +259,7 @@ that is an input toward the beginning of this workflow,
 <cite>doit</cite> will allow me to automatically update all my
 results without missing a step.</p>
 <p>I tried to do this with <cite>Make</cite> first.
-<cite>Make</cite> just wasn’t made to do what I want.
+<cite>Make</cite> just was not made to do what I want.
 Also, my lab’s software has python bindings, so my entire workflow can be
 in python.
 Also, the ability to script anything directly into the workflow is
@@ -325,7 +325,7 @@ many users and contributors.</p>
 <p><a class="reference external" href="https://carvesystems.com">Carve Systems</a> uses <cite>doit</cite> as the core automation tool
 for all of our document production. This customized tool based on Pandoc, Latex, and
 coordinated by <cite>doit</cite> is used by everyone in our company to prepare our primary
-customer facing deliverable. Previously we used makefiles to coordinate builds. <cite>doit</cite>
+customer facing deliverable. Previously we used Makefiles to coordinate builds. <cite>doit</cite>
 let us create a system that can be more easily maintained, tested, and extended using
 plugins.</p>
 </div>
@@ -335,16 +335,16 @@ plugins.</p>
 <div class="section" id="university-of-oslo-library-norway">
 <h3><a class="toc-backref" href="#id12">University of Oslo Library, Norway</a><a class="headerlink" href="#university-of-oslo-library-norway" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="#https-data-ub-uio-no">by</a> <a class="reference external" href="https://github.com/danmichaelo">Dan Michael O. Heggø</a> (2018-02-26)</p>
-<p>We’re using <cite>doit</cite> for the publishing workflow at our vocabulary server <a class="reference external" href="https://data.ub.uio.no/">https://data.ub.uio.no/</a> .
+<p>We are using <cite>doit</cite> for the publishing workflow at our vocabulary server <a class="reference external" href="https://data.ub.uio.no/">https://data.ub.uio.no/</a> .
 The server checks multiple remote sources for changes, and when there’s new changes somewhere, the data is fetched,
 converted to different formats, published and pushed to Fuseki and Elasticsearch.</p>
 <p>One part I love about <cite>doit</cite> is that you can control what is considered a change.
-For remote files, I’ve created a task that checks if some header, like ETag or Last-Modified, has changed.
-If it hasn’t, I set <cite>uptodate</cite> to True and stop there.</p>
+For remote files, I have created a task that checks if some header, like ETag or Last-Modified, has changed.
+If it has not, I set <cite>uptodate</cite> to True and stop there.</p>
 <p>Another part I love is the ability to re-use tasks.
 Each vocabulary (like <a class="reference external" href="https://github.com/realfagstermer/realfagstermer">https://github.com/realfagstermer/realfagstermer</a> and <a class="reference external" href="https://github.com/scriptotek/humord">https://github.com/scriptotek/humord</a>)
 has a different publication workflow, but many tasks are shared.
-With <cite>doit</cite>, I’ve created a collection of tasks and task generators (<a class="reference external" href="https://github.com/scriptotek/data_ub_tasks/">https://github.com/scriptotek/data_ub_tasks/</a>)
+With <cite>doit</cite>, I have created a collection of tasks and task generators (<a class="reference external" href="https://github.com/scriptotek/data_ub_tasks/">https://github.com/scriptotek/data_ub_tasks/</a>)
 that I use with all the vocabularies.</p>
 <p>Finally, it’s great that you can mix shell commands and Python tasks so easily.
 This cuts development time and makes the move from using Makefiles much easier.</p>
