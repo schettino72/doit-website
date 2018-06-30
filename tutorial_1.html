@@ -227,8 +227,11 @@
 <p>As example the <a class="reference external" href="https://github.com/requests/requests">requests</a> package will be used. The result is the image below:</p>
 <img alt="_images/requests.png" src="_images/requests.png" />
 <p>In the image an arrow represents an import from one module to another. For example in the left side of image you can see an arrow from <cite>requests.status_codes</cite> to <cite>requests.structures</cite>. This comes from the following line in <cite>status_code.py</cite>:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">requests/status_codes.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.structures</span> <span class="k">import</span> <span class="n">LookupDict</span>
 </pre></div>
+</div>
 </div>
 <p>Drawing an “import” dependency graph can be very useful to understand how the code in a package is organized.
 It may also help you identify potential problems like circular imports.</p>
@@ -282,8 +285,8 @@ It may also help you identify potential problems like circular imports.</p>
 <p>Next step we are going to wrap the above script in a <code class="docutils literal"><span class="pre">doit</span></code> <em>task</em>.
 In <code class="docutils literal"><span class="pre">doit</span></code> tasks are defined in a plain python module, by default called <code class="docutils literal"><span class="pre">dodo.py</span></code>.</p>
 <p>For example a trivial task to execute the script above and save its output into a file would be:</p>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">dodo.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">dodo.py</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-python3"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">task_imports</span><span class="p">():</span>
      <span class="k">return</span> <span class="p">{</span>
          <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;python -m import_deps &#39;</span>
