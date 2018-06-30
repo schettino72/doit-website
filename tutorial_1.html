@@ -151,8 +151,12 @@
 <li><a class="reference internal" href="#getargs-from-group-task">getargs from group-task</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#printing-imports">printing imports</a><ul>
+<li><a class="reference internal" href="#custom-uptodate">custom <cite>uptodate</cite></a></li>
 <li><a class="reference internal" href="#verbosity">verbosity</a></li>
 <li><a class="reference internal" href="#doit-config">DOIT_CONFIG</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -222,6 +226,18 @@
 <a class="reference external" href="http://graphviz.org/">graphviz</a>’s <strong>dot</strong> tool will be used to generate the graph.</p>
 <p>As example the <a class="reference external" href="https://github.com/requests/requests">requests</a> package will be used. The result is the image below:</p>
 <img alt="_images/requests.png" src="_images/requests.png" />
+<p>In the image an arrow represents an import from one module to another. For example in the left side of image you can see an arrow from <cite>requests.status_codes</cite> to <cite>requests.structures</cite>. This comes from the following line in <cite>status_code.py</cite>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.structures</span> <span class="k">import</span> <span class="n">LookupDict</span>
+</pre></div>
+</div>
+<p>Drawing an “import” dependency graph can be very useful to understand how the code in a package is organized.
+It may also help you identify potential problems like circular imports.</p>
+<p>There are three main steps to generate this graph:</p>
+<ol class="arabic simple">
+<li>read each python module and list it’s imports</li>
+<li>generate a <cite>dot</cite> (text format) file representing the graph</li>
+<li>generate an image (PNG) from the <cite>dot</cite> file</li>
+</ol>
 <div class="section" id="setup">
 <h2>setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="required-python-packages">
@@ -246,7 +262,7 @@
 </div>
 <div class="section" id="finding-a-module-s-import">
 <h2>finding a module’s import<a class="headerlink" href="#finding-a-module-s-import" title="Permalink to this headline">¶</a></h2>
-<p>Using <code class="docutils literal"><span class="pre">import_deps</span></code> list all (intra-packages) imports from a module:</p>
+<p>Using <a class="reference external" href="https://github.com/schettino72/import-deps">import_deps</a> list all (intra-packages) imports from a module:</p>
 <p>For example:</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python -m import_deps projects/requests/requests/models.py
 <span class="go">requests._internal_utils</span>
@@ -281,8 +297,8 @@ the role of these functions is not to execute tasks but to return task’s metad
 <strong>task-creators</strong> are any function whose name starts with <code class="docutils literal"><span class="pre">task_</span></code>.
 A task name is taken from the function name,
 in this case the name is <code class="docutils literal"><span class="pre">imports</span></code>.</p>
-<p>The most important Task metadata is <code class="docutils literal"><span class="pre">actions</span></code>, this defines what will be done when a task is executed.</p>
-<p>Note that <code class="docutils literal"><span class="pre">actions</span></code> is list where its element is a string with a shell command.</p>
+<p>The most important <em>Task</em> metadata is <code class="docutils literal"><span class="pre">actions</span></code>, this defines what will be done when a task is executed.</p>
+<p>Note that <code class="docutils literal"><span class="pre">actions</span></code> is a list where its element are a string with a shell command.</p>
 </div>
 <div class="section" id="task-execution">
 <h3>task execution<a class="headerlink" href="#task-execution" title="Permalink to this headline">¶</a></h3>
@@ -323,9 +339,9 @@ that the same output would be generated…</p>
 <span class="go">--  imports</span>
 </pre></div>
 </div>
-<p>Note that the second time there is a <code class="docutils literal"><span class="pre">--</span></code> instead of <code class="docutils literal"><span class="pre">.</span></code> before the task name.
+<p>Note that the second time there is a <code class="docutils literal"><span class="pre">--</span></code> instead of <code class="docutils literal"><span class="pre">.</span></code> preceding the task name.
 This means that the task was not executed, <code class="docutils literal"><span class="pre">doit</span></code> understood that
-the task output would be the same as previously executed,
+the task output would be the same as previously generated,
 so it does not execute the task again.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -439,7 +455,8 @@ where <code class="docutils literal"><span class="pre">options</span></code> and
 <div class="section" id="doit-help">
 <h3>doit help<a class="headerlink" href="#doit-help" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">doit</span> <span class="pre">help</span></code> will list all available sub-commands.</p>
-<p>You can also get help for a specific sub-command with <code class="docutils literal"><span class="pre">doit</span> <span class="pre">help</span> <span class="pre">&lt;sub-command&gt;</span></code>, i.e. <code class="docutils literal"><span class="pre">doit</span> <span class="pre">help</span> <span class="pre">run</span></code>.</p>
+<p>You can get help for a specific sub-command with <code class="docutils literal"><span class="pre">doit</span> <span class="pre">help</span> <span class="pre">&lt;sub-command&gt;</span></code>, i.e. <code class="docutils literal"><span class="pre">doit</span> <span class="pre">help</span> <span class="pre">run</span></code>.</p>
+<p>You can also get help for the task metadata fields with <code class="docutils literal"><span class="pre">doit</span> <span class="pre">help</span> <span class="pre">task</span></code>.</p>
 </div>
 <div class="section" id="doit-list">
 <h3>doit list<a class="headerlink" href="#doit-list" title="Permalink to this headline">¶</a></h3>
@@ -450,7 +467,7 @@ where <code class="docutils literal"><span class="pre">options</span></code> and
 <span class="go">imports   find imports from a python module</span>
 </pre></div>
 </div>
-<p>Note how the docstring from task-creators functions were used as task’s description.</p>
+<p>Note how the docstring from <em>task-creators</em> functions were used as task’s description.</p>
 </div>
 <div class="section" id="info">
 <h3>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h3>
@@ -484,7 +501,7 @@ You can also select which tasks to be executed by passing a sequence of tasks na
 </pre></div>
 </div>
 <p>Note that even if you explicitly pass the name of task to be executed,
-<code class="docutils literal"><span class="pre">doit</span></code> will actually execute the task only if it is not up-to-date.</p>
+<code class="docutils literal"><span class="pre">doit</span></code> will actually execute the task only if it is not <strong>up-to-date</strong>.</p>
 <p>You can also pass more than one task:</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit imports dot
 <span class="go">-- imports</span>
@@ -504,7 +521,8 @@ if you specify only one task <code class="docutils literal"><span class="pre">do
 <h3>clean<a class="headerlink" href="#clean" title="Permalink to this headline">¶</a></h3>
 <p>A common use-case is to be able to “revert” the operations done by a task.
 <code class="docutils literal"><span class="pre">doit</span></code> provides the <code class="docutils literal"><span class="pre">clean</span></code> command for that.</p>
-<p>By default it does nothing… You need to add a parameter <code class="docutils literal"><span class="pre">clean</span></code> to task metadata. You write custom <code class="docutils literal"><span class="pre">actions</span></code> (shell or python) of what should be done. But for the most common case you just want to remove the created targets. For that you can just pass the value <code class="docutils literal"><span class="pre">True</span></code>.</p>
+<p>By default it does nothing… You need to add a parameter <code class="docutils literal"><span class="pre">clean</span></code> to task metadata. For the most common case where you just want to remove the created targets, just pass the value <code class="docutils literal"><span class="pre">True</span></code>.</p>
+<p>You can also write custom <code class="docutils literal"><span class="pre">actions</span></code> (shell or python) of what should be done as a value to <code class="docutils literal"><span class="pre">clean</span></code> field.</p>
 <p>Add <code class="docutils literal"><span class="pre">clean</span></code> to all defined tasks, like:</p>
 <div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_draw</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;generate image from a dot file&quot;&quot;&quot;</span>
@@ -533,7 +551,8 @@ if you specify only one task <code class="docutils literal"><span class="pre">do
 </div>
 <div class="section" id="forget">
 <h3>forget<a class="headerlink" href="#forget" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">doit</span></code> will look for changes in dependencies, but not changes in your code… While developing a task it is common to want to force the execution of task.</p>
+<p><code class="docutils literal"><span class="pre">doit</span></code> will look for changes in dependencies, but not changes in your code…
+While developing a task it is common to want to force the execution of task after making changes in the code.</p>
 <p>For example lets change the colors of nodes in graph:</p>
 <div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">module_to_dot</span><span class="p">(</span><span class="n">dependencies</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
     <span class="n">graph</span> <span class="o">=</span> <span class="n">pygraphviz</span><span class="o">.</span><span class="n">AGraph</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -559,13 +578,14 @@ if you specify only one task <code class="docutils literal"><span class="pre">do
 <img alt="_images/requests.models-blue.png" src="_images/requests.models-blue.png" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">run</span></code> command also has the option <code class="docutils literal"><span class="pre">-a/--always-execute</span></code> that will ignore the <strong>up-to-date</strong> check and always execute tasks.</p>
+<p class="last">Another option force execution of task after code changes is to use <cite>run`</cite>’s command option <code class="docutils literal"><span class="pre">-a/--always-execute</span></code>. That will ignore the <strong>up-to-date</strong> check and always execute tasks.</p>
 </div>
+<p>Code <a class="reference download internal" href="_downloads/tuto_1_1.py" download=""><code class="xref download docutils literal"><span class="pre">dodo.py</span></code></a>.</p>
 </div>
 </div>
 <div class="section" id="pipelines">
 <h2>Pipelines<a class="headerlink" href="#pipelines" title="Permalink to this headline">¶</a></h2>
-<p>So far we have relied on the pipeline based on files. Where one task’s target is used as a dependency in another task.</p>
+<p>So far we have build a traditional “file” based pipeline where one task’s target is used as a dependency in another task.</p>
 <p>While <code class="docutils literal"><span class="pre">doit</span></code> provides first-class support for file based pipelines, they are not required.</p>
 <div class="section" id="get-module-imports-python">
 <h3>get module imports - python<a class="headerlink" href="#get-module-imports-python" title="Permalink to this headline">¶</a></h3>
@@ -592,11 +612,14 @@ if you specify only one task <code class="docutils literal"><span class="pre">do
 It returns a dictionary, this will be saved by <code class="docutils literal"><span class="pre">doit</span></code> in its internal database. The returned dictionary must contain only values that can be encoded in JSON.</p>
 <p>Note that the parameter <code class="docutils literal"><span class="pre">module_path</span></code> is passed into task definition of <code class="docutils literal"><span class="pre">actions</span></code>.
 Instead of just specifying a callable it takes a tuple <em>(callable, args, kwargs)</em>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note in this example for simplicity we are using <code class="docutils literal"><span class="pre">doit</span></code> internal database but it is also possible to use any other external database or data source.</p>
+</div>
 </div>
 <div class="section" id="getargs">
 <h3>getargs<a class="headerlink" href="#getargs" title="Permalink to this headline">¶</a></h3>
-<p>The task parameter <code class="docutils literal"><span class="pre">getargs</span></code> can be used to specify values that are
-computed in another task.
+<p>The task parameter <code class="docutils literal"><span class="pre">getargs</span></code> can be used to specify values to be retrieved that are computed in another task.
 It is a dictionary where the <em>key</em> is the parameter name used in this task’s action parameter.
 It’s value is 2-value tuple where the first item is the task name, and the second is the value name (key in the returned dictionary).</p>
 <div class="highlight-python3"><div class="highlight"><pre><span></span><span class="hll"><span class="k">def</span> <span class="nf">module_to_dot</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sinks</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
@@ -624,9 +647,10 @@ It’s value is 2-value tuple where the first item is the task name, and the sec
 <li><code class="docutils literal"><span class="pre">imports</span></code>: value is taken from <code class="docutils literal"><span class="pre">imports</span></code> task result</li>
 <li><code class="docutils literal"><span class="pre">targets</span></code>: values is taken from Task metadata</li>
 </ul>
-<p>Everything should work as before, without the creation of intermediate files.</p>
-<p><code class="docutils literal"><span class="pre">doit</span></code> can determine if <code class="docutils literal"><span class="pre">imports</span></code> is <strong>up-to-date</strong> even without a target file (it just look at the <code class="docutils literal"><span class="pre">file_dep</span></code>).</p>
+<p>Everything should work as before, but without the creation of intermediate files.</p>
+<p><code class="docutils literal"><span class="pre">doit</span></code> can determine if task <code class="docutils literal"><span class="pre">imports</span></code> is <strong>up-to-date</strong> even without a target file (it just look at the <code class="docutils literal"><span class="pre">file_dep</span></code>).</p>
 <p><code class="docutils literal"><span class="pre">doit</span></code> can also determine if <code class="docutils literal"><span class="pre">dot</span></code> is <strong>up-to-date</strong> by comparing the value returned by <code class="docutils literal"><span class="pre">imports</span></code> (instead of checking for file changes, it checks for changes in the JSON object).</p>
+<p>Code <a class="reference download internal" href="_downloads/tuto_1_2.py" download=""><code class="xref download docutils literal"><span class="pre">dodo.py</span></code></a>.</p>
 </div>
 </div>
 <div class="section" id="package-imports">
@@ -635,7 +659,7 @@ It’s value is 2-value tuple where the first item is the task name, and the sec
 Let’s process all modules in the package.</p>
 <p><code class="docutils literal"><span class="pre">doit</span></code> has the concept of a <strong>task-group</strong>.
 A task group performs the same operation over a set of instances.
-To create a task group the task-creator function should <code class="docutils literal"><span class="pre">yield</span></code> one more task dictionaries with task metadata.</p>
+To create a task group the task-creator function should <code class="docutils literal"><span class="pre">yield</span></code> one or more task dictionaries with task metadata.</p>
 <p>Note that each task is still independent.
 Since each task needs to be independently identified an extra parameter <code class="docutils literal"><span class="pre">name</span></code> must be provided.</p>
 <div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_imports</span><span class="p">(</span><span class="n">pkg_modules</span><span class="p">,</span> <span class="n">module_path</span><span class="p">):</span>
@@ -685,7 +709,7 @@ Since each task needs to be independently identified an extra parameter <code cl
 </pre></div>
 </div>
 <p>Note the task name is composed by the (base name) group task name
-followed by a colon <cite>:</cite> and the <cite>name</cite> specified as a parameter.</p>
+followed by a colon <cite>:</cite> and the <code class="docutils literal"><span class="pre">name</span></code> specified as a parameter.</p>
 <p>From command line a single task can executed like:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ doit imports:requests.models
 .  imports:requests.models
@@ -728,15 +752,104 @@ key is the sub-task name:</p>
 </div>
 <p>Running <code class="docutils literal"><span class="pre">doit</span></code> you should get the file <code class="docutils literal"><span class="pre">requests.png</span></code> with the image below:</p>
 <img alt="_images/requests.png" src="_images/requests.png" />
+<p>Code <a class="reference download internal" href="_downloads/tuto_1_3.py" download=""><code class="xref download docutils literal"><span class="pre">dodo.py</span></code></a>.</p>
+</div>
+</div>
+<div class="section" id="printing-imports">
+<h2>printing imports<a class="headerlink" href="#printing-imports" title="Permalink to this headline">¶</a></h2>
+<p>Getting rid of intermediate computation files (like <code class="docutils literal"><span class="pre">requests.models.deps</span></code>) was nice…
+but sometimes it is nice to be able to quickly list the direct imports from a module.</p>
+<p>Let’s create another task just print it’s output in the terminal.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">base_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;projects/requests/requests&#39;</span><span class="p">)</span>
+<span class="n">PKG_MODULES</span> <span class="o">=</span> <span class="n">ModuleSet</span><span class="p">(</span><span class="n">base_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.py&#39;</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">print_imports</span><span class="p">(</span><span class="n">modules</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">modules</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">task_print</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;print on stdout list of direct module imports&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">PKG_MODULES</span><span class="o">.</span><span class="n">by_name</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="p">{</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">print_imports</span><span class="p">],</span>
+            <span class="s1">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;modules&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;imports:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="s1">&#39;modules&#39;</span><span class="p">)},</span>
+<span class="hll">            <span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">],</span>
+</span><span class="hll">            <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span>        <span class="p">}</span>
+</pre></div>
+</div>
+<p>Here again we used a <strong>task-group</strong> to create one task per python module. And <code class="docutils literal"><span class="pre">getargs</span></code> to get list of module imports that were already calculated on <code class="docutils literal"><span class="pre">imports</span></code> task.</p>
+<p>Also note the usage of two metadata fields not seen before <code class="docutils literal"><span class="pre">uptodate</span></code> and <code class="docutils literal"><span class="pre">verbosity</span></code>.</p>
+<div class="section" id="custom-uptodate">
+<h3>custom <cite>uptodate</cite><a class="headerlink" href="#custom-uptodate" title="Permalink to this headline">¶</a></h3>
+<p>So far we have seen how <code class="docutils literal"><span class="pre">doit</span></code> can determine if a task is <strong>up-to-date</strong> by taking into account changes to <code class="docutils literal"><span class="pre">file_dep</span></code>, if <code class="docutils literal"><span class="pre">targets</span></code> exist and results from <code class="docutils literal"><span class="pre">getargs</span></code>…</p>
+<p>While those cover a wide range of use cases, <code class="docutils literal"><span class="pre">doit</span></code> also provides a way to specify completely custom checks for  <strong>up-to-date</strong>, using the <code class="docutils literal"><span class="pre">uptodate</span></code> field.</p>
+<p>In this case the <code class="docutils literal"><span class="pre">print</span></code> task actually does not perform any computation, it is being used to display some info to the user.
+So this task should be <strong>always</strong> executed.</p>
+<p><code class="docutils literal"><span class="pre">update</span></code> will be explained in detail in part 2 of this tutorial.
+For now suffice to add value <code class="docutils literal"><span class="pre">False</span></code> to indicate this task will never be considered <strong>up-do-date</strong>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="bp">False</span><span class="p">],</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="verbosity">
-<h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
-<p>TODO</p>
+<h3>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">doit</span></code> output (for command <code class="docutils literal"><span class="pre">run</span></code>) consists of:</p>
+<ul class="simple">
+<li>one line with task name (preceded by <cite>.</cite> or <cite>–</cite>)</li>
+<li>task output</li>
+</ul>
+<p>The actual task output displayed can be controlled by <code class="docutils literal"><span class="pre">verbosity</span></code>,
+there are 3 levels of verbosity.</p>
+<ul class="simple">
+<li>0: both stdout and stderr from task are <strong>NOT</strong> displayed</li>
+<li>1: only stderr is displayed</li>
+<li>2: both stdout and stderr are displayed</li>
+</ul>
+<p>The default verbosity is <cite>1</cite>.</p>
+<p>If <code class="docutils literal"><span class="pre">print</span></code> task was executed with default verbosity we would actually not see any output, so we must force its <code class="docutils literal"><span class="pre">verbosity</span></code> value to <code class="docutils literal"><span class="pre">2</span></code>.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit print:requests.models
+<span class="go">-- imports:requests.models</span>
+<span class="go">.  print:requests.models</span>
+<span class="go">requests._internal_utils</span>
+<span class="go">requests.auth</span>
+<span class="go">requests.compat</span>
+<span class="go">requests.cookies</span>
+<span class="go">requests.exceptions</span>
+<span class="go">requests.hooks</span>
+<span class="go">requests.status_codes</span>
+<span class="go">requests.structures</span>
+<span class="go">requests.utils</span>
+</pre></div>
+</div>
+<p>Note <code class="docutils literal"><span class="pre">verbosity</span></code> can be overwritten from command-line with option <code class="docutils literal"><span class="pre">-v/--verbosity</span></code>.</p>
 </div>
 <div class="section" id="doit-config">
-<h2>DOIT_CONFIG<a class="headerlink" href="#doit-config" title="Permalink to this headline">¶</a></h2>
-<p>TODO</p>
+<h3>DOIT_CONFIG<a class="headerlink" href="#doit-config" title="Permalink to this headline">¶</a></h3>
+<p>There is one last problem to be solved.
+Since <code class="docutils literal"><span class="pre">print</span></code> is used only to display some information, it should not be executed by default. It should be executed only when explicitly asked.</p>
+<p>i.e. when you just run <code class="docutils literal"><span class="pre">doit</span></code> without any parameters it should create the graph image but not print out the information from <code class="docutils literal"><span class="pre">print</span></code> task.</p>
+<p>Before I said by default <code class="docutils literal"><span class="pre">doit</span> <span class="pre">run</span></code> would execute all tasks.
+That is not exactly true… it will execute all <em>default tasks</em>.
+The default tasks can be controlled by adding a configuration dictionary with the name <code class="docutils literal"><span class="pre">DOIT_CONFIG</span></code> in the <cite>dodo.py</cite>.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;imports&#39;</span><span class="p">,</span> <span class="s1">&#39;dot&#39;</span><span class="p">,</span> <span class="s1">&#39;draw&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Apart from <code class="docutils literal"><span class="pre">default_tasks</span></code>, <code class="docutils literal"><span class="pre">DOIT_CONFIG</span></code> can change the default of any command line option. For example you can globally change task’s verbosity for all tasks with:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+ <span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;imports&#39;</span><span class="p">,</span> <span class="s1">&#39;dot&#39;</span><span class="p">,</span> <span class="s1">&#39;draw&#39;</span><span class="p">],</span>
+ <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Code <a class="reference download internal" href="_downloads/tuto_1_4.py" download=""><code class="xref download docutils literal"><span class="pre">dodo.py</span></code></a>.</p>
+<p>And that’s all for part 1 of tutorial :)</p>
+</div>
 </div>
 </div>
 
