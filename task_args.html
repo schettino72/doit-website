@@ -1,70 +1,112 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Passing Task Arguments from the command line &#8212; doit - automation tool</title>
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.31',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Passing Task Arguments from the command line &mdash; doit 0.31 documentation</title>
+  
+
+  
+  
     <link rel="shortcut icon" href="_static/favico.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="custom uptodate" href="uptodate.html" />
     <link rel="prev" title="Configuration" href="configuration.html" />
 <style>
-  body {
-    font-size: 16px;
-  }
+/* FIX for https://github.com/rtfd/sphinx_rtd_theme/pull/657
+   pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
+   line-height: 1.4 !important;
+   }
+*/
 
-  div.topic {
-    padding: 0;
-    background-color: #F8F4A6;
-    border: 1px solid #D8D486;
-  }
+  /* FIX: handle code-block-caption
+  https://github.com/rtfd/sphinx_rtd_theme/issues/292
+  */
+pre {
+  font-size: 0.95em !important;
+  letter-spacing: 0.015em;
+  line-height: 120% !important; /* also fix 657 */
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
+pre.literal-block, div[class^='highlight'], div[class^='highlight-python3'] {
+  margin-top: 0px !important;
+}
+div.code-block-caption {
+  background-color: #ddd;
+  color: #222;
+  border: 1px solid #ccc;
+}
+div.code-block-caption {
+  padding: 2px 5px;
+  font-size: small;
+}
+a.headerlink {
+  visibility: hidden;
+  color: #c60f0f!important;
+  font-size: 1em;
+  margin-left: 6px;
+  padding: 0 4px 0 4px;
+  text-decoration: none!important;
+}
+a.headerlink:after{
+  margin-left: 0px;
+  content:"";
+  font-family:FontAwesome;
+}
+.code-block-caption:hover .headerlink:after {
+  visibility:visible;
+}
 
-  div.topic p.first {
-    margin: 0;
-    padding: 0.1em 0 0.1em 0.5em;
-    background-color: #E8E496;
-    border-bottom: 1px solid #C8C476;
-  }
+/* CHANGE: code displayed in red color is too aggresive */
+code {
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+code.literal {
+  color: inherit !important;
+}
 
-  div.topic p {
-    margin: 0.5em 1em 0.5em 1em;
-  }
+/* FIX: use full hight of nav-side (not version selector) */
+.wy-nav-side {
+  padding-bottom: 0px !important;
+}
+.wy-menu-vertical {
+  padding-bottom: 15px !important;
+}
 
-  p.topic-title {
-    display: run-in;
-    margin-right: 15px;
-  }
-
-  a.external-link {
-    background: url(_static/external.png) center right no-repeat;
-    padding-right: 13px;
-  }
-
-  div.related ul li a.external-link {
-    padding-right: 13px;
-  }
-
-  .sidebartext {
-    font-size: 75%;
-    line-height: 130%;
-  }
+/* FIX: revert rtd messing up with every image in nav-search */
+.wy-side-nav-search img.logo, .wy-nav-top img.logo {
+    display: inherit !important;
+    margin: inherit !important;
+    height: inherit !important;
+    width: inherit !important;
+    background-color: inherit !important;
+    padding: 5px;
+    border-radius: inherit !important;
+}
 
 </style>
 
@@ -81,118 +123,204 @@
 
 
 
-  </head>
-  <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
-<img src="_static/doit.png" alt="doit logo" />
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+  <div style="text-align:left">
+    <a href="index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+    </a>
+    <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black"><i class="fa fa-twitter"></i></a></span>
+    <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
+  </div>
+  <div style="color:rgba(1,1,1,0.3); text-align:left; margin:10px;">
+    
+      
+        <span>0.31</span>
+      
+    
+  </div>
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="uptodate.html" title="custom uptodate"
-             accesskey="N">next</a></li>
-        <li class="right" >
-          <a href="configuration.html" title="Configuration"
-             accesskey="P">previous</a> |</li>
-  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
-  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
- 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="contents.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Passing Task Arguments from the command line</a><ul>
-<li><a class="reference internal" href="#arguments">arguments</a><ul>
-<li><a class="reference internal" href="#all-parameters-attributes">All parameters attributes</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#positional-arguments">positional arguments</a></li>
-<li><a class="reference internal" href="#command-line-variables-doit-get-var">command line variables (<em>doit.get_var</em>)</a></li>
-</ul>
-</li>
-</ul>
-
-
-
-
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-<h3>Donate</h3>
-
-
-<div>
-
-<div class="sidebartext">
-
-<p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
-
-<p>Abandoned open-source project does not work for long. Thriving project requires a maintainer to keep list of issues and list of pull requests short. Financial goal is 500 USD per month to allow the maintainer working few hours a week on the project.</p>
-</div>
-
-<h5>OpenCollective</h5>
-<div>
-  <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
-</div>
-
-<h5>Paypal</h5>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-</form>
-</div>
-
-<br/>
-
-
-
-<h3></h3>
-<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" alt="python logo"/></a><br/><br/>
 
         </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_1.html">tutorial 1 - basics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">More on dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_creation.html">More on Task creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_run.html">Command line interface - run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_other.html">Other Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Passing Task Arguments from the command line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#arguments">arguments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#all-parameters-attributes">All parameters attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#positional-arguments">positional arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-line-variables-doit-get-var">command line variables (<em>doit.get_var</em>)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="uptodate.html">custom uptodate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending <cite>doit</cite></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stories.html">Success Stories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+
+  
+    <div class="wy-side-nav-search" style="margin-bottom: 0px;">
+      <h3>Donate</h3>
+
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
+      <p>If you consider <em>doit</em> to be a useful project, and would like to see it continue to be maintained and developed, please consider helping cover the development cost. Thriving project requires a maintainer to keep list of issues and list of pull requests short.</p>
+    </div>
+
+    <div class="wy-side-nav-search" style="color:black;background-color:#fcfcfc;border-right:black 1px solid;">
+      <h6 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h6>
+      <div>
+        <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
       </div>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+      <hr style="margin-top:5px;">
+      <h6 style="margin-bottom:20px;">Paypal</h6>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1" style="visibility:hidden;">
+      </form>
+    </div>
+    <br>
+  
+
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+  <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+  <a href="index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+  </a>
+  <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-twitter"></i></a></span>
+  <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-github"></i></a></span>
+
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="contents.html">Docs</a> &raquo;</li>
+        
+      <li>Passing Task Arguments from the command line</li>
+    
+    
+   
+   <span class="float-right" role="navigation" aria-label="breadcrumb navigation">
+      
+        <li>
+          <a href="configuration.html" title="Configuration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Configuration</a>
+        </li>
+      
+      <li style="padding-right:5px">|</li>
+      
+        <li>
+            <a href="uptodate.html" title="custom uptodate" accesskey="n">custom uptodate <span class="fa fa-arrow-circle-right"></span></a>
+        </li>
+      
+  </span>
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="passing-task-arguments-from-the-command-line">
 <h1>Passing Task Arguments from the command line<a class="headerlink" href="#passing-task-arguments-from-the-command-line" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="arguments">
 <span id="parameters"></span><h2>arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to pass option parameters to the task through the command line.</p>
-<p>Just add a <code class="docutils literal"><span class="pre">params</span></code> field to the task dictionary. <code class="docutils literal"><span class="pre">params</span></code> must be a list of
+<p>Just add a <code class="docutils literal notranslate"><span class="pre">params</span></code> field to the task dictionary. <code class="docutils literal notranslate"><span class="pre">params</span></code> must be a list of
 dictionaries where every entry is an option parameter. Each parameter must
 define a name, and a default value. It can optionally define a “short” and
 “long” names to be used from the command line (it follows unix command line
 conventions). It may also specify additional attributes, such as
 <cite>type</cite> and <cite>help</cite> (see <a class="reference internal" href="#parameters-attributes"><span class="std std-ref">below</span></a>).</p>
 <p>See the example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_py_params</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_py_params</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">show_params</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">param1</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="n">param2</span><span class="p">)</span>
@@ -249,47 +377,47 @@ conventions). It may also specify additional attributes, such as
 </pre></div>
 </div>
 <p>For python-actions the python function must define arguments with the same name as a task parameter.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit py_params -p abc --param2 <span class="m">4</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit py_params -p abc --param2 <span class="m">4</span>
 <span class="go">.  py_params</span>
 <span class="go">abc</span>
 <span class="go">9</span>
 </pre></div>
 </div>
-<p>Need a list in your python function? Specify an option with <code class="docutils literal"><span class="pre">type</span></code>
-set to <code class="docutils literal"><span class="pre">list</span></code>.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit py_params_list -l milk -l eggs -l bread
+<p>Need a list in your python function? Specify an option with <code class="docutils literal notranslate"><span class="pre">type</span></code>
+set to <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit py_params_list -l milk -l eggs -l bread
 <span class="go">.  py_params_list</span>
 <span class="go">milk</span>
 <span class="go">eggs</span>
 <span class="go">bread</span>
 </pre></div>
 </div>
-<p>Choices can be set by specifying an option with <code class="docutils literal"><span class="pre">choices</span></code> set to a
+<p>Choices can be set by specifying an option with <code class="docutils literal notranslate"><span class="pre">choices</span></code> set to a
 sequence of a 2-element tuple.
 The first element is the choice value.
 The second element is the choice description,
 if not required, use an empty string.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit py_params_choice -c that
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit py_params_choice -c that
 <span class="go">.  py_params_choice</span>
 <span class="go">that</span>
 </pre></div>
 </div>
 <p>Invalid choices are detected and passed back to the user.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit py_params_choice -c notavalidchoice
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit py_params_choice -c notavalidchoice
 <span class="go">ERROR: Error parsing parameter &#39;choice&#39;. Provided &#39;notavalidchoice&#39; but available choices are: &#39;this&#39;, &#39;that&#39;.</span>
 </pre></div>
 </div>
 <p>For cmd-actions use python string substitution notation:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit cmd_params -f <span class="s2">&quot;-c --other value&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit cmd_params -f <span class="s2">&quot;-c --other value&quot;</span>
 <span class="go">.  cmd_params</span>
 <span class="go">mycmd -c --other value xxx</span>
 </pre></div>
 </div>
 <div class="section" id="all-parameters-attributes">
 <span id="parameters-attributes"></span><h3>All parameters attributes<a class="headerlink" href="#all-parameters-attributes" title="Permalink to this headline">¶</a></h3>
-<p>Here is the list of all attributes <code class="docutils literal"><span class="pre">param</span></code> accepts:</p>
+<p>Here is the list of all attributes <code class="docutils literal notranslate"><span class="pre">param</span></code> accepts:</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">name</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">name</span></code></dt>
 <dd><p class="first">Name of the parameter, identifier used as name of the the parameter
 on python code.
 It should be unique among others.</p>
@@ -304,7 +432,7 @@ It should be unique among others.</p>
 </tbody>
 </table>
 </dd>
-<dt><code class="docutils literal"><span class="pre">default</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">default</span></code></dt>
 <dd><p class="first">Default value used when it is set through command-line.</p>
 <table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -315,8 +443,8 @@ It should be unique among others.</p>
 </tbody>
 </table>
 </dd>
-<dt><code class="docutils literal"><span class="pre">short</span></code></dt>
-<dd><p class="first">Short parameter form, used for e.g. <code class="docutils literal"><span class="pre">-p</span> <span class="pre">value</span></code>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">short</span></code></dt>
+<dd><p class="first">Short parameter form, used for e.g. <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">value</span></code>.</p>
 <table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -328,8 +456,8 @@ It should be unique among others.</p>
 </tbody>
 </table>
 </dd>
-<dt><code class="docutils literal"><span class="pre">long</span></code></dt>
-<dd><p class="first">Long parameter form, used for e.g. <code class="docutils literal"><span class="pre">--parameter</span> <span class="pre">value</span></code>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">long</span></code></dt>
+<dd><p class="first">Long parameter form, used for e.g. <code class="docutils literal notranslate"><span class="pre">--parameter</span> <span class="pre">value</span></code>.</p>
 <table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -341,13 +469,13 @@ It should be unique among others.</p>
 </tbody>
 </table>
 </dd>
-<dt><code class="docutils literal"><span class="pre">type</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">type</span></code></dt>
 <dd><p class="first">Actually it can be any python callable.
 It coverts the string value received from command line to whatever
 value to be used on python code.</p>
-<p>If the <code class="docutils literal"><span class="pre">type</span></code> is <code class="docutils literal"><span class="pre">bool</span></code> the parameter is treated as an <em>option flag</em>
-where no value should be specified, value is set to <code class="docutils literal"><span class="pre">True</span></code>.
-Example: <code class="docutils literal"><span class="pre">doit</span> <span class="pre">mytask</span> <span class="pre">--flag</span></code>.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">type</span></code> is <code class="docutils literal notranslate"><span class="pre">bool</span></code> the parameter is treated as an <em>option flag</em>
+where no value should be specified, value is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.
+Example: <code class="docutils literal notranslate"><span class="pre">doit</span> <span class="pre">mytask</span> <span class="pre">--flag</span></code>.</p>
 <table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -361,7 +489,7 @@ Example: <code class="docutils literal"><span class="pre">doit</span> <span clas
 </tbody>
 </table>
 </dd>
-<dt><code class="docutils literal"><span class="pre">choices</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">choices</span></code></dt>
 <dd><p class="first">List of accepted value choices for option.
 First tuple element is the value name,
 second tuple element is a help description for value.</p>
@@ -376,10 +504,10 @@ second tuple element is a help description for value.</p>
 </tbody>
 </table>
 </dd>
-<dt><code class="docutils literal"><span class="pre">help</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">help</span></code></dt>
 <dd><p class="first">Help message associated to this parameter, shown when
 <a class="reference internal" href="cmd_other.html#cmd-help"><span class="std std-ref">help</span></a> is called for this task,
-e.g. <code class="docutils literal"><span class="pre">doit</span> <span class="pre">help</span> <span class="pre">mytask</span></code>.</p>
+e.g. <code class="docutils literal notranslate"><span class="pre">doit</span> <span class="pre">help</span> <span class="pre">mytask</span></code>.</p>
 <table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -391,9 +519,9 @@ e.g. <code class="docutils literal"><span class="pre">doit</span> <span class="p
 </tbody>
 </table>
 </dd>
-<dt><code class="docutils literal"><span class="pre">inverse</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">inverse</span></code></dt>
 <dd><p class="first">[only for <cite>bool</cite> parameter]
-Set inverse flag long parameter name, value will be set to <code class="docutils literal"><span class="pre">False</span></code>
+Set inverse flag long parameter name, value will be set to <code class="docutils literal notranslate"><span class="pre">False</span></code>
 (see example below).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -406,7 +534,7 @@ Set inverse flag long parameter name, value will be set to <code class="docutils
 </tbody>
 </table>
 <p>Example, given following code:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_with_flag</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_with_flag</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">_task</span><span class="p">(</span><span class="n">flag</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Flag </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;On&quot;</span> <span class="k">if</span> <span class="n">flag</span> <span class="k">else</span> <span class="s2">&quot;Off&quot;</span><span class="p">))</span>
 
@@ -424,7 +552,7 @@ Set inverse flag long parameter name, value will be set to <code class="docutils
 </pre></div>
 </div>
 <p>calls to task <cite>with_flag</cite> show flag on or off:</p>
-<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit with_flag
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit with_flag
 <span class="go">.  with_flag</span>
 <span class="go">Flag On</span>
 <span class="gp">$</span> doit with_flag --flagoff
@@ -441,7 +569,7 @@ Set inverse flag long parameter name, value will be set to <code class="docutils
 <p>Tasks might also get positional arguments from the command line
 as standard unix commands do,
 with positional arguments <em>after</em> optional arguments.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_pos_args</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_pos_args</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">show_params</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;param1 is: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param1</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">pos_arg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
@@ -456,7 +584,7 @@ with positional arguments <em>after</em> optional arguments.</p>
             <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit pos_args -p <span class="m">4</span> foo bar
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit pos_args -p <span class="m">4</span> foo bar
 <span class="go">.  pos_args</span>
 <span class="go">param1 is: 4</span>
 <span class="go">positional-0: foo</span>
@@ -468,7 +596,7 @@ with positional arguments <em>after</em> optional arguments.</p>
 <p>If a task accepts positional arguments, it is not allowed to pass
 other tasks after it in the command line. For example if <cite>task1</cite>
 takes positional arguments you can not call:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ doit task1 pos1 task2
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ doit task1 pos1 task2
 </pre></div>
 </div>
 <p class="last">As the string <cite>task2</cite> would be interpreted as positional argument from
@@ -478,7 +606,7 @@ takes positional arguments you can not call:</p>
 <div class="section" id="command-line-variables-doit-get-var">
 <span id="command-line-variables"></span><h2>command line variables (<em>doit.get_var</em>)<a class="headerlink" href="#command-line-variables-doit-get-var" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to pass variable values to be used in dodo.py from the command line.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit</span> <span class="k">import</span> <span class="n">get_var</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit</span> <span class="k">import</span> <span class="n">get_var</span>
 
 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;abc&quot;</span><span class="p">:</span> <span class="n">get_var</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">)}</span>
 
@@ -488,7 +616,7 @@ takes positional arguments you can not call:</p>
             <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  echo</span>
 <span class="go">hi {abc: NO}</span>
 <span class="gp">$</span> doit <span class="nv">abc</span><span class="o">=</span>xyz <span class="nv">x</span><span class="o">=</span><span class="m">3</span>
@@ -500,34 +628,68 @@ takes positional arguments you can not call:</p>
 </div>
 
 
+           </div>
+           
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="uptodate.html" class="btn btn-neutral float-right" title="custom uptodate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configuration.html" class="btn btn-neutral" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2008-2018, Eduardo Schettino.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="uptodate.html" title="custom uptodate"
-             >next</a></li>
-        <li class="right" >
-          <a href="configuration.html" title="Configuration"
-             >previous</a> |</li>
-  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
-  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
- 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2008-2018, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.31',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

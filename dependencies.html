@@ -1,70 +1,112 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>More on dependencies &#8212; doit - automation tool</title>
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.31',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>More on dependencies &mdash; doit 0.31 documentation</title>
+  
+
+  
+  
     <link rel="shortcut icon" href="_static/favico.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="More on Task creation" href="task_creation.html" />
     <link rel="prev" title="Tasks" href="tasks.html" />
 <style>
-  body {
-    font-size: 16px;
-  }
+/* FIX for https://github.com/rtfd/sphinx_rtd_theme/pull/657
+   pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
+   line-height: 1.4 !important;
+   }
+*/
 
-  div.topic {
-    padding: 0;
-    background-color: #F8F4A6;
-    border: 1px solid #D8D486;
-  }
+  /* FIX: handle code-block-caption
+  https://github.com/rtfd/sphinx_rtd_theme/issues/292
+  */
+pre {
+  font-size: 0.95em !important;
+  letter-spacing: 0.015em;
+  line-height: 120% !important; /* also fix 657 */
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
+pre.literal-block, div[class^='highlight'], div[class^='highlight-python3'] {
+  margin-top: 0px !important;
+}
+div.code-block-caption {
+  background-color: #ddd;
+  color: #222;
+  border: 1px solid #ccc;
+}
+div.code-block-caption {
+  padding: 2px 5px;
+  font-size: small;
+}
+a.headerlink {
+  visibility: hidden;
+  color: #c60f0f!important;
+  font-size: 1em;
+  margin-left: 6px;
+  padding: 0 4px 0 4px;
+  text-decoration: none!important;
+}
+a.headerlink:after{
+  margin-left: 0px;
+  content:"";
+  font-family:FontAwesome;
+}
+.code-block-caption:hover .headerlink:after {
+  visibility:visible;
+}
 
-  div.topic p.first {
-    margin: 0;
-    padding: 0.1em 0 0.1em 0.5em;
-    background-color: #E8E496;
-    border-bottom: 1px solid #C8C476;
-  }
+/* CHANGE: code displayed in red color is too aggresive */
+code {
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+code.literal {
+  color: inherit !important;
+}
 
-  div.topic p {
-    margin: 0.5em 1em 0.5em 1em;
-  }
+/* FIX: use full hight of nav-side (not version selector) */
+.wy-nav-side {
+  padding-bottom: 0px !important;
+}
+.wy-menu-vertical {
+  padding-bottom: 15px !important;
+}
 
-  p.topic-title {
-    display: run-in;
-    margin-right: 15px;
-  }
-
-  a.external-link {
-    background: url(_static/external.png) center right no-repeat;
-    padding-right: 13px;
-  }
-
-  div.related ul li a.external-link {
-    padding-right: 13px;
-  }
-
-  .sidebartext {
-    font-size: 75%;
-    line-height: 130%;
-  }
+/* FIX: revert rtd messing up with every image in nav-search */
+.wy-side-nav-search img.logo, .wy-nav-top img.logo {
+    display: inherit !important;
+    margin: inherit !important;
+    height: inherit !important;
+    width: inherit !important;
+    background-color: inherit !important;
+    padding: 5px;
+    border-radius: inherit !important;
+}
 
 </style>
 
@@ -81,158 +123,244 @@
 
 
 
-  </head>
-  <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
-<img src="_static/doit.png" alt="doit logo" />
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+  <div style="text-align:left">
+    <a href="index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+    </a>
+    <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black"><i class="fa fa-twitter"></i></a></span>
+    <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
+  </div>
+  <div style="color:rgba(1,1,1,0.3); text-align:left; margin:10px;">
+    
+      
+        <span>0.31</span>
+      
+    
+  </div>
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="task_creation.html" title="More on Task creation"
-             accesskey="N">next</a></li>
-        <li class="right" >
-          <a href="tasks.html" title="Tasks"
-             accesskey="P">previous</a> |</li>
-  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
-  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
- 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="contents.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">More on dependencies</a><ul>
-<li><a class="reference internal" href="#uptodate">uptodate</a></li>
-<li><a class="reference internal" href="#doit-up-to-date-definition">doit up-to-date definition</a></li>
-<li><a class="reference internal" href="#uptodate-api">uptodate API</a><ul>
-<li><a class="reference internal" href="#example-run-once-implementation">Example: run-once implementation</a></li>
-<li><a class="reference internal" href="#example-timeout-implementation">Example: timeout implementation</a></li>
-<li><a class="reference internal" href="#example-result-dep-implementation">Example: result_dep implementation</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#task-dependency">task-dependency</a><ul>
-<li><a class="reference internal" href="#groups">groups</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#setup-task">setup-task</a><ul>
-<li><a class="reference internal" href="#teardown">teardown</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#saving-computed-values">saving computed values</a></li>
-<li><a class="reference internal" href="#getargs">getargs</a></li>
-<li><a class="reference internal" href="#calculated-dependencies">calculated-dependencies</a></li>
-</ul>
-</li>
-</ul>
-
-
-
-
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-<h3>Donate</h3>
-
-
-<div>
-
-<div class="sidebartext">
-
-<p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
-
-<p>Abandoned open-source project does not work for long. Thriving project requires a maintainer to keep list of issues and list of pull requests short. Financial goal is 500 USD per month to allow the maintainer working few hours a week on the project.</p>
-</div>
-
-<h5>OpenCollective</h5>
-<div>
-  <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
-</div>
-
-<h5>Paypal</h5>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-</form>
-</div>
-
-<br/>
-
-
-
-<h3></h3>
-<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" alt="python logo"/></a><br/><br/>
 
         </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_1.html">tutorial 1 - basics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">More on dependencies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#uptodate">uptodate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#doit-up-to-date-definition">doit up-to-date definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uptodate-api">uptodate API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-run-once-implementation">Example: run-once implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-timeout-implementation">Example: timeout implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-result-dep-implementation">Example: result_dep implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-dependency">task-dependency</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#groups">groups</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-task">setup-task</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#teardown">teardown</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#saving-computed-values">saving computed values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getargs">getargs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calculated-dependencies">calculated-dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task_creation.html">More on Task creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_run.html">Command line interface - run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_other.html">Other Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_args.html">Passing Task Arguments from the command line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uptodate.html">custom uptodate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending <cite>doit</cite></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stories.html">Success Stories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+
+  
+    <div class="wy-side-nav-search" style="margin-bottom: 0px;">
+      <h3>Donate</h3>
+
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
+      <p>If you consider <em>doit</em> to be a useful project, and would like to see it continue to be maintained and developed, please consider helping cover the development cost. Thriving project requires a maintainer to keep list of issues and list of pull requests short.</p>
+    </div>
+
+    <div class="wy-side-nav-search" style="color:black;background-color:#fcfcfc;border-right:black 1px solid;">
+      <h6 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h6>
+      <div>
+        <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
       </div>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+      <hr style="margin-top:5px;">
+      <h6 style="margin-bottom:20px;">Paypal</h6>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1" style="visibility:hidden;">
+      </form>
+    </div>
+    <br>
+  
+
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+  <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+  <a href="index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+  </a>
+  <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-twitter"></i></a></span>
+  <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-github"></i></a></span>
+
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="contents.html">Docs</a> &raquo;</li>
+        
+      <li>More on dependencies</li>
+    
+    
+   
+   <span class="float-right" role="navigation" aria-label="breadcrumb navigation">
+      
+        <li>
+          <a href="tasks.html" title="Tasks" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Tasks</a>
+        </li>
+      
+      <li style="padding-right:5px">|</li>
+      
+        <li>
+            <a href="task_creation.html" title="More on Task creation" accesskey="n">More on Task creation <span class="fa fa-arrow-circle-right"></span></a>
+        </li>
+      
+  </span>
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="more-on-dependencies">
 <h1>More on dependencies<a class="headerlink" href="#more-on-dependencies" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="uptodate">
 <span id="attr-uptodate"></span><h2>uptodate<a class="headerlink" href="#uptodate" title="Permalink to this headline">¶</a></h2>
 <p>Apart from file dependencies you can extend <cite>doit</cite> to support other ways
-to determine if a task is up-to-date through the attribute <code class="docutils literal"><span class="pre">uptodate</span></code>.</p>
+to determine if a task is up-to-date through the attribute <code class="docutils literal notranslate"><span class="pre">uptodate</span></code>.</p>
 <p>This can be used in cases where you need to some kind of calculation to
 determine if the task is up-to-date or not.</p>
-<p><code class="docutils literal"><span class="pre">uptodate</span></code> is a list where each element can be True, False, None, a callable
+<p><code class="docutils literal notranslate"><span class="pre">uptodate</span></code> is a list where each element can be True, False, None, a callable
 or a command(string).</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">False</span></code> indicates that the task is NOT up-to-date</li>
-<li><code class="docutils literal"><span class="pre">True</span></code> indicates that the task is up-to-date</li>
-<li><code class="docutils literal"><span class="pre">None</span></code> values will just be ignored. This is used when the value is dynamically calculated</li>
+<li><code class="docutils literal notranslate"><span class="pre">False</span></code> indicates that the task is NOT up-to-date</li>
+<li><code class="docutils literal notranslate"><span class="pre">True</span></code> indicates that the task is up-to-date</li>
+<li><code class="docutils literal notranslate"><span class="pre">None</span></code> values will just be ignored. This is used when the value is dynamically calculated</li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>An <code class="docutils literal"><span class="pre">uptodate</span></code> value equal to <code class="docutils literal"><span class="pre">True</span></code> does not override others
+<p>An <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> value equal to <code class="docutils literal notranslate"><span class="pre">True</span></code> does not override others
 up-to-date checks. It is one more way to check if task is <strong>not</strong> up-to-date.</p>
 <p class="last">i.e. if uptodate==True but a file_dep changes the task is still
 considered <strong>not</strong> up-to-date.</p>
 </div>
-<p>If an <code class="docutils literal"><span class="pre">uptodate</span></code> item is a string it will be executed on the shell.
-If the process exits with the code <code class="docutils literal"><span class="pre">0</span></code>, it is considered as up-to-date.
+<p>If an <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> item is a string it will be executed on the shell.
+If the process exits with the code <code class="docutils literal notranslate"><span class="pre">0</span></code>, it is considered as up-to-date.
 All other values would be considered as not up-to-date.</p>
-<p><code class="docutils literal"><span class="pre">uptodate</span></code> elements can also be a callable that will be executed on runtime
+<p><code class="docutils literal notranslate"><span class="pre">uptodate</span></code> elements can also be a callable that will be executed on runtime
 (not when the task is being created).
-The section <code class="docutils literal"><span class="pre">custom-uptodate</span></code> will explain in details how to extend <cite>doit</cite>
-writing your own callables for <code class="docutils literal"><span class="pre">uptodate</span></code>. This callables will typically
+The section <code class="docutils literal notranslate"><span class="pre">custom-uptodate</span></code> will explain in details how to extend <cite>doit</cite>
+writing your own callables for <code class="docutils literal notranslate"><span class="pre">uptodate</span></code>. This callables will typically
 compare a value on the present time with a value calculated on the last
 successful execution.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">There is no guarantee <code class="docutils literal"><span class="pre">uptodate</span></code> callables or commands will be executed.
+<p class="last">There is no guarantee <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> callables or commands will be executed.
 <cite>doit</cite> short-circuit the checks, if it is already determined that the
-task is no <cite>up-to-date</cite> it will not execute remaining <code class="docutils literal"><span class="pre">uptodate</span></code> checks.</p>
+task is no <cite>up-to-date</cite> it will not execute remaining <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> checks.</p>
 </div>
-<p><cite>doit</cite> includes several implementations to be used as <code class="docutils literal"><span class="pre">uptodate</span></code>.
+<p><cite>doit</cite> includes several implementations to be used as <code class="docutils literal notranslate"><span class="pre">uptodate</span></code>.
 They are all included in module <cite>doit.tools</cite> and will be discussed in detail
 <a class="reference internal" href="#uptodate-api"><span class="std std-ref">later</span></a>:</p>
 <blockquote>
@@ -269,10 +397,10 @@ a missing <cite>target</cite> is enough to determine that a task is not <cite>up
 But its existence by itself is not enough to mark a task <cite>up-to-date</cite>.</p>
 <p>In some situations, it is useful to define a task with targets but no
 dependencies. If you want to re-execute this task only when targets are missing
-you must explicitly add a dependency: you could add a <code class="docutils literal"><span class="pre">uptodate</span></code> with <code class="docutils literal"><span class="pre">True</span></code>
+you must explicitly add a dependency: you could add a <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> with <code class="docutils literal notranslate"><span class="pre">True</span></code>
 value or use <a class="reference internal" href="uptodate.html#run-once"><span class="std std-ref">run_once()</span></a> to force at least one
 execution managed by <cite>doit</cite>. Example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_touch</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_touch</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;touch foo.txt&#39;</span><span class="p">],</span>
         <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;foo.txt&#39;</span><span class="p">],</span>
@@ -282,20 +410,20 @@ execution managed by <cite>doit</cite>. Example:</p>
         <span class="p">}</span>
 </pre></div>
 </div>
-<p>Apart from <code class="docutils literal"><span class="pre">file_dep</span></code> and  <code class="docutils literal"><span class="pre">uptodate</span></code> used to determine if a task
+<p>Apart from <code class="docutils literal notranslate"><span class="pre">file_dep</span></code> and  <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> used to determine if a task
 is <cite>up-to-date</cite> or not,
-<code class="docutils literal"><span class="pre">doit</span></code> also includes other kind of dependencies (introduced below)
+<code class="docutils literal notranslate"><span class="pre">doit</span></code> also includes other kind of dependencies (introduced below)
 to help you combine tasks
 so they are executed in appropriate order.</p>
 </div>
 <div class="section" id="uptodate-api">
 <span id="id1"></span><h2>uptodate API<a class="headerlink" href="#uptodate-api" title="Permalink to this headline">¶</a></h2>
-<p>This section will explain how to extend <code class="docutils literal"><span class="pre">doit</span></code> writing an <code class="docutils literal"><span class="pre">uptodate</span></code>
-implementation. So unless you need to write an <code class="docutils literal"><span class="pre">uptodate</span></code> implementation
+<p>This section will explain how to extend <code class="docutils literal notranslate"><span class="pre">doit</span></code> writing an <code class="docutils literal notranslate"><span class="pre">uptodate</span></code>
+implementation. So unless you need to write an <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> implementation
 you can skip this.</p>
 <p>Let’s start with trivial example. <cite>uptodate</cite> is a function that returns
 a boolean value.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="k">def</span> <span class="nf">fake_get_value_from_db</span><span class="p">():</span>
     <span class="k">return</span> <span class="mi">5</span>
 
@@ -323,24 +451,24 @@ But usually the “value” we want to check is independent from the task action
 So the first step is to add a callable to the task so it can save some extra
 values. These values are not used by the task itself, they are only used
 for dependency checking.</p>
-<p>The Task has a property called <code class="docutils literal"><span class="pre">value_savers</span></code> that contains a list of
+<p>The Task has a property called <code class="docutils literal notranslate"><span class="pre">value_savers</span></code> that contains a list of
 callables. These callables should return a dict that will be saved together
-with other task values. The <code class="docutils literal"><span class="pre">value_savers</span></code> will be executed after all actions.</p>
+with other task values. The <code class="docutils literal notranslate"><span class="pre">value_savers</span></code> will be executed after all actions.</p>
 <p>The second step is to actually compare the saved value with its “current” value.</p>
-<p>The <cite>uptodate</cite> callable can take two positional parameters <code class="docutils literal"><span class="pre">task</span></code> and <code class="docutils literal"><span class="pre">values</span></code>. The callable can also be represented by a tuple (callable, args, kwargs).</p>
+<p>The <cite>uptodate</cite> callable can take two positional parameters <code class="docutils literal notranslate"><span class="pre">task</span></code> and <code class="docutils literal notranslate"><span class="pre">values</span></code>. The callable can also be represented by a tuple (callable, args, kwargs).</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">task</span></code> parameter will give you access to task object. So you have access
+<li><code class="docutils literal notranslate"><span class="pre">task</span></code> parameter will give you access to task object. So you have access
 to its metadata and opportunity to modify the task itself!</li>
 <li><dl class="first docutils">
-<dt><code class="docutils literal"><span class="pre">values</span></code> is a dictionary with the computed values saved in the last</dt>
+<dt><code class="docutils literal notranslate"><span class="pre">values</span></code> is a dictionary with the computed values saved in the last</dt>
 <dd>successful execution of the task.</dd>
 </dl>
 </li>
 </ul>
 </div></blockquote>
-<p>Let’s take a look in the <code class="docutils literal"><span class="pre">run_once</span></code> implementation.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<p>Let’s take a look in the <code class="docutils literal notranslate"><span class="pre">run_once</span></code> implementation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="k">def</span> <span class="nf">run_once</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">save_executed</span><span class="p">():</span>
         <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;run-once&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
@@ -348,23 +476,23 @@ to its metadata and opportunity to modify the task itself!</li>
     <span class="k">return</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;run-once&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The function <code class="docutils literal"><span class="pre">save_executed</span></code> returns a dict. In this case it is not checking
+<p>The function <code class="docutils literal notranslate"><span class="pre">save_executed</span></code> returns a dict. In this case it is not checking
 for any value because it just checks it the task was ever executed.</p>
-<p>The next line we use the <code class="docutils literal"><span class="pre">task</span></code> parameter adding
-<code class="docutils literal"><span class="pre">save_executed</span></code> to <code class="docutils literal"><span class="pre">task.value_savers</span></code>.So whenever this task is executed this
+<p>The next line we use the <code class="docutils literal notranslate"><span class="pre">task</span></code> parameter adding
+<code class="docutils literal notranslate"><span class="pre">save_executed</span></code> to <code class="docutils literal notranslate"><span class="pre">task.value_savers</span></code>.So whenever this task is executed this
 task value ‘run-once’ will be saved.</p>
 <p>Finally the return value should be a boolean to indicate if the task is
 up-to-date or not. Remember that the ‘values’ parameter contains the dict with
 the values saved from last successful execution of the task.
 So it just checks if this task was executed before by looking for the
-<code class="docutils literal"><span class="pre">run-once</span></code> entry in <code class="docutils literal"><span class="pre">`values</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">run-once</span></code> entry in <code class="docutils literal notranslate"><span class="pre">`values</span></code>.</p>
 </div>
 <div class="section" id="example-timeout-implementation">
 <h3>Example: timeout implementation<a class="headerlink" href="#example-timeout-implementation" title="Permalink to this headline">¶</a></h3>
-<p>Let’s look another example, the <code class="docutils literal"><span class="pre">timeout</span></code>. The main difference is that
-we actually pass the parameter <code class="docutils literal"><span class="pre">timeout_limit</span></code>. Here we present
+<p>Let’s look another example, the <code class="docutils literal notranslate"><span class="pre">timeout</span></code>. The main difference is that
+we actually pass the parameter <code class="docutils literal notranslate"><span class="pre">timeout_limit</span></code>. Here we present
 a simplified version that only accepts integers (seconds) as a parameter.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">timeout</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">timeout</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_limit</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">limit_sec</span> <span class="o">=</span> <span class="n">timeout_limit</span>
 
@@ -379,30 +507,30 @@ a simplified version that only accepts integers (seconds) as a parameter.</p>
 </pre></div>
 </div>
 <p>This is a class-based implementation where the objects are made callable
-by implementing a <code class="docutils literal"><span class="pre">__call__</span></code> method.</p>
-<p>On <code class="docutils literal"><span class="pre">__init__</span></code> we just save the <code class="docutils literal"><span class="pre">timeout_limit</span></code> as an attribute.</p>
-<p>The <code class="docutils literal"><span class="pre">__call__</span></code> is very similar with the <code class="docutils literal"><span class="pre">run-once</span></code> implementation.
-First it defines a function (<code class="docutils literal"><span class="pre">save_now</span></code>) that is registered
-into <code class="docutils literal"><span class="pre">task.value_savers</span></code>. Than it compares the current time
+by implementing a <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method.</p>
+<p>On <code class="docutils literal notranslate"><span class="pre">__init__</span></code> we just save the <code class="docutils literal notranslate"><span class="pre">timeout_limit</span></code> as an attribute.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">__call__</span></code> is very similar with the <code class="docutils literal notranslate"><span class="pre">run-once</span></code> implementation.
+First it defines a function (<code class="docutils literal notranslate"><span class="pre">save_now</span></code>) that is registered
+into <code class="docutils literal notranslate"><span class="pre">task.value_savers</span></code>. Than it compares the current time
 with the time that was saved on last successful execution.</p>
 </div>
 <div class="section" id="example-result-dep-implementation">
 <h3>Example: result_dep implementation<a class="headerlink" href="#example-result-dep-implementation" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">result_dep</span></code> is more complicated due to two factors. It needs to modify
-the task’s <code class="docutils literal"><span class="pre">task_dep</span></code>.
+<p>The <code class="docutils literal notranslate"><span class="pre">result_dep</span></code> is more complicated due to two factors. It needs to modify
+the task’s <code class="docutils literal notranslate"><span class="pre">task_dep</span></code>.
 And it needs to check the task’s saved values and metadata
 from a task different from where it is being applied.</p>
-<p>A <code class="docutils literal"><span class="pre">result_dep</span></code> implies that its dependency is also a <code class="docutils literal"><span class="pre">task_dep</span></code>.
+<p>A <code class="docutils literal notranslate"><span class="pre">result_dep</span></code> implies that its dependency is also a <code class="docutils literal notranslate"><span class="pre">task_dep</span></code>.
 We have seen that the callable takes a <cite>task</cite> parameter that we used
-to modify the task object. The problem is that modifying <code class="docutils literal"><span class="pre">task_dep</span></code>
+to modify the task object. The problem is that modifying <code class="docutils literal notranslate"><span class="pre">task_dep</span></code>
 when the callable gets called would be “too late” according to the
-way <cite>doit</cite> works. When an object is passed <code class="docutils literal"><span class="pre">uptodate</span></code> and this
-object’s class has a method named <code class="docutils literal"><span class="pre">configure_task</span></code> it will be called
+way <cite>doit</cite> works. When an object is passed <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> and this
+object’s class has a method named <code class="docutils literal notranslate"><span class="pre">configure_task</span></code> it will be called
 during the task creation.</p>
-<p>The base class <code class="docutils literal"><span class="pre">dependency.UptodateCalculator</span></code> gives access to
-an attribute named <code class="docutils literal"><span class="pre">tasks_dict</span></code> containing a dictionary with
-all task objects where the <code class="docutils literal"><span class="pre">key</span></code> is the task name (this is used to get all
-sub-tasks from a task-group). And also a method called <code class="docutils literal"><span class="pre">get_val</span></code> to access
+<p>The base class <code class="docutils literal notranslate"><span class="pre">dependency.UptodateCalculator</span></code> gives access to
+an attribute named <code class="docutils literal notranslate"><span class="pre">tasks_dict</span></code> containing a dictionary with
+all task objects where the <code class="docutils literal notranslate"><span class="pre">key</span></code> is the task name (this is used to get all
+sub-tasks from a task-group). And also a method called <code class="docutils literal notranslate"><span class="pre">get_val</span></code> to access
 the saved values and results from any task.</p>
 <p>See the <cite>result_dep</cite> <a class="reference external" href="https://github.com/pydoit/doit/blob/master/doit/task.py">source</a>.</p>
 </div>
@@ -412,7 +540,7 @@ the saved values and results from any task.</p>
 <p>It is used to enforce tasks are executed on the desired order.
 By default tasks are executed on the same order as they were defined in
 the <cite>dodo</cite> file. To define a dependency on another task use the
-task name (whatever comes after <code class="docutils literal"><span class="pre">task_</span></code> on the function name) in the
+task name (whatever comes after <code class="docutils literal notranslate"><span class="pre">task_</span></code> on the function name) in the
 “task_dep” attribute.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -427,7 +555,7 @@ not. If a task defines only <em>task-dependency</em> it will always be executed.
 </div>
 <p>This example we make sure we include a file with the latest revision number of
 the mercurial repository on the tar file.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_tar</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_tar</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;tar -cf foo.tar *&quot;</span><span class="p">],</span>
             <span class="s1">&#39;task_dep&#39;</span><span class="p">:[</span><span class="s1">&#39;version&#39;</span><span class="p">],</span>
             <span class="s1">&#39;targets&#39;</span><span class="p">:[</span><span class="s1">&#39;foo.tar&#39;</span><span class="p">]}</span>
@@ -436,7 +564,7 @@ the mercurial repository on the tar file.</p>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hg tip --template &#39;</span><span class="si">{rev}</span><span class="s2">&#39; &gt; revision.txt&quot;</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  version</span>
 <span class="go">.  tar</span>
 </pre></div>
@@ -444,8 +572,8 @@ the mercurial repository on the tar file.</p>
 <div class="section" id="groups">
 <h3>groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h3>
 <p>You can define a group of tasks by adding tasks as dependencies and setting
-its <cite>actions</cite> to <code class="docutils literal"><span class="pre">None</span></code>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_foo</span><span class="p">():</span>
+its <cite>actions</cite> to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_foo</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;echo foo&quot;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_bar</span><span class="p">():</span>
@@ -479,7 +607,7 @@ it is executed only if the task is not up-to-date and will be executed.</p>
 These actions are executed after all tasks have finished their execution.
 They are executed in reverse order their tasks were executed.</p>
 <p>Example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">### task setup env. good for functional tests!</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### task setup env. good for functional tests!</span>
 <span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
                <span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;withenvX&#39;</span><span class="p">,</span> <span class="s1">&#39;withenvY&#39;</span><span class="p">]}</span>
 
@@ -508,7 +636,7 @@ They are executed in reverse order their tasks were executed.</p>
             <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit withenvX
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit withenvX
 <span class="go">.  setup_sample:setupX</span>
 <span class="go">start setupX</span>
 <span class="go">.  withenvX:c</span>
@@ -535,7 +663,7 @@ The values must be JSON encodable.</p>
 <p>A cmd-action can also save it’s output.
 But for this you will need to explicitly import <cite>CmdAction</cite> and set its <cite>save_out</cite>
 parameter with the <em>name</em> used to save the output in <em>values</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.action</span> <span class="k">import</span> <span class="n">CmdAction</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.action</span> <span class="k">import</span> <span class="n">CmdAction</span>
 
 <span class="k">def</span> <span class="nf">task_save_output</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
@@ -557,7 +685,7 @@ The values are taken from “saved computed values”
 from <cite>getargs</cite>.</p>
 <p><cite>getargs</cite> is a dictionary where the key is the argument name used on actions,
 and the value is a tuple with 2 strings: task name, “value name”.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;use_cmd&#39;</span><span class="p">,</span> <span class="s1">&#39;use_python&#39;</span><span class="p">]}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;use_cmd&#39;</span><span class="p">,</span> <span class="s1">&#39;use_python&#39;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">comp</span><span class="p">():</span>
@@ -585,8 +713,8 @@ and the value is a tuple with 2 strings: task name, “value name”.</p>
 </pre></div>
 </div>
 <p>The values are being passed on to a python-action you can pass the whole dict
-by specifying the value name as <code class="docutils literal"><span class="pre">None</span></code>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
+by specifying the value name as <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">comp</span><span class="p">():</span>
        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">comp</span><span class="p">,)]}</span>
@@ -603,7 +731,7 @@ by specifying the value name as <code class="docutils literal"><span class="pre"
 </pre></div>
 </div>
 <p>If a group-task is used, the values from all its sub-tasks are passed as a dict.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">comp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">}</span>
    <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span>
@@ -627,7 +755,7 @@ by specifying the value name as <code class="docutils literal"><span class="pre"
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><code class="docutils literal"><span class="pre">getargs</span></code> creates an implicit setup-task.</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">getargs</span></code> creates an implicit setup-task.</p>
 </div>
 </div>
 <div class="section" id="calculated-dependencies">
@@ -643,10 +771,10 @@ dictionary with <cite>file_dep</cite>, <cite>task_dep</cite>, <cite>uptodate</ci
 <p class="last">An alternative way (and often easier) to have task attributes that
 rely on other tasks execution is to use <cite>delayed tasks &lt;delayed-task-creation&gt;</cite>.</p>
 </div>
-<p>On the example below <code class="docutils literal"><span class="pre">mod_deps</span></code> prints on the screen all direct dependencies
-from a module. The dependencies itself are calculated on task <code class="docutils literal"><span class="pre">get_dep</span></code>
+<p>On the example below <code class="docutils literal notranslate"><span class="pre">mod_deps</span></code> prints on the screen all direct dependencies
+from a module. The dependencies itself are calculated on task <code class="docutils literal notranslate"><span class="pre">get_dep</span></code>
 (note: get_dep has a fake implementation where the results are taken from a dict).</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 
 <span class="n">MOD_IMPORTS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">],</span>
                <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">],</span>
@@ -682,34 +810,68 @@ from a module. The dependencies itself are calculated on task <code class="docut
 </div>
 
 
+           </div>
+           
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="task_creation.html" class="btn btn-neutral float-right" title="More on Task creation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tasks.html" class="btn btn-neutral" title="Tasks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2008-2018, Eduardo Schettino.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="task_creation.html" title="More on Task creation"
-             >next</a></li>
-        <li class="right" >
-          <a href="tasks.html" title="Tasks"
-             >previous</a> |</li>
-  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
-  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
- 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2008-2018, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.31',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

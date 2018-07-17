@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>introduction &mdash; doit 0.31 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favico.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+<style>
+/* FIX for https://github.com/rtfd/sphinx_rtd_theme/pull/657
+   pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
+   line-height: 1.4 !important;
+   }
+*/
+
+  /* FIX: handle code-block-caption
+  https://github.com/rtfd/sphinx_rtd_theme/issues/292
+  */
+pre {
+  font-size: 0.95em !important;
+  letter-spacing: 0.015em;
+  line-height: 120% !important; /* also fix 657 */
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
+pre.literal-block, div[class^='highlight'], div[class^='highlight-python3'] {
+  margin-top: 0px !important;
+}
+div.code-block-caption {
+  background-color: #ddd;
+  color: #222;
+  border: 1px solid #ccc;
+}
+div.code-block-caption {
+  padding: 2px 5px;
+  font-size: small;
+}
+a.headerlink {
+  visibility: hidden;
+  color: #c60f0f!important;
+  font-size: 1em;
+  margin-left: 6px;
+  padding: 0 4px 0 4px;
+  text-decoration: none!important;
+}
+a.headerlink:after{
+  margin-left: 0px;
+  content:"";
+  font-family:FontAwesome;
+}
+.code-block-caption:hover .headerlink:after {
+  visibility:visible;
+}
+
+/* CHANGE: code displayed in red color is too aggresive */
+code {
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+code.literal {
+  color: inherit !important;
+}
+
+/* FIX: use full hight of nav-side (not version selector) */
+.wy-nav-side {
+  padding-bottom: 0px !important;
+}
+.wy-menu-vertical {
+  padding-bottom: 15px !important;
+}
+
+/* FIX: revert rtd messing up with every image in nav-search */
+.wy-side-nav-search img.logo, .wy-nav-top img.logo {
+    display: inherit !important;
+    margin: inherit !important;
+    height: inherit !important;
+    width: inherit !important;
+    background-color: inherit !important;
+    padding: 5px;
+    border-radius: inherit !important;
+}
+
+</style>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-29887834-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+  <div style="text-align:left">
+    <a href="index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+    </a>
+    <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black"><i class="fa fa-twitter"></i></a></span>
+    <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
+  </div>
+  <div style="color:rgba(1,1,1,0.3); text-align:left; margin:10px;">
+    
+      
+        <span>0.31</span>
+      
+    
+  </div>
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_1.html">tutorial 1 - basics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">More on dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_creation.html">More on Task creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_run.html">Command line interface - run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_other.html">Other Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_args.html">Passing Task Arguments from the command line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uptodate.html">custom uptodate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending <cite>doit</cite></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stories.html">Success Stories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+
+  
+    <div class="wy-side-nav-search" style="margin-bottom: 0px;">
+      <h3>Donate</h3>
+
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
+      <p>If you consider <em>doit</em> to be a useful project, and would like to see it continue to be maintained and developed, please consider helping cover the development cost. Thriving project requires a maintainer to keep list of issues and list of pull requests short.</p>
+    </div>
+
+    <div class="wy-side-nav-search" style="color:black;background-color:#fcfcfc;border-right:black 1px solid;">
+      <h6 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h6>
+      <div>
+        <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
+      </div>
+
+      <hr style="margin-top:5px;">
+      <h6 style="margin-bottom:20px;">Paypal</h6>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1" style="visibility:hidden;">
+      </form>
+    </div>
+    <br>
+  
+
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+  <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+  <a href="index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+  </a>
+  <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-twitter"></i></a></span>
+  <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-github"></i></a></span>
+
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="contents.html">Docs</a> &raquo;</li>
+        
+      <li>introduction</li>
+    
+    
+   
+   <span class="float-right" role="navigation" aria-label="breadcrumb navigation">
+      
+      
+      
+  </span>
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p class="rubric"><cite>doit</cite> is a task management &amp; automation tool</p>
+<p class="rubric"><cite>doit</cite> comes from the idea of bringing the power of build-tools
+to execute any kind of <strong>task</strong></p>
+<p><cite>doit</cite> is a modern open-source build-tool written in python
+designed to be simple to use and flexible to deal with complex work-flows.
+It is specially suitable for building and managing custom work-flows where
+there is no out-of-the-box solution available.</p>
+<p><cite>doit</cite> has been successfully used on: systems test/integration automation,
+scientific computational pipelines, content generation,
+configuration management, etc.
+Check some <a class="reference external" href="stories.html">success stories</a> …</p>
+<div class="section" id="introduction">
+<h1>introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>A <strong>task</strong> describes some computation to be done (<em>actions</em>),
+and contains some extra meta-data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_example</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;myscript&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;my_input_file&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;result_file&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>actions</strong>:</p>
+<ul class="simple">
+<li>can be external programs (executed as shell commands) or
+python functions.</li>
+<li>a single task may define more than one action.</li>
+</ul>
+<p><strong>task meta-data</strong>:</p>
+<ul class="simple">
+<li>task meta-data includes a description of input file (<strong>dependencies</strong>)
+for the <em>actions</em> and result files (<strong>targets</strong>)</li>
+<li>there are many other meta-data fields to control how and when a task is
+executed…</li>
+</ul>
+<p><em>doit</em> uses the task’s meta-data to:</p>
+<div class="topic">
+<p class="topic-title first">cache task results (aka <em>incremental-builds</em>)</p>
+<p><cite>doit</cite> checks if the task is <strong>up-to-date</strong> and skips its execution if the
+task would produce the same result of a previous execution.</p>
+</div>
+<div class="topic">
+<p class="topic-title first">correct execution order</p>
+<p>By checking the inter-dependency between tasks <cite>doit</cite> ensures that tasks
+will be execute in the correct order.</p>
+</div>
+<div class="topic">
+<p class="topic-title first">parallel execution</p>
+<p>built-in support for parallel (threaded or multi-process) task execution
+(<a class="reference internal" href="cmd_run.html#parallel-execution"><span class="std std-ref">more</span></a>)</p>
+</div>
+<p>Traditional build-tools were created mainly to deal with compile/link
+process of source code. <cite>doit</cite> was designed to solve a broader range of tasks.</p>
+<div class="topic">
+<p class="topic-title first">powerful dependency system</p>
+<ul class="simple">
+<li>the <em>up-to-date</em> check is not restricted to looking for
+file modification on dependencies,
+it can be customized for each task (<a class="reference internal" href="dependencies.html#attr-uptodate"><span class="std std-ref">more</span></a>)</li>
+<li><em>target</em> files are not required in order to check if a task is up-to-date
+(<a class="reference internal" href="dependencies.html#up-to-date-def"><span class="std std-ref">more</span></a>)</li>
+<li><em>dependencies</em> can be dynamically calculated by other tasks
+(<a class="reference internal" href="dependencies.html#attr-calc-dep"><span class="std std-ref">more</span></a>)</li>
+</ul>
+</div>
+<p>Task’s metadata (actions, dependencies, targets…) are better described
+in a declarative way,
+but often you want to create this metadata programmatically.</p>
+<div class="topic">
+<p class="topic-title first">flexible task definition</p>
+<p><cite>doit</cite> uses plain python modules to create tasks (and its meta-data)</p>
+</div>
+<div class="topic">
+<p class="topic-title first">customizable task definition</p>
+<p>By default tasks are described by a python <cite>dict</cite>.
+But it can be easily customized. (<a class="reference internal" href="task_creation.html#create-doit-tasks"><span class="std std-ref">more</span></a>)</p>
+</div>
+<div class="topic">
+<p class="topic-title first">debugger</p>
+<p>Since plain python is used to define your tasks the python debugger (<cite>pdb</cite>)
+is available as in any other python application</p>
+</div>
+<p>Other features…</p>
+<div class="topic">
+<p class="topic-title first">self documented</p>
+<p><cite>doit</cite> command allows you to list and obtain help/documentation for tasks
+(<a class="reference internal" href="cmd_other.html#cmd-list"><span class="std std-ref">more</span></a>)</p>
+</div>
+<div class="topic">
+<p class="topic-title first">inotify integration</p>
+<p>built-in support for a long-running process that automatically re-execute tasks
+based on file changes by external process (linux/mac only)
+(<a class="reference internal" href="cmd_other.html#cmd-auto"><span class="std std-ref">more</span></a>)</p>
+</div>
+<div class="topic">
+<p class="topic-title first">custom output</p>
+<p>process output can be completely customized through <em>reporters</em>
+(<a class="reference internal" href="cmd_run.html#reporter"><span class="std std-ref">more</span></a>)</p>
+</div>
+<div class="topic">
+<p class="topic-title first">tab-completion</p>
+<p>built-in support tab-completion for commands/task (supports bash and zsh)
+(<a class="reference internal" href="cmd_other.html#tabcompletion"><span class="std std-ref">more</span></a>)</p>
+</div>
+<div class="topic">
+<p class="topic-title first">IPython integration</p>
+<p>provide <cite>%doit</cite> magic function that loads tasks defined directly in IPython’s
+global namespace
+(<a class="reference internal" href="tools.html#tools-ipython"><span class="std std-ref">more</span></a>)</p>
+</div>
+<div class="topic">
+<p class="topic-title first">extensible</p>
+<p>Apart from using <cite>doit</cite> to automate your project it also expose its API
+so you can create new applications/tools using <cite>doit</cite> functionality
+(<a class="reference internal" href="extending.html#extending"><span class="std std-ref">more</span></a>)</p>
+</div>
+<p>Check the <a class="reference external" href="contents.html">documentation</a> for more features…</p>
+</div>
+<div class="section" id="what-people-are-saying-about-doit">
+<h1>What people are saying about <cite>doit</cite><a class="headerlink" href="#what-people-are-saying-about-doit" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>Congratulations! <strong>Your tool follows the KISS principle very closely</strong>. I always wondered why build tools had to be that complicated. - <a class="reference external" href="http://schettino72.wordpress.com/2008/04/14/doit-a-build-tool-tale/#comment-514">Elena</a></p>
+<p>Let me start by saying I’m really lovin doit, at first the interface seemed verbose but quickly changed my mind when <strong>I started using it and realized the flexibility</strong>.  Many thanks for the great software! - <a class="reference external" href="https://groups.google.com/d/msg/python-doit/7cD2RiBhB9c/FzrAWkVhEgUJ">Michael Gliwinski</a></p>
+<p>I love all the traditional unix power tools, like cron, make, perl, …, I also like new comprehensive configuration management tools like CFEngine and Puppet.  But <strong>I find doit to be so versatile and so productive</strong>. - <a class="reference external" href="https://groups.google.com/d/msg/python-doit/JXElpPfcmmM/znvBT0OFhMYJ">Charlie Guo</a></p>
+<p>I went back and forth on different Pythonic build tools for awhile. Scons is pretty great if you’re doing ‘standard’ sorts of builds, but I found it a little heavy for my tastes and really hard to customize to my tool flow (in FPGA land, there are all kinds of nonstandard vendor tools that all need to play together). I have been using doit more and more over the past few months, and I’m continually impressed by the tool (aside from the goofy name). <strong>It works amazingly well for automating tricky/exotic build processes</strong>. Check it out! <a class="reference external" href="http://news.slashdot.org/comments.pl?sid=4319575&amp;cid=45085519">SkOink</a></p>
+<p>I needed a sort of ‘make’ tool to glue things together and after trying out all kinds, <strong>doit … has actually turned out to be beautiful</strong>. Its easy to add and manage tasks, even complex ones– gluing things together with decorators and ‘library’ functions I have written to do certain similar things. - <a class="reference external" href="https://groups.google.com/d/msg/python-doit/eKI0uu02ZeY/cBU0RRsO0_cJ">Matthew</a></p>
+<p>Some time ago, I grew frustrated with Make and Ant and started porting my build files to every build tool I found (SCons, Waf, etc.). Each time, as soon as I stepped out of already available rules, I ran into some difficult to overcome stumbling blocks. <strong>Then I discovered this little gem of simplicity: doit</strong>. It’s Python-based. It does not try to be smart, it does not try to be cool, it just works. If you are looking for a flexible little build tool for different languages and tasks, give it a chance. (…) - <a class="reference external" href="http://www.hnsearch.com/search#request/all&amp;q=python-doit.sourceforge.net&amp;start=0">lelele</a></p>
+</div></blockquote>
+<p><a class="reference external" href="stories.html">Success Stories…</a></p>
+</div>
+<div class="section" id="project-details">
+<h1>Project Details<a class="headerlink" href="#project-details" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><strong>LICENSE</strong> This is an open-source project
+(<a class="reference external" href="http://opensource.org/licenses/mit-license.php">MIT license</a>)
+written in python. Runs on Python 3.4 through 3.6 (including PyPy support). For python 2 support please use <em>doit</em> version 0.29.</li>
+<li><strong>DOWNLOAD</strong> from <a class="reference external" href="http://pypi.python.org/pypi/doit">PyPi</a></li>
+<li><strong>CONTRIBUTE</strong> Please check the community <a class="reference external" href="https://github.com/pydoit/doit/blob/master/CONTRIBUTING.md">guidelines</a> before asking questions and reporting issues.</li>
+<li><strong>DEVELOP</strong> Project management (bug tracker, feature requests and source code ) on <a class="reference external" href="https://github.com/pydoit/doit">github</a>.</li>
+<li><strong>QUESTIONS</strong> on <a class="reference external" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>, use tag <cite>doit</cite>.</li>
+<li><strong>FORUM</strong> (questions/feedback/discussion) on <a class="reference external" href="http://groups.google.co.in/group/python-doit">Google group</a>. Please do <strong>not</strong> send questions to my private email.</li>
+<li><a class="reference external" href="https://github.com/pydoit/doit/wiki/powered-by-doit">doit projects</a> contains a collection of third-party projects, plugins, extensions, non-trivial examples and re-usable task creators for <cite>doit</cite>.</li>
+<li>This web site is hosted on <a class="reference external" href="http://pages.github.com">http://pages.github.com</a></li>
+<li>Professional support and consulting services available from <cite>doit</cite>
+creator &amp; maintainer (<em>schettino72</em> at gmail.com).</li>
+</ul>
+</div>
+<div class="section" id="status">
+<h1>Status<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h1>
+<p>This blog <a class="reference external" href="http://schettino72.wordpress.com/2008/04/14/doit-a-build-tool-tale/">post</a> explains how everything started in 2008.</p>
+<p><cite>doit</cite> is under active development. Version 0.31 released on 2018-02.</p>
+<p><cite>doit</cite> core features are quite stable. If there is no recent development,
+it does NOT mean <cite>doit</cite> is not being maintained…
+The project has 100% unit-test code coverage.</p>
+<p>Development is done based on real world use cases.
+It is well designed and has a small code base,
+so adding new features is not hard. Contributions are welcome.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2008-2018, Eduardo Schettino.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.31',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

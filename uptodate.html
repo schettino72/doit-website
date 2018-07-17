@@ -1,70 +1,112 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>custom uptodate &#8212; doit - automation tool</title>
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.31',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>custom uptodate &mdash; doit 0.31 documentation</title>
+  
+
+  
+  
     <link rel="shortcut icon" href="_static/favico.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Tools" href="tools.html" />
     <link rel="prev" title="Passing Task Arguments from the command line" href="task_args.html" />
 <style>
-  body {
-    font-size: 16px;
-  }
+/* FIX for https://github.com/rtfd/sphinx_rtd_theme/pull/657
+   pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
+   line-height: 1.4 !important;
+   }
+*/
 
-  div.topic {
-    padding: 0;
-    background-color: #F8F4A6;
-    border: 1px solid #D8D486;
-  }
+  /* FIX: handle code-block-caption
+  https://github.com/rtfd/sphinx_rtd_theme/issues/292
+  */
+pre {
+  font-size: 0.95em !important;
+  letter-spacing: 0.015em;
+  line-height: 120% !important; /* also fix 657 */
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
+pre.literal-block, div[class^='highlight'], div[class^='highlight-python3'] {
+  margin-top: 0px !important;
+}
+div.code-block-caption {
+  background-color: #ddd;
+  color: #222;
+  border: 1px solid #ccc;
+}
+div.code-block-caption {
+  padding: 2px 5px;
+  font-size: small;
+}
+a.headerlink {
+  visibility: hidden;
+  color: #c60f0f!important;
+  font-size: 1em;
+  margin-left: 6px;
+  padding: 0 4px 0 4px;
+  text-decoration: none!important;
+}
+a.headerlink:after{
+  margin-left: 0px;
+  content:"";
+  font-family:FontAwesome;
+}
+.code-block-caption:hover .headerlink:after {
+  visibility:visible;
+}
 
-  div.topic p.first {
-    margin: 0;
-    padding: 0.1em 0 0.1em 0.5em;
-    background-color: #E8E496;
-    border-bottom: 1px solid #C8C476;
-  }
+/* CHANGE: code displayed in red color is too aggresive */
+code {
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+code.literal {
+  color: inherit !important;
+}
 
-  div.topic p {
-    margin: 0.5em 1em 0.5em 1em;
-  }
+/* FIX: use full hight of nav-side (not version selector) */
+.wy-nav-side {
+  padding-bottom: 0px !important;
+}
+.wy-menu-vertical {
+  padding-bottom: 15px !important;
+}
 
-  p.topic-title {
-    display: run-in;
-    margin-right: 15px;
-  }
-
-  a.external-link {
-    background: url(_static/external.png) center right no-repeat;
-    padding-right: 13px;
-  }
-
-  div.related ul li a.external-link {
-    padding-right: 13px;
-  }
-
-  .sidebartext {
-    font-size: 75%;
-    line-height: 130%;
-  }
+/* FIX: revert rtd messing up with every image in nav-search */
+.wy-side-nav-search img.logo, .wy-nav-top img.logo {
+    display: inherit !important;
+    margin: inherit !important;
+    height: inherit !important;
+    width: inherit !important;
+    background-color: inherit !important;
+    padding: 5px;
+    border-radius: inherit !important;
+}
 
 </style>
 
@@ -81,103 +123,189 @@
 
 
 
-  </head>
-  <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
-<img src="_static/doit.png" alt="doit logo" />
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+  <div style="text-align:left">
+    <a href="index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+    </a>
+    <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black"><i class="fa fa-twitter"></i></a></span>
+    <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
+  </div>
+  <div style="color:rgba(1,1,1,0.3); text-align:left; margin:10px;">
+    
+      
+        <span>0.31</span>
+      
+    
+  </div>
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="tools.html" title="Tools"
-             accesskey="N">next</a></li>
-        <li class="right" >
-          <a href="task_args.html" title="Passing Task Arguments from the command line"
-             accesskey="P">previous</a> |</li>
-  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
-  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
- 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="contents.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">custom uptodate</a><ul>
-<li><a class="reference internal" href="#result-dependency">result-dependency</a></li>
-<li><a class="reference internal" href="#run-once">run_once()</a></li>
-<li><a class="reference internal" href="#timeout">timeout()</a></li>
-<li><a class="reference internal" href="#config-changed">config_changed()</a></li>
-<li><a class="reference internal" href="#check-timestamp-unchanged">check_timestamp_unchanged()</a></li>
-</ul>
-</li>
-</ul>
-
-
-
-
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-<h3>Donate</h3>
-
-
-<div>
-
-<div class="sidebartext">
-
-<p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
-
-<p>Abandoned open-source project does not work for long. Thriving project requires a maintainer to keep list of issues and list of pull requests short. Financial goal is 500 USD per month to allow the maintainer working few hours a week on the project.</p>
-</div>
-
-<h5>OpenCollective</h5>
-<div>
-  <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
-</div>
-
-<h5>Paypal</h5>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-</form>
-</div>
-
-<br/>
-
-
-
-<h3></h3>
-<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" alt="python logo"/></a><br/><br/>
 
         </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_1.html">tutorial 1 - basics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">More on dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_creation.html">More on Task creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_run.html">Command line interface - run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_other.html">Other Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_args.html">Passing Task Arguments from the command line</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">custom uptodate</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#result-dependency">result-dependency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-once">run_once()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#timeout">timeout()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#config-changed">config_changed()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-timestamp-unchanged">check_timestamp_unchanged()</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending <cite>doit</cite></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stories.html">Success Stories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+
+  
+    <div class="wy-side-nav-search" style="margin-bottom: 0px;">
+      <h3>Donate</h3>
+
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
+      <p>If you consider <em>doit</em> to be a useful project, and would like to see it continue to be maintained and developed, please consider helping cover the development cost. Thriving project requires a maintainer to keep list of issues and list of pull requests short.</p>
+    </div>
+
+    <div class="wy-side-nav-search" style="color:black;background-color:#fcfcfc;border-right:black 1px solid;">
+      <h6 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h6>
+      <div>
+        <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
       </div>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+      <hr style="margin-top:5px;">
+      <h6 style="margin-bottom:20px;">Paypal</h6>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1" style="visibility:hidden;">
+      </form>
+    </div>
+    <br>
+  
+
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+  <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+  <a href="index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+  </a>
+  <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-twitter"></i></a></span>
+  <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-github"></i></a></span>
+
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="contents.html">Docs</a> &raquo;</li>
+        
+      <li>custom uptodate</li>
+    
+    
+   
+   <span class="float-right" role="navigation" aria-label="breadcrumb navigation">
+      
+        <li>
+          <a href="task_args.html" title="Passing Task Arguments from the command line" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Passing Task Arguments from the command line</a>
+        </li>
+      
+      <li style="padding-right:5px">|</li>
+      
+        <li>
+            <a href="tools.html" title="Tools" accesskey="n">Tools <span class="fa fa-arrow-circle-right"></span></a>
+        </li>
+      
+  </span>
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="custom-uptodate">
 <h1>custom uptodate<a class="headerlink" href="#custom-uptodate" title="Permalink to this headline">¶</a></h1>
@@ -192,7 +320,7 @@ input files, the input could come from a database or an external process.
 create an intermediate file with the results of the process.</p>
 <p>i.e. Suppose you want to send an email every time you run <em>doit</em> on a mercurial
 repository that contains a new revision number.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">result_dep</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">result_dep</span>
 
 <span class="k">def</span> <span class="nf">task_version</span><span class="p">():</span>
 	<span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hg tip --template &#39;</span><span class="si">{rev}</span><span class="s2">:</span><span class="si">{node}</span><span class="s2">&#39;&quot;</span><span class="p">]}</span>
@@ -221,7 +349,7 @@ all the time. With “run_once” the task will not be executed again after the 
 successful run. This is mostly used together with targets.</p>
 <p>Suppose you need to download something from internet.
 There is no dependency, but you do not want to download it many times.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">run_once</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">run_once</span>
 
 <span class="k">def</span> <span class="nf">task_get_pylogo</span><span class="p">():</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://python.org/images/python-logo.gif&quot;</span>
@@ -232,7 +360,7 @@ There is no dependency, but you do not want to download it many times.</p>
 </pre></div>
 </div>
 <p>Note that even with <em>run_once</em> the file will be downloaded again in case the target is removed.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  get_pylogo</span>
 <span class="gp">$</span> doit
 <span class="go">-- get_pylogo</span>
@@ -244,10 +372,10 @@ There is no dependency, but you do not want to download it many times.</p>
 </div>
 <div class="section" id="timeout">
 <span id="id2"></span><h2>timeout()<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">timeout</span></code> is used to expire a task after a certain time interval.</p>
+<p><code class="docutils literal notranslate"><span class="pre">timeout</span></code> is used to expire a task after a certain time interval.</p>
 <p>i.e. You want to re-execute a task only if the time elapsed since the last
 time it was executed is bigger than 5 minutes.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">timeout</span>
 
 <span class="k">def</span> <span class="nf">task_expire</span><span class="p">():</span>
@@ -258,16 +386,16 @@ time it was executed is bigger than 5 minutes.</p>
            <span class="p">}</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">timeout</span></code> is function that takes an <code class="docutils literal"><span class="pre">int</span></code> (seconds) or <code class="docutils literal"><span class="pre">timedelta</span></code> as a
-parameter. It returns a callable suitable to be used as an <code class="docutils literal"><span class="pre">uptodate</span></code> callable.</p>
+<p><code class="docutils literal notranslate"><span class="pre">timeout</span></code> is function that takes an <code class="docutils literal notranslate"><span class="pre">int</span></code> (seconds) or <code class="docutils literal notranslate"><span class="pre">timedelta</span></code> as a
+parameter. It returns a callable suitable to be used as an <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> callable.</p>
 </div>
 <div class="section" id="config-changed">
 <span id="id3"></span><h2>config_changed()<a class="headerlink" href="#config-changed" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">config_changed</span></code> is used to check if any “configuration” value for the task has
+<p><code class="docutils literal notranslate"><span class="pre">config_changed</span></code> is used to check if any “configuration” value for the task has
 changed. Config values can be a string or dict.</p>
-<p>For dict’s the values are converted to string (actually it uses python’s <cite>repr()</cite>)
+<p>For dict’s the values are converted to string (using <cite>json.dumps()</cite> with <cite>sort_key=True</cite>)
 and only a digest/checksum of the dictionaries keys and values are saved.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">config_changed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">config_changed</span>
 
 <span class="n">option</span> <span class="o">=</span> <span class="s2">&quot;AB&quot;</span>
 <span class="k">def</span> <span class="nf">task_with_params</span><span class="p">():</span>
@@ -280,25 +408,25 @@ and only a digest/checksum of the dictionaries keys and values are saved.</p>
 </div>
 <div class="section" id="check-timestamp-unchanged">
 <span id="id4"></span><h2>check_timestamp_unchanged()<a class="headerlink" href="#check-timestamp-unchanged" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">check_timestamp_unchanged</span></code> is used to check if specified timestamp of a given
+<p><code class="docutils literal notranslate"><span class="pre">check_timestamp_unchanged</span></code> is used to check if specified timestamp of a given
 file/dir is unchanged since last run.</p>
-<p>The timestamp field to check defaults to <code class="docutils literal"><span class="pre">mtime</span></code>, but can be selected by
-passing <code class="docutils literal"><span class="pre">time</span></code> parameter which can be one of: <code class="docutils literal"><span class="pre">atime</span></code>, <code class="docutils literal"><span class="pre">ctime</span></code>, <code class="docutils literal"><span class="pre">mtime</span></code>
-(or their aliases <code class="docutils literal"><span class="pre">access</span></code>, <code class="docutils literal"><span class="pre">status</span></code>, <code class="docutils literal"><span class="pre">modify</span></code>).</p>
-<p>Note that <code class="docutils literal"><span class="pre">ctime</span></code> or <code class="docutils literal"><span class="pre">status</span></code> is platform dependent.
+<p>The timestamp field to check defaults to <code class="docutils literal notranslate"><span class="pre">mtime</span></code>, but can be selected by
+passing <code class="docutils literal notranslate"><span class="pre">time</span></code> parameter which can be one of: <code class="docutils literal notranslate"><span class="pre">atime</span></code>, <code class="docutils literal notranslate"><span class="pre">ctime</span></code>, <code class="docutils literal notranslate"><span class="pre">mtime</span></code>
+(or their aliases <code class="docutils literal notranslate"><span class="pre">access</span></code>, <code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">modify</span></code>).</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">ctime</span></code> or <code class="docutils literal notranslate"><span class="pre">status</span></code> is platform dependent.
 On Unix it is the time of most recent metadata change,
 on Windows it is the time of creation.
 See <a class="reference external" href="http://docs.python.org/library/os.html#os.stat">Python library documentation for os.stat</a> and Linux man page for
 stat(2) for details.</p>
-<p>It also accepts an <code class="docutils literal"><span class="pre">cmp_op</span></code> parameter which defaults to <code class="docutils literal"><span class="pre">operator.eq</span></code> (==).
+<p>It also accepts an <code class="docutils literal notranslate"><span class="pre">cmp_op</span></code> parameter which defaults to <code class="docutils literal notranslate"><span class="pre">operator.eq</span></code> (==).
 To use it pass a callable which takes two parameters (prev_time, current_time)
 and returns True if task should be considered up-to-date, False otherwise.
-Here <code class="docutils literal"><span class="pre">prev_time</span></code> is the time from the last successful run and <code class="docutils literal"><span class="pre">current_time</span></code>
+Here <code class="docutils literal notranslate"><span class="pre">prev_time</span></code> is the time from the last successful run and <code class="docutils literal notranslate"><span class="pre">current_time</span></code>
 is the time obtained in current run.</p>
 <p>If the specified file does not exist, an exception will be raised.
 If a file is a target of another task you should probably add
-<code class="docutils literal"><span class="pre">task_dep</span></code> on that task to ensure the file is created before it is checked.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">check_timestamp_unchanged</span>
+<code class="docutils literal notranslate"><span class="pre">task_dep</span></code> on that task to ensure the file is created before it is checked.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">check_timestamp_unchanged</span>
 
 <span class="k">def</span> <span class="nf">task_create_foo</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
@@ -320,34 +448,68 @@ If a file is a target of another task you should probably add
 </div>
 
 
+           </div>
+           
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tools.html" class="btn btn-neutral float-right" title="Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="task_args.html" class="btn btn-neutral" title="Passing Task Arguments from the command line" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2008-2018, Eduardo Schettino.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="tools.html" title="Tools"
-             >next</a></li>
-        <li class="right" >
-          <a href="task_args.html" title="Passing Task Arguments from the command line"
-             >previous</a> |</li>
-  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
-  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
- 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2008-2018, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.31',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

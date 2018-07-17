@@ -1,70 +1,112 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Other Commands &#8212; doit - automation tool</title>
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.31',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Other Commands &mdash; doit 0.31 documentation</title>
+  
+
+  
+  
     <link rel="shortcut icon" href="_static/favico.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Configuration" href="configuration.html" />
     <link rel="prev" title="Command line interface - run" href="cmd_run.html" />
 <style>
-  body {
-    font-size: 16px;
-  }
+/* FIX for https://github.com/rtfd/sphinx_rtd_theme/pull/657
+   pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
+   line-height: 1.4 !important;
+   }
+*/
 
-  div.topic {
-    padding: 0;
-    background-color: #F8F4A6;
-    border: 1px solid #D8D486;
-  }
+  /* FIX: handle code-block-caption
+  https://github.com/rtfd/sphinx_rtd_theme/issues/292
+  */
+pre {
+  font-size: 0.95em !important;
+  letter-spacing: 0.015em;
+  line-height: 120% !important; /* also fix 657 */
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
+pre.literal-block, div[class^='highlight'], div[class^='highlight-python3'] {
+  margin-top: 0px !important;
+}
+div.code-block-caption {
+  background-color: #ddd;
+  color: #222;
+  border: 1px solid #ccc;
+}
+div.code-block-caption {
+  padding: 2px 5px;
+  font-size: small;
+}
+a.headerlink {
+  visibility: hidden;
+  color: #c60f0f!important;
+  font-size: 1em;
+  margin-left: 6px;
+  padding: 0 4px 0 4px;
+  text-decoration: none!important;
+}
+a.headerlink:after{
+  margin-left: 0px;
+  content:"";
+  font-family:FontAwesome;
+}
+.code-block-caption:hover .headerlink:after {
+  visibility:visible;
+}
 
-  div.topic p.first {
-    margin: 0;
-    padding: 0.1em 0 0.1em 0.5em;
-    background-color: #E8E496;
-    border-bottom: 1px solid #C8C476;
-  }
+/* CHANGE: code displayed in red color is too aggresive */
+code {
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+code.literal {
+  color: inherit !important;
+}
 
-  div.topic p {
-    margin: 0.5em 1em 0.5em 1em;
-  }
+/* FIX: use full hight of nav-side (not version selector) */
+.wy-nav-side {
+  padding-bottom: 0px !important;
+}
+.wy-menu-vertical {
+  padding-bottom: 15px !important;
+}
 
-  p.topic-title {
-    display: run-in;
-    margin-right: 15px;
-  }
-
-  a.external-link {
-    background: url(_static/external.png) center right no-repeat;
-    padding-right: 13px;
-  }
-
-  div.related ul li a.external-link {
-    padding-right: 13px;
-  }
-
-  .sidebartext {
-    font-size: 75%;
-    line-height: 130%;
-  }
+/* FIX: revert rtd messing up with every image in nav-search */
+.wy-side-nav-search img.logo, .wy-nav-top img.logo {
+    display: inherit !important;
+    margin: inherit !important;
+    height: inherit !important;
+    width: inherit !important;
+    background-color: inherit !important;
+    padding: 5px;
+    border-radius: inherit !important;
+}
 
 </style>
 
@@ -81,121 +123,207 @@
 
 
 
-  </head>
-  <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
-<img src="_static/doit.png" alt="doit logo" />
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+  <div style="text-align:left">
+    <a href="index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+    </a>
+    <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black"><i class="fa fa-twitter"></i></a></span>
+    <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
+  </div>
+  <div style="color:rgba(1,1,1,0.3); text-align:left; margin:10px;">
+    
+      
+        <span>0.31</span>
+      
+    
+  </div>
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="configuration.html" title="Configuration"
-             accesskey="N">next</a></li>
-        <li class="right" >
-          <a href="cmd_run.html" title="Command line interface - run"
-             accesskey="P">previous</a> |</li>
-  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
-  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
- 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="contents.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Other Commands</a><ul>
-<li><a class="reference internal" href="#help">help</a></li>
-<li><a class="reference internal" href="#list">list</a></li>
-<li><a class="reference internal" href="#info">info</a></li>
-<li><a class="reference internal" href="#forget">forget</a></li>
-<li><a class="reference internal" href="#clean">clean</a><ul>
-<li><a class="reference internal" href="#dry-run">dry run</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ignore">ignore</a></li>
-<li><a class="reference internal" href="#auto-watch">auto (watch)</a><ul>
-<li><a class="reference internal" href="#callbacks">callbacks</a></li>
-<li><a class="reference internal" href="#watch-parameter"><code class="docutils literal"><span class="pre">watch</span></code> parameter</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#tabcompletion">tabcompletion</a><ul>
-<li><a class="reference internal" href="#bash">bash</a></li>
-<li><a class="reference internal" href="#zsh">zsh</a></li>
-<li><a class="reference internal" href="#hard-coding-tasks">hard-coding tasks</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#dumpdb">dumpdb</a></li>
-<li><a class="reference internal" href="#strace">strace</a></li>
-<li><a class="reference internal" href="#reset-dep">reset-dep</a></li>
-</ul>
-</li>
-</ul>
-
-
-
-
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-<h3>Donate</h3>
-
-
-<div>
-
-<div class="sidebartext">
-
-<p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
-
-<p>Abandoned open-source project does not work for long. Thriving project requires a maintainer to keep list of issues and list of pull requests short. Financial goal is 500 USD per month to allow the maintainer working few hours a week on the project.</p>
-</div>
-
-<h5>OpenCollective</h5>
-<div>
-  <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
-</div>
-
-<h5>Paypal</h5>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-</form>
-</div>
-
-<br/>
-
-
-
-<h3></h3>
-<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" alt="python logo"/></a><br/><br/>
 
         </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_1.html">tutorial 1 - basics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">More on dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_creation.html">More on Task creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_run.html">Command line interface - run</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Other Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#help">help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list">list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forget">forget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clean">clean</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dry-run">dry run</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ignore">ignore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#auto-watch">auto (watch)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#callbacks">callbacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#watch-parameter"><code class="docutils literal notranslate"><span class="pre">watch</span></code> parameter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tabcompletion">tabcompletion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bash">bash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zsh">zsh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hard-coding-tasks">hard-coding tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dumpdb">dumpdb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#strace">strace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reset-dep">reset-dep</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_args.html">Passing Task Arguments from the command line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uptodate.html">custom uptodate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending <cite>doit</cite></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stories.html">Success Stories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+
+  
+    <div class="wy-side-nav-search" style="margin-bottom: 0px;">
+      <h3>Donate</h3>
+
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
+      <p>If you consider <em>doit</em> to be a useful project, and would like to see it continue to be maintained and developed, please consider helping cover the development cost. Thriving project requires a maintainer to keep list of issues and list of pull requests short.</p>
+    </div>
+
+    <div class="wy-side-nav-search" style="color:black;background-color:#fcfcfc;border-right:black 1px solid;">
+      <h6 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h6>
+      <div>
+        <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
       </div>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+      <hr style="margin-top:5px;">
+      <h6 style="margin-bottom:20px;">Paypal</h6>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1" style="visibility:hidden;">
+      </form>
+    </div>
+    <br>
+  
+
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+  <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+  <a href="index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+  </a>
+  <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-twitter"></i></a></span>
+  <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-github"></i></a></span>
+
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="contents.html">Docs</a> &raquo;</li>
+        
+      <li>Other Commands</li>
+    
+    
+   
+   <span class="float-right" role="navigation" aria-label="breadcrumb navigation">
+      
+        <li>
+          <a href="cmd_run.html" title="Command line interface - run" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Command line interface - run</a>
+        </li>
+      
+      <li style="padding-right:5px">|</li>
+      
+        <li>
+            <a href="configuration.html" title="Configuration" accesskey="n">Configuration <span class="fa fa-arrow-circle-right"></span></a>
+        </li>
+      
+  </span>
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="other-commands">
 <h1>Other Commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a></h1>
@@ -206,7 +334,7 @@ Always check <cite>doit help &lt;cmd&gt;</cite> to see a complete list of option
 </div>
 <p>Let’s use a more complex example to demonstrate the command line features.
 The example below is used to manage a very simple C project.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]}</span>
 
 <span class="c1"># map source file to dependencies</span>
 <span class="n">SOURCE</span> <span class="o">=</span> <span class="p">{</span>
@@ -253,7 +381,7 @@ The example below is used to manage a very simple C project.</p>
 <span id="cmd-list"></span><h2>list<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h2>
 <p><em>list</em> is used to show all tasks available in a <em>dodo</em> file.
 Tasks are listed in alphabetical order, not by order of execution.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
 <span class="go">compile : compile C files</span>
 <span class="go">install : install executable (TODO)</span>
 <span class="go">link : create binary program</span>
@@ -275,7 +403,7 @@ are listed if the option <em>-p</em>/<em>–private</em> is used.</p>
 <p>You can check a task meta-data using the <em>info</em> command.
 This might be useful when have some complex code generating
 the task meta-data.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info link
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info link
 <span class="go">name:&#39;link&#39;</span>
 
 <span class="go">file_dep:set([&#39;command.o&#39;, &#39;kbd.o&#39;, &#39;main.o&#39;])</span>
@@ -284,7 +412,7 @@ the task meta-data.</p>
 </pre></div>
 </div>
 <p>Use the option <cite>–status</cite>, to check the reason a task is not up-to-date.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info link
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info link
 
 <span class="go">Task is not up-to-date:</span>
 <span class="go"> * The following file dependencies have changed:</span>
@@ -302,25 +430,25 @@ based on the dependencies but actually it is not! In this case you can use the
 <em>forget</em> command to make sure the given task will be executed again even with no
 changes in the dependencies.</p>
 <p>If you do not specify any task, the default tasks are “<em>forget</em>”.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit forget
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit forget
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><em>doit</em> keeps track of which tasks are successful in the file <code class="docutils literal"><span class="pre">.doit.db</span></code>.</p>
+<p class="last"><em>doit</em> keeps track of which tasks are successful in the file <code class="docutils literal notranslate"><span class="pre">.doit.db</span></code>.</p>
 </div>
 </div>
 <div class="section" id="clean">
 <h2>clean<a class="headerlink" href="#clean" title="Permalink to this headline">¶</a></h2>
 <p>A common scenario is a task that needs to “revert” its actions. A task may
-include a <em>clean</em> attribute. This attribute can be <code class="docutils literal"><span class="pre">True</span></code> to remove all of its
+include a <em>clean</em> attribute. This attribute can be <code class="docutils literal notranslate"><span class="pre">True</span></code> to remove all of its
 target files. If there is a folder as a target it will be removed if the folder
 is empty, otherwise it will display a warning message.</p>
 <p>The <em>clean</em> attribute can be a list of actions. An action could be a
 string with a shell command or a tuple with a python callable.</p>
 <p>If you want to clean the targets and add some custom clean actions,
 you can include the <cite>doit.task.clean_targets</cite> instead of passing <cite>True</cite>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.task</span> <span class="k">import</span> <span class="n">clean_targets</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.task</span> <span class="k">import</span> <span class="n">clean_targets</span>
 
 <span class="k">def</span> <span class="nf">simple</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ok&quot;</span><span class="p">)</span>
@@ -334,7 +462,7 @@ you can include the <cite>doit.task.clean_targets</cite> instead of passing <cit
 </pre></div>
 </div>
 <p>You can specify which task to <em>clean</em>. If no task is specified the clean operation of default tasks are executed.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit clean
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit clean
 </pre></div>
 </div>
 <p>By default if a task contains task-dependencies those are not automatically
@@ -346,9 +474,9 @@ If you are executing the default tasks this flag is automatically set.</p>
 You can clean all tasks using the <em>-a</em>/<em>–all</em> argument.</p>
 </div>
 <p>If you like to also make doit forget previous execution of cleaned tasks, use option
-<em>–forget</em>. This can be made the default behavior by adding the corresponding <code class="docutils literal"><span class="pre">cleanforget</span></code>
+<em>–forget</em>. This can be made the default behavior by adding the corresponding <code class="docutils literal notranslate"><span class="pre">cleanforget</span></code>
 configuration switch:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;cleanforget&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
@@ -360,7 +488,7 @@ configuration switch:</p>
 <strong>if</strong> it does not include a <cite>dryrun</cite> parameter.</p>
 <p>If it includes a <cite>dryrun</cite> parameter the action will <strong>always</strong> be executed,
 and its implementation is responsible for handling the <em>dry-run</em> logic.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_cleaner</span><span class="p">(</span><span class="n">dryrun</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_cleaner</span><span class="p">(</span><span class="n">dryrun</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">dryrun</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dryrun, dont really execute&#39;</span><span class="p">)</span>
         <span class="k">return</span>
@@ -381,14 +509,14 @@ and its implementation is responsible for handling the <em>dry-run</em> logic.</
 <p>It is possible to set a task to be ignored/skipped (that is, not executed). This
 is useful, for example, when you are performing checks in several files and you
 want to skip the check in some of them temporarily.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
         <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;file</span><span class="si">%d</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="n">i</span>
         <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
                <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;touch </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  create_file:file0.txt</span>
 <span class="go">.  create_file:file1.txt</span>
 <span class="go">.  create_file:file2.txt</span>
@@ -400,7 +528,7 @@ want to skip the check in some of them temporarily.</p>
 <span class="go">.  create_file:file2.txt</span>
 </pre></div>
 </div>
-<p>Note the <code class="docutils literal"><span class="pre">!!</span></code>, it means that task was ignored. To reverse the <cite>ignore</cite> use
+<p>Note the <code class="docutils literal notranslate"><span class="pre">!!</span></code>, it means that task was ignored. To reverse the <cite>ignore</cite> use
 <cite>forget</cite> sub-command.</p>
 </div>
 <div class="section" id="auto-watch">
@@ -414,7 +542,7 @@ running process that only terminates when it is interrupted (Ctrl-C).
 When started it will execute the given tasks. After that it will watch the
 file system for modifications in the file-dependencies.
 When a file is modified the tasks are re-executed.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit auto
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit auto
 </pre></div>
 </div>
 <div class="admonition note">
@@ -430,20 +558,20 @@ This can used to display desktop notifications, so you do not need to keep
 an eye in the terminal to notice when tasks succeed or failed.</p>
 <p>Example of sound and desktop notification on Ubuntu.
 Contents of a <cite>doit.cfg</cite> file:</p>
-<div class="highlight-INI"><div class="highlight"><pre><span></span><span class="k">[auto]</span>
+<div class="highlight-INI notranslate"><div class="highlight"><pre><span></span><span class="k">[auto]</span>
 <span class="na">success_callback</span> <span class="o">=</span> <span class="s">notify-send -u low -i /usr/share/icons/gnome/16x16/emotes/face-smile.png &quot;doit:   success&quot;; aplay -q /usr/share/sounds/purple/send.wav</span>
 <span class="na">failure_callback</span> <span class="o">=</span> <span class="s">notify-send -u normal -i /usr/share/icons/gnome/16x16/status/error.png &quot;doit:  fail&quot;; aplay -q /usr/share/sounds/purple/alert.wav</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="watch-parameter">
-<h3><code class="docutils literal"><span class="pre">watch</span></code> parameter<a class="headerlink" href="#watch-parameter" title="Permalink to this headline">¶</a></h3>
-<p>Apart from <code class="docutils literal"><span class="pre">file_dep</span></code> you can use the parameter <code class="docutils literal"><span class="pre">watch</span></code> to pass extra
+<h3><code class="docutils literal notranslate"><span class="pre">watch</span></code> parameter<a class="headerlink" href="#watch-parameter" title="Permalink to this headline">¶</a></h3>
+<p>Apart from <code class="docutils literal notranslate"><span class="pre">file_dep</span></code> you can use the parameter <code class="docutils literal notranslate"><span class="pre">watch</span></code> to pass extra
 paths to be watched for (including folders).
 If paths are folders their sub-folders will not be watched unless these
 sub-folders are also part of the given extra paths.
-The <code class="docutils literal"><span class="pre">watch</span></code> parameter can also be specified for a group of “sub-tasks”.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+The <code class="docutils literal notranslate"><span class="pre">watch</span></code> parameter can also be specified for a group of “sub-tasks”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
 
 <span class="k">def</span> <span class="nf">task_xxx</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;my doc&quot;&quot;&quot;</span>
@@ -472,7 +600,7 @@ The generated script is written on stdout.</p>
 <div class="section" id="bash">
 <h3>bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h3>
 <p>To use a completion script you need to <cite>source</cite> it first.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit tabcompletion &gt; bash_completion_doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit tabcompletion &gt; bash_completion_doit
 <span class="gp">$</span> <span class="nb">source</span> bash_completion_doit
 </pre></div>
 </div>
@@ -480,7 +608,7 @@ The generated script is written on stdout.</p>
 <div class="section" id="zsh">
 <h3>zsh<a class="headerlink" href="#zsh" title="Permalink to this headline">¶</a></h3>
 <p>zsh completion scripts should be placed in a folder in the “autoload” path.</p>
-<div class="highlight-sh"><div class="highlight"><pre><span></span><span class="c1"># add folder with completion scripts</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># add folder with completion scripts</span>
 <span class="nv">fpath</span><span class="o">=(</span>~/.zsh/tabcompletion <span class="nv">$fpath</span><span class="o">)</span>
 
 <span class="c1"># Use modern completion system</span>
@@ -488,7 +616,7 @@ autoload -Uz compinit
 compinit
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit tabcompletion --shell zsh &gt; _doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit tabcompletion --shell zsh &gt; _doit
 <span class="gp">$</span> cp _doit ~/.zsh/tabcompletion/_doit
 </pre></div>
 </div>
@@ -499,7 +627,7 @@ compinit
 or if you tasks take a long time to load you may create
 a completion script that includes the list of tasks
 from your dodo.py.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> my_app tabcompletion --hardcode-tasks &gt; _my_app
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> my_app tabcompletion --hardcode-tasks &gt; _my_app
 </pre></div>
 </div>
 </div>
@@ -509,7 +637,7 @@ from your dodo.py.</p>
 <p><cite>doit</cite> saves internal data in a file (<cite>.doit.db</cite> by default).
 It uses a binary format (whatever python’s dbm is using in your system).
 This command will simply dump its content in readable text format in the output.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit dumpdb
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit dumpdb
 </pre></div>
 </div>
 </div>
@@ -532,24 +660,24 @@ that means it might not write a target file if it exist</li>
 </dd>
 </dl>
 <p>So this is NOT 100% reliable, use with care!</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit strace &lt;task-name&gt;
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit strace &lt;task-name&gt;
 </pre></div>
 </div>
 </div>
 <div class="section" id="reset-dep">
 <h2>reset-dep<a class="headerlink" href="#reset-dep" title="Permalink to this headline">¶</a></h2>
 <p>This command allows to recompute the information on file dependencies
-(timestamp, md5sum, … depending on the <code class="docutils literal"><span class="pre">check_file_uptodate</span></code> setting), and
+(timestamp, md5sum, … depending on the <code class="docutils literal notranslate"><span class="pre">check_file_uptodate</span></code> setting), and
 save this in the database, without executing the actions.</p>
 <p>The command run on all tasks by default, but it is possible to specify a list
 of tasks to work on.</p>
 <p>This is useful when the targets of your tasks already exist, and you want doit
 to consider your tasks as up-to-date. One use-case for this command is when you
-change the <code class="docutils literal"><span class="pre">check_file_uptodate</span></code> setting, which cause doit to consider all
+change the <code class="docutils literal notranslate"><span class="pre">check_file_uptodate</span></code> setting, which cause doit to consider all
 your tasks as not up-to-date. It is also useful if you start using doit while
 some of your data as already been computed, or when you add a file dependency
 to a task that has already run.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit reset-dep
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit reset-dep
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -566,34 +694,68 @@ otherwise they will not be set at all.</p>
 </div>
 
 
+           </div>
+           
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configuration.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cmd_run.html" class="btn btn-neutral" title="Command line interface - run" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2008-2018, Eduardo Schettino.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="configuration.html" title="Configuration"
-             >next</a></li>
-        <li class="right" >
-          <a href="cmd_run.html" title="Command line interface - run"
-             >previous</a> |</li>
-  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
-  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
- 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2008-2018, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.31',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

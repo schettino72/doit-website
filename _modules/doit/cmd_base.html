@@ -1,68 +1,110 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>doit.cmd_base &#8212; doit - automation tool</title>
-    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.31',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>doit.cmd_base &mdash; doit 0.31 documentation</title>
+  
+
+  
+  
     <link rel="shortcut icon" href="../../_static/favico.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
 <style>
-  body {
-    font-size: 16px;
-  }
+/* FIX for https://github.com/rtfd/sphinx_rtd_theme/pull/657
+   pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
+   line-height: 1.4 !important;
+   }
+*/
 
-  div.topic {
-    padding: 0;
-    background-color: #F8F4A6;
-    border: 1px solid #D8D486;
-  }
+  /* FIX: handle code-block-caption
+  https://github.com/rtfd/sphinx_rtd_theme/issues/292
+  */
+pre {
+  font-size: 0.95em !important;
+  letter-spacing: 0.015em;
+  line-height: 120% !important; /* also fix 657 */
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
+pre.literal-block, div[class^='highlight'], div[class^='highlight-python3'] {
+  margin-top: 0px !important;
+}
+div.code-block-caption {
+  background-color: #ddd;
+  color: #222;
+  border: 1px solid #ccc;
+}
+div.code-block-caption {
+  padding: 2px 5px;
+  font-size: small;
+}
+a.headerlink {
+  visibility: hidden;
+  color: #c60f0f!important;
+  font-size: 1em;
+  margin-left: 6px;
+  padding: 0 4px 0 4px;
+  text-decoration: none!important;
+}
+a.headerlink:after{
+  margin-left: 0px;
+  content:"";
+  font-family:FontAwesome;
+}
+.code-block-caption:hover .headerlink:after {
+  visibility:visible;
+}
 
-  div.topic p.first {
-    margin: 0;
-    padding: 0.1em 0 0.1em 0.5em;
-    background-color: #E8E496;
-    border-bottom: 1px solid #C8C476;
-  }
+/* CHANGE: code displayed in red color is too aggresive */
+code {
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+code.literal {
+  color: inherit !important;
+}
 
-  div.topic p {
-    margin: 0.5em 1em 0.5em 1em;
-  }
+/* FIX: use full hight of nav-side (not version selector) */
+.wy-nav-side {
+  padding-bottom: 0px !important;
+}
+.wy-menu-vertical {
+  padding-bottom: 15px !important;
+}
 
-  p.topic-title {
-    display: run-in;
-    margin-right: 15px;
-  }
-
-  a.external-link {
-    background: url(_static/external.png) center right no-repeat;
-    padding-right: 13px;
-  }
-
-  div.related ul li a.external-link {
-    padding-right: 13px;
-  }
-
-  .sidebartext {
-    font-size: 75%;
-    line-height: 130%;
-  }
+/* FIX: revert rtd messing up with every image in nav-search */
+.wy-side-nav-search img.logo, .wy-nav-top img.logo {
+    display: inherit !important;
+    margin: inherit !important;
+    height: inherit !important;
+    width: inherit !important;
+    background-color: inherit !important;
+    padding: 5px;
+    border-radius: inherit !important;
+}
 
 </style>
 
@@ -79,91 +121,183 @@
 
 
 
-  </head>
-  <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
-<img src="../../_static/doit.png" alt="doit logo" />
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+  <div style="text-align:left">
+    <a href="../../index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+    </a>
+    <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black"><i class="fa fa-twitter"></i></a></span>
+    <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
+  </div>
+  <div style="color:rgba(1,1,1,0.3); text-align:left; margin:10px;">
+    
+      
+        <span>0.31</span>
+      
+    
+  </div>
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-  <li><a href="../../index.html">Home</a>&nbsp;|&nbsp;</li>
-  <li><a href="../../contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
-
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-
-
-
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-<h3>Donate</h3>
-
-
-<div>
-
-<div class="sidebartext">
-
-<p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
-
-<p>Abandoned open-source project does not work for long. Thriving project requires a maintainer to keep list of issues and list of pull requests short. Financial goal is 500 USD per month to allow the maintainer working few hours a week on the project.</p>
-</div>
-
-<h5>OpenCollective</h5>
-<div>
-  <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
-</div>
-
-<h5>Paypal</h5>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-</form>
-</div>
-
-<br/>
-
-
-
-<h3></h3>
-<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" alt="python logo"/></a><br/><br/>
 
         </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_1.html">tutorial 1 - basics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html">More on dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../task_creation.html">More on Task creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cmd_run.html">Command line interface - run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cmd_other.html">Other Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../task_args.html">Passing Task Arguments from the command line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../uptodate.html">custom uptodate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extending.html">Extending <cite>doit</cite></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stories.html">Success Stories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../related.html">Related Projects</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+
+  
+    <div class="wy-side-nav-search" style="margin-bottom: 0px;">
+      <h3>Donate</h3>
+
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
+      <p>If you consider <em>doit</em> to be a useful project, and would like to see it continue to be maintained and developed, please consider helping cover the development cost. Thriving project requires a maintainer to keep list of issues and list of pull requests short.</p>
+    </div>
+
+    <div class="wy-side-nav-search" style="color:black;background-color:#fcfcfc;border-right:black 1px solid;">
+      <h6 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h6>
+      <div>
+        <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
       </div>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+      <hr style="margin-top:5px;">
+      <h6 style="margin-bottom:20px;">Paypal</h6>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1" style="visibility:hidden;">
+      </form>
+    </div>
+    <br>
+  
+
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+  <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+  <a href="../../index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+  </a>
+  <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-twitter"></i></a></span>
+  <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-github"></i></a></span>
+
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../contents.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>doit.cmd_base</li>
+    
+    
+   
+   <span class="float-right" role="navigation" aria-label="breadcrumb navigation">
+      
+      
+      
+  </span>
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <h1>Source code for doit.cmd_base</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">inspect</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
+<span class="kn">import</span> <span class="nn">textwrap</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">version</span>
 <span class="kn">from</span> <span class="nn">.cmdparse</span> <span class="k">import</span> <span class="n">CmdOption</span><span class="p">,</span> <span class="n">CmdParse</span>
@@ -189,6 +323,22 @@
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
     <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">_wrap</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">indent_level</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;wrap multiple lines keeping the indentation&quot;&quot;&quot;</span>
+    <span class="n">indent</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="n">indent_level</span>
+    <span class="n">wrap_opt</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;initial_indent&#39;</span><span class="p">:</span> <span class="n">indent</span><span class="p">,</span>
+        <span class="s1">&#39;subsequent_indent&#39;</span><span class="p">:</span> <span class="n">indent</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">paragraph</span> <span class="ow">in</span> <span class="n">content</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">paragraph</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">paragraph</span><span class="p">,</span> <span class="o">**</span><span class="n">wrap_opt</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">lines</span>
 
 
 <div class="viewcode-block" id="Command"><a class="viewcode-back" href="../../extending.html#doit.cmd_base.Command">[docs]</a><span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -292,23 +442,48 @@
         <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opt_vals</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
 
-
     <span class="k">def</span> <span class="nf">help</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;return help text&quot;&quot;&quot;</span>
         <span class="n">text</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Purpose: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doc_purpose</span><span class="p">))</span>
-        <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Usage:   </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">bin_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc_usage</span><span class="p">))</span>
-        <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;PURPOSE&quot;</span><span class="p">)</span>
+        <span class="n">text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_wrap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doc_purpose</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-        <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Options:&quot;</span><span class="p">)</span>
+        <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">USAGE&quot;</span><span class="p">)</span>
+        <span class="n">usage</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bin_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc_usage</span><span class="p">)</span>
+        <span class="n">text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_wrap</span><span class="p">(</span><span class="n">usage</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+        <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">OPTIONS&quot;</span><span class="p">)</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmdparser</span><span class="o">.</span><span class="n">options</span><span class="p">:</span>
-            <span class="n">text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">help_doc</span><span class="p">())</span>
+            <span class="n">options</span><span class="p">[</span><span class="n">opt</span><span class="o">.</span><span class="n">section</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">section</span><span class="p">,</span> <span class="n">opts</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="n">section_name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_wrap</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
+                <span class="c1"># ignore option that cant be modified on cmd line</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">short</span> <span class="ow">or</span> <span class="n">opt</span><span class="o">.</span><span class="n">long</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="n">text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_wrap</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">help_param</span><span class="p">(),</span> <span class="mi">6</span><span class="p">))</span>
+                <span class="c1"># TODO It should always display option&#39;s default value</span>
+                <span class="n">opt_help</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">help</span> <span class="o">%</span> <span class="p">{</span><span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">opt</span><span class="o">.</span><span class="n">default</span><span class="p">}</span>
+                <span class="n">opt_choices</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">help_choices</span><span class="p">()</span>
+                <span class="n">opt_config</span> <span class="o">=</span> <span class="s1">&#39;config: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">env_var</span><span class="p">:</span>
+                    <span class="n">opt_env</span> <span class="o">=</span> <span class="s1">&#39;, environ: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">env_var</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">opt_env</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1"> (</span><span class="si">{}{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">opt_help</span><span class="p">,</span> <span class="n">opt_choices</span><span class="p">,</span>
+                                             <span class="n">opt_config</span><span class="p">,</span> <span class="n">opt_env</span><span class="p">)</span>
+                <span class="n">text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_wrap</span><span class="p">(</span><span class="n">desc</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+                <span class="c1"># print bool inverse option</span>
+                <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">inverse</span><span class="p">:</span>
+                    <span class="n">text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_wrap</span><span class="p">(</span><span class="s1">&#39;--</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">inverse</span><span class="p">),</span> <span class="mi">6</span><span class="p">))</span>
+                    <span class="n">text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_wrap</span><span class="p">(</span><span class="s1">&#39;opposite of --</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">long</span><span class="p">),</span> <span class="mi">12</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc_description</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-            <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Description:&quot;</span><span class="p">)</span>
-            <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doc_description</span><span class="p">)</span>
+            <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">DESCRIPTION&quot;</span><span class="p">)</span>
+            <span class="n">text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_wrap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doc_description</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
         <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
 
 
@@ -316,6 +491,7 @@
 
 <span class="c1"># choose internal dependency file.</span>
 <span class="n">opt_depfile</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;section&#39;</span><span class="p">:</span> <span class="s1">&#39;DB backend&#39;</span><span class="p">,</span>
     <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;dep_file&#39;</span><span class="p">,</span>
     <span class="s1">&#39;short&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
     <span class="s1">&#39;long&#39;</span><span class="p">:</span> <span class="s1">&#39;db-file&#39;</span><span class="p">,</span>
@@ -326,6 +502,7 @@
 
 <span class="c1"># dependency file DB backend</span>
 <span class="n">opt_backend</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;section&#39;</span><span class="p">:</span> <span class="s1">&#39;DB backend&#39;</span><span class="p">,</span>
     <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;backend&#39;</span><span class="p">,</span>
     <span class="s1">&#39;short&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
     <span class="s1">&#39;long&#39;</span><span class="p">:</span> <span class="s1">&#39;backend&#39;</span><span class="p">,</span>
@@ -335,6 +512,7 @@
 <span class="p">}</span>
 
 <span class="n">opt_check_file_uptodate</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;section&#39;</span><span class="p">:</span> <span class="s1">&#39;doit core&#39;</span><span class="p">,</span>
     <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;check_file_uptodate&#39;</span><span class="p">,</span>
     <span class="s1">&#39;short&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
     <span class="s1">&#39;long&#39;</span><span class="p">:</span> <span class="s1">&#39;check_file_uptodate&#39;</span><span class="p">,</span>
@@ -353,16 +531,19 @@
 <span class="c1">#### options related to dodo.py</span>
 <span class="c1"># select dodo file containing tasks</span>
 <span class="n">opt_dodo</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;section&#39;</span><span class="p">:</span> <span class="s1">&#39;task loader&#39;</span><span class="p">,</span>
     <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;dodoFile&#39;</span><span class="p">,</span>
     <span class="s1">&#39;short&#39;</span><span class="p">:</span><span class="s1">&#39;f&#39;</span><span class="p">,</span>
     <span class="s1">&#39;long&#39;</span><span class="p">:</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;dodo.py&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;env_var&#39;</span><span class="p">:</span> <span class="s1">&#39;DOIT_FILE&#39;</span><span class="p">,</span>
     <span class="s1">&#39;help&#39;</span><span class="p">:</span><span class="s2">&quot;load task from dodo FILE [default: </span><span class="si">%(default)s</span><span class="s2">]&quot;</span>
 <span class="p">}</span>
 
 <span class="c1"># cwd</span>
 <span class="n">opt_cwd</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;section&#39;</span><span class="p">:</span> <span class="s1">&#39;task loader&#39;</span><span class="p">,</span>
     <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;cwdPath&#39;</span><span class="p">,</span>
     <span class="s1">&#39;short&#39;</span><span class="p">:</span><span class="s1">&#39;d&#39;</span><span class="p">,</span>
     <span class="s1">&#39;long&#39;</span><span class="p">:</span> <span class="s1">&#39;dir&#39;</span><span class="p">,</span>
@@ -374,6 +555,7 @@
 
 <span class="c1"># seek dodo file on parent folders</span>
 <span class="n">opt_seek_file</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;section&#39;</span><span class="p">:</span> <span class="s1">&#39;task loader&#39;</span><span class="p">,</span>
     <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;seek_file&#39;</span><span class="p">,</span>
     <span class="s1">&#39;short&#39;</span><span class="p">:</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span>
     <span class="s1">&#39;long&#39;</span><span class="p">:</span> <span class="s1">&#39;seek-file&#39;</span><span class="p">,</span>
@@ -640,29 +822,59 @@
             <span class="k">yield</span> <span class="n">dep</span>
 </pre></div>
 
+           </div>
+           
           </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2008-2018, Eduardo Schettino.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-  <li><a href="../../index.html">Home</a>&nbsp;|&nbsp;</li>
-  <li><a href="../../contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2008-2018, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
-    </div>
-  </body>
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.31',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

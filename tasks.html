@@ -1,70 +1,112 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Tasks &#8212; doit - automation tool</title>
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.31',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tasks &mdash; doit 0.31 documentation</title>
+  
+
+  
+  
     <link rel="shortcut icon" href="_static/favico.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="More on dependencies" href="dependencies.html" />
     <link rel="prev" title="Installing" href="install.html" />
 <style>
-  body {
-    font-size: 16px;
-  }
+/* FIX for https://github.com/rtfd/sphinx_rtd_theme/pull/657
+   pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
+   line-height: 1.4 !important;
+   }
+*/
 
-  div.topic {
-    padding: 0;
-    background-color: #F8F4A6;
-    border: 1px solid #D8D486;
-  }
+  /* FIX: handle code-block-caption
+  https://github.com/rtfd/sphinx_rtd_theme/issues/292
+  */
+pre {
+  font-size: 0.95em !important;
+  letter-spacing: 0.015em;
+  line-height: 120% !important; /* also fix 657 */
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
+pre.literal-block, div[class^='highlight'], div[class^='highlight-python3'] {
+  margin-top: 0px !important;
+}
+div.code-block-caption {
+  background-color: #ddd;
+  color: #222;
+  border: 1px solid #ccc;
+}
+div.code-block-caption {
+  padding: 2px 5px;
+  font-size: small;
+}
+a.headerlink {
+  visibility: hidden;
+  color: #c60f0f!important;
+  font-size: 1em;
+  margin-left: 6px;
+  padding: 0 4px 0 4px;
+  text-decoration: none!important;
+}
+a.headerlink:after{
+  margin-left: 0px;
+  content:"";
+  font-family:FontAwesome;
+}
+.code-block-caption:hover .headerlink:after {
+  visibility:visible;
+}
 
-  div.topic p.first {
-    margin: 0;
-    padding: 0.1em 0 0.1em 0.5em;
-    background-color: #E8E496;
-    border-bottom: 1px solid #C8C476;
-  }
+/* CHANGE: code displayed in red color is too aggresive */
+code {
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+code.literal {
+  color: inherit !important;
+}
 
-  div.topic p {
-    margin: 0.5em 1em 0.5em 1em;
-  }
+/* FIX: use full hight of nav-side (not version selector) */
+.wy-nav-side {
+  padding-bottom: 0px !important;
+}
+.wy-menu-vertical {
+  padding-bottom: 15px !important;
+}
 
-  p.topic-title {
-    display: run-in;
-    margin-right: 15px;
-  }
-
-  a.external-link {
-    background: url(_static/external.png) center right no-repeat;
-    padding-right: 13px;
-  }
-
-  div.related ul li a.external-link {
-    padding-right: 13px;
-  }
-
-  .sidebartext {
-    font-size: 75%;
-    line-height: 130%;
-  }
+/* FIX: revert rtd messing up with every image in nav-search */
+.wy-side-nav-search img.logo, .wy-nav-top img.logo {
+    display: inherit !important;
+    margin: inherit !important;
+    height: inherit !important;
+    width: inherit !important;
+    background-color: inherit !important;
+    padding: 5px;
+    border-radius: inherit !important;
+}
 
 </style>
 
@@ -81,131 +123,217 @@
 
 
 
-  </head>
-  <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 50px">
-<img src="_static/doit.png" alt="doit logo" />
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+  <div style="text-align:left">
+    <a href="index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+    </a>
+    <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black"><i class="fa fa-twitter"></i></a></span>
+    <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
+  </div>
+  <div style="color:rgba(1,1,1,0.3); text-align:left; margin:10px;">
+    
+      
+        <span>0.31</span>
+      
+    
+  </div>
+  
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="dependencies.html" title="More on dependencies"
-             accesskey="N">next</a></li>
-        <li class="right" >
-          <a href="install.html" title="Installing"
-             accesskey="P">previous</a> |</li>
-  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
-  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
- 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="contents.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Tasks</a><ul>
-<li><a class="reference internal" href="#intro">Intro</a></li>
-<li><a class="reference internal" href="#actions">Actions</a><ul>
-<li><a class="reference internal" href="#python-action">python-action</a></li>
-<li><a class="reference internal" href="#cmd-action">cmd-action</a></li>
-<li><a class="reference internal" href="#custom-actions">custom actions</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#task-name">task name</a></li>
-<li><a class="reference internal" href="#sub-tasks">sub-tasks</a><ul>
-<li><a class="reference internal" href="#avoiding-empty-sub-tasks">avoiding empty sub-tasks</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#dependencies-targets">Dependencies &amp; Targets</a></li>
-<li><a class="reference internal" href="#file-dep-file-dependency">file_dep (file dependency)</a></li>
-<li><a class="reference internal" href="#targets">targets</a></li>
-<li><a class="reference internal" href="#parameters-on-actions">parameters on actions</a><ul>
-<li><a class="reference internal" href="#keywords-with-task-metadata">keywords with task metadata</a></li>
-<li><a class="reference internal" href="#keywords-on-cmd-action-string">keywords on cmd-action string</a></li>
-<li><a class="reference internal" href="#keywords-on-python-action">keywords on <em>python-action</em></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#execution-order">execution order</a></li>
-<li><a class="reference internal" href="#task-selection">Task selection</a><ul>
-<li><a class="reference internal" href="#doit-config-default-tasks">DOIT_CONFIG -&gt; default_tasks</a></li>
-<li><a class="reference internal" href="#command-line-selection">command line selection</a></li>
-<li><a class="reference internal" href="#sub-task-selection">sub-task selection</a></li>
-<li><a class="reference internal" href="#wildcard-selection">wildcard selection</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#private-hidden-tasks">private/hidden tasks</a></li>
-<li><a class="reference internal" href="#title">title</a></li>
-<li><a class="reference internal" href="#verbosity">verbosity</a></li>
-<li><a class="reference internal" href="#id6">pathlib</a></li>
-</ul>
-</li>
-</ul>
-
-
-
-
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-<h3>Donate</h3>
-
-
-<div>
-
-<div class="sidebartext">
-
-<p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
-
-<p>Abandoned open-source project does not work for long. Thriving project requires a maintainer to keep list of issues and list of pull requests short. Financial goal is 500 USD per month to allow the maintainer working few hours a week on the project.</p>
-</div>
-
-<h5>OpenCollective</h5>
-<div>
-  <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
-</div>
-
-<h5>Paypal</h5>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-</form>
-</div>
-
-<br/>
-
-
-
-<h3></h3>
-<a href="http://python.org"><img src="_static/python-powered-w-100x40.png" alt="python logo"/></a><br/><br/>
 
         </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_1.html">tutorial 1 - basics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tasks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#intro">Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#actions">Actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-action">python-action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cmd-action">cmd-action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-actions">custom actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-name">task name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sub-tasks">sub-tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avoiding-empty-sub-tasks">avoiding empty sub-tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies-targets">Dependencies &amp; Targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-dep-file-dependency">file_dep (file dependency)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#targets">targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters-on-actions">parameters on actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#keywords-with-task-metadata">keywords with task metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keywords-on-cmd-action-string">keywords on cmd-action string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keywords-on-python-action">keywords on <em>python-action</em></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#execution-order">execution order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-selection">Task selection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#doit-config-default-tasks">DOIT_CONFIG -&gt; default_tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-selection">command line selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sub-task-selection">sub-task selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wildcard-selection">wildcard selection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#private-hidden-tasks">private/hidden tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#title">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verbosity">verbosity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">pathlib</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">More on dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_creation.html">More on Task creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_run.html">Command line interface - run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_other.html">Other Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_args.html">Passing Task Arguments from the command line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uptodate.html">custom uptodate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending <cite>doit</cite></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stories.html">Success Stories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+
+  
+    <div class="wy-side-nav-search" style="margin-bottom: 0px;">
+      <h3>Donate</h3>
+
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
+      <p>If you consider <em>doit</em> to be a useful project, and would like to see it continue to be maintained and developed, please consider helping cover the development cost. Thriving project requires a maintainer to keep list of issues and list of pull requests short.</p>
+    </div>
+
+    <div class="wy-side-nav-search" style="color:black;background-color:#fcfcfc;border-right:black 1px solid;">
+      <h6 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h6>
+      <div>
+        <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
       </div>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+      <hr style="margin-top:5px;">
+      <h6 style="margin-bottom:20px;">Paypal</h6>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1" style="visibility:hidden;">
+      </form>
+    </div>
+    <br>
+  
+
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+  <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+  <a href="index.html">
+      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
+  </a>
+  <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-twitter"></i></a></span>
+  <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-github"></i></a></span>
+
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="contents.html">Docs</a> &raquo;</li>
+        
+      <li>Tasks</li>
+    
+    
+   
+   <span class="float-right" role="navigation" aria-label="breadcrumb navigation">
+      
+        <li>
+          <a href="install.html" title="Installing" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Installing</a>
+        </li>
+      
+      <li style="padding-right:5px">|</li>
+      
+        <li>
+            <a href="dependencies.html" title="More on dependencies" accesskey="n">More on dependencies <span class="fa fa-arrow-circle-right"></span></a>
+        </li>
+      
+  </span>
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="tasks">
 <h1>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h1>
@@ -228,7 +356,7 @@ These functions must return (or yield) dictionaries representing a <em>task</em>
 A python module/file that defines <em>tasks</em> for <cite>doit</cite> is called <strong>dodo</strong> file
 (that is something like a <cite>Makefile</cite> for <cite>make</cite>).</p>
 <p>Take a look at this example (file dodo.py):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">python_hello</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
@@ -244,7 +372,7 @@ A python module/file that defines <em>tasks</em> for <cite>doit</cite> is called
 </div>
 <p>When <cite>doit</cite> is executed without any parameters it will look for tasks in a
 file named <cite>dodo.py</cite> in the current folder and execute its tasks.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  hello</span>
 </pre></div>
 </div>
@@ -267,11 +395,11 @@ The action “result” is used to determine if task execution was successful or
 - only <cite>callable</cite> is required.
 The callable must be a function, method or callable object.
 Classes and built-in functions are not allowed.
-<code class="docutils literal"><span class="pre">args</span></code> is a sequence and <code class="docutils literal"><span class="pre">kwargs</span></code> is a dictionary that will be used
+<code class="docutils literal notranslate"><span class="pre">args</span></code> is a sequence and <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> is a dictionary that will be used
 as positional and keywords arguments for the callable.
 See <a class="reference external" href="http://docs.python.org/tutorial/controlflow.html#keyword-arguments">Keyword Arguments</a>.</p>
 <p>The result of the task is given by the returned value of the
-<code class="docutils literal"><span class="pre">action</span></code> function.</p>
+<code class="docutils literal notranslate"><span class="pre">action</span></code> function.</p>
 <p>For <strong>successful</strong> completion it must return one of:</p>
 <ul class="simple">
 <li><cite>True</cite></li>
@@ -283,13 +411,13 @@ See <a class="reference external" href="http://docs.python.org/tutorial/controlf
 <ul class="simple">
 <li><cite>False</cite> indicates the task generally failed</li>
 <li>if it raises any exception, it will be considered an error</li>
-<li>it can also explicitly return an instance of <code class="xref py py-class docutils literal"><span class="pre">TaskFailed</span></code>
-or <code class="xref py py-class docutils literal"><span class="pre">TaskError</span></code></li>
+<li>it can also explicitly return an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">TaskFailed</span></code>
+or <code class="xref py py-class docutils literal notranslate"><span class="pre">TaskError</span></code></li>
 </ul>
 <p>If the action returns a type other than the types already discussed, the action
 will be considered a failure, although this behavior might change in future
 versions.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello py &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">python_hello</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
@@ -313,8 +441,8 @@ not execute tasks!
 From now on when the  documentation says that a <em>task</em> is executed,
 read “the task’s actions are executed”.</p>
 </div>
-<p><cite>action</cite> parameters can be passed as <code class="docutils literal"><span class="pre">kwargs</span></code>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_with_args</span><span class="p">(</span><span class="n">arg_first</span><span class="p">,</span> <span class="n">arg_second</span><span class="p">):</span>
+<p><cite>action</cite> parameters can be passed as <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_with_args</span><span class="p">(</span><span class="n">arg_first</span><span class="p">,</span> <span class="n">arg_second</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">arg_first</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">arg_second</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">True</span>
@@ -338,7 +466,7 @@ read “the task’s actions are executed”.</p>
 (Popen argument shell=True).</p>
 <p>It is easy to include dynamic (on-the-fly) behavior to your tasks with
 python code from the <cite>dodo</cite> file. Let’s take a look at another example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello cmd &quot;&quot;&quot;</span>
     <span class="n">msg</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="s2">&quot;hi! &quot;</span>
     <span class="k">return</span> <span class="p">{</span>
@@ -355,7 +483,7 @@ so in this example the line <cite>msg = 3 * “hi! “</cite> will always be exe
 <p>If <cite>action</cite> is a list of strings and instances of any Path class from
 <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>, by default it will
 be executed <strong>without the shell</strong> (Popen argument shell=False).</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_python_version</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_python_version</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;--version&#39;</span><span class="p">]]</span>
         <span class="p">}</span>
@@ -364,7 +492,7 @@ be executed <strong>without the shell</strong> (Popen argument shell=False).</p>
 </div>
 <p>For complex commands it is also possible to pass a callable that returns
 the command string. In this case you must explicit import CmdAction.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.action</span> <span class="k">import</span> <span class="n">CmdAction</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.action</span> <span class="k">import</span> <span class="n">CmdAction</span>
 
 <span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello cmd &quot;&quot;&quot;</span>
@@ -378,10 +506,10 @@ the command string. In this case you must explicit import CmdAction.</p>
         <span class="p">}</span>
 </pre></div>
 </div>
-<p>You might also explicitly import <code class="docutils literal"><span class="pre">CmdAction</span></code> in case you want to pass extra
-parameters to <code class="docutils literal"><span class="pre">Popen</span></code> like <code class="docutils literal"><span class="pre">cwd</span></code>.
-All keyword parameter from <code class="docutils literal"><span class="pre">Popen</span></code> can be used on <code class="docutils literal"><span class="pre">CmdAction</span></code> (except
-<code class="docutils literal"><span class="pre">stdout</span></code> and <code class="docutils literal"><span class="pre">stderr</span></code>).</p>
+<p>You might also explicitly import <code class="docutils literal notranslate"><span class="pre">CmdAction</span></code> in case you want to pass extra
+parameters to <code class="docutils literal notranslate"><span class="pre">Popen</span></code> like <code class="docutils literal notranslate"><span class="pre">cwd</span></code>.
+All keyword parameter from <code class="docutils literal notranslate"><span class="pre">Popen</span></code> can be used on <code class="docutils literal notranslate"><span class="pre">CmdAction</span></code> (except
+<code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code>).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Different from <cite>subprocess.Popen</cite>, <cite>CmdAction</cite> <cite>shell</cite> argument defaults to
@@ -402,9 +530,9 @@ check <a class="reference internal" href="tools.html#tools-longrunning"><span cl
 <h2>task name<a class="headerlink" href="#task-name" title="Permalink to this headline">¶</a></h2>
 <p>By default a task name is taken from the name of the python function
 that generates the task.
-For example a <cite>def task_hello</cite> would create a task named <code class="docutils literal"><span class="pre">hello</span></code>.</p>
-<p>It is possible to explicitly set a task name with the parameter <code class="docutils literal"><span class="pre">basename</span></code>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+For example a <cite>def task_hello</cite> would create a task named <code class="docutils literal notranslate"><span class="pre">hello</span></code>.</p>
+<p>It is possible to explicitly set a task name with the parameter <code class="docutils literal notranslate"><span class="pre">basename</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hello&#39;</span><span class="p">]</span>
         <span class="p">}</span>
@@ -416,17 +544,17 @@ For example a <cite>def task_hello</cite> would create a task named <code class=
         <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  hello</span>
 <span class="go">.  hello2</span>
 </pre></div>
 </div>
-<p>When explicit using <code class="docutils literal"><span class="pre">basename</span></code> the task-creator is not limited
+<p>When explicit using <code class="docutils literal notranslate"><span class="pre">basename</span></code> the task-creator is not limited
 to create only one task.
-Using <code class="docutils literal"><span class="pre">yield</span></code> it can generate several tasks at once.
-It is also possible to <code class="docutils literal"><span class="pre">yield</span></code> a generator that generate tasks.
+Using <code class="docutils literal notranslate"><span class="pre">yield</span></code> it can generate several tasks at once.
+It is also possible to <code class="docutils literal notranslate"><span class="pre">yield</span></code> a generator that generate tasks.
 This is useful to write some generic/reusable task-creators.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="k">def</span> <span class="nf">gen_many_tasks</span><span class="p">():</span>
     <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;basename&#39;</span><span class="p">:</span> <span class="s1">&#39;t1&#39;</span><span class="p">,</span>
            <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo t1&#39;</span><span class="p">]}</span>
@@ -437,7 +565,7 @@ This is useful to write some generic/reusable task-creators.</p>
     <span class="k">yield</span> <span class="n">gen_many_tasks</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  t2</span>
 <span class="go">.  t1</span>
 </pre></div>
@@ -449,15 +577,15 @@ This is useful to write some generic/reusable task-creators.</p>
 in different contexts.</p>
 <p>The task function can return a python-generator that yields dictionaries.
 Since each sub-task must be uniquely identified it requires an
-additional field <code class="docutils literal"><span class="pre">name</span></code>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
+additional field <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
         <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;file</span><span class="si">%d</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="n">i</span>
         <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
                <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;touch </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  create_file:file0.txt</span>
 <span class="go">.  create_file:file1.txt</span>
 <span class="go">.  create_file:file2.txt</span>
@@ -465,11 +593,11 @@ additional field <code class="docutils literal"><span class="pre">name</span></c
 </div>
 <div class="section" id="avoiding-empty-sub-tasks">
 <h3>avoiding empty sub-tasks<a class="headerlink" href="#avoiding-empty-sub-tasks" title="Permalink to this headline">¶</a></h3>
-<p>If you are not sure sub-tasks will be created for a given <code class="docutils literal"><span class="pre">basename</span></code>
+<p>If you are not sure sub-tasks will be created for a given <code class="docutils literal notranslate"><span class="pre">basename</span></code>
 but you want to make sure that a task exist,
-you can yield a sub-task with <code class="docutils literal"><span class="pre">name</span></code> equal to <code class="docutils literal"><span class="pre">None</span></code>.
-This can also be used to set the task <code class="docutils literal"><span class="pre">doc</span></code> and <code class="docutils literal"><span class="pre">watch</span></code> attributes.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+you can yield a sub-task with <code class="docutils literal notranslate"><span class="pre">name</span></code> equal to <code class="docutils literal notranslate"><span class="pre">None</span></code>.
+This can also be used to set the task <code class="docutils literal notranslate"><span class="pre">doc</span></code> and <code class="docutils literal notranslate"><span class="pre">watch</span></code> attributes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
 
 <span class="k">def</span> <span class="nf">task_xxx</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;my doc&quot;&quot;&quot;</span>
@@ -489,7 +617,7 @@ This can also be used to set the task <code class="docutils literal"><span class
             <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="gp">$</span> doit list
 <span class="go">do_x   docs for X</span>
 </pre></div>
@@ -510,7 +638,7 @@ save time, as it would produce the same output from the previous run.</p>
 </dl>
 <p>i.e. In a compilation task the source file is a <em>file_dep</em>,
 the object file is a <em>target</em>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cc -c main.c&quot;</span><span class="p">],</span>
             <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;main.c&quot;</span><span class="p">,</span> <span class="s2">&quot;defs.h&quot;</span><span class="p">],</span>
             <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;main.o&quot;</span><span class="p">]</span>
@@ -521,13 +649,13 @@ the object file is a <em>target</em>.</p>
 signature (MD5) of the dependencies every time the task is completed successfully.</p>
 <p>So if there are no modifications to the dependencies and you run <cite>doit</cite> again.
 The execution of the task’s actions is skipped.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  compile</span>
 <span class="gp">$</span> doit
 <span class="go">-- compile</span>
 </pre></div>
 </div>
-<p>Note the <code class="docutils literal"><span class="pre">--</span></code> (2 dashes, one space) on the command output on the second
+<p>Note the <code class="docutils literal notranslate"><span class="pre">--</span></code> (2 dashes, one space) on the command output on the second
 time it is executed. It means, this task was up-to-date and not executed.</p>
 </div>
 <div class="section" id="file-dep-file-dependency">
@@ -541,12 +669,12 @@ tool (i.e. <a class="reference external" href="http://pypi.python.org/pypi/pyfla
 source code files. You can define the source code as a dependency to the task.</p>
 <p>Every dependency in file_dep list should be a string or an instance of any
 Path class from <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_checker</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_checker</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;pyflakes sample.py&quot;</span><span class="p">],</span>
             <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;sample.py&quot;</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  checker</span>
 <span class="gp">$</span> doit
 <span class="go">-- checker</span>
@@ -555,7 +683,7 @@ Path class from <a class="reference external" href="https://docs.python.org/3/li
 <p><cite>doit</cite> checks if <cite>file_dep</cite> was modified or not
 (by comparing the file content’s MD5). If there are no changes the action
 is not executed again as it would produce the same result.</p>
-<p>Note the <code class="docutils literal"><span class="pre">--</span></code> again to indicate the execution was skipped.</p>
+<p>Note the <code class="docutils literal notranslate"><span class="pre">--</span></code> again to indicate the execution was skipped.</p>
 <p>Traditional build-tools can only handle files as “dependencies”.
 <cite>doit</cite> has several ways to check for dependencies, those will be introduced later.</p>
 <div class="admonition note">
@@ -574,7 +702,7 @@ a task may define. Two different tasks can not have the same target. Target
 can be specified as a string or as an instance of any Path class from
 <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>.</p>
 <p>Lets take the compilation example again.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cc -c main.c&quot;</span><span class="p">],</span>
             <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;main.c&quot;</span><span class="p">,</span> <span class="s2">&quot;defs.h&quot;</span><span class="p">],</span>
             <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;main.o&quot;</span><span class="p">]</span>
@@ -587,7 +715,7 @@ can be specified as a string or as an instance of any Path class from
 <li>But only if it does not exist. If the target is modified but the dependencies
 do not change the task is not executed again.</li>
 </ul>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  compile</span>
 <span class="gp">$</span> doit
 <span class="go">-- compile</span>
@@ -632,7 +760,7 @@ substitution on <em>cmd-action</em> strings and use
 python <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#old-string-formatting">old-string-formatting</a> for it.</p>
 <p>The keyword value is a string containing all respective
 file names separated by a space (” “).</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_report_deps</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_report_deps</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;report dependencies and changed dependencies to a file</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">{</span>
@@ -659,7 +787,7 @@ and does not affect the list form.</p>
 <p>For <em>python-action</em> add a keyword parameter in the function,
 <cite>doit</cite> will take care of passing the value when the function is called.
 <cite>dependencies</cite>, <cite>changed</cite>, <cite>targets</cite> are passed as list of strings.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">python_hello</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
@@ -675,7 +803,7 @@ and does not affect the list form.</p>
 </div>
 <p>You can also pass the keyword <cite>task</cite> to have a reference to all task
 metadata.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my name is&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
 
@@ -699,7 +827,7 @@ modify them while the action is running!</p>
 <p>If your tasks interact in a way where the target (output) of one task is a
 file_dep (input) of another task, <cite>doit</cite> will make sure your tasks are
 executed in the correct order.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_modify</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_modify</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;echo bar &gt; foo.txt&quot;</span><span class="p">],</span>
             <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo.txt&quot;</span><span class="p">],</span>
             <span class="p">}</span>
@@ -710,7 +838,7 @@ executed in the correct order.</p>
             <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  create</span>
 <span class="go">.  modify</span>
 </pre></div>
@@ -726,7 +854,7 @@ will think they are different files.</p>
 <span id="id4"></span><h2>Task selection<a class="headerlink" href="#task-selection" title="Permalink to this headline">¶</a></h2>
 <p>By default all tasks are executed in the same order as they were defined (the order may change to satisfy dependencies). You can control which tasks will run in 2 ways.</p>
 <p>Another example</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;t3&#39;</span><span class="p">]}</span>
 
 <span class="k">def</span> <span class="nf">task_t1</span><span class="p">():</span>
@@ -743,8 +871,8 @@ will think they are different files.</p>
 </div>
 <div class="section" id="doit-config-default-tasks">
 <h3>DOIT_CONFIG -&gt; default_tasks<a class="headerlink" href="#doit-config-default-tasks" title="Permalink to this headline">¶</a></h3>
-<p><em>dodo</em> file defines a dictionary <code class="docutils literal"><span class="pre">DOIT_CONFIG</span></code> with <code class="docutils literal"><span class="pre">default_tasks</span></code>, a list of strings where each element is a task name.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<p><em>dodo</em> file defines a dictionary <code class="docutils literal notranslate"><span class="pre">DOIT_CONFIG</span></code> with <code class="docutils literal notranslate"><span class="pre">default_tasks</span></code>, a list of strings where each element is a task name.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  t1</span>
 <span class="go">.  t3</span>
 </pre></div>
@@ -756,12 +884,12 @@ So that task was automatically executed also.</p>
 <div class="section" id="command-line-selection">
 <h3>command line selection<a class="headerlink" href="#command-line-selection" title="Permalink to this headline">¶</a></h3>
 <p>From the command line you can control which tasks are going to be execute by passing its task name. Any number of tasks can be passed as positional arguments.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit t2
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit t2
 <span class="go">.  t2</span>
 </pre></div>
 </div>
 <p>You can also specify which task to execute by its target:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit task1
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit task1
 <span class="go">.  t1</span>
 </pre></div>
 </div>
@@ -769,22 +897,22 @@ So that task was automatically executed also.</p>
 <div class="section" id="sub-task-selection">
 <h3>sub-task selection<a class="headerlink" href="#sub-task-selection" title="Permalink to this headline">¶</a></h3>
 <p>You can select sub-tasks from the command line specifying its full name.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
         <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;file</span><span class="si">%d</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="n">i</span>
         <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
                <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;touch </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit create_file:file2.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit create_file:file2.txt
 <span class="go">.  create_file:file2.txt</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="wildcard-selection">
 <h3>wildcard selection<a class="headerlink" href="#wildcard-selection" title="Permalink to this headline">¶</a></h3>
-<p>You can also select tasks to be executed using a <a class="reference external" href="http://docs.python.org/library/glob.html">glob</a> like syntax (it must contains a <code class="docutils literal"><span class="pre">*</span></code>).</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit create_file:file*
+<p>You can also select tasks to be executed using a <a class="reference external" href="http://docs.python.org/library/glob.html">glob</a> like syntax (it must contains a <code class="docutils literal notranslate"><span class="pre">*</span></code>).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit create_file:file*
 <span class="go">.  create_file:file1.txt</span>
 <span class="go">.  create_file:file2.txt</span>
 <span class="go">.  create_file:file3.txt</span>
@@ -800,7 +928,7 @@ So that task was automatically executed also.</p>
 <h2>title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h2>
 <p>By default when you run <cite>doit</cite> only the task name is printed out on the output.
 You can customize the output passing a “title” function to the task:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="k">def</span> <span class="nf">show_cmd</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
     <span class="k">return</span> <span class="s2">&quot;executing... </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span>
 
@@ -809,7 +937,7 @@ You can customize the output passing a “title” function to the task:</p>
             <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">show_cmd</span><span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  executing... Cmd: echo abc efg</span>
 </pre></div>
 </div>
@@ -832,12 +960,12 @@ console. If the task fails or there is an error the stdout and a traceback
 <ul class="simple">
 <li>task attribute verbosity</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_print</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_print</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hello&#39;</span><span class="p">],</span>
             <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  print</span>
 <span class="go">hello</span>
 </pre></div>
@@ -853,7 +981,7 @@ file_dep, targets and CmdAction specified as a list can take as elements not
 only strings but also instances of any Path class from pathlib.</p>
 <p>Lets take the compilation example and modify it to work with any number
 of header and source files in current directory using pathlib.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 
 <span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
     <span class="n">working_directory</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
@@ -873,34 +1001,68 @@ of header and source files in current directory using pathlib.</p>
 </div>
 
 
+           </div>
+           
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dependencies.html" class="btn btn-neutral float-right" title="More on dependencies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="Installing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2008-2018, Eduardo Schettino.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="dependencies.html" title="More on dependencies"
-             >next</a></li>
-        <li class="right" >
-          <a href="install.html" title="Installing"
-             >previous</a> |</li>
-  <li><a href="index.html">Home</a>&nbsp;|&nbsp;</li>
-  <li><a href="contents.html">Documentation</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit">Code</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://github.com/pydoit/doit/issues">Issues</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://pypi.python.org/pypi/doit">Download</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://stackoverflow.com/questions/tagged/doit">StackOverflow</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="http://groups.google.co.in/group/python-doit">Forum</a>&nbsp;|&nbsp;</li>
-  <li><a class="external-link" href="https://twitter.com/py_doit">Twitter</a></li>
- 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2008-2018, Eduardo Schettino.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.31',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

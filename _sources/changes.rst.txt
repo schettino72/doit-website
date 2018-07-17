@@ -7,10 +7,15 @@ Changes
 0.32.0 (*unreleased*)
 =====================
 
+ - python 3.7 support
  - BACKWARD INCOMPATIBLE: Changed signature of `DoitCommand`
  - BACKWARD INCOMPATIBLE: Fix #254: Python actions keywords with task metadata `dependencies`, `targets` and `changed` are a copied list
  - Fix #204: Accept loader command options before command name
  - Fix #240: Command run: with `--pdb` drop into *pdb* on unhandled exception on `PythonAction`
+ - Fix #203: Allow configuration of `dodo.py` file name with env var `DOIT_FILE`
+ - Fix #113: `tools.config_changed` deals with nested dictionaries.
+             Using json instead of repr.
+ - Fix #261: help organize command options in sections, and improve formatting.
 
 
 0.31.1 (*2018-03-18*)
