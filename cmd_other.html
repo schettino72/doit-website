@@ -380,7 +380,8 @@ The example below is used to manage a very simple C project.</p>
 <div class="section" id="list">
 <span id="cmd-list"></span><h2>list<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h2>
 <p><em>list</em> is used to show all tasks available in a <em>dodo</em> file.
-Tasks are listed in alphabetical order, not by order of execution.</p>
+Tasks are listed in alphabetical order by default, but <em>–sort=definition</em> can
+be specified to sort them in the order in which they appear in the <cite>dodo</cite> file.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
 <span class="go">compile : compile C files</span>
 <span class="go">install : install executable (TODO)</span>

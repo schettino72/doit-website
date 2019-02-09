@@ -195,12 +195,6 @@ code.literal {
 <li class="toctree-l2"><a class="reference internal" href="#dependencies-targets">Dependencies &amp; Targets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-dep-file-dependency">file_dep (file dependency)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#targets">targets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#parameters-on-actions">parameters on actions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#keywords-with-task-metadata">keywords with task metadata</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#keywords-on-cmd-action-string">keywords on cmd-action string</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#keywords-on-python-action">keywords on <em>python-action</em></a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#execution-order">execution order</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#task-selection">Task selection</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#doit-config-default-tasks">DOIT_CONFIG -&gt; default_tasks</a></li>
@@ -209,10 +203,16 @@ code.literal {
 <li class="toctree-l3"><a class="reference internal" href="#wildcard-selection">wildcard selection</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters-on-actions">parameters on actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#keywords-with-task-metadata">keywords with task metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keywords-on-cmd-action-string">keywords on cmd-action string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keywords-on-python-action">keywords on <em>python-action</em></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#private-hidden-tasks">private/hidden tasks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#title">title</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#verbosity">verbosity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">pathlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">pathlib</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="dependencies.html">More on dependencies</a></li>
@@ -728,100 +728,6 @@ do not change the task is not executed again.</li>
 </pre></div>
 </div>
 </div>
-<div class="section" id="parameters-on-actions">
-<h2>parameters on actions<a class="headerlink" href="#parameters-on-actions" title="Permalink to this headline">¶</a></h2>
-<p>Actions may take optional parameters provided as function keywords arguments for <em>python-action</em>. Or values for <em>printf-style</em> formatting on <em>cmd-action</em>.</p>
-<p>There are three sources of parameter values:</p>
-<blockquote>
-<div><ul class="simple">
-<li>specified on action’s <cite>kwargs</cite> definition</li>
-<li>keywords with task metadata such as <cite>dependencies</cite>, <cite>changed</cite>, <cite>targets</cite> and <cite>task</cite></li>
-<li>values computed in other tasks. <a class="reference internal" href="dependencies.html#getargs"><span class="std std-ref">getargs</span></a> describes, how a task can calculate and store values and how other tasks can refer to them.</li>
-</ul>
-</div></blockquote>
-<div class="section" id="keywords-with-task-metadata">
-<h3>keywords with task metadata<a class="headerlink" href="#keywords-with-task-metadata" title="Permalink to this headline">¶</a></h3>
-<p>These values are automatically calculated by <cite>doit</cite>:</p>
-<blockquote>
-<div><ul class="simple">
-<li><cite>dependencies</cite>: list of <cite>file_dep</cite></li>
-<li><cite>changed</cite>: list of <cite>file_dep</cite> that changed since last
-successful execution</li>
-<li><cite>targets</cite>: list of <cite>targets</cite></li>
-<li><cite>task</cite>: only available to <em>python-action</em>.
-Note: the value is a <cite>Task</cite> object instance, not the metadata <em>dict</em>.</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="keywords-on-cmd-action-string">
-<h3>keywords on cmd-action string<a class="headerlink" href="#keywords-on-cmd-action-string" title="Permalink to this headline">¶</a></h3>
-<p>For <em>cmd-action</em> you can take advantage of implicit keyword
-substitution on <em>cmd-action</em> strings and use
-python <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#old-string-formatting">old-string-formatting</a> for it.</p>
-<p>The keyword value is a string containing all respective
-file names separated by a space (” “).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_report_deps</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;report dependencies and changed dependencies to a file</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;req.in&#39;</span><span class="p">,</span> <span class="s1">&#39;req-dev.in&#39;</span><span class="p">],</span>
-        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo D: </span><span class="si">%(dependencies)s</span><span class="s1">, CH: </span><span class="si">%(changed)s</span><span class="s1"> &gt; </span><span class="si">%(targets)s</span><span class="s1">&#39;</span><span class="p">],</span>
-        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;report.txt&#39;</span><span class="p">],</span>
-        <span class="p">}</span>
-</pre></div>
-</div>
-<p>Before the string is actually executed, it is always formatted using the
-python <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#old-string-formatting">old-string-formatting</a> using the <cite>%</cite> operator.
-If using <cite>%</cite> in your action string, make sure it does not break
-this formatting.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><em>cmd-action</em> may have the form of a string (as <cite>“echo hello world”</cite>)
-or list of arguments (as <cite>[“echo”, “hello”, “world”]</cite>).
-Implicit keywords substitution applies only to the string form
-and does not affect the list form.</p>
-</div>
-</div>
-<div class="section" id="keywords-on-python-action">
-<h3>keywords on <em>python-action</em><a class="headerlink" href="#keywords-on-python-action" title="Permalink to this headline">¶</a></h3>
-<p>For <em>python-action</em> add a keyword parameter in the function,
-<cite>doit</cite> will take care of passing the value when the function is called.
-<cite>dependencies</cite>, <cite>changed</cite>, <cite>targets</cite> are passed as list of strings.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;hello&quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">python_hello</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
-            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Python says Hello World!!!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">python_hello</span><span class="p">],</span>
-        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hello.txt&quot;</span><span class="p">],</span>
-        <span class="p">}</span>
-
-</pre></div>
-</div>
-<p>You can also pass the keyword <cite>task</cite> to have a reference to all task
-metadata.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my name is&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">task_x</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">who</span><span class="p">],</span>
-        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;asdf&#39;</span><span class="p">],</span>
-        <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="p">}</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">It is possible not only to retrieve task’s attributes but also to
-modify them while the action is running!</p>
-</div>
-</div>
-</div>
 <div class="section" id="execution-order">
 <h2>execution order<a class="headerlink" href="#execution-order" title="Permalink to this headline">¶</a></h2>
 <p>If your tasks interact in a way where the target (output) of one task is a
@@ -920,6 +826,123 @@ So that task was automatically executed also.</p>
 </div>
 </div>
 </div>
+<div class="section" id="parameters-on-actions">
+<h2>parameters on actions<a class="headerlink" href="#parameters-on-actions" title="Permalink to this headline">¶</a></h2>
+<p>Actions may take optional parameters provided as function keywords arguments for <em>python-action</em>. Or values for <em>printf-style</em> formatting on <em>cmd-action</em>.</p>
+<p>There are three sources of parameter values:</p>
+<blockquote>
+<div><ul class="simple">
+<li>specified on action’s <cite>kwargs</cite> definition</li>
+<li>keywords with task metadata such as <cite>dependencies</cite>, <cite>changed</cite>, <cite>targets</cite> and <cite>task</cite></li>
+<li>values computed in other tasks. <a class="reference internal" href="dependencies.html#getargs"><span class="std std-ref">getargs</span></a> describes, how a task can calculate and store values and how other tasks can refer to them.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="keywords-with-task-metadata">
+<h3>keywords with task metadata<a class="headerlink" href="#keywords-with-task-metadata" title="Permalink to this headline">¶</a></h3>
+<p>These values are automatically calculated by <cite>doit</cite>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>dependencies</cite>: list of <cite>file_dep</cite></li>
+<li><cite>changed</cite>: list of <cite>file_dep</cite> that changed since last
+successful execution</li>
+<li><cite>targets</cite>: list of <cite>targets</cite></li>
+<li><cite>task</cite>: only available to <em>python-action</em>.
+Note: the value is a <cite>Task</cite> object instance, not the metadata <em>dict</em>.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="keywords-on-cmd-action-string">
+<span id="id5"></span><h3>keywords on cmd-action string<a class="headerlink" href="#keywords-on-cmd-action-string" title="Permalink to this headline">¶</a></h3>
+<p>For <em>cmd-action</em> you can take advantage of implicit keyword
+substitution on <em>cmd-action</em> strings using python formatting.</p>
+<p>Both <a class="reference external" href="https://docs.python.org/3/library/string.html#format-string-syntax">format-string-syntax</a> and <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#old-string-formatting">old-string-formatting</a> are available and
+are controlled by <code class="docutils literal notranslate"><span class="pre">DOIT_CONFIG</span></code> value of <code class="docutils literal notranslate"><span class="pre">action_string_formatting</span></code>.
+It can be:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">'old'</span></code> uses <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#old-string-formatting">old-string-formatting</a> (<code class="docutils literal notranslate"><span class="pre">%</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">'new'</span></code> uses  <a class="reference external" href="https://docs.python.org/3/library/string.html#format-string-syntax">format-string-syntax</a> (<code class="docutils literal notranslate"><span class="pre">{{}}</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">'both'</span></code> both old and new style</li>
+</ul>
+</div></blockquote>
+<p>The keyword value is a string containing all respective
+file names separated by a space (” “).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;action_string_formatting&#39;</span><span class="p">:</span> <span class="s1">&#39;both&#39;</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">task_report_deps</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Report dependencies and changed dependencies to a file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;req.in&#39;</span><span class="p">,</span> <span class="s1">&#39;req-dev.in&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="c1"># New style formatting</span>
+                <span class="s1">&#39;echo D: </span><span class="si">{dependencies}</span><span class="s1">, CH: </span><span class="si">{changed}</span><span class="s1"> &gt; </span><span class="si">{targets}</span><span class="s1">&#39;</span><span class="p">,</span>
+                <span class="c1"># Old style formatting</span>
+                <span class="s1">&#39;cat </span><span class="si">%(targets)s</span><span class="s1">&#39;</span><span class="p">,</span>
+                <span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;report.txt&#39;</span><span class="p">],</span>
+        <span class="p">}</span>
+
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">action_string_formatting</span></code> default value (as of <cite>doit</cite> version <strong>0.32</strong>) is <code class="docutils literal notranslate"><span class="pre">'old'</span></code>. This default value might change in future versions, it is advised to always explicitly state a value.</p>
+</div>
+<p>Before the string is actually executed, it is always formatted using
+the formatters specified in <cite>DOIT_CONFIG</cite>. Make sure to escape your formatters
+control characters, namely <cite>{</cite> and <cite>}</cite> for <a class="reference external" href="https://docs.python.org/3/library/string.html#format-string-syntax">format-string-syntax</a> and <cite>%</cite> for
+<a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#old-string-formatting">old-string-formatting</a>. This is done by doubling them, so <cite>%</cite> becomes <cite>%%</cite> and so on.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><em>cmd-action</em> may have the form of a string (as <cite>“echo hello world”</cite>)
+or list of arguments (as <cite>[“echo”, “hello”, “world”]</cite>).
+Implicit keywords substitution applies only to the string form
+and does not affect the list form. This means <cite>{}</cite> and <cite>%</cite>
+need not be escaped when using this form.</p>
+</div>
+</div>
+<div class="section" id="keywords-on-python-action">
+<h3>keywords on <em>python-action</em><a class="headerlink" href="#keywords-on-python-action" title="Permalink to this headline">¶</a></h3>
+<p>For <em>python-action</em> add a keyword parameter in the function,
+<cite>doit</cite> will take care of passing the value when the function is called.
+<cite>dependencies</cite>, <cite>changed</cite>, <cite>targets</cite> are passed as list of strings.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;hello&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">python_hello</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Python says Hello World!!!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">python_hello</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hello.txt&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+
+</pre></div>
+</div>
+<p>You can also pass the keyword <cite>task</cite> to have a reference to all task
+metadata.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my name is&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">task_x</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">who</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;asdf&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is possible not only to retrieve task’s attributes but also to
+modify them while the action is running!</p>
+</div>
+</div>
+</div>
 <div class="section" id="private-hidden-tasks">
 <h2>private/hidden tasks<a class="headerlink" href="#private-hidden-tasks" title="Permalink to this headline">¶</a></h2>
 <p>If task name starts with an underscore ‘_’, it will not be included in the output.</p>
@@ -943,7 +966,7 @@ You can customize the output passing a “title” function to the task:</p>
 </div>
 </div>
 <div class="section" id="verbosity">
-<span id="id5"></span><h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
 <p>By default the stdout from a task is captured and its stderr is sent to the
 console. If the task fails or there is an error the stdout and a traceback
 (if any) is displayed.</p>
@@ -974,8 +997,8 @@ console. If the task fails or there is an error the stdout and a traceback
 <li>from command line, see <a class="reference internal" href="cmd_run.html#verbosity-option"><span class="std std-ref">verbosity option</span></a>.</li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h2>pathlib<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>pathlib<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> supports <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>:
 file_dep, targets and CmdAction specified as a list can take as elements not
 only strings but also instances of any Path class from pathlib.</p>

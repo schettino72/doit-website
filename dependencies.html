@@ -680,12 +680,15 @@ Check those sections for examples.</p>
 <p><cite>getargs</cite> provides a way to use values computed from one task in another task.
 The values are taken from “saved computed values”
 (returned dict from a python-action).</p>
-<p>For <em>cmd-action</em> use dictionary-based string formatting.</p>
+<p>For <em>cmd-action</em> use dictionary-based string formatting. Formatting style is controlled by <code class="docutils literal notranslate"><span class="pre">action_string_formatting</span></code> key in <code class="docutils literal notranslate"><span class="pre">DOIT_CONFIG</span></code> (see <a class="reference internal" href="tasks.html#keywords-on-cmd-action-string"><span class="std std-ref">keywords on cmd-action string</span></a>).</p>
 <p>For <em>python-action</em> the action callable parameter names must match with keys
 from <cite>getargs</cite>.</p>
 <p><cite>getargs</cite> is a dictionary where the key is the argument name used on actions,
 and the value is a tuple with 2 strings: task name, “value name”.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;use_cmd&#39;</span><span class="p">,</span> <span class="s1">&#39;use_python&#39;</span><span class="p">]}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;use_cmd&#39;</span><span class="p">,</span> <span class="s1">&#39;use_python&#39;</span><span class="p">],</span>
+   <span class="s1">&#39;action_string_formatting&#39;</span><span class="p">:</span> <span class="s1">&#39;both&#39;</span><span class="p">,</span>
+<span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">task_compute</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">comp</span><span class="p">():</span>
@@ -694,7 +697,8 @@ and the value is a tuple with 2 strings: task name, “value name”.</p>
 
 
 <span class="k">def</span> <span class="nf">task_use_cmd</span><span class="p">():</span>
-   <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo x=</span><span class="si">%(x)s</span><span class="s1">, z=</span><span class="si">%(z)s</span><span class="s1">&#39;</span><span class="p">],</span>
+   <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo x=</span><span class="si">{x}</span><span class="s1">&#39;</span><span class="p">,</span>    <span class="c1"># new-style formatting</span>
+                       <span class="s1">&#39;echo z=</span><span class="si">%(z)s</span><span class="s1">&#39;</span><span class="p">],</span> <span class="c1"># old-style formatting</span>
            <span class="s1">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;compute&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">),</span>
                        <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;compute&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">)},</span>
            <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -708,8 +712,8 @@ and the value is a tuple with 2 strings: task name, “value name”.</p>
           <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
           <span class="p">}</span>
 <span class="k">def</span> <span class="nf">show_getargs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is x:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is y:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">y</span><span class="p">)</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is x: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is y: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>The values are being passed on to a python-action you can pass the whole dict

@@ -303,6 +303,7 @@ code.literal {
 <span class="kn">from</span> <span class="nn">.cmdparse</span> <span class="k">import</span> <span class="n">CmdOption</span><span class="p">,</span> <span class="n">CmdParse</span>
 <span class="kn">from</span> <span class="nn">.exceptions</span> <span class="k">import</span> <span class="n">InvalidCommand</span><span class="p">,</span> <span class="n">InvalidDodoFile</span>
 <span class="kn">from</span> <span class="nn">.dependency</span> <span class="k">import</span> <span class="n">CHECKERS</span><span class="p">,</span> <span class="n">DbmDB</span><span class="p">,</span> <span class="n">JsonDB</span><span class="p">,</span> <span class="n">SqliteDB</span><span class="p">,</span> <span class="n">Dependency</span>
+<span class="kn">from</span> <span class="nn">.action</span> <span class="k">import</span> <span class="n">CmdAction</span>
 <span class="kn">from</span> <span class="nn">.plugin</span> <span class="k">import</span> <span class="n">PluginDict</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">loader</span>
 
@@ -749,6 +750,10 @@ code.literal {
 
         <span class="c1"># set selected tasks for command</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sel_tasks</span> <span class="o">=</span> <span class="n">args</span> <span class="ow">or</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;default_tasks&#39;</span><span class="p">)</span>
+
+        <span class="n">CmdAction</span><span class="o">.</span><span class="n">STRING_FORMAT</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;action_string_formatting&#39;</span><span class="p">,</span> <span class="s1">&#39;old&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">CmdAction</span><span class="o">.</span><span class="n">STRING_FORMAT</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;old&#39;</span><span class="p">,</span> <span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="s1">&#39;new&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InvalidDodoFile</span><span class="p">(</span><span class="s1">&#39;`action_string_formatting` must be one of `old`, `both`, `new`&#39;</span><span class="p">)</span>
 
         <span class="c1"># create dep manager</span>
         <span class="n">db_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backends</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;backend&#39;</span><span class="p">])</span>

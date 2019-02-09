@@ -198,9 +198,11 @@ code.literal {
 <li class="toctree-l2"><a class="reference internal" href="#scientific">Scientific</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#biomechanics-lab-stanford-university-usa">Biomechanics Lab / Stanford University, USA</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#computational-metagenomics-lab-university-of-trento-italy">Computational Metagenomics Lab / University of Trento, Italy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Cheminformatics data processing &#64; Atomwise</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#build-system">Build System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bmw-automotive">BMW (Automotive)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#game-development">Game Development</a></li>
 </ul>
 </li>
@@ -327,30 +329,32 @@ code.literal {
 and why <cite>doit</cite> was chosen.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#scientific" id="id2">Scientific</a><ul>
-<li><a class="reference internal" href="#biomechanics-lab-stanford-university-usa" id="id3">Biomechanics Lab / Stanford University, USA</a></li>
-<li><a class="reference internal" href="#computational-metagenomics-lab-university-of-trento-italy" id="id4">Computational Metagenomics Lab / University of Trento, Italy</a></li>
+<li><a class="reference internal" href="#scientific" id="id3">Scientific</a><ul>
+<li><a class="reference internal" href="#biomechanics-lab-stanford-university-usa" id="id4">Biomechanics Lab / Stanford University, USA</a></li>
+<li><a class="reference internal" href="#computational-metagenomics-lab-university-of-trento-italy" id="id5">Computational Metagenomics Lab / University of Trento, Italy</a></li>
+<li><a class="reference internal" href="#id1" id="id6">Cheminformatics data processing &#64; Atomwise</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#build-system" id="id5">Build System</a><ul>
-<li><a class="reference internal" href="#game-development" id="id6">Game Development</a></li>
+<li><a class="reference internal" href="#build-system" id="id7">Build System</a><ul>
+<li><a class="reference internal" href="#bmw-automotive" id="id8">BMW (Automotive)</a></li>
+<li><a class="reference internal" href="#game-development" id="id9">Game Development</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#content-generation" id="id7">Content Generation</a><ul>
-<li><a class="reference internal" href="#nikola" id="id8">Nikola</a></li>
-<li><a class="reference internal" href="#document-production" id="id9">Document Production</a></li>
+<li><a class="reference internal" href="#content-generation" id="id10">Content Generation</a><ul>
+<li><a class="reference internal" href="#nikola" id="id11">Nikola</a></li>
+<li><a class="reference internal" href="#document-production" id="id12">Document Production</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#devops" id="id10">DevOps</a><ul>
-<li><a class="reference internal" href="#university-of-oslo-library-norway" id="id11">University of Oslo Library, Norway</a></li>
+<li><a class="reference internal" href="#devops" id="id13">DevOps</a><ul>
+<li><a class="reference internal" href="#university-of-oslo-library-norway" id="id14">University of Oslo Library, Norway</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="scientific">
-<h2><a class="toc-backref" href="#id2">Scientific</a><a class="headerlink" href="#scientific" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Scientific</a><a class="headerlink" href="#scientific" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="biomechanics-lab-stanford-university-usa">
-<h3><a class="toc-backref" href="#id3">Biomechanics Lab / Stanford University, USA</a><a class="headerlink" href="#biomechanics-lab-stanford-university-usa" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id4">Biomechanics Lab / Stanford University, USA</a><a class="headerlink" href="#biomechanics-lab-stanford-university-usa" title="Permalink to this headline">¶</a></h3>
 <p>by <a class="reference external" href="http://chrisdembia.github.io">Christopher Dembia</a> (2014-04-03)</p>
 <p>I am a graduate student in a biomechanics lab that studies how humans coordinate
 their muscles in movements like walking or running.
@@ -406,11 +410,74 @@ our papers, mentioning it in our funding requests, etc).</p>
 <p>Thanks for developing <cite>doit</cite>, it’s just wonderful for computational biology (and
 for many other tasks, of course, but this is our research field:)!</p>
 </div>
+<div class="section" id="id1">
+<h3><a class="reference external" href="https://www.atomwise.com">Cheminformatics data processing &#64; Atomwise</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>by <a class="reference external" href="https://github.com/drkeoni">Jon Sorenson</a> (2018-12-14)</p>
+<p>I came to <cite>doit</cite> from the loose requirement that I wanted a task-dependency/DAG type
+of workflow solution for the various pipelines that our team is constructing.
+I come from computational biology originally, and the similarity of data processing pipelines
+to build systems has long been appreciated.  More than a decade ago
+many of us were writing bioinformatics
+pipelines in <cite>make</cite> because it gave us so many features “for free.”</p>
+<p>Starting afresh at <a class="reference external" href="https://www.atomwise.com/">Atomwise</a> I did a survey of what DAG-based workflow
+execution frameworks were out there—restricting my search to <cite>python</cite>, active
+maintenance, good documentation etc.  Besides <cite>doit</cite> I evaluated <cite>bonobo</cite>, <cite>Luigi</cite>, and <cite>airflow</cite>.
+<cite>bonobo</cite> didn’t fit my needs for dependency-based processing.  <cite>Luigi</cite> and <cite>airflow</cite> are
+very nice, but I didn’t have any particular need for distributed workflows and the
+heavier weight feel of these platforms.  My favorite experience was <cite>airflow</cite> but it
+didn’t have (obvious) support for re-entrant processing: running a pipeline
+from an intermediate stage.</p>
+<p>I knew that build-system based frameworks would do exactly what I wanted and not
+hand me too much cruft, and on that note I found <cite>doit</cite>.  It’s worked perfectly
+for my needs:</p>
+<ul class="simple">
+<li>The order of tasks is derived from dependencies</li>
+<li>Tasks can be executed in parallel if they don’t depend on each other</li>
+<li>Plenty of bells and whistles to relieve the pipeline developer from writing
+boilerplate code (easy task documentation, discovery of the pipeline state,
+easy process for re-doing tasks)</li>
+<li>Very light-weight. In this sense <cite>doit</cite> is the perfect example of a UNIX-style
+tool: <em>do one thing and do it well</em>.  <cite>Luigi</cite> and <cite>airflow</cite> are
+attractive, but they also suffer from kitchen-sink bloat.  If you simply
+want a pythonic alternative to <cite>Makefiles</cite> or <cite>bash</cite> scripts, <cite>doit</cite>
+is great solution.</li>
+<li>It’s easy to build up a library of common tasks that can be reused by
+multiple <cite>doit</cite> pipelines.</li>
+</ul>
+</div>
 </div>
 <div class="section" id="build-system">
-<h2><a class="toc-backref" href="#id5">Build System</a><a class="headerlink" href="#build-system" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">Build System</a><a class="headerlink" href="#build-system" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bmw-automotive">
+<h3><a class="reference external" href="https://www.bmw.com/de/index.html">BMW</a> (Automotive)<a class="headerlink" href="#bmw-automotive" title="Permalink to this headline">¶</a></h3>
+<p>by <a class="reference external" href="https://github.com/moltob">Mike Pagel</a> (2019-02-06)</p>
+<p>We are responsible for the development of the next generation instrument
+cluster software at BMW. While we use CMake for the actual build of libraries
+and applications, we have learned in the past that you <em>can</em> do almost everything
+with <code class="docutils literal notranslate"><span class="pre">CMake</span></code>, but probably you <em>shouldn’t</em>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">CMake</span></code> is optimized for all tasks around compiler toolchain control, but the
+language is somewhat special and functions and macros cannot easily be tested
+outside of a real build. This is where <code class="docutils literal notranslate"><span class="pre">doit</span></code> enters the stage: We use it for
+everything <em>but</em> compiling software, as a high level command line interface for
+the development teams (and the CI systems). These are some of the tasks we
+perform with <code class="docutils literal notranslate"><span class="pre">doit</span></code>:</p>
+<ul class="simple">
+<li>Downloading and installing tools.</li>
+<li>Calling <code class="docutils literal notranslate"><span class="pre">CMake</span></code> for multiple compiler toolchains.</li>
+<li>Driving various code analysis tools.</li>
+<li>Reporting.</li>
+<li>Packaging the software for later deployment to the car etc.</li>
+<li>Checking if dependencies of the toolchain are outdated and creating automatic
+pull requests.</li>
+</ul>
+<p>Basically we implemented our complete high-level build control in <code class="docutils literal notranslate"><span class="pre">doit</span></code>. The
+resulting framework is now used by us and our suppliers and supports a team
+over 100 developers. Since <code class="docutils literal notranslate"><span class="pre">doit</span></code> is written in Python, we have professional test
+frameworks, linters and code analyzers at hand, allowing for a thoroughly
+tested and well-designed platform for our build-systems and automation.</p>
+</div>
 <div class="section" id="game-development">
-<h3><a class="toc-backref" href="#id6">Game Development</a><a class="headerlink" href="#game-development" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">Game Development</a><a class="headerlink" href="#game-development" title="Permalink to this headline">¶</a></h3>
 <p>by <a class="reference external" href="https://github.com/pydoit/doit/issues/207#issuecomment-333367177">&#64;FrankStain</a> (2017-10-01)</p>
 <p>I’m professional game developer. Also, i support my own huge game framework written on C++. :)</p>
 <p>So, the large scalable build systems are the game building automation tools. It consists of game binary image builders for different platforms, including cross-compilation of source code and source code generation from some DSL schemes. Also it consists of resource generators, where a lot of resource types (dozens of types: textures, 3d objects and scene graphs, sounds, database and state machine raw data) have to pass through dozens of compilation steps. After all, such build system consists of dynamic testing tool, which makes some tests on build target before make it published for Draft usage, QA or Retail customers. And, yep, publishing/QA deployment also implemented as part of build system.</p>
@@ -421,9 +488,9 @@ Each sound should be loaded from PCM, converted into MP3 or OGG and linked with 
 </div>
 </div>
 <div class="section" id="content-generation">
-<h2><a class="toc-backref" href="#id7">Content Generation</a><a class="headerlink" href="#content-generation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">Content Generation</a><a class="headerlink" href="#content-generation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="nikola">
-<h3><a class="toc-backref" href="#id8">Nikola</a><a class="headerlink" href="#nikola" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">Nikola</a><a class="headerlink" href="#nikola" title="Permalink to this headline">¶</a></h3>
 <p>by <a class="reference external" href="https://getnikola.com/">the Nikola team</a></p>
 <p><a class="reference external" href="https://getnikola.com/">Nikola</a> is a Static Site and Blog Generator.  <cite>doit</cite>
 is used to process all the tasks required for building the website (HTML files,
@@ -438,7 +505,7 @@ of files actually <em>change</em> on a rebuild.  Using the dependency architectu
 many users and contributors.</p>
 </div>
 <div class="section" id="document-production">
-<h3><a class="toc-backref" href="#id9">Document Production</a><a class="headerlink" href="#document-production" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id12">Document Production</a><a class="headerlink" href="#document-production" title="Permalink to this headline">¶</a></h3>
 <p>(2018-02-01)</p>
 <p><a class="reference external" href="https://carvesystems.com">Carve Systems</a> uses <cite>doit</cite> as the core automation tool
 for all of our document production. This customized tool based on Pandoc, Latex, and
@@ -449,9 +516,9 @@ plugins.</p>
 </div>
 </div>
 <div class="section" id="devops">
-<h2><a class="toc-backref" href="#id10">DevOps</a><a class="headerlink" href="#devops" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">DevOps</a><a class="headerlink" href="#devops" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="university-of-oslo-library-norway">
-<h3><a class="toc-backref" href="#id11">University of Oslo Library, Norway</a><a class="headerlink" href="#university-of-oslo-library-norway" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id14">University of Oslo Library, Norway</a><a class="headerlink" href="#university-of-oslo-library-norway" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="#https-data-ub-uio-no">by</a> <a class="reference external" href="https://github.com/danmichaelo">Dan Michael O. Heggø</a> (2018-02-26)</p>
 <p>We are using <cite>doit</cite> for the publishing workflow at our vocabulary server <a class="reference external" href="https://data.ub.uio.no/">https://data.ub.uio.no/</a> .
 The server checks multiple remote sources for changes, and when there’s new changes somewhere, the data is fetched,

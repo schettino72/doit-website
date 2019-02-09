@@ -395,6 +395,8 @@ parameter. It returns a callable suitable to be used as an <code class="docutils
 changed. Config values can be a string or dict.</p>
 <p>For dict’s the values are converted to string (using <cite>json.dumps()</cite> with <cite>sort_key=True</cite>)
 and only a digest/checksum of the dictionaries keys and values are saved.</p>
+<p>If converting the values of the dict requires a special encoder this can be
+passed with the argument <code class="docutils literal notranslate"><span class="pre">encoder=...</span></code>. This will be passed on to <cite>json.dumps()</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">config_changed</span>
 
 <span class="n">option</span> <span class="o">=</span> <span class="s2">&quot;AB&quot;</span>
