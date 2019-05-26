@@ -1,268 +1,367 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Changes &mdash; doit 0.31 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="_static/favico.ico"/>
-  
-  
-  
-
-  
-
-  
-  
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Changes</title>
     
-
-  
-
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Success Stories" href="stories.html" />
-    <link rel="prev" title="Support" href="support.html" />
-<style>
-/* FIX for https://github.com/rtfd/sphinx_rtd_theme/pull/657
-   pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
-   line-height: 1.4 !important;
-   }
-*/
-
-  /* FIX: handle code-block-caption
-  https://github.com/rtfd/sphinx_rtd_theme/issues/292
-  */
-pre {
-  font-size: 0.95em !important;
-  letter-spacing: 0.015em;
-  line-height: 120% !important; /* also fix 657 */
-  padding: 0.5em;
-  border: 1px solid #ccc;
-  background-color: #f8f8f8;
-}
-pre.literal-block, div[class^='highlight'], div[class^='highlight-python3'] {
-  margin-top: 0px !important;
-}
-div.code-block-caption {
-  background-color: #ddd;
-  color: #222;
-  border: 1px solid #ccc;
-}
-div.code-block-caption {
-  padding: 2px 5px;
-  font-size: small;
-}
-a.headerlink {
-  visibility: hidden;
-  color: #c60f0f!important;
-  font-size: 1em;
-  margin-left: 6px;
-  padding: 0 4px 0 4px;
-  text-decoration: none!important;
-}
-a.headerlink:after{
-  margin-left: 0px;
-  content:"";
-  font-family:FontAwesome;
-}
-.code-block-caption:hover .headerlink:after {
-  visibility:visible;
-}
-
-/* CHANGE: code displayed in red color is too aggresive */
-code {
-    background-color: #f2f2f2;
-    border-bottom: 1px solid #ddd;
-    color: #333;
-}
-code.literal {
-  color: inherit !important;
-}
-
-/* FIX: use full hight of nav-side (not version selector) */
-.wy-nav-side {
-  padding-bottom: 0px !important;
-}
-.wy-menu-vertical {
-  padding-bottom: 15px !important;
-}
-
-/* FIX: revert rtd messing up with every image in nav-search */
-.wy-side-nav-search img.logo, .wy-nav-top img.logo {
-    display: inherit !important;
-    margin: inherit !important;
-    height: inherit !important;
-    width: inherit !important;
-    background-color: inherit !important;
-    padding: 5px;
-    border-radius: inherit !important;
-}
-
-</style>
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-29887834-3', 'auto');
-  ga('send', 'pageview');
-</script>
-
-
-
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-  <div style="text-align:left">
-    <a href="index.html">
-      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
-    </a>
-    <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black"><i class="fa fa-twitter"></i></a></span>
-    <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
-  </div>
-  <div style="color:rgba(1,1,1,0.3); text-align:left; margin:10px;">
-    
+      <link rel="stylesheet" href="_static/pygments.css">
+      <link rel="stylesheet" href="_static/theme.css">
       
-        <span>0.31</span>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+
       
+      <script src="_static/theme-vendors.js"></script>
+      <script src="_static/theme.js" defer></script>
     
-  </div>
+      <link rel="shortcut icon" href="_static/favico.ico"/>
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="Success Stories" href="stories.html" />
+  <link rel="prev" title="Support" href="support.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="contents.html" class="home-link">
+    
+      <img class="logo" src="_static/doit-logo-small.png" alt="doit logo"/>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
   
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+    <div class="nav-item">
+      <a href="contents.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#guide"
+         class="nav-link ">
+         guide
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#project"
+         class="nav-link  router-link-active">
+         project
+      </a>
+    </div>
+  
+
+<div class="nav-item">
+  <a href="https://twitter.com/py_doit" class="nav-link external">Twitter <outboundlink/><i class="fa fa-twitter" style="color:black"></i></a>
 </div>
 
-        </div>
+<div class="nav-item">
+  <a href="https://github.com/pydoit/doit" class="nav-link external">Github <outboundlink/><i class="fa fa-github" style="color:black"></i></a>
+</div>
+    </navlinks>
+  </div>
+</navbar>
 
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
           
+          <navlinks>
             
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_1.html">tutorial 1 - basics</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dependencies.html">More on dependencies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="task_creation.html">More on Task creation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cmd_run.html">Command line interface - run</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cmd_other.html">Other Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="task_args.html">Passing Task Arguments from the command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="uptodate.html">custom uptodate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending <cite>doit</cite></a></li>
-</ul>
-<p class="caption"><span class="caption-text">Project</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Changes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#unreleased">0.32.0 (<em>unreleased</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">0.31.1 (<em>2018-03-18</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">0.31.0 (<em>2018-02-25</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">0.30.3 (<em>2017-02-20</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">0.30.2 (<em>2017-02-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">0.30.1 (<em>2017-02-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">0.30.0 (<em>2016-11-22</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">0.29.0 (<em>2015-08-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">0.28.0 (<em>2015-04-22</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">0.27.0 (<em>2015-01-30</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">0.26.0 (<em>2014-08-30</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">0.25.0 (<em>2014-03-26</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">0.24.0 (<em>2013-11-24</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id13">0.23.0 (<em>2013-09-20</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id14">0.22.1 (<em>2013-08-04</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id15">0.22.0 (<em>2013-07-05</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id16">0.21.1 (<em>2013-05-21</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id17">0.21.0 (<em>2013-04-29</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id18">0.20.0 (<em>2013-01-09</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id19">0.19.0 (<em>2012-12-18</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id20">0.18.1 (<em>2012-12-03</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id21">0.18.0 (<em>2012-11-27</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id22">0.17.0 (<em>2012-09-20</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id23">0.16.1 (<em>2012-05-13</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id24">0.16.0 (<em>2012-04-23</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id25">0.15.0 (<em>2012-01-10</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id26">0.14.0 (<em>2011-11-05</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id27">0.13.0 (<em>2011-07-18</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id28">0.12.0 (<em>2011-05-29</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id29">0.11.0 (<em>2011-04-20</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id30">0.10.0 (<em>2011-01-24</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id31">0.9.0 (<em>2010-06-08</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id32">0.8.0 (<em>2010-05-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id33">0.7.0 (<em>2010-04-08</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id34">0.6.0 (<em>2010-01-25</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id35">0.5.1 (<em>2009-12-03</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id36">0.5.0 (<em>2009-11-30</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id37">0.4.0 (<em>2009-10-05</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id38">0.3.0 (<em>2009-08-30</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id39">0.2.0 (<em>2009-04-16</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id40">0.1.0 (<em>2008-04-14</em>)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="stories.html">Success Stories</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>
-</ul>
-
-            
-          
-        </div>
-        
 
   
-    <div class="wy-side-nav-search" style="margin-bottom: 0px;">
-      <h3>Donate</h3>
+    <div class="nav-item">
+      <a href="contents.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#guide"
+         class="nav-link ">
+         guide
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#project"
+         class="nav-link  router-link-active">
+         project
+      </a>
+    </div>
+  
 
-      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
-      <p>If you consider <em>doit</em> to be a useful project, and would like to see it continue to be maintained and developed, please consider helping cover the development cost. Thriving project requires a maintainer to keep list of issues and list of pull requests short.</p>
+<div class="nav-item">
+  <a href="https://twitter.com/py_doit" class="nav-link external">Twitter <outboundlink/><i class="fa fa-twitter" style="color:black"></i></a>
+</div>
+
+<div class="nav-item">
+  <a href="https://github.com/pydoit/doit" class="nav-link external">Github <outboundlink/><i class="fa fa-github" style="color:black"></i></a>
+</div>
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#getting-started">getting started</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="usecases.html" class="reference internal ">Use Cases</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="tutorial_1.html" class="reference internal ">tutorial 1 - basics</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#guide">guide</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="install.html" class="reference internal ">Installing</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="tasks.html" class="reference internal ">Tasks</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="dependencies.html" class="reference internal ">More on dependencies</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="task_creation.html" class="reference internal ">More on Task creation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="cmd_run.html" class="reference internal ">Command line interface - run</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="cmd_other.html" class="reference internal ">Other Commands</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="configuration.html" class="reference internal ">Configuration</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="task_args.html" class="reference internal ">Passing Task Arguments from the command line</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="uptodate.html" class="reference internal ">custom uptodate</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="tools.html" class="reference internal ">Tools</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="extending.html" class="reference internal ">Extending doit</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#project">project</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 "><a href="support.html" class="reference internal ">Support</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">Changes</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#unreleased" class="reference internal">0.32.0 (unreleased)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id1" class="reference internal">0.31.1 (2018-03-18)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id2" class="reference internal">0.31.0 (2018-02-25)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id3" class="reference internal">0.30.3 (2017-02-20)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id4" class="reference internal">0.30.2 (2017-02-16)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id5" class="reference internal">0.30.1 (2017-02-16)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id6" class="reference internal">0.30.0 (2016-11-22)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id7" class="reference internal">0.29.0 (2015-08-16)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id8" class="reference internal">0.28.0 (2015-04-22)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id9" class="reference internal">0.27.0 (2015-01-30)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id10" class="reference internal">0.26.0 (2014-08-30)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id11" class="reference internal">0.25.0 (2014-03-26)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id12" class="reference internal">0.24.0 (2013-11-24)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id13" class="reference internal">0.23.0 (2013-09-20)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id14" class="reference internal">0.22.1 (2013-08-04)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id15" class="reference internal">0.22.0 (2013-07-05)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id16" class="reference internal">0.21.1 (2013-05-21)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id17" class="reference internal">0.21.0 (2013-04-29)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id18" class="reference internal">0.20.0 (2013-01-09)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id19" class="reference internal">0.19.0 (2012-12-18)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id20" class="reference internal">0.18.1 (2012-12-03)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id21" class="reference internal">0.18.0 (2012-11-27)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id22" class="reference internal">0.17.0 (2012-09-20)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id23" class="reference internal">0.16.1 (2012-05-13)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id24" class="reference internal">0.16.0 (2012-04-23)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id25" class="reference internal">0.15.0 (2012-01-10)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id26" class="reference internal">0.14.0 (2011-11-05)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id27" class="reference internal">0.13.0 (2011-07-18)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id28" class="reference internal">0.12.0 (2011-05-29)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id29" class="reference internal">0.11.0 (2011-04-20)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id30" class="reference internal">0.10.0 (2011-01-24)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id31" class="reference internal">0.9.0 (2010-06-08)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id32" class="reference internal">0.8.0 (2010-05-16)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id33" class="reference internal">0.7.0 (2010-04-08)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id34" class="reference internal">0.6.0 (2010-01-25)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id35" class="reference internal">0.5.1 (2009-12-03)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id36" class="reference internal">0.5.0 (2009-11-30)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id37" class="reference internal">0.4.0 (2009-10-05)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id38" class="reference internal">0.3.0 (2009-08-30)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id39" class="reference internal">0.2.0 (2009-04-16)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id40" class="reference internal">0.1.0 (2008-04-14)</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="stories.html" class="reference internal ">Success Stories</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="faq.html" class="reference internal ">FAQ</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="related.html" class="reference internal ">Related Projects</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+
+  
+    <div style="margin-bottom: 0px; padding:1rem; background-color: #2980B9; color:#fcfcfc;">
+      <h3>Donate</h3>
+      <p>If you find <em>doit</em> useful, please consider supporting the maintainer with a donation.</p>
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it... Your donation keeps the project healthy and maintained.</p>
     </div>
 
-    <div class="wy-side-nav-search" style="color:black;background-color:#fcfcfc;border-right:black 1px solid;">
-      <h6 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h6>
+    <div style="text-align:center; padding:1rem; color:black;background-color:#fcfcfc; margin-bottom:2rem;">
+      <h4 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h4>
       <div>
         <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
       </div>
 
       <hr style="margin-top:5px;">
-      <h6 style="margin-bottom:20px;">Paypal</h6>
+      <h4 style="margin-bottom:20px;">Paypal</h4>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
@@ -273,75 +372,32 @@ code.literal {
     <br>
   
 
-      </div>
-    </nav>
+        </sidebar>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-  <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-  <a href="index.html">
-      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
-  </a>
-  <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-twitter"></i></a></span>
-  <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-github"></i></a></span>
-
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="contents.html">Docs</a> &raquo;</li>
-        
-      <li>Changes</li>
-    
-    
-   
-   <span class="float-right" role="navigation" aria-label="breadcrumb navigation">
-      
-        <li>
-          <a href="support.html" title="Support" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Support</a>
-        </li>
-      
-      <li style="padding-right:5px">|</li>
-      
-        <li>
-            <a href="stories.html" title="Success Stories" accesskey="n">Success Stories <span class="fa fa-arrow-circle-right"></span></a>
-        </li>
-      
-  </span>
-
-  </ul>
-
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
   
-  <hr/>
+  <ul class="breadcrumbs">
+    <li><a href="contents.html">Docs</a> &raquo;</li>
+    
+    <li>Changes</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="support.html"
+       title="previous chapter">← Support</a>
+  </li>
+  <li class="next">
+    <a href="stories.html"
+       title="next chapter">Success Stories →</a>
+  </li>
+</ul>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+<hr>
+          <div class="content" role="main">
             
   <div class="section" id="changes">
 <h1>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h1>
@@ -349,21 +405,25 @@ code.literal {
 <h2>0.32.0 (<em>unreleased</em>)<a class="headerlink" href="#unreleased" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>python 3.7 support</li>
-<li>BACKWARD INCOMPATIBLE: Changed signature of <cite>DoitCommand</cite></li>
-<li>BACKWARD INCOMPATIBLE: Fix #254: Python actions keywords with task metadata <cite>dependencies</cite>, <cite>targets</cite> and <cite>changed</cite> are a copied list</li>
-<li>Fix #204: Accept loader command options before command name</li>
-<li>Fix #240: Command run: with <cite>–pdb</cite> drop into <em>pdb</em> on unhandled exception on <cite>PythonAction</cite></li>
-<li>Fix #203: Allow configuration of <cite>dodo.py</cite> file name with env var <cite>DOIT_FILE</cite></li>
-<li><dl class="first docutils">
-<dt>Fix #113: <cite>tools.config_changed</cite> deals with nested dictionaries.</dt>
-<dd>Using json instead of repr.</dd>
+<li><p>python 3.7 support</p></li>
+<li><p>BACKWARD INCOMPATIBLE: Changed signature of <cite>DoitCommand</cite></p></li>
+<li><p>BACKWARD INCOMPATIBLE: Fix #254: Python actions keywords with task metadata <cite>dependencies</cite>, <cite>targets</cite> and <cite>changed</cite> are a copied list</p></li>
+<li><p>Fix #204: Accept loader command options before command name</p></li>
+<li><p>Fix #240: Command run: with <cite>–pdb</cite> drop into <em>pdb</em> on unhandled exception on <cite>PythonAction</cite></p></li>
+<li><p>Fix #203: Allow configuration of <cite>dodo.py</cite> file name with env var <cite>DOIT_FILE</cite></p></li>
+<li><dl class="simple">
+<dt>Fix #113: <cite>tools.config_changed</cite> deals with nested dictionaries.</dt><dd><p>Using json instead of repr.</p>
+</dd>
 </dl>
 </li>
-<li>Fix #261: help organize command options in sections, and improve formatting.</li>
-<li>Fix #267: <cite>doit list</cite> now has a <cite>–sort</cite> parameter to determine the order in which the tasks are listed.</li>
-<li>Make it possible to use a custom encoder when using config_changed with a dict.</li>
-<li>Add configuration <cite>DOIT_CONFIG</cite> <cite>action_string_formatting</cite> to control command action formatter.</li>
+<li><p>Fix #261: help organize command options in sections, and improve formatting.</p></li>
+<li><p>Fix #267: <cite>doit list</cite> now has a <cite>–sort</cite> parameter to determine the order in which the tasks are listed.</p></li>
+<li><p>Make it possible to use a custom encoder when using config_changed with a dict.</p></li>
+<li><p>Add configuration <cite>DOIT_CONFIG</cite> <cite>action_string_formatting</cite> to control command action formatter.</p></li>
+<li><p>Fix <cite>result_dep</cite>, use result <strong>after</strong> its execution</p></li>
+<li><p>Fix #286: Support <cite>functools.partial</cite> on tasks’ dict metadata <cite>task.title</cite></p></li>
+<li><p>Fix #285: <cite>clean</cite> command, remove targets in reverse lexical order</p></li>
+<li><p>Deprecated TaskLoader in favor of TaskLoader2, which separates loading doit’s configuration from loading tasks.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -371,10 +431,10 @@ code.literal {
 <h2>0.31.1 (<em>2018-03-18</em>)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>Fix #249 reporter bug when using <cite>–continue</cite> option</li>
-<li>Fix #248 test failures of debian when using GDBM</li>
-<li>Fix #164 <cite>get_var</cite> fails on multiprocess execution on Windows</li>
-<li>Fix #245 custom <cite>clean</cite> action takes <cite>dry-run</cite> into account</li>
+<li><p>Fix #249 reporter bug when using <cite>–continue</cite> option</p></li>
+<li><p>Fix #248 test failures of debian when using GDBM</p></li>
+<li><p>Fix #164 <cite>get_var</cite> fails on multiprocess execution on Windows</p></li>
+<li><p>Fix #245 custom <cite>clean</cite> action takes <cite>dry-run</cite> into account</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -382,27 +442,27 @@ code.literal {
 <h2>0.31.0 (<em>2018-02-25</em>)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>BACKWARD INCOMPATIBLE: Drop Python 3.3 support</li>
-<li>Fix #171 Passing environment variables to CmdAction</li>
-<li>Fix #184 parametrize script name</li>
-<li>CmdParse now support getting values from OS environment variables</li>
-<li>option <cite>seek_file</cite> control by ENV var <cite>DOIT_SEEK_FILE</cite></li>
-<li>#192 ipython extension uses <cite>load_ipython_extension</cite></li>
-<li>#218 clean with option <cite>–forget</cite> can be used to also forget about cleaned tasks</li>
-<li>Fix strace command (seems strace output was modified)</li>
-<li>Fix #224: use <cite>mock</cite> from stdlib</li>
-<li>#227: enhancements to <cite>info</cite> command</li>
-<li>Fix #197: improve error message for invalid <cite>clean</cite> and <cite>teardown</cite> task params</li>
-<li>Fix #211: do not display traceback for error when missing <cite>file_dep</cite></li>
-<li>Task <cite>verbosity</cite> has precedence over <cite>verbosity</cite> from config</li>
-<li>Fix #140: add <cite>failure-verbosity</cite>. ConsoleReporter, by default,
-do not print stderr twice.</li>
-<li>Fix #155: pass <cite>selected_tasks</cite> to <cite>Reporter.initialize()</cite></li>
-<li>Fix #221: do not leak meta arguments to actions <cite>kwargs</cite></li>
-<li>Fix #202: help command display option’s name used on config</li>
-<li>Fix #209: fix <cite>clean</cite> ordering, and following implicit task_deps</li>
-<li>Fix: list of sub-tasks do not include non-related <cite>task_dep</cite></li>
-<li>Internal: Removed <cite>Task.is_subtask</cite> use <cite>Task.subtask_of</cite> instead</li>
+<li><p>BACKWARD INCOMPATIBLE: Drop Python 3.3 support</p></li>
+<li><p>Fix #171 Passing environment variables to CmdAction</p></li>
+<li><p>Fix #184 parametrize script name</p></li>
+<li><p>CmdParse now support getting values from OS environment variables</p></li>
+<li><p>option <cite>seek_file</cite> control by ENV var <cite>DOIT_SEEK_FILE</cite></p></li>
+<li><p>#192 ipython extension uses <cite>load_ipython_extension</cite></p></li>
+<li><p>#218 clean with option <cite>–forget</cite> can be used to also forget about cleaned tasks</p></li>
+<li><p>Fix strace command (seems strace output was modified)</p></li>
+<li><p>Fix #224: use <cite>mock</cite> from stdlib</p></li>
+<li><p>#227: enhancements to <cite>info</cite> command</p></li>
+<li><p>Fix #197: improve error message for invalid <cite>clean</cite> and <cite>teardown</cite> task params</p></li>
+<li><p>Fix #211: do not display traceback for error when missing <cite>file_dep</cite></p></li>
+<li><p>Task <cite>verbosity</cite> has precedence over <cite>verbosity</cite> from config</p></li>
+<li><p>Fix #140: add <cite>failure-verbosity</cite>. ConsoleReporter, by default,
+do not print stderr twice.</p></li>
+<li><p>Fix #155: pass <cite>selected_tasks</cite> to <cite>Reporter.initialize()</cite></p></li>
+<li><p>Fix #221: do not leak meta arguments to actions <cite>kwargs</cite></p></li>
+<li><p>Fix #202: help command display option’s name used on config</p></li>
+<li><p>Fix #209: fix <cite>clean</cite> ordering, and following implicit task_deps</p></li>
+<li><p>Fix: list of sub-tasks do not include non-related <cite>task_dep</cite></p></li>
+<li><p>Internal: Removed <cite>Task.is_subtask</cite> use <cite>Task.subtask_of</cite> instead</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -410,7 +470,7 @@ do not print stderr twice.</li>
 <h2>0.30.3 (<em>2017-02-20</em>)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>Revert usage of setuptools environment markers (feature too new)</li>
+<li><p>Revert usage of setuptools environment markers (feature too new)</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -418,7 +478,7 @@ do not print stderr twice.</li>
 <h2>0.30.2 (<em>2017-02-16</em>)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>Fix dependency on <cite>pathlib</cite> from PyPi</li>
+<li><p>Fix dependency on <cite>pathlib</cite> from PyPi</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -426,8 +486,8 @@ do not print stderr twice.</li>
 <h2>0.30.1 (<em>2017-02-16</em>)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>Fix GH-#159 KeyError on doit list –status when missing file dependency</li>
-<li>add python3.6 support</li>
+<li><p>Fix GH-#159 KeyError on doit list –status when missing file dependency</p></li>
+<li><p>add python3.6 support</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -435,19 +495,19 @@ do not print stderr twice.</li>
 <h2>0.30.0 (<em>2016-11-22</em>)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>BACKWARD INCOMPATIBLE: #112 drop python2 compatibility</li>
-<li>GH-#94: option to read output from CmdAction line or byte buffered</li>
-<li>GH-#114: <cite>file_dep</cite>, <cite>targets</cite> and <cite>CmdAction</cite> support pathlib.</li>
-<li>fix GH-#100: make cmd <cite>completion</cite> output deterministic</li>
-<li>fix GH-#99: positional argument on tasks not specified from cmd-line</li>
-<li><dl class="first docutils">
-<dt>fix GH-#97: <cite>list</cite> command does not display task-doc for <cite>DelayedTask</cite></dt>
-<dd>when <cite>creates</cite> is specified</dd>
+<li><p>BACKWARD INCOMPATIBLE: #112 drop python2 compatibility</p></li>
+<li><p>GH-#94: option to read output from CmdAction line or byte buffered</p></li>
+<li><p>GH-#114: <cite>file_dep</cite>, <cite>targets</cite> and <cite>CmdAction</cite> support pathlib.</p></li>
+<li><p>fix GH-#100: make cmd <cite>completion</cite> output deterministic</p></li>
+<li><p>fix GH-#99: positional argument on tasks not specified from cmd-line</p></li>
+<li><dl class="simple">
+<dt>fix GH-#97: <cite>list</cite> command does not display task-doc for <cite>DelayedTask</cite></dt><dd><p>when <cite>creates</cite> is specified</p>
+</dd>
 </dl>
 </li>
-<li>fix GH-#131: race condition in doit.tools.create_folder</li>
-<li>fix <cite>auto</cite> command on OS-X systems</li>
-<li>fix GH-#117: Give error when user tries to use equal sign on task name</li>
+<li><p>fix GH-#131: race condition in doit.tools.create_folder</p></li>
+<li><p>fix <cite>auto</cite> command on OS-X systems</p></li>
+<li><p>fix GH-#117: Give error when user tries to use equal sign on task name</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -455,21 +515,21 @@ do not print stderr twice.</li>
 <h2>0.29.0 (<em>2015-08-16</em>)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>BACKWARD INCOMPATIBLE: revert - <cite>result_dep</cite> to create an implicit <cite>task_dep</cite></li>
-<li>fix GH-#59: command <cite>list</cite> issue with unicode names</li>
-<li>fix GH-#72: cmd <cite>completion</cite> escaping of apostrophes in zsh</li>
-<li>fix GH-#74: Task action’s handle python3 callables with keyword only args</li>
-<li>fix GH-#50: Executing tasks in parallel (multi-process) fails on Windows</li>
-<li>fix GH-#71 #92: Better error messages for invalid command line tasks/commands</li>
-<li>fix issue with <cite>–always-execute</cite> and <cite>setup</cite> tasks</li>
-<li>GH-#67: multiprocess runner handles closures in tasks (using cloudpickle)</li>
-<li>GH-#58: add <cite>DelayedLoader</cite> parameter <cite>target_regex</cite></li>
-<li>GH-#30: add <cite>DelayedLoader</cite> parameter <cite>creates</cite></li>
-<li>GH-#58: cmd <cite>Run</cite> add option <cite>–auto-delayed-regex</cite></li>
-<li>GH-#24: cmd <cite>info</cite> add option <cite>–status</cite> show reason a task is not up-to-date</li>
-<li>GH-#66: cmd <cite>auto</cite> support custom ( user specified ) commands to be executed
-after each task execution</li>
-<li>GH-#61: speed up sqlite3 backend (use internal memory cache)</li>
+<li><p>BACKWARD INCOMPATIBLE: revert - <cite>result_dep</cite> to create an implicit <cite>task_dep</cite></p></li>
+<li><p>fix GH-#59: command <cite>list</cite> issue with unicode names</p></li>
+<li><p>fix GH-#72: cmd <cite>completion</cite> escaping of apostrophes in zsh</p></li>
+<li><p>fix GH-#74: Task action’s handle python3 callables with keyword only args</p></li>
+<li><p>fix GH-#50: Executing tasks in parallel (multi-process) fails on Windows</p></li>
+<li><p>fix GH-#71 #92: Better error messages for invalid command line tasks/commands</p></li>
+<li><p>fix issue with <cite>–always-execute</cite> and <cite>setup</cite> tasks</p></li>
+<li><p>GH-#67: multiprocess runner handles closures in tasks (using cloudpickle)</p></li>
+<li><p>GH-#58: add <cite>DelayedLoader</cite> parameter <cite>target_regex</cite></p></li>
+<li><p>GH-#30: add <cite>DelayedLoader</cite> parameter <cite>creates</cite></p></li>
+<li><p>GH-#58: cmd <cite>Run</cite> add option <cite>–auto-delayed-regex</cite></p></li>
+<li><p>GH-#24: cmd <cite>info</cite> add option <cite>–status</cite> show reason a task is not up-to-date</p></li>
+<li><p>GH-#66: cmd <cite>auto</cite> support custom ( user specified ) commands to be executed
+after each task execution</p></li>
+<li><p>GH-#61: speed up sqlite3 backend (use internal memory cache)</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -477,27 +537,27 @@ after each task execution</li>
 <h2>0.28.0 (<em>2015-04-22</em>)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>BACKWARD INCOMPATIBLE: signature for custom DB backend changed</li>
-<li>BACKWARD INCOMPATIBLE: <cite>DoitMain</cite> API change</li>
-<li>BACKWARD INCOMPATIBLE: <cite>Command</cite> API change</li>
-<li>BACKWARD INCOMPATIBLE: <cite>default</cite> reporter renamed to <cite>console</cite></li>
-<li>GH-#25: Add a <cite>reset-dep</cite> command to recompute dependencies state</li>
-<li>GH-#22: Allow to customize how file_dep are checked</li>
-<li>GH-#31: Add IPython <cite>%doit</cite> magic-function loading tasks from its global
-namespace</li>
-<li>read configuration options from INI files</li>
-<li>GH-#32 plugin system</li>
-<li>plugin support: COMMAND - add new commands</li>
-<li>plugin support: LOADER - add custom task loaders</li>
-<li>plugin support: REPORTER - add custom reporter for <cite>run</cite> command</li>
-<li>plugin support: BACKEND - add custom DB persistence backend</li>
-<li>GH-#36 PythonAction recognizes returned TaskError or TaskFailed</li>
-<li>GH-#37 CmdParse support for arguments of type list</li>
-<li>GH-#47 CmdParse support for choices</li>
-<li>fix issue when using unicode strings to specify <cite>minversion</cite> on python 2</li>
-<li>fix GH-#27 auto command in conjunction with task arguments</li>
-<li>fix GH-#44 Fix the list -s command when result_dep is used</li>
-<li>fix GH-#45 make sure all <cite>uptodate</cite> checks are executed (no short-circuit)</li>
+<li><p>BACKWARD INCOMPATIBLE: signature for custom DB backend changed</p></li>
+<li><p>BACKWARD INCOMPATIBLE: <cite>DoitMain</cite> API change</p></li>
+<li><p>BACKWARD INCOMPATIBLE: <cite>Command</cite> API change</p></li>
+<li><p>BACKWARD INCOMPATIBLE: <cite>default</cite> reporter renamed to <cite>console</cite></p></li>
+<li><p>GH-#25: Add a <cite>reset-dep</cite> command to recompute dependencies state</p></li>
+<li><p>GH-#22: Allow to customize how file_dep are checked</p></li>
+<li><p>GH-#31: Add IPython <cite>%doit</cite> magic-function loading tasks from its global
+namespace</p></li>
+<li><p>read configuration options from INI files</p></li>
+<li><p>GH-#32 plugin system</p></li>
+<li><p>plugin support: COMMAND - add new commands</p></li>
+<li><p>plugin support: LOADER - add custom task loaders</p></li>
+<li><p>plugin support: REPORTER - add custom reporter for <cite>run</cite> command</p></li>
+<li><p>plugin support: BACKEND - add custom DB persistence backend</p></li>
+<li><p>GH-#36 PythonAction recognizes returned TaskError or TaskFailed</p></li>
+<li><p>GH-#37 CmdParse support for arguments of type list</p></li>
+<li><p>GH-#47 CmdParse support for choices</p></li>
+<li><p>fix issue when using unicode strings to specify <cite>minversion</cite> on python 2</p></li>
+<li><p>fix GH-#27 auto command in conjunction with task arguments</p></li>
+<li><p>fix GH-#44 Fix the list -s command when result_dep is used</p></li>
+<li><p>fix GH-#45 make sure all <cite>uptodate</cite> checks are executed (no short-circuit)</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -505,29 +565,29 @@ namespace</li>
 <h2>0.27.0 (<em>2015-01-30</em>)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>BACKWARD INCOMPATIBLE: drop python 2.6 support</li>
-<li>BACKWARD INCOMPATIBLE: removed unmaintained genstandalone script</li>
-<li><dl class="first docutils">
-<dt>BACKWARD INCOMPATIBLE: removed runtests.py script and support to run</dt>
-<dd>tests through setup.py</dd>
+<li><p>BACKWARD INCOMPATIBLE: drop python 2.6 support</p></li>
+<li><p>BACKWARD INCOMPATIBLE: removed unmaintained genstandalone script</p></li>
+<li><dl class="simple">
+<dt>BACKWARD INCOMPATIBLE: removed runtests.py script and support to run</dt><dd><p>tests through setup.py</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>BACKWARD INCOMPATIBLE: <cite>result_dep</cite> creates an implicit <cite>setup</cite></dt>
-<dd>(was <cite>task_dep</cite>)</dd>
+<li><dl class="simple">
+<dt>BACKWARD INCOMPATIBLE: <cite>result_dep</cite> creates an implicit <cite>setup</cite></dt><dd><p>(was <cite>task_dep</cite>)</p>
+</dd>
 </dl>
 </li>
-<li>BACKWARD INCOMPATIBLE: GH-#9 <cite>getargs</cite> creates an implicit <cite>result_dep</cite></li>
-<li><dl class="first docutils">
-<dt>BACKWARD INCOMPATIBLE: <cite>CmdAction</cite> would always decode process output</dt>
-<dd>using <cite>errors=’strict’</cite> default changed to <cite>replace</cite></dd>
+<li><p>BACKWARD INCOMPATIBLE: GH-#9 <cite>getargs</cite> creates an implicit <cite>result_dep</cite></p></li>
+<li><dl class="simple">
+<dt>BACKWARD INCOMPATIBLE: <cite>CmdAction</cite> would always decode process output</dt><dd><p>using <cite>errors=’strict’</cite> default changed to <cite>replace</cite></p>
+</dd>
 </dl>
 </li>
-<li>allow task-creators to return/yield Task instances</li>
-<li>fix GH-#14: add support for delayed task creation</li>
-<li>fix GH-#15: <cite>auto</cite> (linux) inotify also listen for <cite>MOVE_TO</cite> events</li>
-<li>GH-#4 <cite>CmdAction</cite> added parameters <cite>encoding</cite> and <cite>decode_error</cite></li>
-<li>GH-#6: <cite>loader.task_loader()</cite> accepts methods as <em>task creators</em></li>
+<li><p>allow task-creators to return/yield Task instances</p></li>
+<li><p>fix GH-#14: add support for delayed task creation</p></li>
+<li><p>fix GH-#15: <cite>auto</cite> (linux) inotify also listen for <cite>MOVE_TO</cite> events</p></li>
+<li><p>GH-#4 <cite>CmdAction</cite> added parameters <cite>encoding</cite> and <cite>decode_error</cite></p></li>
+<li><p>GH-#6: <cite>loader.task_loader()</cite> accepts methods as <em>task creators</em></p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -535,16 +595,16 @@ namespace</li>
 <h2>0.26.0 (<em>2014-08-30</em>)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>moved development to git/github</li>
-<li><cite>uptodate</cite> callable “magic” arguments <cite>task</cite> and <cite>values</cite> are now optional</li>
-<li>added command <cite>info</cite> to display task metadata</li>
-<li>command <cite>clean</cite> smarter execution order</li>
-<li>remove <cite>strace</cite> short option <cite>-k</cite> because it conflicts with <cite>run</cite> option</li>
-<li>fix zsh tab-completion script when not <cite>doit</cite> script</li>
-<li>fix #79. Use setuptools and <cite>entry_points</cite></li>
-<li>order of yielded tasks is preserved</li>
-<li>#68. pass positional args to tasks</li>
-<li>fix tab-completion on BASH for sub-commands that take file arguments</li>
+<li><p>moved development to git/github</p></li>
+<li><p><cite>uptodate</cite> callable “magic” arguments <cite>task</cite> and <cite>values</cite> are now optional</p></li>
+<li><p>added command <cite>info</cite> to display task metadata</p></li>
+<li><p>command <cite>clean</cite> smarter execution order</p></li>
+<li><p>remove <cite>strace</cite> short option <cite>-k</cite> because it conflicts with <cite>run</cite> option</p></li>
+<li><p>fix zsh tab-completion script when not <cite>doit</cite> script</p></li>
+<li><p>fix #79. Use setuptools and <cite>entry_points</cite></p></li>
+<li><p>order of yielded tasks is preserved</p></li>
+<li><p>#68. pass positional args to tasks</p></li>
+<li><p>fix tab-completion on BASH for sub-commands that take file arguments</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -552,16 +612,16 @@ namespace</li>
 <h2>0.25.0 (<em>2014-03-26</em>)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>BACKWARD INCOMPATIBLE: use function <cite>doit.get_initial_workdir()</cite>
-instead of variable <cite>doit.initial_workdir</cite></li>
-<li>DEPRECATED <cite>tools.InteractiveAction</cite> renamed to <cite>tools.LongRunning</cite></li>
-<li>fix: <cite>strace</cite> raises <cite>InvalidCommand</cite> instead of using <cite>assert</cite></li>
-<li>#28: task <cite>uptodate</cite> support string to be executed as shell command</li>
-<li>added <cite>tools.Interactive</cite> for use with interactive commands</li>
-<li>#69: added doit.run() to make it easier to turn a dodo file into executable</li>
-<li>#70: added option “–pdb” to command <cite>run</cite></li>
-<li>added option “–single” to command <cite>run</cite></li>
-<li>include list of file_dep as an implicit dependency</li>
+<li><p>BACKWARD INCOMPATIBLE: use function <cite>doit.get_initial_workdir()</cite>
+instead of variable <cite>doit.initial_workdir</cite></p></li>
+<li><p>DEPRECATED <cite>tools.InteractiveAction</cite> renamed to <cite>tools.LongRunning</cite></p></li>
+<li><p>fix: <cite>strace</cite> raises <cite>InvalidCommand</cite> instead of using <cite>assert</cite></p></li>
+<li><p>#28: task <cite>uptodate</cite> support string to be executed as shell command</p></li>
+<li><p>added <cite>tools.Interactive</cite> for use with interactive commands</p></li>
+<li><p>#69: added doit.run() to make it easier to turn a dodo file into executable</p></li>
+<li><p>#70: added option “–pdb” to command <cite>run</cite></p></li>
+<li><p>added option “–single” to command <cite>run</cite></p></li>
+<li><p>include list of file_dep as an implicit dependency</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -569,13 +629,13 @@ instead of variable <cite>doit.initial_workdir</cite></li>
 <h2>0.24.0 (<em>2013-11-24</em>)<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>reporter added <cite>initialize()</cite></li>
-<li>cmd <cite>list</cite>: added option <cite>–template</cite></li>
-<li>dodo.py can specify minimum required doit version with DOIT_CONFIG[‘minversion’]</li>
-<li>#62: added the absolute path from which doit is invoked <cite>doit.initial_workdir</cite></li>
-<li>fix #36: added method <cite>isatty()</cite> to <cite>action.Writer</cite></li>
-<li>added command <cite>tabcompletion</cite> for bash and zsh</li>
-<li>fix #56: allow python actions to have default values for task parameters</li>
+<li><p>reporter added <cite>initialize()</cite></p></li>
+<li><p>cmd <cite>list</cite>: added option <cite>–template</cite></p></li>
+<li><p>dodo.py can specify minimum required doit version with DOIT_CONFIG[‘minversion’]</p></li>
+<li><p>#62: added the absolute path from which doit is invoked <cite>doit.initial_workdir</cite></p></li>
+<li><p>fix #36: added method <cite>isatty()</cite> to <cite>action.Writer</cite></p></li>
+<li><p>added command <cite>tabcompletion</cite> for bash and zsh</p></li>
+<li><p>fix #56: allow python actions to have default values for task parameters</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -583,14 +643,14 @@ instead of variable <cite>doit.initial_workdir</cite></li>
 <h2>0.23.0 (<em>2013-09-20</em>)<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>support definition of group tasks using basename without any task</li>
-<li>added task property <cite>watch</cite> to specific extra files/folders in auto command</li>
-<li>CmdAction support for all arguments of subprocess.Popen, but stdout and stderr</li>
-<li>added command option <cite>-k</cite> as short for <cite>–seek-file</cite></li>
-<li>task action can be specified as a list of strings (executed using subprocess.Popen shell=False)</li>
-<li>fix #60: result of calc_dep only considered if not run yet</li>
-<li>fix #61: test failures involving DBM</li>
-<li>fix: do not allow duplicate task names</li>
+<li><p>support definition of group tasks using basename without any task</p></li>
+<li><p>added task property <cite>watch</cite> to specific extra files/folders in auto command</p></li>
+<li><p>CmdAction support for all arguments of subprocess.Popen, but stdout and stderr</p></li>
+<li><p>added command option <cite>-k</cite> as short for <cite>–seek-file</cite></p></li>
+<li><p>task action can be specified as a list of strings (executed using subprocess.Popen shell=False)</p></li>
+<li><p>fix #60: result of calc_dep only considered if not run yet</p></li>
+<li><p>fix #61: test failures involving DBM</p></li>
+<li><p>fix: do not allow duplicate task names</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -598,377 +658,351 @@ instead of variable <cite>doit.initial_workdir</cite></li>
 <h2>0.22.1 (<em>2013-08-04</em>)<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>fix reporter output in py3 was being displayed as bytes instead of string</li>
-<li>fix pr#12 read file in chunks when calculating MD5</li>
-<li>fix #54 - remove distribute bootstrapping during installation</li>
+<li><p>fix reporter output in py3 was being displayed as bytes instead of string</p></li>
+<li><p>fix pr#12 read file in chunks when calculating MD5</p></li>
+<li><p>fix #54 - remove distribute bootstrapping during installation</p></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="id15">
 <h2>0.22.0 (<em>2013-07-05</em>)<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>fix #49: skip unicode tests on systems with non utf8 locale</li>
-<li>fix #51: bash completion does not mess up with global COMP_WORDBREAKS</li>
-<li>fix docs spelling and added task to check spelling</li>
-<li>fix #47: Task.options can always be accessed from <cite>uptodate</cite> code</li>
-<li>fix #45: cmd forget, added option -s/–follow-sub to forget task_dep too</li>
+<li><p>fix #49: skip unicode tests on systems with non utf8 locale</p></li>
+<li><p>fix #51: bash completion does not mess up with global COMP_WORDBREAKS</p></li>
+<li><p>fix docs spelling and added task to check spelling</p></li>
+<li><p>fix #47: Task.options can always be accessed from <cite>uptodate</cite> code</p></li>
+<li><p>fix #45: cmd forget, added option -s/–follow-sub to forget task_dep too</p></li>
 </ul>
 </div>
 <div class="section" id="id16">
 <h2>0.21.1 (<em>2013-05-21</em>)<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>fix tests on python3.3.1</li>
-<li>fix race condition on CmdAction (affected only python&gt;=3.3.1)</li>
+<li><p>fix tests on python3.3.1</p></li>
+<li><p>fix race condition on CmdAction (affected only python&gt;=3.3.1)</p></li>
 </ul>
 </div>
 <div class="section" id="id17">
 <h2>0.21.0 (<em>2013-04-29</em>)<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>fix #38: <cite>doit.tools.create_folder()</cite> raise error if file exists in path</li>
-<li><cite>create_doit_tasks</cite> not called for unbound methods</li>
-<li>support execution using “python -m doit”</li>
-<li>fix #33: Failing to clean a group of task(s) with sub-tasks</li>
-<li>python-actions can take a magic “task” parameter as reference to task</li>
-<li>expose task.clean_targets</li>
-<li>tools.PythonInteractiveAction saves “result” and “values”</li>
-<li>fix #40. added option to use threads for parallel running of tasks</li>
-<li>same code base for python 2 &amp; 3 (no need to use tool <cite>2to3</cite>)</li>
-<li>add sqlite3 DB backend</li>
-<li>added option to select backend</li>
+<li><p>fix #38: <cite>doit.tools.create_folder()</cite> raise error if file exists in path</p></li>
+<li><p><cite>create_doit_tasks</cite> not called for unbound methods</p></li>
+<li><p>support execution using “python -m doit”</p></li>
+<li><p>fix #33: Failing to clean a group of task(s) with sub-tasks</p></li>
+<li><p>python-actions can take a magic “task” parameter as reference to task</p></li>
+<li><p>expose task.clean_targets</p></li>
+<li><p>tools.PythonInteractiveAction saves “result” and “values”</p></li>
+<li><p>fix #40. added option to use threads for parallel running of tasks</p></li>
+<li><p>same code base for python 2 &amp; 3 (no need to use tool <cite>2to3</cite>)</p></li>
+<li><p>add sqlite3 DB backend</p></li>
+<li><p>added option to select backend</p></li>
 </ul>
 </div>
 <div class="section" id="id18">
 <h2>0.20.0 (<em>2013-01-09</em>)<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>added command <cite>dumpdb</cite></li>
-<li>added <cite>CmdAction.save_out</cite> param</li>
-<li><cite>CmdAction</cite> support for callable that returns a command string</li>
-<li>BACKWARD INCOMPATIBLE <cite>getargs</cite> for a group task gets a dict where
-each key is the name of subtasks (previously it was a list)</li>
-<li>added command <cite>strace</cite></li>
-<li>cmd <cite>auto</cite> run tasks on separate process</li>
-<li>support unicode for task name</li>
+<li><p>added command <cite>dumpdb</cite></p></li>
+<li><p>added <cite>CmdAction.save_out</cite> param</p></li>
+<li><p><cite>CmdAction</cite> support for callable that returns a command string</p></li>
+<li><p>BACKWARD INCOMPATIBLE <cite>getargs</cite> for a group task gets a dict where
+each key is the name of subtasks (previously it was a list)</p></li>
+<li><p>added command <cite>strace</cite></p></li>
+<li><p>cmd <cite>auto</cite> run tasks on separate process</p></li>
+<li><p>support unicode for task name</p></li>
 </ul>
 </div>
 <div class="section" id="id19">
 <h2>0.19.0 (<em>2012-12-18</em>)<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>support for <cite>doit help &lt;task-name&gt;</cite></li>
-<li>added support to load tasks using <cite>create_doit_tasks</cite></li>
-<li>dropped python 2.5 support</li>
+<li><p>support for <cite>doit help &lt;task-name&gt;</cite></p></li>
+<li><p>added support to load tasks using <cite>create_doit_tasks</cite></p></li>
+<li><p>dropped python 2.5 support</p></li>
 </ul>
 </div>
 <div class="section" id="id20">
 <h2>0.18.1 (<em>2012-12-03</em>)<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>fix bug cmd option –continue not being recognized</li>
+<li><p>fix bug cmd option –continue not being recognized</p></li>
 </ul>
 </div>
 <div class="section" id="id21">
 <h2>0.18.0 (<em>2012-11-27</em>)<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>remove DEPRECATED <cite>Task.insert_action</cite>, <cite>result_dep</cite> and <cite>getargs</cite> using strings</li>
-<li>fix #10 –continue does not execute tasks that have failed dependencies</li>
-<li>fix –always-execute does not execute “ignored” tasks</li>
-<li>fix #29 python3 cmd-actions issue</li>
-<li>fix #30 tests pass on all dbm backends</li>
-<li>API to add new sub-commands to doit</li>
-<li>API to modify task loader</li>
-<li>API to make dodo.py executable</li>
-<li>added ZeroReporter</li>
+<li><p>remove DEPRECATED <cite>Task.insert_action</cite>, <cite>result_dep</cite> and <cite>getargs</cite> using strings</p></li>
+<li><p>fix #10 –continue does not execute tasks that have failed dependencies</p></li>
+<li><p>fix –always-execute does not execute “ignored” tasks</p></li>
+<li><p>fix #29 python3 cmd-actions issue</p></li>
+<li><p>fix #30 tests pass on all dbm backends</p></li>
+<li><p>API to add new sub-commands to doit</p></li>
+<li><p>API to modify task loader</p></li>
+<li><p>API to make dodo.py executable</p></li>
+<li><p>added ZeroReporter</p></li>
 </ul>
 </div>
 <div class="section" id="id22">
 <h2>0.17.0 (<em>2012-09-20</em>)<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>fix #12 Action.out and Action.err not set when using multiprocessing</li>
-<li>fix #16 fix <cite>forget</cite> command on gdbm backend</li>
-<li>fix #14 improve parallel execution (better process utilization)</li>
-<li>fix #9 calc_dep create implicit task_dep if a file_dep returned is a also a target</li>
-<li>added tools.result_dep</li>
-<li>fix #15 tools.result_dep supports group-tasks</li>
-<li>DEPRECATE task attribute <cite>result_dep</cite> (use tools.result_dep)</li>
-<li>DEPRECATE <cite>getargs</cite> specification using strings (must use 2-element tuple)</li>
-<li>several changes on <cite>uptodate</cite></li>
-<li>DEPRECATE <cite>Task.insert_action</cite> (replaced by <cite>Task.value_savers</cite>)</li>
-<li>fix #8 <cite>clean</cite> cleans all subtasks from a group-task</li>
-<li>fix #8 <cite>clean</cite> added flag <cite>–all</cite> to clean all tasks</li>
-<li>fix #8 <cite>clean</cite> when no task is specified set –clean-dep and clean default tasks</li>
+<li><p>fix #12 Action.out and Action.err not set when using multiprocessing</p></li>
+<li><p>fix #16 fix <cite>forget</cite> command on gdbm backend</p></li>
+<li><p>fix #14 improve parallel execution (better process utilization)</p></li>
+<li><p>fix #9 calc_dep create implicit task_dep if a file_dep returned is a also a target</p></li>
+<li><p>added tools.result_dep</p></li>
+<li><p>fix #15 tools.result_dep supports group-tasks</p></li>
+<li><p>DEPRECATE task attribute <cite>result_dep</cite> (use tools.result_dep)</p></li>
+<li><p>DEPRECATE <cite>getargs</cite> specification using strings (must use 2-element tuple)</p></li>
+<li><p>several changes on <cite>uptodate</cite></p></li>
+<li><p>DEPRECATE <cite>Task.insert_action</cite> (replaced by <cite>Task.value_savers</cite>)</p></li>
+<li><p>fix #8 <cite>clean</cite> cleans all subtasks from a group-task</p></li>
+<li><p>fix #8 <cite>clean</cite> added flag <cite>–all</cite> to clean all tasks</p></li>
+<li><p>fix #8 <cite>clean</cite> when no task is specified set –clean-dep and clean default tasks</p></li>
 </ul>
 </div>
 <div class="section" id="id23">
 <h2>0.16.1 (<em>2012-05-13</em>)<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>fix multiprocessing/parallel bug</li>
-<li>fix unicode bug on tools.config_changed</li>
-<li>convert tools uptodate stuff to a class, so it can be used with multi-processing</li>
+<li><p>fix multiprocessing/parallel bug</p></li>
+<li><p>fix unicode bug on tools.config_changed</p></li>
+<li><p>convert tools uptodate stuff to a class, so it can be used with multi-processing</p></li>
 </ul>
 </div>
 <div class="section" id="id24">
 <h2>0.16.0 (<em>2012-04-23</em>)<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>added task parameter <code class="docutils literal notranslate"><span class="pre">basename</span></code></li>
-<li>added support for task generators yield nested python generators</li>
-<li><code class="docutils literal notranslate"><span class="pre">doit</span></code> process return value <code class="docutils literal notranslate"><span class="pre">3</span></code> in case tasks do start executing (reporter is not used)</li>
-<li>task parameter <code class="docutils literal notranslate"><span class="pre">getargs</span></code> take a tuple with 2 values (task_id, key_name)</li>
-<li>DEPRECATE <code class="docutils literal notranslate"><span class="pre">getargs</span></code> being specified as &lt;task_id&gt;.&lt;key_name&gt;</li>
-<li><code class="docutils literal notranslate"><span class="pre">getargs</span></code> can take all values from task if specified as (task_id, None)</li>
-<li><code class="docutils literal notranslate"><span class="pre">getargs</span></code> will pass values from all sub-tasks if specified task is a group task</li>
-<li>result_dep on PythonAction support checking for dict values</li>
-<li>added <code class="docutils literal notranslate"><span class="pre">doit.tools.PythonInteractiveAction</span></code></li>
+<li><p>added task parameter <code class="docutils literal notranslate"><span class="pre">basename</span></code></p></li>
+<li><p>added support for task generators yield nested python generators</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">doit</span></code> process return value <code class="docutils literal notranslate"><span class="pre">3</span></code> in case tasks do start executing (reporter is not used)</p></li>
+<li><p>task parameter <code class="docutils literal notranslate"><span class="pre">getargs</span></code> take a tuple with 2 values (task_id, key_name)</p></li>
+<li><p>DEPRECATE <code class="docutils literal notranslate"><span class="pre">getargs</span></code> being specified as &lt;task_id&gt;.&lt;key_name&gt;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getargs</span></code> can take all values from task if specified as (task_id, None)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getargs</span></code> will pass values from all sub-tasks if specified task is a group task</p></li>
+<li><p>result_dep on PythonAction support checking for dict values</p></li>
+<li><p>added <code class="docutils literal notranslate"><span class="pre">doit.tools.PythonInteractiveAction</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="id25">
 <h2>0.15.0 (<em>2012-01-10</em>)<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>added option –db-file (#909520)</li>
-<li>added option –no-continue (#586651)</li>
-<li>added genstandalone.py to create a standalone <code class="docutils literal notranslate"><span class="pre">doit</span></code> script (#891935)</li>
-<li>fix doit.tools.set_trace to not modify sys.stdout</li>
+<li><p>added option –db-file (#909520)</p></li>
+<li><p>added option –no-continue (#586651)</p></li>
+<li><p>added genstandalone.py to create a standalone <code class="docutils literal notranslate"><span class="pre">doit</span></code> script (#891935)</p></li>
+<li><p>fix doit.tools.set_trace to not modify sys.stdout</p></li>
 </ul>
 </div>
 <div class="section" id="id26">
 <h2>0.14.0 (<em>2011-11-05</em>)<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>added tools.InteractiveAction (#865290)</li>
-<li>bash completion script</li>
-<li>sub-command list: tasks on alphabetical order, better formatting (#872829)</li>
-<li>fix <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> to accept instance methods callables (#871967)</li>
-<li>added command line option <code class="docutils literal notranslate"><span class="pre">--seek-file</span></code></li>
-<li>added <code class="docutils literal notranslate"><span class="pre">tools.check_unchanged_timestamp</span></code> (#862606)</li>
-<li>fix bug subclasses of BaseAction should get a task reference</li>
+<li><p>added tools.InteractiveAction (#865290)</p></li>
+<li><p>bash completion script</p></li>
+<li><p>sub-command list: tasks on alphabetical order, better formatting (#872829)</p></li>
+<li><p>fix <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> to accept instance methods callables (#871967)</p></li>
+<li><p>added command line option <code class="docutils literal notranslate"><span class="pre">--seek-file</span></code></p></li>
+<li><p>added <code class="docutils literal notranslate"><span class="pre">tools.check_unchanged_timestamp</span></code> (#862606)</p></li>
+<li><p>fix bug subclasses of BaseAction should get a task reference</p></li>
 </ul>
 </div>
 <div class="section" id="id27">
 <h2>0.13.0 (<em>2011-07-18</em>)<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>performance speed improvements</li>
-<li>fix bug on unicode output when task fails</li>
-<li>ConsoleReporter does not output task’s title for successful tasks that start with an <code class="docutils literal notranslate"><span class="pre">_</span></code></li>
-<li>added <code class="docutils literal notranslate"><span class="pre">tools.config_changed</span></code> (to be used with <code class="docutils literal notranslate"><span class="pre">uptodate</span></code>)</li>
-<li><code class="docutils literal notranslate"><span class="pre">teardown</span></code> actions are executed in reverse order they were registered</li>
-<li>added <code class="docutils literal notranslate"><span class="pre">doit.get_var</span></code> to get variables passed from command line</li>
-<li>getargs creates implicit “setup” task not a “task_dep”</li>
+<li><p>performance speed improvements</p></li>
+<li><p>fix bug on unicode output when task fails</p></li>
+<li><p>ConsoleReporter does not output task’s title for successful tasks that start with an <code class="docutils literal notranslate"><span class="pre">_</span></code></p></li>
+<li><p>added <code class="docutils literal notranslate"><span class="pre">tools.config_changed</span></code> (to be used with <code class="docutils literal notranslate"><span class="pre">uptodate</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">teardown</span></code> actions are executed in reverse order they were registered</p></li>
+<li><p>added <code class="docutils literal notranslate"><span class="pre">doit.get_var</span></code> to get variables passed from command line</p></li>
+<li><p>getargs creates implicit “setup” task not a “task_dep”</p></li>
 </ul>
 </div>
 <div class="section" id="id28">
 <h2>0.12.0 (<em>2011-05-29</em>)<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>fix bug #770150 - error on task dependency from target</li>
-<li>fix bug #773579 - unicode output problems</li>
-<li>task parameter <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> accepts callables</li>
-<li>deprecate task attribute run_once. use tools.run_once on uptodate instead</li>
-<li>added doit.tools.timeout</li>
+<li><p>fix bug #770150 - error on task dependency from target</p></li>
+<li><p>fix bug #773579 - unicode output problems</p></li>
+<li><p>task parameter <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> accepts callables</p></li>
+<li><p>deprecate task attribute run_once. use tools.run_once on uptodate instead</p></li>
+<li><p>added doit.tools.timeout</p></li>
 </ul>
 </div>
 <div class="section" id="id29">
 <h2>0.11.0 (<em>2011-04-20</em>)<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>no more support for python2.4</li>
-<li>support for python 3.2</li>
-<li>fix bug on unicode filenames &amp; unicode output (#737904)</li>
-<li>fix bug when using getargs together with multiprocess (#742953)</li>
-<li>fix for dumbdbm backend</li>
-<li>fix task execution order when using “auto” command</li>
-<li>fix getargs when used with sub-tasks</li>
-<li>fix calc_dep when used with “auto” command</li>
-<li>“auto” command now support verbosity control option</li>
+<li><p>no more support for python2.4</p></li>
+<li><p>support for python 3.2</p></li>
+<li><p>fix bug on unicode filenames &amp; unicode output (#737904)</p></li>
+<li><p>fix bug when using getargs together with multiprocess (#742953)</p></li>
+<li><p>fix for dumbdbm backend</p></li>
+<li><p>fix task execution order when using “auto” command</p></li>
+<li><p>fix getargs when used with sub-tasks</p></li>
+<li><p>fix calc_dep when used with “auto” command</p></li>
+<li><p>“auto” command now support verbosity control option</p></li>
 </ul>
 </div>
 <div class="section" id="id30">
 <h2>0.10.0 (<em>2011-01-24</em>)<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>add task parameter “uptodate”</li>
-<li>add task parameter “run_once”</li>
-<li>deprecate file_dep bool values and None</li>
-<li>fix issues with error reporting for JSON Reporter</li>
-<li>“Reporter” API changes</li>
-<li>“.doit.db” now uses a DBM file format by default (speed optimization)</li>
+<li><p>add task parameter “uptodate”</p></li>
+<li><p>add task parameter “run_once”</p></li>
+<li><p>deprecate file_dep bool values and None</p></li>
+<li><p>fix issues with error reporting for JSON Reporter</p></li>
+<li><p>“Reporter” API changes</p></li>
+<li><p>“.doit.db” now uses a DBM file format by default (speed optimization)</p></li>
 </ul>
 </div>
 <div class="section" id="id31">
 <h2>0.9.0 (<em>2010-06-08</em>)<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>support for dynamic calculated dependencies “calc_dep”</li>
-<li>support for user defined reporters</li>
-<li>support “auto” command on mac</li>
-<li>fix installer on mac. installer aware of different python versions</li>
-<li>deprecate ‘dependencies’. use file_dep, task_dep, result_dep.</li>
+<li><p>support for dynamic calculated dependencies “calc_dep”</p></li>
+<li><p>support for user defined reporters</p></li>
+<li><p>support “auto” command on mac</p></li>
+<li><p>fix installer on mac. installer aware of different python versions</p></li>
+<li><p>deprecate ‘dependencies’. use file_dep, task_dep, result_dep.</p></li>
 </ul>
 </div>
 <div class="section" id="id32">
 <h2>0.8.0 (<em>2010-05-16</em>)<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>parallel execution of tasks (multi-process support)</li>
-<li>sub-command “list” option “–deps”, show list of file dependencies</li>
-<li>select task by wildcard (fnmatch) i.e. test:folderXXX/*</li>
-<li>task-setup can be another task</li>
-<li>task property “teardown” substitute of setup-objects cleanup</li>
-<li>deprecate setup-objects</li>
+<li><p>parallel execution of tasks (multi-process support)</p></li>
+<li><p>sub-command “list” option “–deps”, show list of file dependencies</p></li>
+<li><p>select task by wildcard (fnmatch) i.e. test:folderXXX/*</p></li>
+<li><p>task-setup can be another task</p></li>
+<li><p>task property “teardown” substitute of setup-objects cleanup</p></li>
+<li><p>deprecate setup-objects</p></li>
 </ul>
 </div>
 <div class="section" id="id33">
 <h2>0.7.0 (<em>2010-04-08</em>)<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>configure options on dodo file (deprecate DEFAULT_TASKS)(#524387)</li>
-<li>clean and forget act only on default tasks (not all tasks) (#444243)</li>
-<li>sub-command “clean” option “clean-dep” to follow dependencies (#444247)</li>
-<li>task dependency “False” means never up-to-date, “None” ignored</li>
-<li>sub-command “list” by default do not show tasks starting with an underscore, added option (-p/–private)</li>
-<li>new sub-command “auto”</li>
+<li><p>configure options on dodo file (deprecate DEFAULT_TASKS)(#524387)</p></li>
+<li><p>clean and forget act only on default tasks (not all tasks) (#444243)</p></li>
+<li><p>sub-command “clean” option “clean-dep” to follow dependencies (#444247)</p></li>
+<li><p>task dependency “False” means never up-to-date, “None” ignored</p></li>
+<li><p>sub-command “list” by default do not show tasks starting with an underscore, added option (-p/–private)</p></li>
+<li><p>new sub-command “auto”</p></li>
 </ul>
 </div>
 <div class="section" id="id34">
 <h2>0.6.0 (<em>2010-01-25</em>)<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>improve (speed optimization) of check if file modified (#370920)</li>
-<li>sub-command “clean” dry-run option (-n/–dry-run) (#444246)</li>
-<li>sub-command “clean” has a more verbose output (#444245)</li>
-<li>sub-command “list” option to show task status (-s/–status) (#497661)</li>
-<li>sub-command “list” filter tasks passed as positional parameters</li>
-<li>tools.set_trace, PDB with stdout redirection (#494903)</li>
-<li>accept command line optional parameters passed before sub-command (#494901)</li>
-<li>give a clear error message if .doit.db file is corrupted (#500269)</li>
-<li>added task option “getargs”. actions can use computed values from other tasks (#486569)</li>
-<li>python-action might return a dictionary on success</li>
+<li><p>improve (speed optimization) of check if file modified (#370920)</p></li>
+<li><p>sub-command “clean” dry-run option (-n/–dry-run) (#444246)</p></li>
+<li><p>sub-command “clean” has a more verbose output (#444245)</p></li>
+<li><p>sub-command “list” option to show task status (-s/–status) (#497661)</p></li>
+<li><p>sub-command “list” filter tasks passed as positional parameters</p></li>
+<li><p>tools.set_trace, PDB with stdout redirection (#494903)</p></li>
+<li><p>accept command line optional parameters passed before sub-command (#494901)</p></li>
+<li><p>give a clear error message if .doit.db file is corrupted (#500269)</p></li>
+<li><p>added task option “getargs”. actions can use computed values from other tasks (#486569)</p></li>
+<li><p>python-action might return a dictionary on success</p></li>
 </ul>
 </div>
 <div class="section" id="id35">
 <h2>0.5.1 (<em>2009-12-03</em>)<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>fix. task-result-dependencies should be also added as task-dependency to force its execution.</li>
+<li><p>fix. task-result-dependencies should be also added as task-dependency to force its execution.</p></li>
 </ul>
 </div>
 <div class="section" id="id36">
 <h2>0.5.0 (<em>2009-11-30</em>)<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>task parameter ‘clean’ == True, cleans empty folders, and display warning for non-empty folders</li>
-<li>added command line option –continue. Execute all tasks even if tasks fails</li>
-<li>added command line option –reporter to select result output reporter</li>
-<li>added executed-only reporter</li>
-<li>added json reporter</li>
-<li>support for task-result dependency #438174</li>
-<li>added sub-command ignore task</li>
-<li>added command line option –outfile. write output to specified file path</li>
-<li>added support for passing arguments to tasks on cmd line</li>
-<li>added command line option –dir (-d) to set current working directory</li>
-<li>removed dodo-sample sub-command</li>
-<li>added task field ‘verbosity’</li>
-<li>added task field ‘title’</li>
-<li>modified default way a task is printed on console (just show “.  name”), old way added to doit.tools.task_title_with_actions</li>
+<li><p>task parameter ‘clean’ == True, cleans empty folders, and display warning for non-empty folders</p></li>
+<li><p>added command line option –continue. Execute all tasks even if tasks fails</p></li>
+<li><p>added command line option –reporter to select result output reporter</p></li>
+<li><p>added executed-only reporter</p></li>
+<li><p>added json reporter</p></li>
+<li><p>support for task-result dependency #438174</p></li>
+<li><p>added sub-command ignore task</p></li>
+<li><p>added command line option –outfile. write output to specified file path</p></li>
+<li><p>added support for passing arguments to tasks on cmd line</p></li>
+<li><p>added command line option –dir (-d) to set current working directory</p></li>
+<li><p>removed dodo-sample sub-command</p></li>
+<li><p>added task field ‘verbosity’</p></li>
+<li><p>added task field ‘title’</p></li>
+<li><p>modified default way a task is printed on console (just show “.  name”), old way added to doit.tools.task_title_with_actions</p></li>
 </ul>
 </div>
 <div class="section" id="id37">
 <h2>0.4.0 (<em>2009-10-05</em>)<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>deprecate anything other than a boolean values as return of python actions</li>
-<li>sub-cmd clean (#421450)</li>
-<li>remove support for task generators returning action (not documented behavior)</li>
-<li>setup parameter for a task should be a list - single value deprecated (#437225)</li>
-<li>PythonAction support ‘dependencies’, ‘targets’, ‘changed’ parameters</li>
-<li>added tools.create_folder (#421453)</li>
-<li>deprecate folder-dependency</li>
-<li>CmdActions reference to dependencies, targets and changed dependencies (#434327)</li>
-<li>print task description when printing through doit list (#425811)</li>
-<li>action as list of commands/python (#421445)</li>
-<li>deprecate “action” use “actions”</li>
+<li><p>deprecate anything other than a boolean values as return of python actions</p></li>
+<li><p>sub-cmd clean (#421450)</p></li>
+<li><p>remove support for task generators returning action (not documented behavior)</p></li>
+<li><p>setup parameter for a task should be a list - single value deprecated (#437225)</p></li>
+<li><p>PythonAction support ‘dependencies’, ‘targets’, ‘changed’ parameters</p></li>
+<li><p>added tools.create_folder (#421453)</p></li>
+<li><p>deprecate folder-dependency</p></li>
+<li><p>CmdActions reference to dependencies, targets and changed dependencies (#434327)</p></li>
+<li><p>print task description when printing through doit list (#425811)</p></li>
+<li><p>action as list of commands/python (#421445)</p></li>
+<li><p>deprecate “action” use “actions”</p></li>
 </ul>
 </div>
 <div class="section" id="id38">
 <h2>0.3.0 (<em>2009-08-30</em>)<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>added subcommand “forget” to clear successful runs status (#370911)</li>
-<li>save run results in text file using JSON. (removed dbm)</li>
-<li>added support for DEFAULT_TASKS in dodo file</li>
-<li>targets md5 is not checked anymore. if target exist, task is up-to-date. it also supports folders</li>
-<li>cmd line sub-commands (#370909)</li>
-<li>remove hashlib dependency on python 2.4</li>
-<li>sub-cmd to create dodo template</li>
-<li>cmd-task supports a list of shell commands</li>
-<li>setup/cleanup for task (#370905)</li>
+<li><p>added subcommand “forget” to clear successful runs status (#370911)</p></li>
+<li><p>save run results in text file using JSON. (removed dbm)</p></li>
+<li><p>added support for DEFAULT_TASKS in dodo file</p></li>
+<li><p>targets md5 is not checked anymore. if target exist, task is up-to-date. it also supports folders</p></li>
+<li><p>cmd line sub-commands (#370909)</p></li>
+<li><p>remove hashlib dependency on python 2.4</p></li>
+<li><p>sub-cmd to create dodo template</p></li>
+<li><p>cmd-task supports a list of shell commands</p></li>
+<li><p>setup/cleanup for task (#370905)</p></li>
 </ul>
 </div>
 <div class="section" id="id39">
 <h2>0.2.0 (<em>2009-04-16</em>)<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>docs generated using sphinx</li>
-<li>execute once (dependency = True)</li>
-<li>group task</li>
-<li>support python 2.4 and 2.6</li>
-<li>folder dependency</li>
+<li><p>docs generated using sphinx</p></li>
+<li><p>execute once (dependency = True)</p></li>
+<li><p>group task</p></li>
+<li><p>support python 2.4 and 2.6</p></li>
+<li><p>folder dependency</p></li>
 </ul>
 </div>
 <div class="section" id="id40">
 <h2>0.1.0 (<em>2008-04-14</em>)<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>initial release</li>
+<li><p>initial release</p></li>
 </ul>
 </div>
 </div>
 
 
-           </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="stories.html" class="btn btn-neutral float-right" title="Success Stories" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="support.html" class="btn btn-neutral" title="Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="support.html"
+       title="previous chapter">← Support</a>
+  </li>
+  <li class="next">
+    <a href="stories.html"
+       title="next chapter">Success Stories →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2008-2018, Eduardo Schettino.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
     </div>
+    
+  
+    
+  
+    
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-29887834-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+    
   
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2008-2018, Eduardo Schettino.
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.31',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+  </body>
 </html>

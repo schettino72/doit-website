@@ -1,256 +1,329 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Command line interface - run &mdash; doit 0.31 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="_static/favico.ico"/>
-  
-  
-  
-
-  
-
-  
-  
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Command line interface - run</title>
     
-
-  
-
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Other Commands" href="cmd_other.html" />
-    <link rel="prev" title="More on Task creation" href="task_creation.html" />
-<style>
-/* FIX for https://github.com/rtfd/sphinx_rtd_theme/pull/657
-   pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
-   line-height: 1.4 !important;
-   }
-*/
-
-  /* FIX: handle code-block-caption
-  https://github.com/rtfd/sphinx_rtd_theme/issues/292
-  */
-pre {
-  font-size: 0.95em !important;
-  letter-spacing: 0.015em;
-  line-height: 120% !important; /* also fix 657 */
-  padding: 0.5em;
-  border: 1px solid #ccc;
-  background-color: #f8f8f8;
-}
-pre.literal-block, div[class^='highlight'], div[class^='highlight-python3'] {
-  margin-top: 0px !important;
-}
-div.code-block-caption {
-  background-color: #ddd;
-  color: #222;
-  border: 1px solid #ccc;
-}
-div.code-block-caption {
-  padding: 2px 5px;
-  font-size: small;
-}
-a.headerlink {
-  visibility: hidden;
-  color: #c60f0f!important;
-  font-size: 1em;
-  margin-left: 6px;
-  padding: 0 4px 0 4px;
-  text-decoration: none!important;
-}
-a.headerlink:after{
-  margin-left: 0px;
-  content:"";
-  font-family:FontAwesome;
-}
-.code-block-caption:hover .headerlink:after {
-  visibility:visible;
-}
-
-/* CHANGE: code displayed in red color is too aggresive */
-code {
-    background-color: #f2f2f2;
-    border-bottom: 1px solid #ddd;
-    color: #333;
-}
-code.literal {
-  color: inherit !important;
-}
-
-/* FIX: use full hight of nav-side (not version selector) */
-.wy-nav-side {
-  padding-bottom: 0px !important;
-}
-.wy-menu-vertical {
-  padding-bottom: 15px !important;
-}
-
-/* FIX: revert rtd messing up with every image in nav-search */
-.wy-side-nav-search img.logo, .wy-nav-top img.logo {
-    display: inherit !important;
-    margin: inherit !important;
-    height: inherit !important;
-    width: inherit !important;
-    background-color: inherit !important;
-    padding: 5px;
-    border-radius: inherit !important;
-}
-
-</style>
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-29887834-3', 'auto');
-  ga('send', 'pageview');
-</script>
-
-
-
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-  <div style="text-align:left">
-    <a href="index.html">
-      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
-    </a>
-    <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black"><i class="fa fa-twitter"></i></a></span>
-    <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
-  </div>
-  <div style="color:rgba(1,1,1,0.3); text-align:left; margin:10px;">
-    
+      <link rel="stylesheet" href="_static/pygments.css">
+      <link rel="stylesheet" href="_static/theme.css">
       
-        <span>0.31</span>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+
       
+      <script src="_static/theme-vendors.js"></script>
+      <script src="_static/theme.js" defer></script>
     
-  </div>
+      <link rel="shortcut icon" href="_static/favico.ico"/>
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="Other Commands" href="cmd_other.html" />
+  <link rel="prev" title="More on Task creation" href="task_creation.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="contents.html" class="home-link">
+    
+      <img class="logo" src="_static/doit-logo-small.png" alt="doit logo"/>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
   
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+    <div class="nav-item">
+      <a href="contents.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#guide"
+         class="nav-link  router-link-active">
+         guide
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#project"
+         class="nav-link ">
+         project
+      </a>
+    </div>
+  
+
+<div class="nav-item">
+  <a href="https://twitter.com/py_doit" class="nav-link external">Twitter <outboundlink/><i class="fa fa-twitter" style="color:black"></i></a>
 </div>
 
-        </div>
+<div class="nav-item">
+  <a href="https://github.com/pydoit/doit" class="nav-link external">Github <outboundlink/><i class="fa fa-github" style="color:black"></i></a>
+</div>
+    </navlinks>
+  </div>
+</navbar>
 
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
           
+          <navlinks>
             
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_1.html">tutorial 1 - basics</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dependencies.html">More on dependencies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="task_creation.html">More on Task creation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Command line interface - run</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#python-m-doit"><cite>python -m doit</cite></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dodo-file">dodo file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#as-an-executable-file">as an executable file</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#using-a-hashbang">using a hashbang</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-api">using the API</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#from-ipython">from IPython</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#returned-value">returned value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#db-backend">DB backend</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#db-file">DB-file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#verbosity">verbosity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#failure-verbosity">failure-verbosity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#output-buffering">output buffering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dir-cwd">dir (cwd)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#continue">continue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#single-task-execution">single task execution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#parallel-execution">parallel execution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reporter">reporter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#custom-reporter">custom reporter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#check-file-uptodate">check_file_uptodate</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#custom-check-file-uptodate">custom check_file_uptodate</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#output-file">output-file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pdb">pdb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#get-initial-workdir">get_initial_workdir()</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#minversion">minversion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#automatic-regex-for-delayed-task-loaders">automatic regex for delayed task loaders</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="cmd_other.html">Other Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="task_args.html">Passing Task Arguments from the command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="uptodate.html">custom uptodate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending <cite>doit</cite></a></li>
-</ul>
-<p class="caption"><span class="caption-text">Project</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stories.html">Success Stories</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>
-</ul>
-
-            
-          
-        </div>
-        
 
   
-    <div class="wy-side-nav-search" style="margin-bottom: 0px;">
-      <h3>Donate</h3>
+    <div class="nav-item">
+      <a href="contents.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#guide"
+         class="nav-link  router-link-active">
+         guide
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#project"
+         class="nav-link ">
+         project
+      </a>
+    </div>
+  
 
-      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
-      <p>If you consider <em>doit</em> to be a useful project, and would like to see it continue to be maintained and developed, please consider helping cover the development cost. Thriving project requires a maintainer to keep list of issues and list of pull requests short.</p>
+<div class="nav-item">
+  <a href="https://twitter.com/py_doit" class="nav-link external">Twitter <outboundlink/><i class="fa fa-twitter" style="color:black"></i></a>
+</div>
+
+<div class="nav-item">
+  <a href="https://github.com/pydoit/doit" class="nav-link external">Github <outboundlink/><i class="fa fa-github" style="color:black"></i></a>
+</div>
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#getting-started">getting started</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="usecases.html" class="reference internal ">Use Cases</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="tutorial_1.html" class="reference internal ">tutorial 1 - basics</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#guide">guide</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 "><a href="install.html" class="reference internal ">Installing</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="tasks.html" class="reference internal ">Tasks</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="dependencies.html" class="reference internal ">More on dependencies</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="task_creation.html" class="reference internal ">More on Task creation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">Command line interface - run</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#python-m-doit" class="reference internal">python -m doit</a></li>
+                
+                  <li class="toctree-l2"><a href="#dodo-file" class="reference internal">dodo file</a></li>
+                
+                  <li class="toctree-l2"><a href="#as-an-executable-file" class="reference internal">as an executable file</a></li>
+                
+                  <li class="toctree-l2"><a href="#from-ipython" class="reference internal">from IPython</a></li>
+                
+                  <li class="toctree-l2"><a href="#returned-value" class="reference internal">returned value</a></li>
+                
+                  <li class="toctree-l2"><a href="#db-backend" class="reference internal">DB backend</a></li>
+                
+                  <li class="toctree-l2"><a href="#db-file" class="reference internal">DB-file</a></li>
+                
+                  <li class="toctree-l2"><a href="#verbosity" class="reference internal">verbosity</a></li>
+                
+                  <li class="toctree-l2"><a href="#failure-verbosity" class="reference internal">failure-verbosity</a></li>
+                
+                  <li class="toctree-l2"><a href="#output-buffering" class="reference internal">output buffering</a></li>
+                
+                  <li class="toctree-l2"><a href="#dir-cwd" class="reference internal">dir (cwd)</a></li>
+                
+                  <li class="toctree-l2"><a href="#continue" class="reference internal">continue</a></li>
+                
+                  <li class="toctree-l2"><a href="#single-task-execution" class="reference internal">single task execution</a></li>
+                
+                  <li class="toctree-l2"><a href="#parallel-execution" class="reference internal">parallel execution</a></li>
+                
+                  <li class="toctree-l2"><a href="#reporter" class="reference internal">reporter</a></li>
+                
+                  <li class="toctree-l2"><a href="#custom-reporter" class="reference internal">custom reporter</a></li>
+                
+                  <li class="toctree-l2"><a href="#check-file-uptodate" class="reference internal">check_file_uptodate</a></li>
+                
+                  <li class="toctree-l2"><a href="#output-file" class="reference internal">output-file</a></li>
+                
+                  <li class="toctree-l2"><a href="#pdb" class="reference internal">pdb</a></li>
+                
+                  <li class="toctree-l2"><a href="#get-initial-workdir" class="reference internal">get_initial_workdir()</a></li>
+                
+                  <li class="toctree-l2"><a href="#minversion" class="reference internal">minversion</a></li>
+                
+                  <li class="toctree-l2"><a href="#automatic-regex-for-delayed-task-loaders" class="reference internal">automatic regex for delayed task loaders</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="cmd_other.html" class="reference internal ">Other Commands</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="configuration.html" class="reference internal ">Configuration</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="task_args.html" class="reference internal ">Passing Task Arguments from the command line</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="uptodate.html" class="reference internal ">custom uptodate</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="tools.html" class="reference internal ">Tools</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="extending.html" class="reference internal ">Extending doit</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#project">project</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="support.html" class="reference internal ">Support</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="changes.html" class="reference internal ">Changes</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="stories.html" class="reference internal ">Success Stories</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="faq.html" class="reference internal ">FAQ</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="related.html" class="reference internal ">Related Projects</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+
+  
+    <div style="margin-bottom: 0px; padding:1rem; background-color: #2980B9; color:#fcfcfc;">
+      <h3>Donate</h3>
+      <p>If you find <em>doit</em> useful, please consider supporting the maintainer with a donation.</p>
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it... Your donation keeps the project healthy and maintained.</p>
     </div>
 
-    <div class="wy-side-nav-search" style="color:black;background-color:#fcfcfc;border-right:black 1px solid;">
-      <h6 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h6>
+    <div style="text-align:center; padding:1rem; color:black;background-color:#fcfcfc; margin-bottom:2rem;">
+      <h4 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h4>
       <div>
         <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
       </div>
 
       <hr style="margin-top:5px;">
-      <h6 style="margin-bottom:20px;">Paypal</h6>
+      <h4 style="margin-bottom:20px;">Paypal</h4>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
@@ -261,75 +334,32 @@ code.literal {
     <br>
   
 
-      </div>
-    </nav>
+        </sidebar>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-  <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-  <a href="index.html">
-      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
-  </a>
-  <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-twitter"></i></a></span>
-  <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-github"></i></a></span>
-
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="contents.html">Docs</a> &raquo;</li>
-        
-      <li>Command line interface - run</li>
-    
-    
-   
-   <span class="float-right" role="navigation" aria-label="breadcrumb navigation">
-      
-        <li>
-          <a href="task_creation.html" title="More on Task creation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> More on Task creation</a>
-        </li>
-      
-      <li style="padding-right:5px">|</li>
-      
-        <li>
-            <a href="cmd_other.html" title="Other Commands" accesskey="n">Other Commands <span class="fa fa-arrow-circle-right"></span></a>
-        </li>
-      
-  </span>
-
-  </ul>
-
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
   
-  <hr/>
+  <ul class="breadcrumbs">
+    <li><a href="contents.html">Docs</a> &raquo;</li>
+    
+    <li>Command line interface - run</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="task_creation.html"
+       title="previous chapter">← More on Task creation</a>
+  </li>
+  <li class="next">
+    <a href="cmd_other.html"
+       title="next chapter">Other Commands →</a>
+  </li>
+</ul>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+<hr>
+          <div class="content" role="main">
             
   <div class="section" id="command-line-interface-run">
 <h1>Command line interface - run<a class="headerlink" href="#command-line-interface-run" title="Permalink to this headline">¶</a></h1>
@@ -389,8 +419,8 @@ by calling the <code class="docutils literal notranslate"><span class="pre">doit
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal notranslate"><span class="pre">doit.run()</span></code> method will call <code class="docutils literal notranslate"><span class="pre">sys.exit()</span></code> so any code after it
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">doit.run()</span></code> method will call <code class="docutils literal notranslate"><span class="pre">sys.exit()</span></code> so any code after it
 will not be executed.</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">doit.run()</span></code> parameter will be passed to a <a class="reference internal" href="extending.html#moduletaskloader"><span class="std std-ref">ModuleTaskLoader</span></a> to find your tasks.</p>
@@ -406,12 +436,12 @@ directly in IPython’s global namespace (<a class="reference internal" href="to
 <p><code class="docutils literal notranslate"><span class="pre">doit</span></code> process returns:</p>
 <blockquote>
 <div><ul class="simple">
-<li>0 =&gt; all tasks executed successfully</li>
-<li>1 =&gt; task failed</li>
-<li>2 =&gt; error executing task</li>
-<li><dl class="first docutils">
-<dt>3 =&gt; error before task execution starts</dt>
-<dd>(in this case the reporter is not used)</dd>
+<li><p>0 =&gt; all tasks executed successfully</p></li>
+<li><p>1 =&gt; task failed</p></li>
+<li><p>2 =&gt; error executing task</p></li>
+<li><dl class="simple">
+<dt>3 =&gt; error before task execution starts</dt><dd><p>(in this case the reporter is not used)</p>
+</dd>
 </dl>
 </li>
 </ul>
@@ -423,10 +453,10 @@ directly in IPython’s global namespace (<a class="reference internal" href="to
 different backends:</p>
 <blockquote>
 <div><ul class="simple">
-<li><cite>dbm</cite>: (default) It uses <a class="reference external" href="https://docs.python.org/3/library/dbm.html">python dbm module</a>. The actual DBM used depends on what is available on your machine/platform.</li>
-<li><cite>json</cite>: Plain text using a json structure, it is slow but good for debugging.</li>
-<li><cite>sqlite3</cite>: Support concurrent access
-(DB is updated only once when process is terminated for better performance).</li>
+<li><p><cite>dbm</cite>: (default) It uses <a class="reference external" href="https://docs.python.org/3/library/dbm.html">python dbm module</a>. The actual DBM used depends on what is available on your machine/platform.</p></li>
+<li><p><cite>json</cite>: Plain text using a json structure, it is slow but good for debugging.</p></li>
+<li><p><cite>sqlite3</cite>: Support concurrent access
+(DB is updated only once when process is terminated for better performance).</p></li>
 </ul>
 </div></blockquote>
 <p>From the command line you can select the backend using the <code class="docutils literal notranslate"><span class="pre">--backend</span></code> option.</p>
@@ -488,8 +518,8 @@ You can specify a different <em>cwd</em> with the <em>-d</em>/<em>–dir</em> op
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">It is possible to get a reference to the original initial
+<p class="admonition-title">Note</p>
+<p>It is possible to get a reference to the original initial
 current working directory (location where the command line
 was executed) using <a class="reference internal" href="#initial-workdir"><span class="std std-ref">get_initial_workdir()</span></a>.</p>
 </div>
@@ -525,13 +555,13 @@ So the same restrictions also apply to the use of multiprocessing in <cite>doit<
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The actions of a single task are always run sequentially;
+<p class="admonition-title">Note</p>
+<p>The actions of a single task are always run sequentially;
 only tasks and sub-tasks are affected by the parallel execution option.</p>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">On Windows, due to some limitations on how <cite>multiprocess</cite> works,
+<p class="admonition-title">Warning</p>
+<p>On Windows, due to some limitations on how <cite>multiprocess</cite> works,
 there are stricter requirements for task properties being picklable than
 other platforms.</p>
 </div>
@@ -544,11 +574,11 @@ Use the option –reporter/-r to choose a reporter.
 Apart from the default it also includes:</p>
 <blockquote>
 <div><ul class="simple">
-<li>executed-only: Produces zero output if no task is executed</li>
-<li>json: Output results in JSON format</li>
-<li>zero: display only error messages (does not display info on tasks
+<li><p>executed-only: Produces zero output if no task is executed</p></li>
+<li><p>json: Output results in JSON format</p></li>
+<li><p>zero: display only error messages (does not display info on tasks
 being executed/skipped). This is used when you only want to see
-the output generated by the tasks execution.</li>
+the output generated by the tasks execution.</p></li>
 </ul>
 </div></blockquote>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --reporter json
@@ -588,13 +618,13 @@ this is controlled by the <code class="docutils literal notranslate"><span class
 (see <a class="reference internal" href="tasks.html#file-dep"><span class="std std-ref">file_dep (file dependency)</span></a>).  Use the option <code class="docutils literal notranslate"><span class="pre">--check_file_uptodate</span></code> to choose:</p>
 <blockquote>
 <div><ul class="simple">
-<li><cite>md5</cite>: use the md5sum.</li>
-<li><cite>timestamp</cite>: use the timestamp.</li>
+<li><p><cite>md5</cite>: use the md5sum.</p></li>
+<li><p><cite>timestamp</cite>: use the timestamp.</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <cite>timestamp</cite> checker considers a file is not up-to-date if there is
+<p class="admonition-title">Note</p>
+<p>The <cite>timestamp</cite> checker considers a file is not up-to-date if there is
 <strong>any</strong> change in the the modified time (<cite>mtime</cite>), it does not matter if
 the new time is in the future or past of the original timestamp.</p>
 </div>
@@ -689,8 +719,8 @@ b4) will be converted to -1.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This feature was added on <cite>doit</cite> 0.24.0.
+<p class="admonition-title">Note</p>
+<p>This feature was added on <cite>doit</cite> 0.24.0.
 Older Versions will not check or display error messages.</p>
 </div>
 </div>
@@ -708,68 +738,42 @@ matches any target.</p>
 </div>
 
 
-           </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="cmd_other.html" class="btn btn-neutral float-right" title="Other Commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="task_creation.html" class="btn btn-neutral" title="More on Task creation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="task_creation.html"
+       title="previous chapter">← More on Task creation</a>
+  </li>
+  <li class="next">
+    <a href="cmd_other.html"
+       title="next chapter">Other Commands →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2008-2018, Eduardo Schettino.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
     </div>
+    
+  
+    
+  
+    
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-29887834-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+    
   
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2008-2018, Eduardo Schettino.
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.31',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+  </body>
 </html>

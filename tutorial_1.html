@@ -1,272 +1,299 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>tutorial 1 - basics &mdash; doit 0.31 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="_static/favico.ico"/>
-  
-  
-  
-
-  
-
-  
-  
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>tutorial 1 - basics</title>
     
-
-  
-
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installing" href="install.html" />
-    <link rel="prev" title="Use Cases" href="usecases.html" />
-<style>
-/* FIX for https://github.com/rtfd/sphinx_rtd_theme/pull/657
-   pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
-   line-height: 1.4 !important;
-   }
-*/
-
-  /* FIX: handle code-block-caption
-  https://github.com/rtfd/sphinx_rtd_theme/issues/292
-  */
-pre {
-  font-size: 0.95em !important;
-  letter-spacing: 0.015em;
-  line-height: 120% !important; /* also fix 657 */
-  padding: 0.5em;
-  border: 1px solid #ccc;
-  background-color: #f8f8f8;
-}
-pre.literal-block, div[class^='highlight'], div[class^='highlight-python3'] {
-  margin-top: 0px !important;
-}
-div.code-block-caption {
-  background-color: #ddd;
-  color: #222;
-  border: 1px solid #ccc;
-}
-div.code-block-caption {
-  padding: 2px 5px;
-  font-size: small;
-}
-a.headerlink {
-  visibility: hidden;
-  color: #c60f0f!important;
-  font-size: 1em;
-  margin-left: 6px;
-  padding: 0 4px 0 4px;
-  text-decoration: none!important;
-}
-a.headerlink:after{
-  margin-left: 0px;
-  content:"";
-  font-family:FontAwesome;
-}
-.code-block-caption:hover .headerlink:after {
-  visibility:visible;
-}
-
-/* CHANGE: code displayed in red color is too aggresive */
-code {
-    background-color: #f2f2f2;
-    border-bottom: 1px solid #ddd;
-    color: #333;
-}
-code.literal {
-  color: inherit !important;
-}
-
-/* FIX: use full hight of nav-side (not version selector) */
-.wy-nav-side {
-  padding-bottom: 0px !important;
-}
-.wy-menu-vertical {
-  padding-bottom: 15px !important;
-}
-
-/* FIX: revert rtd messing up with every image in nav-search */
-.wy-side-nav-search img.logo, .wy-nav-top img.logo {
-    display: inherit !important;
-    margin: inherit !important;
-    height: inherit !important;
-    width: inherit !important;
-    background-color: inherit !important;
-    padding: 5px;
-    border-radius: inherit !important;
-}
-
-</style>
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-29887834-3', 'auto');
-  ga('send', 'pageview');
-</script>
-
-
-
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-  <div style="text-align:left">
-    <a href="index.html">
-      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
-    </a>
-    <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black"><i class="fa fa-twitter"></i></a></span>
-    <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
-  </div>
-  <div style="color:rgba(1,1,1,0.3); text-align:left; margin:10px;">
-    
+      <link rel="stylesheet" href="_static/pygments.css">
+      <link rel="stylesheet" href="_static/theme.css">
       
-        <span>0.31</span>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+
       
+      <script src="_static/theme-vendors.js"></script>
+      <script src="_static/theme.js" defer></script>
     
-  </div>
+      <link rel="shortcut icon" href="_static/favico.ico"/>
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="Installing" href="install.html" />
+  <link rel="prev" title="Use Cases" href="usecases.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="contents.html" class="home-link">
+    
+      <img class="logo" src="_static/doit-logo-small.png" alt="doit logo"/>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
   
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+    <div class="nav-item">
+      <a href="contents.html#getting-started"
+         class="nav-link  router-link-active">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#guide"
+         class="nav-link ">
+         guide
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#project"
+         class="nav-link ">
+         project
+      </a>
+    </div>
+  
+
+<div class="nav-item">
+  <a href="https://twitter.com/py_doit" class="nav-link external">Twitter <outboundlink/><i class="fa fa-twitter" style="color:black"></i></a>
 </div>
 
-        </div>
+<div class="nav-item">
+  <a href="https://github.com/pydoit/doit" class="nav-link external">Github <outboundlink/><i class="fa fa-github" style="color:black"></i></a>
+</div>
+    </navlinks>
+  </div>
+</navbar>
 
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
           
+          <navlinks>
             
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">tutorial 1 - basics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#setup">setup</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#required-python-packages">required python packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sample-project">sample project</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#finding-a-module-s-import">finding a module’s import</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#doit-task">doit task</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#task-execution">task execution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#incremental-computation">incremental computation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rules-for-up-to-date-checks-on-files">rules for up-to-date checks on files</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#file-dep">file_dep</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#targets">targets</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#graphviz-dot">graphviz dot</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#task-with-python-action">Task with python action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#graph-image">graph image</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#doit-command-line">doit command line</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#doit-help">doit help</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#doit-list">doit list</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#info">info</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#run">run</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#clean">clean</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#forget">forget</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#pipelines">Pipelines</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#get-module-imports-python">get module imports - python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#getargs">getargs</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#package-imports">package imports</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#getargs-from-group-task">getargs from group-task</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#printing-imports">printing imports</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#custom-uptodate">custom <cite>uptodate</cite></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#verbosity">verbosity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#doit-config">DOIT_CONFIG</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dependencies.html">More on dependencies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="task_creation.html">More on Task creation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cmd_run.html">Command line interface - run</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cmd_other.html">Other Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="task_args.html">Passing Task Arguments from the command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="uptodate.html">custom uptodate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending <cite>doit</cite></a></li>
-</ul>
-<p class="caption"><span class="caption-text">Project</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stories.html">Success Stories</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>
-</ul>
-
-            
-          
-        </div>
-        
 
   
-    <div class="wy-side-nav-search" style="margin-bottom: 0px;">
-      <h3>Donate</h3>
+    <div class="nav-item">
+      <a href="contents.html#getting-started"
+         class="nav-link  router-link-active">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#guide"
+         class="nav-link ">
+         guide
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#project"
+         class="nav-link ">
+         project
+      </a>
+    </div>
+  
 
-      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
-      <p>If you consider <em>doit</em> to be a useful project, and would like to see it continue to be maintained and developed, please consider helping cover the development cost. Thriving project requires a maintainer to keep list of issues and list of pull requests short.</p>
+<div class="nav-item">
+  <a href="https://twitter.com/py_doit" class="nav-link external">Twitter <outboundlink/><i class="fa fa-twitter" style="color:black"></i></a>
+</div>
+
+<div class="nav-item">
+  <a href="https://github.com/pydoit/doit" class="nav-link external">Github <outboundlink/><i class="fa fa-github" style="color:black"></i></a>
+</div>
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#getting-started">getting started</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 "><a href="usecases.html" class="reference internal ">Use Cases</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">tutorial 1 - basics</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#setup" class="reference internal">setup</a></li>
+                
+                  <li class="toctree-l2"><a href="#finding-a-module-s-import" class="reference internal">finding a module’s import</a></li>
+                
+                  <li class="toctree-l2"><a href="#graphviz-dot" class="reference internal">graphviz dot</a></li>
+                
+                  <li class="toctree-l2"><a href="#doit-command-line" class="reference internal">doit command line</a></li>
+                
+                  <li class="toctree-l2"><a href="#pipelines" class="reference internal">Pipelines</a></li>
+                
+                  <li class="toctree-l2"><a href="#package-imports" class="reference internal">package imports</a></li>
+                
+                  <li class="toctree-l2"><a href="#printing-imports" class="reference internal">printing imports</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#guide">guide</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="install.html" class="reference internal ">Installing</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="tasks.html" class="reference internal ">Tasks</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="dependencies.html" class="reference internal ">More on dependencies</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="task_creation.html" class="reference internal ">More on Task creation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="cmd_run.html" class="reference internal ">Command line interface - run</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="cmd_other.html" class="reference internal ">Other Commands</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="configuration.html" class="reference internal ">Configuration</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="task_args.html" class="reference internal ">Passing Task Arguments from the command line</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="uptodate.html" class="reference internal ">custom uptodate</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="tools.html" class="reference internal ">Tools</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="extending.html" class="reference internal ">Extending doit</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#project">project</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="support.html" class="reference internal ">Support</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="changes.html" class="reference internal ">Changes</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="stories.html" class="reference internal ">Success Stories</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="faq.html" class="reference internal ">FAQ</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="related.html" class="reference internal ">Related Projects</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+
+  
+    <div style="margin-bottom: 0px; padding:1rem; background-color: #2980B9; color:#fcfcfc;">
+      <h3>Donate</h3>
+      <p>If you find <em>doit</em> useful, please consider supporting the maintainer with a donation.</p>
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it... Your donation keeps the project healthy and maintained.</p>
     </div>
 
-    <div class="wy-side-nav-search" style="color:black;background-color:#fcfcfc;border-right:black 1px solid;">
-      <h6 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h6>
+    <div style="text-align:center; padding:1rem; color:black;background-color:#fcfcfc; margin-bottom:2rem;">
+      <h4 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h4>
       <div>
         <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
       </div>
 
       <hr style="margin-top:5px;">
-      <h6 style="margin-bottom:20px;">Paypal</h6>
+      <h4 style="margin-bottom:20px;">Paypal</h4>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
@@ -277,82 +304,39 @@ code.literal {
     <br>
   
 
-      </div>
-    </nav>
+        </sidebar>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-  <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-  <a href="index.html">
-      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
-  </a>
-  <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-twitter"></i></a></span>
-  <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-github"></i></a></span>
-
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="contents.html">Docs</a> &raquo;</li>
-        
-      <li>tutorial 1 - basics</li>
-    
-    
-   
-   <span class="float-right" role="navigation" aria-label="breadcrumb navigation">
-      
-        <li>
-          <a href="usecases.html" title="Use Cases" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Use Cases</a>
-        </li>
-      
-      <li style="padding-right:5px">|</li>
-      
-        <li>
-            <a href="install.html" title="Installing" accesskey="n">Installing <span class="fa fa-arrow-circle-right"></span></a>
-        </li>
-      
-  </span>
-
-  </ul>
-
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
   
-  <hr/>
+  <ul class="breadcrumbs">
+    <li><a href="contents.html">Docs</a> &raquo;</li>
+    
+    <li>tutorial 1 - basics</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="usecases.html"
+       title="previous chapter">← Use Cases</a>
+  </li>
+  <li class="next">
+    <a href="install.html"
+       title="next chapter">Installing →</a>
+  </li>
+</ul>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+<hr>
+          <div class="content" role="main">
             
   <div class="section" id="tutorial-1-basics">
 <h1>tutorial 1 - basics<a class="headerlink" href="#tutorial-1-basics" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial demonstrates how to use <code class="docutils literal notranslate"><span class="pre">doit</span></code> to create simple computational pipeline.</p>
-<p>The goal is to create a graph of python module imports in a package.
+<p>This tutorial demonstrates how to use <code class="docutils literal notranslate"><span class="pre">doit</span></code> to create a simple computational pipeline.</p>
+<p>The goal is to create a graph of python module’s imports in a package.
 <a class="reference external" href="http://graphviz.org/">graphviz</a>’s <strong>dot</strong> tool will be used to generate the graph.</p>
-<p>As example the <a class="reference external" href="https://github.com/requests/requests">requests</a> package will be used. The result is the image below:</p>
+<p>As an example, the <a class="reference external" href="https://github.com/requests/requests">requests</a> package will be used. The result is the image below:</p>
 <img alt="_images/requests.png" src="_images/requests.png" />
 <p>In the image an arrow represents an import from one module to another. For example in the left side of image you can see an arrow from <cite>requests.status_codes</cite> to <cite>requests.structures</cite>. This comes from the following line in <cite>status_code.py</cite>:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
@@ -361,13 +345,13 @@ code.literal {
 </pre></div>
 </div>
 </div>
-<p>Drawing an “import” dependency graph can be very useful to understand how the code in a package is organized.
+<p>Drawing an “import” dependency graph can be very useful in understanding how the code in a package is organized.
 It may also help you identify potential problems like circular imports.</p>
 <p>There are three main steps to generate this graph:</p>
 <ol class="arabic simple">
-<li>read each python module and list it’s imports</li>
-<li>generate a <cite>dot</cite> (text format) file representing the graph</li>
-<li>generate an image (PNG) from the <cite>dot</cite> file</li>
+<li><p>read each python module and list its imports</p></li>
+<li><p>generate a <cite>dot</cite> (text format) file representing the graph</p></li>
+<li><p>generate an image (PNG) from the <cite>dot</cite> file</p></li>
 </ol>
 <div class="section" id="setup">
 <h2>setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
@@ -376,6 +360,7 @@ It may also help you identify potential problems like circular imports.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install doit pygraphviz import_deps
 </pre></div>
 </div>
+<p>Note that on some linux systems it is necessary to install the system package <cite>graphviz-dev</cite> first.</p>
 </div>
 <div class="section" id="sample-project">
 <h3>sample project<a class="headerlink" href="#sample-project" title="Permalink to this headline">¶</a></h3>
@@ -410,9 +395,9 @@ It may also help you identify potential problems like circular imports.</p>
 <p>The output contains one imported module per line.</p>
 <div class="section" id="doit-task">
 <h3>doit task<a class="headerlink" href="#doit-task" title="Permalink to this headline">¶</a></h3>
-<p>Next step we are going to wrap the above script in a <code class="docutils literal notranslate"><span class="pre">doit</span></code> <em>task</em>.
+<p>On the next step we are going to wrap the above script in a <code class="docutils literal notranslate"><span class="pre">doit</span></code> <em>task</em>.
 In <code class="docutils literal notranslate"><span class="pre">doit</span></code> tasks are defined in a plain python module, by default called <code class="docutils literal notranslate"><span class="pre">dodo.py</span></code>.</p>
-<p>For example a trivial task to execute the script above and save its output into a file would be:</p>
+<p>For example, a trivial task to execute the script above and save its output into a file would be:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">dodo.py</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">task_imports</span><span class="p">():</span>
@@ -424,16 +409,16 @@ In <code class="docutils literal notranslate"><span class="pre">doit</span></cod
 </div>
 </div>
 <p>In this module you write functions that are <strong>task-creators</strong>,
-the role of these functions is not to execute tasks but to return task’s metadata.
+the role of which is not to execute tasks but to return tasks’ metadata.
 <strong>task-creators</strong> are any function whose name starts with <code class="docutils literal notranslate"><span class="pre">task_</span></code>.
-A task name is taken from the function name,
-in this case the name is <code class="docutils literal notranslate"><span class="pre">imports</span></code>.</p>
-<p>The most important <em>Task</em> metadata is <code class="docutils literal notranslate"><span class="pre">actions</span></code>, this defines what will be done when a task is executed.</p>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">actions</span></code> is a list where its element are a string with a shell command.</p>
+A task name is taken from the function name, so
+in this case the task is called <code class="docutils literal notranslate"><span class="pre">imports</span></code>.</p>
+<p>The most important <em>Task</em> metadata is <code class="docutils literal notranslate"><span class="pre">actions</span></code>, which defines what will be done when a task is executed.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">actions</span></code> is a list where its element are strings to be interpreted as shell commands.</p>
 </div>
 <div class="section" id="task-execution">
 <h3>task execution<a class="headerlink" href="#task-execution" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> command line by default will execute all tasks defined in <code class="docutils literal notranslate"><span class="pre">dodo.py</span></code> module in the current directory.</p>
+<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> comes with a command line tool to act upon the set of tasks defined in a specific file. The default file is <code class="docutils literal notranslate"><span class="pre">dodo.py</span></code> in the current directory. With no argument it executes all tasks found in it.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  imports</span>
 </pre></div>
@@ -444,9 +429,9 @@ a list of modules imported by <code class="docutils literal notranslate"><span c
 </div>
 <div class="section" id="incremental-computation">
 <h3>incremental computation<a class="headerlink" href="#incremental-computation" title="Permalink to this headline">¶</a></h3>
-<p>One of the main purposes in the usage of <code class="docutils literal notranslate"><span class="pre">doit</span></code> is to make use
-of <strong>up-to-date</strong> checks to decide if tasks <em>needs</em> to be executed or not.</p>
-<p>In this case as long as the input file is not modified we are certain
+<p>One of the main purposes of <code class="docutils literal notranslate"><span class="pre">doit</span></code> is to make use
+of <strong>up-to-date</strong> checks to decide if tasks <em>need</em> to be executed or not.</p>
+<p>In our case, as long as the input file is not modified we are certain
 that the same output would be generated…</p>
 <p>When dealing with files, task’s metadata <code class="docutils literal notranslate"><span class="pre">file_dep</span></code> and <code class="docutils literal notranslate"><span class="pre">targets</span></code> can be used:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_imports</span><span class="p">():</span>
@@ -475,10 +460,10 @@ This means that the task was not executed, <code class="docutils literal notrans
 the task output would be the same as previously generated,
 so it does not execute the task again.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>When <code class="docutils literal notranslate"><span class="pre">doit</span></code> <em>loads</em> a <code class="docutils literal notranslate"><span class="pre">dodo.py</span></code> file it executes all <em>task-creator</em> functions in order to generate all tasks metadata.
 A task’s <code class="docutils literal notranslate"><span class="pre">action</span></code> is only executed if the task is selected to run and not <strong>up-to-date</strong>.</p>
-<p class="last">Expensive computation should always be done on task’s <code class="docutils literal notranslate"><span class="pre">action</span></code>
+<p>Expensive computation should always be done on task’s <code class="docutils literal notranslate"><span class="pre">action</span></code>
 and never on the body of a <strong>task-creator</strong> function.</p>
 </div>
 </div>
@@ -486,7 +471,7 @@ and never on the body of a <strong>task-creator</strong> function.</p>
 <h3>rules for up-to-date checks on files<a class="headerlink" href="#rules-for-up-to-date-checks-on-files" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="file-dep">
 <h4>file_dep<a class="headerlink" href="#file-dep" title="Permalink to this headline">¶</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> uses the <em>md5</em> of <code class="docutils literal notranslate"><span class="pre">file_dep</span></code> to determine if a dependency is changed.</p>
+<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> uses the <em>md5</em> of <code class="docutils literal notranslate"><span class="pre">file_dep</span></code> to determine if a dependency has changed.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> touch projects/requests/requests/models.py
 <span class="gp">$</span> doit
 <span class="go">-- imports</span>
@@ -495,12 +480,12 @@ and never on the body of a <strong>task-creator</strong> function.</p>
 <span class="go">.  imports</span>
 </pre></div>
 </div>
-<p>Note that simply changing a file timestamp would not trigger a new execution.</p>
+<p>Note that simply changing a file timestamp does not trigger a new execution.</p>
 </div>
 <div class="section" id="targets">
 <h4>targets<a class="headerlink" href="#targets" title="Permalink to this headline">¶</a></h4>
-<p>For <code class="docutils literal notranslate"><span class="pre">targets</span></code>, it only checks if the target exists.
-So if a target is removed it will be re-created even without changes on dependencies.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">targets</span></code>, the only verification that is made is whether the file exists or not.
+So if a target is removed it will be re-created even if the dependencies remain unmodified.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rm requests.models.deps
 <span class="gp">$</span> doit
 <span class="go">.  imports</span>
@@ -511,10 +496,10 @@ So if a target is removed it will be re-created even without changes on dependen
 </div>
 <div class="section" id="graphviz-dot">
 <h2>graphviz dot<a class="headerlink" href="#graphviz-dot" title="Permalink to this headline">¶</a></h2>
-<p>Next step we will create a <a class="reference external" href="http://graphviz.org/">graphviz</a>’s <code class="docutils literal notranslate"><span class="pre">dot</span></code> file.
-<code class="docutils literal notranslate"><span class="pre">dot</span></code> is a language to describe to graphs.</p>
-<p>Code below defines a python function to read a file containing
-import dependencies (as generated by previously defined <code class="docutils literal notranslate"><span class="pre">imports</span></code> task).</p>
+<p>On the next step we will create a <a class="reference external" href="http://graphviz.org/">graphviz</a>’s <code class="docutils literal notranslate"><span class="pre">dot</span></code> file.
+<code class="docutils literal notranslate"><span class="pre">dot</span></code> is a language to describe graphs.</p>
+<p>The code below defines a python function to read a file containing
+import dependencies (as generated by our previously defined <code class="docutils literal notranslate"><span class="pre">imports</span></code> task).</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
 <span class="kn">import</span> <span class="nn">pygraphviz</span>
 
@@ -523,7 +508,7 @@ import dependencies (as generated by previously defined <code class="docutils li
     <span class="k">for</span> <span class="n">dep</span> <span class="ow">in</span> <span class="n">dependencies</span><span class="p">:</span>
         <span class="n">filepath</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
         <span class="n">source</span> <span class="o">=</span> <span class="n">filepath</span><span class="o">.</span><span class="n">stem</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">filepath</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fh</span><span class="p">:</span>
                 <span class="n">sink</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">sink</span><span class="p">:</span>
@@ -534,8 +519,8 @@ import dependencies (as generated by previously defined <code class="docutils li
 </div>
 <div class="section" id="task-with-python-action">
 <h3>Task with python action<a class="headerlink" href="#task-with-python-action" title="Permalink to this headline">¶</a></h3>
-<p>Next we define the task <code class="docutils literal notranslate"><span class="pre">dot</span></code>, it is similar to previous task…
-but note that instead of passing a string with a shell command
+<p>Next we define the <code class="docutils literal notranslate"><span class="pre">dot</span></code> task, which is similar to previous tasks…
+except for the fact that instead of passing a string with a shell command
 we directly pass the previously created python function <code class="docutils literal notranslate"><span class="pre">module_to_dot</span></code>.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_dot</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;generate a graphviz&#39;s dot graph from module imports&quot;&quot;&quot;</span>
@@ -546,7 +531,7 @@ we directly pass the previously created python function <code class="docutils li
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>Also note the function takes the special parameters <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> and <code class="docutils literal notranslate"><span class="pre">targets</span></code>, those values will be injected by <code class="docutils literal notranslate"><span class="pre">doit</span></code>.</p>
+<p>Also note that the function takes the special parameters <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> and <code class="docutils literal notranslate"><span class="pre">targets</span></code>, whose values will be injected by <code class="docutils literal notranslate"><span class="pre">doit</span></code> in the function call.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">-- imports</span>
 <span class="go">.  dot</span>
@@ -578,7 +563,7 @@ we directly pass the previously created python function <code class="docutils li
 </div>
 <div class="section" id="doit-command-line">
 <h2>doit command line<a class="headerlink" href="#doit-command-line" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> has a rich (and extensible) command line to manipulate your tasks. So far we have only executed <code class="docutils literal notranslate"><span class="pre">doit</span></code> without any parameters…</p>
+<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> has a rich (and extensible) command line tool to manipulate your tasks. So far we have only executed <code class="docutils literal notranslate"><span class="pre">doit</span></code> without any parameters…</p>
 <p><code class="docutils literal notranslate"><span class="pre">doit</span></code> command line takes the form of <code class="docutils literal notranslate"><span class="pre">doit</span> <span class="pre">&lt;sub-command&gt;</span> <span class="pre">&lt;options&gt;</span> <span class="pre">&lt;arguments&gt;</span></code>,
 where <code class="docutils literal notranslate"><span class="pre">options</span></code> and <code class="docutils literal notranslate"><span class="pre">arguments</span></code> are specific to the <code class="docutils literal notranslate"><span class="pre">sub-command</span></code>.</p>
 <p>If no sub-command is specified the default command <code class="docutils literal notranslate"><span class="pre">run</span></code> is used.
@@ -598,12 +583,12 @@ where <code class="docutils literal notranslate"><span class="pre">options</span
 <span class="go">imports   find imports from a python module</span>
 </pre></div>
 </div>
-<p>Note how the docstring from <em>task-creators</em> functions were used as task’s description.</p>
+<p>Note how the docstring from <em>task-creators</em> functions were used as tasks’ description.</p>
 </div>
 <div class="section" id="info">
 <h3>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">info</span></code> command can be used to get more information from a specific task.
-Information about it’s metadata, and it is state (whether it is up-to-date or not).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">info</span></code> command can be used to get more information about a specific task’s
+metadata and state (whether it is up-to-date or not).</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info imports
 
 <span class="go">imports</span>
@@ -625,13 +610,13 @@ Information about it’s metadata, and it is state (whether it is up-to-date or 
 <p><code class="docutils literal notranslate"><span class="pre">run</span></code> is the default command, and usually not explicitly typed.
 So <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">doit</span></code> and <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">doit</span> <span class="pre">run</span></code> do exactly the same thing.</p>
 <p>Without any parameters <code class="docutils literal notranslate"><span class="pre">run</span></code> will execute all of your tasks.
-You can also select which tasks to be executed by passing a sequence of tasks names.</p>
+You can also select which tasks to be executed by passing a sequence of tasks’ names.</p>
 <p>For example if you want to execute only the <code class="docutils literal notranslate"><span class="pre">imports</span></code> task you would type:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit imports
 <span class="go">-- imports</span>
 </pre></div>
 </div>
-<p>Note that even if you explicitly pass the name of task to be executed,
+<p>Note that even if you explicitly pass the name of the task to be executed,
 <code class="docutils literal notranslate"><span class="pre">doit</span></code> will actually execute the task only if it is not <strong>up-to-date</strong>.</p>
 <p>You can also pass more than one task:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit imports dot
@@ -639,8 +624,8 @@ You can also select which tasks to be executed by passing a sequence of tasks na
 <span class="go">-- dot</span>
 </pre></div>
 </div>
-<p>Another important point to take notice is that even
-if you specify only one task <code class="docutils literal notranslate"><span class="pre">doit</span></code> will run all of the dependencies of the specified task.</p>
+<p>Another important point to take notice of is that even
+if you specify only one task, <code class="docutils literal notranslate"><span class="pre">doit</span></code> will run all of the dependencies of the specified task.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit dot
 <span class="go">-- imports</span>
 <span class="go">-- dot</span>
@@ -652,8 +637,8 @@ if you specify only one task <code class="docutils literal notranslate"><span cl
 <h3>clean<a class="headerlink" href="#clean" title="Permalink to this headline">¶</a></h3>
 <p>A common use-case is to be able to “revert” the operations done by a task.
 <code class="docutils literal notranslate"><span class="pre">doit</span></code> provides the <code class="docutils literal notranslate"><span class="pre">clean</span></code> command for that.</p>
-<p>By default it does nothing… You need to add a parameter <code class="docutils literal notranslate"><span class="pre">clean</span></code> to task metadata. For the most common case where you just want to remove the created targets, just pass the value <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-<p>You can also write custom <code class="docutils literal notranslate"><span class="pre">actions</span></code> (shell or python) of what should be done as a value to <code class="docutils literal notranslate"><span class="pre">clean</span></code> field.</p>
+<p>By default it does nothing… You need to add the parameter <code class="docutils literal notranslate"><span class="pre">clean</span></code> to the task’s metadata. For the most common case where you just want to remove the created targets, just pass the value <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>You can also write custom <code class="docutils literal notranslate"><span class="pre">actions</span></code> (shell or python) to specify what should be done as a value to <code class="docutils literal notranslate"><span class="pre">clean</span></code> field.</p>
 <p>Add <code class="docutils literal notranslate"><span class="pre">clean</span></code> to all defined tasks, like:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_draw</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;generate image from a dot file&quot;&quot;&quot;</span>
@@ -682,9 +667,9 @@ if you specify only one task <code class="docutils literal notranslate"><span cl
 </div>
 <div class="section" id="forget">
 <h3>forget<a class="headerlink" href="#forget" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> will look for changes in dependencies, but not changes in your code…
-While developing a task it is common to want to force the execution of task after making changes in the code.</p>
-<p>For example lets change the colors of nodes in graph:</p>
+<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> will look for changes in the dependencies, but not for changes in the code that defines the tasks…
+While developing a task, it is common to want to force its execution after making changes to it.</p>
+<p>For example, let’s change the colors of the nodes in the graph:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">module_to_dot</span><span class="p">(</span><span class="n">dependencies</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
     <span class="n">graph</span> <span class="o">=</span> <span class="n">pygraphviz</span><span class="o">.</span><span class="n">AGraph</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="hll">    <span class="n">graph</span><span class="o">.</span><span class="n">node_attr</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lightblue2&#39;</span>
@@ -692,10 +677,10 @@ While developing a task it is common to want to force the execution of task afte
 </span>    <span class="k">for</span> <span class="n">dep</span> <span class="ow">in</span> <span class="n">dependencies</span><span class="p">:</span>
         <span class="n">filepath</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
         <span class="n">source</span> <span class="o">=</span> <span class="n">filepath</span><span class="o">.</span><span class="n">stem</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">filepath</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
 </pre></div>
 </div>
-<p>To force its execution we need to <code class="docutils literal notranslate"><span class="pre">doit</span></code> to <code class="docutils literal notranslate"><span class="pre">forget</span></code> its state like:</p>
+<p>To force its execution we need <code class="docutils literal notranslate"><span class="pre">doit</span></code> to <code class="docutils literal notranslate"><span class="pre">forget</span></code> its state thus so:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit forget dot
 <span class="go">forgetting dot</span>
 </pre></div>
@@ -708,19 +693,19 @@ While developing a task it is common to want to force the execution of task afte
 </div>
 <img alt="_images/requests.models-blue.png" src="_images/requests.models-blue.png" />
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Another option force execution of task after code changes is to use <cite>run`</cite>’s command option <code class="docutils literal notranslate"><span class="pre">-a/--always-execute</span></code>. That will ignore the <strong>up-to-date</strong> check and always execute tasks.</p>
+<p class="admonition-title">Note</p>
+<p>Another option to force the execution of a task after code changes is to use <cite>run`</cite>’s command option <code class="docutils literal notranslate"><span class="pre">-a/--always-execute</span></code>. That will ignore the <strong>up-to-date</strong> check and always execute tasks.</p>
 </div>
-<p>Code <a class="reference download internal" href="_downloads/tuto_1_1.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
+<p>Code <a class="reference download internal" download="" href="_downloads/959f1a578fa4b5ad8f536d7b79fd03b9/tuto_1_1.py"><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
 </div>
 </div>
 <div class="section" id="pipelines">
 <h2>Pipelines<a class="headerlink" href="#pipelines" title="Permalink to this headline">¶</a></h2>
-<p>So far we have build a traditional “file” based pipeline where one task’s target is used as a dependency in another task.</p>
+<p>So far we have built a traditional “file” based pipeline where one task’s target is used as a dependency for another task.</p>
 <p>While <code class="docutils literal notranslate"><span class="pre">doit</span></code> provides first-class support for file based pipelines, they are not required.</p>
 <div class="section" id="get-module-imports-python">
 <h3>get module imports - python<a class="headerlink" href="#get-module-imports-python" title="Permalink to this headline">¶</a></h3>
-<p>Let’s rewrite the <code class="docutils literal notranslate"><span class="pre">imports</span></code> task to use python action:</p>
+<p>Let’s rewrite the <code class="docutils literal notranslate"><span class="pre">imports</span></code> task to use a python action instead of a shell command:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">import_deps</span> <span class="k">import</span> <span class="n">PyModule</span><span class="p">,</span> <span class="n">ModuleSet</span>
 
 <span class="k">def</span> <span class="nf">get_imports</span><span class="p">(</span><span class="n">module_path</span><span class="p">):</span>
@@ -739,20 +724,22 @@ While developing a task it is common to want to force the execution of task afte
 </span>    <span class="p">}</span>
 </pre></div>
 </div>
-<p>Function <code class="docutils literal notranslate"><span class="pre">get_imports</span></code> is used as task’s action.
-It returns a dictionary, this will be saved by <code class="docutils literal notranslate"><span class="pre">doit</span></code> in its internal database. The returned dictionary must contain only values that can be encoded in JSON.</p>
-<p>Note that the parameter <code class="docutils literal notranslate"><span class="pre">module_path</span></code> is passed into task definition of <code class="docutils literal notranslate"><span class="pre">actions</span></code>.
-Instead of just specifying a callable it takes a tuple <em>(callable, args, kwargs)</em>.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">get_imports</span></code> is used as the task’s action.
+It returns a dictionary, which will be saved by <code class="docutils literal notranslate"><span class="pre">doit</span></code> in its internal database. The returned dictionary must contain only values that can be encoded as JSON.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_imports</span></code> takes the path’s module as a parameter (<code class="docutils literal notranslate"><span class="pre">module_path</span></code>). The value that will be used for this parameter upon task execution is specified in the <code class="docutils literal notranslate"><span class="pre">actions</span></code> of the task definition. Generally speaking, each element of the <code class="docutils literal notranslate"><span class="pre">actions</span></code> array is a tuple <em>(callable, args, kwargs)</em>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Note in this example for simplicity we are using <code class="docutils literal notranslate"><span class="pre">doit</span></code> internal database but it is also possible to use any other external database or data source.</p>
+<p class="admonition-title">Note</p>
+<p>Note in this example for simplicity we are using <code class="docutils literal notranslate"><span class="pre">doit</span></code> internal database, but it is also possible to use any other external database or data source.</p>
 </div>
 </div>
 <div class="section" id="getargs">
 <h3>getargs<a class="headerlink" href="#getargs" title="Permalink to this headline">¶</a></h3>
-<p>The task parameter <code class="docutils literal notranslate"><span class="pre">getargs</span></code> can be used to specify values to be retrieved that are computed in another task.
-It is a dictionary where the <em>key</em> is the parameter name used in this task’s action parameter.
-It’s value is 2-value tuple where the first item is the task name, and the second is the value name (key in the returned dictionary).</p>
+<p>The task’s parameter <code class="docutils literal notranslate"><span class="pre">getargs</span></code> can be used to extract values from another task’s result and pass it as a parameter to the current task’s action.
+It’s a dictionary of the form</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">target_key</span><span class="p">:</span> <span class="p">(</span><span class="n">task_name</span><span class="p">,</span> <span class="n">source_key</span><span class="p">)}</span>
+</pre></div>
+</div>
+<p>and what it does is to execute the task <code class="docutils literal notranslate"><span class="pre">task_name</span></code>, get the value of <code class="docutils literal notranslate"><span class="pre">source_key</span></code> from its resulting dict, and passing that as the argument named <code class="docutils literal notranslate"><span class="pre">target_key</span></code> of the current task’s action.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="k">def</span> <span class="nf">module_to_dot</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sinks</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
 </span>    <span class="n">graph</span> <span class="o">=</span> <span class="n">pygraphviz</span><span class="o">.</span><span class="n">AGraph</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">graph</span><span class="o">.</span><span class="n">node_attr</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lightblue2&#39;</span>
@@ -774,19 +761,19 @@ It’s value is 2-value tuple where the first item is the task name, and the sec
 </div>
 <p>Note how <code class="docutils literal notranslate"><span class="pre">module_to_dot</span></code> takes 3 parameters:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">source</span></code>: value is passed directly when task’s actions is defined</li>
-<li><code class="docutils literal notranslate"><span class="pre">imports</span></code>: value is taken from <code class="docutils literal notranslate"><span class="pre">imports</span></code> task result</li>
-<li><code class="docutils literal notranslate"><span class="pre">targets</span></code>: values is taken from Task metadata</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code>: value is passed directly when the task’s actions is defined</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">imports</span></code>: value is taken from <code class="docutils literal notranslate"><span class="pre">imports</span></code> task’s result</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">targets</span></code>: values is taken from Task metadata</p></li>
 </ul>
 <p>Everything should work as before, but without the creation of intermediate files.</p>
-<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> can determine if task <code class="docutils literal notranslate"><span class="pre">imports</span></code> is <strong>up-to-date</strong> even without a target file (it just look at the <code class="docutils literal notranslate"><span class="pre">file_dep</span></code>).</p>
-<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> can also determine if <code class="docutils literal notranslate"><span class="pre">dot</span></code> is <strong>up-to-date</strong> by comparing the value returned by <code class="docutils literal notranslate"><span class="pre">imports</span></code> (instead of checking for file changes, it checks for changes in the JSON object).</p>
-<p>Code <a class="reference download internal" href="_downloads/tuto_1_2.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> can determine if the task <code class="docutils literal notranslate"><span class="pre">imports</span></code> is <strong>up-to-date</strong> even without a target file (it will just look at the <code class="docutils literal notranslate"><span class="pre">file_dep</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> can also determine if <code class="docutils literal notranslate"><span class="pre">dot</span></code> is <strong>up-to-date</strong> by comparing the value returned by <code class="docutils literal notranslate"><span class="pre">imports</span></code> (its dependency through the <code class="docutils literal notranslate"><span class="pre">getargs</span></code> parameter), with the value stored in its database.</p>
+<p>Code <a class="reference download internal" download="" href="_downloads/addf8b7a7bb12ba72cf7c95de9480be6/tuto_1_2.py"><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
 </div>
 </div>
 <div class="section" id="package-imports">
 <h2>package imports<a class="headerlink" href="#package-imports" title="Permalink to this headline">¶</a></h2>
-<p>So far we are creating a graph of only one module.
+<p>So far we have been creating a graph of a single module.
 Let’s process all modules in the package.</p>
 <p><code class="docutils literal notranslate"><span class="pre">doit</span></code> has the concept of a <strong>task-group</strong>.
 A task group performs the same operation over a set of instances.
@@ -810,7 +797,7 @@ Since each task needs to be independently identified an extra parameter <code cl
         <span class="p">}</span>
 </pre></div>
 </div>
-<p>Sub-tasks (items of task group) by default are not reported on <code class="docutils literal notranslate"><span class="pre">list</span></code> command. They be displayed using the <code class="docutils literal notranslate"><span class="pre">--all</span></code> flag.</p>
+<p>Sub-tasks (items of task group) by default are not reported by the <code class="docutils literal notranslate"><span class="pre">list</span></code> command. They can be displayed, though, using the <code class="docutils literal notranslate"><span class="pre">--all</span></code> flag.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
 <span class="go">dot       generate a graphviz&#39;s dot graph from module imports</span>
 <span class="go">draw      generate image from a dot file</span>
@@ -839,13 +826,13 @@ Since each task needs to be independently identified an extra parameter <code cl
 <span class="go">imports:requests.utils</span>
 </pre></div>
 </div>
-<p>Note the task name is composed by the (base name) group task name
-followed by a colon <cite>:</cite> and the <code class="docutils literal notranslate"><span class="pre">name</span></code> specified as a parameter.</p>
-<p>From command line a single task can executed like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ doit imports:requests.models
-.  imports:requests.models
-</pre></div>
-</div>
+<p>Note the task’s name is composed of the task’s group name (aka <code class="docutils literal notranslate"><span class="pre">basename</span></code>)
+followed by a colon <cite>:</cite> and the <code class="docutils literal notranslate"><span class="pre">name</span></code> specified as a parameter when <code class="docutils literal notranslate"><span class="pre">yield</span></code>.</p>
+<p>From the command line, a single task can be executed like this:</p>
+<blockquote>
+<div><p>$ doit imports:requests.models
+.  imports:requests.models</p>
+</div></blockquote>
 <div class="section" id="getargs-from-group-task">
 <h3>getargs from group-task<a class="headerlink" href="#getargs-from-group-task" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">getargs</span></code> can also be used to get values from a <em>group-task</em>.
@@ -863,14 +850,14 @@ key is the sub-task name:</p>
 <span class="k">def</span> <span class="nf">task_dot</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;generate a graphviz&#39;s dot graph from module imports&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;requests.dot&#39;</span><span class="p">],</span>
-        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">module_to_dot</span><span class="p">],</span>
-<span class="hll">        <span class="s1">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;imports&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;imports&#39;</span><span class="p">,</span> <span class="s1">&#39;modules&#39;</span><span class="p">)},</span>
+<span class="hll">        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;requests.dot&#39;</span><span class="p">],</span>
+</span><span class="hll">        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">module_to_dot</span><span class="p">],</span>
+</span><span class="hll">        <span class="s1">&#39;getargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;imports&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;imports&#39;</span><span class="p">,</span> <span class="s1">&#39;modules&#39;</span><span class="p">)},</span>
 </span>        <span class="s1">&#39;clean&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>Finally adjust task <code class="docutils literal notranslate"><span class="pre">draw</span></code>.</p>
+<p>Finally, adjust task <code class="docutils literal notranslate"><span class="pre">draw</span></code>.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_draw</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;generate image from a dot file&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">{</span>
@@ -883,14 +870,14 @@ key is the sub-task name:</p>
 </div>
 <p>Running <code class="docutils literal notranslate"><span class="pre">doit</span></code> you should get the file <code class="docutils literal notranslate"><span class="pre">requests.png</span></code> with the image below:</p>
 <img alt="_images/requests.png" src="_images/requests.png" />
-<p>Code <a class="reference download internal" href="_downloads/tuto_1_3.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
+<p>Code <a class="reference download internal" download="" href="_downloads/134d72362f6083187e227a0558e4441b/tuto_1_3.py"><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
 </div>
 </div>
 <div class="section" id="printing-imports">
 <h2>printing imports<a class="headerlink" href="#printing-imports" title="Permalink to this headline">¶</a></h2>
 <p>Getting rid of intermediate computation files (like <code class="docutils literal notranslate"><span class="pre">requests.models.deps</span></code>) was nice…
-but sometimes it is nice to be able to quickly list the direct imports from a module.</p>
-<p>Let’s create another task just print it’s output in the terminal.</p>
+but sometimes it is useful to be able to quickly list the direct imports from a module.</p>
+<p>Let’s create another task that just prints its output in the terminal.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;projects/requests/requests&#39;</span><span class="p">)</span>
 <span class="n">PKG_MODULES</span> <span class="o">=</span> <span class="n">ModuleSet</span><span class="p">(</span><span class="n">base_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.py&#39;</span><span class="p">))</span>
 
@@ -909,16 +896,16 @@ but sometimes it is nice to be able to quickly list the direct imports from a mo
 </span>        <span class="p">}</span>
 </pre></div>
 </div>
-<p>Here again we used a <strong>task-group</strong> to create one task per python module. And <code class="docutils literal notranslate"><span class="pre">getargs</span></code> to get list of module imports that were already calculated on <code class="docutils literal notranslate"><span class="pre">imports</span></code> task.</p>
-<p>Also note the usage of two metadata fields not seen before <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> and <code class="docutils literal notranslate"><span class="pre">verbosity</span></code>.</p>
+<p>Here again we used a <strong>task-group</strong> to create one task per python module and <code class="docutils literal notranslate"><span class="pre">getargs</span></code> to extract the list of modules’ imports from <code class="docutils literal notranslate"><span class="pre">imports</span></code>’s result.</p>
+<p>Also note the usage of two metadata fields not seen before: <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> and <code class="docutils literal notranslate"><span class="pre">verbosity</span></code>.</p>
 <div class="section" id="custom-uptodate">
 <h3>custom <cite>uptodate</cite><a class="headerlink" href="#custom-uptodate" title="Permalink to this headline">¶</a></h3>
-<p>So far we have seen how <code class="docutils literal notranslate"><span class="pre">doit</span></code> can determine if a task is <strong>up-to-date</strong> by taking into account changes to <code class="docutils literal notranslate"><span class="pre">file_dep</span></code>, if <code class="docutils literal notranslate"><span class="pre">targets</span></code> exist and results from <code class="docutils literal notranslate"><span class="pre">getargs</span></code>…</p>
+<p>So far we have seen how <code class="docutils literal notranslate"><span class="pre">doit</span></code> can determine if a task is <strong>up-to-date</strong> by taking into consideration changes to <code class="docutils literal notranslate"><span class="pre">file_dep</span></code>, if <code class="docutils literal notranslate"><span class="pre">targets</span></code> exist and results from <code class="docutils literal notranslate"><span class="pre">getargs</span></code> have changed.</p>
 <p>While those cover a wide range of use cases, <code class="docutils literal notranslate"><span class="pre">doit</span></code> also provides a way to specify completely custom checks for  <strong>up-to-date</strong>, using the <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> field.</p>
 <p>In this case the <code class="docutils literal notranslate"><span class="pre">print</span></code> task actually does not perform any computation, it is being used to display some info to the user.
 So this task should be <strong>always</strong> executed.</p>
 <p><code class="docutils literal notranslate"><span class="pre">update</span></code> will be explained in detail in part 2 of this tutorial.
-For now suffice to add value <code class="docutils literal notranslate"><span class="pre">False</span></code> to indicate this task will never be considered <strong>up-do-date</strong>.</p>
+For now it suffices to add the value <code class="docutils literal notranslate"><span class="pre">False</span></code> to indicate this task will never be considered <strong>up-do-date</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="bp">False</span><span class="p">],</span>
 </pre></div>
 </div>
@@ -927,18 +914,18 @@ For now suffice to add value <code class="docutils literal notranslate"><span cl
 <h3>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">doit</span></code> output (for command <code class="docutils literal notranslate"><span class="pre">run</span></code>) consists of:</p>
 <ul class="simple">
-<li>one line with task name (preceded by <cite>.</cite> or <cite>–</cite>)</li>
-<li>task output</li>
+<li><p>one line with task name (preceded by <cite>.</cite> or <cite>–</cite>)</p></li>
+<li><p>task’s output</p></li>
 </ul>
-<p>The actual task output displayed can be controlled by <code class="docutils literal notranslate"><span class="pre">verbosity</span></code>,
-there are 3 levels of verbosity.</p>
+<p>The actual task’s output displayed can be controlled by <code class="docutils literal notranslate"><span class="pre">verbosity</span></code>.
+There are 3 levels of verbosity.</p>
 <ul class="simple">
-<li>0: both stdout and stderr from task are <strong>NOT</strong> displayed</li>
-<li>1: only stderr is displayed</li>
-<li>2: both stdout and stderr are displayed</li>
+<li><p>0: both stdout and stderr from the task are <strong>NOT</strong> displayed</p></li>
+<li><p>1: only stderr is displayed</p></li>
+<li><p>2: both stdout and stderr are displayed</p></li>
 </ul>
 <p>The default verbosity is <cite>1</cite>.</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">print</span></code> task was executed with default verbosity we would actually not see any output, so we must force its <code class="docutils literal notranslate"><span class="pre">verbosity</span></code> value to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">print</span></code> task would be executed with the default verbosity we would actually not see any output, so we must force its <code class="docutils literal notranslate"><span class="pre">verbosity</span></code> value to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
 </pre></div>
 </div>
@@ -963,7 +950,7 @@ there are 3 levels of verbosity.</p>
 <p>There is one last problem to be solved.
 Since <code class="docutils literal notranslate"><span class="pre">print</span></code> is used only to display some information, it should not be executed by default. It should be executed only when explicitly asked.</p>
 <p>i.e. when you just run <code class="docutils literal notranslate"><span class="pre">doit</span></code> without any parameters it should create the graph image but not print out the information from <code class="docutils literal notranslate"><span class="pre">print</span></code> task.</p>
-<p>Before I said by default <code class="docutils literal notranslate"><span class="pre">doit</span> <span class="pre">run</span></code> would execute all tasks.
+<p>Before I said that by default <code class="docutils literal notranslate"><span class="pre">doit</span> <span class="pre">run</span></code> would execute all tasks.
 That is not exactly true… it will execute all <em>default tasks</em>.
 The default tasks can be controlled by adding a configuration dictionary with the name <code class="docutils literal notranslate"><span class="pre">DOIT_CONFIG</span></code> in the <cite>dodo.py</cite>.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
@@ -971,82 +958,56 @@ The default tasks can be controlled by adding a configuration dictionary with th
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Apart from <code class="docutils literal notranslate"><span class="pre">default_tasks</span></code>, <code class="docutils literal notranslate"><span class="pre">DOIT_CONFIG</span></code> can change the default of any command line option. For example you can globally change task’s verbosity for all tasks with:</p>
+<p>Apart from <code class="docutils literal notranslate"><span class="pre">default_tasks</span></code>, <code class="docutils literal notranslate"><span class="pre">DOIT_CONFIG</span></code> can change the default of any command line option. For example you can globally change every task’s <code class="docutils literal notranslate"><span class="pre">verbosity</span></code> level:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
  <span class="s1">&#39;default_tasks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;imports&#39;</span><span class="p">,</span> <span class="s1">&#39;dot&#39;</span><span class="p">,</span> <span class="s1">&#39;draw&#39;</span><span class="p">],</span>
  <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Code <a class="reference download internal" href="_downloads/tuto_1_4.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
+<p>Code <a class="reference download internal" download="" href="_downloads/8cbd20abe2607d4510a490f2c44f961e/tuto_1_4.py"><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
 <p>And that’s all for part 1 of tutorial :)</p>
 </div>
 </div>
 </div>
 
 
-           </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="install.html" class="btn btn-neutral float-right" title="Installing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="usecases.html" class="btn btn-neutral" title="Use Cases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="usecases.html"
+       title="previous chapter">← Use Cases</a>
+  </li>
+  <li class="next">
+    <a href="install.html"
+       title="next chapter">Installing →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2008-2018, Eduardo Schettino.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
     </div>
+    
+  
+    
+  
+    
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-29887834-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+    
   
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2008-2018, Eduardo Schettino.
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.31',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+  </body>
 </html>

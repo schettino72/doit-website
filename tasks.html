@@ -1,260 +1,313 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Tasks &mdash; doit 0.31 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="_static/favico.ico"/>
-  
-  
-  
-
-  
-
-  
-  
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Tasks</title>
     
-
-  
-
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="More on dependencies" href="dependencies.html" />
-    <link rel="prev" title="Installing" href="install.html" />
-<style>
-/* FIX for https://github.com/rtfd/sphinx_rtd_theme/pull/657
-   pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
-   line-height: 1.4 !important;
-   }
-*/
-
-  /* FIX: handle code-block-caption
-  https://github.com/rtfd/sphinx_rtd_theme/issues/292
-  */
-pre {
-  font-size: 0.95em !important;
-  letter-spacing: 0.015em;
-  line-height: 120% !important; /* also fix 657 */
-  padding: 0.5em;
-  border: 1px solid #ccc;
-  background-color: #f8f8f8;
-}
-pre.literal-block, div[class^='highlight'], div[class^='highlight-python3'] {
-  margin-top: 0px !important;
-}
-div.code-block-caption {
-  background-color: #ddd;
-  color: #222;
-  border: 1px solid #ccc;
-}
-div.code-block-caption {
-  padding: 2px 5px;
-  font-size: small;
-}
-a.headerlink {
-  visibility: hidden;
-  color: #c60f0f!important;
-  font-size: 1em;
-  margin-left: 6px;
-  padding: 0 4px 0 4px;
-  text-decoration: none!important;
-}
-a.headerlink:after{
-  margin-left: 0px;
-  content:"";
-  font-family:FontAwesome;
-}
-.code-block-caption:hover .headerlink:after {
-  visibility:visible;
-}
-
-/* CHANGE: code displayed in red color is too aggresive */
-code {
-    background-color: #f2f2f2;
-    border-bottom: 1px solid #ddd;
-    color: #333;
-}
-code.literal {
-  color: inherit !important;
-}
-
-/* FIX: use full hight of nav-side (not version selector) */
-.wy-nav-side {
-  padding-bottom: 0px !important;
-}
-.wy-menu-vertical {
-  padding-bottom: 15px !important;
-}
-
-/* FIX: revert rtd messing up with every image in nav-search */
-.wy-side-nav-search img.logo, .wy-nav-top img.logo {
-    display: inherit !important;
-    margin: inherit !important;
-    height: inherit !important;
-    width: inherit !important;
-    background-color: inherit !important;
-    padding: 5px;
-    border-radius: inherit !important;
-}
-
-</style>
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-29887834-3', 'auto');
-  ga('send', 'pageview');
-</script>
-
-
-
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-  <div style="text-align:left">
-    <a href="index.html">
-      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
-    </a>
-    <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black"><i class="fa fa-twitter"></i></a></span>
-    <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
-  </div>
-  <div style="color:rgba(1,1,1,0.3); text-align:left; margin:10px;">
-    
+      <link rel="stylesheet" href="_static/pygments.css">
+      <link rel="stylesheet" href="_static/theme.css">
       
-        <span>0.31</span>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+
       
+      <script src="_static/theme-vendors.js"></script>
+      <script src="_static/theme.js" defer></script>
     
-  </div>
+      <link rel="shortcut icon" href="_static/favico.ico"/>
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="More on dependencies" href="dependencies.html" />
+  <link rel="prev" title="Installing" href="install.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="contents.html" class="home-link">
+    
+      <img class="logo" src="_static/doit-logo-small.png" alt="doit logo"/>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
   
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+    <div class="nav-item">
+      <a href="contents.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#guide"
+         class="nav-link  router-link-active">
+         guide
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#project"
+         class="nav-link ">
+         project
+      </a>
+    </div>
+  
+
+<div class="nav-item">
+  <a href="https://twitter.com/py_doit" class="nav-link external">Twitter <outboundlink/><i class="fa fa-twitter" style="color:black"></i></a>
 </div>
 
-        </div>
+<div class="nav-item">
+  <a href="https://github.com/pydoit/doit" class="nav-link external">Github <outboundlink/><i class="fa fa-github" style="color:black"></i></a>
+</div>
+    </navlinks>
+  </div>
+</navbar>
 
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
           
+          <navlinks>
             
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_1.html">tutorial 1 - basics</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tasks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#intro">Intro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#actions">Actions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#python-action">python-action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cmd-action">cmd-action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#custom-actions">custom actions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#task-name">task name</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sub-tasks">sub-tasks</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#avoiding-empty-sub-tasks">avoiding empty sub-tasks</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#dependencies-targets">Dependencies &amp; Targets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#file-dep-file-dependency">file_dep (file dependency)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#targets">targets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#execution-order">execution order</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#task-selection">Task selection</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#doit-config-default-tasks">DOIT_CONFIG -&gt; default_tasks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#command-line-selection">command line selection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sub-task-selection">sub-task selection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#wildcard-selection">wildcard selection</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#parameters-on-actions">parameters on actions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#keywords-with-task-metadata">keywords with task metadata</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#keywords-on-cmd-action-string">keywords on cmd-action string</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#keywords-on-python-action">keywords on <em>python-action</em></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#private-hidden-tasks">private/hidden tasks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#title">title</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#verbosity">verbosity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">pathlib</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="dependencies.html">More on dependencies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="task_creation.html">More on Task creation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cmd_run.html">Command line interface - run</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cmd_other.html">Other Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="task_args.html">Passing Task Arguments from the command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="uptodate.html">custom uptodate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending <cite>doit</cite></a></li>
-</ul>
-<p class="caption"><span class="caption-text">Project</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stories.html">Success Stories</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="related.html">Related Projects</a></li>
-</ul>
-
-            
-          
-        </div>
-        
 
   
-    <div class="wy-side-nav-search" style="margin-bottom: 0px;">
-      <h3>Donate</h3>
+    <div class="nav-item">
+      <a href="contents.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#guide"
+         class="nav-link  router-link-active">
+         guide
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#project"
+         class="nav-link ">
+         project
+      </a>
+    </div>
+  
 
-      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
-      <p>If you consider <em>doit</em> to be a useful project, and would like to see it continue to be maintained and developed, please consider helping cover the development cost. Thriving project requires a maintainer to keep list of issues and list of pull requests short.</p>
+<div class="nav-item">
+  <a href="https://twitter.com/py_doit" class="nav-link external">Twitter <outboundlink/><i class="fa fa-twitter" style="color:black"></i></a>
+</div>
+
+<div class="nav-item">
+  <a href="https://github.com/pydoit/doit" class="nav-link external">Github <outboundlink/><i class="fa fa-github" style="color:black"></i></a>
+</div>
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#getting-started">getting started</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="usecases.html" class="reference internal ">Use Cases</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="tutorial_1.html" class="reference internal ">tutorial 1 - basics</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#guide">guide</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 "><a href="install.html" class="reference internal ">Installing</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">Tasks</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#intro" class="reference internal">Intro</a></li>
+                
+                  <li class="toctree-l2"><a href="#actions" class="reference internal">Actions</a></li>
+                
+                  <li class="toctree-l2"><a href="#task-name" class="reference internal">task name</a></li>
+                
+                  <li class="toctree-l2"><a href="#sub-tasks" class="reference internal">sub-tasks</a></li>
+                
+                  <li class="toctree-l2"><a href="#dependencies-targets" class="reference internal">Dependencies & Targets</a></li>
+                
+                  <li class="toctree-l2"><a href="#file-dep-file-dependency" class="reference internal">file_dep (file dependency)</a></li>
+                
+                  <li class="toctree-l2"><a href="#targets" class="reference internal">targets</a></li>
+                
+                  <li class="toctree-l2"><a href="#execution-order" class="reference internal">execution order</a></li>
+                
+                  <li class="toctree-l2"><a href="#task-selection" class="reference internal">Task selection</a></li>
+                
+                  <li class="toctree-l2"><a href="#parameters-on-actions" class="reference internal">parameters on actions</a></li>
+                
+                  <li class="toctree-l2"><a href="#private-hidden-tasks" class="reference internal">private/hidden tasks</a></li>
+                
+                  <li class="toctree-l2"><a href="#title" class="reference internal">title</a></li>
+                
+                  <li class="toctree-l2"><a href="#verbosity" class="reference internal">verbosity</a></li>
+                
+                  <li class="toctree-l2"><a href="#id7" class="reference internal">pathlib</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="dependencies.html" class="reference internal ">More on dependencies</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="task_creation.html" class="reference internal ">More on Task creation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="cmd_run.html" class="reference internal ">Command line interface - run</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="cmd_other.html" class="reference internal ">Other Commands</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="configuration.html" class="reference internal ">Configuration</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="task_args.html" class="reference internal ">Passing Task Arguments from the command line</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="uptodate.html" class="reference internal ">custom uptodate</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="tools.html" class="reference internal ">Tools</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="extending.html" class="reference internal ">Extending doit</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#project">project</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="support.html" class="reference internal ">Support</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="changes.html" class="reference internal ">Changes</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="stories.html" class="reference internal ">Success Stories</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="faq.html" class="reference internal ">FAQ</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="related.html" class="reference internal ">Related Projects</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+
+  
+    <div style="margin-bottom: 0px; padding:1rem; background-color: #2980B9; color:#fcfcfc;">
+      <h3>Donate</h3>
+      <p>If you find <em>doit</em> useful, please consider supporting the maintainer with a donation.</p>
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it... Your donation keeps the project healthy and maintained.</p>
     </div>
 
-    <div class="wy-side-nav-search" style="color:black;background-color:#fcfcfc;border-right:black 1px solid;">
-      <h6 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h6>
+    <div style="text-align:center; padding:1rem; color:black;background-color:#fcfcfc; margin-bottom:2rem;">
+      <h4 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h4>
       <div>
         <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
       </div>
 
       <hr style="margin-top:5px;">
-      <h6 style="margin-bottom:20px;">Paypal</h6>
+      <h4 style="margin-bottom:20px;">Paypal</h4>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
@@ -265,75 +318,32 @@ code.literal {
     <br>
   
 
-      </div>
-    </nav>
+        </sidebar>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-  <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-  <a href="index.html">
-      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
-  </a>
-  <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-twitter"></i></a></span>
-  <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-github"></i></a></span>
-
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="contents.html">Docs</a> &raquo;</li>
-        
-      <li>Tasks</li>
-    
-    
-   
-   <span class="float-right" role="navigation" aria-label="breadcrumb navigation">
-      
-        <li>
-          <a href="install.html" title="Installing" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Installing</a>
-        </li>
-      
-      <li style="padding-right:5px">|</li>
-      
-        <li>
-            <a href="dependencies.html" title="More on dependencies" accesskey="n">More on dependencies <span class="fa fa-arrow-circle-right"></span></a>
-        </li>
-      
-  </span>
-
-  </ul>
-
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
   
-  <hr/>
+  <ul class="breadcrumbs">
+    <li><a href="contents.html">Docs</a> &raquo;</li>
+    
+    <li>Tasks</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="install.html"
+       title="previous chapter">← Installing</a>
+  </li>
+  <li class="next">
+    <a href="dependencies.html"
+       title="next chapter">More on dependencies →</a>
+  </li>
+</ul>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+<hr>
+          <div class="content" role="main">
             
   <div class="section" id="tasks">
 <h1>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h1>
@@ -346,8 +356,8 @@ So a task can be anything you can code :)</p>
 <p>Tasks are defined in plain <a class="reference external" href="http://python.org/">python</a> module with some
 conventions.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You should be comfortable with python basics. If you don’t know python yet
+<p class="admonition-title">Note</p>
+<p>You should be comfortable with python basics. If you don’t know python yet
 check <a class="reference external" href="http://docs.python.org/tut/">Python tutorial</a>.</p>
 </div>
 <p>A function that starts with the name <cite>task_</cite> defines a <em>task-creator</em> recognized
@@ -402,17 +412,17 @@ See <a class="reference external" href="http://docs.python.org/tutorial/controlf
 <code class="docutils literal notranslate"><span class="pre">action</span></code> function.</p>
 <p>For <strong>successful</strong> completion it must return one of:</p>
 <ul class="simple">
-<li><cite>True</cite></li>
-<li><cite>None</cite></li>
-<li>a dictionary</li>
-<li>a string</li>
+<li><p><cite>True</cite></p></li>
+<li><p><cite>None</cite></p></li>
+<li><p>a dictionary</p></li>
+<li><p>a string</p></li>
 </ul>
 <p>For <strong>unsuccessful</strong> completion it must return one of:</p>
 <ul class="simple">
-<li><cite>False</cite> indicates the task generally failed</li>
-<li>if it raises any exception, it will be considered an error</li>
-<li>it can also explicitly return an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">TaskFailed</span></code>
-or <code class="xref py py-class docutils literal notranslate"><span class="pre">TaskError</span></code></li>
+<li><p><cite>False</cite> indicates the task generally failed</p></li>
+<li><p>if it raises any exception, it will be considered an error</p></li>
+<li><p>it can also explicitly return an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">TaskFailed</span></code>
+or <code class="xref py py-class docutils literal notranslate"><span class="pre">TaskError</span></code></p></li>
 </ul>
 <p>If the action returns a type other than the types already discussed, the action
 will be considered a failure, although this behavior might change in future
@@ -476,8 +486,8 @@ python code from the <cite>dodo</cite> file. Let’s take a look at another exam
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The body of the <em>task-creator</em> is always executed,
+<p class="admonition-title">Note</p>
+<p>The body of the <em>task-creator</em> is always executed,
 so in this example the line <cite>msg = 3 * “hi! “</cite> will always be executed.</p>
 </div>
 <p>If <cite>action</cite> is a list of strings and instances of any Path class from
@@ -511,8 +521,8 @@ parameters to <code class="docutils literal notranslate"><span class="pre">Popen
 All keyword parameter from <code class="docutils literal notranslate"><span class="pre">Popen</span></code> can be used on <code class="docutils literal notranslate"><span class="pre">CmdAction</span></code> (except
 <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code>).</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Different from <cite>subprocess.Popen</cite>, <cite>CmdAction</cite> <cite>shell</cite> argument defaults to
+<p class="admonition-title">Note</p>
+<p>Different from <cite>subprocess.Popen</cite>, <cite>CmdAction</cite> <cite>shell</cite> argument defaults to
 <cite>True</cite>. All other <cite>Popen</cite> arguments can also be passed in <cite>CmdAction</cite> except
 <cite>stdout</cite> and <cite>stderr</cite></p>
 </div>
@@ -630,11 +640,11 @@ This can also be used to set the task <code class="docutils literal notranslate"
 tasks/targets are <strong>up-to-date</strong>. In case there is no modification in the
 dependencies and the targets already exist, it skips the task execution to
 save time, as it would produce the same output from the previous run.</p>
-<dl class="docutils">
-<dt>Dependency</dt>
-<dd>A dependency indicates an input to the task execution.</dd>
-<dt>Target</dt>
-<dd>A <em>target</em> is the result/output file produced by the task execution.</dd>
+<dl class="simple">
+<dt>Dependency</dt><dd><p>A dependency indicates an input to the task execution.</p>
+</dd>
+<dt>Target</dt><dd><p>A <em>target</em> is the result/output file produced by the task execution.</p>
+</dd>
 </dl>
 <p>i.e. In a compilation task the source file is a <em>file_dep</em>,
 the object file is a <em>target</em>.</p>
@@ -687,8 +697,8 @@ is not executed again as it would produce the same result.</p>
 <p>Traditional build-tools can only handle files as “dependencies”.
 <cite>doit</cite> has several ways to check for dependencies, those will be introduced later.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><cite>doit</cite> saves the MD5 of a <cite>file_dep</cite> after the actions are executed.
+<p class="admonition-title">Note</p>
+<p><cite>doit</cite> saves the MD5 of a <cite>file_dep</cite> after the actions are executed.
 Be careful about editing a <cite>file_dep</cite> while a task is running because
 <cite>doit</cite> might saves the MD5 of a version of the file that is different
 than it actually used to execute the task.</p>
@@ -710,10 +720,10 @@ can be specified as a string or as an instance of any Path class from
 </pre></div>
 </div>
 <ul class="simple">
-<li>If there are no changes in the dependency the task execution is skipped.</li>
-<li>But if the target is removed the task is executed again.</li>
-<li>But only if it does not exist. If the target is modified but the dependencies
-do not change the task is not executed again.</li>
+<li><p>If there are no changes in the dependency the task execution is skipped.</p></li>
+<li><p>But if the target is removed the task is executed again.</p></li>
+<li><p>But only if it does not exist. If the target is modified but the dependencies
+do not change the task is not executed again.</p></li>
 </ul>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  compile</span>
@@ -750,8 +760,8 @@ executed in the correct order.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><cite>doit</cite> compares the path (string) of the file of <cite>file_dep</cite> and <cite>targets</cite>.
+<p class="admonition-title">Note</p>
+<p><cite>doit</cite> compares the path (string) of the file of <cite>file_dep</cite> and <cite>targets</cite>.
 So although <cite>my_file</cite> and <cite>./my_file</cite> are actually the same file, <cite>doit</cite>
 will think they are different files.</p>
 </div>
@@ -832,9 +842,9 @@ So that task was automatically executed also.</p>
 <p>There are three sources of parameter values:</p>
 <blockquote>
 <div><ul class="simple">
-<li>specified on action’s <cite>kwargs</cite> definition</li>
-<li>keywords with task metadata such as <cite>dependencies</cite>, <cite>changed</cite>, <cite>targets</cite> and <cite>task</cite></li>
-<li>values computed in other tasks. <a class="reference internal" href="dependencies.html#getargs"><span class="std std-ref">getargs</span></a> describes, how a task can calculate and store values and how other tasks can refer to them.</li>
+<li><p>specified on action’s <cite>kwargs</cite> definition</p></li>
+<li><p>keywords with task metadata such as <cite>dependencies</cite>, <cite>changed</cite>, <cite>targets</cite> and <cite>task</cite></p></li>
+<li><p>values computed in other tasks. <a class="reference internal" href="dependencies.html#getargs"><span class="std std-ref">getargs</span></a> describes, how a task can calculate and store values and how other tasks can refer to them.</p></li>
 </ul>
 </div></blockquote>
 <div class="section" id="keywords-with-task-metadata">
@@ -842,12 +852,12 @@ So that task was automatically executed also.</p>
 <p>These values are automatically calculated by <cite>doit</cite>:</p>
 <blockquote>
 <div><ul class="simple">
-<li><cite>dependencies</cite>: list of <cite>file_dep</cite></li>
-<li><cite>changed</cite>: list of <cite>file_dep</cite> that changed since last
-successful execution</li>
-<li><cite>targets</cite>: list of <cite>targets</cite></li>
-<li><cite>task</cite>: only available to <em>python-action</em>.
-Note: the value is a <cite>Task</cite> object instance, not the metadata <em>dict</em>.</li>
+<li><p><cite>dependencies</cite>: list of <cite>file_dep</cite></p></li>
+<li><p><cite>changed</cite>: list of <cite>file_dep</cite> that changed since last
+successful execution</p></li>
+<li><p><cite>targets</cite>: list of <cite>targets</cite></p></li>
+<li><p><cite>task</cite>: only available to <em>python-action</em>.
+Note: the value is a <cite>Task</cite> object instance, not the metadata <em>dict</em>.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -860,9 +870,9 @@ are controlled by <code class="docutils literal notranslate"><span class="pre">D
 It can be:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">'old'</span></code> uses <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#old-string-formatting">old-string-formatting</a> (<code class="docutils literal notranslate"><span class="pre">%</span></code>)</li>
-<li><code class="docutils literal notranslate"><span class="pre">'new'</span></code> uses  <a class="reference external" href="https://docs.python.org/3/library/string.html#format-string-syntax">format-string-syntax</a> (<code class="docutils literal notranslate"><span class="pre">{{}}</span></code>)</li>
-<li><code class="docutils literal notranslate"><span class="pre">'both'</span></code> both old and new style</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'old'</span></code> uses <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#old-string-formatting">old-string-formatting</a> (<code class="docutils literal notranslate"><span class="pre">%</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'new'</span></code> uses  <a class="reference external" href="https://docs.python.org/3/library/string.html#format-string-syntax">format-string-syntax</a> (<code class="docutils literal notranslate"><span class="pre">{{}}</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'both'</span></code> both old and new style</p></li>
 </ul>
 </div></blockquote>
 <p>The keyword value is a string containing all respective
@@ -887,16 +897,16 @@ file names separated by a space (” “).</p>
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">action_string_formatting</span></code> default value (as of <cite>doit</cite> version <strong>0.32</strong>) is <code class="docutils literal notranslate"><span class="pre">'old'</span></code>. This default value might change in future versions, it is advised to always explicitly state a value.</p>
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">action_string_formatting</span></code> default value (as of <cite>doit</cite> version <strong>0.32</strong>) is <code class="docutils literal notranslate"><span class="pre">'old'</span></code>. This default value might change in future versions, it is advised to always explicitly state a value.</p>
 </div>
 <p>Before the string is actually executed, it is always formatted using
 the formatters specified in <cite>DOIT_CONFIG</cite>. Make sure to escape your formatters
 control characters, namely <cite>{</cite> and <cite>}</cite> for <a class="reference external" href="https://docs.python.org/3/library/string.html#format-string-syntax">format-string-syntax</a> and <cite>%</cite> for
 <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#old-string-formatting">old-string-formatting</a>. This is done by doubling them, so <cite>%</cite> becomes <cite>%%</cite> and so on.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><em>cmd-action</em> may have the form of a string (as <cite>“echo hello world”</cite>)
+<p class="admonition-title">Note</p>
+<p><em>cmd-action</em> may have the form of a string (as <cite>“echo hello world”</cite>)
 or list of arguments (as <cite>[“echo”, “hello”, “world”]</cite>).
 Implicit keywords substitution applies only to the string form
 and does not affect the list form. This means <cite>{}</cite> and <cite>%</cite>
@@ -937,8 +947,8 @@ metadata.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">It is possible not only to retrieve task’s attributes but also to
+<p class="admonition-title">Note</p>
+<p>It is possible not only to retrieve task’s attributes but also to
 modify them while the action is running!</p>
 </div>
 </div>
@@ -971,17 +981,17 @@ You can customize the output passing a “title” function to the task:</p>
 console. If the task fails or there is an error the stdout and a traceback
 (if any) is displayed.</p>
 <p>There are 3 levels of verbosity:</p>
-<dl class="docutils">
-<dt>0:</dt>
-<dd>capture (do not print) stdout/stderr from task.</dd>
-<dt>1 (default):</dt>
-<dd>capture stdout only.</dd>
-<dt>2:</dt>
-<dd>do not capture anything (print everything immediately).</dd>
+<dl class="simple">
+<dt>0:</dt><dd><p>capture (do not print) stdout/stderr from task.</p>
+</dd>
+<dt>1 (default):</dt><dd><p>capture stdout only.</p>
+</dd>
+<dt>2:</dt><dd><p>do not capture anything (print everything immediately).</p>
+</dd>
 </dl>
 <p>You can control the verbosity by:</p>
 <ul class="simple">
-<li>task attribute verbosity</li>
+<li><p>task attribute verbosity</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_print</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hello&#39;</span><span class="p">],</span>
@@ -994,7 +1004,7 @@ console. If the task fails or there is an error the stdout and a traceback
 </pre></div>
 </div>
 <ul class="simple">
-<li>from command line, see <a class="reference internal" href="cmd_run.html#verbosity-option"><span class="std std-ref">verbosity option</span></a>.</li>
+<li><p>from command line, see <a class="reference internal" href="cmd_run.html#verbosity-option"><span class="std std-ref">verbosity option</span></a>.</p></li>
 </ul>
 </div>
 <div class="section" id="id7">
@@ -1024,68 +1034,42 @@ of header and source files in current directory using pathlib.</p>
 </div>
 
 
-           </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="dependencies.html" class="btn btn-neutral float-right" title="More on dependencies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="install.html" class="btn btn-neutral" title="Installing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="install.html"
+       title="previous chapter">← Installing</a>
+  </li>
+  <li class="next">
+    <a href="dependencies.html"
+       title="next chapter">More on dependencies →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2008-2018, Eduardo Schettino.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
     </div>
+    
+  
+    
+  
+    
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-29887834-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+    
   
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2008-2018, Eduardo Schettino.
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.31',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+  </body>
 </html>

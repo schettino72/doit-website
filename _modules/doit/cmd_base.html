@@ -1,223 +1,279 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>doit.cmd_base &mdash; doit 0.31 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../../_static/favico.ico"/>
-  
-  
-  
-
-  
-
-  
-  
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>doit.cmd_base</title>
     
-
-  
-
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-<style>
-/* FIX for https://github.com/rtfd/sphinx_rtd_theme/pull/657
-   pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
-   line-height: 1.4 !important;
-   }
-*/
-
-  /* FIX: handle code-block-caption
-  https://github.com/rtfd/sphinx_rtd_theme/issues/292
-  */
-pre {
-  font-size: 0.95em !important;
-  letter-spacing: 0.015em;
-  line-height: 120% !important; /* also fix 657 */
-  padding: 0.5em;
-  border: 1px solid #ccc;
-  background-color: #f8f8f8;
-}
-pre.literal-block, div[class^='highlight'], div[class^='highlight-python3'] {
-  margin-top: 0px !important;
-}
-div.code-block-caption {
-  background-color: #ddd;
-  color: #222;
-  border: 1px solid #ccc;
-}
-div.code-block-caption {
-  padding: 2px 5px;
-  font-size: small;
-}
-a.headerlink {
-  visibility: hidden;
-  color: #c60f0f!important;
-  font-size: 1em;
-  margin-left: 6px;
-  padding: 0 4px 0 4px;
-  text-decoration: none!important;
-}
-a.headerlink:after{
-  margin-left: 0px;
-  content:"";
-  font-family:FontAwesome;
-}
-.code-block-caption:hover .headerlink:after {
-  visibility:visible;
-}
-
-/* CHANGE: code displayed in red color is too aggresive */
-code {
-    background-color: #f2f2f2;
-    border-bottom: 1px solid #ddd;
-    color: #333;
-}
-code.literal {
-  color: inherit !important;
-}
-
-/* FIX: use full hight of nav-side (not version selector) */
-.wy-nav-side {
-  padding-bottom: 0px !important;
-}
-.wy-menu-vertical {
-  padding-bottom: 15px !important;
-}
-
-/* FIX: revert rtd messing up with every image in nav-search */
-.wy-side-nav-search img.logo, .wy-nav-top img.logo {
-    display: inherit !important;
-    margin: inherit !important;
-    height: inherit !important;
-    width: inherit !important;
-    background-color: inherit !important;
-    padding: 5px;
-    border-radius: inherit !important;
-}
-
-</style>
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-29887834-3', 'auto');
-  ga('send', 'pageview');
-</script>
-
-
-
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-  <div style="text-align:left">
-    <a href="../../index.html">
-      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
-    </a>
-    <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black"><i class="fa fa-twitter"></i></a></span>
-    <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
-  </div>
-  <div style="color:rgba(1,1,1,0.3); text-align:left; margin:10px;">
-    
+      <link rel="stylesheet" href="../../_static/pygments.css">
+      <link rel="stylesheet" href="../../_static/theme.css">
       
-        <span>0.31</span>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+
       
+      <script src="../../_static/theme-vendors.js"></script>
+      <script src="../../_static/theme.js" defer></script>
     
-  </div>
+      <link rel="shortcut icon" href="../../_static/favico.ico"/>
+  <link rel="index" title="Index" href="../../genindex.html" />
+  <link rel="search" title="Search" href="../../search.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../../contents.html" class="home-link">
+    
+      <img class="logo" src="../../_static/doit-logo-small.png" alt="doit logo"/>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
   
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+    <div class="nav-item">
+      <a href="../../contents.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../contents.html#guide"
+         class="nav-link ">
+         guide
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../contents.html#project"
+         class="nav-link ">
+         project
+      </a>
+    </div>
+  
+
+<div class="nav-item">
+  <a href="https://twitter.com/py_doit" class="nav-link external">Twitter <outboundlink/><i class="fa fa-twitter" style="color:black"></i></a>
 </div>
 
-        </div>
+<div class="nav-item">
+  <a href="https://github.com/pydoit/doit" class="nav-link external">Github <outboundlink/><i class="fa fa-github" style="color:black"></i></a>
+</div>
+    </navlinks>
+  </div>
+</navbar>
 
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
           
+          <navlinks>
             
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../usecases.html">Use Cases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_1.html">tutorial 1 - basics</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tasks.html">Tasks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html">More on dependencies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../task_creation.html">More on Task creation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../cmd_run.html">Command line interface - run</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../cmd_other.html">Other Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../task_args.html">Passing Task Arguments from the command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../uptodate.html">custom uptodate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools.html">Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../extending.html">Extending <cite>doit</cite></a></li>
-</ul>
-<p class="caption"><span class="caption-text">Project</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../support.html">Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Changes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stories.html">Success Stories</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../related.html">Related Projects</a></li>
-</ul>
-
-            
-          
-        </div>
-        
 
   
-    <div class="wy-side-nav-search" style="margin-bottom: 0px;">
-      <h3>Donate</h3>
+    <div class="nav-item">
+      <a href="../../contents.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../contents.html#guide"
+         class="nav-link ">
+         guide
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../contents.html#project"
+         class="nav-link ">
+         project
+      </a>
+    </div>
+  
 
-      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it...</p>
-      <p>If you consider <em>doit</em> to be a useful project, and would like to see it continue to be maintained and developed, please consider helping cover the development cost. Thriving project requires a maintainer to keep list of issues and list of pull requests short.</p>
+<div class="nav-item">
+  <a href="https://twitter.com/py_doit" class="nav-link external">Twitter <outboundlink/><i class="fa fa-twitter" style="color:black"></i></a>
+</div>
+
+<div class="nav-item">
+  <a href="https://github.com/pydoit/doit" class="nav-link external">Github <outboundlink/><i class="fa fa-github" style="color:black"></i></a>
+</div>
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../contents.html#getting-started">getting started</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../../usecases.html" class="reference internal ">Use Cases</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../tutorial_1.html" class="reference internal ">tutorial 1 - basics</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../contents.html#guide">guide</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../../install.html" class="reference internal ">Installing</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../tasks.html" class="reference internal ">Tasks</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../dependencies.html" class="reference internal ">More on dependencies</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../task_creation.html" class="reference internal ">More on Task creation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../cmd_run.html" class="reference internal ">Command line interface - run</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../cmd_other.html" class="reference internal ">Other Commands</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../configuration.html" class="reference internal ">Configuration</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../task_args.html" class="reference internal ">Passing Task Arguments from the command line</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../uptodate.html" class="reference internal ">custom uptodate</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../tools.html" class="reference internal ">Tools</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../extending.html" class="reference internal ">Extending doit</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../contents.html#project">project</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../../support.html" class="reference internal ">Support</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../changes.html" class="reference internal ">Changes</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../stories.html" class="reference internal ">Success Stories</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../faq.html" class="reference internal ">FAQ</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../../related.html" class="reference internal ">Related Projects</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+
+  
+    <div style="margin-bottom: 0px; padding:1rem; background-color: #2980B9; color:#fcfcfc;">
+      <h3>Donate</h3>
+      <p>If you find <em>doit</em> useful, please consider supporting the maintainer with a donation.</p>
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it... Your donation keeps the project healthy and maintained.</p>
     </div>
 
-    <div class="wy-side-nav-search" style="color:black;background-color:#fcfcfc;border-right:black 1px solid;">
-      <h6 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h6>
+    <div style="text-align:center; padding:1rem; color:black;background-color:#fcfcfc; margin-bottom:2rem;">
+      <h4 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h4>
       <div>
         <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
       </div>
 
       <hr style="margin-top:5px;">
-      <h6 style="margin-bottom:20px;">Paypal</h6>
+      <h4 style="margin-bottom:20px;">Paypal</h4>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
@@ -228,69 +284,26 @@ code.literal {
     <br>
   
 
-      </div>
-    </nav>
+        </sidebar>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-  <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-  <a href="../../index.html">
-      <img src="_static/doit-logo-small.png" alt="doit logo" class="logo">
-  </a>
-  <span style="font-size:x-large;padding:0px 20px;"><a href="https://twitter.com/py_doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-twitter"></i></a></span>
-  <span style="font-size:x-large;padding:0px";><a href="https://github.com/pydoit/doit" style="color:black; display:inline-block; vertical-align:middle;"><i class="fa fa-github"></i></a></span>
-
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../contents.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-        
-      <li>doit.cmd_base</li>
-    
-    
-   
-   <span class="float-right" role="navigation" aria-label="breadcrumb navigation">
-      
-      
-      
-  </span>
-
-  </ul>
-
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
   
-  <hr/>
+  <ul class="breadcrumbs">
+    <li><a href="../../contents.html">Docs</a> &raquo;</li>
+    
+      <li><a href="../index.html">Module code</a> &raquo;</li>
+    
+    <li>doit.cmd_base</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+</ul>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+<hr>
+          <div class="content" role="main">
             
   <h1>Source code for doit.cmd_base</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">inspect</span>
@@ -568,22 +581,22 @@ code.literal {
 <span class="p">}</span>
 
 
-<div class="viewcode-block" id="TaskLoader"><a class="viewcode-back" href="../../extending.html#doit.cmd_base.TaskLoader">[docs]</a><span class="k">class</span> <span class="nc">TaskLoader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;task-loader interface responsible of creating Task objects</span>
-
-<span class="sd">    Subclasses must implement the method `load_tasks`</span>
+<span class="k">class</span> <span class="nc">TaskLoader</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;DEPRECATED: task-loader interface responsible of creating Task objects</span>
 
 <span class="sd">    :cvar cmd_options:</span>
 <span class="sd">          (list of dict) see cmdparse.CmdOption for dict format</span>
+
+<span class="sd">    Subclasses must implement the method `load_tasks`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cmd_options</span> <span class="o">=</span> <span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># list of command names, used to detect clash of task names and commands</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cmd_names</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># reference to config object taken from Command</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># reference to config object taken from Command</span>
 
-<div class="viewcode-block" id="TaskLoader.load_tasks"><a class="viewcode-back" href="../../extending.html#doit.cmd_base.TaskLoader.load_tasks">[docs]</a>    <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">opt_values</span><span class="p">,</span> <span class="n">pos_args</span><span class="p">):</span> <span class="c1"># pragma: no cover</span>
+    <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">opt_values</span><span class="p">,</span> <span class="n">pos_args</span><span class="p">):</span> <span class="c1"># pragma: no cover</span>
         <span class="sd">&quot;&quot;&quot;load tasks and DOIT_CONFIG</span>
 
 <span class="sd">        :return: (tuple) list of Task, dict with DOIT_CONFIG options</span>
@@ -591,7 +604,7 @@ code.literal {
 <span class="sd">        :param opt_values: (dict) with values for cmd_options</span>
 <span class="sd">        :param pos_args: (list str) positional arguments from command line</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_load_from</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">cmd_list</span><span class="p">):</span>
@@ -602,33 +615,98 @@ code.literal {
             <span class="n">members</span> <span class="o">=</span> <span class="n">namespace</span>
         <span class="n">task_list</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span><span class="n">members</span><span class="p">,</span> <span class="n">cmd_list</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">execute_tasks</span><span class="p">)</span>
         <span class="n">doit_config</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_doit_config</span><span class="p">(</span><span class="n">members</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">task_list</span><span class="p">,</span> <span class="n">doit_config</span></div>
+        <span class="k">return</span> <span class="n">task_list</span><span class="p">,</span> <span class="n">doit_config</span>
 
 
-<span class="k">class</span> <span class="nc">ModuleTaskLoader</span><span class="p">(</span><span class="n">TaskLoader</span><span class="p">):</span>
+<div class="viewcode-block" id="TaskLoader2"><a class="viewcode-back" href="../../extending.html#doit.cmd_base.TaskLoader2">[docs]</a><span class="k">class</span> <span class="nc">TaskLoader2</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Interface of task loaders with new-style API.</span>
+
+<span class="sd">    :cvar cmd_options:</span>
+<span class="sd">          (list of dict) see cmdparse.CmdOption for dict format</span>
+
+<span class="sd">    This API separates the loading of the configuration and the loading</span>
+<span class="sd">    of the actual tasks, which enables additional elements to be available</span>
+<span class="sd">    during task creation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">API</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">cmd_options</span> <span class="o">=</span> <span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># list of command names, used to detect clash of task names and commands</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmd_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># reference to config object taken from Command</span>
+
+<div class="viewcode-block" id="TaskLoader2.setup"><a class="viewcode-back" href="../../extending.html#doit.cmd_base.TaskLoader2.setup">[docs]</a>    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt_values</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Delayed initialization.</span>
+
+<span class="sd">        To be implemented if the data is needed by derived classes.</span>
+
+<span class="sd">        :param opt_values: (dict) with values for cmd_options</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="TaskLoader2.load_doit_config"><a class="viewcode-back" href="../../extending.html#doit.cmd_base.TaskLoader2.load_doit_config">[docs]</a>    <span class="k">def</span> <span class="nf">load_doit_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load doit configuration.</span>
+
+<span class="sd">        The method must not be called before invocation of ``setup``.</span>
+
+<span class="sd">        :return: (dict) Dictionary of doit configuration values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: no cover</span></div>
+
+<div class="viewcode-block" id="TaskLoader2.load_tasks"><a class="viewcode-back" href="../../extending.html#doit.cmd_base.TaskLoader2.load_tasks">[docs]</a>    <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">pos_args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load tasks.</span>
+
+<span class="sd">        The method must not be called before invocation of ``load_doit_config``.</span>
+
+<span class="sd">        :param cmd: (doit.cmd_base.Command) current command being executed</span>
+<span class="sd">        :param pos_args: (list str) positional arguments from command line</span>
+<span class="sd">        :return: (List[Task])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: no cover</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">NamespaceTaskLoader</span><span class="p">(</span><span class="n">TaskLoader2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Implementation of a loader of tasks from an abstract namespace.</span>
+
+<span class="sd">    A namespace is simply a dictionary to objects like functions and</span>
+<span class="sd">    objects. See the derived classes for some concrete namespace types.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">namespace</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">load_doit_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_doit_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">namespace</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">pos_args</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">namespace</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd_names</span><span class="p">,</span>
+                                 <span class="n">cmd</span><span class="o">.</span><span class="n">execute_tasks</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ModuleTaskLoader</span><span class="p">(</span><span class="n">NamespaceTaskLoader</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;load tasks from a module/dictionary containing task generators</span>
 <span class="sd">    Usage: `ModuleTaskLoader(my_module)` or `ModuleTaskLoader(globals())`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">cmd_options</span> <span class="o">=</span> <span class="p">()</span>
-
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod_dict</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ModuleTaskLoader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mod_dict</span> <span class="o">=</span> <span class="n">mod_dict</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismodule</span><span class="p">(</span><span class="n">mod_dict</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">namespace</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">mod_dict</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">namespace</span> <span class="o">=</span> <span class="n">mod_dict</span>
 
-    <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mod_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd_names</span><span class="p">)</span>
 
-
-<span class="k">class</span> <span class="nc">DodoTaskLoader</span><span class="p">(</span><span class="n">TaskLoader</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">DodoTaskLoader</span><span class="p">(</span><span class="n">NamespaceTaskLoader</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;default task-loader create tasks from a dodo.py file&quot;&quot;&quot;</span>
     <span class="n">cmd_options</span> <span class="o">=</span> <span class="p">(</span><span class="n">opt_dodo</span><span class="p">,</span> <span class="n">opt_cwd</span><span class="p">,</span> <span class="n">opt_seek_file</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="n">dodo_module</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span>
-            <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dodoFile&#39;</span><span class="p">],</span>
-            <span class="n">params</span><span class="p">[</span><span class="s1">&#39;cwdPath&#39;</span><span class="p">],</span>
-            <span class="n">params</span><span class="p">[</span><span class="s1">&#39;seek_file&#39;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_from</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">dodo_module</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd_names</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt_values</span><span class="p">):</span>
+        <span class="c1"># lazily load namespace from dodo file per config parameters:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">namespace</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">loader</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span>
+            <span class="n">opt_values</span><span class="p">[</span><span class="s1">&#39;dodoFile&#39;</span><span class="p">],</span>
+            <span class="n">opt_values</span><span class="p">[</span><span class="s1">&#39;cwdPath&#39;</span><span class="p">],</span>
+            <span class="n">opt_values</span><span class="p">[</span><span class="s1">&#39;seek_file&#39;</span><span class="p">],</span>
+        <span class="p">)))</span>
 
 
 <span class="k">def</span> <span class="nf">get_loader</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">task_loader</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmds</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -741,8 +819,16 @@ code.literal {
 <span class="sd">        :param params: instance of cmdparse.DefaultUpdate</span>
 <span class="sd">        :param args: list of string arguments (containing task names)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">task_list</span><span class="p">,</span> <span class="n">dodo_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+
+        <span class="c1"># distinguish legacy and new-style task loader API when loading tasks:</span>
+        <span class="n">legacy_loader</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loader</span><span class="p">,</span> <span class="s1">&#39;API&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">legacy_loader</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">task_list</span><span class="p">,</span> <span class="n">dodo_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span>
+                <span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+            <span class="n">dodo_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">load_doit_config</span><span class="p">()</span>
+
         <span class="c1"># merge config values from dodo.py into params</span>
         <span class="n">params</span><span class="o">.</span><span class="n">update_defaults</span><span class="p">(</span><span class="n">dodo_config</span><span class="p">)</span>
 
@@ -764,6 +850,10 @@ code.literal {
             <span class="c1"># dep_manager might have been already set (used on unit-test)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dep_manager</span> <span class="o">=</span> <span class="n">Dependency</span><span class="p">(</span>
                 <span class="n">db_class</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dep_file&#39;</span><span class="p">],</span> <span class="n">checker_cls</span><span class="p">)</span>
+
+        <span class="c1"># load tasks from new-style loader, now that dependency manager is available:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">legacy_loader</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">task_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 
         <span class="c1"># hack to pass parameter into _execute() calls that are not part</span>
         <span class="c1"># of command line options</span>
@@ -827,59 +917,34 @@ code.literal {
             <span class="k">yield</span> <span class="n">dep</span>
 </pre></div>
 
-           </div>
-           
           </div>
-          <footer>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2008-2018, Eduardo Schettino.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+  
+    
+  
+    
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-29887834-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+    
   
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2008-2018, Eduardo Schettino.
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'0.31',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+  </body>
 </html>
