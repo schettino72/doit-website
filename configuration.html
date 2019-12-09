@@ -209,6 +209,12 @@
           </li>
 
         
+          <li class="toctree-l1 "><a href="globals.html" class="reference internal ">Globals</a>
+
+            
+          </li>
+
+        
           <li class="toctree-l1 "><a href="uptodate.html" class="reference internal ">custom uptodate</a>
 
             
@@ -376,6 +382,17 @@ the command name:</p>
 <p>Check the <a class="reference internal" href="extending.html#plugins"><span class="std std-ref">plugins</span></a> section for an introduction
 on available plugin categories.</p>
 </div>
+<div class="section" id="per-task-sections">
+<h3>per-task sections<a class="headerlink" href="#per-task-sections" title="Permalink to this headline">¶</a></h3>
+<p>To configure options for a specific task, use a section with
+the task name prefixed with “task:”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">task</span><span class="p">:</span><span class="n">make_cookies</span><span class="p">]</span>
+<span class="n">cookie_type</span> <span class="o">=</span> <span class="n">chocolate</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="mi">375</span><span class="n">F</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="mi">12</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="configuration-at-dodo-py">
 <h2>configuration at <em>dodo.py</em><a class="headerlink" href="#configuration-at-dodo-py" title="Permalink to this headline">¶</a></h2>
@@ -420,7 +437,7 @@ not be used.</p>
        title="next chapter">Passing Task Arguments from the command line →</a>
   </li>
 </ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2008-2018, Eduardo Schettino.
+      &#169; Copyright 2008-2019, Eduardo Schettino.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>

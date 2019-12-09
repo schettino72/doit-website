@@ -220,6 +220,8 @@
                 
                   <li class="toctree-l2"><a href="#get-initial-workdir" class="reference internal">get_initial_workdir()</a></li>
                 
+                  <li class="toctree-l2"><a href="#codec-cls" class="reference internal">codec_cls</a></li>
+                
                   <li class="toctree-l2"><a href="#minversion" class="reference internal">minversion</a></li>
                 
                   <li class="toctree-l2"><a href="#automatic-regex-for-delayed-task-loaders" class="reference internal">automatic regex for delayed task loaders</a></li>
@@ -242,6 +244,12 @@
 
         
           <li class="toctree-l1 "><a href="task_args.html" class="reference internal ">Passing Task Arguments from the command line</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="globals.html" class="reference internal ">Globals</a>
 
             
           </li>
@@ -448,7 +456,7 @@ directly in IPython’s global namespace (<a class="reference internal" href="to
 </div></blockquote>
 </div>
 <div class="section" id="db-backend">
-<h2>DB backend<a class="headerlink" href="#db-backend" title="Permalink to this headline">¶</a></h2>
+<span id="db-backends"></span><h2>DB backend<a class="headerlink" href="#db-backend" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> saves the results of your tasks runs in a “DB-file”, it supports
 different backends:</p>
 <blockquote>
@@ -703,6 +711,14 @@ from where <cite>doit</cite> was invoked from.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="codec-cls">
+<h2>codec_cls<a class="headerlink" href="#codec-cls" title="Permalink to this headline">¶</a></h2>
+<p><cite>doit</cite> uses the <code class="docutils literal notranslate"><span class="pre">json</span></code> package to serialize and deserialize values returned by
+python-actions. If required an alternate encoder/decoder pair may be specified
+so that return values which are not JSON serializable, such as Python class
+instances, may be provided as return values from python-actions.</p>
+<p>Check <code class="docutils literal notranslate"><span class="pre">dependency.py</span></code> ‘s <code class="docutils literal notranslate"><span class="pre">JSONCodec</span></code> interface.</p>
+</div>
 <div class="section" id="minversion">
 <h2>minversion<a class="headerlink" href="#minversion" title="Permalink to this headline">¶</a></h2>
 <p><cite>minversion</cite> can be used to specify the minimum/oldest <cite>doit</cite> version
@@ -750,7 +766,7 @@ matches any target.</p>
        title="next chapter">Other Commands →</a>
   </li>
 </ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2008-2018, Eduardo Schettino.
+      &#169; Copyright 2008-2019, Eduardo Schettino.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>

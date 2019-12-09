@@ -197,6 +197,12 @@
           </li>
 
         
+          <li class="toctree-l1 "><a href="../../globals.html" class="reference internal ">Globals</a>
+
+            
+          </li>
+
+        
           <li class="toctree-l1 "><a href="../../uptodate.html" class="reference internal ">custom uptodate</a>
 
             
@@ -312,10 +318,11 @@
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
 <span class="kn">import</span> <span class="nn">textwrap</span>
 
+<span class="kn">from</span> <span class="nn">.globals</span> <span class="k">import</span> <span class="n">Globals</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">version</span>
 <span class="kn">from</span> <span class="nn">.cmdparse</span> <span class="k">import</span> <span class="n">CmdOption</span><span class="p">,</span> <span class="n">CmdParse</span>
 <span class="kn">from</span> <span class="nn">.exceptions</span> <span class="k">import</span> <span class="n">InvalidCommand</span><span class="p">,</span> <span class="n">InvalidDodoFile</span>
-<span class="kn">from</span> <span class="nn">.dependency</span> <span class="k">import</span> <span class="n">CHECKERS</span><span class="p">,</span> <span class="n">DbmDB</span><span class="p">,</span> <span class="n">JsonDB</span><span class="p">,</span> <span class="n">SqliteDB</span><span class="p">,</span> <span class="n">Dependency</span>
+<span class="kn">from</span> <span class="nn">.dependency</span> <span class="k">import</span> <span class="n">CHECKERS</span><span class="p">,</span> <span class="n">DbmDB</span><span class="p">,</span> <span class="n">JsonDB</span><span class="p">,</span> <span class="n">SqliteDB</span><span class="p">,</span> <span class="n">Dependency</span><span class="p">,</span> <span class="n">JSONCodec</span>
 <span class="kn">from</span> <span class="nn">.action</span> <span class="k">import</span> <span class="n">CmdAction</span>
 <span class="kn">from</span> <span class="nn">.plugin</span> <span class="k">import</span> <span class="n">PluginDict</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">loader</span>
@@ -525,6 +532,17 @@
     <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Select dependency file backend. [default: </span><span class="si">%(default)s</span><span class="s2">]&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 
+<span class="c1"># dependency file codecs</span>
+<span class="n">opt_codec</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;section&#39;</span><span class="p">:</span> <span class="s1">&#39;doit core&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;codec_cls&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;short&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;long&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+    <span class="s1">&#39;help&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Select codec for task&#39;s data in database. [default: </span><span class="si">%(default)s</span><span class="s2">]&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
 <span class="n">opt_check_file_uptodate</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;section&#39;</span><span class="p">:</span> <span class="s1">&#39;doit core&#39;</span><span class="p">,</span>
     <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;check_file_uptodate&#39;</span><span class="p">,</span>
@@ -680,9 +698,17 @@
         <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_doit_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">namespace</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">pos_args</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">namespace</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd_names</span><span class="p">,</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">namespace</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd_names</span><span class="p">,</span>
                                  <span class="n">cmd</span><span class="o">.</span><span class="n">execute_tasks</span><span class="p">)</span>
 
+        <span class="c1"># Add task options from config, if present</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+                <span class="n">task_stanza</span> <span class="o">=</span> <span class="s1">&#39;task:&#39;</span> <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span>
+                <span class="k">if</span> <span class="n">task_stanza</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">:</span>
+                    <span class="n">task</span><span class="o">.</span><span class="n">cfg_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="n">task_stanza</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">tasks</span>
 
 <span class="k">class</span> <span class="nc">ModuleTaskLoader</span><span class="p">(</span><span class="n">NamespaceTaskLoader</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;load tasks from a module/dictionary containing task generators</span>
@@ -746,7 +772,8 @@
 <span class="sd">    cmd_options =&gt; list of option dictionary (see CmdOption)</span>
 <span class="sd">    _execute =&gt; method, argument names must be option names</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">base_options</span> <span class="o">=</span> <span class="p">(</span><span class="n">opt_depfile</span><span class="p">,</span> <span class="n">opt_backend</span><span class="p">,</span> <span class="n">opt_check_file_uptodate</span><span class="p">)</span>
+    <span class="n">base_options</span> <span class="o">=</span> <span class="p">(</span><span class="n">opt_depfile</span><span class="p">,</span> <span class="n">opt_backend</span><span class="p">,</span> <span class="n">opt_codec</span><span class="p">,</span>
+                    <span class="n">opt_check_file_uptodate</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_loader</span><span class="p">,</span> <span class="n">cmds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">DoitCmdBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -797,6 +824,17 @@
             <span class="c1"># user defined class</span>
             <span class="k">return</span> <span class="n">check_file_uptodate</span>
 
+    <span class="k">def</span> <span class="nf">get_codec_cls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">codec</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;return a class used to encode or decode python-action results&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">codec</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">codec</span> <span class="o">==</span> <span class="s1">&#39;json&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">JSONCodec</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Implement codec plugin&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># user specified class</span>
+            <span class="k">return</span> <span class="n">codec</span>
+
 
     <span class="k">def</span> <span class="nf">get_backends</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;return PluginDict of DB backends, including core and plugins&quot;&quot;&quot;</span>
@@ -812,6 +850,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">cmdparser</span><span class="p">[</span><span class="s1">&#39;backend&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">choices</span> <span class="o">=</span> <span class="n">choices</span>
 
         <span class="k">return</span> <span class="n">backend_map</span>
+
 
     <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;load dodo.py, set attributes and call self._execute</span>
@@ -839,19 +878,25 @@
 
         <span class="n">CmdAction</span><span class="o">.</span><span class="n">STRING_FORMAT</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;action_string_formatting&#39;</span><span class="p">,</span> <span class="s1">&#39;old&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">CmdAction</span><span class="o">.</span><span class="n">STRING_FORMAT</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;old&#39;</span><span class="p">,</span> <span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="s1">&#39;new&#39;</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="n">InvalidDodoFile</span><span class="p">(</span><span class="s1">&#39;`action_string_formatting` must be one of `old`, `both`, `new`&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">InvalidDodoFile</span><span class="p">(</span>
+                <span class="s1">&#39;`action_string_formatting` must be one of `old`, `both`, `new`&#39;</span><span class="p">)</span>
 
         <span class="c1"># create dep manager</span>
         <span class="n">db_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backends</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;backend&#39;</span><span class="p">])</span>
         <span class="n">checker_cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_checker_cls</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;check_file_uptodate&#39;</span><span class="p">])</span>
+        <span class="n">codec_cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_codec_cls</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;codec_cls&#39;</span><span class="p">])</span>
         <span class="c1"># note the command have the responsibility to call dep_manager.close()</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dep_manager</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># dep_manager might have been already set (used on unit-test)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dep_manager</span> <span class="o">=</span> <span class="n">Dependency</span><span class="p">(</span>
-                <span class="n">db_class</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dep_file&#39;</span><span class="p">],</span> <span class="n">checker_cls</span><span class="p">)</span>
+                <span class="n">db_class</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;dep_file&#39;</span><span class="p">],</span> <span class="n">checker_cls</span><span class="o">=</span><span class="n">checker_cls</span><span class="p">,</span>
+                <span class="n">codec_cls</span><span class="o">=</span><span class="n">codec_cls</span><span class="p">)</span>
 
-        <span class="c1"># load tasks from new-style loader, now that dependency manager is available:</span>
+        <span class="c1"># register dependency manager in global registry:</span>
+        <span class="n">Globals</span><span class="o">.</span><span class="n">dep_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dep_manager</span>
+
+        <span class="c1"># load tasks from new-style loader</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">legacy_loader</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">task_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">(</span><span class="n">cmd</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 
@@ -921,7 +966,7 @@
           <div class="page-nav">
             <div class="inner"><ul class="page-nav">
 </ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2008-2018, Eduardo Schettino.
+      &#169; Copyright 2008-2019, Eduardo Schettino.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>

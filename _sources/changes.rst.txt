@@ -4,12 +4,13 @@ Changes
 =======
 
 
-0.32.0 (*unreleased*)
+0.32.0 (*2019-12-10*)
 =====================
 
  - python 3.7 support
  - BACKWARD INCOMPATIBLE: Changed signature of `DoitCommand`
  - BACKWARD INCOMPATIBLE: Fix #254: Python actions keywords with task metadata `dependencies`, `targets` and `changed` are a copied list
+ - BACKWARD INCOMPATIBLE: Custom backend initializer added parameter ``codec_cls``
  - Fix #204: Accept loader command options before command name
  - Fix #240: Command run: with `--pdb` drop into *pdb* on unhandled exception on `PythonAction`
  - Fix #203: Allow configuration of `dodo.py` file name with env var `DOIT_FILE`
@@ -22,7 +23,10 @@ Changes
  - Fix `result_dep`, use result **after** its execution
  - Fix #286: Support `functools.partial` on tasks' dict metadata `task.title`
  - Fix #285: `clean` command, remove targets in reverse lexical order
- - Deprecated TaskLoader in favor of TaskLoader2, which separates loading doit's configuration from loading tasks.
+ - Deprecated `TaskLoader` in favor of `TaskLoader2`, which separates loading doit's configuration from loading tasks.
+ - Fix #288: Added `doit.globals.Globals.dep_manager` to access dependency manager during all task processing phases.
+ - Fix #98: Support custom backend codecs so that python-action return values which are not JSON serializable may be used.
+ - Fix #283: set task options from doit.cfg
 
 
 0.31.1 (*2018-03-18*)

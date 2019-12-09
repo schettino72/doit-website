@@ -168,6 +168,10 @@
                 
                   <li class="toctree-l2"><a href="#task-name" class="reference internal">task name</a></li>
                 
+                  <li class="toctree-l2"><a href="#listing-tasks" class="reference internal">listing tasks</a></li>
+                
+                  <li class="toctree-l2"><a href="#doc" class="reference internal">doc</a></li>
+                
                   <li class="toctree-l2"><a href="#sub-tasks" class="reference internal">sub-tasks</a></li>
                 
                   <li class="toctree-l2"><a href="#dependencies-targets" class="reference internal">Dependencies & Targets</a></li>
@@ -226,6 +230,12 @@
 
         
           <li class="toctree-l1 "><a href="task_args.html" class="reference internal ">Passing Task Arguments from the command line</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="globals.html" class="reference internal ">Globals</a>
 
             
           </li>
@@ -543,11 +553,13 @@ that generates the task.
 For example a <cite>def task_hello</cite> would create a task named <code class="docutils literal notranslate"><span class="pre">hello</span></code>.</p>
 <p>It is possible to explicitly set a task name with the parameter <code class="docutils literal notranslate"><span class="pre">basename</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;say hello&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hello&#39;</span><span class="p">]</span>
         <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">task_xxx</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;say hello again&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;basename&#39;</span><span class="p">:</span> <span class="s1">&#39;hello2&#39;</span><span class="p">,</span>
         <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hello2&#39;</span><span class="p">]</span>
@@ -578,6 +590,32 @@ This is useful to write some generic/reusable task-creators.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
 <span class="go">.  t2</span>
 <span class="go">.  t1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="listing-tasks">
+<h2>listing tasks<a class="headerlink" href="#listing-tasks" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">doit</span></code> has built-in sub-command that can be used to list/print all tasks.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
+<span class="go">hello    say hello</span>
+<span class="go">hello2   say hello again</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="doc">
+<h2>doc<a class="headerlink" href="#doc" title="Permalink to this headline">¶</a></h2>
+<p>Every task has an associated documentation.
+By default this documentation is taken from the task-creator function’s docstring.
+It can also be set by the <code class="docutils literal notranslate"><span class="pre">doc</span></code> attribute.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hello&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;doc&#39;</span><span class="p">:</span> <span class="s1">&#39;say hello&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
+<span class="go">.  hello</span>
 </pre></div>
 </div>
 </div>
@@ -960,7 +998,7 @@ modify them while the action is running!</p>
 <div class="section" id="title">
 <h2>title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h2>
 <p>By default when you run <cite>doit</cite> only the task name is printed out on the output.
-You can customize the output passing a “title” function to the task:</p>
+You can customize the output passing a <code class="docutils literal notranslate"><span class="pre">title</span></code> function to the task:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="k">def</span> <span class="nf">show_cmd</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
     <span class="k">return</span> <span class="s2">&quot;executing... </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span>
@@ -1046,7 +1084,7 @@ of header and source files in current directory using pathlib.</p>
        title="next chapter">More on dependencies →</a>
   </li>
 </ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2008-2018, Eduardo Schettino.
+      &#169; Copyright 2008-2019, Eduardo Schettino.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>
