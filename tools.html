@@ -7,14 +7,15 @@
     
       <link rel="stylesheet" href="_static/pygments.css">
       <link rel="stylesheet" href="_static/theme.css">
+      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
       
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
 
       <!-- sphinx script_files -->
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
 
       
       <script src="_static/theme-vendors.js"></script>
@@ -346,7 +347,7 @@ section.</p>
 <div class="section" id="create-folder-action">
 <h2>create_folder (action)<a class="headerlink" href="#create-folder-action" title="Permalink to this headline">¶</a></h2>
 <p>Creates a folder if it does not exist yet. Uses <cite>os.makedirs() &lt;http://docs.python.org/2/library/os#os.makedirs&gt;_</cite>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">create_folder</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">create_folder</span>
 
 <span class="n">BUILD_PATH</span> <span class="o">=</span> <span class="s2">&quot;_build&quot;</span>
 
@@ -361,7 +362,7 @@ section.</p>
 <div class="section" id="title-with-actions-title">
 <h2>title_with_actions (title)<a class="headerlink" href="#title-with-actions-title" title="Permalink to this headline">¶</a></h2>
 <p>Return task name task actions from a task. This function can be used as ‘title’ attribute of a task dictionary to provide more detailed information of the action being executed.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">title_with_actions</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">title_with_actions</span>
 
 <span class="k">def</span> <span class="nf">task_with_details</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo abc 123&#39;</span><span class="p">],</span>
@@ -371,9 +372,9 @@ section.</p>
 </div>
 <div class="section" id="longrunning-action">
 <span id="tools-longrunning"></span><h2>LongRunning (action)<a class="headerlink" href="#longrunning-action" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="doit.tools.LongRunning">
-<em class="property">class </em><code class="descclassname">doit.tools.</code><code class="descname">LongRunning</code><span class="sig-paren">(</span><em>action</em>, <em>task=None</em>, <em>save_out=None</em>, <em>shell=True</em>, <em>encoding='utf-8'</em>, <em>decode_error='replace'</em>, <em>buffering=0</em>, <em>**pkwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#LongRunning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.LongRunning" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">doit.tools.</code><code class="sig-name descname">LongRunning</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">task</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">save_out</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shell</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">encoding</span><span class="o">=</span><span class="default_value">'utf-8'</span></em>, <em class="sig-param"><span class="n">decode_error</span><span class="o">=</span><span class="default_value">'replace'</span></em>, <em class="sig-param"><span class="n">buffering</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">pkwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#LongRunning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.LongRunning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to handle a Long running shell process,
 usually a server or service.
 Properties:</p>
@@ -387,7 +388,7 @@ Properties:</p>
 </dd></dl>
 
 <p>This is useful for executing long running process like a web-server.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">LongRunning</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">LongRunning</span>
 
 <span class="k">def</span> <span class="nf">task_top</span><span class="p">():</span>
     <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;top&quot;</span>
@@ -397,9 +398,9 @@ Properties:</p>
 </div>
 <div class="section" id="interactive-action">
 <h2>Interactive (action)<a class="headerlink" href="#interactive-action" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="doit.tools.Interactive">
-<em class="property">class </em><code class="descclassname">doit.tools.</code><code class="descname">Interactive</code><span class="sig-paren">(</span><em>action</em>, <em>task=None</em>, <em>save_out=None</em>, <em>shell=True</em>, <em>encoding='utf-8'</em>, <em>decode_error='replace'</em>, <em>buffering=0</em>, <em>**pkwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#Interactive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.Interactive" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">doit.tools.</code><code class="sig-name descname">Interactive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">action</span></em>, <em class="sig-param"><span class="n">task</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">save_out</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shell</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">encoding</span><span class="o">=</span><span class="default_value">'utf-8'</span></em>, <em class="sig-param"><span class="n">decode_error</span><span class="o">=</span><span class="default_value">'replace'</span></em>, <em class="sig-param"><span class="n">buffering</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">pkwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#Interactive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.Interactive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to handle Interactive shell process:</p>
 <ul class="simple">
 <li><p>the output is never captured</p></li>
@@ -409,9 +410,9 @@ Properties:</p>
 </div>
 <div class="section" id="pythoninteractiveaction-action">
 <h2>PythonInteractiveAction (action)<a class="headerlink" href="#pythoninteractiveaction-action" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="doit.tools.PythonInteractiveAction">
-<em class="property">class </em><code class="descclassname">doit.tools.</code><code class="descname">PythonInteractiveAction</code><span class="sig-paren">(</span><em>py_callable</em>, <em>args=None</em>, <em>kwargs=None</em>, <em>task=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#PythonInteractiveAction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.PythonInteractiveAction" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">doit.tools.</code><code class="sig-name descname">PythonInteractiveAction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">py_callable</span></em>, <em class="sig-param"><span class="n">args</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">kwargs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">task</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/tools.html#PythonInteractiveAction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.tools.PythonInteractiveAction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to handle Interactive python:</p>
 <ul class="simple">
 <li><p>the output is never captured</p></li>
@@ -429,7 +430,7 @@ instead of <code class="docutils literal notranslate"><span class="pre">pdb.set_
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="k">def</span> <span class="nf">need_to_debug</span><span class="p">():</span>
     <span class="c1"># some code here</span>
-    <span class="kn">from</span> <span class="nn">doit</span> <span class="k">import</span> <span class="n">tools</span>
+    <span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">tools</span>
     <span class="n">tools</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
     <span class="c1"># more code</span>
 
@@ -454,7 +455,7 @@ to discover and execute them.</p>
 create a new script inside your startup-profile
 (i.e. <code class="file docutils literal notranslate"><span class="pre">~/.ipython/profile_default/startup/doit_magic.ipy</span></code>)
 with the following content:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit</span> <span class="k">import</span> <span class="n">load_ipython_extension</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">load_ipython_extension</span>
 <span class="n">load_ipython_extension</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -493,9 +494,9 @@ file.</p>
        title="next chapter">Extending <cite>doit</cite> →</a>
   </li>
 </ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2008-2019, Eduardo Schettino.
+      &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>
             </div>
           </div>

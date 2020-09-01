@@ -7,14 +7,15 @@
     
       <link rel="stylesheet" href="_static/pygments.css">
       <link rel="stylesheet" href="_static/theme.css">
+      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
       
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
 
       <!-- sphinx script_files -->
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
 
       
       <script src="_static/theme-vendors.js"></script>
@@ -330,9 +331,9 @@
 <p>During the life-cycle of a command invocation,
 some properties of <cite>doit</cite> are stored in global singletons,
 provided by the <code class="docutils literal notranslate"><span class="pre">doit.Globals</span></code> class.</p>
-<dl class="class">
+<dl class="py class">
 <dt id="doit.globals.Globals">
-<em class="property">class </em><code class="descclassname">doit.globals.</code><code class="descname">Globals</code><a class="reference internal" href="_modules/doit/globals.html#Globals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.globals.Globals" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">doit.globals.</code><code class="sig-name descname">Globals</code><a class="reference internal" href="_modules/doit/globals.html#Globals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.globals.Globals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Accessors to doit singletons.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
@@ -357,9 +358,9 @@ in particular during:</p>
 <li><p>Task cleanup, i.e. from the the code executed by one of the tasks’s clean activities.</p></li>
 </ul>
 <p>The <cite>Dependency</cite> class has members to access persistent doit data via its API:</p>
-<dl class="class">
+<dl class="py class">
 <dt id="doit.dependency.Dependency">
-<em class="property">class </em><code class="descclassname">doit.dependency.</code><code class="descname">Dependency</code><span class="sig-paren">(</span><em>db_class</em>, <em>backend_name</em>, <em>checker_cls=&lt;class 'doit.dependency.MD5Checker'&gt;</em>, <em>codec_cls=&lt;class 'doit.dependency.JSONCodec'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.dependency.Dependency" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">doit.dependency.</code><code class="sig-name descname">Dependency</code><span class="sig-paren">(</span><em class="sig-param">db_class</em>, <em class="sig-param">backend_name</em>, <em class="sig-param">checker_cls=&lt;class 'doit.dependency.MD5Checker'&gt;</em>, <em class="sig-param">codec_cls=&lt;class 'doit.dependency.JSONCodec'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.dependency.Dependency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Manage tasks dependencies.</p>
 <p>Each dependency is saved in “db”. There are several “db” backends.
 It uses a Key-Value format where the key is task-name
@@ -386,9 +387,9 @@ Apart from dependencies other values are also saved on the task dictionary:</p>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="doit.dependency.Dependency.get_result">
-<code class="descname">get_result</code><span class="sig-paren">(</span><em>task_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency.get_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.dependency.Dependency.get_result" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_result</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency.get_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.dependency.Dependency.get_result" title="Permalink to this definition">¶</a></dt>
 <dd><p>get the result saved from a task</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return (dict or md5sum)</dt>
@@ -396,9 +397,9 @@ Apart from dependencies other values are also saved on the task dictionary:</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="doit.dependency.Dependency.get_value">
-<code class="descname">get_value</code><span class="sig-paren">(</span><em>task_id</em>, <em>key_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency.get_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.dependency.Dependency.get_value" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">key_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency.get_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.dependency.Dependency.get_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>get saved value from task</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -410,9 +411,9 @@ Apart from dependencies other values are also saved on the task dictionary:</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="doit.dependency.Dependency.get_values">
-<code class="descname">get_values</code><span class="sig-paren">(</span><em>task_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency.get_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.dependency.Dependency.get_values" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_values</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency.get_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doit.dependency.Dependency.get_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>get all saved values from a task</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return dict</dt>
@@ -427,13 +428,13 @@ which may be accessed via the <cite>backend</cite> attribute.
 An experienced user may also <em>modify</em> persistently stored <em>doit</em> data through that attribute.
 As an example of a backend API,
 look at the common methods exposed by the default <cite>DbmDB</cite> backend implementation:</p>
-<dl class="class">
+<dl class="py class">
 <dt id="doit.dependency.DbmDB">
-<em class="property">class </em><code class="descclassname">doit.dependency.</code><code class="descname">DbmDB</code><a class="headerlink" href="#doit.dependency.DbmDB" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">doit.dependency.</code><code class="sig-name descname">DbmDB</code><a class="headerlink" href="#doit.dependency.DbmDB" title="Permalink to this definition">¶</a></dt>
 <dd><p>A simple Key-Value database interface</p>
-<dl class="method">
+<dl class="py method">
 <dt id="doit.dependency.doit.dependency.DbmDB.DbmDB.get">
-<code class="descclassname">DbmDB.</code><code class="descname">get</code><span class="sig-paren">(</span><em>task_id</em>, <em>dependency</em><span class="sig-paren">)</span><a class="headerlink" href="#doit.dependency.doit.dependency.DbmDB.DbmDB.get" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">DbmDB.</code><code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">dependency</span></em><span class="sig-paren">)</span><a class="headerlink" href="#doit.dependency.doit.dependency.DbmDB.DbmDB.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get value stored in the DB.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -442,15 +443,15 @@ look at the common methods exposed by the default <cite>DbmDB</cite> backend imp
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="doit.dependency.doit.dependency.DbmDB.DbmDB.set">
-<code class="descclassname">DbmDB.</code><code class="descname">set</code><span class="sig-paren">(</span><em>task_id</em>, <em>dependency</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#doit.dependency.doit.dependency.DbmDB.DbmDB.set" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">DbmDB.</code><code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">dependency</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#doit.dependency.doit.dependency.DbmDB.DbmDB.set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Store value in the DB.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="doit.dependency.doit.dependency.DbmDB.DbmDB.remove">
-<code class="descclassname">DbmDB.</code><code class="descname">remove</code><span class="sig-paren">(</span><em>task_id</em><span class="sig-paren">)</span><a class="headerlink" href="#doit.dependency.doit.dependency.DbmDB.DbmDB.remove" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">DbmDB.</code><code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#doit.dependency.doit.dependency.DbmDB.DbmDB.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>remove saved dependencies from DB for taskId</p>
 </dd></dl>
 
@@ -518,9 +519,9 @@ and perform the cleanup action:</p>
        title="next chapter">custom uptodate →</a>
   </li>
 </ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2008-2019, Eduardo Schettino.
+      &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>
             </div>
           </div>

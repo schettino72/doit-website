@@ -7,14 +7,15 @@
     
       <link rel="stylesheet" href="_static/pygments.css">
       <link rel="stylesheet" href="_static/theme.css">
+      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
       
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
 
       <!-- sphinx script_files -->
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
 
       
       <script src="_static/theme-vendors.js"></script>
@@ -346,7 +347,7 @@ input files, the input could come from a database or an external process.
 create an intermediate file with the results of the process.</p>
 <p>i.e. Suppose you want to send an email every time you run <em>doit</em> on a mercurial
 repository that contains a new revision number.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">result_dep</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">result_dep</span>
 
 <span class="k">def</span> <span class="nf">task_version</span><span class="p">():</span>
 	<span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hg tip --template &#39;</span><span class="si">{rev}</span><span class="s2">:</span><span class="si">{node}</span><span class="s2">&#39;&quot;</span><span class="p">]}</span>
@@ -375,7 +376,7 @@ all the time. With “run_once” the task will not be executed again after the 
 successful run. This is mostly used together with targets.</p>
 <p>Suppose you need to download something from internet.
 There is no dependency, but you do not want to download it many times.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">run_once</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">run_once</span>
 
 <span class="k">def</span> <span class="nf">task_get_pylogo</span><span class="p">():</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://python.org/images/python-logo.gif&quot;</span>
@@ -402,7 +403,7 @@ There is no dependency, but you do not want to download it many times.</p>
 <p>i.e. You want to re-execute a task only if the time elapsed since the last
 time it was executed is bigger than 5 minutes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
-<span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">timeout</span>
+<span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">timeout</span>
 
 <span class="k">def</span> <span class="nf">task_expire</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
@@ -423,7 +424,7 @@ changed. Config values can be a string or dict.</p>
 and only a digest/checksum of the dictionaries keys and values are saved.</p>
 <p>If converting the values of the dict requires a special encoder this can be
 passed with the argument <code class="docutils literal notranslate"><span class="pre">encoder=...</span></code>. This will be passed on to <cite>json.dumps()</cite>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">config_changed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">config_changed</span>
 
 <span class="n">option</span> <span class="o">=</span> <span class="s2">&quot;AB&quot;</span>
 <span class="k">def</span> <span class="nf">task_with_params</span><span class="p">():</span>
@@ -454,7 +455,7 @@ is the time obtained in current run.</p>
 <p>If the specified file does not exist, an exception will be raised.
 If a file is a target of another task you should probably add
 <code class="docutils literal notranslate"><span class="pre">task_dep</span></code> on that task to ensure the file is created before it is checked.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="k">import</span> <span class="n">check_timestamp_unchanged</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.tools</span> <span class="kn">import</span> <span class="n">check_timestamp_unchanged</span>
 
 <span class="k">def</span> <span class="nf">task_create_foo</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
@@ -488,9 +489,9 @@ If a file is a target of another task you should probably add
        title="next chapter">Tools →</a>
   </li>
 </ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2008-2019, Eduardo Schettino.
+      &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>
             </div>
           </div>

@@ -7,14 +7,15 @@
     
       <link rel="stylesheet" href="../../_static/pygments.css">
       <link rel="stylesheet" href="../../_static/theme.css">
+      <link rel="stylesheet" href="../../_static/sphinx_press_theme.css">
       
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
 
       <!-- sphinx script_files -->
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
 
       
       <script src="../../_static/theme-vendors.js"></script>
@@ -319,8 +320,8 @@
 <span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">inspect</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
-<span class="kn">from</span> <span class="nn">dbm</span> <span class="k">import</span> <span class="n">dumb</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">dbm</span> <span class="kn">import</span> <span class="n">dumb</span>
 <span class="kn">import</span> <span class="nn">dbm</span> <span class="k">as</span> <span class="nn">ddbm</span>
 
 <span class="c1"># uncomment imports below to run tests on all dbm backends...</span>
@@ -363,7 +364,7 @@
 
 <span class="k">class</span> <span class="nc">JSONCodec</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;default implmentation for codec used to save individual task&#39;s data&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecoder</span><span class="p">()</span>
 
@@ -378,7 +379,7 @@
 <span class="k">class</span> <span class="nc">JsonDB</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Backend using a single text file with JSON content&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">codec</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">codec</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Open/create a DB file&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">codec</span> <span class="o">=</span> <span class="n">codec</span>
@@ -462,7 +463,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">DBM_CONTENT_ERROR_MSG</span> <span class="o">=</span> <span class="s1">&#39;db type could not be determined&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">codec</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">codec</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Open/create a DB file&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">codec</span> <span class="o">=</span> <span class="n">codec</span>
@@ -562,7 +563,7 @@
 <span class="k">class</span> <span class="nc">SqliteDB</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; sqlite3 json backend &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">codec</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">codec</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">codec</span> <span class="o">=</span> <span class="n">codec</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqlite3</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
@@ -754,7 +755,7 @@
 <span class="sd">    @ivar status: (str) one of &quot;run&quot;, &quot;up-to-date&quot; or &quot;error&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">get_log</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">get_log</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_log</span> <span class="o">=</span> <span class="n">get_log</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;up-to-date&#39;</span>
         <span class="c1"># save reason task is not up-to-date</span>
@@ -809,7 +810,7 @@
 <span class="sd">    :ivar string name: filepath of the DB file</span>
 <span class="sd">    :ivar bool _closed: DB was flushed to file</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_class</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">,</span> <span class="n">checker_cls</span><span class="o">=</span><span class="n">MD5Checker</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_class</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">,</span> <span class="n">checker_cls</span><span class="o">=</span><span class="n">MD5Checker</span><span class="p">,</span>
                  <span class="n">codec_cls</span><span class="o">=</span><span class="n">JSONCodec</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_closed</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">checker</span> <span class="o">=</span> <span class="n">checker_cls</span><span class="p">()</span>
@@ -1027,7 +1028,7 @@
 <span class="k">class</span> <span class="nc">UptodateCalculator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base class for &#39;uptodate&#39; that need access to all tasks</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_val</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Dependency._get</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tasks_dict</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># dict with all tasks</span>
 
@@ -1041,9 +1042,9 @@
           <div class="page-nav">
             <div class="inner"><ul class="page-nav">
 </ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2008-2019, Eduardo Schettino.
+      &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>
             </div>
           </div>

@@ -7,14 +7,15 @@
     
       <link rel="stylesheet" href="../../_static/pygments.css">
       <link rel="stylesheet" href="../../_static/theme.css">
+      <link rel="stylesheet" href="../../_static/sphinx_press_theme.css">
       
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
 
       <!-- sphinx script_files -->
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
 
       
       <script src="../../_static/theme-vendors.js"></script>
@@ -322,9 +323,9 @@
 <span class="kn">import</span> <span class="nn">operator</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">exceptions</span>
-<span class="kn">from</span> <span class="nn">.action</span> <span class="k">import</span> <span class="n">CmdAction</span><span class="p">,</span> <span class="n">PythonAction</span>
-<span class="kn">from</span> <span class="nn">.task</span> <span class="k">import</span> <span class="n">result_dep</span> <span class="c1"># imported for backward compatibility</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">exceptions</span>
+<span class="kn">from</span> <span class="nn">.action</span> <span class="kn">import</span> <span class="n">CmdAction</span><span class="p">,</span> <span class="n">PythonAction</span>
+<span class="kn">from</span> <span class="nn">.task</span> <span class="kn">import</span> <span class="n">result_dep</span> <span class="c1"># imported for backward compatibility</span>
 <span class="n">result_dep</span> <span class="c1"># pyflakes</span>
 
 <span class="c1"># action</span>
@@ -364,7 +365,7 @@
 <span class="sd">    @var config (str) or (dict)</span>
 <span class="sd">    @var encoder (json.JSONEncoder) Encoder used to convert non-default values.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">encoder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">encoder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config_digest</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">encoder</span>
@@ -383,7 +384,7 @@
     <span class="k">def</span> <span class="nf">configure_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
         <span class="n">task</span><span class="o">.</span><span class="n">value_savers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;_config_changed&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">config_digest</span><span class="p">})</span>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;return True if config values are UNCHANGED&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config_digest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_digest</span><span class="p">()</span>
         <span class="n">last_success</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;_config_changed&#39;</span><span class="p">)</span>
@@ -403,7 +404,7 @@
 <span class="sd">    the &quot;timeout&quot; time the task is NOT up-to-date</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_limit</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_limit</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timeout_limit</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">limit_sec</span> <span class="o">=</span> <span class="p">((</span><span class="n">timeout_limit</span><span class="o">.</span><span class="n">days</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span><span class="p">)</span> <span class="o">+</span>
                               <span class="n">timeout_limit</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span>
@@ -413,7 +414,7 @@
             <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;timeout should be datetime.timedelta or int got </span><span class="si">%r</span><span class="s2"> &quot;</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="n">timeout_limit</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">save_now</span><span class="p">():</span>
             <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;success-time&#39;</span><span class="p">:</span> <span class="n">time_module</span><span class="o">.</span><span class="n">time</span><span class="p">()}</span>
         <span class="n">task</span><span class="o">.</span><span class="n">value_savers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">save_now</span><span class="p">)</span>
@@ -437,7 +438,7 @@
 <span class="sd">    that if the file C{fn} is a target of another task you should probably add</span>
 <span class="sd">    C{task_dep} on that task to ensure the file is created before checking it.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s1">&#39;mtime&#39;</span><span class="p">,</span> <span class="n">cmp_op</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">eq</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s1">&#39;mtime&#39;</span><span class="p">,</span> <span class="n">cmp_op</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">eq</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;initialize the callable</span>
 
 <span class="sd">        @param fn: (str) path to file/directory to check</span>
@@ -464,7 +465,7 @@
     <span class="k">def</span> <span class="nf">_get_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeattr</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;register action that saves the timestamp and check current timestamp</span>
 
 <span class="sd">        @raises OSError: if cannot stat C{self._file_name} file</span>
@@ -571,11 +572,11 @@
 
 <span class="sd">    [1] http://ipython.org/ipython-doc/dev/interactive/tutorial.html#magic-functions</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">IPython.core.getipython</span> <span class="k">import</span> <span class="n">get_ipython</span>
-    <span class="kn">from</span> <span class="nn">IPython.core.magic</span> <span class="k">import</span> <span class="n">register_line_magic</span>
+    <span class="kn">from</span> <span class="nn">IPython.core.getipython</span> <span class="kn">import</span> <span class="n">get_ipython</span>
+    <span class="kn">from</span> <span class="nn">IPython.core.magic</span> <span class="kn">import</span> <span class="n">register_line_magic</span>
 
-    <span class="kn">from</span> <span class="nn">doit.cmd_base</span> <span class="k">import</span> <span class="n">ModuleTaskLoader</span>
-    <span class="kn">from</span> <span class="nn">doit.doit_cmd</span> <span class="k">import</span> <span class="n">DoitMain</span>
+    <span class="kn">from</span> <span class="nn">doit.cmd_base</span> <span class="kn">import</span> <span class="n">ModuleTaskLoader</span>
+    <span class="kn">from</span> <span class="nn">doit.doit_cmd</span> <span class="kn">import</span> <span class="n">DoitMain</span>
 
     <span class="c1"># Only (re)load_ext provides the ip context.</span>
     <span class="n">ip</span> <span class="o">=</span> <span class="n">ip</span> <span class="ow">or</span> <span class="n">get_ipython</span><span class="p">()</span>
@@ -619,9 +620,9 @@
           <div class="page-nav">
             <div class="inner"><ul class="page-nav">
 </ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2008-2019, Eduardo Schettino.
+      &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>
             </div>
           </div>

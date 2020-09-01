@@ -7,14 +7,15 @@
     
       <link rel="stylesheet" href="_static/pygments.css">
       <link rel="stylesheet" href="_static/theme.css">
+      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
       
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
 
       <!-- sphinx script_files -->
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
 
       
       <script src="_static/theme-vendors.js"></script>
@@ -347,7 +348,7 @@
 <p>In the image an arrow represents an import from one module to another. For example in the left side of image you can see an arrow from <cite>requests.status_codes</cite> to <cite>requests.structures</cite>. This comes from the following line in <cite>status_code.py</cite>:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">requests/status_codes.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.structures</span> <span class="k">import</span> <span class="n">LookupDict</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.structures</span> <span class="kn">import</span> <span class="n">LookupDict</span>
 </pre></div>
 </div>
 </div>
@@ -702,7 +703,7 @@ While developing a task, it is common to want to force its execution after makin
 <p class="admonition-title">Note</p>
 <p>Another option to force the execution of a task after code changes is to use <cite>run`</cite>’s command option <code class="docutils literal notranslate"><span class="pre">-a/--always-execute</span></code>. That will ignore the <strong>up-to-date</strong> check and always execute tasks.</p>
 </div>
-<p>Code <a class="reference download internal" download="" href="_downloads/959f1a578fa4b5ad8f536d7b79fd03b9/tuto_1_1.py"><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
+<p>Code <a class="reference download internal" download="" href="_downloads/65ca85d2c4d1370181443b04c568a63a/tuto_1_1.py"><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
 </div>
 </div>
 <div class="section" id="pipelines">
@@ -712,7 +713,7 @@ While developing a task, it is common to want to force its execution after makin
 <div class="section" id="get-module-imports-python">
 <h3>get module imports - python<a class="headerlink" href="#get-module-imports-python" title="Permalink to this headline">¶</a></h3>
 <p>Let’s rewrite the <code class="docutils literal notranslate"><span class="pre">imports</span></code> task to use a python action instead of a shell command:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">import_deps</span> <span class="k">import</span> <span class="n">PyModule</span><span class="p">,</span> <span class="n">ModuleSet</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">import_deps</span> <span class="kn">import</span> <span class="n">PyModule</span><span class="p">,</span> <span class="n">ModuleSet</span>
 
 <span class="k">def</span> <span class="nf">get_imports</span><span class="p">(</span><span class="n">module_path</span><span class="p">):</span>
     <span class="n">module</span> <span class="o">=</span> <span class="n">PyModule</span><span class="p">(</span><span class="n">module_path</span><span class="p">)</span>
@@ -768,13 +769,13 @@ It’s a dictionary of the form</p>
 <p>Note how <code class="docutils literal notranslate"><span class="pre">module_to_dot</span></code> takes 3 parameters:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">source</span></code>: value is passed directly when the task’s actions is defined</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">imports</span></code>: value is taken from <code class="docutils literal notranslate"><span class="pre">imports</span></code> task’s result</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sinks</span></code>: value is taken from <code class="docutils literal notranslate"><span class="pre">imports</span></code> task’s result</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">targets</span></code>: values is taken from Task metadata</p></li>
 </ul>
 <p>Everything should work as before, but without the creation of intermediate files.</p>
 <p><code class="docutils literal notranslate"><span class="pre">doit</span></code> can determine if the task <code class="docutils literal notranslate"><span class="pre">imports</span></code> is <strong>up-to-date</strong> even without a target file (it will just look at the <code class="docutils literal notranslate"><span class="pre">file_dep</span></code>).</p>
 <p><code class="docutils literal notranslate"><span class="pre">doit</span></code> can also determine if <code class="docutils literal notranslate"><span class="pre">dot</span></code> is <strong>up-to-date</strong> by comparing the value returned by <code class="docutils literal notranslate"><span class="pre">imports</span></code> (its dependency through the <code class="docutils literal notranslate"><span class="pre">getargs</span></code> parameter), with the value stored in its database.</p>
-<p>Code <a class="reference download internal" download="" href="_downloads/addf8b7a7bb12ba72cf7c95de9480be6/tuto_1_2.py"><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
+<p>Code <a class="reference download internal" download="" href="_downloads/41b11b71b76d26b3d26fb215a86b8c42/tuto_1_2.py"><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
 </div>
 </div>
 <div class="section" id="package-imports">
@@ -835,10 +836,10 @@ Since each task needs to be independently identified an extra parameter <code cl
 <p>Note the task’s name is composed of the task’s group name (aka <code class="docutils literal notranslate"><span class="pre">basename</span></code>)
 followed by a colon <cite>:</cite> and the <code class="docutils literal notranslate"><span class="pre">name</span></code> specified as a parameter when <code class="docutils literal notranslate"><span class="pre">yield</span></code>.</p>
 <p>From the command line, a single task can be executed like this:</p>
-<blockquote>
-<div><p>$ doit imports:requests.models
-.  imports:requests.models</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ doit imports:requests.models
+.  imports:requests.models
+</pre></div>
+</div>
 <div class="section" id="getargs-from-group-task">
 <h3>getargs from group-task<a class="headerlink" href="#getargs-from-group-task" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">getargs</span></code> can also be used to get values from a <em>group-task</em>.
@@ -876,7 +877,7 @@ key is the sub-task name:</p>
 </div>
 <p>Running <code class="docutils literal notranslate"><span class="pre">doit</span></code> you should get the file <code class="docutils literal notranslate"><span class="pre">requests.png</span></code> with the image below:</p>
 <img alt="_images/requests.png" src="_images/requests.png" />
-<p>Code <a class="reference download internal" download="" href="_downloads/134d72362f6083187e227a0558e4441b/tuto_1_3.py"><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
+<p>Code <a class="reference download internal" download="" href="_downloads/c6521b162104bb9c26b6f591c1bd58ad/tuto_1_3.py"><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
 </div>
 </div>
 <div class="section" id="printing-imports">
@@ -910,9 +911,9 @@ but sometimes it is useful to be able to quickly list the direct imports from a 
 <p>While those cover a wide range of use cases, <code class="docutils literal notranslate"><span class="pre">doit</span></code> also provides a way to specify completely custom checks for  <strong>up-to-date</strong>, using the <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> field.</p>
 <p>In this case the <code class="docutils literal notranslate"><span class="pre">print</span></code> task actually does not perform any computation, it is being used to display some info to the user.
 So this task should be <strong>always</strong> executed.</p>
-<p><code class="docutils literal notranslate"><span class="pre">update</span></code> will be explained in detail in part 2 of this tutorial.
+<p><code class="docutils literal notranslate"><span class="pre">uptodate</span></code> will be explained in detail in part 2 of this tutorial.
 For now it suffices to add the value <code class="docutils literal notranslate"><span class="pre">False</span></code> to indicate this task will never be considered <strong>up-do-date</strong>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="bp">False</span><span class="p">],</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;uptodate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">],</span>
 </pre></div>
 </div>
 </div>
@@ -971,7 +972,7 @@ The default tasks can be controlled by adding a configuration dictionary with th
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Code <a class="reference download internal" download="" href="_downloads/8cbd20abe2607d4510a490f2c44f961e/tuto_1_4.py"><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
+<p>Code <a class="reference download internal" download="" href="_downloads/16cb2e64bfe00a6dec975ec305f7b188/tuto_1_4.py"><code class="xref download docutils literal notranslate"><span class="pre">dodo.py</span></code></a>.</p>
 <p>And that’s all for part 1 of tutorial :)</p>
 </div>
 </div>
@@ -990,9 +991,9 @@ The default tasks can be controlled by adding a configuration dictionary with th
        title="next chapter">Installing →</a>
   </li>
 </ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2008-2019, Eduardo Schettino.
+      &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>
             </div>
           </div>

@@ -7,14 +7,15 @@
     
       <link rel="stylesheet" href="_static/pygments.css">
       <link rel="stylesheet" href="_static/theme.css">
+      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
       
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
 
       <!-- sphinx script_files -->
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
 
       
       <script src="_static/theme-vendors.js"></script>
@@ -453,7 +454,7 @@ versions.</p>
 The body of the task-creator function is always executed when the dodo
 file is loaded.</p>
 <div class="topic">
-<p class="topic-title first">task-creators vs actions</p>
+<p class="topic-title">task-creators vs actions</p>
 <p>The body of task-creators are executed even if the task is not going
 to be executed.
 The body of task-creators should be used to create task metadata only,
@@ -512,7 +513,7 @@ be executed <strong>without the shell</strong> (Popen argument shell=False).</p>
 </div>
 <p>For complex commands it is also possible to pass a callable that returns
 the command string. In this case you must explicit import CmdAction.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.action</span> <span class="k">import</span> <span class="n">CmdAction</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">doit.action</span> <span class="kn">import</span> <span class="n">CmdAction</span>
 
 <span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;hello cmd &quot;&quot;&quot;</span>
@@ -1052,7 +1053,7 @@ file_dep, targets and CmdAction specified as a list can take as elements not
 only strings but also instances of any Path class from pathlib.</p>
 <p>Lets take the compilation example and modify it to work with any number
 of header and source files in current directory using pathlib.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="k">def</span> <span class="nf">task_compile</span><span class="p">():</span>
     <span class="n">working_directory</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
@@ -1084,9 +1085,9 @@ of header and source files in current directory using pathlib.</p>
        title="next chapter">More on dependencies →</a>
   </li>
 </ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2008-2019, Eduardo Schettino.
+      &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>
             </div>
           </div>
