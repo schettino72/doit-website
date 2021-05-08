@@ -6,7 +6,8 @@
       <title>Tasks</title>
     
       <link rel="stylesheet" href="_static/pygments.css">
-      <link rel="stylesheet" href="_static/theme.css">
+      <!-- bundled in js (rollup iife) -->
+      <!-- <link rel="stylesheet" href="_static/theme.css"> -->
       <link rel="stylesheet" href="_static/sphinx_press_theme.css">
       
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -15,10 +16,10 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
 
       
-      <script src="_static/theme-vendors.js"></script>
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
       <script src="_static/theme.js" defer></script>
     
       <link rel="shortcut icon" href="_static/favico.ico"/>
@@ -32,7 +33,7 @@
     <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="contents.html" class="home-link">
     
-      <img class="logo" src="_static/doit-logo-small.png" alt="doit logo"/>
+      <img class="logo" src="_static/doit-logo-small.png" alt="logo"/>
     
   </router-link>
 
@@ -62,13 +63,24 @@
     </div>
   
 
-<div class="nav-item">
-  <a href="https://twitter.com/py_doit" class="nav-link external">Twitter <outboundlink/><i class="fa fa-twitter" style="color:black"></i></a>
-</div>
 
-<div class="nav-item">
-  <a href="https://github.com/pydoit/doit" class="nav-link external">Github <outboundlink/><i class="fa fa-github" style="color:black"></i></a>
-</div>
+
+  
+    <div class="nav-item">
+      <a href="https://twitter.com/pydoit"
+        class="nav-link external">
+          Twitter <outboundlink></outboundlink>
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="https://github.com/pydoit/doit"
+        class="nav-link external">
+          Github <outboundlink></outboundlink>
+      </a>
+    </div>
+  
+
     </navlinks>
   </div>
 </navbar>
@@ -104,13 +116,24 @@
     </div>
   
 
-<div class="nav-item">
-  <a href="https://twitter.com/py_doit" class="nav-link external">Twitter <outboundlink/><i class="fa fa-twitter" style="color:black"></i></a>
-</div>
 
-<div class="nav-item">
-  <a href="https://github.com/pydoit/doit" class="nav-link external">Github <outboundlink/><i class="fa fa-github" style="color:black"></i></a>
-</div>
+
+  
+    <div class="nav-item">
+      <a href="https://twitter.com/pydoit"
+        class="nav-link external">
+          Twitter <outboundlink></outboundlink>
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="https://github.com/pydoit/doit"
+        class="nav-link external">
+          Github <outboundlink></outboundlink>
+      </a>
+    </div>
+  
+
             
           </navlinks><div id="searchbox" class="searchbox" role="search">
   <div class="caption"><span class="caption-text">Quick search</span>
@@ -354,7 +377,7 @@
   
 </div>
 <hr>
-          <div class="content" role="main">
+          <div class="content" role="main" v-pre>
             
   <div class="section" id="tasks">
 <h1>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h1>
@@ -739,7 +762,7 @@ is not executed again as it would produce the same result.</p>
 <p class="admonition-title">Note</p>
 <p><cite>doit</cite> saves the MD5 of a <cite>file_dep</cite> after the actions are executed.
 Be careful about editing a <cite>file_dep</cite> while a task is running because
-<cite>doit</cite> might saves the MD5 of a version of the file that is different
+<cite>doit</cite> might save the MD5 of a version of the file that is different
 than it actually used to execute the task.</p>
 </div>
 </div>
@@ -1087,7 +1110,7 @@ of header and source files in current directory using pathlib.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.6.1.
 </div>
             </div>
           </div>
