@@ -2,17 +2,15 @@
 <html >
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
       <title>Other Commands</title>
     
-      <link rel="stylesheet" href="_static/pygments.css">
-      <!-- bundled in js (rollup iife) -->
-      <!-- <link rel="stylesheet" href="_static/theme.css"> -->
-      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
       
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-
       <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -30,7 +28,8 @@
   </head>
 
   <body>
-    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="contents.html" class="home-link">
     
       <img class="logo" src="_static/doit-logo-small.png" alt="logo"/>
@@ -369,7 +368,7 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <div class="section" id="other-commands">
+  <section id="other-commands">
 <h1>Other Commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -415,13 +414,13 @@ The example below is used to manage a very simple C project.</p>
             <span class="p">}</span>
 </pre></div>
 </div>
-<div class="section" id="help">
+<section id="help">
 <span id="cmd-help"></span><h2>help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> comes with several commands. <cite>doit help</cite> will list all available commands.</p>
 <p>You can also get help from each available command. e.g. <cite>doit help run</cite>.</p>
 <p><cite>doit help task</cite> will display information on all fields/attributes a task dictionary from a <cite>dodo</cite> file accepts.</p>
-</div>
-<div class="section" id="list">
+</section>
+<section id="list">
 <span id="cmd-list"></span><h2>list<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h2>
 <p><em>list</em> is used to show all tasks available in a <em>dodo</em> file.
 Tasks are listed in alphabetical order by default, but <em>–sort=definition</em> can
@@ -440,34 +439,57 @@ using the option <em>-q</em>/<em>–quiet</em>.</p>
 <em>–all</em>.</p>
 <p>By default task names that start with an underscore(<em>_</em>) are not listed. They
 are listed if the option <em>-p</em>/<em>–private</em> is used.</p>
-<p>Task status can be printed using the option <em>-s</em>/<em>–status</em>.</p>
 <p>Task’s file-dependencies can be printed using the option <em>–deps</em>.</p>
-</div>
-<div class="section" id="info">
+<section id="status">
+<h3>status<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h3>
+<p>If you would like to know if a task would actually be executed,
+the option <em>-s</em>/<em>–status</em> can be used to display the task’s status .
+It is one of:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">R</span></code>: run</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U</span></code>: up-to-date</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">I</span></code>: ignored</p></li>
+</ul>
+</div></blockquote>
+<p>This is an alternative to <em>dry-run</em> or <em>preflight</em> feature provided by some tools.</p>
+</section>
+</section>
+<section id="info">
 <h2>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h2>
 <p>You can check a task meta-data using the <em>info</em> command.
 This might be useful when have some complex code generating
 the task meta-data.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info link
-<span class="go">name:&#39;link&#39;</span>
 
-<span class="go">file_dep:set([&#39;command.o&#39;, &#39;kbd.o&#39;, &#39;main.o&#39;])</span>
+<span class="go">link</span>
 
-<span class="go">targets:[&#39;edit&#39;]</span>
+<span class="go">status  : up-to-date</span>
+
+<span class="go">file_dep:</span>
+<span class="go">  - command.o</span>
+<span class="go">  - kbd.o</span>
+<span class="go">  - main.o</span>
+
+<span class="go">targets:</span>
+<span class="go">  - edit</span>
 </pre></div>
 </div>
-<p>Use the option <cite>–status</cite>, to check the reason a task is not up-to-date.</p>
+<p>Note that if the task is <strong>not</strong> <em>up-to-date</em> the reason a task is not up-to-date.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info link
 
-<span class="go">Task is not up-to-date:</span>
+<span class="go">link</span>
+
+<span class="go">status  : run</span>
+
 <span class="go"> * The following file dependencies have changed:</span>
 <span class="go">    - main.o</span>
 <span class="go">    - kbd.o</span>
 <span class="go">    - command.o</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="forget">
+</section>
+<section id="forget">
 <h2>forget<a class="headerlink" href="#forget" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you change the compilation parameters in the compile action. Or you
 changed the code from a python-action. <em>doit</em> will think your task is up-to-date
@@ -482,8 +504,8 @@ changes in the dependencies.</p>
 <p class="admonition-title">Note</p>
 <p><em>doit</em> keeps track of which tasks are successful in the file <code class="docutils literal notranslate"><span class="pre">.doit.db</span></code>.</p>
 </div>
-</div>
-<div class="section" id="clean">
+</section>
+<section id="clean">
 <h2>clean<a class="headerlink" href="#clean" title="Permalink to this headline">¶</a></h2>
 <p>A common scenario is a task that needs to “revert” its actions. A task may
 include a <em>clean</em> attribute. This attribute can be <code class="docutils literal notranslate"><span class="pre">True</span></code> to remove all of its
@@ -532,7 +554,7 @@ configuration switch:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="section" id="dry-run">
+<section id="dry-run">
 <h3>dry run<a class="headerlink" href="#dry-run" title="Permalink to this headline">¶</a></h3>
 <p>If you want check which tasks the clean operation would affect you can use the option <cite>-n/–dry-run</cite>.</p>
 <p>When using a custom action on <cite>dry-run</cite>, the action is not executed at all
@@ -553,9 +575,9 @@ and its implementation is responsible for handling the <em>dry-run</em> logic.</
 
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="ignore">
+</section>
+</section>
+<section id="ignore">
 <h2>ignore<a class="headerlink" href="#ignore" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to set a task to be ignored/skipped (that is, not executed). This
 is useful, for example, when you are performing checks in several files and you
@@ -581,8 +603,8 @@ want to skip the check in some of them temporarily.</p>
 </div>
 <p>Note the <code class="docutils literal notranslate"><span class="pre">!!</span></code>, it means that task was ignored. To reverse the <cite>ignore</cite> use
 <cite>forget</cite> sub-command.</p>
-</div>
-<div class="section" id="auto-watch">
+</section>
+<section id="auto-watch">
 <span id="cmd-auto"></span><h2>auto (watch)<a class="headerlink" href="#auto-watch" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -601,7 +623,7 @@ When a file is modified the tasks are re-executed.</p>
 <p>The <cite>dodo</cite> file is actually re-loaded/executed in a separate process
 every time tasks need to be re-executed.</p>
 </div>
-<div class="section" id="callbacks">
+<section id="callbacks">
 <h3>callbacks<a class="headerlink" href="#callbacks" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to specify shell commands to executed after every cycle
 of task execution.
@@ -614,8 +636,8 @@ Contents of a <cite>doit.cfg</cite> file:</p>
 <span class="na">failure_callback</span> <span class="o">=</span> <span class="s">notify-send -u normal -i /usr/share/icons/gnome/16x16/status/error.png &quot;doit:  fail&quot;; aplay -q /usr/share/sounds/purple/alert.wav</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="watch-parameter">
+</section>
+<section id="watch-parameter">
 <h3><code class="docutils literal notranslate"><span class="pre">watch</span></code> parameter<a class="headerlink" href="#watch-parameter" title="Permalink to this headline">¶</a></h3>
 <p>Apart from <code class="docutils literal notranslate"><span class="pre">file_dep</span></code> you can use the parameter <code class="docutils literal notranslate"><span class="pre">watch</span></code> to pass extra
 paths to be watched for (including folders).
@@ -642,21 +664,21 @@ The <code class="docutils literal notranslate"><span class="pre">watch</span></c
             <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="tabcompletion">
+</section>
+</section>
+<section id="tabcompletion">
 <span id="id1"></span><h2>tabcompletion<a class="headerlink" href="#tabcompletion" title="Permalink to this headline">¶</a></h2>
 <p>This command creates a completion for bash or zsh.
 The generated script is written on stdout.</p>
-<div class="section" id="bash">
+<section id="bash">
 <h3>bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h3>
 <p>To use a completion script you need to <cite>source</cite> it first.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit tabcompletion &gt; bash_completion_doit
 <span class="gp">$</span> <span class="nb">source</span> bash_completion_doit
 </pre></div>
 </div>
-</div>
-<div class="section" id="zsh">
+</section>
+<section id="zsh">
 <h3>zsh<a class="headerlink" href="#zsh" title="Permalink to this headline">¶</a></h3>
 <p>zsh completion scripts should be placed in a folder in the “autoload” path.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># add folder with completion scripts</span>
@@ -671,8 +693,8 @@ compinit
 <span class="gp">$</span> cp _doit ~/.zsh/tabcompletion/_doit
 </pre></div>
 </div>
-</div>
-<div class="section" id="hard-coding-tasks">
+</section>
+<section id="hard-coding-tasks">
 <h3>hard-coding tasks<a class="headerlink" href="#hard-coding-tasks" title="Permalink to this headline">¶</a></h3>
 <p>If you are creating an application based on <cite>doit</cite>
 or if you tasks take a long time to load you may create
@@ -681,9 +703,9 @@ from your dodo.py.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> my_app tabcompletion --hardcode-tasks &gt; _my_app
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="dumpdb">
+</section>
+</section>
+<section id="dumpdb">
 <h2>dumpdb<a class="headerlink" href="#dumpdb" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> saves internal data in a file (<cite>.doit.db</cite> by default).
 It uses a binary format (whatever python’s dbm is using in your system).
@@ -691,8 +713,8 @@ This command will simply dump its content in readable text format in the output.
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit dumpdb
 </pre></div>
 </div>
-</div>
-<div class="section" id="strace">
+</section>
+<section id="strace">
 <h2>strace<a class="headerlink" href="#strace" title="Permalink to this headline">¶</a></h2>
 <p>This command uses <a class="reference external" href="https://en.wikipedia.org/wiki/Strace">strace</a>
 utility to help you verify which files are being used by a given task.</p>
@@ -713,8 +735,8 @@ that means it might not write a target file if it exist</p></li>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit strace &lt;task-name&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="reset-dep">
+</section>
+<section id="reset-dep">
 <h2>reset-dep<a class="headerlink" href="#reset-dep" title="Permalink to this headline">¶</a></h2>
 <p>This command allows to recompute the information on file dependencies
 (timestamp, md5sum, … depending on the <code class="docutils literal notranslate"><span class="pre">check_file_uptodate</span></code> setting), and
@@ -740,8 +762,8 @@ tasks.</p>
 <p>If the DB already has any saved <cite>values</cite> or <cite>result</cite> they will be preserved
 otherwise they will not be set at all.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -758,12 +780,12 @@ otherwise they will not be set at all.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.6.1.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.7.3.
 </div>
             </div>
           </div>
       </page>
-    </div>
+    </div></div>
     
   
     

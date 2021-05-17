@@ -2,17 +2,15 @@
 <html >
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
       <title>More on Task creation</title>
     
-      <link rel="stylesheet" href="_static/pygments.css">
-      <!-- bundled in js (rollup iife) -->
-      <!-- <link rel="stylesheet" href="_static/theme.css"> -->
-      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
       
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-
       <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -30,7 +28,8 @@
   </head>
 
   <body>
-    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="contents.html" class="home-link">
     
       <img class="logo" src="_static/doit-logo-small.png" alt="logo"/>
@@ -353,9 +352,9 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <div class="section" id="more-on-task-creation">
+  <section id="more-on-task-creation">
 <h1>More on Task creation<a class="headerlink" href="#more-on-task-creation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="importing-tasks">
+<section id="importing-tasks">
 <h2>importing tasks<a class="headerlink" href="#importing-tasks" title="Permalink to this headline">¶</a></h2>
 <p>The <em>doit</em> loader will look at <strong>all</strong> objects in the namespace of the <em>dodo</em>.
 It will look for functions staring with <code class="docutils literal notranslate"><span class="pre">task_</span></code> and objects with
@@ -391,8 +390,8 @@ For example take a look at a reusable <em>pyflakes</em>
 Check the project <a class="reference external" href="https://github.com/pydoit/doit-py">doit-py</a>
 for more examples.</p>
 </div>
-</div>
-<div class="section" id="delayed-task-creation">
+</section>
+<section id="delayed-task-creation">
 <span id="id1"></span><h2>delayed task creation<a class="headerlink" href="#delayed-task-creation" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> execution model is divided in two phases:</p>
 <blockquote>
@@ -450,7 +449,7 @@ the regex <cite>.*\.out</cite> matches every target name ending with <cite>.out<
 Alternatively, one can use the command line option <cite>–auto-delayed-regex</cite>
 to <cite>doit run</cite>; see <a class="reference internal" href="cmd_run.html#auto-delayed-regex"><span class="std std-ref">here</span></a> for more information.</p>
 </div>
-<div class="section" id="parameter-creates">
+<section id="parameter-creates">
 <h3>Parameter: <cite>creates</cite><a class="headerlink" href="#parameter-creates" title="Permalink to this headline">¶</a></h3>
 <p>In case the task created by a <cite>DelayedTask</cite> has a different <em>basename</em> than
 then creator function, or creates several tasks with different <em>basenames</em>,
@@ -486,9 +485,9 @@ for delayed-task’s <cite>targets</cite>.
 This problem can avoided by ordering the creation of delayed-tasks with
 the expected order of execution.</p>
 </div>
-</div>
-</div>
-<div class="section" id="custom-task-definition">
+</section>
+</section>
+<section id="custom-task-definition">
 <span id="create-doit-tasks"></span><h2>custom task definition<a class="headerlink" href="#custom-task-definition" title="Permalink to this headline">¶</a></h2>
 <p>Apart from collect functions that start with the name <cite>task_</cite>.
 The <em>doit</em> loader will also execute the <code class="docutils literal notranslate"><span class="pre">create_doit_tasks</span></code>
@@ -510,8 +509,8 @@ callable from any object that contains this attribute.</p>
 has some real-world implementations.</p>
 <p>For simple examples to help you create your own check this
 <a class="reference external" href="http://blog.schettino72.net/posts/doit-task-creation.html">blog post</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -528,12 +527,12 @@ has some real-world implementations.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.6.1.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.7.3.
 </div>
             </div>
           </div>
       </page>
-    </div>
+    </div></div>
     
   
     

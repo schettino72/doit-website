@@ -2,17 +2,15 @@
 <html >
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
       <title>Changes</title>
     
-      <link rel="stylesheet" href="_static/pygments.css">
-      <!-- bundled in js (rollup iife) -->
-      <!-- <link rel="stylesheet" href="_static/theme.css"> -->
-      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
       
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-
       <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -30,7 +28,8 @@
   </head>
 
   <body>
-    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="contents.html" class="home-link">
     
       <img class="logo" src="_static/doit-logo-small.png" alt="logo"/>
@@ -435,9 +434,9 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <div class="section" id="changes">
+  <section id="changes">
 <h1>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="unreleased">
+<section id="unreleased">
 <h2>0.34.0 (<em>unreleased</em>)<a class="headerlink" href="#unreleased" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>BACKWARD INCOMPATIBLE: Drop Python 3.5 support</p></li>
@@ -447,16 +446,16 @@
 <li><p>Fix #387: Pass pickled attributes, err and out when a task fails in multi processes context.</p></li>
 <li><p>Fix #398: Add <cite>setuptools</cite> as` extras_require`.</p></li>
 </ul>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h2>0.33.1 (<em>2020-09-04</em>)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>fix sdist distribution to include all files</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h2>0.33.0 (<em>2020-09-01</em>)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -465,8 +464,8 @@
 <li><p>fix error installing with setuptools 50.0</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h2>0.32.0 (<em>2019-12-10</em>)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -495,8 +494,8 @@
 <li><p>Fix #283: set task options from doit.cfg</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h2>0.31.1 (<em>2018-03-18</em>)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -506,8 +505,8 @@
 <li><p>Fix #245 custom <cite>clean</cite> action takes <cite>dry-run</cite> into account</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id5">
+</section>
+<section id="id5">
 <h2>0.31.0 (<em>2018-02-25</em>)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -534,24 +533,24 @@ do not print stderr twice.</p></li>
 <li><p>Internal: Removed <cite>Task.is_subtask</cite> use <cite>Task.subtask_of</cite> instead</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id6">
+</section>
+<section id="id6">
 <h2>0.30.3 (<em>2017-02-20</em>)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>Revert usage of setuptools environment markers (feature too new)</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id7">
+</section>
+<section id="id7">
 <h2>0.30.2 (<em>2017-02-16</em>)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>Fix dependency on <cite>pathlib</cite> from PyPi</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id8">
+</section>
+<section id="id8">
 <h2>0.30.1 (<em>2017-02-16</em>)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -559,8 +558,8 @@ do not print stderr twice.</p></li>
 <li><p>add python3.6 support</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id9">
+</section>
+<section id="id9">
 <h2>0.30.0 (<em>2016-11-22</em>)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -579,8 +578,8 @@ do not print stderr twice.</p></li>
 <li><p>fix GH-#117: Give error when user tries to use equal sign on task name</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id10">
+</section>
+<section id="id10">
 <h2>0.29.0 (<em>2015-08-16</em>)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -601,8 +600,8 @@ after each task execution</p></li>
 <li><p>GH-#61: speed up sqlite3 backend (use internal memory cache)</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id11">
+</section>
+<section id="id11">
 <h2>0.28.0 (<em>2015-04-22</em>)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -629,8 +628,8 @@ namespace</p></li>
 <li><p>fix GH-#45 make sure all <cite>uptodate</cite> checks are executed (no short-circuit)</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id12">
+</section>
+<section id="id12">
 <h2>0.27.0 (<em>2015-01-30</em>)<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -659,8 +658,8 @@ namespace</p></li>
 <li><p>GH-#6: <cite>loader.task_loader()</cite> accepts methods as <em>task creators</em></p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id13">
+</section>
+<section id="id13">
 <h2>0.26.0 (<em>2014-08-30</em>)<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -676,8 +675,8 @@ namespace</p></li>
 <li><p>fix tab-completion on BASH for sub-commands that take file arguments</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id14">
+</section>
+<section id="id14">
 <h2>0.25.0 (<em>2014-03-26</em>)<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -693,8 +692,8 @@ instead of variable <cite>doit.initial_workdir</cite></p></li>
 <li><p>include list of file_dep as an implicit dependency</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id15">
+</section>
+<section id="id15">
 <h2>0.24.0 (<em>2013-11-24</em>)<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -707,8 +706,8 @@ instead of variable <cite>doit.initial_workdir</cite></p></li>
 <li><p>fix #56: allow python actions to have default values for task parameters</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id16">
+</section>
+<section id="id16">
 <h2>0.23.0 (<em>2013-09-20</em>)<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -722,8 +721,8 @@ instead of variable <cite>doit.initial_workdir</cite></p></li>
 <li><p>fix: do not allow duplicate task names</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id17">
+</section>
+<section id="id17">
 <h2>0.22.1 (<em>2013-08-04</em>)<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
@@ -732,8 +731,8 @@ instead of variable <cite>doit.initial_workdir</cite></p></li>
 <li><p>fix #54 - remove distribute bootstrapping during installation</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id18">
+</section>
+<section id="id18">
 <h2>0.22.0 (<em>2013-07-05</em>)<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix #49: skip unicode tests on systems with non utf8 locale</p></li>
@@ -742,15 +741,15 @@ instead of variable <cite>doit.initial_workdir</cite></p></li>
 <li><p>fix #47: Task.options can always be accessed from <cite>uptodate</cite> code</p></li>
 <li><p>fix #45: cmd forget, added option -s/–follow-sub to forget task_dep too</p></li>
 </ul>
-</div>
-<div class="section" id="id19">
+</section>
+<section id="id19">
 <h2>0.21.1 (<em>2013-05-21</em>)<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix tests on python3.3.1</p></li>
 <li><p>fix race condition on CmdAction (affected only python&gt;=3.3.1)</p></li>
 </ul>
-</div>
-<div class="section" id="id20">
+</section>
+<section id="id20">
 <h2>0.21.0 (<em>2013-04-29</em>)<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix #38: <cite>doit.tools.create_folder()</cite> raise error if file exists in path</p></li>
@@ -765,8 +764,8 @@ instead of variable <cite>doit.initial_workdir</cite></p></li>
 <li><p>add sqlite3 DB backend</p></li>
 <li><p>added option to select backend</p></li>
 </ul>
-</div>
-<div class="section" id="id21">
+</section>
+<section id="id21">
 <h2>0.20.0 (<em>2013-01-09</em>)<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>added command <cite>dumpdb</cite></p></li>
@@ -778,22 +777,22 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>cmd <cite>auto</cite> run tasks on separate process</p></li>
 <li><p>support unicode for task name</p></li>
 </ul>
-</div>
-<div class="section" id="id22">
+</section>
+<section id="id22">
 <h2>0.19.0 (<em>2012-12-18</em>)<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>support for <cite>doit help &lt;task-name&gt;</cite></p></li>
 <li><p>added support to load tasks using <cite>create_doit_tasks</cite></p></li>
 <li><p>dropped python 2.5 support</p></li>
 </ul>
-</div>
-<div class="section" id="id23">
+</section>
+<section id="id23">
 <h2>0.18.1 (<em>2012-12-03</em>)<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix bug cmd option –continue not being recognized</p></li>
 </ul>
-</div>
-<div class="section" id="id24">
+</section>
+<section id="id24">
 <h2>0.18.0 (<em>2012-11-27</em>)<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>remove DEPRECATED <cite>Task.insert_action</cite>, <cite>result_dep</cite> and <cite>getargs</cite> using strings</p></li>
@@ -806,8 +805,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>API to make dodo.py executable</p></li>
 <li><p>added ZeroReporter</p></li>
 </ul>
-</div>
-<div class="section" id="id25">
+</section>
+<section id="id25">
 <h2>0.17.0 (<em>2012-09-20</em>)<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix #12 Action.out and Action.err not set when using multiprocessing</p></li>
@@ -824,16 +823,16 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>fix #8 <cite>clean</cite> added flag <cite>–all</cite> to clean all tasks</p></li>
 <li><p>fix #8 <cite>clean</cite> when no task is specified set –clean-dep and clean default tasks</p></li>
 </ul>
-</div>
-<div class="section" id="id26">
+</section>
+<section id="id26">
 <h2>0.16.1 (<em>2012-05-13</em>)<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix multiprocessing/parallel bug</p></li>
 <li><p>fix unicode bug on tools.config_changed</p></li>
 <li><p>convert tools uptodate stuff to a class, so it can be used with multi-processing</p></li>
 </ul>
-</div>
-<div class="section" id="id27">
+</section>
+<section id="id27">
 <h2>0.16.0 (<em>2012-04-23</em>)<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>added task parameter <code class="docutils literal notranslate"><span class="pre">basename</span></code></p></li>
@@ -846,8 +845,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>result_dep on PythonAction support checking for dict values</p></li>
 <li><p>added <code class="docutils literal notranslate"><span class="pre">doit.tools.PythonInteractiveAction</span></code></p></li>
 </ul>
-</div>
-<div class="section" id="id28">
+</section>
+<section id="id28">
 <h2>0.15.0 (<em>2012-01-10</em>)<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>added option –db-file (#909520)</p></li>
@@ -855,8 +854,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>added genstandalone.py to create a standalone <code class="docutils literal notranslate"><span class="pre">doit</span></code> script (#891935)</p></li>
 <li><p>fix doit.tools.set_trace to not modify sys.stdout</p></li>
 </ul>
-</div>
-<div class="section" id="id29">
+</section>
+<section id="id29">
 <h2>0.14.0 (<em>2011-11-05</em>)<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>added tools.InteractiveAction (#865290)</p></li>
@@ -867,8 +866,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>added <code class="docutils literal notranslate"><span class="pre">tools.check_unchanged_timestamp</span></code> (#862606)</p></li>
 <li><p>fix bug subclasses of BaseAction should get a task reference</p></li>
 </ul>
-</div>
-<div class="section" id="id30">
+</section>
+<section id="id30">
 <h2>0.13.0 (<em>2011-07-18</em>)<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>performance speed improvements</p></li>
@@ -879,8 +878,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>added <code class="docutils literal notranslate"><span class="pre">doit.get_var</span></code> to get variables passed from command line</p></li>
 <li><p>getargs creates implicit “setup” task not a “task_dep”</p></li>
 </ul>
-</div>
-<div class="section" id="id31">
+</section>
+<section id="id31">
 <h2>0.12.0 (<em>2011-05-29</em>)<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix bug #770150 - error on task dependency from target</p></li>
@@ -889,8 +888,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>deprecate task attribute run_once. use tools.run_once on uptodate instead</p></li>
 <li><p>added doit.tools.timeout</p></li>
 </ul>
-</div>
-<div class="section" id="id32">
+</section>
+<section id="id32">
 <h2>0.11.0 (<em>2011-04-20</em>)<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>no more support for python2.4</p></li>
@@ -903,8 +902,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>fix calc_dep when used with “auto” command</p></li>
 <li><p>“auto” command now support verbosity control option</p></li>
 </ul>
-</div>
-<div class="section" id="id33">
+</section>
+<section id="id33">
 <h2>0.10.0 (<em>2011-01-24</em>)<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>add task parameter “uptodate”</p></li>
@@ -914,8 +913,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>“Reporter” API changes</p></li>
 <li><p>“.doit.db” now uses a DBM file format by default (speed optimization)</p></li>
 </ul>
-</div>
-<div class="section" id="id34">
+</section>
+<section id="id34">
 <h2>0.9.0 (<em>2010-06-08</em>)<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>support for dynamic calculated dependencies “calc_dep”</p></li>
@@ -924,8 +923,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>fix installer on mac. installer aware of different python versions</p></li>
 <li><p>deprecate ‘dependencies’. use file_dep, task_dep, result_dep.</p></li>
 </ul>
-</div>
-<div class="section" id="id35">
+</section>
+<section id="id35">
 <h2>0.8.0 (<em>2010-05-16</em>)<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>parallel execution of tasks (multi-process support)</p></li>
@@ -935,8 +934,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>task property “teardown” substitute of setup-objects cleanup</p></li>
 <li><p>deprecate setup-objects</p></li>
 </ul>
-</div>
-<div class="section" id="id36">
+</section>
+<section id="id36">
 <h2>0.7.0 (<em>2010-04-08</em>)<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>configure options on dodo file (deprecate DEFAULT_TASKS)(#524387)</p></li>
@@ -946,8 +945,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>sub-command “list” by default do not show tasks starting with an underscore, added option (-p/–private)</p></li>
 <li><p>new sub-command “auto”</p></li>
 </ul>
-</div>
-<div class="section" id="id37">
+</section>
+<section id="id37">
 <h2>0.6.0 (<em>2010-01-25</em>)<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>improve (speed optimization) of check if file modified (#370920)</p></li>
@@ -961,14 +960,14 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>added task option “getargs”. actions can use computed values from other tasks (#486569)</p></li>
 <li><p>python-action might return a dictionary on success</p></li>
 </ul>
-</div>
-<div class="section" id="id38">
+</section>
+<section id="id38">
 <h2>0.5.1 (<em>2009-12-03</em>)<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix. task-result-dependencies should be also added as task-dependency to force its execution.</p></li>
 </ul>
-</div>
-<div class="section" id="id39">
+</section>
+<section id="id39">
 <h2>0.5.0 (<em>2009-11-30</em>)<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>task parameter ‘clean’ == True, cleans empty folders, and display warning for non-empty folders</p></li>
@@ -986,8 +985,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>added task field ‘title’</p></li>
 <li><p>modified default way a task is printed on console (just show “.  name”), old way added to doit.tools.task_title_with_actions</p></li>
 </ul>
-</div>
-<div class="section" id="id40">
+</section>
+<section id="id40">
 <h2>0.4.0 (<em>2009-10-05</em>)<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>deprecate anything other than a boolean values as return of python actions</p></li>
@@ -1002,8 +1001,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>action as list of commands/python (#421445)</p></li>
 <li><p>deprecate “action” use “actions”</p></li>
 </ul>
-</div>
-<div class="section" id="id41">
+</section>
+<section id="id41">
 <h2>0.3.0 (<em>2009-08-30</em>)<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>added subcommand “forget” to clear successful runs status (#370911)</p></li>
@@ -1016,8 +1015,8 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>cmd-task supports a list of shell commands</p></li>
 <li><p>setup/cleanup for task (#370905)</p></li>
 </ul>
-</div>
-<div class="section" id="id42">
+</section>
+<section id="id42">
 <h2>0.2.0 (<em>2009-04-16</em>)<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>docs generated using sphinx</p></li>
@@ -1026,14 +1025,14 @@ each key is the name of subtasks (previously it was a list)</p></li>
 <li><p>support python 2.4 and 2.6</p></li>
 <li><p>folder dependency</p></li>
 </ul>
-</div>
-<div class="section" id="id43">
+</section>
+<section id="id43">
 <h2>0.1.0 (<em>2008-04-14</em>)<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>initial release</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -1050,12 +1049,12 @@ each key is the name of subtasks (previously it was a list)</p></li>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.6.1.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.7.3.
 </div>
             </div>
           </div>
       </page>
-    </div>
+    </div></div>
     
   
     

@@ -2,17 +2,15 @@
 <html >
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
       <title>Command line interface - run</title>
     
-      <link rel="stylesheet" href="_static/pygments.css">
-      <!-- bundled in js (rollup iife) -->
-      <!-- <link rel="stylesheet" href="_static/theme.css"> -->
-      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
       
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-
       <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -30,7 +28,8 @@
   </head>
 
   <body>
-    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="contents.html" class="home-link">
     
       <img class="logo" src="_static/doit-logo-small.png" alt="logo"/>
@@ -393,7 +392,7 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <div class="section" id="command-line-interface-run">
+  <section id="command-line-interface-run">
 <h1>Command line interface - run<a class="headerlink" href="#command-line-interface-run" title="Permalink to this headline">¶</a></h1>
 <p>A general <cite>doit</cite> command goes like this:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit <span class="o">[</span>run<span class="o">]</span> <span class="o">[</span>&lt;options&gt;<span class="o">]</span> <span class="o">[</span>&lt;task<span class="p">|</span>target&gt; &lt;task_options&gt;<span class="o">]</span>* <span class="o">[</span>&lt;variables&gt;<span class="o">]</span>
@@ -405,15 +404,15 @@ common operation it is also the default, so if you don’t specify any sub-comma
 to <em>doit</em> it will execute <em>run</em>. So <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">doit</span></code> and <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">doit</span> <span class="pre">run</span></code> do the same
 thing.</p>
 <p>The basics of task selection were introduced in <a class="reference internal" href="tasks.html#task-selection"><span class="std std-ref">Task Selection</span></a>.</p>
-<div class="section" id="python-m-doit">
+<section id="python-m-doit">
 <h2><cite>python -m doit</cite><a class="headerlink" href="#python-m-doit" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> can also be executed without using the <cite>doit</cite> script.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python -m doit
 </pre></div>
 </div>
 <p>This is specially useful when testing <cite>doit</cite> with different python versions.</p>
-</div>
-<div class="section" id="dodo-file">
+</section>
+<section id="dodo-file">
 <h2>dodo file<a class="headerlink" href="#dodo-file" title="Permalink to this headline">¶</a></h2>
 <p>By default all commands are relative to <code class="docutils literal notranslate"><span class="pre">dodo.py</span></code> in the current folder.
 You can specify a different <em>dodo</em> file containing task with the flag <code class="docutils literal notranslate"><span class="pre">-f</span></code>.
@@ -423,17 +422,17 @@ This flag is valid for all sub-commands.</p>
 </div>
 <p><em>doit</em> can seek for the <code class="docutils literal notranslate"><span class="pre">dodo.py</span></code> file on parent folders if the option
 <code class="docutils literal notranslate"><span class="pre">--seek-file</span></code> is specified.</p>
-</div>
-<div class="section" id="as-an-executable-file">
+</section>
+<section id="as-an-executable-file">
 <h2>as an executable file<a class="headerlink" href="#as-an-executable-file" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="using-a-hashbang">
+<section id="using-a-hashbang">
 <h3>using a hashbang<a class="headerlink" href="#using-a-hashbang" title="Permalink to this headline">¶</a></h3>
 <p>If you have <cite>doit</cite> installed on <code class="docutils literal notranslate"><span class="pre">/usr/bin</span></code> use the following hashbang:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /usr/bin/doit -f</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="using-the-api">
+</section>
+<section id="using-the-api">
 <h3>using the API<a class="headerlink" href="#using-the-api" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to make a <code class="docutils literal notranslate"><span class="pre">dodo</span></code> file become an executable on its own
 by calling the <code class="docutils literal notranslate"><span class="pre">doit.run()</span></code>, you need to pass the <code class="docutils literal notranslate"><span class="pre">globals</span></code>:</p>
@@ -456,14 +455,14 @@ by calling the <code class="docutils literal notranslate"><span class="pre">doit
 will not be executed.</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">doit.run()</span></code> parameter will be passed to a <a class="reference internal" href="extending.html#moduletaskloader"><span class="std std-ref">ModuleTaskLoader</span></a> to find your tasks.</p>
-</div>
-</div>
-<div class="section" id="from-ipython">
+</section>
+</section>
+<section id="from-ipython">
 <h2>from IPython<a class="headerlink" href="#from-ipython" title="Permalink to this headline">¶</a></h2>
 <p>You can install and use the <cite>%doit</cite> magic function to load tasks defined
 directly in IPython’s global namespace (<a class="reference internal" href="tools.html#tools-ipython"><span class="std std-ref">more</span></a>).</p>
-</div>
-<div class="section" id="returned-value">
+</section>
+<section id="returned-value">
 <h2>returned value<a class="headerlink" href="#returned-value" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">doit</span></code> process returns:</p>
 <blockquote>
@@ -478,8 +477,8 @@ directly in IPython’s global namespace (<a class="reference internal" href="to
 </li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="db-backend">
+</section>
+<section id="db-backend">
 <span id="db-backends"></span><h2>DB backend<a class="headerlink" href="#db-backend" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> saves the results of your tasks runs in a “DB-file”, it supports
 different backends:</p>
@@ -493,8 +492,8 @@ different backends:</p>
 </div></blockquote>
 <p>From the command line you can select the backend using the <code class="docutils literal notranslate"><span class="pre">--backend</span></code> option.</p>
 <p>It is quite easy to add a new backend for any key-value store.</p>
-</div>
-<div class="section" id="db-file">
+</section>
+<section id="db-file">
 <h2>DB-file<a class="headerlink" href="#db-file" title="Permalink to this headline">¶</a></h2>
 <p>Option <code class="docutils literal notranslate"><span class="pre">--db-file</span></code> sets the name of the file to save the “DB”,
 default is <code class="docutils literal notranslate"><span class="pre">.doit.db</span></code>.
@@ -507,23 +506,23 @@ the specified name is used as a base name.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="verbosity">
+</section>
+<section id="verbosity">
 <span id="verbosity-option"></span><h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
 <p>Option to change the default global task <a class="reference internal" href="tasks.html#verbosity"><span class="std std-ref">verbosity</span></a> value.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --verbosity <span class="m">2</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="failure-verbosity">
+</section>
+<section id="failure-verbosity">
 <h2>failure-verbosity<a class="headerlink" href="#failure-verbosity" title="Permalink to this headline">¶</a></h2>
 <p>Option to control if stdout/stderr should be re-displayed in the end of
 of report. This is useful when used in conjunction with <cite>–continue</cite> option.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --failure-verbosity <span class="m">1</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="output-buffering">
+</section>
+<section id="output-buffering">
 <h2>output buffering<a class="headerlink" href="#output-buffering" title="Permalink to this headline">¶</a></h2>
 <p>The output (<cite>stdout</cite> and <cite>stderr</cite>) is by default line-buffered
 for <cite>CmdAction</cite>. You can change that by specifying the <cite>buffering</cite>
@@ -540,8 +539,8 @@ terminal, not to be confused with subprocess.Popen <cite>buffered</cite>.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="dir-cwd">
+</section>
+<section id="dir-cwd">
 <h2>dir (cwd)<a class="headerlink" href="#dir-cwd" title="Permalink to this headline">¶</a></h2>
 <p>By default the directory of the <cite>dodo</cite> file is used as the
 “current working directory” on python execution.
@@ -555,23 +554,23 @@ You can specify a different <em>cwd</em> with the <em>-d</em>/<em>–dir</em> op
 current working directory (location where the command line
 was executed) using <a class="reference internal" href="#initial-workdir"><span class="std std-ref">get_initial_workdir()</span></a>.</p>
 </div>
-</div>
-<div class="section" id="continue">
+</section>
+<section id="continue">
 <h2>continue<a class="headerlink" href="#continue" title="Permalink to this headline">¶</a></h2>
 <p>By default the execution of tasks is halted on the first task failure or error. You can force it to continue execution with the option –continue/-c</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --continue
 </pre></div>
 </div>
-</div>
-<div class="section" id="single-task-execution">
+</section>
+<section id="single-task-execution">
 <h2>single task execution<a class="headerlink" href="#single-task-execution" title="Permalink to this headline">¶</a></h2>
 <p>The option <code class="docutils literal notranslate"><span class="pre">-s/--single</span></code> can be used to execute a task without executing
 its task dependencies.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit -s do_something
 </pre></div>
 </div>
-</div>
-<div class="section" id="parallel-execution">
+</section>
+<section id="parallel-execution">
 <span id="id1"></span><h2>parallel execution<a class="headerlink" href="#parallel-execution" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> supports parallel execution –process/-n.
 This allows different tasks to be run in parallel, as long any dependencies are met.
@@ -597,8 +596,8 @@ only tasks and sub-tasks are affected by the parallel execution option.</p>
 there are stricter requirements for task properties being picklable than
 other platforms.</p>
 </div>
-</div>
-<div class="section" id="reporter">
+</section>
+<section id="reporter">
 <span id="id2"></span><h2>reporter<a class="headerlink" href="#reporter" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> provides different “<em>reporters</em>” to display running tasks info
 on the console.
@@ -616,8 +615,8 @@ the output generated by the tasks execution.</p></li>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --reporter json
 </pre></div>
 </div>
-</div>
-<div class="section" id="custom-reporter">
+</section>
+<section id="custom-reporter">
 <span id="id3"></span><h2>custom reporter<a class="headerlink" href="#custom-reporter" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to define your own custom reporter. Check the code on
 <a class="reference external" href="https://github.com/pydoit/doit/blob/master/doit/reporter.py">doit/reporter.py</a> … It is easy
@@ -643,8 +642,8 @@ as a <a class="reference internal" href="extending.html#plugin-reporter"><span c
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">reporter</span></code> have no control over the <em>real time</em> output
 from a task while it is being executed,
 this is controlled by the <code class="docutils literal notranslate"><span class="pre">verbosity</span></code> param.</p>
-</div>
-<div class="section" id="check-file-uptodate">
+</section>
+<section id="check-file-uptodate">
 <h2>check_file_uptodate<a class="headerlink" href="#check-file-uptodate" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> provides different options to check if dependency files are up to date
 (see <a class="reference internal" href="tasks.html#file-dep"><span class="std std-ref">file_dep (file dependency)</span></a>).  Use the option <code class="docutils literal notranslate"><span class="pre">--check_file_uptodate</span></code> to choose:</p>
@@ -665,7 +664,7 @@ all commands using <cite>DOIT_CONFIG</cite>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">DOIT_CONFIG = {&#39;check_file_uptodate&#39;: &#39;timestamp&#39;}</span>
 </pre></div>
 </div>
-<div class="section" id="custom-check-file-uptodate">
+<section id="custom-check-file-uptodate">
 <h3>custom check_file_uptodate<a class="headerlink" href="#custom-check-file-uptodate" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to define your own custom up to date checker. Check the code on
 <a class="reference external" href="https://github.com/pydoit/doit/blob/master/doit/dependency.py">doit/dependency.py</a> …
@@ -683,21 +682,21 @@ below. The custom checker must be configured using DOIT_CONFIG dict.</p>
 <span class="n">DOIT_CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;check_file_uptodate&#39;</span><span class="p">:</span> <span class="n">MyChecker</span><span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="output-file">
+</section>
+</section>
+<section id="output-file">
 <h2>output-file<a class="headerlink" href="#output-file" title="Permalink to this headline">¶</a></h2>
 <p>The option –output-file/-o let you output the result to a file.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --output-file result.txt
 </pre></div>
 </div>
-</div>
-<div class="section" id="pdb">
+</section>
+<section id="pdb">
 <h2>pdb<a class="headerlink" href="#pdb" title="Permalink to this headline">¶</a></h2>
 <p>If the option <code class="docutils literal notranslate"><span class="pre">--pdb</span></code> is used, a post-mortem debugger will be launched in case
 of a unhandled exception while loading tasks.</p>
-</div>
-<div class="section" id="get-initial-workdir">
+</section>
+<section id="get-initial-workdir">
 <span id="initial-workdir"></span><h2>get_initial_workdir()<a class="headerlink" href="#get-initial-workdir" title="Permalink to this headline">¶</a></h2>
 <p>When <cite>doit</cite> executes by default it will use the location of <cite>dodo.py</cite>
 as the current working directory (unless –dir is specified).
@@ -734,16 +733,16 @@ from where <cite>doit</cite> was invoked from.</p>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo sub1&#39;</span><span class="p">]}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="codec-cls">
+</section>
+<section id="codec-cls">
 <h2>codec_cls<a class="headerlink" href="#codec-cls" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> uses the <code class="docutils literal notranslate"><span class="pre">json</span></code> package to serialize and deserialize values returned by
 python-actions. If required an alternate encoder/decoder pair may be specified
 so that return values which are not JSON serializable, such as Python class
 instances, may be provided as return values from python-actions.</p>
 <p>Check <code class="docutils literal notranslate"><span class="pre">dependency.py</span></code> ‘s <code class="docutils literal notranslate"><span class="pre">JSONCodec</span></code> interface.</p>
-</div>
-<div class="section" id="minversion">
+</section>
+<section id="minversion">
 <h2>minversion<a class="headerlink" href="#minversion" title="Permalink to this headline">¶</a></h2>
 <p><cite>minversion</cite> can be used to specify the minimum/oldest <cite>doit</cite> version
 that can be used with a <cite>dodo.py</cite> file.</p>
@@ -763,8 +762,8 @@ b4) will be converted to -1.</p>
 <p>This feature was added on <cite>doit</cite> 0.24.0.
 Older Versions will not check or display error messages.</p>
 </div>
-</div>
-<div class="section" id="automatic-regex-for-delayed-task-loaders">
+</section>
+<section id="automatic-regex-for-delayed-task-loaders">
 <span id="auto-delayed-regex"></span><h2>automatic regex for delayed task loaders<a class="headerlink" href="#automatic-regex-for-delayed-task-loaders" title="Permalink to this headline">¶</a></h2>
 <p>When specifying a target for <cite>doit run</cite>, <em>doit</em> usually only considers usual
 tasks and <a class="reference internal" href="task_creation.html#delayed-task-creation"><span class="std std-ref">delayed tasks</span></a> which have a target
@@ -774,8 +773,8 @@ considered.</p>
 <p>By specifying <cite>–auto-delayed-regex</cite>, every delayed task loader having no
 target regex specified is assumed to have <cite>.*</cite> specified, a regex which
 matches any target.</p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -792,12 +791,12 @@ matches any target.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.6.1.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.7.3.
 </div>
             </div>
           </div>
       </page>
-    </div>
+    </div></div>
     
   
     

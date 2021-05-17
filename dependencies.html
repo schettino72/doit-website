@@ -2,17 +2,15 @@
 <html >
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
       <title>More on dependencies</title>
     
-      <link rel="stylesheet" href="_static/pygments.css">
-      <!-- bundled in js (rollup iife) -->
-      <!-- <link rel="stylesheet" href="_static/theme.css"> -->
-      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
       
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-
       <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -30,7 +28,8 @@
   </head>
 
   <body>
-    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="contents.html" class="home-link">
     
       <img class="logo" src="_static/doit-logo-small.png" alt="logo"/>
@@ -363,9 +362,9 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <div class="section" id="more-on-dependencies">
+  <section id="more-on-dependencies">
 <h1>More on dependencies<a class="headerlink" href="#more-on-dependencies" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="uptodate">
+<section id="uptodate">
 <span id="attr-uptodate"></span><h2>uptodate<a class="headerlink" href="#uptodate" title="Permalink to this headline">¶</a></h2>
 <p>Apart from file dependencies you can extend <cite>doit</cite> to support other ways
 to determine if a task is up-to-date through the attribute <code class="docutils literal notranslate"><span class="pre">uptodate</span></code>.</p>
@@ -419,8 +418,8 @@ a “configuration” string or dictionary</p></li>
 status change/create or modify timestamp of a given file/directory</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="doit-up-to-date-definition">
+</section>
+<section id="doit-up-to-date-definition">
 <span id="up-to-date-def"></span><h2>doit up-to-date definition<a class="headerlink" href="#doit-up-to-date-definition" title="Permalink to this headline">¶</a></h2>
 <p>A task is <strong>not</strong> up-to-date if any of:</p>
 <blockquote>
@@ -457,8 +456,8 @@ is <cite>up-to-date</cite> or not,
 <code class="docutils literal notranslate"><span class="pre">doit</span></code> also includes other kind of dependencies (introduced below)
 to help you combine tasks
 so they are executed in appropriate order.</p>
-</div>
-<div class="section" id="uptodate-api">
+</section>
+<section id="uptodate-api">
 <span id="id1"></span><h2>uptodate API<a class="headerlink" href="#uptodate-api" title="Permalink to this headline">¶</a></h2>
 <p>This section will explain how to extend <code class="docutils literal notranslate"><span class="pre">doit</span></code> writing an <code class="docutils literal notranslate"><span class="pre">uptodate</span></code>
 implementation. So unless you need to write an <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> implementation
@@ -484,7 +483,7 @@ a boolean value.</p>
 <p>You could also execute this function in the task-creator and pass the value
 to to <cite>uptodate</cite>. The advantage of just passing the callable is that this
 check will not be executed at all if the task was not selected to be executed.</p>
-<div class="section" id="example-run-once-implementation">
+<section id="example-run-once-implementation">
 <h3>Example: run-once implementation<a class="headerlink" href="#example-run-once-implementation" title="Permalink to this headline">¶</a></h3>
 <p>Most of the time an <cite>uptodate</cite> implementation will compare the current value
 of something with the value it had last time the task was executed.</p>
@@ -528,8 +527,8 @@ up-to-date or not. Remember that the ‘values’ parameter contains the dict wi
 the values saved from last successful execution of the task.
 So it just checks if this task was executed before by looking for the
 <code class="docutils literal notranslate"><span class="pre">run-once</span></code> entry in <code class="docutils literal notranslate"><span class="pre">`values</span></code>.</p>
-</div>
-<div class="section" id="example-timeout-implementation">
+</section>
+<section id="example-timeout-implementation">
 <h3>Example: timeout implementation<a class="headerlink" href="#example-timeout-implementation" title="Permalink to this headline">¶</a></h3>
 <p>Let’s look another example, the <code class="docutils literal notranslate"><span class="pre">timeout</span></code>. The main difference is that
 we actually pass the parameter <code class="docutils literal notranslate"><span class="pre">timeout_limit</span></code>. Here we present
@@ -555,8 +554,8 @@ by implementing a <code class="docutils literal notranslate"><span class="pre">_
 First it defines a function (<code class="docutils literal notranslate"><span class="pre">save_now</span></code>) that is registered
 into <code class="docutils literal notranslate"><span class="pre">task.value_savers</span></code>. Than it compares the current time
 with the time that was saved on last successful execution.</p>
-</div>
-<div class="section" id="example-result-dep-implementation">
+</section>
+<section id="example-result-dep-implementation">
 <h3>Example: result_dep implementation<a class="headerlink" href="#example-result-dep-implementation" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">result_dep</span></code> is more complicated due to two factors. It needs to modify
 the task’s <code class="docutils literal notranslate"><span class="pre">task_dep</span></code>.
@@ -575,9 +574,9 @@ all task objects where the <code class="docutils literal notranslate"><span clas
 sub-tasks from a task-group). And also a method called <code class="docutils literal notranslate"><span class="pre">get_val</span></code> to access
 the saved values and results from any task.</p>
 <p>See the <cite>result_dep</cite> <a class="reference external" href="https://github.com/pydoit/doit/blob/master/doit/task.py">source</a>.</p>
-</div>
-</div>
-<div class="section" id="task-dependency">
+</section>
+</section>
+<section id="task-dependency">
 <h2>task-dependency<a class="headerlink" href="#task-dependency" title="Permalink to this headline">¶</a></h2>
 <p>It is used to enforce tasks are executed on the desired order.
 By default tasks are executed on the same order as they were defined in
@@ -611,7 +610,7 @@ the mercurial repository on the tar file.</p>
 <span class="go">.  tar</span>
 </pre></div>
 </div>
-<div class="section" id="groups">
+<section id="groups">
 <h3>groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h3>
 <p>You can define a group of tasks by adding tasks as dependencies and setting
 its <cite>actions</cite> to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
@@ -627,9 +626,9 @@ its <cite>actions</cite> to <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <p>Note that tasks are never executed twice in the same “run”.</p>
-</div>
-</div>
-<div class="section" id="setup-task">
+</section>
+</section>
+<section id="setup-task">
 <h2>setup-task<a class="headerlink" href="#setup-task" title="Permalink to this headline">¶</a></h2>
 <p>Some tasks may require some kind of environment setup.
 In this case they can define a list of “setup” tasks.</p>
@@ -643,7 +642,7 @@ In this case they can define a list of “setup” tasks.</p>
 A <em>setup-task</em> is executed after the checking if the task is up-to-date and
 it is executed only if the task is not up-to-date and will be executed.</p>
 </div>
-<div class="section" id="teardown">
+<section id="teardown">
 <h3>teardown<a class="headerlink" href="#teardown" title="Permalink to this headline">¶</a></h3>
 <p>Task may also define ‘teardown’ actions.
 These actions are executed after all tasks have finished their execution.
@@ -696,9 +695,9 @@ They are executed in reverse order their tasks were executed.</p>
 <span class="go">stop setupY</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="saving-computed-values">
+</section>
+</section>
+<section id="saving-computed-values">
 <h2>saving computed values<a class="headerlink" href="#saving-computed-values" title="Permalink to this headline">¶</a></h2>
 <p>Tasks can save computed values by returning a dictionary on it’s python-actions.
 The values must be JSON encodable.</p>
@@ -716,8 +715,8 @@ parameter with the <em>name</em> used to save the output in <em>values</em></p>
 </div>
 <p>These values can be used on <a class="reference internal" href="#uptodate">uptodate</a> and <a class="reference internal" href="#getargs">getargs</a>.
 Check those sections for examples.</p>
-</div>
-<div class="section" id="getargs">
+</section>
+<section id="getargs">
 <span id="id2"></span><h2>getargs<a class="headerlink" href="#getargs" title="Permalink to this headline">¶</a></h2>
 <p><cite>getargs</cite> provides a way to use values computed from one task in another task.
 The values are taken from “saved computed values”
@@ -803,8 +802,8 @@ by specifying the value name as <code class="docutils literal notranslate"><span
 <p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">getargs</span></code> creates an implicit setup-task.</p>
 </div>
-</div>
-<div class="section" id="calculated-dependencies">
+</section>
+<section id="calculated-dependencies">
 <span id="attr-calc-dep"></span><h2>calculated-dependencies<a class="headerlink" href="#calculated-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Calculation of dependencies might be an expensive operation, so not suitable
 to be done on load time by task-creators.
@@ -852,8 +851,8 @@ from a module. The dependencies itself are calculated on task <code class="docut
                <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -870,12 +869,12 @@ from a module. The dependencies itself are calculated on task <code class="docut
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.6.1.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.7.3.
 </div>
             </div>
           </div>
       </page>
-    </div>
+    </div></div>
     
   
     

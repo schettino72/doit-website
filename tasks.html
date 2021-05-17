@@ -2,17 +2,15 @@
 <html >
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
       <title>Tasks</title>
     
-      <link rel="stylesheet" href="_static/pygments.css">
-      <!-- bundled in js (rollup iife) -->
-      <!-- <link rel="stylesheet" href="_static/theme.css"> -->
-      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
       
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-
       <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -30,7 +28,8 @@
   </head>
 
   <body>
-    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="contents.html" class="home-link">
     
       <img class="logo" src="_static/doit-logo-small.png" alt="logo"/>
@@ -379,9 +378,9 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <div class="section" id="tasks">
+  <section id="tasks">
 <h1>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="intro">
+<section id="intro">
 <h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> is all about automating task dependency management and execution.
 Tasks can execute external shell commands/scripts or python functions
@@ -422,8 +421,8 @@ file named <cite>dodo.py</cite> in the current folder and execute its tasks.</p>
 </div>
 <p>On the output it displays which tasks were executed.
 In this case the <cite>dodo</cite> file has only one task, <cite>hello</cite>.</p>
-</div>
-<div class="section" id="actions">
+</section>
+<section id="actions">
 <h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
 <p>Every <em>task</em> must define <cite>actions</cite>.
 It can optionally define other attributes like <cite>targets</cite>, <cite>file_dep</cite>,
@@ -433,7 +432,7 @@ It can optionally define other attributes like <cite>targets</cite>, <cite>file_
 The actions of a task are always run sequentially.
 There are 2 basic kinds of <cite>actions</cite>: <em>cmd-action</em> and <em>python-action</em>.
 The action “result” is used to determine if task execution was successful or not.</p>
-<div class="section" id="python-action">
+<section id="python-action">
 <h3>python-action<a class="headerlink" href="#python-action" title="Permalink to this headline">¶</a></h3>
 <p>If <cite>action</cite> is a python callable or a tuple <cite>(callable, *args, **kwargs)</cite>
 - only <cite>callable</cite> is required.
@@ -501,8 +500,8 @@ read “the task’s actions are executed”.</p>
     <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="cmd-action">
+</section>
+<section id="cmd-action">
 <h3>cmd-action<a class="headerlink" href="#cmd-action" title="Permalink to this headline">¶</a></h3>
 <p>CmdAction’s are executed in a subprocess (using python
 <a class="reference external" href="http://docs.python.org/library/subprocess.html#popen-constructor">subprocess.Popen</a>).</p>
@@ -563,14 +562,14 @@ All keyword parameter from <code class="docutils literal notranslate"><span clas
 <p>The result of the task follows the shell convention.
 If the process exits with the value <cite>0</cite> it is successful.
 Any other value means the task failed.</p>
-</div>
-<div class="section" id="custom-actions">
+</section>
+<section id="custom-actions">
 <span id="id1"></span><h3>custom actions<a class="headerlink" href="#custom-actions" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to create other type of actions,
 check <a class="reference internal" href="tools.html#tools-longrunning"><span class="std std-ref">tools.LongRunning</span></a> as an example.</p>
-</div>
-</div>
-<div class="section" id="task-name">
+</section>
+</section>
+<section id="task-name">
 <h2>task name<a class="headerlink" href="#task-name" title="Permalink to this headline">¶</a></h2>
 <p>By default a task name is taken from the name of the python function
 that generates the task.
@@ -616,8 +615,8 @@ This is useful to write some generic/reusable task-creators.</p>
 <span class="go">.  t1</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="listing-tasks">
+</section>
+<section id="listing-tasks">
 <h2>listing tasks<a class="headerlink" href="#listing-tasks" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">doit</span></code> has built-in sub-command that can be used to list/print all tasks.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
@@ -625,8 +624,8 @@ This is useful to write some generic/reusable task-creators.</p>
 <span class="go">hello2   say hello again</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="doc">
+</section>
+<section id="doc">
 <h2>doc<a class="headerlink" href="#doc" title="Permalink to this headline">¶</a></h2>
 <p>Every task has an associated documentation.
 By default this documentation is taken from the task-creator function’s docstring.
@@ -642,8 +641,8 @@ It can also be set by the <code class="docutils literal notranslate"><span class
 <span class="go">.  hello</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="sub-tasks">
+</section>
+<section id="sub-tasks">
 <h2>sub-tasks<a class="headerlink" href="#sub-tasks" title="Permalink to this headline">¶</a></h2>
 <p>Most of the time we want to apply the same task several times
 in different contexts.</p>
@@ -663,7 +662,7 @@ additional field <code class="docutils literal notranslate"><span class="pre">na
 <span class="go">.  create_file:file2.txt</span>
 </pre></div>
 </div>
-<div class="section" id="avoiding-empty-sub-tasks">
+<section id="avoiding-empty-sub-tasks">
 <h3>avoiding empty sub-tasks<a class="headerlink" href="#avoiding-empty-sub-tasks" title="Permalink to this headline">¶</a></h3>
 <p>If you are not sure sub-tasks will be created for a given <code class="docutils literal notranslate"><span class="pre">basename</span></code>
 but you want to make sure that a task exist,
@@ -694,9 +693,9 @@ This can also be used to set the task <code class="docutils literal notranslate"
 <span class="go">do_x   docs for X</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="dependencies-targets">
+</section>
+</section>
+<section id="dependencies-targets">
 <h2>Dependencies &amp; Targets<a class="headerlink" href="#dependencies-targets" title="Permalink to this headline">¶</a></h2>
 <p>One of the main ideas of <cite>doit</cite> (and other build-tools) is to check if the
 tasks/targets are <strong>up-to-date</strong>. In case there is no modification in the
@@ -729,8 +728,8 @@ The execution of the task’s actions is skipped.</p>
 </div>
 <p>Note the <code class="docutils literal notranslate"><span class="pre">--</span></code> (2 dashes, one space) on the command output on the second
 time it is executed. It means, this task was up-to-date and not executed.</p>
-</div>
-<div class="section" id="file-dep-file-dependency">
+</section>
+<section id="file-dep-file-dependency">
 <span id="file-dep"></span><h2>file_dep (file dependency)<a class="headerlink" href="#file-dep-file-dependency" title="Permalink to this headline">¶</a></h2>
 <p>Different from most build-tools dependencies are on tasks, not on targets.
 So <cite>doit</cite> can take advantage of the “execute only if not up-to-date” feature
@@ -765,8 +764,8 @@ Be careful about editing a <cite>file_dep</cite> while a task is running because
 <cite>doit</cite> might save the MD5 of a version of the file that is different
 than it actually used to execute the task.</p>
 </div>
-</div>
-<div class="section" id="targets">
+</section>
+<section id="targets">
 <h2>targets<a class="headerlink" href="#targets" title="Permalink to this headline">¶</a></h2>
 <p>Targets can be any file path (a file or folder). If a target does not exist
 the task will be executed. There is no limitation on the number of targets
@@ -799,8 +798,8 @@ do not change the task is not executed again.</p></li>
 <span class="go">-- compile</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="execution-order">
+</section>
+<section id="execution-order">
 <h2>execution order<a class="headerlink" href="#execution-order" title="Permalink to this headline">¶</a></h2>
 <p>If your tasks interact in a way where the target (output) of one task is a
 file_dep (input) of another task, <cite>doit</cite> will make sure your tasks are
@@ -827,8 +826,8 @@ executed in the correct order.</p>
 So although <cite>my_file</cite> and <cite>./my_file</cite> are actually the same file, <cite>doit</cite>
 will think they are different files.</p>
 </div>
-</div>
-<div class="section" id="task-selection">
+</section>
+<section id="task-selection">
 <span id="id4"></span><h2>Task selection<a class="headerlink" href="#task-selection" title="Permalink to this headline">¶</a></h2>
 <p>By default all tasks are executed in the same order as they were defined (the order may change to satisfy dependencies). You can control which tasks will run in 2 ways.</p>
 <p>Another example</p>
@@ -847,7 +846,7 @@ will think they are different files.</p>
             <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;task1&#39;</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="section" id="doit-config-default-tasks">
+<section id="doit-config-default-tasks">
 <h3>DOIT_CONFIG -&gt; default_tasks<a class="headerlink" href="#doit-config-default-tasks" title="Permalink to this headline">¶</a></h3>
 <p><em>dodo</em> file defines a dictionary <code class="docutils literal notranslate"><span class="pre">DOIT_CONFIG</span></code> with <code class="docutils literal notranslate"><span class="pre">default_tasks</span></code>, a list of strings where each element is a task name.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
@@ -858,8 +857,8 @@ will think they are different files.</p>
 <p>Note that only the task <em>t3</em> was specified to be executed by default.
 But its dependencies include a target of another task (t1).
 So that task was automatically executed also.</p>
-</div>
-<div class="section" id="command-line-selection">
+</section>
+<section id="command-line-selection">
 <h3>command line selection<a class="headerlink" href="#command-line-selection" title="Permalink to this headline">¶</a></h3>
 <p>From the command line you can control which tasks are going to be execute by passing its task name. Any number of tasks can be passed as positional arguments.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit t2
@@ -871,8 +870,8 @@ So that task was automatically executed also.</p>
 <span class="go">.  t1</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="sub-task-selection">
+</section>
+<section id="sub-task-selection">
 <h3>sub-task selection<a class="headerlink" href="#sub-task-selection" title="Permalink to this headline">¶</a></h3>
 <p>You can select sub-tasks from the command line specifying its full name.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">task_create_file</span><span class="p">():</span>
@@ -886,8 +885,8 @@ So that task was automatically executed also.</p>
 <span class="go">.  create_file:file2.txt</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="wildcard-selection">
+</section>
+<section id="wildcard-selection">
 <h3>wildcard selection<a class="headerlink" href="#wildcard-selection" title="Permalink to this headline">¶</a></h3>
 <p>You can also select tasks to be executed using a <a class="reference external" href="http://docs.python.org/library/glob.html">glob</a> like syntax (it must contains a <code class="docutils literal notranslate"><span class="pre">*</span></code>).</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit create_file:file*
@@ -896,9 +895,9 @@ So that task was automatically executed also.</p>
 <span class="go">.  create_file:file3.txt</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="parameters-on-actions">
+</section>
+</section>
+<section id="parameters-on-actions">
 <h2>parameters on actions<a class="headerlink" href="#parameters-on-actions" title="Permalink to this headline">¶</a></h2>
 <p>Actions may take optional parameters provided as function keywords arguments for <em>python-action</em>. Or values for <em>printf-style</em> formatting on <em>cmd-action</em>.</p>
 <p>There are three sources of parameter values:</p>
@@ -909,7 +908,7 @@ So that task was automatically executed also.</p>
 <li><p>values computed in other tasks. <a class="reference internal" href="dependencies.html#getargs"><span class="std std-ref">getargs</span></a> describes, how a task can calculate and store values and how other tasks can refer to them.</p></li>
 </ul>
 </div></blockquote>
-<div class="section" id="keywords-with-task-metadata">
+<section id="keywords-with-task-metadata">
 <h3>keywords with task metadata<a class="headerlink" href="#keywords-with-task-metadata" title="Permalink to this headline">¶</a></h3>
 <p>These values are automatically calculated by <cite>doit</cite>:</p>
 <blockquote>
@@ -922,8 +921,8 @@ successful execution</p></li>
 Note: the value is a <cite>Task</cite> object instance, not the metadata <em>dict</em>.</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="keywords-on-cmd-action-string">
+</section>
+<section id="keywords-on-cmd-action-string">
 <span id="id5"></span><h3>keywords on cmd-action string<a class="headerlink" href="#keywords-on-cmd-action-string" title="Permalink to this headline">¶</a></h3>
 <p>For <em>cmd-action</em> you can take advantage of implicit keyword
 substitution on <em>cmd-action</em> strings using python formatting.</p>
@@ -974,8 +973,8 @@ Implicit keywords substitution applies only to the string form
 and does not affect the list form. This means <cite>{}</cite> and <cite>%</cite>
 need not be escaped when using this form.</p>
 </div>
-</div>
-<div class="section" id="keywords-on-python-action">
+</section>
+<section id="keywords-on-python-action">
 <h3>keywords on <em>python-action</em><a class="headerlink" href="#keywords-on-python-action" title="Permalink to this headline">¶</a></h3>
 <p>For <em>python-action</em> add a keyword parameter in the function,
 <cite>doit</cite> will take care of passing the value when the function is called.
@@ -1013,13 +1012,13 @@ metadata.</p>
 <p>It is possible not only to retrieve task’s attributes but also to
 modify them while the action is running!</p>
 </div>
-</div>
-</div>
-<div class="section" id="private-hidden-tasks">
+</section>
+</section>
+<section id="private-hidden-tasks">
 <h2>private/hidden tasks<a class="headerlink" href="#private-hidden-tasks" title="Permalink to this headline">¶</a></h2>
 <p>If task name starts with an underscore ‘_’, it will not be included in the output.</p>
-</div>
-<div class="section" id="title">
+</section>
+<section id="title">
 <h2>title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h2>
 <p>By default when you run <cite>doit</cite> only the task name is printed out on the output.
 You can customize the output passing a <code class="docutils literal notranslate"><span class="pre">title</span></code> function to the task:</p>
@@ -1036,8 +1035,8 @@ You can customize the output passing a <code class="docutils literal notranslate
 <span class="go">.  executing... Cmd: echo abc efg</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="verbosity">
+</section>
+<section id="verbosity">
 <span id="id6"></span><h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
 <p>By default the stdout from a task is captured and its stderr is sent to the
 console. If the task fails or there is an error the stdout and a traceback
@@ -1068,8 +1067,8 @@ console. If the task fails or there is an error the stdout and a traceback
 <ul class="simple">
 <li><p>from command line, see <a class="reference internal" href="cmd_run.html#verbosity-option"><span class="std std-ref">verbosity option</span></a>.</p></li>
 </ul>
-</div>
-<div class="section" id="id7">
+</section>
+<section id="id7">
 <h2>pathlib<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> supports <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a>:
 file_dep, targets and CmdAction specified as a list can take as elements not
@@ -1092,8 +1091,8 @@ of header and source files in current directory using pathlib.</p>
         <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -1110,12 +1109,12 @@ of header and source files in current directory using pathlib.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.6.1.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.7.3.
 </div>
             </div>
           </div>
       </page>
-    </div>
+    </div></div>
     
   
     

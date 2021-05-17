@@ -2,17 +2,15 @@
 <html >
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
       <title>custom uptodate</title>
     
-      <link rel="stylesheet" href="_static/pygments.css">
-      <!-- bundled in js (rollup iife) -->
-      <!-- <link rel="stylesheet" href="_static/theme.css"> -->
-      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
       
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-
       <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -30,7 +28,8 @@
   </head>
 
   <body>
-    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="contents.html" class="home-link">
     
       <img class="logo" src="_static/doit-logo-small.png" alt="logo"/>
@@ -357,12 +356,12 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <div class="section" id="custom-uptodate">
+  <section id="custom-uptodate">
 <h1>custom uptodate<a class="headerlink" href="#custom-uptodate" title="Permalink to this headline">¶</a></h1>
 <p>The basics of <cite>uptodate</cite> was already <a class="reference internal" href="dependencies.html#attr-uptodate"><span class="std std-ref">introduced</span></a>.
 Here we look in more
 detail into some implementations shipped with <cite>doit</cite>.</p>
-<div class="section" id="result-dependency">
+<section id="result-dependency">
 <span id="result-dep"></span><h2>result-dependency<a class="headerlink" href="#result-dependency" title="Permalink to this headline">¶</a></h2>
 <p>In some cases you can not determine if a task is “up-to-date” only based on
 input files, the input could come from a database or an external process.
@@ -391,8 +390,8 @@ For cmd-actions it is the output send to stdout plus stderr.</p>
 <p><cite>result_dep</cite> also supports group-tasks. In this case it will check that the
 result of all subtasks did not change. And also the existing sub-tasks are
 the same.</p>
-</div>
-<div class="section" id="run-once">
+</section>
+<section id="run-once">
 <span id="id1"></span><h2>run_once()<a class="headerlink" href="#run-once" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes there is no dependency for a task but you do not want to execute it
 all the time. With “run_once” the task will not be executed again after the first
@@ -419,8 +418,8 @@ There is no dependency, but you do not want to download it many times.</p>
 <span class="go">.  get_pylogo</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="timeout">
+</section>
+<section id="timeout">
 <span id="id2"></span><h2>timeout()<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">timeout</span></code> is used to expire a task after a certain time interval.</p>
 <p>i.e. You want to re-execute a task only if the time elapsed since the last
@@ -438,8 +437,8 @@ time it was executed is bigger than 5 minutes.</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">timeout</span></code> is function that takes an <code class="docutils literal notranslate"><span class="pre">int</span></code> (seconds) or <code class="docutils literal notranslate"><span class="pre">timedelta</span></code> as a
 parameter. It returns a callable suitable to be used as an <code class="docutils literal notranslate"><span class="pre">uptodate</span></code> callable.</p>
-</div>
-<div class="section" id="config-changed">
+</section>
+<section id="config-changed">
 <span id="id3"></span><h2>config_changed()<a class="headerlink" href="#config-changed" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">config_changed</span></code> is used to check if any “configuration” value for the task has
 changed. Config values can be a string or dict.</p>
@@ -457,8 +456,8 @@ passed with the argument <code class="docutils literal notranslate"><span class=
             <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="check-timestamp-unchanged">
+</section>
+<section id="check-timestamp-unchanged">
 <span id="id4"></span><h2>check_timestamp_unchanged()<a class="headerlink" href="#check-timestamp-unchanged" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">check_timestamp_unchanged</span></code> is used to check if specified timestamp of a given
 file/dir is unchanged since last run.</p>
@@ -496,8 +495,8 @@ If a file is a target of another task you should probably add
         <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -514,12 +513,12 @@ If a file is a target of another task you should probably add
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.6.1.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.7.3.
 </div>
             </div>
           </div>
       </page>
-    </div>
+    </div></div>
     
   
     

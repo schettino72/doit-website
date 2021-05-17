@@ -2,17 +2,15 @@
 <html >
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
       <title>Configuration</title>
     
-      <link rel="stylesheet" href="_static/pygments.css">
-      <!-- bundled in js (rollup iife) -->
-      <!-- <link rel="stylesheet" href="_static/theme.css"> -->
-      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
       
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-
       <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -30,7 +28,8 @@
   </head>
 
   <body>
-    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="contents.html" class="home-link">
     
       <img class="logo" src="_static/doit-logo-small.png" alt="logo"/>
@@ -353,9 +352,9 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <div class="section" id="configuration">
+  <section id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="config-param-names">
+<section id="config-param-names">
 <h2>config param names<a class="headerlink" href="#config-param-names" title="Permalink to this headline">¶</a></h2>
 <p>Note that the configuration option’s name is not always the same as the
 <em>long</em> argument name used in the command line.</p>
@@ -366,8 +365,8 @@ it is called <code class="docutils literal notranslate"><span class="pre">dodoFi
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">f</span> <span class="n">ARG</span><span class="p">,</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">ARG</span>        <span class="n">load</span> <span class="n">task</span> <span class="kn">from</span> <span class="nn">dodo</span> <span class="n">FILE</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="n">dodo</span><span class="o">.</span><span class="n">py</span><span class="p">]</span>  <span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">dodoFile</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="doit-cfg">
+</section>
+<section id="doit-cfg">
 <h2>doit.cfg<a class="headerlink" href="#doit-cfg" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> uses an INI style configuration file
 (see <a class="reference external" href="https://docs.python.org/3/library/configparser.html">configparser</a>).
@@ -379,7 +378,7 @@ it is processed. It supports 3 kind of sections:</p>
 <li><p>a section for each command</p></li>
 <li><p>a section for each plugin category</p></li>
 </ul>
-<div class="section" id="global-section">
+<section id="global-section">
 <h3>GLOBAL section<a class="headerlink" href="#global-section" title="Permalink to this headline">¶</a></h3>
 <p>The <cite>GLOBAL</cite> section may contain command line options that will
 be used (if applicable) by any commands.</p>
@@ -390,8 +389,8 @@ be used (if applicable) by any commands.</p>
 </div>
 <p>All commands that has a <cite>backend</cite> option (<em>run</em>, <em>clean</em>, <em>forget</em>, etc),
 will use this option without the need this option in the command line.</p>
-</div>
-<div class="section" id="commands-section">
+</section>
+<section id="commands-section">
 <h3>commands section<a class="headerlink" href="#commands-section" title="Permalink to this headline">¶</a></h3>
 <p>To configure options for a specific command, use a section with
 the command name:</p>
@@ -400,13 +399,13 @@ the command name:</p>
 <span class="n">subtasks</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="plugins-sections">
+</section>
+<section id="plugins-sections">
 <h3>plugins sections<a class="headerlink" href="#plugins-sections" title="Permalink to this headline">¶</a></h3>
 <p>Check the <a class="reference internal" href="extending.html#plugins"><span class="std std-ref">plugins</span></a> section for an introduction
 on available plugin categories.</p>
-</div>
-<div class="section" id="per-task-sections">
+</section>
+<section id="per-task-sections">
 <h3>per-task sections<a class="headerlink" href="#per-task-sections" title="Permalink to this headline">¶</a></h3>
 <p>To configure options for a specific task, use a section with
 the task name prefixed with “task:”:</p>
@@ -416,9 +415,9 @@ the task name prefixed with “task:”:</p>
 <span class="n">duration</span> <span class="o">=</span> <span class="mi">12</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="configuration-at-dodo-py">
+</section>
+</section>
+<section id="configuration-at-dodo-py">
 <h2>configuration at <em>dodo.py</em><a class="headerlink" href="#configuration-at-dodo-py" title="Permalink to this headline">¶</a></h2>
 <p>As a convenience you can also set <cite>GLOBAL</cite> options directly into a <cite>dodo.py</cite>.
 Just put the option in the <cite>DOIT_CONFIG</cite> dict.
@@ -445,8 +444,8 @@ they control how the <em>dodo</em> file itself is loaded.</p>
 <p>Also if the command does not read the <cite>dodo.py</cite> file it obviously will
 not be used.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -463,12 +462,12 @@ not be used.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.6.1.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.7.3.
 </div>
             </div>
           </div>
       </page>
-    </div>
+    </div></div>
     
   
     

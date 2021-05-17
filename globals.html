@@ -2,17 +2,15 @@
 <html >
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
       <title>Globals</title>
     
-      <link rel="stylesheet" href="_static/pygments.css">
-      <!-- bundled in js (rollup iife) -->
-      <!-- <link rel="stylesheet" href="_static/theme.css"> -->
-      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
       
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-
       <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -30,7 +28,8 @@
   </head>
 
   <body>
-    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="contents.html" class="home-link">
     
       <img class="logo" src="_static/doit-logo-small.png" alt="logo"/>
@@ -349,14 +348,14 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <div class="section" id="globals">
+  <section id="globals">
 <h1>Globals<a class="headerlink" href="#globals" title="Permalink to this headline">¶</a></h1>
 <p>During the life-cycle of a command invocation,
 some properties of <cite>doit</cite> are stored in global singletons,
 provided by the <code class="docutils literal notranslate"><span class="pre">doit.Globals</span></code> class.</p>
 <dl class="py class">
-<dt id="doit.globals.Globals">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">doit.globals.</span></code><code class="sig-name descname"><span class="pre">Globals</span></code><a class="reference internal" href="_modules/doit/globals.html#Globals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.globals.Globals" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.globals.Globals">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">doit.globals.</span></span><span class="sig-name descname"><span class="pre">Globals</span></span><a class="reference internal" href="_modules/doit/globals.html#Globals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.globals.Globals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Accessors to doit singletons.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
@@ -366,7 +365,7 @@ holding all persistent task data.</p>
 </dl>
 </dd></dl>
 
-<div class="section" id="dep-manager">
+<section id="dep-manager">
 <h2>dep_manager<a class="headerlink" href="#dep-manager" title="Permalink to this headline">¶</a></h2>
 <p>The doit dependency manager holds the persistent state of <cite>doit</cite>.
 This includes relations of tasks among each other or results,
@@ -382,8 +381,8 @@ in particular during:</p>
 </ul>
 <p>The <cite>Dependency</cite> class has members to access persistent doit data via its API:</p>
 <dl class="py class">
-<dt id="doit.dependency.Dependency">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">doit.dependency.</span></code><code class="sig-name descname"><span class="pre">Dependency</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">db_class</span></em>, <em class="sig-param"><span class="pre">backend_name</span></em>, <em class="sig-param"><span class="pre">checker_cls=&lt;class</span> <span class="pre">'doit.dependency.MD5Checker'&gt;</span></em>, <em class="sig-param"><span class="pre">codec_cls=&lt;class</span> <span class="pre">'doit.dependency.JSONCodec'&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.dependency.Dependency" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.dependency.Dependency">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">doit.dependency.</span></span><span class="sig-name descname"><span class="pre">Dependency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">db_class</span></em>, <em class="sig-param"><span class="pre">backend_name</span></em>, <em class="sig-param"><span class="pre">checker_cls=&lt;class</span> <span class="pre">'doit.dependency.MD5Checker'&gt;</span></em>, <em class="sig-param"><span class="pre">codec_cls=&lt;class</span> <span class="pre">'doit.dependency.JSONCodec'&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.dependency.Dependency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Manage tasks dependencies.</p>
 <p>Each dependency is saved in “db”. There are several “db” backends.
 It uses a Key-Value format where the key is task-name
@@ -411,8 +410,8 @@ Apart from dependencies other values are also saved on the task dictionary:</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt id="doit.dependency.Dependency.get_result">
-<code class="sig-name descname"><span class="pre">get_result</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency.get_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.dependency.Dependency.get_result" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.dependency.Dependency.get_result">
+<span class="sig-name descname"><span class="pre">get_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency.get_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.dependency.Dependency.get_result" title="Permalink to this definition">¶</a></dt>
 <dd><p>get the result saved from a task</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return (dict or md5sum)</dt>
@@ -421,8 +420,8 @@ Apart from dependencies other values are also saved on the task dictionary:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="doit.dependency.Dependency.get_value">
-<code class="sig-name descname"><span class="pre">get_value</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency.get_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.dependency.Dependency.get_value" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.dependency.Dependency.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency.get_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.dependency.Dependency.get_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>get saved value from task</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -435,8 +434,8 @@ Apart from dependencies other values are also saved on the task dictionary:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="doit.dependency.Dependency.get_values">
-<code class="sig-name descname"><span class="pre">get_values</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency.get_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.dependency.Dependency.get_values" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.dependency.Dependency.get_values">
+<span class="sig-name descname"><span class="pre">get_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/dependency.html#Dependency.get_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.dependency.Dependency.get_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>get all saved values from a task</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return dict</dt>
@@ -452,12 +451,12 @@ An experienced user may also <em>modify</em> persistently stored <em>doit</em> d
 As an example of a backend API,
 look at the common methods exposed by the default <cite>DbmDB</cite> backend implementation:</p>
 <dl class="py class">
-<dt id="doit.dependency.DbmDB">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">doit.dependency.</span></code><code class="sig-name descname"><span class="pre">DbmDB</span></code><a class="headerlink" href="#doit.dependency.DbmDB" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.dependency.DbmDB">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">doit.dependency.</span></span><span class="sig-name descname"><span class="pre">DbmDB</span></span><a class="headerlink" href="#doit.dependency.DbmDB" title="Permalink to this definition">¶</a></dt>
 <dd><p>A simple Key-Value database interface</p>
 <dl class="py method">
-<dt id="doit.dependency.doit.dependency.DbmDB.DbmDB.get">
-<code class="sig-prename descclassname"><span class="pre">DbmDB.</span></code><code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependency</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doit.dependency.doit.dependency.DbmDB.DbmDB.get" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.dependency.doit.dependency.DbmDB.DbmDB.get">
+<span class="sig-prename descclassname"><span class="pre">DbmDB.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependency</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doit.dependency.doit.dependency.DbmDB.DbmDB.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get value stored in the DB.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -467,14 +466,14 @@ look at the common methods exposed by the default <cite>DbmDB</cite> backend imp
 </dd></dl>
 
 <dl class="py method">
-<dt id="doit.dependency.doit.dependency.DbmDB.DbmDB.set">
-<code class="sig-prename descclassname"><span class="pre">DbmDB.</span></code><code class="sig-name descname"><span class="pre">set</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doit.dependency.doit.dependency.DbmDB.DbmDB.set" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.dependency.doit.dependency.DbmDB.DbmDB.set">
+<span class="sig-prename descclassname"><span class="pre">DbmDB.</span></span><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doit.dependency.doit.dependency.DbmDB.DbmDB.set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Store value in the DB.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="doit.dependency.doit.dependency.DbmDB.DbmDB.remove">
-<code class="sig-prename descclassname"><span class="pre">DbmDB.</span></code><code class="sig-name descname"><span class="pre">remove</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doit.dependency.doit.dependency.DbmDB.DbmDB.remove" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.dependency.doit.dependency.DbmDB.DbmDB.remove">
+<span class="sig-prename descclassname"><span class="pre">DbmDB.</span></span><span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doit.dependency.doit.dependency.DbmDB.DbmDB.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>remove saved dependencies from DB for taskId</p>
 </dd></dl>
 
@@ -482,7 +481,7 @@ look at the common methods exposed by the default <cite>DbmDB</cite> backend imp
 
 <p>There are other backends available in <em>doit</em>,
 see the documentation on <a class="reference internal" href="cmd_run.html#db-backends"><span class="std std-ref">DB backend</span></a> on how to select between them.</p>
-<div class="section" id="dep-manager-example">
+<section id="dep-manager-example">
 <h3><code class="docutils literal notranslate"><span class="pre">dep_manager</span></code> example<a class="headerlink" href="#dep-manager-example" title="Permalink to this headline">¶</a></h3>
 <p>An example of using the exposed dependency manager is a task,
 where at creation time the <em>target</em> of the task action is not yet known,
@@ -525,9 +524,9 @@ and perform the cleanup action:</p>
     <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
@@ -544,12 +543,12 @@ and perform the cleanup action:</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.6.1.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.7.3.
 </div>
             </div>
           </div>
       </page>
-    </div>
+    </div></div>
     
   
     

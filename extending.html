@@ -2,17 +2,15 @@
 <html >
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
       <title>Extending doit</title>
     
-      <link rel="stylesheet" href="_static/pygments.css">
-      <!-- bundled in js (rollup iife) -->
-      <!-- <link rel="stylesheet" href="_static/theme.css"> -->
-      <link rel="stylesheet" href="_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
       
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-
       <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -30,7 +28,8 @@
   </head>
 
   <body>
-    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="contents.html" class="home-link">
     
       <img class="logo" src="_static/doit-logo-small.png" alt="logo"/>
@@ -353,7 +352,7 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <div class="section" id="extending-doit">
+  <section id="extending-doit">
 <h1>Extending <cite>doit</cite><a class="headerlink" href="#extending-doit" title="Permalink to this headline">¶</a></h1>
 <p id="extending"><cite>doit</cite> is built to be extended and this can be done in several levels.
 So far we have seen:</p>
@@ -369,7 +368,7 @@ reports (<a class="reference internal" href="cmd_run.html#reporter"><span class=
 </ol>
 <p>Apart from those, <cite>doit</cite> also provides a plugin system and
 expose it’s internal API so you can create new applications on top of <cite>doit</cite>.</p>
-<div class="section" id="task-loader-customization">
+<section id="task-loader-customization">
 <span id="custom-loader"></span><h2>task loader customization<a class="headerlink" href="#task-loader-customization" title="Permalink to this headline">¶</a></h2>
 <p>The task loader controls the source/creation of tasks.
 Normally <cite>doit</cite> tasks are defined in a <cite>dodo.py</cite> file.
@@ -377,8 +376,8 @@ This file is loaded, and the list of tasks is created from
 the dict containing task meta-data from the <em>task-creator</em> functions.</p>
 <p>Subclass <code class="docutils literal notranslate"><span class="pre">TaskLoader2</span></code> to create a custom loader:</p>
 <dl class="py class">
-<dt id="doit.cmd_base.TaskLoader2">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">doit.cmd_base.</span></code><code class="sig-name descname"><span class="pre">TaskLoader2</span></code><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader2" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.cmd_base.TaskLoader2">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">doit.cmd_base.</span></span><span class="sig-name descname"><span class="pre">TaskLoader2</span></span><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface of task loaders with new-style API.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
@@ -389,8 +388,8 @@ the dict containing task meta-data from the <em>task-creator</em> functions.</p>
 of the actual tasks, which enables additional elements to be available
 during task creation.</p>
 <dl class="py method">
-<dt id="doit.cmd_base.TaskLoader2.load_doit_config">
-<code class="sig-name descname"><span class="pre">load_doit_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader2.load_doit_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader2.load_doit_config" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.cmd_base.TaskLoader2.load_doit_config">
+<span class="sig-name descname"><span class="pre">load_doit_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader2.load_doit_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader2.load_doit_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load doit configuration.</p>
 <p>The method must not be called before invocation of <code class="docutils literal notranslate"><span class="pre">setup</span></code>.</p>
 <dl class="field-list simple">
@@ -401,8 +400,8 @@ during task creation.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="doit.cmd_base.TaskLoader2.load_tasks">
-<code class="sig-name descname"><span class="pre">load_tasks</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader2.load_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader2.load_tasks" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.cmd_base.TaskLoader2.load_tasks">
+<span class="sig-name descname"><span class="pre">load_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader2.load_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader2.load_tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load tasks.</p>
 <p>The method must not be called before invocation of <code class="docutils literal notranslate"><span class="pre">load_doit_config</span></code>.</p>
 <dl class="field-list simple">
@@ -419,8 +418,8 @@ during task creation.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="doit.cmd_base.TaskLoader2.setup">
-<code class="sig-name descname"><span class="pre">setup</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opt_values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader2.setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader2.setup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.cmd_base.TaskLoader2.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opt_values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader2.setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader2.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delayed initialization.</p>
 <p>To be implemented if the data is needed by derived classes.</p>
 <dl class="field-list simple">
@@ -436,7 +435,7 @@ during task creation.</p>
 used, which did not separate the setup, configuration loading and task loading phases explicit.</p>
 <p>The main program is implemented in the <cite>DoitMain</cite>. It’s constructor
 takes an instance of the task loader to be used.</p>
-<div class="section" id="example-pre-defined-task">
+<section id="example-pre-defined-task">
 <h3>Example: pre-defined task<a class="headerlink" href="#example-pre-defined-task" title="Permalink to this headline">¶</a></h3>
 <p>In the full example below a application is created where the only
 task available is defined using a dict (so no <cite>dodo.py</cite> will be used).</p>
@@ -471,8 +470,8 @@ task available is defined using a dict (so no <cite>dodo.py</cite> will be used)
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">DoitMain</span><span class="p">(</span><span class="n">MyLoader</span><span class="p">())</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="example-load-tasks-from-a-module">
+</section>
+<section id="example-load-tasks-from-a-module">
 <span id="moduletaskloader"></span><h3>Example: load tasks from a module<a class="headerlink" href="#example-load-tasks-from-a-module" title="Permalink to this headline">¶</a></h3>
 <p>The <cite>ModuleTaskLoader</cite> can be used to load tasks from a specified module,
 where this module specifies tasks in the same way as in <cite>dodo.py</cite>.
@@ -491,9 +490,9 @@ where this module specifies tasks in the same way as in <cite>dodo.py</cite>.
 </div>
 <p><cite>ModuleTaskLoader</cite> can take also take a <cite>dict</cite> where its items are functions
 or methods of an object.</p>
-</div>
-</div>
-<div class="section" id="command-customization">
+</section>
+</section>
+<section id="command-customization">
 <span id="custom-command"></span><h2>command customization<a class="headerlink" href="#command-customization" title="Permalink to this headline">¶</a></h2>
 <p>In <cite>doit</cite> a command usually perform some kind of operations on tasks.
 <cite>run</cite> to execute tasks, <cite>list</cite> to display available tasks, etc.</p>
@@ -503,8 +502,8 @@ to provide some extra commands…</p>
 <p>To create a new command, subclass <cite>doit.cmd_base.Command</cite>
 set some class variables and implement the <cite>execute</cite> method.</p>
 <dl class="py class">
-<dt id="doit.cmd_base.Command">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">doit.cmd_base.</span></code><code class="sig-name descname"><span class="pre">Command</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'doit'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt_vals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#Command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.Command" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.cmd_base.Command">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">doit.cmd_base.</span></span><span class="sig-name descname"><span class="pre">Command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'doit'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt_vals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#Command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.Command" title="Permalink to this definition">¶</a></dt>
 <dd><p>third-party should subclass this for commands that do no use tasks</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
@@ -518,8 +517,8 @@ set some class variables and implement the <cite>execute</cite> method.</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt id="doit.cmd_base.Command.execute">
-<code class="sig-name descname"><span class="pre">execute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opt_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#Command.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.Command.execute" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="doit.cmd_base.Command.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opt_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#Command.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.Command.execute" title="Permalink to this definition">¶</a></dt>
 <dd><p>execute command
 :param opt_values: (dict) with cmd_options values
 :param pos_args: (list) of cmd-line positional arguments</p>
@@ -531,7 +530,7 @@ set some class variables and implement the <cite>execute</cite> method.</p>
 <a class="reference internal" href="task_args.html#parameters-attributes"><span class="std std-ref">task parameters</span></a>.</p>
 <p>If the command needs to access tasks it should
 sub-class <cite>doit.cmd_base.DoitCmdBase</cite>.</p>
-<div class="section" id="example-scaffolding">
+<section id="example-scaffolding">
 <h3>Example: scaffolding<a class="headerlink" href="#example-scaffolding" title="Permalink to this headline">¶</a></h3>
 <p>A common example is applications that provide some kind of scaffolding when
 creating new projects.</p>
@@ -548,9 +547,9 @@ creating new projects.</p>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TODO: create some files for my project&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="plugins">
+</section>
+</section>
+<section id="plugins">
 <span id="id1"></span><h2>plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> plugin system is based on the use of <em>entry points</em>, the plugin
 does not need to implement any kind of “plugin interface”.
@@ -563,7 +562,7 @@ are automatically enabled on installation.</p></li>
 </ul>
 <p>Check this <a class="reference external" href="https://github.com/pydoit/doit-plugin-sample">sample plugin</a>
 for details on how to create a plugin.</p>
-<div class="section" id="config-plugin">
+<section id="config-plugin">
 <h3>config plugin<a class="headerlink" href="#config-plugin" title="Permalink to this headline">¶</a></h3>
 <p>To enable a plugin create a section named after the plugin category.
 The value is an entry point to the python class/function/object
@@ -578,23 +577,23 @@ located at the module <cite>my_plugins.py</cite>:</p>
 <p class="admonition-title">Note</p>
 <p>The python module containing the plugin must be in the <em>PYTHONPATH</em>.</p>
 </div>
-</div>
-<div class="section" id="category-command">
+</section>
+<section id="category-command">
 <h3>category COMMAND<a class="headerlink" href="#category-command" title="Permalink to this headline">¶</a></h3>
 <p>Creates a new sub-command. Check <a class="reference internal" href="#custom-command"><span class="std std-ref">command</span></a> section
 for details on how to create a new command.</p>
-</div>
-<div class="section" id="category-backend">
+</section>
+<section id="category-backend">
 <h3>category BACKEND<a class="headerlink" href="#category-backend" title="Permalink to this headline">¶</a></h3>
 <p>Implements the internal <cite>doit</cite> DB storage system.
 Check the module <cite>doit/dependency.py</cite> to see the existing implementation / API.</p>
-</div>
-<div class="section" id="category-reporter">
+</section>
+<section id="category-reporter">
 <span id="plugin-reporter"></span><h3>category REPORTER<a class="headerlink" href="#category-reporter" title="Permalink to this headline">¶</a></h3>
 <p>Register a custom reporter as introduced in the
 <a class="reference internal" href="cmd_run.html#custom-reporter"><span class="std std-ref">custom reporter</span></a> section.</p>
-</div>
-<div class="section" id="category-loader">
+</section>
+<section id="category-loader">
 <h3>category LOADER<a class="headerlink" href="#category-loader" title="Permalink to this headline">¶</a></h3>
 <p>Creates a custom task loader. Check <a class="reference internal" href="#custom-loader"><span class="std std-ref">loader</span></a> section
 for details on how to create a new command.</p>
@@ -607,9 +606,9 @@ used in the <cite>GLOBAL</cite> section of your config file.</p>
 <span class="na">my_loader</span> <span class="o">=</span> <span class="s">my_plugins:MyLoader</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
@@ -626,12 +625,12 @@ used in the <cite>GLOBAL</cite> section of your config file.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.6.1.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.7.3.
 </div>
             </div>
           </div>
       </page>
-    </div>
+    </div></div>
     
   
     
