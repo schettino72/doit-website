@@ -153,13 +153,19 @@
       </p>
       <ul class="">
         
-          <li class="toctree-l1 "><a href="usecases.html" class="reference internal ">Use Cases</a>
+          <li class="toctree-l1 ">
+            
+              <a href="usecases.html" class="reference internal ">Use Cases</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="tutorial_1.html" class="reference internal ">tutorial 1 - basics</a>
+          <li class="toctree-l1 ">
+            
+              <a href="tutorial_1.html" class="reference internal ">tutorial 1 - basics</a>
+            
 
             
           </li>
@@ -174,73 +180,109 @@
       </p>
       <ul class="current">
         
-          <li class="toctree-l1 "><a href="install.html" class="reference internal ">Installing</a>
+          <li class="toctree-l1 ">
+            
+              <a href="install.html" class="reference internal ">Installing</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="tasks.html" class="reference internal ">Tasks</a>
+          <li class="toctree-l1 ">
+            
+              <a href="tasks.html" class="reference internal ">Tasks</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="dependencies.html" class="reference internal ">More on dependencies</a>
+          <li class="toctree-l1 ">
+            
+              <a href="dependencies.html" class="reference internal ">More on dependencies</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="task_creation.html" class="reference internal ">More on Task creation</a>
+          <li class="toctree-l1 ">
+            
+              <a href="task_creation.html" class="reference internal ">More on Task creation</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="cmd_run.html" class="reference internal ">Command line interface - run</a>
+          <li class="toctree-l1 ">
+            
+              <a href="cmd_run.html" class="reference internal ">Command line interface - run</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="cmd_other.html" class="reference internal ">Other Commands</a>
+          <li class="toctree-l1 ">
+            
+              <a href="cmd_other.html" class="reference internal ">Other Commands</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="configuration.html" class="reference internal ">Configuration</a>
+          <li class="toctree-l1 ">
+            
+              <a href="configuration.html" class="reference internal ">Configuration</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="task_args.html" class="reference internal ">Passing Task Arguments from the command line</a>
+          <li class="toctree-l1 ">
+            
+              <a href="task_args.html" class="reference internal ">Passing arguments from the command line</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="globals.html" class="reference internal ">Globals</a>
+          <li class="toctree-l1 ">
+            
+              <a href="globals.html" class="reference internal ">Globals</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="uptodate.html" class="reference internal ">custom uptodate</a>
+          <li class="toctree-l1 ">
+            
+              <a href="uptodate.html" class="reference internal ">custom uptodate</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="tools.html" class="reference internal ">Tools</a>
+          <li class="toctree-l1 ">
+            
+              <a href="tools.html" class="reference internal ">Tools</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 current"><a href="#" class="reference internal current">Extending doit</a>
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">Extending doit</a>
+            
 
             
               <ul>
@@ -265,31 +307,46 @@
       </p>
       <ul class="">
         
-          <li class="toctree-l1 "><a href="support.html" class="reference internal ">Support</a>
+          <li class="toctree-l1 ">
+            
+              <a href="support.html" class="reference internal ">Support</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="changes.html" class="reference internal ">Changes</a>
+          <li class="toctree-l1 ">
+            
+              <a href="changes.html" class="reference internal ">Changes</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="stories.html" class="reference internal ">Success Stories</a>
+          <li class="toctree-l1 ">
+            
+              <a href="stories.html" class="reference internal ">Success Stories</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="faq.html" class="reference internal ">FAQ</a>
+          <li class="toctree-l1 ">
+            
+              <a href="faq.html" class="reference internal ">FAQ</a>
+            
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="related.html" class="reference internal ">Related Projects</a>
+          <li class="toctree-l1 ">
+            
+              <a href="related.html" class="reference internal ">Related Projects</a>
+            
 
             
           </li>
@@ -566,11 +623,16 @@ for details on how to create a plugin.</p>
 <h3>config plugin<a class="headerlink" href="#config-plugin" title="Permalink to this headline">¶</a></h3>
 <p>To enable a plugin create a section named after the plugin category.
 The value is an entry point to the python class/function/object
-that implements the plugin. The format is &lt;module-name&gt;:&lt;attribute-name&gt;.</p>
-<p>Example of command plugin implemented in the <em>class</em> <cite>FooCmd</cite>,
-located at the module <cite>my_plugins.py</cite>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">COMMAND</span><span class="p">]</span>
-<span class="n">foo</span> <span class="o">=</span> <span class="n">my_plugins</span><span class="p">:</span><span class="n">FooCmd</span>
+that implements the plugin. The format is <cite>&lt;module-name&gt;:&lt;attribute-name&gt;</cite>.</p>
+<p>Example of command plugin configured in <cite>pyproject.toml</cite>, implemented in
+the <em>class</em> <cite>FooCmd</cite>, located at the module <cite>my_plugins.py</cite>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit.plugins.command]</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="s">&quot;my_plugins:FooCmd&quot;</span>
+</pre></div>
+</div>
+<p>Similarly, in <cite>doit.cfg</cite>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[COMMAND]</span>
+<span class="na">foo</span> <span class="o">=</span> <span class="s">my_plugins:FooCmd</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -598,8 +660,16 @@ Check the module <cite>doit/dependency.py</cite> to see the existing implementat
 <p>Creates a custom task loader. Check <a class="reference internal" href="#custom-loader"><span class="std std-ref">loader</span></a> section
 for details on how to create a new command.</p>
 <p>Apart from getting the plugin you also need to indicate which loader will be
-used in the <cite>GLOBAL</cite> section of your config file.</p>
-<div class="highlight-INI notranslate"><div class="highlight"><pre><span></span><span class="k">[GLOBAL]</span>
+used. In the <cite>tool.doit</cite> section in <cite>pyproject.toml</cite>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit]</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="s">&quot;my_loader&quot;</span>
+
+<span class="k">[tool.doit.plugins.loader]</span>
+<span class="n">my_loader</span> <span class="o">=</span> <span class="s">&quot;my_plugins:Loader&quot;</span>
+</pre></div>
+</div>
+<p>In the <cite>GLOBAL</cite> section of <cite>doit.cfg</cite>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[GLOBAL]</span>
 <span class="na">loader</span> <span class="o">=</span> <span class="s">my_loader</span>
 
 <span class="k">[LOADER]</span>
@@ -625,7 +695,7 @@ used in the <cite>GLOBAL</cite> section of your config file.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.7.3.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
 </div>
             </div>
           </div>

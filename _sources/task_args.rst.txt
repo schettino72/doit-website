@@ -1,13 +1,14 @@
 
-Passing Task Arguments from the command line
-============================================
+Passing arguments from the command line
+=======================================
 
 .. _parameters:
 
-arguments
------------
 
-It is possible to pass option parameters to the task through the command line.
+Task action parameters
+----------------------
+
+It is possible to pass option parameters to the task action through the command line.
 
 Just add a ``params`` field to the task dictionary. ``params`` must be a list of
 dictionaries where every entry is an option parameter. Each parameter must
@@ -69,8 +70,6 @@ For cmd-actions use python string substitution notation:
     $ doit cmd_params -f "-c --other value"
     .  cmd_params
     mycmd -c --other value xxx
-
-
 
 .. _parameters-attributes:
 
@@ -158,7 +157,7 @@ Here is the list of all attributes ``param`` accepts:
 
 
 positional arguments
-------------------------
+--------------------
 
 Tasks might also get positional arguments from the command line
 as standard unix commands do,
@@ -206,3 +205,46 @@ It is possible to pass variable values to be used in dodo.py from the command li
     $ doit abc=xyz x=3
     .  echo
     hi {abc: xyz}
+
+
+Task creator parameters
+-----------------------
+
+Command line arguments may also be passed to task creators.
+It uses the same parameter syntax as is used with task action parameters.
+
+.. code-block:: python
+
+    from doit import task_params
+
+    @task_params([{"name": "howmany", "default": 3, "type": int, "long": "howmany"}])
+    def task_subtasks(howmany):
+        for i in range(howmany):
+            yield {"name": i, "actions": [f"echo I can count to {howmany}: {i}"]}
+
+
+Any argument defined for the task generating function will also be available as an
+argument for any task actions.
+
+.. code-block:: python
+
+    def do_work(foo):
+        print(f'Argument foo={foo}')
+
+    @task_params([{"name": "foo", "default": "bar", "long": "foo"}])
+    def task_use_in_action(foo):
+        print(f'When the task action runs it will print {foo}')
+
+        return {
+            'actions': [do_work],
+            'verbosity': 2
+        }
+
+
+.. warning::
+
+   When the ``@task_params`` decorator is used, you must not use the ``params`` field.
+   The content from ``params`` can be easily included in ``@task_params``.
+
+   The reason for this limitation is that the command line parsing happens before the task's dict
+   is returned. Hence impossible to know its value.

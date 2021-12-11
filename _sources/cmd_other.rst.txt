@@ -133,6 +133,19 @@ If you do not specify any task, the default tasks are "*forget*".
   *doit* keeps track of which tasks are successful in the file ``.doit.db``.
 
 
+--disable-default
+^^^^^^^^^^^^^^^^^
+
+If your default tasks are expensive, you can avoid accidentally forgetting
+all of your default tasks by setting ``forget_disable_default = True`` in ``doit.cfg``.
+
+You can explicitly forget default tasks with ``--enable-default``.
+
+--all
+^^^^^
+
+Use ``doit forget --all`` to forget *all* tasks.
+
 
 clean
 ------
@@ -263,14 +276,27 @@ This can used to display desktop notifications, so you do not need to keep
 an eye in the terminal to notice when tasks succeed or failed.
 
 Example of sound and desktop notification on Ubuntu.
+
+Contents of a `pyproject.toml` file:
+
+.. code-block:: toml
+
+  [tool.doit.commands.auto]
+  success_callback = """
+      notify-send -u low -i /usr/share/icons/gnome/16x16/emotes/face-smile.png "doit:   success"; aplay -q /usr/share/sounds/purple/send.wav
+      """
+  failure_callback = """
+      notify-send -u normal -i /usr/share/icons/gnome/16x16/status/error.png "doit:  fail"; aplay -q /usr/share/sounds/purple/alert.wav
+      """
+
+
 Contents of a `doit.cfg` file:
 
-.. code-block:: INI
+.. code-block:: ini
 
   [auto]
   success_callback = notify-send -u low -i /usr/share/icons/gnome/16x16/emotes/face-smile.png "doit:   success"; aplay -q /usr/share/sounds/purple/send.wav
   failure_callback = notify-send -u normal -i /usr/share/icons/gnome/16x16/status/error.png "doit:  fail"; aplay -q /usr/share/sounds/purple/alert.wav
-
 
 
 
