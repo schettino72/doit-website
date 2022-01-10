@@ -482,7 +482,7 @@ The example below is used to manage a very simple C project.</p>
 <p><em>list</em> is used to show all tasks available in a <em>dodo</em> file.
 Tasks are listed in alphabetical order by default, but <em>–sort=definition</em> can
 be specified to sort them in the order in which they appear in the <cite>dodo</cite> file.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit list
 <span class="go">compile : compile C files</span>
 <span class="go">install : install executable (TODO)</span>
 <span class="go">link : create binary program</span>
@@ -517,7 +517,7 @@ It is one of:</p>
 <p>You can check a task meta-data using the <em>info</em> command.
 This might be useful when have some complex code generating
 the task meta-data.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info link
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit info link
 
 <span class="go">link</span>
 
@@ -533,7 +533,7 @@ the task meta-data.</p>
 </pre></div>
 </div>
 <p>Note that if the task is <strong>not</strong> <em>up-to-date</em> the reason a task is not up-to-date.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info link
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit info link
 
 <span class="go">link</span>
 
@@ -554,7 +554,7 @@ based on the dependencies but actually it is not! In this case you can use the
 <em>forget</em> command to make sure the given task will be executed again even with no
 changes in the dependencies.</p>
 <p>If you do not specify any task, the default tasks are “<em>forget</em>”.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit forget
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit forget
 </pre></div>
 </div>
 <div class="admonition note">
@@ -602,7 +602,7 @@ you can include the <cite>doit.task.clean_targets</cite> instead of passing <cit
 </pre></div>
 </div>
 <p>You can specify which task to <em>clean</em>. If no task is specified the clean operation of default tasks are executed.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit clean
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit clean
 </pre></div>
 </div>
 <p>By default if a task contains task-dependencies those are not automatically
@@ -656,13 +656,13 @@ want to skip the check in some of them temporarily.</p>
                <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;touch </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  create_file:file0.txt</span>
 <span class="go">.  create_file:file1.txt</span>
 <span class="go">.  create_file:file2.txt</span>
-<span class="gp">$</span> doit ignore create_file:file1.txt
+<span class="gp">$ </span>doit ignore create_file:file1.txt
 <span class="go">ignoring create_file:file1.txt</span>
-<span class="gp">$</span> doit
+<span class="gp">$ </span>doit
 <span class="go">.  create_file:file0.txt</span>
 <span class="go">!! create_file:file1.txt</span>
 <span class="go">.  create_file:file2.txt</span>
@@ -682,7 +682,7 @@ running process that only terminates when it is interrupted (Ctrl-C).
 When started it will execute the given tasks. After that it will watch the
 file system for modifications in the file-dependencies.
 When a file is modified the tasks are re-executed.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit auto
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit auto
 </pre></div>
 </div>
 <div class="admonition note">
@@ -698,19 +698,19 @@ This can used to display desktop notifications, so you do not need to keep
 an eye in the terminal to notice when tasks succeed or failed.</p>
 <p>Example of sound and desktop notification on Ubuntu.</p>
 <p>Contents of a <cite>pyproject.toml</cite> file:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit.commands.auto]</span>
-<span class="n">success_callback</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">    notify-send -u low -i /usr/share/icons/gnome/16x16/emotes/face-smile.png &quot;</span><span class="n">doit</span><span class="p">:</span>   <span class="n">success</span><span class="s">&quot;; aplay -q /usr/share/sounds/purple/send.wav</span>
-<span class="s">    &quot;&quot;&quot;</span>
-<span class="n">failure_callback</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">    notify-send -u normal -i /usr/share/icons/gnome/16x16/status/error.png &quot;</span><span class="n">doit</span><span class="p">:</span>  <span class="n">fail</span><span class="s">&quot;; aplay -q /usr/share/sounds/purple/alert.wav</span>
-<span class="s">    &quot;&quot;&quot;</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit.commands.auto]</span><span class="w"></span>
+<span class="n">success_callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    notify-send -u low -i /usr/share/icons/gnome/16x16/emotes/face-smile.png &quot;</span><span class="n">doit</span><span class="p">:</span><span class="w">   </span><span class="n">success</span><span class="s">&quot;; aplay -q /usr/share/sounds/purple/send.wav</span>
+<span class="s">    &quot;&quot;&quot;</span><span class="w"></span>
+<span class="n">failure_callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    notify-send -u normal -i /usr/share/icons/gnome/16x16/status/error.png &quot;</span><span class="n">doit</span><span class="p">:</span><span class="w">  </span><span class="n">fail</span><span class="s">&quot;; aplay -q /usr/share/sounds/purple/alert.wav</span>
+<span class="s">    &quot;&quot;&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Contents of a <cite>doit.cfg</cite> file:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[auto]</span>
-<span class="na">success_callback</span> <span class="o">=</span> <span class="s">notify-send -u low -i /usr/share/icons/gnome/16x16/emotes/face-smile.png &quot;doit:   success&quot;; aplay -q /usr/share/sounds/purple/send.wav</span>
-<span class="na">failure_callback</span> <span class="o">=</span> <span class="s">notify-send -u normal -i /usr/share/icons/gnome/16x16/status/error.png &quot;doit:  fail&quot;; aplay -q /usr/share/sounds/purple/alert.wav</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[auto]</span><span class="w"></span>
+<span class="na">success_callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">notify-send -u low -i /usr/share/icons/gnome/16x16/emotes/face-smile.png &quot;doit:   success&quot;; aplay -q /usr/share/sounds/purple/send.wav</span><span class="w"></span>
+<span class="na">failure_callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">notify-send -u normal -i /usr/share/icons/gnome/16x16/status/error.png &quot;doit:  fail&quot;; aplay -q /usr/share/sounds/purple/alert.wav</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -750,8 +750,8 @@ The generated script is written on stdout.</p>
 <section id="bash">
 <h3>bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h3>
 <p>To use a completion script you need to <cite>source</cite> it first.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit tabcompletion &gt; bash_completion_doit
-<span class="gp">$</span> <span class="nb">source</span> bash_completion_doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit tabcompletion &gt; bash_completion_doit
+<span class="gp">$ </span><span class="nb">source</span> bash_completion_doit
 </pre></div>
 </div>
 </section>
@@ -766,8 +766,8 @@ autoload -Uz compinit
 compinit
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit tabcompletion --shell zsh &gt; _doit
-<span class="gp">$</span> cp _doit ~/.zsh/tabcompletion/_doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit tabcompletion --shell zsh &gt; _doit
+<span class="gp">$ </span>cp _doit ~/.zsh/tabcompletion/_doit
 </pre></div>
 </div>
 </section>
@@ -777,7 +777,7 @@ compinit
 or if you tasks take a long time to load you may create
 a completion script that includes the list of tasks
 from your dodo.py.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> my_app tabcompletion --hardcode-tasks &gt; _my_app
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>my_app tabcompletion --hardcode-tasks &gt; _my_app
 </pre></div>
 </div>
 </section>
@@ -787,7 +787,7 @@ from your dodo.py.</p>
 <p><cite>doit</cite> saves internal data in a file (<cite>.doit.db</cite> by default).
 It uses a binary format (whatever python’s dbm is using in your system).
 This command will simply dump its content in readable text format in the output.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit dumpdb
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit dumpdb
 </pre></div>
 </div>
 </section>
@@ -809,7 +809,7 @@ that means it might not write a target file if it exist</p></li>
 </dd>
 </dl>
 <p>So this is NOT 100% reliable, use with care!</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit strace &lt;task-name&gt;
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit strace &lt;task-name&gt;
 </pre></div>
 </div>
 </section>
@@ -826,7 +826,7 @@ change the <code class="docutils literal notranslate"><span class="pre">check_fi
 your tasks as not up-to-date. It is also useful if you start using doit while
 some of your data as already been computed, or when you add a file dependency
 to a task that has already run.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit reset-dep
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit reset-dep
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -857,7 +857,7 @@ otherwise they will not be set at all.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
 </div>
             </div>
           </div>

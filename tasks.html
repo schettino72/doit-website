@@ -474,7 +474,7 @@ A python module/file that defines <em>tasks</em> for <cite>doit</cite> is called
 </div>
 <p>When <cite>doit</cite> is executed without any parameters it will look for tasks in a
 file named <cite>dodo.py</cite> in the current folder and execute its tasks.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  hello</span>
 </pre></div>
 </div>
@@ -648,7 +648,7 @@ For example a <cite>def task_hello</cite> would create a task named <code class=
         <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  hello</span>
 <span class="go">.  hello2</span>
 </pre></div>
@@ -669,7 +669,7 @@ This is useful to write some generic/reusable task-creators.</p>
     <span class="k">yield</span> <span class="n">gen_many_tasks</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  t2</span>
 <span class="go">.  t1</span>
 </pre></div>
@@ -678,7 +678,7 @@ This is useful to write some generic/reusable task-creators.</p>
 <section id="listing-tasks">
 <h2>listing tasks<a class="headerlink" href="#listing-tasks" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">doit</span></code> has built-in sub-command that can be used to list/print all tasks.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit list
 <span class="go">hello    say hello</span>
 <span class="go">hello2   say hello again</span>
 </pre></div>
@@ -696,7 +696,7 @@ It can also be set by the <code class="docutils literal notranslate"><span class
     <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit list
 <span class="go">.  hello  say hello</span>
 </pre></div>
 </div>
@@ -715,7 +715,7 @@ additional field <code class="docutils literal notranslate"><span class="pre">na
                <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;touch </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  create_file:file0.txt</span>
 <span class="go">.  create_file:file1.txt</span>
 <span class="go">.  create_file:file2.txt</span>
@@ -747,8 +747,8 @@ This can also be used to set the task <code class="docutils literal notranslate"
             <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
-<span class="gp">$</span> doit list
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
+<span class="gp">$ </span>doit list
 <span class="go">do_x   docs for X</span>
 </pre></div>
 </div>
@@ -779,9 +779,9 @@ the object file is a <em>target</em>.</p>
 signature (MD5) of the dependencies every time the task is completed successfully.</p>
 <p>So if there are no modifications to the dependencies and you run <cite>doit</cite> again.
 The execution of the task’s actions is skipped.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  compile</span>
-<span class="gp">$</span> doit
+<span class="gp">$ </span>doit
 <span class="go">-- compile</span>
 </pre></div>
 </div>
@@ -804,9 +804,9 @@ Path class from <a class="reference external" href="https://docs.python.org/3/li
             <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;sample.py&quot;</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  checker</span>
-<span class="gp">$</span> doit
+<span class="gp">$ </span>doit
 <span class="go">-- checker</span>
 </pre></div>
 </div>
@@ -845,15 +845,15 @@ can be specified as a string or as an instance of any Path class from
 <li><p>But only if it does not exist. If the target is modified but the dependencies
 do not change the task is not executed again.</p></li>
 </ul>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  compile</span>
-<span class="gp">$</span> doit
+<span class="gp">$ </span>doit
 <span class="go">-- compile</span>
-<span class="gp">$</span> rm main.o
-<span class="gp">$</span> doit
+<span class="gp">$ </span>rm main.o
+<span class="gp">$ </span>doit
 <span class="go">.  compile</span>
-<span class="gp">$</span> <span class="nb">echo</span> xxx &gt; main.o
-<span class="gp">$</span> doit
+<span class="gp">$ </span><span class="nb">echo</span> xxx &gt; main.o
+<span class="gp">$ </span>doit
 <span class="go">-- compile</span>
 </pre></div>
 </div>
@@ -874,7 +874,7 @@ executed in the correct order.</p>
             <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  create</span>
 <span class="go">.  modify</span>
 </pre></div>
@@ -908,7 +908,7 @@ will think they are different files.</p>
 <section id="doit-config-default-tasks">
 <h3>DOIT_CONFIG -&gt; default_tasks<a class="headerlink" href="#doit-config-default-tasks" title="Permalink to this headline">¶</a></h3>
 <p><em>dodo</em> file defines a dictionary <code class="docutils literal notranslate"><span class="pre">DOIT_CONFIG</span></code> with <code class="docutils literal notranslate"><span class="pre">default_tasks</span></code>, a list of strings where each element is a task name.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  t1</span>
 <span class="go">.  t3</span>
 </pre></div>
@@ -920,12 +920,12 @@ So that task was automatically executed also.</p>
 <section id="command-line-selection">
 <h3>command line selection<a class="headerlink" href="#command-line-selection" title="Permalink to this headline">¶</a></h3>
 <p>From the command line you can control which tasks are going to be execute by passing its task name. Any number of tasks can be passed as positional arguments.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit t2
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit t2
 <span class="go">.  t2</span>
 </pre></div>
 </div>
 <p>You can also specify which task to execute by its target:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit task1
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit task1
 <span class="go">.  t1</span>
 </pre></div>
 </div>
@@ -940,7 +940,7 @@ So that task was automatically executed also.</p>
                <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;touch </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">]}</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit create_file:file2.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit create_file:file2.txt
 <span class="go">.  create_file:file2.txt</span>
 </pre></div>
 </div>
@@ -948,7 +948,7 @@ So that task was automatically executed also.</p>
 <section id="wildcard-selection">
 <h3>wildcard selection<a class="headerlink" href="#wildcard-selection" title="Permalink to this headline">¶</a></h3>
 <p>You can also select tasks to be executed using a <a class="reference external" href="http://docs.python.org/library/glob.html">glob</a> like syntax (it must contains a <code class="docutils literal notranslate"><span class="pre">*</span></code>).</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit create_file:file*
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit create_file:file*
 <span class="go">.  create_file:file1.txt</span>
 <span class="go">.  create_file:file2.txt</span>
 <span class="go">.  create_file:file3.txt</span>
@@ -1090,7 +1090,7 @@ You can customize the output passing a <code class="docutils literal notranslate
             <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">show_cmd</span><span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  executing... Cmd: echo abc efg</span>
 </pre></div>
 </div>
@@ -1118,7 +1118,7 @@ console. If the task fails or there is an error the stdout and a traceback
             <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  print</span>
 <span class="go">hello</span>
 </pre></div>
@@ -1180,7 +1180,7 @@ of header and source files in current directory using pathlib.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
 </div>
             </div>
           </div>

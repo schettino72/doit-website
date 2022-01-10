@@ -452,7 +452,7 @@
   <section id="command-line-interface-run">
 <h1>Command line interface - run<a class="headerlink" href="#command-line-interface-run" title="Permalink to this headline">¶</a></h1>
 <p>A general <cite>doit</cite> command goes like this:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit <span class="o">[</span>run<span class="o">]</span> <span class="o">[</span>&lt;options&gt;<span class="o">]</span> <span class="o">[</span>&lt;task<span class="p">|</span>target&gt; &lt;task_options&gt;<span class="o">]</span>* <span class="o">[</span>&lt;variables&gt;<span class="o">]</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit <span class="o">[</span>run<span class="o">]</span> <span class="o">[</span>&lt;options&gt;<span class="o">]</span> <span class="o">[</span>&lt;task<span class="p">|</span>target&gt; &lt;task_options&gt;<span class="o">]</span>* <span class="o">[</span>&lt;variables&gt;<span class="o">]</span>
 </pre></div>
 </div>
 <p>The <cite>doit</cite> command line contains several sub-commands. Most of the time you just
@@ -464,7 +464,7 @@ thing.</p>
 <section id="python-m-doit">
 <h2><cite>python -m doit</cite><a class="headerlink" href="#python-m-doit" title="Permalink to this headline">¶</a></h2>
 <p><cite>doit</cite> can also be executed without using the <cite>doit</cite> script.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python -m doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m doit
 </pre></div>
 </div>
 <p>This is specially useful when testing <cite>doit</cite> with different python versions.</p>
@@ -474,7 +474,7 @@ thing.</p>
 <p>By default all commands are relative to <code class="docutils literal notranslate"><span class="pre">dodo.py</span></code> in the current folder.
 You can specify a different <em>dodo</em> file containing task with the flag <code class="docutils literal notranslate"><span class="pre">-f</span></code>.
 This flag is valid for all sub-commands.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit -f release.py
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit -f release.py
 </pre></div>
 </div>
 <p><em>doit</em> can seek for the <code class="docutils literal notranslate"><span class="pre">dodo.py</span></code> file on parent folders if the option
@@ -567,7 +567,7 @@ the specified name is used as a base name.</p>
 <section id="verbosity">
 <span id="verbosity-option"></span><h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
 <p>Option to change the default global task <a class="reference internal" href="tasks.html#verbosity"><span class="std std-ref">verbosity</span></a> value.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --verbosity <span class="m">2</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit --verbosity <span class="m">2</span>
 </pre></div>
 </div>
 </section>
@@ -575,7 +575,7 @@ the specified name is used as a base name.</p>
 <h2>failure-verbosity<a class="headerlink" href="#failure-verbosity" title="Permalink to this headline">¶</a></h2>
 <p>Option to control if stdout/stderr should be re-displayed in the end of
 of report. This is useful when used in conjunction with <cite>–continue</cite> option.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --failure-verbosity <span class="m">1</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit --failure-verbosity <span class="m">1</span>
 </pre></div>
 </div>
 </section>
@@ -602,7 +602,7 @@ terminal, not to be confused with subprocess.Popen <cite>buffered</cite>.</p>
 <p>By default the directory of the <cite>dodo</cite> file is used as the
 “current working directory” on python execution.
 You can specify a different <em>cwd</em> with the <em>-d</em>/<em>–dir</em> option.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --dir path/to/another/cwd
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit --dir path/to/another/cwd
 </pre></div>
 </div>
 <div class="admonition note">
@@ -615,7 +615,7 @@ was executed) using <a class="reference internal" href="#initial-workdir"><span 
 <section id="continue">
 <h2>continue<a class="headerlink" href="#continue" title="Permalink to this headline">¶</a></h2>
 <p>By default the execution of tasks is halted on the first task failure or error. You can force it to continue execution with the option –continue/-c</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --continue
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit --continue
 </pre></div>
 </div>
 </section>
@@ -623,7 +623,7 @@ was executed) using <a class="reference internal" href="#initial-workdir"><span 
 <h2>single task execution<a class="headerlink" href="#single-task-execution" title="Permalink to this headline">¶</a></h2>
 <p>The option <code class="docutils literal notranslate"><span class="pre">-s/--single</span></code> can be used to execute a task without executing
 its task dependencies.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit -s do_something
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit -s do_something
 </pre></div>
 </div>
 </section>
@@ -634,12 +634,12 @@ This allows different tasks to be run in parallel, as long any dependencies are 
 By default the <a class="reference external" href="http://docs.python.org/library/multiprocessing.html">multiprocessing</a>
 module is used.
 So the same restrictions also apply to the use of multiprocessing in <cite>doit</cite>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit -n <span class="m">3</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit -n <span class="m">3</span>
 </pre></div>
 </div>
 <p>You can also execute in parallel using threads by specifying the option
 <cite>–parallel-type/-P</cite>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit -n <span class="m">3</span> -P thread
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit -n <span class="m">3</span> -P thread
 </pre></div>
 </div>
 <div class="admonition note">
@@ -669,7 +669,7 @@ being executed/skipped). This is used when you only want to see
 the output generated by the tasks execution.</p></li>
 </ul>
 </div></blockquote>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --reporter json
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit --reporter json
 </pre></div>
 </div>
 </section>
@@ -744,7 +744,7 @@ below. The custom checker must be configured using DOIT_CONFIG dict.</p>
 <section id="output-file">
 <h2>output-file<a class="headerlink" href="#output-file" title="Permalink to this headline">¶</a></h2>
 <p>The option –output-file/-o let you output the result to a file.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --output-file result.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit --output-file result.txt
 </pre></div>
 </div>
 </section>
@@ -848,7 +848,7 @@ matches any target.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
 </div>
             </div>
           </div>

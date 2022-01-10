@@ -425,7 +425,7 @@
 <section id="simplify-cumbersome-command-line-calls">
 <h2>Simplify cumbersome command line calls<a class="headerlink" href="#simplify-cumbersome-command-line-calls" title="Permalink to this headline">¶</a></h2>
 <p>Do you have to repeatedly call complex command like this?</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> aws s3 sync _built/html s3://buck/et --exclude <span class="s2">&quot;*&quot;</span> --include <span class="s2">&quot;*.html&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>aws s3 sync _built/html s3://buck/et --exclude <span class="s2">&quot;*&quot;</span> --include <span class="s2">&quot;*.html&quot;</span>
 </pre></div>
 </div>
 <p>Wrap it into <cite>dodo.py</cite> file:</p>
@@ -439,7 +439,7 @@
 </pre></div>
 </div>
 <p>and next time just:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit publish
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit publish
 </pre></div>
 </div>
 <p>It is easy to include multiple actions into one task or use multiple tasks.</p>
@@ -449,7 +449,7 @@
 <p>Do you have to lint your code, run test suite, evaluate coverage,
 generate documentation incl. spelling?</p>
 <p>Create the <cite>dodo.py</cite>, which defines tasks you have to do and next time:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit list
 <span class="go">coverage          show coverage for all modules including tests</span>
 <span class="go">coverage_module   show coverage for individual modules</span>
 <span class="go">coverage_src      show coverage for all modules (exclude tests)</span>
@@ -465,7 +465,7 @@ generate documentation incl. spelling?</p>
 </pre></div>
 </div>
 <p>and then decide which task to run:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit spell
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit spell
 </pre></div>
 </div>
 </section>
@@ -498,7 +498,7 @@ do the planning of what shall be processed first and what next.</p>
 <p>You already have bunch of tasks defined, results are correct, it only takes so
 much time. But wait, you have multi-core machine!</p>
 <p>Just ask for parallel processing:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit -n <span class="m">4</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit -n <span class="m">4</span>
 </pre></div>
 </div>
 <p>and <cite>doit</cite> will take care of planning and make all your CPU cores hot.</p>
@@ -536,7 +536,7 @@ create directories, move files around, copy them, etc.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
 </div>
             </div>
           </div>

@@ -443,7 +443,7 @@ It may also help you identify potential problems like circular imports.</p>
 <h2>setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <section id="required-python-packages">
 <h3>required python packages<a class="headerlink" href="#required-python-packages" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install doit pygraphviz import_deps
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install doit pygraphviz import_deps
 </pre></div>
 </div>
 <p>Note that on some linux systems it is necessary to install the system package <cite>graphviz-dev</cite> first.</p>
@@ -451,13 +451,13 @@ It may also help you identify potential problems like circular imports.</p>
 <section id="sample-project">
 <h3>sample project<a class="headerlink" href="#sample-project" title="Permalink to this headline">¶</a></h3>
 <p>First create a directory that will contain the projects to be analyzed.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mkdir projects
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir projects
 </pre></div>
 </div>
 <p>Then clone the <code class="docutils literal notranslate"><span class="pre">requests</span></code> project</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> projects
-<span class="gp">$</span> git clone git@github.com:requests/requests.git
-<span class="gp">$</span> <span class="nb">cd</span> ..
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> projects
+<span class="gp">$ </span>git clone git@github.com:requests/requests.git
+<span class="gp">$ </span><span class="nb">cd</span> ..
 </pre></div>
 </div>
 </section>
@@ -466,7 +466,7 @@ It may also help you identify potential problems like circular imports.</p>
 <h2>finding a module’s import<a class="headerlink" href="#finding-a-module-s-import" title="Permalink to this headline">¶</a></h2>
 <p>Using <a class="reference external" href="https://github.com/schettino72/import-deps">import_deps</a> list all (intra-packages) imports from a module:</p>
 <p>For example:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python -m import_deps projects/requests/requests/models.py
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m import_deps projects/requests/requests/models.py
 <span class="go">requests._internal_utils</span>
 <span class="go">requests.auth</span>
 <span class="go">requests.compat</span>
@@ -505,7 +505,7 @@ in this case the task is called <code class="docutils literal notranslate"><span
 <section id="task-execution">
 <h3>task execution<a class="headerlink" href="#task-execution" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">doit</span></code> comes with a command line tool to act upon the set of tasks defined in a specific file. The default file is <code class="docutils literal notranslate"><span class="pre">dodo.py</span></code> in the current directory. With no argument it executes all tasks found in it.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  imports</span>
 </pre></div>
 </div>
@@ -532,12 +532,12 @@ that the same output would be generated…</p>
 <p>Note how <code class="docutils literal notranslate"><span class="pre">actions</span></code> can make use of variable substitution for
 <code class="docutils literal notranslate"><span class="pre">%(dependencies)s</span></code> and <code class="docutils literal notranslate"><span class="pre">%(targets)s</span></code>.</p>
 <p>Now let’s execute it again:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  imports</span>
 </pre></div>
 </div>
 <p>And then, a second time:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">--  imports</span>
 </pre></div>
 </div>
@@ -558,11 +558,11 @@ and never on the body of a <strong>task-creator</strong> function.</p>
 <section id="file-dep">
 <h4>file_dep<a class="headerlink" href="#file-dep" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">doit</span></code> uses the <em>md5</em> of <code class="docutils literal notranslate"><span class="pre">file_dep</span></code> to determine if a dependency has changed.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> touch projects/requests/requests/models.py
-<span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>touch projects/requests/requests/models.py
+<span class="gp">$ </span>doit
 <span class="go">-- imports</span>
-<span class="gp">$</span> <span class="nb">echo</span> <span class="s2">&quot;# comment&quot;</span> &gt;&gt; projects/requests/requests/models.py
-<span class="gp">$</span> doit
+<span class="gp">$ </span><span class="nb">echo</span> <span class="s2">&quot;# comment&quot;</span> &gt;&gt; projects/requests/requests/models.py
+<span class="gp">$ </span>doit
 <span class="go">.  imports</span>
 </pre></div>
 </div>
@@ -572,8 +572,8 @@ and never on the body of a <strong>task-creator</strong> function.</p>
 <h4>targets<a class="headerlink" href="#targets" title="Permalink to this headline">¶</a></h4>
 <p>For <code class="docutils literal notranslate"><span class="pre">targets</span></code>, the only verification that is made is whether the file exists or not.
 So if a target is removed it will be re-created even if the dependencies remain unmodified.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rm requests.models.deps
-<span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rm requests.models.deps
+<span class="gp">$ </span>doit
 <span class="go">.  imports</span>
 </pre></div>
 </div>
@@ -618,7 +618,7 @@ we directly pass the previously created python function <code class="docutils li
 </pre></div>
 </div>
 <p>Also note that the function takes the special parameters <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> and <code class="docutils literal notranslate"><span class="pre">targets</span></code>, whose values will be injected by <code class="docutils literal notranslate"><span class="pre">doit</span></code> in the function call.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">-- imports</span>
 <span class="go">.  dot</span>
 </pre></div>
@@ -637,7 +637,7 @@ we directly pass the previously created python function <code class="docutils li
     <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">-- imports</span>
 <span class="go">-- dot</span>
 <span class="go">.  draw</span>
@@ -663,7 +663,7 @@ where <code class="docutils literal notranslate"><span class="pre">options</span
 <section id="doit-list">
 <h3>doit list<a class="headerlink" href="#doit-list" title="Permalink to this headline">¶</a></h3>
 <p>The command <code class="docutils literal notranslate"><span class="pre">list</span></code> displays the list of known tasks:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit list
 <span class="go">dot       generate a graphviz&#39;s dot graph from module imports</span>
 <span class="go">draw      generate image from a dot file</span>
 <span class="go">imports   find imports from a python module</span>
@@ -675,7 +675,7 @@ where <code class="docutils literal notranslate"><span class="pre">options</span
 <h3>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">info</span></code> command can be used to get more information about a specific task’s
 metadata and state (whether it is up-to-date or not).</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit info imports
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit info imports
 
 <span class="go">imports</span>
 
@@ -698,21 +698,21 @@ So <code class="docutils literal notranslate"><span class="pre">$</span> <span c
 <p>Without any parameters <code class="docutils literal notranslate"><span class="pre">run</span></code> will execute all of your tasks.
 You can also select which tasks to be executed by passing a sequence of tasks’ names.</p>
 <p>For example if you want to execute only the <code class="docutils literal notranslate"><span class="pre">imports</span></code> task you would type:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit imports
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit imports
 <span class="go">-- imports</span>
 </pre></div>
 </div>
 <p>Note that even if you explicitly pass the name of the task to be executed,
 <code class="docutils literal notranslate"><span class="pre">doit</span></code> will actually execute the task only if it is not <strong>up-to-date</strong>.</p>
 <p>You can also pass more than one task:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit imports dot
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit imports dot
 <span class="go">-- imports</span>
 <span class="go">-- dot</span>
 </pre></div>
 </div>
 <p>Another important point to take notice of is that even
 if you specify only one task, <code class="docutils literal notranslate"><span class="pre">doit</span></code> will run all of the dependencies of the specified task.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit dot
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit dot
 <span class="go">-- imports</span>
 <span class="go">-- dot</span>
 </pre></div>
@@ -737,14 +737,14 @@ if you specify only one task, <code class="docutils literal notranslate"><span c
 </pre></div>
 </div>
 <p>Executing <code class="docutils literal notranslate"><span class="pre">clean</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit clean
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit clean
 <span class="go">draw - removing file &#39;requests.models.png&#39;</span>
 <span class="go">dot - removing file &#39;requests.models.dot&#39;</span>
 <span class="go">imports - removing file &#39;requests.models.deps&#39;</span>
 </pre></div>
 </div>
 <p>Since targets were removed this will force the tasks to be executed on next <code class="docutils literal notranslate"><span class="pre">run</span></code>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">.  imports</span>
 <span class="go">.  dot</span>
 <span class="go">.  draw</span>
@@ -767,11 +767,11 @@ While developing a task, it is common to want to force its execution after makin
 </pre></div>
 </div>
 <p>To force its execution we need <code class="docutils literal notranslate"><span class="pre">doit</span></code> to <code class="docutils literal notranslate"><span class="pre">forget</span></code> its state thus so:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit forget dot
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit forget dot
 <span class="go">forgetting dot</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 <span class="go">-- imports</span>
 <span class="go">.  dot</span>
 <span class="go">.  draw</span>
@@ -884,13 +884,13 @@ Since each task needs to be independently identified an extra parameter <code cl
 </pre></div>
 </div>
 <p>Sub-tasks (items of task group) by default are not reported by the <code class="docutils literal notranslate"><span class="pre">list</span></code> command. They can be displayed, though, using the <code class="docutils literal notranslate"><span class="pre">--all</span></code> flag.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit list
 <span class="go">dot       generate a graphviz&#39;s dot graph from module imports</span>
 <span class="go">draw      generate image from a dot file</span>
 <span class="go">imports   find imports from a python module</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit list --all imports
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit list --all imports
 <span class="go">imports                            find imports from a python module</span>
 <span class="go">imports:requests.__init__</span>
 <span class="go">imports:requests.__version__</span>
@@ -1015,7 +1015,7 @@ There are 3 levels of verbosity.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit print:requests.models
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit print:requests.models
 <span class="go">-- imports:requests.models</span>
 <span class="go">.  print:requests.models</span>
 <span class="go">requests._internal_utils</span>
@@ -1072,7 +1072,7 @@ The default tasks can be controlled by adding a configuration dictionary with th
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
 </div>
             </div>
           </div>

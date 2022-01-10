@@ -458,8 +458,8 @@ e.g. <cite>“True”</cite>, <cite>“False”</cite>, <cite>“3”</cite>, bu
 <p>The <cite>tool.doit</cite> section may contain command line options that will be used
 (if applicable) by any commands.</p>
 <p>Example setting the DB backend type:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit]</span>
-<span class="n">backend</span> <span class="o">=</span> <span class="s">&quot;json&quot;</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit]</span><span class="w"></span>
+<span class="n">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;json&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>All commands that have a <cite>backend</cite> option (<em>run</em>, <em>clean</em>, <em>forget</em>, etc),
@@ -469,9 +469,9 @@ will use this option without the need for this option in the command line.</p>
 <h3>tool.doit.commands<a class="headerlink" href="#tool-doit-commands" title="Permalink to this headline">¶</a></h3>
 <p>To configure options for a specific command, use a section with
 the command name under <cite>tool.doit.commands</cite>:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tools.doit.commands.list]</span>
-<span class="n">status</span> <span class="o">=</span> <span class="kc">true</span>
-<span class="n">subtasks</span> <span class="o">=</span> <span class="kc">true</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tools.doit.commands.list]</span><span class="w"></span>
+<span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">subtasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -484,10 +484,10 @@ on available plugin categories.</p>
 <h3>tool.doit.tasks<a class="headerlink" href="#tool-doit-tasks" title="Permalink to this headline">¶</a></h3>
 <p>To configure options for a specific task, use a section with
 the task name under <cite>tool.doit.tasks</cite>:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit.tasks.make_cookies]</span>
-<span class="n">cookie_type</span> <span class="o">=</span> <span class="s">&quot;chocolate&quot;</span>
-<span class="n">temp</span> <span class="o">=</span> <span class="s">&quot;375F&quot;</span>
-<span class="n">duration</span> <span class="o">=</span> <span class="mi">12</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit.tasks.make_cookies]</span><span class="w"></span>
+<span class="n">cookie_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;chocolate&quot;</span><span class="w"></span>
+<span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;375F&quot;</span><span class="w"></span>
+<span class="n">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -510,8 +510,8 @@ it is processed. It supports 4 kind of sections:</p>
 <p>The <cite>GLOBAL</cite> section may contain command line options that will
 be used (if applicable) by any commands.</p>
 <p>Example setting the DB backend type:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[GLOBAL]</span>
-<span class="na">backend</span> <span class="o">=</span> <span class="s">json</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[GLOBAL]</span><span class="w"></span>
+<span class="na">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">json</span><span class="w"></span>
 </pre></div>
 </div>
 <p>All commands that have a <cite>backend</cite> option (<em>run</em>, <em>clean</em>, <em>forget</em>, etc),
@@ -521,9 +521,9 @@ will use this option without the need for this option in the command line.</p>
 <h3>commands section<a class="headerlink" href="#commands-section" title="Permalink to this headline">¶</a></h3>
 <p>To configure options for a specific command, use a section with
 the command name:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[list]</span>
-<span class="na">status</span> <span class="o">=</span> <span class="s">True</span>
-<span class="na">subtasks</span> <span class="o">=</span> <span class="s">True</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[list]</span><span class="w"></span>
+<span class="na">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w"></span>
+<span class="na">subtasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -536,10 +536,10 @@ on available plugin categories.</p>
 <h3>per-task sections<a class="headerlink" href="#per-task-sections" title="Permalink to this headline">¶</a></h3>
 <p>To configure options for a specific task, use a section with
 the task name prefixed with “task:”:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[task:make_cookies]</span>
-<span class="na">cookie_type</span> <span class="o">=</span> <span class="s">chocolate</span>
-<span class="na">temp</span> <span class="o">=</span> <span class="s">375F</span>
-<span class="na">duration</span> <span class="o">=</span> <span class="s">12</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[task:make_cookies]</span><span class="w"></span>
+<span class="na">cookie_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">chocolate</span><span class="w"></span>
+<span class="na">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">375F</span><span class="w"></span>
+<span class="na">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">12</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -556,11 +556,11 @@ and a different reporter.</p>
 </pre></div>
 </div>
 <p>So if you just execute</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit
 </pre></div>
 </div>
 <p>it will have the same effect as executing</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> doit --continue --reporter json my_task_1 my_task_2
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit --continue --reporter json my_task_1 my_task_2
 </pre></div>
 </div>
 <div class="admonition note">
@@ -589,7 +589,7 @@ not be used.</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
 </div>
             </div>
           </div>

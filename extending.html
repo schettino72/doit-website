@@ -434,7 +434,7 @@ the dict containing task meta-data from the <em>task-creator</em> functions.</p>
 <p>Subclass <code class="docutils literal notranslate"><span class="pre">TaskLoader2</span></code> to create a custom loader:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="doit.cmd_base.TaskLoader2">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">doit.cmd_base.</span></span><span class="sig-name descname"><span class="pre">TaskLoader2</span></span><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader2" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doit.cmd_base.</span></span><span class="sig-name descname"><span class="pre">TaskLoader2</span></span><a class="reference internal" href="_modules/doit/cmd_base.html#TaskLoader2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.TaskLoader2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface of task loaders with new-style API.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
@@ -560,7 +560,7 @@ to provide some extra commands…</p>
 set some class variables and implement the <cite>execute</cite> method.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="doit.cmd_base.Command">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">doit.cmd_base.</span></span><span class="sig-name descname"><span class="pre">Command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'doit'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt_vals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#Command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.Command" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doit.cmd_base.</span></span><span class="sig-name descname"><span class="pre">Command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'doit'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt_vals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/doit/cmd_base.html#Command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#doit.cmd_base.Command" title="Permalink to this definition">¶</a></dt>
 <dd><p>third-party should subclass this for commands that do no use tasks</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
@@ -626,13 +626,13 @@ The value is an entry point to the python class/function/object
 that implements the plugin. The format is <cite>&lt;module-name&gt;:&lt;attribute-name&gt;</cite>.</p>
 <p>Example of command plugin configured in <cite>pyproject.toml</cite>, implemented in
 the <em>class</em> <cite>FooCmd</cite>, located at the module <cite>my_plugins.py</cite>:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit.plugins.command]</span>
-<span class="n">foo</span> <span class="o">=</span> <span class="s">&quot;my_plugins:FooCmd&quot;</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit.plugins.command]</span><span class="w"></span>
+<span class="n">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;my_plugins:FooCmd&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Similarly, in <cite>doit.cfg</cite>:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[COMMAND]</span>
-<span class="na">foo</span> <span class="o">=</span> <span class="s">my_plugins:FooCmd</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[COMMAND]</span><span class="w"></span>
+<span class="na">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">my_plugins:FooCmd</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -661,19 +661,19 @@ Check the module <cite>doit/dependency.py</cite> to see the existing implementat
 for details on how to create a new command.</p>
 <p>Apart from getting the plugin you also need to indicate which loader will be
 used. In the <cite>tool.doit</cite> section in <cite>pyproject.toml</cite>:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit]</span>
-<span class="n">loader</span> <span class="o">=</span> <span class="s">&quot;my_loader&quot;</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit]</span><span class="w"></span>
+<span class="n">loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;my_loader&quot;</span><span class="w"></span>
 
-<span class="k">[tool.doit.plugins.loader]</span>
-<span class="n">my_loader</span> <span class="o">=</span> <span class="s">&quot;my_plugins:Loader&quot;</span>
+<span class="k">[tool.doit.plugins.loader]</span><span class="w"></span>
+<span class="n">my_loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;my_plugins:Loader&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>In the <cite>GLOBAL</cite> section of <cite>doit.cfg</cite>:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[GLOBAL]</span>
-<span class="na">loader</span> <span class="o">=</span> <span class="s">my_loader</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[GLOBAL]</span><span class="w"></span>
+<span class="na">loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">my_loader</span><span class="w"></span>
 
-<span class="k">[LOADER]</span>
-<span class="na">my_loader</span> <span class="o">=</span> <span class="s">my_plugins:MyLoader</span>
+<span class="k">[LOADER]</span><span class="w"></span>
+<span class="na">my_loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">my_plugins:MyLoader</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -695,7 +695,7 @@ used. In the <cite>tool.doit</cite> section in <cite>pyproject.toml</cite>:</p>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
 </div>
             </div>
           </div>
