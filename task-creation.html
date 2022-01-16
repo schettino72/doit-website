@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+      <title>More on Task creation</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+      <link rel="canonical" href="https://pydoit.org/task-creation.html" />
+    
+      <link rel="shortcut icon" href="_static/favico.ico"/>
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="Command line interface - run" href="cmd-run.html" />
+  <link rel="prev" title="More on dependencies" href="dependencies.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="contents.html" class="home-link">
+    
+      <img class="logo" src="_static/doit-logo-small.png" alt="logo"/>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="contents.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#guide"
+         class="nav-link  router-link-active">
+         guide
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#project"
+         class="nav-link ">
+         project
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://twitter.com/pydoit"
+        class="nav-link external">
+          Twitter <outboundlink></outboundlink>
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="https://github.com/pydoit/doit"
+        class="nav-link external">
+          Github <outboundlink></outboundlink>
+      </a>
+    </div>
+  
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="contents.html#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#guide"
+         class="nav-link  router-link-active">
+         guide
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="contents.html#project"
+         class="nav-link ">
+         project
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://twitter.com/pydoit"
+        class="nav-link external">
+          Twitter <outboundlink></outboundlink>
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="https://github.com/pydoit/doit"
+        class="nav-link external">
+          Github <outboundlink></outboundlink>
+      </a>
+    </div>
+  
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#getting-started">getting started</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="usecases.html" class="reference internal ">Use Cases</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="tutorial-1.html" class="reference internal ">tutorial 1 - basics</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#guide">guide</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="install.html" class="reference internal ">Installing</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="tasks.html" class="reference internal ">Tasks</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="dependencies.html" class="reference internal ">More on dependencies</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">More on Task creation</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#importing-tasks" class="reference internal">importing tasks</a></li>
+                
+                  <li class="toctree-l2"><a href="#delayed-task-creation" class="reference internal">delayed task creation</a></li>
+                
+                  <li class="toctree-l2"><a href="#custom-task-definition" class="reference internal">custom task definition</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="cmd-run.html" class="reference internal ">Command line interface - run</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="cmd-other.html" class="reference internal ">Other Commands</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="configuration.html" class="reference internal ">Configuration</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="task-args.html" class="reference internal ">Passing arguments from the command line</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="globals.html" class="reference internal ">Globals</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="uptodate.html" class="reference internal ">custom uptodate</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="tools.html" class="reference internal ">Tools</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="extending.html" class="reference internal ">Extending doit</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="contents.html#project">project</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="support.html" class="reference internal ">Support</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="changes.html" class="reference internal ">Changes</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="stories.html" class="reference internal ">Success Stories</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="faq.html" class="reference internal ">FAQ</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="related.html" class="reference internal ">Related Projects</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+
+  
+    <div style="margin-bottom: 0px; padding:1rem; background-color: #2980B9; color:#fcfcfc;">
+      <h3>Donate</h3>
+      <p>If you find <em>doit</em> useful, please consider supporting the maintainer with a donation.</p>
+      <p><em>doit</em> is 100% open-source and maintained by individuals without any company backing it... Your donation keeps the project healthy and maintained.</p>
+    </div>
+
+    <div style="text-align:center; padding:1rem; color:black;background-color:#fcfcfc; margin-bottom:2rem;">
+      <h4 style="margin-bottom:5px;margin-top:5px;">OpenCollective</h4>
+      <div>
+        <object type="image/svg+xml" data="https://opencollective.com/doit/tiers/backers.svg?avatarHeight=60&width=200"></object>
+      </div>
+
+      <hr style="margin-top:5px;">
+      <h4 style="margin-bottom:20px;">Paypal</h4>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin:auto;">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="GFU3BPVN586A6">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1" style="visibility:hidden;">
+      </form>
+    </div>
+    <br>
+  
+
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="contents.html">Docs</a> &raquo;</li>
+    
+    <li>More on Task creation</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="dependencies.html"
+       title="previous chapter">← More on dependencies</a>
+  </li>
+  <li class="next">
+    <a href="cmd-run.html"
+       title="next chapter">Command line interface - run →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section id="more-on-task-creation">
+<h1>More on Task creation<a class="headerlink" href="#more-on-task-creation" title="Permalink to this headline">¶</a></h1>
+<section id="importing-tasks">
+<h2>importing tasks<a class="headerlink" href="#importing-tasks" title="Permalink to this headline">¶</a></h2>
+<p>The <em>doit</em> loader will look at <strong>all</strong> objects in the namespace of the <em>dodo</em>.
+It will look for functions staring with <code class="docutils literal notranslate"><span class="pre">task_</span></code> and objects with
+<code class="docutils literal notranslate"><span class="pre">create_doit_tasks</span></code>.
+So it is also possible to load task definitions from other
+modules just by importing them into your <em>dodo</em> file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># import task_ functions</span>
+<span class="kn">from</span> <span class="nn">get_var</span> <span class="kn">import</span> <span class="n">task_echo</span>
+
+<span class="c1"># import tasks with create_doit_tasks callable</span>
+<span class="kn">from</span> <span class="nn">custom_task_def</span> <span class="kn">import</span> <span class="n">sample</span>
+
+
+<span class="k">def</span> <span class="nf">task_hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hello&#39;</span><span class="p">]}</span>
+
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>doit list
+<span class="go">echo</span>
+<span class="go">hello</span>
+<span class="go">sample</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Importing tasks from different modules is useful if you want to split
+your task definitions in different modules.</p>
+<p>The best way to create re-usable tasks that can be used in several projects
+is to call functions that return task dict’s.
+For example take a look at a reusable <em>pyflakes</em>
+<a class="reference external" href="https://github.com/pydoit/doit-py/blob/master/doitpy/pyflakes.py">task generator</a>.
+Check the project <a class="reference external" href="https://github.com/pydoit/doit-py">doit-py</a>
+for more examples.</p>
+</div>
+</section>
+<section id="delayed-task-creation">
+<span id="id1"></span><h2>delayed task creation<a class="headerlink" href="#delayed-task-creation" title="Permalink to this headline">¶</a></h2>
+<p><cite>doit</cite> execution model is divided in two phases:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>task-loading</em> : search for task-creator functions (that starts with string <cite>task_</cite>) and create task metadata</p></li>
+<li><p><em>task-execution</em> : check which tasks are out-of-date and execute them</p></li>
+</ul>
+</div></blockquote>
+<p>Normally <em>task-loading</em> is completed before the <em>task-execution</em> starts.
+<cite>doit</cite> allows some task metadata to be modified during <em>task-execution</em> with
+<cite>calc_deps</cite> and on <cite>uptodate</cite>, but those are restricted to modifying
+already created tasks…</p>
+<p>Sometimes it is not possible to know all tasks that should be created before
+some tasks are executed. For these cases <cite>doit</cite> supports
+<em>delayed task creation</em>, that means <em>task-execution</em> starts before
+<em>task-loading</em> is completed.</p>
+<p>When <em>task-creator</em> function is decorated with <cite>doit.create_after</cite>,
+its evaluation to create the tasks will be delayed to happen after the
+execution of the specified task in the <cite>executed</cite> param.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">create_after</span>
+
+
+<span class="nd">@create_after</span><span class="p">(</span><span class="n">executed</span><span class="o">=</span><span class="s1">&#39;early&#39;</span><span class="p">,</span> <span class="n">target_regex</span><span class="o">=</span><span class="s1">&#39;.*\.out&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">task_build</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">inf</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.in&#39;</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="p">{</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">inf</span><span class="p">,</span>
+            <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;cp </span><span class="si">%(dependencies)s</span><span class="s1"> </span><span class="si">%(targets)s</span><span class="s1">&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;file_dep&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">inf</span><span class="p">],</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">inf</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.out&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;clean&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">task_early</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;a task that create some files...&quot;&quot;&quot;</span>
+    <span class="n">inter_files</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a.in&#39;</span><span class="p">,</span> <span class="s1">&#39;b.in&#39;</span><span class="p">,</span> <span class="s1">&#39;c.in&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;touch </span><span class="si">%(targets)s</span><span class="s1">&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="n">inter_files</span><span class="p">,</span>
+        <span class="s1">&#39;clean&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note" id="specify-target-regex">
+<p class="admonition-title">Note</p>
+<p>To be able to specify targets created by delayed task loaders to <cite>doit run</cite>,
+it is possible to also specify a regular expression (regex) for every
+delayed task loader. If specified, this regex should match any target name
+possibly generated by this delayed task generator. It can be specified via
+the additional <em>task-generator</em> argument <cite>target_regex</cite>. In the above example,
+the regex <cite>.*\.out</cite> matches every target name ending with <cite>.out</cite>.</p>
+<p>It is possible to match every possible target name by specifying <cite>.*</cite>.
+Alternatively, one can use the command line option <cite>–auto-delayed-regex</cite>
+to <cite>doit run</cite>; see <a class="reference internal" href="cmd-run.html#auto-delayed-regex"><span class="std std-ref">here</span></a> for more information.</p>
+</div>
+<section id="parameter-creates">
+<h3>Parameter: <cite>creates</cite><a class="headerlink" href="#parameter-creates" title="Permalink to this headline">¶</a></h3>
+<p>In case the task created by a <cite>DelayedTask</cite> has a different <em>basename</em> than
+then creator function, or creates several tasks with different <em>basenames</em>,
+you should pass the parameter <cite>creates</cite>.</p>
+<p>Since <cite>doit</cite> will only execute the body of the task-creator function on demand,
+the tasks names must be explicitly specified… Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">doit</span> <span class="kn">import</span> <span class="n">create_after</span>
+
+<span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="n">your_name</span><span class="p">):</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello from </span><span class="si">{}</span><span class="s2">!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">your_name</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">task_a</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">say_hello</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span> <span class="p">]</span>
+    <span class="p">}</span>
+
+<span class="nd">@create_after</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">creates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">task_another_task</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;basename&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="n">say_hello</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">])</span> <span class="p">],</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><cite>doit</cite> normally automatically sets <cite>task_dep</cite> between tasks by checking
+the relation of <cite>file_dep</cite> and <cite>targets</cite>.
+Due to performance reasons, these <cite>task_dep</cite> relations are NOT computed
+for delayed-task’s <cite>targets</cite>.
+This problem can avoided by ordering the creation of delayed-tasks with
+the expected order of execution.</p>
+</div>
+</section>
+</section>
+<section id="custom-task-definition">
+<span id="create-doit-tasks"></span><h2>custom task definition<a class="headerlink" href="#custom-task-definition" title="Permalink to this headline">¶</a></h2>
+<p>Apart from collect functions that start with the name <cite>task_</cite>.
+The <em>doit</em> loader will also execute the <code class="docutils literal notranslate"><span class="pre">create_doit_tasks</span></code>
+callable from any object that contains this attribute.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;make decorated function a task-creator&quot;&quot;&quot;</span>
+    <span class="n">func</span><span class="o">.</span><span class="n">create_doit_tasks</span> <span class="o">=</span> <span class="n">func</span>
+    <span class="k">return</span> <span class="n">func</span>
+
+<span class="nd">@make_task</span>
+<span class="k">def</span> <span class="nf">sample</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;verbosity&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo hi&#39;</span><span class="p">],</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="https://bitbucket.org/takluyver/letsdoit">project letsdoit</a>
+has some real-world implementations.</p>
+<p>For simple examples to help you create your own check this
+<a class="reference external" href="http://blog.schettino72.net/posts/doit-task-creation.html">blog post</a>.</p>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="dependencies.html"
+       title="previous chapter">← More on dependencies</a>
+  </li>
+  <li class="next">
+    <a href="cmd-run.html"
+       title="next chapter">Command line interface - run →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2008-2020, Eduardo Schettino.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+  
+    
+  
+    
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-29887834-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+    
+  
+
+  </body>
+</html>
