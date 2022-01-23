@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="pydoit guide - doit has a flexible dependency system, not exclusively based on files" name="description" />
+<meta content="python, doit, documentation, guide, task, dependency, incremental-build, up-to-date" name="keywords" />
 
-      <title>More on dependencies</title>
+      <title>pydoit task dependency system support - pydoit guide</title>
     
           <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
           <link rel="stylesheet" href="_static/theme.css " type="text/css" />
@@ -165,7 +167,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="tutorial-1.html" class="reference internal ">tutorial 1 - basics</a>
+              <a href="tutorial-1.html" class="reference internal ">tutorial - python imports graph</a>
             
 
             
@@ -201,7 +203,7 @@
         
           <li class="toctree-l1 current">
             
-              <a href="#" class="reference internal current">More on dependencies</a>
+              <a href="#" class="reference internal current">Non-file dependencies</a>
             
 
             
@@ -248,7 +250,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="cmd-other.html" class="reference internal ">Other Commands</a>
+              <a href="cmd-other.html" class="reference internal ">sub-commands for task manipulation</a>
             
 
             
@@ -275,7 +277,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="globals.html" class="reference internal ">Globals</a>
+              <a href="globals.html" class="reference internal ">Globals - accessing doit internals</a>
             
 
             
@@ -284,7 +286,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="uptodate.html" class="reference internal ">custom uptodate</a>
+              <a href="uptodate.html" class="reference internal ">custom up-to-date</a>
             
 
             
@@ -293,7 +295,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="tools.html" class="reference internal ">Tools</a>
+              <a href="tools.html" class="reference internal ">Tools & Integrations</a>
             
 
             
@@ -401,7 +403,7 @@
   <ul class="breadcrumbs">
     <li><a href="contents.html">Docs</a> &raquo;</li>
     
-    <li>More on dependencies</li>
+    <li>pydoit task dependency system support - pydoit guide</li>
   </ul>
   
 
@@ -420,8 +422,8 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <section id="more-on-dependencies">
-<h1>More on dependencies<a class="headerlink" href="#more-on-dependencies" title="Permalink to this headline">¶</a></h1>
+  <section id="non-file-dependencies">
+<h1>Non-file dependencies<a class="headerlink" href="#non-file-dependencies" title="Permalink to this headline">¶</a></h1>
 <section id="uptodate">
 <span id="attr-uptodate"></span><h2>uptodate<a class="headerlink" href="#uptodate" title="Permalink to this headline">¶</a></h2>
 <p>Apart from file dependencies you can extend <cite>doit</cite> to support other ways

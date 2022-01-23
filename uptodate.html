@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Customize the up-to-date check for incremental task execution" name="description" />
+<meta content="python, doit, documentation, guide, incremental-build, result-dependency, run_one, config_changed, timeout" name="keywords" />
 
-      <title>custom uptodate</title>
+      <title>Customize the up-to-date check for incremental task execution - pydoit guide</title>
     
           <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
           <link rel="stylesheet" href="_static/theme.css " type="text/css" />
@@ -24,8 +26,8 @@
       <link rel="shortcut icon" href="_static/favico.ico"/>
   <link rel="index" title="Index" href="genindex.html" />
   <link rel="search" title="Search" href="search.html" />
-  <link rel="next" title="Tools" href="tools.html" />
-  <link rel="prev" title="Globals" href="globals.html" /> 
+  <link rel="next" title="Tools &amp; Integrations" href="tools.html" />
+  <link rel="prev" title="Globals - accessing doit internals" href="globals.html" /> 
   </head>
 
   <body>
@@ -165,7 +167,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="tutorial-1.html" class="reference internal ">tutorial 1 - basics</a>
+              <a href="tutorial-1.html" class="reference internal ">tutorial - python imports graph</a>
             
 
             
@@ -201,7 +203,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="dependencies.html" class="reference internal ">More on dependencies</a>
+              <a href="dependencies.html" class="reference internal ">Non-file dependencies</a>
             
 
             
@@ -228,7 +230,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="cmd-other.html" class="reference internal ">Other Commands</a>
+              <a href="cmd-other.html" class="reference internal ">sub-commands for task manipulation</a>
             
 
             
@@ -255,7 +257,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="globals.html" class="reference internal ">Globals</a>
+              <a href="globals.html" class="reference internal ">Globals - accessing doit internals</a>
             
 
             
@@ -264,7 +266,7 @@
         
           <li class="toctree-l1 current">
             
-              <a href="#" class="reference internal current">custom uptodate</a>
+              <a href="#" class="reference internal current">custom up-to-date</a>
             
 
             
@@ -287,7 +289,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="tools.html" class="reference internal ">Tools</a>
+              <a href="tools.html" class="reference internal ">Tools & Integrations</a>
             
 
             
@@ -395,18 +397,18 @@
   <ul class="breadcrumbs">
     <li><a href="contents.html">Docs</a> &raquo;</li>
     
-    <li>custom uptodate</li>
+    <li>Customize the up-to-date check for incremental task execution  - pydoit guide</li>
   </ul>
   
 
   <ul class="page-nav">
   <li class="prev">
     <a href="globals.html"
-       title="previous chapter">← Globals</a>
+       title="previous chapter">← Globals - accessing doit internals</a>
   </li>
   <li class="next">
     <a href="tools.html"
-       title="next chapter">Tools →</a>
+       title="next chapter">Tools &amp; Integrations →</a>
   </li>
 </ul>
   
@@ -414,8 +416,8 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <section id="custom-uptodate">
-<h1>custom uptodate<a class="headerlink" href="#custom-uptodate" title="Permalink to this headline">¶</a></h1>
+  <section id="custom-up-to-date">
+<h1>custom up-to-date<a class="headerlink" href="#custom-up-to-date" title="Permalink to this headline">¶</a></h1>
 <p>The basics of <cite>uptodate</cite> was already <a class="reference internal" href="dependencies.html#attr-uptodate"><span class="std std-ref">introduced</span></a>.
 Here we look in more
 detail into some implementations shipped with <cite>doit</cite>.</p>
@@ -562,11 +564,11 @@ If a file is a target of another task you should probably add
             <div class="inner"><ul class="page-nav">
   <li class="prev">
     <a href="globals.html"
-       title="previous chapter">← Globals</a>
+       title="previous chapter">← Globals - accessing doit internals</a>
   </li>
   <li class="next">
     <a href="tools.html"
-       title="next chapter">Tools →</a>
+       title="next chapter">Tools &amp; Integrations →</a>
   </li>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.

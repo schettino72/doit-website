@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Parametrizing tasks with command line arguments and environment variables." name="description" />
+<meta content="python, doit, documentation, guide, parametrization, task_param" name="keywords" />
 
-      <title>Passing arguments from the command line</title>
+      <title>Task parametrization, getting arguments from command line - pydoit guide</title>
     
           <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
           <link rel="stylesheet" href="_static/theme.css " type="text/css" />
@@ -24,7 +26,7 @@
       <link rel="shortcut icon" href="_static/favico.ico"/>
   <link rel="index" title="Index" href="genindex.html" />
   <link rel="search" title="Search" href="search.html" />
-  <link rel="next" title="Globals" href="globals.html" />
+  <link rel="next" title="Globals - accessing doit internals" href="globals.html" />
   <link rel="prev" title="Configuration" href="configuration.html" /> 
   </head>
 
@@ -165,7 +167,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="tutorial-1.html" class="reference internal ">tutorial 1 - basics</a>
+              <a href="tutorial-1.html" class="reference internal ">tutorial - python imports graph</a>
             
 
             
@@ -201,7 +203,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="dependencies.html" class="reference internal ">More on dependencies</a>
+              <a href="dependencies.html" class="reference internal ">Non-file dependencies</a>
             
 
             
@@ -228,7 +230,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="cmd-other.html" class="reference internal ">Other Commands</a>
+              <a href="cmd-other.html" class="reference internal ">sub-commands for task manipulation</a>
             
 
             
@@ -267,7 +269,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="globals.html" class="reference internal ">Globals</a>
+              <a href="globals.html" class="reference internal ">Globals - accessing doit internals</a>
             
 
             
@@ -276,7 +278,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="uptodate.html" class="reference internal ">custom uptodate</a>
+              <a href="uptodate.html" class="reference internal ">custom up-to-date</a>
             
 
             
@@ -285,7 +287,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="tools.html" class="reference internal ">Tools</a>
+              <a href="tools.html" class="reference internal ">Tools & Integrations</a>
             
 
             
@@ -393,7 +395,7 @@
   <ul class="breadcrumbs">
     <li><a href="contents.html">Docs</a> &raquo;</li>
     
-    <li>Passing arguments from the command line</li>
+    <li>Task parametrization, getting arguments from command line  - pydoit guide</li>
   </ul>
   
 
@@ -404,7 +406,7 @@
   </li>
   <li class="next">
     <a href="globals.html"
-       title="next chapter">Globals →</a>
+       title="next chapter">Globals - accessing doit internals →</a>
   </li>
 </ul>
   
@@ -752,7 +754,7 @@ is returned. Hence impossible to know its value.</p>
   </li>
   <li class="next">
     <a href="globals.html"
-       title="next chapter">Globals →</a>
+       title="next chapter">Globals - accessing doit internals →</a>
   </li>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2008-2020, Eduardo Schettino.

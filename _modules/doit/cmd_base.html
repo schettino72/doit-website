@@ -162,7 +162,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="../../tutorial-1.html" class="reference internal ">tutorial 1 - basics</a>
+              <a href="../../tutorial-1.html" class="reference internal ">tutorial - python imports graph</a>
             
 
             
@@ -198,7 +198,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="../../dependencies.html" class="reference internal ">More on dependencies</a>
+              <a href="../../dependencies.html" class="reference internal ">Non-file dependencies</a>
             
 
             
@@ -225,7 +225,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="../../cmd-other.html" class="reference internal ">Other Commands</a>
+              <a href="../../cmd-other.html" class="reference internal ">sub-commands for task manipulation</a>
             
 
             
@@ -252,7 +252,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="../../globals.html" class="reference internal ">Globals</a>
+              <a href="../../globals.html" class="reference internal ">Globals - accessing doit internals</a>
             
 
             
@@ -261,7 +261,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="../../uptodate.html" class="reference internal ">custom uptodate</a>
+              <a href="../../uptodate.html" class="reference internal ">custom up-to-date</a>
             
 
             
@@ -270,7 +270,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="../../tools.html" class="reference internal ">Tools</a>
+              <a href="../../tools.html" class="reference internal ">Tools & Integrations</a>
             
 
             
@@ -1003,11 +1003,13 @@
 <span class="c1"># helper functions to find list of tasks</span>
 
 
-<span class="k">def</span> <span class="nf">check_tasks_exist</span><span class="p">(</span><span class="n">tasks</span><span class="p">,</span> <span class="n">name_list</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">check_tasks_exist</span><span class="p">(</span><span class="n">tasks</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="n">skip_wildcard</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;check task exist&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">name_list</span><span class="p">:</span>
         <span class="k">return</span>
     <span class="k">for</span> <span class="n">task_name</span> <span class="ow">in</span> <span class="n">name_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">skip_wildcard</span> <span class="ow">and</span> <span class="s1">&#39;*&#39;</span> <span class="ow">in</span> <span class="n">task_name</span><span class="p">:</span>
+            <span class="k">continue</span>
         <span class="k">if</span> <span class="n">task_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;&#39;</span><span class="si">%s</span><span class="s2">&#39; is not a task.&quot;</span>
             <span class="k">raise</span> <span class="n">InvalidCommand</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="n">task_name</span><span class="p">)</span>

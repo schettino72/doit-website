@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="pydoit tutorial - walkthrough doit basic and intermediate concepts with real-world example" name="description" />
+<meta content="python, doit, tutorial, getting started, graph, graphviz, task-runner, pipeline" name="keywords" />
 
-      <title>tutorial 1 - basics</title>
+      <title>pydoit tutorial - build a graph of python module&#39;s import with graphviz</title>
     
           <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
           <link rel="stylesheet" href="_static/theme.css " type="text/css" />
@@ -165,7 +167,7 @@
         
           <li class="toctree-l1 current">
             
-              <a href="#" class="reference internal current">tutorial 1 - basics</a>
+              <a href="#" class="reference internal current">tutorial - python imports graph</a>
             
 
             
@@ -219,7 +221,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="dependencies.html" class="reference internal ">More on dependencies</a>
+              <a href="dependencies.html" class="reference internal ">Non-file dependencies</a>
             
 
             
@@ -246,7 +248,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="cmd-other.html" class="reference internal ">Other Commands</a>
+              <a href="cmd-other.html" class="reference internal ">sub-commands for task manipulation</a>
             
 
             
@@ -273,7 +275,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="globals.html" class="reference internal ">Globals</a>
+              <a href="globals.html" class="reference internal ">Globals - accessing doit internals</a>
             
 
             
@@ -282,7 +284,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="uptodate.html" class="reference internal ">custom uptodate</a>
+              <a href="uptodate.html" class="reference internal ">custom up-to-date</a>
             
 
             
@@ -291,7 +293,7 @@
         
           <li class="toctree-l1 ">
             
-              <a href="tools.html" class="reference internal ">Tools</a>
+              <a href="tools.html" class="reference internal ">Tools & Integrations</a>
             
 
             
@@ -399,7 +401,7 @@
   <ul class="breadcrumbs">
     <li><a href="contents.html">Docs</a> &raquo;</li>
     
-    <li>tutorial 1 - basics</li>
+    <li>pydoit tutorial - build a graph of python module's import with graphviz</li>
   </ul>
   
 
@@ -418,8 +420,8 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <section id="tutorial-1-basics">
-<h1>tutorial 1 - basics<a class="headerlink" href="#tutorial-1-basics" title="Permalink to this headline">¶</a></h1>
+  <section id="tutorial-python-imports-graph">
+<h1>tutorial - python imports graph<a class="headerlink" href="#tutorial-python-imports-graph" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial demonstrates how to use <code class="docutils literal notranslate"><span class="pre">doit</span></code> to create a simple computational pipeline.</p>
 <p>The goal is to create a graph of python module’s imports in a package.
 <a class="reference external" href="http://graphviz.org/">graphviz</a>’s <strong>dot</strong> tool will be used to generate the graph.</p>
