@@ -33,10 +33,11 @@ This is the preferred configuration source, and may gain features not available 
 
 .. note::
 
-   As a TOML parser is _not_ yet part of the standard library, a third-party package is
-   required, one of:
+   A TOML parser (`tomllib <https://docs.python.org/3.11/library/tomllib.html>`_)
+   is part of the standard library since Python 3.11.
+   For earlier Python versions, a third-party package is required, one of:
 
-   - `toml <https://pypi.org/project/toml/>`__
+   - `tomli <https://pypi.org/project/tomli/>`_
    - `tomlkit <https://pypi.org/project/tomlkit/>`_
 
 

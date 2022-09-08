@@ -680,8 +680,13 @@ want to skip the check in some of them temporarily.</p>
 <p class="admonition-title">Note</p>
 <p>Supported on Linux and Mac only.</p>
 </div>
+<p><cite>auto</cite> is provided through the package <a class="reference external" href="https://github.com/pydoit/doit-auto1">doit-auto1</a> plugin.
+To install it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install doit-auto1
+</pre></div>
+</div>
 <p><cite>auto</cite> sub-command is an alternative way of executing your tasks.  It is a long
-running process that only terminates when it is interrupted (Ctrl-C).
+running process that only terminates when it is interrupted <cite>Ctrl-C</cite>.
 When started it will execute the given tasks. After that it will watch the
 file system for modifications in the file-dependencies.
 When a file is modified the tasks are re-executed.</p>

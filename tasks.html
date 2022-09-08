@@ -1086,7 +1086,7 @@ modify them while the action is running!</p>
 You can customize the output passing a <code class="docutils literal notranslate"><span class="pre">title</span></code> function to the task:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="k">def</span> <span class="nf">show_cmd</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
-    <span class="k">return</span> <span class="s2">&quot;executing... </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span>
+    <span class="k">return</span> <span class="s2">&quot;executing... </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">task</span><span class="o">.</span><span class="n">actions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="k">def</span> <span class="nf">task_custom_display</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;actions&#39;</span><span class="p">:[</span><span class="s1">&#39;echo abc efg&#39;</span><span class="p">],</span>

@@ -426,24 +426,25 @@ and why <cite>doit</cite> was chosen.</p>
 <li><p><a class="reference internal" href="#biomechanics-lab-stanford-university-usa" id="id5">Biomechanics Lab / Stanford University, USA</a></p></li>
 <li><p><a class="reference internal" href="#computational-metagenomics-lab-university-of-trento-italy" id="id6">Computational Metagenomics Lab / University of Trento, Italy</a></p></li>
 <li><p><a class="reference internal" href="#id1" id="id7">Cheminformatics data processing &#64; Atomwise</a></p></li>
+<li><p><a class="reference internal" href="#data-driven-modelling-of-robots-mcgill-university-canada" id="id8">Data-Driven Modelling of Robots / McGill University, Canada</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#build-system" id="id8">Build System</a></p>
+<li><p><a class="reference internal" href="#build-system" id="id9">Build System</a></p>
 <ul>
-<li><p><a class="reference internal" href="#bmw-automotive" id="id9">BMW (Automotive)</a></p></li>
-<li><p><a class="reference internal" href="#game-development" id="id10">Game Development</a></p></li>
-<li><p><a class="reference internal" href="#id2" id="id11">MetalK8s &#64; Scality</a></p></li>
+<li><p><a class="reference internal" href="#bmw-automotive" id="id10">BMW (Automotive)</a></p></li>
+<li><p><a class="reference internal" href="#game-development" id="id11">Game Development</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id12">MetalK8s &#64; Scality</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#content-generation" id="id12">Content Generation</a></p>
+<li><p><a class="reference internal" href="#content-generation" id="id13">Content Generation</a></p>
 <ul>
-<li><p><a class="reference internal" href="#nikola" id="id13">Nikola</a></p></li>
-<li><p><a class="reference internal" href="#document-production" id="id14">Document Production</a></p></li>
+<li><p><a class="reference internal" href="#nikola" id="id14">Nikola</a></p></li>
+<li><p><a class="reference internal" href="#document-production" id="id15">Document Production</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#devops" id="id15">DevOps</a></p>
+<li><p><a class="reference internal" href="#devops" id="id16">DevOps</a></p>
 <ul>
-<li><p><a class="reference internal" href="#university-of-oslo-library-norway" id="id16">University of Oslo Library, Norway</a></p></li>
+<li><p><a class="reference internal" href="#university-of-oslo-library-norway" id="id17">University of Oslo Library, Norway</a></p></li>
 </ul>
 </li>
 </ul>
@@ -542,14 +543,42 @@ is great solution.</p></li>
 multiple <cite>doit</cite> pipelines.</p></li>
 </ul>
 </section>
+<section id="data-driven-modelling-of-robots-mcgill-university-canada">
+<h3><a class="reference external" href="https://github.com/decarsg/system_norm_koopman">Data-Driven Modelling of Robots</a> / McGill University, Canada<a class="headerlink" href="#data-driven-modelling-of-robots-mcgill-university-canada" title="Permalink to this headline">¶</a></h3>
+<p>by <a class="reference external" href="https://github.com/sdahdah">Steven Dahdah</a> (2022-09-06)</p>
+<p>The <a class="reference external" href="https://www.decar.ca/">DECAR Systems Group</a> at McGill University
+conducts fundamental and applied research on state estimation, guidance, and
+control. We use <code class="docutils literal notranslate"><span class="pre">doit</span></code> to improve the reproducibility of our research.</p>
+<p><a class="reference external" href="https://github.com/decarsg/system_norm_koopman">One of our recent projects</a>
+involves modelling a soft robot arm from experimental data using the Koopman
+operator. Our pipeline consists of many small tasks like preprocessing data,
+profiling algorithms, and generating plots, along with a few large regression
+problems that must be run overnight.</p>
+<p>Organizing this pipeline was quite a challenge. First we tried <code class="docutils literal notranslate"><span class="pre">Make</span></code>, which
+worked well in the beginning, but fell apart when we had to write our own
+macros to generate rules. It was also becoming a burden to serialize and
+deserialize tons of intermediate files, as well as to maintain compatibility
+with Windows. As others here have said, just because you <em>can</em> make it work
+doesn’t mean that you <em>should</em>. We considered using <code class="docutils literal notranslate"><span class="pre">CMake</span></code>, but ultimately
+decided it was the wrong tool for the job. <code class="docutils literal notranslate"><span class="pre">Snakemake</span></code> was also an option,
+but the non-Python dependencies did not sit well with us.</p>
+<p>This is when we discovered <code class="docutils literal notranslate"><span class="pre">doit</span></code>, which was a real life-saver. Instead of
+having a convoluted plotting script with a ton of command line arguments, we
+just placed our plotting functions directly in <code class="docutils literal notranslate"><span class="pre">dodo.py</span></code>. Same with the
+preprocessing functions. We no longer needed to generate as many temporary
+files, and we no longer had to worry about Windows compatibility. Generating
+multiple tasks was as simple as a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and a <code class="docutils literal notranslate"><span class="pre">yield</span></code>.</p>
+<p>Now, all you have to do is clone our repo, install the dependencies, and run
+<code class="docutils literal notranslate"><span class="pre">doit</span></code> to get all the plots, exactly as they appear in our paper!</p>
+</section>
 </section>
 <section id="build-system">
-<h2><a class="toc-backref" href="#id8">Build System</a><a class="headerlink" href="#build-system" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">Build System</a><a class="headerlink" href="#build-system" title="Permalink to this headline">¶</a></h2>
 <section id="bmw-automotive">
 <h3><a class="reference external" href="https://www.bmw.com/de/index.html">BMW</a> (Automotive)<a class="headerlink" href="#bmw-automotive" title="Permalink to this headline">¶</a></h3>
 <p>by <a class="reference external" href="https://github.com/moltob">Mike Pagel</a> (2019-02-06)</p>
 <p>We are responsible for the development of the next generation instrument
-cluster software at BMW. While we use CMake for the actual build of libraries
+cluster software at BMW. While we use <code class="docutils literal notranslate"><span class="pre">CMake</span></code> for the actual build of libraries
 and applications, we have learned in the past that you <em>can</em> do almost everything
 with <code class="docutils literal notranslate"><span class="pre">CMake</span></code>, but probably you <em>shouldn’t</em>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">CMake</span></code> is optimized for all tasks around compiler toolchain control, but the
@@ -574,7 +603,7 @@ frameworks, linters and code analyzers at hand, allowing for a thoroughly
 tested and well-designed platform for our build-systems and automation.</p>
 </section>
 <section id="game-development">
-<h3><a class="toc-backref" href="#id10">Game Development</a><a class="headerlink" href="#game-development" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">Game Development</a><a class="headerlink" href="#game-development" title="Permalink to this headline">¶</a></h3>
 <p>by <a class="reference external" href="https://github.com/pydoit/doit/issues/207#issuecomment-333367177">&#64;FrankStain</a> (2017-10-01)</p>
 <p>I’m professional game developer. Also, i support my own huge game framework written on C++. :)</p>
 <p>So, the large scalable build systems are the game building automation tools. It consists of game binary image builders for different platforms, including cross-compilation of source code and source code generation from some DSL schemes. Also it consists of resource generators, where a lot of resource types (dozens of types: textures, 3d objects and scene graphs, sounds, database and state machine raw data) have to pass through dozens of compilation steps. After all, such build system consists of dynamic testing tool, which makes some tests on build target before make it published for Draft usage, QA or Retail customers. And, yep, publishing/QA deployment also implemented as part of build system.</p>
@@ -620,9 +649,9 @@ following characteristics:</p>
 </section>
 </section>
 <section id="content-generation">
-<h2><a class="toc-backref" href="#id12">Content Generation</a><a class="headerlink" href="#content-generation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">Content Generation</a><a class="headerlink" href="#content-generation" title="Permalink to this headline">¶</a></h2>
 <section id="nikola">
-<h3><a class="toc-backref" href="#id13">Nikola</a><a class="headerlink" href="#nikola" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id14">Nikola</a><a class="headerlink" href="#nikola" title="Permalink to this headline">¶</a></h3>
 <p>by <a class="reference external" href="https://getnikola.com/">the Nikola team</a></p>
 <p><a class="reference external" href="https://getnikola.com/">Nikola</a> is a Static Site and Blog Generator.  <cite>doit</cite>
 is used to process all the tasks required for building the website (HTML files,
@@ -637,7 +666,7 @@ of files actually <em>change</em> on a rebuild.  Using the dependency architectu
 many users and contributors.</p>
 </section>
 <section id="document-production">
-<h3><a class="toc-backref" href="#id14">Document Production</a><a class="headerlink" href="#document-production" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id15">Document Production</a><a class="headerlink" href="#document-production" title="Permalink to this headline">¶</a></h3>
 <p>(2018-02-01)</p>
 <p><a class="reference external" href="https://carvesystems.com">Carve Systems</a> uses <cite>doit</cite> as the core automation tool
 for all of our document production. This customized tool based on Pandoc, Latex, and
@@ -648,9 +677,9 @@ plugins.</p>
 </section>
 </section>
 <section id="devops">
-<h2><a class="toc-backref" href="#id15">DevOps</a><a class="headerlink" href="#devops" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">DevOps</a><a class="headerlink" href="#devops" title="Permalink to this headline">¶</a></h2>
 <section id="university-of-oslo-library-norway">
-<h3><a class="toc-backref" href="#id16">University of Oslo Library, Norway</a><a class="headerlink" href="#university-of-oslo-library-norway" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id17">University of Oslo Library, Norway</a><a class="headerlink" href="#university-of-oslo-library-norway" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="#https-data-ub-uio-no">by</a> <a class="reference external" href="https://github.com/danmichaelo">Dan Michael O. Heggø</a> (2018-02-26)</p>
 <p>We are using <cite>doit</cite> for the publishing workflow at our vocabulary server <a class="reference external" href="https://data.ub.uio.no/">https://data.ub.uio.no/</a> .
 The server checks multiple remote sources for changes, and when there’s new changes somewhere, the data is fetched,
