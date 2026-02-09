@@ -1,130 +1,255 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>pydoit - Task Runner - Python CLI Tool</title>
-    <meta name="description" content="doit - Define tasks in Python. Run only what changed. A task management & automation tool with DAG execution, dependency tracking, and incremental builds.">
-    <meta name="keywords" content="python, pydoit, doit, task runner, build tool, task management, python workflow automation, task management python, open source, make, just, invoke, data pipeline, python tool, python automation, DAG, incremental build, dependency tracking, python tool">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
-    <link rel="canonical" href="https://pydoit.org" />
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="_static/vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="_static/vendor/font-awesome/css/font-awesome.min.css">
-    <!-- Google fonts - Roboto-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
-    <!-- Bootstrap Select-->
-    <link rel="stylesheet" href="_static/vendor/bootstrap-select/css/bootstrap-select.min.css">
-    <!-- owl carousel-->
-    <link rel="stylesheet" href="_static/vendor/owl.carousel/owl.carousel.css">
-    <link rel="stylesheet" href="_static/vendor/owl.carousel/owl.theme.default.min.css">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="_static/universal/style.default.css" id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="_static/universal/custom.css">
-    <!-- Favicon and apple touch icons-->
-    <link rel="shortcut icon" href="_static/favico.ico" type="image/x-icon">
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="doit — Python task runner with DAG execution, dependency tracking, and incremental builds" name="description" />
+<meta content="python, pydoit, doit, task runner, build tool, automation, DAG, incremental build, dependency tracking" name="keywords" />
+<meta content="pydoit — Python Task Runner &amp; Automation Tool" name="og:title" />
+<meta content="Define tasks in Python. Run only what changed. A task management &amp; automation tool with DAG execution, dependency tracking, and incremental builds." name="og:description" />
+<meta content="website" name="og:type" />
+<meta content="https://pydoit.org" name="og:url" />
+<meta content="https://pydoit.org/_static/doit-logo.png" name="og:image" />
+<meta content="pydoit" name="og:site_name" />
+<meta content="summary" name="twitter:card" />
+<meta content="pydoit — Python Task Runner &amp; Automation Tool" name="twitter:title" />
+<meta content="Define tasks in Python. Run only what changed. DAG execution, dependency tracking, and incremental builds." name="twitter:description" />
+<meta content="https://pydoit.org/_static/doit-logo.png" name="twitter:image" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="doit documentation" href="contents.html">
+        <link rel="canonical" href="https://pydoit.org/index.html">
+        <link rel="prefetch" href="_static/doit-logo-small.png" as="image">
 
-  </head>
+    <link rel="shortcut icon" href="_static/favico.ico"><!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>pydoit — Python Task Runner</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=25b771cb" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
   <body>
-    <div id="all">
-    <!-- <a href="https://github.com/pydoit/doit" class="github"> -->
-    <!--   <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" class="github"> -->
-    <!-- </a> -->
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
 
-      <!-- Navbar Start-->
-      <header class="nav-holder make-sticky">
-        <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
-          <div class="container">
-            <a href="index.html" class="navbar-brand home"><img src="_static/doit-logo.png" alt="doit logo" class="d-none d-md-inline-block"><img src="_static/doit-logo-small.png" alt="doit logo" class="d-inline-block d-md-none"><span class="sr-only">doit - go to homepage</span></a>
-            <span style="flex-grow:5;text-align:right;">
-              <span style="font-size:x-large;padding:0px 10px;"><a href="https://x.com/pydoit" style="color:black"><i class="fa fa-twitter"></i></a></span>
-              <span style="font-size:x-large;padding:0px 10px";><a href="https://github.com/pydoit/doit" style="color:black"><i class="fa fa-github"></i></a></span>
-            </span>
-            <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
-            <div id="navigation" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item menu-large"><a href="/contents.html">Docs</a></li>
-                <li class="nav-item menu-large"><a href="https://github.com/pydoit/doit">Development</a>
-                <li class="nav-item menu-large"><a href="/support.html">Support</a></li>
-              </ul>
-            </div>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="#"><div class="brand">pydoit — Python Task Runner</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky">
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
           </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
         </div>
-      </header>
-      <!-- Navbar End-->
-
-      <section>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6" style="padding: 40px;">
-              <h1 style="font-family: BlinkMacSystemFont; font-weight: normal;"><b>Define tasks in Python.</b> Run only what changed.
-              </h1>
-              <p style="font-size: 1.15em;">A task management &amp; automation tool like <code>make</code>, but in pure Python. Tracks file dependencies, caches results, and skips tasks that are already up-to-date.</p>
-              <div class="text-center">
-                <img src="_static/python-powered-w-100x40.png" alt="python logo" style="margin-right:30px;">
-                <iframe src="https://ghbtns.com/github-btn.html?user=pydoit&repo=doit&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px" style="vertical-align: middle"></iframe>
-              </div>
-              <pre style="background: #242424; border-radius: 5px; color: white; display: -webkit-box; display: -ms-flexbox; display: flex; font-size: 15px; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; line-height: 20px; padding: 15px 25px; position: relative; margin: 30px;"><code>pip install doit</code></pre>
-              <p>Often compared to <em>make</em>, <em>just</em>, <em>invoke</em>, and <em>snakemake</em> &mdash; but with DAG execution and incremental builds built in.</p>
-            </div>
-
-          <!-- Carousel Start-->
-          <div class="home-carousel col-md-6 background-pentagon" style="color:#212529;margin: 40px 0px;">
-            <div class="dark-mask mask-primary"></div>
-            <div class="container">
-              <div class="homepage owl-carousel">
-                <div class="item">
-                  <h2 style="text-transform:inherit;font-weight:inherit;">A <b><a href="/stories.html#game-development">game developer</a></b> uses <code>doit</code> to</h2>
-
-                  <ul>
-                    <li>Automate all project related tasks <small>(code generation, cross-compilation, resource generation)</small></li>
-                    <li>Simplify cumbersome command line calls</li>
-                    <li>Optimize processing time by skipping tasks already done</li>
-                  </ul>
-                </div>
-
-                <div class="item">
-                  <h2 style="text-transform:inherit;font-weight:inherit;">A <b><a href="/stories.html#computational-metagenomics-lab-university-of-trento-italy">bioinformatics developer</a></b> uses <code>doit</code> to</h2>
-
-                  <ul>
-                    <li>Create a reproduceable computational pipeline</li>
-                    <li>Manage a complex workflow (set of depending tasks)</li>
-                    <li>Optimize processing time by skipping tasks already done</li>
-                  </ul>
-                </div>
-
-                <div class="item">
-                  <h2 style="text-transform:inherit;font-weight:inherit;"><a href="https://getnikola.com/">Nikola</a>, a <b>static site generator</b>, uses <code>doit</code> to</h2>
-                  <ul>
-                    <li>Provide the command line interface</li>
-                    <li>Speed up by parallel task execution</li>
-                    <li>Optimize processing time by skipping tasks already done</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="text-center"><a href="/usecases.html">View all use-cases</a></div>
-            </div>
-          </div>
-          <!-- Carousel End-->
-        </div>
-      </section>
-
-      <section class="bar background-white">
-        <div class="container text-center">
-          <!-- sample -->
-          <div class="row text-left">
-            <div class="col-12 heading text-center">
-              <h2>Quick Example</h2>
-              <p>Create a <code>dodo.py</code> &mdash; tasks are plain Python dicts.</p>
-            </div>
-
-            <div class="col-lg-6 col-md-12">
-              <!-- pygmentize -f html -->
-              <div class="pycode highlight" style="border-radius: 5px; color: white; display: -webkit-box; display: -ms-flexbox; display: flex; font-size: 14px; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; line-height: 20px; margin: 20px 0px; padding: 5px 7px; position: relative;">
-                <pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">task_hello</span><span class="p">():</span>
+        <article role="main" id="furo-main-content">
+          <div class="landing-hero">
+  <img src="_static/doit-logo.png" alt="doit logo" class="hero-logo">
+  <h1><strong>Define tasks in Python.</strong><br>Run only what changed.</h1>
+  <p class="hero-subtitle">
+    A task management &amp; automation tool like <code class="hero-code">make</code>,
+    but in pure Python.<br>
+    Tracks file dependencies, caches results, and skips tasks that are already up-to-date.
+  </p>
+  <div class="hero-actions">
+    <pre class="install-cmd"><code>pip install doit</code></pre>
+    <a class="hero-btn" href="contents.html">Documentation</a>
+    <a class="hero-btn hero-btn-outline" href="https://github.com/pydoit/doit">GitHub</a>
+  </div>
+  <p class="hero-compare">
+    Often compared to <em>make</em>, <em>just</em>, <em>invoke</em>,
+    and <em>snakemake</em> — but with DAG execution and incremental
+    builds built in.
+  </p>
+</div><section id="quick-example">
+<h1>Quick Example<a class="headerlink" href="#quick-example" title="Link to this heading">¶</a></h1>
+<p class="section-lead">Create a <code>dodo.py</code> — tasks are plain Python dicts.</p><div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">dodo.py</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">task_hello</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;create a greeting file&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;echo &quot;Hello from doit&quot; &gt; hello.txt&#39;</span><span class="p">],</span>
@@ -141,14 +266,17 @@
         <span class="s1">&#39;clean&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">}</span>
 </pre></div>
-            </div>
-
-            <div class="col-lg-6 col-md-12">
-              <div class="pycode highlight" style="border-radius: 5px; color: white; display: -webkit-box; display: -ms-flexbox; display: flex; font-size: 14px; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; line-height: 20px; margin: 20px 0px; padding: 5px 7px; position: relative;"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>doit
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Terminal</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>doit
 <span class="gp">$ </span>doit
 <span class="go">.  hello</span>
 <span class="go">.  shout</span>
-<span class="gp">$ </span>doit<span class="w">            </span><span class="c1"># nothing to do - already up-to-date</span>
+<span class="gp">$ </span>doit<span class="w">            </span><span class="c1"># nothing to do — already up-to-date</span>
 <span class="go">-- hello</span>
 <span class="go">-- shout</span>
 <span class="gp">$ </span>doit<span class="w"> </span>clean<span class="w">      </span><span class="c1"># remove generated files</span>
@@ -156,393 +284,189 @@
 <span class="go">.  hello</span>
 <span class="go">.  shout</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="python-native-task-runner">
+<h1>Python-Native Task Runner<a class="headerlink" href="#python-native-task-runner" title="Link to this heading">¶</a></h1>
+<p class="section-lead">No DSL, no YAML — tasks are plain Python dicts and functions.</p>
+
+<div class="feature-section">
+  <dl class="feature-list">
+    <dt>Pure Python</dt>
+    <dd>Tasks are Python dicts. Use any library, generate tasks programmatically, debug with <em>pdb</em>.</dd>
+    <dt>Shell or Python actions</dt>
+    <dd>Run shell commands, call Python functions, or mix both in a single task.</dd>
+    <dt>Self-documenting</dt>
+    <dd><code>doit list</code> shows all tasks with docstrings. <code>doit help &lt;task&gt;</code> for details.</dd>
+  </dl>
+  <aside class="use-case">
+    <strong>In practice:</strong> A <a href="/stories.html#game-development">game developer</a> uses <code>doit</code> to automate code generation, cross-compilation, and resource generation — simplifying cumbersome command line calls and skipping tasks already done.
+  </aside>
+</div></section>
+<section id="incremental-builds-pipelines">
+<h1>Incremental Builds &amp; Pipelines<a class="headerlink" href="#incremental-builds-pipelines" title="Link to this heading">¶</a></h1>
+<p class="section-lead">DAG execution with dependency tracking — run only what changed.</p>
+
+<div class="feature-section">
+  <dl class="feature-list">
+    <dt>Incremental builds</dt>
+    <dd>Tracks file dependencies and targets (MD5 or timestamp). Skips tasks that are already up-to-date.</dd>
+    <dt>Flexible up-to-date checks</dt>
+    <dd>Not limited to file timestamps. Computed dependencies (<code>calc_dep</code>), custom checkers, and result-based checks.</dd>
+    <dt>Pipelines</dt>
+    <dd>Pass results between tasks without intermediate files. Dynamic task creation via <code>yield</code> for complex workflows.</dd>
+  </dl>
+  <aside class="use-case">
+    <strong>In practice:</strong> A <a href="/stories.html#computational-metagenomics-lab-university-of-trento-italy">bioinformatics lab</a> uses <code>doit</code> to create reproducible computational pipelines, managing complex dependent workflows and skipping steps already completed.
+  </aside>
+</div></section>
+<section id="advanced-features">
+<h1>Advanced Features<a class="headerlink" href="#advanced-features" title="Link to this heading">¶</a></h1>
+<div class="feature-section">
+  <dl class="feature-list">
+    <dt>Extensible</dt>
+    <dd><strong>Plugin architecture</strong> — custom commands, storage backends, task loaders, and output reporters.
+        <strong>Framework API</strong> — build your own tools on top of <em>doit</em>.</dd>
+    <dt>Batteries included</dt>
+    <dd><strong>Parallel execution</strong> (threaded or multi-process) · <strong>Shell tab-completion</strong> (bash and zsh) · <strong>DAG visualisation</strong> (graphviz).</dd>
+  </dl>
+  <aside class="use-case">
+    <strong>In practice:</strong> <a href="https://getnikola.com/">Nikola</a>, a static site generator, is built on top of <code>doit</code> — using it for the CLI, parallel task execution, and incremental rebuilds.
+  </aside>
+</div><hr class="docutils" />
+<h2 class="testimonials-heading">What people are saying</h2><div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none testimonial-card docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><em>Congratulations!</em> <strong>Your tool follows the KISS principle very closely.</strong>
+<em>I always wondered why build tools had to be that complicated.</em></p>
+<p class="testimonial-author">— Elena</p></div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none testimonial-card docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><em>Let me start by saying I’m really lovin doit, at first the interface
+seemed verbose but quickly changed my mind when</em>
+<strong>I started using it and realized the flexibility.</strong></p>
+<p class="testimonial-author">— Michael Gliwinski</p></div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none testimonial-card docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><em>I love all the traditional unix power tools, like cron, make, perl…
+I also like new comprehensive configuration management tools like
+CFEngine and Puppet. But</em>
+<strong>I find doit to be so versatile and so productive.</strong></p>
+<p class="testimonial-author">— Charlie Guo</p></div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none testimonial-card docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><em>I needed a sort of make tool to glue things together and after trying
+out all kinds,</em> <strong>doit … has actually turned out to be beautiful.</strong>
+<em>Its easy to add and manage tasks, even complex ones.</em></p>
+<p class="testimonial-author">— Matthew</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none testimonial-card docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><em>I went back and forth on different Pythonic build tools for awhile…
+I’ve been using doit more and more, and I’m continually impressed.</em>
+<strong>It works amazingly well for automating tricky/exotic build processes.</strong></p>
+<p class="testimonial-author">— SkOink</p></div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none testimonial-card docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><em>I grew frustrated with Make and Ant and started porting my build files
+to every build tool I found. Each time I ran into stumbling blocks.</em>
+<strong>Then I discovered this little gem of simplicity: doit.</strong></p>
+<p class="testimonial-author">— lelele</p></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="status-section">
+  <p>
+    <code>doit</code> is a mature project actively maintained since
+    <a href="http://schettino72.wordpress.com/2008/04/14/doit-a-build-tool-tale">2008</a>.
+    Python 3.10+. 99% unit-test code coverage.
+    Contributions welcome — development is driven by real-world use cases.
+  </p>
+  <p>
+    <a href="https://opensource.org/licenses/mit-license.php">MIT License</a> ·
+    <a href="https://pypi.python.org/pypi/doit">PyPI</a> ·
+    <a href="https://github.com/pydoit/doit">GitHub</a> ·
+    <a href="support.html">Support</a> ·
+    <a href="contents.html">Documentation</a>
+  </p>
+</div><div class="toctree-wrapper compound">
+</div>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="contents.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title"><cite>doit</cite> documentation</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2008-2026, Eduardo Schettino
             </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
           </div>
-
-          <br><br>
-
-          <div class="row">
-            <div class="col-12 heading text-center">
-              <h2>Python-Native Task Runner</h2>
-              <p>No DSL, no YAML &mdash; tasks are plain Python dicts and functions.</p>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="box-simple">
-                <div class="icon-outlined"><i class="fa fa-rocket"></i></div>
-                <h3 class="h4">Pure Python</h3>
-                <p>Tasks are Python dicts. Use any library, generate tasks programmatically, debug with <em>pdb</em>.</p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="box-simple">
-                <div class="icon-outlined"><i class="fa fa-gears"></i></div>
-                <h3 class="h4">Shell or Python actions</h3>
-                <p>Run shell commands, call Python functions, or mix both in a single task.</p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="box-simple">
-                <div class="icon-outlined"><i class="fa fa-life-bouy"></i></div>
-                <h3 class="h4">Self-documenting</h3>
-                <p><code>doit list</code> shows all tasks with docstrings. <code>doit help &lt;task&gt;</code> for details.</p>
-              </div>
-            </div>
-          </div>
-
-          <br>
-          <div class="row">
-            <div class="col-12 heading text-center">
-              <h2>Incremental Builds &amp; Pipelines</h2>
-              <p>DAG execution with dependency tracking &mdash; run only what changed.</p>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-              <div class="box-simple">
-                <div class="icon-outlined"><i class="fa fa-bolt"></i></div>
-                <h3 class="h4">Incremental builds</h3>
-                <p>Tracks file dependencies and targets (MD5 or timestamp). Skips tasks that are already up-to-date.</p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="box-simple">
-                <div class="icon-outlined"><i class="fa fa-sliders"></i></div>
-                <h3 class="h4">Flexible up-to-date checks</h3>
-                <p>Not limited to file timestamps. Computed dependencies (<code>calc_dep</code>), custom checkers, and result-based checks.</p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="box-simple">
-                <div class="icon-outlined"><i class="fa fa-exchange"></i></div>
-                <h3 class="h4">Pipelines</h3>
-                <p>Pass results between tasks without intermediate files. Dynamic task creation via <code>yield</code> for complex workflows.</p>
-              </div>
-            </div>
-          </div>
-
-          <br>
-          <div class="row">
-            <div class="col-12 heading text-center">
-              <h2>Advanced Features</h2>
-            </div>
-            <div class="col-lg-6 col-md-6">
-              <div class="box-simple">
-                <div class="icon-outlined"><i class="fa fa-plug"></i></div>
-                <h3 class="h4">Extensible</h3>
-                <p><b>Plugin architecture</b> &mdash; custom commands, storage backends, task loaders, and output reporters</p>
-                <p><b>Framework API</b> &mdash; build your own tools on top of <em>doit</em></p>
-              </div>
-            </div>
-
-            <div class="col-lg-6 col-md-6">
-              <div class="box-simple">
-                <div class="icon-outlined"><i class="fa fa-tachometer"></i></div>
-                <h3 class="h4">Batteries included</h3>
-                <p><b>Parallel execution</b> &mdash; threaded or multi-process</p>
-                <p><b>Auto execution</b> &mdash; watch for file changes and re-run tasks [linux/mac]</p>
-                <p><b>Shell tab-completion</b> &mdash; bash and zsh</p>
-                <p><b>DAG visualisation</b> &mdash; graphviz integration</p>
-              </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/pydoit/doit" aria-label="GitHub"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a>
+              <a class="muted-link " href="https://x.com/pydoit" aria-label="X/Twitter"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg></a>
+              
             </div>
           </div>
         </div>
-      </section>
-
-
-      <section class="bar background-pentagon no-mb text-md-center">
-        <div class="container">
-          <div class="heading text-center">
-            <h2>Testimonials</h2>
-          </div>
-
-          <!-- Carousel Start-->
-          <ul class="owl-carousel testimonials list-unstyled equal-height">
-            <li class="item">
-              <div class="testimonial d-flex flex-wrap">
-                <div class="text">
-                  <p>Congratulations! <b class="text-success">Your tool follows the KISS principle very closely</b>. I always wondered why build tools had to be that complicated.</p>
-                </div>
-                <div class="bottom d-flex align-items-center justify-content-between align-self-end">
-                  <div class="icon"><i class="fa fa-quote-left"></i></div>
-                  <div class="testimonial-info d-flex">
-                    <div class="title">
-                      <h5>Elena</h5>
-                      <p><a href="http://schettino72.wordpress.com/2008/04/14/doit-a-build-tool-tale/#comment-514">source</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <div class="testimonial d-flex flex-wrap">
-                <div class="text">
-                  <p>Let me start by saying I'm really lovin doit, at first the interface seemed verbose but quickly changed my mind when <b class="text-success">I started using it and realized the flexibility</b>. Many thanks for the great software!</p>
-                </div>
-                <div class="bottom d-flex align-items-center justify-content-between align-self-end">
-                  <div class="icon"><i class="fa fa-quote-left"></i></div>
-                  <div class="testimonial-info d-flex">
-                    <div class="title">
-                      <h5>Michael Gliwinski</h5>
-                      <p><a href="https://groups.google.com/d/msg/python-doit/7cD2RiBhB9c/FzrAWkVhEgUJ">source</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <div class="testimonial d-flex flex-wrap">
-                <div class="text">
-                  <p>I love all the traditional unix power tools, like cron, <code>make</code>, perl, ..., I also like new comprehensive configuration management tools like <code>CFEngine</code> and <code>Puppet</code>. But <b class="text-success">I find doit to be so versatile and so productive</b>.</p>
-                </div>
-                <div class="bottom d-flex align-items-center justify-content-between align-self-end">
-                  <div class="icon"><i class="fa fa-quote-left"></i></div>
-                  <div class="testimonial-info d-flex">
-                    <div class="title">
-                      <h5>Charlie Guo</h5>
-                      <p><a href="https://groups.google.com/d/msg/python-doit/JXElpPfcmmM/znvBT0OFhMYJ">source</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <div class="testimonial d-flex flex-wrap">
-                <div class="text">
-                  <p>I needed a sort of <code>make</code> tool to glue things together and after trying out all kinds, <b class="text-success">doit ... has actually turned out to be beautiful</b>. Its easy to add and manage tasks, even complex ones-- gluing things together with decorators and 'library' functions I've written to do certain similar things.</p>
-                </div>
-                <div class="bottom d-flex align-items-center justify-content-between align-self-end">
-                  <div class="icon"><i class="fa fa-quote-left"></i></div>
-                  <div class="testimonial-info d-flex">
-                    <div class="title">
-                      <h5>Matthew</h5>
-                      <p><a href="https://groups.google.com/d/msg/python-doit/eKI0uu02ZeY/cBU0RRsO0_cJ">source</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <div class="testimonial d-flex flex-wrap">
-                <div class="text">
-                  <p>I went back and forth on different Pythonic build tools for awhile. <code>Scons</code> is pretty great if you're doing 'standard' sorts of builds, but I found it a little heavy for my tastes and really hard to customize to my tool flow (in <code>FPGA</code> land, there are all kinds of nonstandard vendor tools that all need to play together). I've been using doit more and more over the past few months, and I'm continually impressed by the tool (aside from the goofy name). <b class="text-success">It works amazingly well for automating tricky/exotic build processes</b>. Check it out!</p>
-                </div>
-                <div class="bottom d-flex align-items-center justify-content-between align-self-end">
-                  <div class="icon"><i class="fa fa-quote-left"></i></div>
-                  <div class="testimonial-info d-flex">
-                    <div class="title">
-                      <h5>SkOink</h5>
-                      <p><a href="http://news.slashdot.org/comments.pl?sid=4319575&cid=45085519">source</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="item">
-              <div class="testimonial d-flex flex-wrap">
-                <div class="text">
-                  <p>Some time ago, I grew frustrated with <code>Make</code> and <code>Ant</code> and started porting my build files to every build tool I found (<code>SCons</code>, <code>Waf</code>, etc.). Each time, as soon as I stepped out of already available rules, I ran into some difficult to overcome stumbling blocks. <b class="text-success">Then I discovered this little gem of simplicity: doit</b>. It's Python-based. It doesn't try to be smart, it does not try to be cool, it just works. If you are looking for a flexible little build tool for different languages and tasks, give it a chance. (...)</p>
-                </div>
-                <div class="bottom d-flex align-items-center justify-content-between align-self-end">
-                  <div class="icon"><i class="fa fa-quote-left"></i></div>
-                  <div class="testimonial-info d-flex">
-                    <div class="title">
-                      <h5>lelele</h5>
-                      <p><a href="http://www.hnsearch.com/search#request/all&q=python-doit.sourceforge.net&start=0">source</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-          <!-- Carousel End-->
-        </div>
-      </section>
-
-      <section class="bg-white bar">
-        <div class="container">
-          <div class="heading text-center">
-            <h2>Status</h2>
-          </div>
-          <p class="lead"><code>doit</code> is a mature project actively maintained since <a href="http://schettino72.wordpress.com/2008/04/14/doit-a-build-tool-tale">2008</a>. Current version: 0.37.0.</p>
-          <p><em>doit</em> runs on Python 3.10+. 99% unit-test code coverage.</p>
-          <p>Contributions are welcome. Development is driven by real-world use cases.</p>
-        </div>
-      </section>
-
-      <section class="bar background-pentagon no-mb text-md-center">
-        <div class="container">
-          <div class="heading text-center">
-            <h2>Project Details</h2>
-          </div>
-
-          <div>
-            <dl class="row text-left">
-              <dt class="col-md-2 col-sm-3">LICENSE</dt>
-              <dd class="col">
-                This is an open-source project
-                (<a href="http://opensource.org/licenses/mit-license.php">MIT license</a>) written in python.
-              </dd>
-            </dl>
-            <dl class="row text-left">
-              <dt class="col-md-2 col-sm-3">DOWNLOAD</dt>
-              <dd class="col">from <a href="http://pypi.python.org/pypi/doit">PyPi</a></dd>
-            </dl>
-            <dl class="row text-left">
-              <dt class="col-md-2 col-sm-3">SUPPORT</dt>
-              <dd class="col">See <a href="/support.html">support page</a></dd>
-            </dl>
-            <dl class="row text-left">
-              <dt class="col-md-2 col-sm-3">DEVELOP</dt>
-              <dd class="col">Project management (bug tracker, feature requests and source code ) on <a href="https://github.com/pydoit/doit">github</a></dd>
-            </dl>
-            <dl class="row text-left">
-              <dt class="col-md-2 col-sm-3">WEBSITE</dt>
-              <dd class="col">This web site is hosted on http://pages.github.com<br/>
-                Powered by <a href="https://bootstrapious.com/p/universal-business-e-commerce-template">Universal template</a> and
-                <a href="http://www.sphinx-doc.org">Sphinx</a>.
-              </dd>
-            </dl>
-          </div>
-        </div>
-      </section>
-
-      <!-- <section class="bar bg-gray"> -->
-      <!--   <div class="container"> -->
-      <!--     <div class="heading text-center"> -->
-      <!--       <h2>Our Clients</h2> -->
-      <!--     </div> -->
-      <!--     <ul class="list-unstyled owl-carousel customers no-mb"> -->
-      <!--       <li class="item"><img src="img/customer-1.png" alt="" class="img-fluid"></li> -->
-      <!--       <li class="item"><img src="img/customer-2.png" alt="" class="img-fluid"></li> -->
-      <!--       <li class="item"><img src="img/customer-3.png" alt="" class="img-fluid"></li> -->
-      <!--       <li class="item"><img src="img/customer-4.png" alt="" class="img-fluid"></li> -->
-      <!--       <li class="item"><img src="img/customer-5.png" alt="" class="img-fluid"></li> -->
-      <!--       <li class="item"><img src="img/customer-6.png" alt="" class="img-fluid"></li> -->
-      <!--     </ul> -->
-      <!--   </div> -->
-      <!-- </section> -->
-
-      <!-- <\!-- GET IT-\-> -->
-      <!-- <div class="get-it"> -->
-      <!--   <div class="container"> -->
-      <!--     <div class="row"> -->
-      <!--       <div class="col-lg-8 text-center p-3"> -->
-      <!--         <h3>Do you want cool website like this one?</h3> -->
-      <!--       </div> -->
-      <!--       <div class="col-lg-4 text-center p-3">   <a href="#" class="btn btn-template-outlined-white">Buy this template now</a></div> -->
-      <!--     </div> -->
-      <!--   </div> -->
-      <!-- </div> -->
-      <!-- FOOTER -->
-
-      <footer class="main-footer">
-        <div class="copyrights">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-4 text-center-md">
-                <p>&copy; 2008-2026. pydoit.org / Eduardo Schettino (schettino72)</p>
-              </div>
-              <div class="col-lg-8 text-right text-center-md">
-                <p>Template design by <a href="https://bootstrapious.com/free-templates">Bootstrapious Templates </a></p>
-                <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </footer>
     </div>
-    <!-- Javascript files-->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="_static/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="_static/vendor/owl.carousel/owl.carousel.min.js"></script>
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MC3XWQDL4K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MC3XWQDL4K');
-</script>
-    <script type="text/javascript">
-    $(function () {
-
-
-
-    // ------------------------------------------------------- //
-    // Navbar Sticky
-    // ------------------------------------------------------ //
-    $(window).on('scroll', function () {
-        if ($(window).scrollTop() > ($('.top-bar').outerHeight())) {
-            $('header.nav-holder.make-sticky').addClass('sticky');
-            $('header.nav-holder.make-sticky').css('margin-bottom', '' + $('.top-bar').outerHeight() * 1.5 + 'px');
-        } else {
-            $('header.nav-holder.make-sticky').removeClass('sticky');
-            $('header.nav-holder.make-sticky').css('margin-bottom', '0');
-        }
-    });
-
-
-    // ------------------------------------------------------- //
-    // Testimonials Slider
-    // ------------------------------------------------------ //
-    $(".testimonials").owlCarousel({
-        items: 4,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 4
-            }
-        }
-    });
-
-
-    // ------------------------------------------------------- //
-    // Homepage Slider
-    // ------------------------------------------------------ //
-    $('.homepage').owlCarousel({
-        loop: true,
-        margin: 80,
-        dots: true,
-        nav: false,
-        autoplay: true,
-        smartSpeed: 3000,
-        addClassActive: true,
-        navText: [
-            "<i class='fa fa-angle-left'></i>",
-            "<i class='fa fa-angle-right'></i>"
-        ],
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            1000: {
-                items: 1,
-                loop: true
-            }
-        }
-    });
-
-
-    // ------------------------------------------------------- //
-    // Adding fade effect to dropdowns
-    // ------------------------------------------------------ //
-    $('.dropdown').on('show.bs.dropdown', function () {
-        $(this).find('.dropdown-menu').first().stop(true, true).fadeIn(100);
-    });
-    $('.dropdown').on('hide.bs.dropdown', function () {
-        $(this).find('.dropdown-menu').first().stop(true, true).fadeOut(100);
-    });
-});
-</script>
-  </body>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=1d1bff58"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    </body>
 </html>
