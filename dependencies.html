@@ -503,6 +503,13 @@ is <em>up-to-date</em>.</p>
 <p><em>task-dependencies</em> are <strong>not</strong> used to determine if a task is up-to-date or
 not. If a task defines only <em>task-dependency</em> it will always be executed.</p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you want a task to be considered not up-to-date when a dependency task’s
+result changes, use <a class="reference internal" href="uptodate.html#result-dep"><span class="std std-ref">result_dep</span></a> instead.
+<code class="docutils literal notranslate"><span class="pre">result_dep</span></code> implies a <code class="docutils literal notranslate"><span class="pre">task_dep</span></code> (execution order)
+and also checks if the dependency’s result has changed.</p>
+</div>
 <p>This example we make sure we include a file with the latest revision number of
 the mercurial repository on the tar file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">task_tar</span><span class="p">():</span>
@@ -853,7 +860,7 @@ from a module. The dependencies itself are calculated on task <code class="docut
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=ae02a30b"></script>
+</div><script src="_static/documentation_options.js?v=29b1acb9"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>

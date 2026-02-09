@@ -292,9 +292,9 @@ under the <cite>tool.doit</cite> namespace.
 This is the preferred configuration source, and may gain features not available in the legacy <cite>doit.cfg</cite>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A TOML parser (<a class="reference external" href="https://docs.python.org/3.11/library/tomllib.html">tomllib</a>)
+<p>A TOML parser (<a class="reference external" href="https://docs.python.org/3/library/tomllib.html">tomllib</a>)
 is part of the standard library since Python 3.11.
-For earlier Python versions, a third-party package is required, one of:</p>
+On Python 3.10, a third-party package is required, one of:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pypi.org/project/tomli/">tomli</a></p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/tomlkit/">tomlkit</a></p></li>
@@ -330,7 +330,7 @@ will use this option without the need for this option in the command line.</p>
 <h3>tool.doit.commands<a class="headerlink" href="#tool-doit-commands" title="Link to this heading">¶</a></h3>
 <p>To configure options for a specific command, use a section with
 the command name under <cite>tool.doit.commands</cite>:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tools.doit.commands.list]</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.doit.commands.list]</span>
 <span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="n">subtasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 </pre></div>
@@ -523,7 +523,7 @@ not be used.</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=ae02a30b"></script>
+</div><script src="_static/documentation_options.js?v=29b1acb9"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>

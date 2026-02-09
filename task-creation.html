@@ -303,11 +303,7 @@ modules just by importing them into your <em>dodo</em> file.</p>
 <p>Importing tasks from different modules is useful if you want to split
 your task definitions in different modules.</p>
 <p>The best way to create re-usable tasks that can be used in several projects
-is to call functions that return task dict’s.
-For example take a look at a reusable <em>pyflakes</em>
-<a class="reference external" href="https://github.com/pydoit/doit-py/blob/master/doitpy/pyflakes.py">task generator</a>.
-Check the project <a class="reference external" href="https://github.com/pydoit/doit-py">doit-py</a>
-for more examples.</p>
+is to write functions that return task dict’s or generators that yield them.</p>
 </div>
 </section>
 <section id="delayed-task-creation">
@@ -508,7 +504,7 @@ has some real-world implementations.</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=ae02a30b"></script>
+</div><script src="_static/documentation_options.js?v=29b1acb9"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
